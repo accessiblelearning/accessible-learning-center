@@ -1,3 +1,8 @@
 name = "accessible-learning-api"
 main = "worker.js"
 compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "accessible-learning-progress"
+database_id = "PASTE-DATABASE-ID-HERE"
