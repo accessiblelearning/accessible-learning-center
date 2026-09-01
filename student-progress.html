@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Progress - Accessible Learning Center</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Student Progress</h1>
+    <p id="studentName"></p>
+  </header>
+
+  <main>
+
+    <h2>Microsoft Word</h2>
+
+    <div id="progressMessage" role="status" aria-live="polite">
+      Loading your progress...
+    </div>
+
+    <ol id="progressList"></ol>
+
+    <p><a href="lessons.html">Go to Lessons</a></p>
+    <p><a href="student-id.html">Change Student ID</a></p>
+    <p><a href="index.html">Return to Home</a></p>
+
+  </main>
+
+  <script>
+    const API_URL =
+      "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
+
+    const studentId =
+      localStorage.getItem("accessibleLearningStudentId");
+
+    const studentName =
+      document.getElementById("studentName");
+
+    const progressMessage =
+      document.getElementById("progressMessage");
+
+    const progressList =
+      document.getElementById("progressList");
+
+    const lessons = [
+      "Opening Word, Creating, and Saving a Document",
+      "Moving, Selecting, and Editing Text",
+      "Find, Replace, Save, Close, and Reopen",
+      "Formatting Text and Paragraphs",
+      "Headings, Styles, and Document Navigation",
+      "Bulleted and Numbered Lists",
+      "Creating Accessible Tables",
+      "Links, Alt Text, and Accessibility",
+      "Spelling, Comments, and Track Changes",
+      "Final Independent Word Assignment"
+    ];
+
+    if (!studentId) {
+      window.location.href = "student-id.html";
+    }
+
+    studentName.textContent =
+      "Student ID: " + studentId;
+
+    async function loadProgress() {
+      try {
+        const response = await fetch(
+          API_URL +
+          "/progress?student_id=" +
+          encodeURIComponent(studentId)
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          progressMessage.textContent =
+            "Your progress could not be loaded.";
+          return;
+        }
+
+        progressMessage.textContent = "";
+
+        for (let i = 1; i <= 10; i++) {
+          const record = data.find(
+            item =>
+              item.course === "Microsoft Word" &&
+              Number(item.lesson_number) === i
+          );
+
+          const item = document.createElement("li");
+
+          if (record) {
+            item.textContent =
+              "Lesson " +
+              i +
+              ": " +
+              lessons[i - 1] +
+              " — " +
+              record.status +
+              ". Attempts: " +
+              record.attempts;
+          } else {
+            item.textContent =
+              "Lesson " +
+              i +
+              ": " +
+              lessons[i - 1] +
+              " — Not started";
+          }
+
+          progressList.appendChild(item);
+        }
+
+      } catch (error) {
+        progressMessage.textContent =
+          "There was a connection problem while loading progress.";
+      }
+    }
+
+    loadProgress();
+  </script>
+
+</body>
+</html>
