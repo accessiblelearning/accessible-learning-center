@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Microsoft Excel Lesson 7: Managing Worksheets and Cross-Sheet References.">
+  <title>Excel Lesson 7 - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=dark-mode-1">
+  <script src="accessibility.js?v=dark-mode-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Microsoft Excel course</p>
+    <h1>Excel Lesson 7</h1>
+    <p>Managing Worksheets and Cross-Sheet References</p>
+  </header>
+
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Excel lesson navigation">
+      <a href="excel-manual.html">Excel manual</a>
+      <a href="lessons.html#excel-lessons">All Excel lessons</a>
+      <a href="student-progress.html">My progress</a>
+    </nav>
+
+    <section aria-labelledby="goal-heading">
+      <h2 id="goal-heading">Goal</h2>
+      <p>Organize related information across worksheets and create a summary that refers to another sheet.</p>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills practiced</h2>
+      <ul>
+  <li>Insert a worksheet with Shift+F11.</li>
+  <li>Move between sheets with Ctrl+Page Up and Ctrl+Page Down.</li>
+  <li>Rename worksheets.</li>
+  <li>Reference a cell on another worksheet.</li>
+</ul>
+    </section>
+
+    <section aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">Step-by-step instructions</h2>
+      <ol>
+  <li>Create a blank workbook and rename Sheet1 to January. Use Alt+Q and search for Rename Sheet if ribbon KeyTips differ.</li>
+  <li>Enter Category and Amount in A1 and B1.</li>
+  <li>Enter five fictional January expenses in rows 2 through 6.</li>
+  <li>Press Shift+F11 to insert a new worksheet and rename it February.</li>
+  <li>Enter the same headers and five fictional February expenses.</li>
+  <li>Press Shift+F11 again and rename the new worksheet Summary.</li>
+  <li>Use Ctrl+Page Up and Ctrl+Page Down to move among the three worksheets.</li>
+  <li>On January, calculate the total in B8 with =SUM(B2:B6). Do the same on February.</li>
+  <li>On Summary, enter January Total in A1 and type =January!B8 in B1.</li>
+  <li>Enter February Total in A2 and type =February!B8 in B2.</li>
+  <li>Enter Combined Total in A3 and type =SUM(B1:B2) in B3.</li>
+  <li>Save the workbook as Excel-Lesson-7.xlsx.</li>
+</ol>
+      <p class="tip"><strong>JAWS help:</strong> Press Insert+Spacebar, then J, to search JAWS commands when you forget a keystroke. Ribbon KeyTips can differ slightly by Microsoft 365 update, so Alt+Q search is included where useful.</p>
+    </section>
+
+    <section aria-labelledby="assignment-heading">
+      <h2 id="assignment-heading">Your assignment</h2>
+      <p>Create January, February, and Summary worksheets. Enter expenses on the monthly sheets and show both monthly totals plus a combined total on Summary.</p>
+      <p>Save the finished assignment as <strong>Excel-Lesson-7.xlsx</strong>.</p>
+
+      <h3>Before submitting</h3>
+      <ul>
+  <li>All three worksheets have meaningful names.</li>
+  <li>Monthly totals use SUM formulas.</li>
+  <li>Summary references the monthly worksheets.</li>
+  <li>Ctrl+Page Up and Ctrl+Page Down move among the sheets.</li>
+  <li>The file is saved as Excel-Lesson-7.xlsx.</li>
+</ul>
+    </section>
+
+    <section aria-labelledby="submission-heading">
+      <h2 id="submission-heading">Submit Excel Lesson 7</h2>
+      <p id="studentDisplay"></p>
+      <p>Choose your completed assignment file. Accepted file types for this lesson are XLSX or PDF. The maximum file size is 10 MB.</p>
+      <p><strong>Using an iPhone?</strong> Open this lesson in Safari before choosing a file. File selection may not open inside an in-app browser.</p>
+      <form id="submissionForm">
+        <p>
+          <label for="assignmentFile">Assignment file</label><br>
+          <input id="assignmentFile" name="file" type="file" accept=".xlsx,.pdf" aria-describedby="fileRequirements" required>
+        </p>
+        <p id="fileRequirements">Choose one XLSX or PDF file that is 10 MB or smaller.</p>
+        <button id="submitLesson" type="submit">Upload and Submit Excel Lesson 7</button>
+      </form>
+      <p id="submissionMessage" role="status" aria-live="polite"></p>
+    </section>
+
+    <nav class="lesson-nav" aria-label="Continue Excel course">
+      <a href="excel-lesson-6.html">Previous lesson</a>
+      <a href="excel-lesson-8.html">Next lesson</a>
+    </nav>
+  </main>
+
+  <script src="assignment-submission.js"
+    data-lesson-number="7"
+    data-course="Microsoft Excel"
+    data-allowed-extensions="xlsx,pdf"></script>
+</body>
+</html>

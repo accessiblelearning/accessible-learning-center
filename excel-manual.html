@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Microsoft Excel manual for Microsoft 365 desktop on Windows with JAWS and keyboard-first instruction.">
+  <title>Microsoft Excel Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=dark-mode-1">
+  <script src="accessibility.js?v=dark-mode-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Keyboard-first Microsoft 365 training</p>
+    <h1>Microsoft Excel Accessible Manual</h1>
+    <p>A practical guide to creating, navigating, calculating, organizing, and checking spreadsheets with JAWS on Windows.</p>
+  </header>
+
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Excel manual navigation">
+      <a href="#quick-reference">Keyboard quick reference</a>
+      <a href="#accessible-workbooks">Accessible workbook practices</a>
+      <a href="#course-lessons">Course lessons</a>
+    </nav>
+
+    <section aria-labelledby="about-heading">
+      <h2 id="about-heading">About this manual</h2>
+      <p>This manual is written for Microsoft Excel in Microsoft 365 desktop on Windows. It focuses on keyboard use with JAWS, but most standard Excel shortcuts also work with other screen readers and magnification.</p>
+      <p>Excel is organized as workbooks containing worksheets. Each worksheet is a grid of columns, rows, and cells. A cell address combines its column letter and row number, such as B4. JAWS normally announces the active cell address, cell contents, and useful formatting or formula information.</p>
+      <p>Microsoft 365 changes over time. If a Ribbon KeyTip differs, press <strong>Alt+Q</strong>, type the command name, and choose it from Search. For JAWS command help, press <strong>Insert+Spacebar, then J</strong> to open JAWS Commands Search.</p>
+    </section>
+
+    <section id="quick-reference" aria-labelledby="quick-reference-heading">
+      <h2 id="quick-reference-heading">Keyboard quick reference</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable Excel keyboard command table">
+        <table>
+          <caption>Common Excel and JAWS commands used in this course</caption>
+          <thead><tr><th scope="col">Task</th><th scope="col">Command</th></tr></thead>
+          <tbody>
+            <tr><td>Move one cell</td><td>Arrow keys</td></tr>
+            <tr><td>Move to the edge of a data region</td><td>Ctrl+Arrow key</td></tr>
+            <tr><td>Move to cell A1</td><td>Ctrl+Home</td></tr>
+            <tr><td>Move to the last used cell</td><td>Ctrl+End</td></tr>
+            <tr><td>Go directly to a cell</td><td>Ctrl+G, type the cell address, Enter</td></tr>
+            <tr><td>Edit the active cell</td><td>F2</td></tr>
+            <tr><td>Find or replace</td><td>Ctrl+F or Ctrl+H</td></tr>
+            <tr><td>Save</td><td>Ctrl+S</td></tr>
+            <tr><td>Save As</td><td>F12</td></tr>
+            <tr><td>Open Format Cells</td><td>Ctrl+1</td></tr>
+            <tr><td>AutoSum</td><td>Alt+Equals</td></tr>
+            <tr><td>Create a table</td><td>Ctrl+T</td></tr>
+            <tr><td>Open a table header filter</td><td>Alt+Down Arrow</td></tr>
+            <tr><td>Move to next or previous worksheet</td><td>Ctrl+Page Down or Ctrl+Page Up</td></tr>
+            <tr><td>Insert a worksheet</td><td>Shift+F11</td></tr>
+            <tr><td>Create a chart on the current sheet</td><td>Alt+F1</td></tr>
+            <tr><td>Office command search</td><td>Alt+Q</td></tr>
+            <tr><td>JAWS Commands Search</td><td>Insert+Spacebar, then J</td></tr>
+            <tr><td>List cells with data in current column</td><td>Insert+Shift+C</td></tr>
+            <tr><td>List cells with data in current row</td><td>Insert+Shift+R</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="accessible-workbooks" aria-labelledby="accessible-heading">
+      <h2 id="accessible-heading">Accessible workbook practices</h2>
+      <ul>
+        <li>Use a short, unique header for every column and keep headers in one row.</li>
+        <li>Keep one kind of information in each column and one record in each row.</li>
+        <li>Avoid merged cells. Screen readers can repeat, skip, or misidentify merged content.</li>
+        <li>Avoid blank rows and columns inside a data table.</li>
+        <li>Use real number formats for currency, percentages, and dates instead of typing visual symbols as text.</li>
+        <li>Do not use color as the only way to communicate status or instructions. Include words or symbols with text equivalents.</li>
+        <li>Give worksheets meaningful names and remove unused blank worksheets before sharing.</li>
+        <li>For charts and other visual objects, add concise alternative text and keep the source data available in cells.</li>
+        <li>Use an Excel table when possible so headers and data boundaries are explicit.</li>
+        <li>Run Review, Check Accessibility before submitting or sharing a workbook.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="formula-heading">
+      <h2 id="formula-heading">Formula essentials</h2>
+      <p>Every Excel formula begins with an equals sign. A formula can contain numbers, cell references, operators, and functions.</p>
+      <ul>
+        <li><strong>=B2*C2</strong> multiplies the values in B2 and C2.</li>
+        <li><strong>=SUM(D2:D10)</strong> adds the values from D2 through D10.</li>
+        <li><strong>=AVERAGE(D2:D10)</strong> calculates the average.</li>
+        <li><strong>=MIN(D2:D10)</strong> and <strong>=MAX(D2:D10)</strong> return the lowest and highest values.</li>
+        <li><strong>=IF(B2&gt;=C2,"Complete","Needs Training")</strong> returns text based on a condition.</li>
+        <li><strong>=COUNTIF(D2:D10,"Complete")</strong> counts cells matching the word Complete.</li>
+      </ul>
+      <p>Press F2 to edit and inspect the active cell's formula. When copying formulas, confirm that relative cell references changed as intended.</p>
+    </section>
+
+    <section aria-labelledby="tables-heading">
+      <h2 id="tables-heading">Tables, sorting, and filtering</h2>
+      <p>Select a cell in a continuous data list and press Ctrl+T to create a table. Confirm the range and that the table has headers. On a table header, press Alt+Down Arrow to open sorting and filtering choices.</p>
+      <p>After filtering, remember that some rows are hidden. Clear filters before sharing unless the filtered view is intentional, and describe the active filter in a nearby cell or instructions worksheet.</p>
+    </section>
+
+    <section aria-labelledby="charts-heading">
+      <h2 id="charts-heading">Charts and nonvisual access</h2>
+      <p>A chart should never be the only source of information. Keep the labeled source table, add useful alternative text, and include a short text summary of the important trend or conclusion. Avoid descriptions such as “chart” that do not explain its purpose.</p>
+    </section>
+
+    <section id="course-lessons" aria-labelledby="lessons-heading">
+      <h2 id="lessons-heading">Ten-lesson course sequence</h2>
+      <ol>
+      <li><a href="excel-lesson-1.html">Lesson 1: Excel Basics: Workbooks, Worksheets, and Cells</a> — Open Excel, understand the worksheet grid, enter a simple workplace contact list, and save a workbook.</li>
+      <li><a href="excel-lesson-2.html">Lesson 2: Navigating, Editing, Finding, and Filling Data</a> — Move efficiently through a worksheet, edit cells, find and replace information, and copy values without relying on a mouse.</li>
+      <li><a href="excel-lesson-3.html">Lesson 3: Formulas, AutoSum, and Basic Calculations</a> — Create a small expense worksheet and calculate totals and averages with formulas.</li>
+      <li><a href="excel-lesson-4.html">Lesson 4: Accessible Formatting and Number Formats</a> — Apply meaningful formatting and number formats while keeping the worksheet usable with screen readers and magnification.</li>
+      <li><a href="excel-lesson-5.html">Lesson 5: Tables, Sorting, and Filtering</a> — Convert data into an accessible Excel table and use keyboard commands to sort and filter records.</li>
+      <li><a href="excel-lesson-6.html">Lesson 6: IF, COUNTIF, and Conditional Results</a> — Use logical and counting functions to turn raw workplace data into useful status information.</li>
+      <li><a href="excel-lesson-7.html">Lesson 7: Managing Worksheets and Cross-Sheet References</a> — Organize related information across worksheets and create a summary that refers to another sheet.</li>
+      <li><a href="excel-lesson-8.html">Lesson 8: Charts, Alternative Text, and Accessibility Checker</a> — Create a simple chart, provide a text equivalent, and use Excel accessibility checks.</li>
+      <li><a href="excel-lesson-9.html">Lesson 9: Data Validation, Consistent Entry, and Review</a> — Create a reliable data-entry sheet with controlled choices and check it for common accessibility problems.</li>
+      <li><a href="excel-lesson-10.html">Lesson 10: Final Employment Workbook Project</a> — Independently build an accessible workbook that organizes, calculates, summarizes, and communicates workplace information.</li>
+      </ol>
+      <p><a href="excel-lesson-1.html">Begin Excel Lesson 1</a></p>
+    </section>
+
+    <section aria-labelledby="sources-heading">
+      <h2 id="sources-heading">Official references and further learning</h2>
+      <ul>
+        <li><a href="https://support.microsoft.com/en-us/accessibility/excel/accessibility-best-practices-with-excel-spreadsheets">Microsoft: Accessibility best practices with Excel spreadsheets</a></li>
+        <li><a href="https://support.microsoft.com/en-us/accessibility/excel/screen-reader-support-for-excel">Microsoft: Screen reader support for Excel</a></li>
+        <li><a href="https://support.microsoft.com/en-us/accessibility/office-accessibility/improve-accessibility-with-the-accessibility-checker">Microsoft: Accessibility Checker</a></li>
+        <li><a href="https://www.freedomscientific.com/webinars/ten-power-tips-for-improving-productivity-in-excel-with-jaws/">Freedom Scientific: Excel productivity with JAWS</a></li>
+        <li><a href="https://blog.freedomscientific.com/3-quick-tips-for-navigating-excel-spreadsheets-with-jaws/">Freedom Scientific: Navigating Excel spreadsheets with JAWS</a></li>
+      </ul>
+    </section>
+
+    <nav class="lesson-nav" aria-label="Excel manual actions">
+      <a href="lessons.html#excel-lessons">View Excel lessons</a>
+      <a href="student-progress.html">View my progress</a>
+      <a href="manuals.html">Return to manuals</a>
+    </nav>
+  </main>
+</body>
+</html>

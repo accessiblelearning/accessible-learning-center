@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review saved Word, Excel, PowerPoint, JAWS, Windows 11, and Chrome progress.">
+  <title>Student Progress - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=dark-mode-1">
+  <script src="accessibility.js?v=dark-mode-1" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Student Progress</h1>
+    <p id="studentName"></p>
+  </header>
+
+  <main id="main-content">
+    <div id="progressMessage" role="status" aria-live="polite">Loading your progress...</div>
+    <div id="courseProgressSections" class="course-progress-sections"></div>
+
+    <nav aria-label="Progress actions">
+      <ul class="card-list">
+        <li><a href="lessons.html">Go to all lessons</a></li>
+        <li><a href="student-id.html">Change Student ID</a></li>
+        <li><a href="index.html">Return home</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <script>
+    const API_URL =
+      "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
+    const studentId = localStorage.getItem("accessibleLearningStudentId");
+    const studentName = document.getElementById("studentName");
+    const progressMessage = document.getElementById("progressMessage");
+    const courseProgressSections = document.getElementById("courseProgressSections");
+
+    const courses = [
+      {
+            "name": "JAWS Screen Reader",
+            "slug": "jaws",
+            "titles": [
+                  "Choose, Start, and Stop a Screen Reader",
+                  "Keyboard Help, Speech Control, and Basic Information",
+                  "Read by Character, Word, Line, Paragraph, and Continuously",
+                  "Navigate Windows, Dialogs, and Controls",
+                  "Browse Webpages by Headings, Links, Lists, and Landmarks",
+                  "Complete Forms and Manage Input Modes",
+                  "Navigate Tables, Lists, and Structured Information",
+                  "Read, Edit, and Review Workplace Documents",
+                  "Help, Settings, Updates, Braille, and JAWS AI",
+                  "Final Screen-Reader Workplace Project"
+            ],
+            "displayName": "Screen Readers: JAWS, Narrator, and NVDA"
+      },
+      {
+            "name": "Windows 11",
+            "slug": "windows",
+            "titles": [
+                  "Desktop, Start Menu, Search, and Taskbar",
+                  "Managing Windows, Switching Apps, Snap, and Virtual Desktops",
+                  "File Explorer Basics and Location Awareness",
+                  "Creating, Renaming, Copying, Moving, and Deleting Files",
+                  "Selecting, Sorting, Viewing, and Finding Files",
+                  "Settings and Built-in Accessibility Features",
+                  "Quick Settings, Notifications, Audio, and Connectivity",
+                  "Security, Privacy, Updates, and Safe Downloads",
+                  "Safe Troubleshooting, Task Manager, and Getting Help",
+                  "Final Workplace File and Window Management Project"
+            ]
+      },
+      {
+            "name": "Microsoft Word",
+            "slug": "word",
+            "titles": [
+                  "Opening Word, Creating, and Saving a Document",
+                  "Moving, Selecting, and Editing Text",
+                  "Find, Replace, Save, Close, and Reopen",
+                  "Formatting Text and Paragraphs",
+                  "Headings, Styles, and Document Navigation",
+                  "Bulleted and Numbered Lists",
+                  "Creating Accessible Tables",
+                  "Links, Alt Text, and Accessibility",
+                  "Spelling, Comments, and Track Changes",
+                  "Final Independent Word Assignment"
+            ]
+      },
+      {
+            "name": "Microsoft Excel",
+            "slug": "excel",
+            "titles": [
+                  "Excel Basics: Workbooks, Worksheets, and Cells",
+                  "Navigating, Editing, Finding, and Filling Data",
+                  "Formulas, AutoSum, and Basic Calculations",
+                  "Accessible Formatting and Number Formats",
+                  "Tables, Sorting, and Filtering",
+                  "IF, COUNTIF, and Conditional Results",
+                  "Managing Worksheets and Cross-Sheet References",
+                  "Charts, Alternative Text, and Accessibility Checker",
+                  "Data Validation, Consistent Entry, and Review",
+                  "Final Employment Workbook Project"
+            ]
+      },
+      {
+            "name": "Microsoft PowerPoint",
+            "slug": "powerpoint",
+            "titles": [
+                  "PowerPoint Basics: Slides, Placeholders, and Saving",
+                  "Slide Layouts, Titles, and Organizing a Presentation",
+                  "Text, Bullets, and Clear Slide Content",
+                  "Images, Alternative Text, and Decorative Objects",
+                  "Reading Order and Keyboard Navigation",
+                  "Accessible Tables and Charts",
+                  "Meaningful Links and Contact Information",
+                  "Color, Contrast, Fonts, and Accessible Design",
+                  "Speaker Notes and Presenting with the Keyboard",
+                  "Final Accessible Workplace Presentation"
+            ]
+      },
+      {
+            "name": "Google Chrome",
+            "slug": "chrome",
+            "titles": [
+                  "Chrome Layout, Address Bar, and Basic Navigation",
+                  "Tabs, Windows, and Restoring Work",
+                  "JAWS Web Navigation in Chrome",
+                  "Web Search, Research, and Source Evaluation",
+                  "Bookmarks, History, and Finding a Page Again",
+                  "Downloads, Uploads, and File Verification",
+                  "Forms, Forms Mode, and Site Permissions",
+                  "Zoom, Full Screen, and Accessible Browser Settings",
+                  "Privacy, Safe Browsing, Pop-ups, and Notifications",
+                  "Final Accessible Workplace Research Project"
+            ]
+      },
+      {
+            "name": "Google Docs",
+            "slug": "docs",
+            "titles": [
+                  "Create, Name, and Organize a Document",
+                  "Navigate, Select, Edit, and Find Text",
+                  "Format Text and Paragraphs Accessibly",
+                  "Headings, Outline, and Document Structure",
+                  "Bulleted and Numbered Lists",
+                  "Create and Navigate Accessible Tables",
+                  "Links, Images, and Alternative Text",
+                  "Comments, Suggestions, and Collaboration",
+                  "Sharing, Permissions, and Privacy",
+                  "Final Accessible Workplace Document"
+            ]
+      },
+      {
+            "name": "Google Calendar",
+            "slug": "calendar",
+            "titles": [
+                  "Calendar Layout and Keyboard Navigation",
+                  "Create a Complete Event",
+                  "Edit, Delete, and Restore Events",
+                  "Create Recurring Events",
+                  "Invite Guests and Respond to Invitations",
+                  "Notifications and Reminders",
+                  "Multiple Calendars and Color Labels",
+                  "Search, Agenda, and Schedule Review",
+                  "Sharing, Privacy, and Time Zones",
+                  "Final Workplace Scheduling Project"
+            ]
+      },
+      {
+            "name": "Adobe Acrobat and Accessible PDFs",
+            "slug": "pdf",
+            "titles": [
+                  "Open, Read, and Identify a PDF",
+                  "Navigate Pages, Headings, and Search",
+                  "Links, Bookmarks, Lists, and Tables",
+                  "Complete Accessible PDF Forms",
+                  "Comments and Review Tools",
+                  "Tags, Reading Order, and Document Properties",
+                  "Scanned PDFs and OCR",
+                  "Accessibility Checker and Common Fixes",
+                  "Export, Print, and Document Security",
+                  "Final Accessible PDF Evaluation"
+            ]
+      },
+      {
+            "name": "Cybersecurity for Screen Reader Users",
+            "slug": "cybersecurity",
+            "titles": [
+                  "Recognize Common Digital Threats",
+                  "Strong Passwords and Password Managers",
+                  "Multifactor Authentication and Recovery",
+                  "Phishing Emails, Texts, and Calls",
+                  "Safe Links, Downloads, and Attachments",
+                  "Privacy, Permissions, and Data Handling",
+                  "Updates, Backups, and Device Security",
+                  "Public Wi-Fi and Remote Work",
+                  "Incident Reporting and Account Recovery",
+                  "Final Accessible Security Scenario"
+            ]
+      },
+      {
+            "name": "Accessible Job Search",
+            "slug": "job-search",
+            "titles": [
+                  "Set a Career Goal and Search Keywords",
+                  "Build a Clear Résumé",
+                  "Check Résumé Accessibility",
+                  "Search Trusted Job Sites",
+                  "Analyze a Posting and Check for Scams",
+                  "Complete Online Applications Accessibly",
+                  "Write a Targeted Cover Letter",
+                  "Networking and Professional Email",
+                  "Interview and Accommodation Planning",
+                  "Final Accessible Application Package"
+            ]
+      },
+      {
+            "name": "Focus 40 Blue",
+            "slug": "focus",
+            "titles": [
+                  "Orientation, Power, and Device Identification",
+                  "Connect by USB and Configure JAWS",
+                  "Pair and Manage Bluetooth Connections",
+                  "Read, Pan, Route the Cursor, and Select Text",
+                  "Type with BrailleIn and Edit Text",
+                  "Navigate Windows, File Explorer, and Documents",
+                  "Navigate Webpages, Forms, Lists, and Tables",
+                  "Use Scratchpad, BRF Book Reader, and microSD Safely",
+                  "Braille Settings, Study Mode, Cleaning, and Updates",
+                  "Final Focus 40 Blue Workplace Project"
+            ]
+      },
+      {
+            "name": "Mantis Q40",
+            "slug": "mantis",
+            "titles": [
+                  "Orientation, Power, and Status",
+                  "Connect by USB and Bluetooth",
+                  "Use Terminal Mode with JAWS",
+                  "Read and Navigate with Braille Commands",
+                  "Editor and Local Files",
+                  "Cursor Routing, Selection, and Editing",
+                  "Menus, Profiles, and Settings",
+                  "USB Storage and File Transfer",
+                  "Troubleshooting and Updates",
+                  "Final Workplace Braille Project"
+            ]
+      },
+      {
+            "name": "NLS Braille eReader",
+            "slug": "ereader",
+            "titles": [
+                  "Orientation, Power, and Main Menu",
+                  "Bookshelf and File Organization",
+                  "Read and Navigate a Book",
+                  "Search, Bookmarks, and Reading Position",
+                  "Notes and the Editor",
+                  "Obtain and Transfer NLS BARD Content",
+                  "Terminal Mode and Computer Connection",
+                  "Settings, Language, and Status",
+                  "Safe Troubleshooting and Updates",
+                  "Final Independent Reading Project"
+            ]
+      },
+      {
+            "name": "BrailleBlaster",
+            "slug": "brailleblaster",
+            "titles": [
+                  "Interface, Open, and Save a BBZ Project",
+                  "Navigate Source and Braille Views",
+                  "Apply Headings and Structure",
+                  "Create Lists and Indented Material",
+                  "Format Simple Tables",
+                  "Page Numbers, Running Heads, and Breaks",
+                  "Styles, Emphasis, and Special Text",
+                  "Math, Graphics, and Transcriber Notes",
+                  "Proofread, Validate, and Export BRF",
+                  "Final Workplace Transcription Project"
+            ]
+      }
+];
+
+    if (!studentId) {
+      window.location.href = "student-id.html";
+    } else {
+      studentName.textContent = "Student ID: " + studentId;
+      loadProgress();
+    }
+
+    function createCourseSection(course, records) {
+      const section = document.createElement("section");
+      section.className = "course-progress";
+      section.setAttribute("aria-labelledby", course.slug + "-progress-heading");
+
+      const heading = document.createElement("h2");
+      heading.id = course.slug + "-progress-heading";
+      heading.textContent = course.displayName || course.name;
+
+      const summary = document.createElement("p");
+      const meter = document.createElement("progress");
+      const list = document.createElement("ol");
+      list.className = "progress-list";
+
+      let submittedCount = 0;
+
+      for (let i = 1; i <= course.titles.length; i++) {
+        const record = records.find(
+          item =>
+            item.course === course.name &&
+            Number(item.lesson_number) === i
+        );
+        const isSubmitted = Boolean(record && record.status === "submitted");
+        if (isSubmitted) submittedCount += 1;
+
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        const status = document.createElement("span");
+
+        link.href = course.slug + "-lesson-" + i + ".html";
+        link.textContent = "Lesson " + i + ": " + course.titles[i - 1];
+        status.className = isSubmitted
+          ? "lesson-status lesson-status--submitted"
+          : "lesson-status";
+        status.textContent = isSubmitted
+          ? "Submitted. Attempts: " + record.attempts
+          : "Not started";
+
+        item.append(link, status);
+        list.appendChild(item);
+      }
+
+      summary.textContent =
+        submittedCount + " of " + course.titles.length + " lessons submitted.";
+      meter.max = course.titles.length;
+      meter.value = submittedCount;
+      meter.textContent =
+        submittedCount + " of " + course.titles.length + " lessons submitted";
+      meter.setAttribute(
+        "aria-label",
+        (course.displayName || course.name) + ": " + submittedCount + " of " + course.titles.length + " lessons submitted"
+      );
+
+      section.append(heading, summary, meter, list);
+      return { section, submittedCount };
+    }
+
+    async function loadProgress() {
+      try {
+        const response = await fetch(
+          API_URL + "/progress?student_id=" + encodeURIComponent(studentId)
+        );
+        const data = await response.json();
+
+        if (!response.ok || !Array.isArray(data)) {
+          progressMessage.textContent = "Your progress could not be loaded.";
+          return;
+        }
+
+        courseProgressSections.replaceChildren();
+        let completedCourses = 0;
+
+        for (const course of courses) {
+          const result = createCourseSection(course, data);
+          courseProgressSections.appendChild(result.section);
+          if (result.submittedCount === course.titles.length) {
+            completedCourses += 1;
+          }
+        }
+
+        progressMessage.textContent =
+          completedCourses === courses.length
+            ? "All available courses are complete."
+            : "Progress loaded for all available courses.";
+      } catch (error) {
+        progressMessage.textContent =
+          "There was a connection problem while loading progress.";
+      }
+    }
+  </script>
+</body>
+</html>

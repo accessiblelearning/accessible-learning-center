@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Microsoft PowerPoint Lesson 7: Meaningful Links and Contact Information.">
+  <title>PowerPoint Lesson 7 - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=dark-mode-1">
+  <script src="accessibility.js?v=dark-mode-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Microsoft PowerPoint course</p>
+    <h1>PowerPoint Lesson 7</h1>
+    <p>Meaningful Links and Contact Information</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="PowerPoint lesson navigation">
+      <a href="powerpoint-manual.html">PowerPoint manual</a>
+      <a href="lessons.html#powerpoint-lessons">All PowerPoint lessons</a>
+      <a href="student-progress.html">My progress</a>
+    </nav>
+    <section aria-labelledby="goal-heading"><h2 id="goal-heading">Goal</h2><p>Add links that clearly identify their destination and work with keyboard navigation.</p></section>
+    <section aria-labelledby="skills-heading"><h2 id="skills-heading">Skills practiced</h2><ul>
+  <li>Insert a hyperlink with Ctrl+K.</li>
+  <li>Write meaningful link text.</li>
+  <li>Add an email link.</li>
+  <li>Test links without relying on their visual appearance.</li>
+</ul></section>
+    <section aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">Step-by-step instructions</h2>
+      <ol>
+  <li>Create a presentation titled New Employee Resources.</li>
+  <li>Add a slide titled Technology Resources.</li>
+  <li>Type Microsoft Accessibility Help, select the text, and press Ctrl+K.</li>
+  <li>Enter https://support.microsoft.com/accessibility as the address and confirm the dialog.</li>
+  <li>Add the meaningful link text Freedom Scientific JAWS Training and link it to https://www.freedomscientific.com/training/jaws/.</li>
+  <li>Add a slide titled Department Contacts.</li>
+  <li>Enter a fictional contact name and email address. Use Ctrl+K to create a mailto link if appropriate.</li>
+  <li>Avoid link text such as click here or read more because it does not identify the destination.</li>
+  <li>Press Tab through the slide objects and listen to each link with JAWS.</li>
+  <li>Use Shift+F10 and Edit Link if a destination needs correction.</li>
+  <li>Run Check Accessibility and review link-related suggestions.</li>
+  <li>Save the presentation as PowerPoint-Lesson-7.pptx.</li>
+</ol>
+      <p class="tip"><strong>Keyboard help:</strong> Press Alt+Q to search PowerPoint commands when Ribbon KeyTips differ. For JAWS help, press Insert+Spacebar, then J, and search for the task.</p>
+    </section>
+    <section aria-labelledby="assignment-heading">
+      <h2 id="assignment-heading">Your assignment</h2>
+      <p>Create a three-slide employee-resources presentation with two meaningful web links and one fictional department contact.</p>
+      <p>Save the finished assignment as <strong>PowerPoint-Lesson-7.pptx</strong>.</p>
+      <h3>Before submitting</h3><ul>
+  <li>Link text explains each destination.</li>
+  <li>No link uses vague text such as click here.</li>
+  <li>The contact information is fictional and contains no private data.</li>
+  <li>All links were reviewed with keyboard navigation.</li>
+  <li>The file is saved as PowerPoint-Lesson-7.pptx.</li>
+</ul>
+    </section>
+    <section aria-labelledby="submission-heading">
+      <h2 id="submission-heading">Submit PowerPoint Lesson 7</h2>
+      <p id="studentDisplay"></p>
+      <p>Choose your completed assignment file. Accepted file types are PPTX or PDF. The maximum file size is 10 MB.</p>
+      <p><strong>Using an iPhone?</strong> Open this lesson in Safari before choosing a file. File selection may not open inside an in-app browser.</p>
+      <form id="submissionForm">
+        <p><label for="assignmentFile">Assignment file</label><br>
+        <input id="assignmentFile" name="file" type="file" accept=".pptx,.pdf" aria-describedby="fileRequirements" required></p>
+        <p id="fileRequirements">Choose one PPTX or PDF file that is 10 MB or smaller.</p>
+        <button id="submitLesson" type="submit">Upload and Submit PowerPoint Lesson 7</button>
+      </form>
+      <p id="submissionMessage" role="status" aria-live="polite"></p>
+    </section>
+    <nav class="lesson-nav" aria-label="Continue PowerPoint course">
+      <a href="powerpoint-lesson-6.html">Previous lesson</a>
+      <a href="powerpoint-lesson-8.html">Next lesson</a>
+    </nav>
+  </main>
+  <script src="assignment-submission.js" data-lesson-number="7" data-course="Microsoft PowerPoint" data-allowed-extensions="pptx,pdf"></script>
+</body>
+</html>

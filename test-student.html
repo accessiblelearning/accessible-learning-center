@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Student ID</title>
+  <link rel="stylesheet" href="styles.css?v=dark-mode-1">
+  <script src="accessibility.js?v=dark-mode-1" defer></script>
+</head>
+<body>
+
+  <h1>Test Student ID</h1>
+
+  <label for="studentId">Student ID</label>
+  <input id="studentId" type="text" value="teststudent1">
+
+  <button id="createStudent">Create Test Student</button>
+
+  <p id="result"></p>
+
+  <script>
+    const API_URL = "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
+
+    document.getElementById("createStudent").addEventListener("click", async () => {
+      const studentId = document.getElementById("studentId").value.trim();
+      const result = document.getElementById("result");
+
+      try {
+        const response = await fetch(API_URL + "/student", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            student_id: studentId
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          result.textContent = "Student ID created successfully: " + data.student_id;
+        } else {
+          result.textContent = "Error: " + (data.error || "Unknown error");
+        }
+      } catch (error) {
+        result.textContent = "Connection error.";
+      }
+    });
+  </script>
+
+</body>
+</html>

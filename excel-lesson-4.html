@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Microsoft Excel Lesson 4: Accessible Formatting and Number Formats.">
+  <title>Excel Lesson 4 - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=dark-mode-1">
+  <script src="accessibility.js?v=dark-mode-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Microsoft Excel course</p>
+    <h1>Excel Lesson 4</h1>
+    <p>Accessible Formatting and Number Formats</p>
+  </header>
+
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Excel lesson navigation">
+      <a href="excel-manual.html">Excel manual</a>
+      <a href="lessons.html#excel-lessons">All Excel lessons</a>
+      <a href="student-progress.html">My progress</a>
+    </nav>
+
+    <section aria-labelledby="goal-heading">
+      <h2 id="goal-heading">Goal</h2>
+      <p>Apply meaningful formatting and number formats while keeping the worksheet usable with screen readers and magnification.</p>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills practiced</h2>
+      <ul>
+  <li>Open Format Cells with Ctrl+1.</li>
+  <li>Apply currency, percentage, date, and text formats.</li>
+  <li>Use bold and clear headers.</li>
+  <li>Avoid merged cells and color-only meaning.</li>
+</ul>
+    </section>
+
+    <section aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">Step-by-step instructions</h2>
+      <ol>
+  <li>Open Excel-Lesson-3.xlsx.</li>
+  <li>Select the header row from A1 through D1 and press Ctrl+B.</li>
+  <li>Select the Unit Cost and Line Total values. Press Ctrl+1 to open Format Cells.</li>
+  <li>Choose Currency or Accounting with two decimal places, then press Enter.</li>
+  <li>Add a Discount column in E1. Enter percentages such as 5%, 10%, and 0% in E2 through E6.</li>
+  <li>Use Ctrl+1 to confirm the Discount cells use Percentage format.</li>
+  <li>Add a Purchase Date column in F1 and enter valid dates for each item.</li>
+  <li>Use Ctrl+1 to apply a clear date format.</li>
+  <li>Do not merge cells. Keep one header for every column and one record per row.</li>
+  <li>If you use color, also include text such as Approved or Review so color is not the only cue.</li>
+  <li>Run Review, Check Accessibility by pressing Alt+Q, typing Check Accessibility, and choosing the command.</li>
+  <li>Save the workbook as Excel-Lesson-4.xlsx.</li>
+</ol>
+      <p class="tip"><strong>JAWS help:</strong> Press Insert+Spacebar, then J, to search JAWS commands when you forget a keystroke. Ribbon KeyTips can differ slightly by Microsoft 365 update, so Alt+Q search is included where useful.</p>
+    </section>
+
+    <section aria-labelledby="assignment-heading">
+      <h2 id="assignment-heading">Your assignment</h2>
+      <p>Format the expense worksheet with bold headers, currency, percentage, and date formats. Keep the structure accessible and do not merge cells.</p>
+      <p>Save the finished assignment as <strong>Excel-Lesson-4.xlsx</strong>.</p>
+
+      <h3>Before submitting</h3>
+      <ul>
+  <li>Headers are bold and descriptive.</li>
+  <li>Money, percentages, and dates use appropriate number formats.</li>
+  <li>No cells are merged.</li>
+  <li>Color is not the only way information is communicated.</li>
+  <li>The file is saved as Excel-Lesson-4.xlsx.</li>
+</ul>
+    </section>
+
+    <section aria-labelledby="submission-heading">
+      <h2 id="submission-heading">Submit Excel Lesson 4</h2>
+      <p id="studentDisplay"></p>
+      <p>Choose your completed assignment file. Accepted file types for this lesson are XLSX or PDF. The maximum file size is 10 MB.</p>
+      <p><strong>Using an iPhone?</strong> Open this lesson in Safari before choosing a file. File selection may not open inside an in-app browser.</p>
+      <form id="submissionForm">
+        <p>
+          <label for="assignmentFile">Assignment file</label><br>
+          <input id="assignmentFile" name="file" type="file" accept=".xlsx,.pdf" aria-describedby="fileRequirements" required>
+        </p>
+        <p id="fileRequirements">Choose one XLSX or PDF file that is 10 MB or smaller.</p>
+        <button id="submitLesson" type="submit">Upload and Submit Excel Lesson 4</button>
+      </form>
+      <p id="submissionMessage" role="status" aria-live="polite"></p>
+    </section>
+
+    <nav class="lesson-nav" aria-label="Continue Excel course">
+      <a href="excel-lesson-3.html">Previous lesson</a>
+      <a href="excel-lesson-5.html">Next lesson</a>
+    </nav>
+  </main>
+
+  <script src="assignment-submission.js"
+    data-lesson-number="4"
+    data-course="Microsoft Excel"
+    data-allowed-extensions="xlsx,pdf"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Microsoft Excel Lesson 2: Navigating, Editing, Finding, and Filling Data.">
+  <title>Excel Lesson 2 - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=dark-mode-1">
+  <script src="accessibility.js?v=dark-mode-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Microsoft Excel course</p>
+    <h1>Excel Lesson 2</h1>
+    <p>Navigating, Editing, Finding, and Filling Data</p>
+  </header>
+
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Excel lesson navigation">
+      <a href="excel-manual.html">Excel manual</a>
+      <a href="lessons.html#excel-lessons">All Excel lessons</a>
+      <a href="student-progress.html">My progress</a>
+    </nav>
+
+    <section aria-labelledby="goal-heading">
+      <h2 id="goal-heading">Goal</h2>
+      <p>Move efficiently through a worksheet, edit cells, find and replace information, and copy values without relying on a mouse.</p>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills practiced</h2>
+      <ul>
+  <li>Move to data boundaries with Ctrl+Arrow.</li>
+  <li>Use Ctrl+G to go directly to a cell.</li>
+  <li>Edit a cell with F2.</li>
+  <li>Use Find and Replace.</li>
+  <li>Copy and paste a value or formula.</li>
+</ul>
+    </section>
+
+    <section aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">Step-by-step instructions</h2>
+      <ol>
+  <li>Open Excel-Lesson-1.xlsx.</li>
+  <li>Press Ctrl+Home to move to A1. Press Ctrl+End to move to the last used cell.</li>
+  <li>Press Ctrl+G, type B3, and press Enter to move directly to cell B3.</li>
+  <li>Press F2, change the department in B3 to Customer Service, and press Enter.</li>
+  <li>Press Ctrl+F, type Employment, and press Enter to locate that word. Press Escape to close Find.</li>
+  <li>Press Ctrl+H. Replace Training with Learning Services, then close the dialog.</li>
+  <li>Add a fourth column header in D1 named Status.</li>
+  <li>Type Active in D2. Copy D2 with Ctrl+C, select D3 through the last employee row with Shift+Down Arrow, and press Ctrl+V.</li>
+  <li>Review the list with Ctrl+Arrow and Arrow keys.</li>
+  <li>Press F12 or use File, Save As, and save a copy as Excel-Lesson-2.xlsx.</li>
+</ol>
+      <p class="tip"><strong>JAWS help:</strong> Press Insert+Spacebar, then J, to search JAWS commands when you forget a keystroke. Ribbon KeyTips can differ slightly by Microsoft 365 update, so Alt+Q search is included where useful.</p>
+    </section>
+
+    <section aria-labelledby="assignment-heading">
+      <h2 id="assignment-heading">Your assignment</h2>
+      <p>Update the contact list so one department is Customer Service, Training is replaced with Learning Services, and every employee has Active in the Status column.</p>
+      <p>Save the finished assignment as <strong>Excel-Lesson-2.xlsx</strong>.</p>
+
+      <h3>Before submitting</h3>
+      <ul>
+  <li>The original headers remain present.</li>
+  <li>Customer Service and Learning Services appear in the Department column.</li>
+  <li>Every employee row has Active in the Status column.</li>
+  <li>The file is saved as Excel-Lesson-2.xlsx.</li>
+</ul>
+    </section>
+
+    <section aria-labelledby="submission-heading">
+      <h2 id="submission-heading">Submit Excel Lesson 2</h2>
+      <p id="studentDisplay"></p>
+      <p>Choose your completed assignment file. Accepted file types for this lesson are XLSX, CSV, or PDF. The maximum file size is 10 MB.</p>
+      <p><strong>Using an iPhone?</strong> Open this lesson in Safari before choosing a file. File selection may not open inside an in-app browser.</p>
+      <form id="submissionForm">
+        <p>
+          <label for="assignmentFile">Assignment file</label><br>
+          <input id="assignmentFile" name="file" type="file" accept=".xlsx,.csv,.pdf" aria-describedby="fileRequirements" required>
+        </p>
+        <p id="fileRequirements">Choose one XLSX, CSV, or PDF file that is 10 MB or smaller.</p>
+        <button id="submitLesson" type="submit">Upload and Submit Excel Lesson 2</button>
+      </form>
+      <p id="submissionMessage" role="status" aria-live="polite"></p>
+    </section>
+
+    <nav class="lesson-nav" aria-label="Continue Excel course">
+      <a href="excel-lesson-1.html">Previous lesson</a>
+      <a href="excel-lesson-3.html">Next lesson</a>
+    </nav>
+  </main>
+
+  <script src="assignment-submission.js"
+    data-lesson-number="2"
+    data-course="Microsoft Excel"
+    data-allowed-extensions="xlsx,csv,pdf"></script>
+</body>
+</html>
