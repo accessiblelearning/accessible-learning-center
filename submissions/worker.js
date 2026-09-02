@@ -1,6 +1,12 @@
 const ALLOWED_ORIGIN = "https://accessiblelearning.github.io";
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const COURSE_EXTENSIONS = new Map([
+  ["Choosing a Free Office Suite", new Set(["txt","docx","xlsx","pptx","pdf","brf"])],
+  ["LibreOffice Writer", new Set(["odt","docx","pdf","txt","brf"])],
+  ["LibreOffice Calc", new Set(["ods","xlsx","csv","pdf"])],
+  ["LibreOffice Impress", new Set(["odp","pptx","pdf"])],
+  ["Google Sheets", new Set(["xlsx","csv","pdf"])],
+  ["Google Slides", new Set(["pptx","pdf"])],
   ["AI Fundamentals", new Set(["txt", "docx", "pdf", "brf"])],
   ["ChatGPT", new Set(["txt", "docx", "pdf", "brf"])],
   ["Microsoft Copilot", new Set(["txt", "docx", "pdf", "brf"])],

@@ -6,6 +6,36 @@ const htmlFiles = readdirSync(root).filter((file) => extname(file) === ".html");
 const errors = [];
 const courses = [
   {
+    "name": "Choosing a Free Office Suite",
+    "slug": "free-office",
+    "ext": "txt,docx,xlsx,pptx,pdf,brf"
+  },
+  {
+    "name": "LibreOffice Writer",
+    "slug": "libreoffice-writer",
+    "ext": "odt,docx,pdf,txt,brf"
+  },
+  {
+    "name": "LibreOffice Calc",
+    "slug": "libreoffice-calc",
+    "ext": "ods,xlsx,csv,pdf"
+  },
+  {
+    "name": "LibreOffice Impress",
+    "slug": "libreoffice-impress",
+    "ext": "odp,pptx,pdf"
+  },
+  {
+    "name": "Google Sheets",
+    "slug": "sheets",
+    "ext": "xlsx,csv,pdf"
+  },
+  {
+    "name": "Google Slides",
+    "slug": "slides",
+    "ext": "pptx,pdf"
+  },
+  {
     "name": "AI Fundamentals",
     "slug": "ai-fundamentals",
     "ext": "txt,docx,pdf,brf"
@@ -151,7 +181,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 215, "Expected 215 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 281, "Expected 281 HTML pages, found " + htmlFiles.length + ".");
 check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 check(accessibilityScript.includes("Website accessibility settings"), "Accessibility menu label is missing.");
@@ -175,4 +205,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("Validated " + htmlFiles.length + " accessible pages, 19 manuals, 190 lessons, and course-aware private uploads.");
+console.log("Validated " + htmlFiles.length + " accessible pages, 25 manuals, 250 lessons, and course-aware private uploads.");

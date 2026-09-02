@@ -103,3 +103,7 @@ For backward compatibility, the Screen Readers course continues to use the exist
 ## Accessible AI curriculum
 
 The site includes four no-cost AI courses: AI Fundamentals and Responsible Use, ChatGPT, Microsoft Copilot, and Google Gemini. Each course has one manual and ten assignments. Lessons require public or fictional data, source verification, human review, accessible output, and compliance with workplace policy. They do not require a paid plan or new credential.
+
+## Free Microsoft 365 alternatives
+
+Six no-cost courses appear at the end of the learning order: Choosing a Free Office Suite, LibreOffice Writer, LibreOffice Calc, LibreOffice Impress, Google Sheets, and Google Slides. Each course includes a manual and ten lessons. LibreOffice assignments preserve native ODT, ODS, or ODP files while teaching separate DOCX, XLSX, PPTX, CSV, or PDF compatibility checks. No paid trial or payment information is required.
