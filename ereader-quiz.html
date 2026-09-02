@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for NLS Braille eReader.">
+  <title>NLS Braille eReader Final Quiz - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
+  <script src="accessibility.js?v=resource-search-1" defer></script>
+  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Course completion quiz</p>
+    <h1>NLS Braille eReader Final Quiz</h1>
+    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="NLS Braille eReader quiz navigation">
+      <a href="ereader-manual.html">NLS Braille eReader manual</a>
+      <a href="ereader-lesson-10.html">Review Lesson 10</a>
+      <a href="lessons.html#ereader-lessons">All NLS Braille eReader lessons</a>
+      <a href="resources.html">Help and resource search</a>
+    </nav>
+    <section aria-labelledby="quiz-heading">
+      <h2 id="quiz-heading">Final quiz</h2>
+      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <form id="courseQuiz" novalidate>
+        <fieldset class="quiz-question">
+          <legend>1. What is the NLS Braille eReader primarily designed to access?</legend>
+          <label><input type="radio" name="question-0" value="0"> Braille reading materials and files</label>
+          <label><input type="radio" name="question-0" value="1"> Visual-only games</label>
+          <label><input type="radio" name="question-0" value="2"> Ink printing</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. What helps return to an important reading location?</legend>
+          <label><input type="radio" name="question-1" value="0"> A bookmark</label>
+          <label><input type="radio" name="question-1" value="1"> A deleted folder</label>
+          <label><input type="radio" name="question-1" value="2"> Airplane mode</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. What should be checked before transferring a BRF file?</legend>
+          <label><input type="radio" name="question-2" value="0"> Filename, folder, file type, and safe connection</label>
+          <label><input type="radio" name="question-2" value="1"> Only capitalization</label>
+          <label><input type="radio" name="question-2" value="2"> Only battery color</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. What is Terminal Mode used for?</legend>
+          <label><input type="radio" name="question-3" value="0"> Using the eReader as a display with another device</label>
+          <label><input type="radio" name="question-3" value="1"> Erasing all books</label>
+          <label><input type="radio" name="question-3" value="2"> Printing labels</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. Where should device updates come from?</legend>
+          <label><input type="radio" name="question-4" value="0"> Official NLS or device instructions</label>
+          <label><input type="radio" name="question-4" value="1"> Unknown email links</label>
+          <label><input type="radio" name="question-4" value="2"> A random file-sharing site</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
+      </form>
+      <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
+      <div id="quizReview" class="quiz-review"></div>
+    </section>
+    <section id="certificateSetup" hidden aria-labelledby="certificate-setup-heading">
+      <h2 id="certificate-setup-heading">Create your certificate</h2>
+      <p>Your name is used only to create the certificate on this page. It is not uploaded or saved with your Student ID.</p>
+      <form id="certificateForm">
+        <p><label for="certificateName">Name for certificate</label><br><input id="certificateName" name="name" type="text" autocomplete="name" maxlength="100" required></p>
+        <button type="submit">Create certificate</button>
+      </form>
+      <p id="certificateStatus" role="status" aria-live="polite"></p>
+    </section>
+    <section id="certificateSection" class="certificate" hidden aria-labelledby="certificate-heading">
+      <p class="certificate__eyebrow">Accessible Learning Center</p>
+      <h2 id="certificate-heading">Certificate of Course Completion</h2>
+      <p>This certificate recognizes</p>
+      <p id="certificateStudentName" class="certificate__name"></p>
+      <p>for completing</p>
+      <p id="certificateCourse" class="certificate__course"></p>
+      <div class="certificate__details">
+        <p><strong>Final quiz score:</strong> <span id="certificateScore"></span></p>
+        <p><strong>Completion date:</strong> <span id="certificateDate"></span></p>
+      </div>
+      <p>This certificate records completion of this training course. It is not a professional license or accredited credential.</p>
+      <button id="printCertificate" type="button">Print or Save Certificate</button>
+    </section>
+  </main>
+  <script id="quizData" type="application/json">{"course":"NLS Braille eReader","displayName":"NLS Braille eReader","slug":"ereader","passPercent":80,"questions":[{"answer":0,"explanation":"The device supports Braille reading and file access.","options":["Braille reading materials and files","Visual-only games","Ink printing"],"question":"What is the NLS Braille eReader primarily designed to access?"},{"answer":0,"explanation":"Bookmarks preserve useful positions.","options":["A bookmark","A deleted folder","Airplane mode"],"question":"What helps return to an important reading location?"},{"answer":0,"explanation":"File checks support reliable transfer.","options":["Filename, folder, file type, and safe connection","Only capitalization","Only battery color"],"question":"What should be checked before transferring a BRF file?"},{"answer":0,"explanation":"Terminal Mode supports connected-device Braille access.","options":["Using the eReader as a display with another device","Erasing all books","Printing labels"],"question":"What is Terminal Mode used for?"},{"answer":0,"explanation":"Official sources reduce device and security risks.","options":["Official NLS or device instructions","Unknown email links","A random file-sharing site"],"question":"Where should device updates come from?"}]}</script>
+</body>
+</html>

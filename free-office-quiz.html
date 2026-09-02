@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Choosing a Free Office Suite.">
+  <title>Choosing a Free Office Suite Final Quiz - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
+  <script src="accessibility.js?v=resource-search-1" defer></script>
+  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Course completion quiz</p>
+    <h1>Choosing a Free Office Suite Final Quiz</h1>
+    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Choosing a Free Office Suite quiz navigation">
+      <a href="free-office-manual.html">Choosing a Free Office Suite manual</a>
+      <a href="free-office-lesson-10.html">Review Lesson 10</a>
+      <a href="lessons.html#free-office-lessons">All Choosing a Free Office Suite lessons</a>
+      <a href="resources.html">Help and resource search</a>
+    </nav>
+    <section aria-labelledby="quiz-heading">
+      <h2 id="quiz-heading">Final quiz</h2>
+      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <form id="courseQuiz" novalidate>
+        <fieldset class="quiz-question">
+          <legend>1. Which suite is a free desktop alternative to Microsoft 365?</legend>
+          <label><input type="radio" name="question-0" value="0"> LibreOffice</label>
+          <label><input type="radio" name="question-0" value="1"> A paid-only trial</label>
+          <label><input type="radio" name="question-0" value="2"> Task Manager</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. Which are LibreOffice native formats?</legend>
+          <label><input type="radio" name="question-1" value="0"> ODT, ODS, and ODP</label>
+          <label><input type="radio" name="question-1" value="1"> DOCX, MP3, and JPG</label>
+          <label><input type="radio" name="question-1" value="2"> EXE, ZIP, and WAV</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. What is the safest compatibility workflow?</legend>
+          <label><input type="radio" name="question-2" value="0"> Keep the native file, export a copy, and review it</label>
+          <label><input type="radio" name="question-2" value="1"> Overwrite the only copy repeatedly</label>
+          <label><input type="radio" name="question-2" value="2"> Assume conversion is perfect</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. What should be tested before choosing a free suite?</legend>
+          <label><input type="radio" name="question-3" value="0"> Actual keyboard, screen-reader, zoom, and file tasks</label>
+          <label><input type="radio" name="question-3" value="1"> Only the logo</label>
+          <label><input type="radio" name="question-3" value="2"> Only the download size</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. Which free web option requires an account and internet access?</legend>
+          <label><input type="radio" name="question-4" value="0"> Browser-based office editors</label>
+          <label><input type="radio" name="question-4" value="1"> A local text file</label>
+          <label><input type="radio" name="question-4" value="2"> Windows Calculator</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
+      </form>
+      <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
+      <div id="quizReview" class="quiz-review"></div>
+    </section>
+    <section id="certificateSetup" hidden aria-labelledby="certificate-setup-heading">
+      <h2 id="certificate-setup-heading">Create your certificate</h2>
+      <p>Your name is used only to create the certificate on this page. It is not uploaded or saved with your Student ID.</p>
+      <form id="certificateForm">
+        <p><label for="certificateName">Name for certificate</label><br><input id="certificateName" name="name" type="text" autocomplete="name" maxlength="100" required></p>
+        <button type="submit">Create certificate</button>
+      </form>
+      <p id="certificateStatus" role="status" aria-live="polite"></p>
+    </section>
+    <section id="certificateSection" class="certificate" hidden aria-labelledby="certificate-heading">
+      <p class="certificate__eyebrow">Accessible Learning Center</p>
+      <h2 id="certificate-heading">Certificate of Course Completion</h2>
+      <p>This certificate recognizes</p>
+      <p id="certificateStudentName" class="certificate__name"></p>
+      <p>for completing</p>
+      <p id="certificateCourse" class="certificate__course"></p>
+      <div class="certificate__details">
+        <p><strong>Final quiz score:</strong> <span id="certificateScore"></span></p>
+        <p><strong>Completion date:</strong> <span id="certificateDate"></span></p>
+      </div>
+      <p>This certificate records completion of this training course. It is not a professional license or accredited credential.</p>
+      <button id="printCertificate" type="button">Print or Save Certificate</button>
+    </section>
+  </main>
+  <script id="quizData" type="application/json">{"course":"Choosing a Free Office Suite","displayName":"Choosing a Free Office Suite","slug":"free-office","passPercent":80,"questions":[{"answer":0,"explanation":"LibreOffice is free and open source.","options":["LibreOffice","A paid-only trial","Task Manager"],"question":"Which suite is a free desktop alternative to Microsoft 365?"},{"answer":0,"explanation":"Writer, Calc, and Impress use ODT, ODS, and ODP.","options":["ODT, ODS, and ODP","DOCX, MP3, and JPG","EXE, ZIP, and WAV"],"question":"Which are LibreOffice native formats?"},{"answer":0,"explanation":"Separate copies protect the original and support checking.","options":["Keep the native file, export a copy, and review it","Overwrite the only copy repeatedly","Assume conversion is perfect"],"question":"What is the safest compatibility workflow?"},{"answer":0,"explanation":"Real task testing determines whether the tool fits.","options":["Actual keyboard, screen-reader, zoom, and file tasks","Only the logo","Only the download size"],"question":"What should be tested before choosing a free suite?"},{"answer":0,"explanation":"Web editors depend on accounts and connectivity.","options":["Browser-based office editors","A local text file","Windows Calculator"],"question":"Which free web option requires an account and internet access?"}]}</script>
+</body>
+</html>

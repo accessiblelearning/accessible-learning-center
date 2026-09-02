@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Screen Readers: JAWS, Narrator, and NVDA.">
+  <title>Screen Readers: JAWS, Narrator, and NVDA Final Quiz - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
+  <script src="accessibility.js?v=resource-search-1" defer></script>
+  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Course completion quiz</p>
+    <h1>Screen Readers: JAWS, Narrator, and NVDA Final Quiz</h1>
+    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Screen Readers: JAWS, Narrator, and NVDA quiz navigation">
+      <a href="jaws-manual.html">Screen Readers: JAWS, Narrator, and NVDA manual</a>
+      <a href="jaws-lesson-10.html">Review Lesson 10</a>
+      <a href="lessons.html#jaws-lessons">All Screen Readers: JAWS, Narrator, and NVDA lessons</a>
+      <a href="resources.html">Help and resource search</a>
+    </nav>
+    <section aria-labelledby="quiz-heading">
+      <h2 id="quiz-heading">Final quiz</h2>
+      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <form id="courseQuiz" novalidate>
+        <fieldset class="quiz-question">
+          <legend>1. Which command opens the JAWS list of webpage headings?</legend>
+          <label><input type="radio" name="question-0" value="0"> Insert+F6</label>
+          <label><input type="radio" name="question-0" value="1"> Ctrl+S</label>
+          <label><input type="radio" name="question-0" value="2"> Alt+F4</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. Which screen reader is built into Windows?</legend>
+          <label><input type="radio" name="question-1" value="0"> Narrator</label>
+          <label><input type="radio" name="question-1" value="1"> JAWS</label>
+          <label><input type="radio" name="question-1" value="2"> NVDA</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. In webpage browse mode, which single letter commonly moves by heading in JAWS and NVDA?</legend>
+          <label><input type="radio" name="question-2" value="0"> H</label>
+          <label><input type="radio" name="question-2" value="1"> T</label>
+          <label><input type="radio" name="question-2" value="2"> E</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. What should you do before changing unfamiliar screen-reader settings?</legend>
+          <label><input type="radio" name="question-3" value="0"> Record the current setting and use official help</label>
+          <label><input type="radio" name="question-3" value="1"> Turn off speech</label>
+          <label><input type="radio" name="question-3" value="2"> Delete the user profile</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. Why can commands differ among JAWS, Narrator, and NVDA?</legend>
+          <label><input type="radio" name="question-4" value="0"> They use different command systems and modes</label>
+          <label><input type="radio" name="question-4" value="1"> Only one supports a keyboard</label>
+          <label><input type="radio" name="question-4" value="2"> Websites disable two of them</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
+      </form>
+      <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
+      <div id="quizReview" class="quiz-review"></div>
+    </section>
+    <section id="certificateSetup" hidden aria-labelledby="certificate-setup-heading">
+      <h2 id="certificate-setup-heading">Create your certificate</h2>
+      <p>Your name is used only to create the certificate on this page. It is not uploaded or saved with your Student ID.</p>
+      <form id="certificateForm">
+        <p><label for="certificateName">Name for certificate</label><br><input id="certificateName" name="name" type="text" autocomplete="name" maxlength="100" required></p>
+        <button type="submit">Create certificate</button>
+      </form>
+      <p id="certificateStatus" role="status" aria-live="polite"></p>
+    </section>
+    <section id="certificateSection" class="certificate" hidden aria-labelledby="certificate-heading">
+      <p class="certificate__eyebrow">Accessible Learning Center</p>
+      <h2 id="certificate-heading">Certificate of Course Completion</h2>
+      <p>This certificate recognizes</p>
+      <p id="certificateStudentName" class="certificate__name"></p>
+      <p>for completing</p>
+      <p id="certificateCourse" class="certificate__course"></p>
+      <div class="certificate__details">
+        <p><strong>Final quiz score:</strong> <span id="certificateScore"></span></p>
+        <p><strong>Completion date:</strong> <span id="certificateDate"></span></p>
+      </div>
+      <p>This certificate records completion of this training course. It is not a professional license or accredited credential.</p>
+      <button id="printCertificate" type="button">Print or Save Certificate</button>
+    </section>
+  </main>
+  <script id="quizData" type="application/json">{"course":"JAWS Screen Reader","displayName":"Screen Readers: JAWS, Narrator, and NVDA","slug":"jaws","passPercent":80,"questions":[{"answer":0,"explanation":"Insert+F6 opens the JAWS Headings List.","options":["Insert+F6","Ctrl+S","Alt+F4"],"question":"Which command opens the JAWS list of webpage headings?"},{"answer":0,"explanation":"Narrator is included with Windows.","options":["Narrator","JAWS","NVDA"],"question":"Which screen reader is built into Windows?"},{"answer":0,"explanation":"H moves to the next heading.","options":["H","T","E"],"question":"In webpage browse mode, which single letter commonly moves by heading in JAWS and NVDA?"},{"answer":0,"explanation":"Recording the current state makes safe recovery possible.","options":["Record the current setting and use official help","Turn off speech","Delete the user profile"],"question":"What should you do before changing unfamiliar screen-reader settings?"},{"answer":0,"explanation":"Each screen reader has its own commands and interaction modes.","options":["They use different command systems and modes","Only one supports a keyboard","Websites disable two of them"],"question":"Why can commands differ among JAWS, Narrator, and NVDA?"}]}</script>
+</body>
+</html>

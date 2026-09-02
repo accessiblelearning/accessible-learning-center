@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Google Calendar.">
+  <title>Google Calendar Final Quiz - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
+  <script src="accessibility.js?v=resource-search-1" defer></script>
+  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Course completion quiz</p>
+    <h1>Google Calendar Final Quiz</h1>
+    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Google Calendar quiz navigation">
+      <a href="calendar-manual.html">Google Calendar manual</a>
+      <a href="calendar-lesson-10.html">Review Lesson 10</a>
+      <a href="lessons.html#calendar-lessons">All Google Calendar lessons</a>
+      <a href="resources.html">Help and resource search</a>
+    </nav>
+    <section aria-labelledby="quiz-heading">
+      <h2 id="quiz-heading">Final quiz</h2>
+      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <form id="courseQuiz" novalidate>
+        <fieldset class="quiz-question">
+          <legend>1. What information belongs in a complete calendar event?</legend>
+          <label><input type="radio" name="question-0" value="0"> Date, time, time zone, location or link, and description</label>
+          <label><input type="radio" name="question-0" value="1"> Only a color</label>
+          <label><input type="radio" name="question-0" value="2"> Only a guest name</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. What should be checked before inviting guests?</legend>
+          <label><input type="radio" name="question-1" value="0"> Event details and guest list</label>
+          <label><input type="radio" name="question-1" value="1"> Browser history</label>
+          <label><input type="radio" name="question-1" value="2"> Font size only</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. When is a recurring event useful?</legend>
+          <label><input type="radio" name="question-2" value="0"> For an event that repeats on a schedule</label>
+          <label><input type="radio" name="question-2" value="1"> For a one-time password</label>
+          <label><input type="radio" name="question-2" value="2"> For deleting a calendar</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. What should be considered when sharing a calendar?</legend>
+          <label><input type="radio" name="question-3" value="0"> Privacy and permission level</label>
+          <label><input type="radio" name="question-3" value="1"> Only calendar color</label>
+          <label><input type="radio" name="question-3" value="2"> Only event length</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. Why confirm the time zone?</legend>
+          <label><input type="radio" name="question-4" value="0"> To prevent scheduling at the wrong local time</label>
+          <label><input type="radio" name="question-4" value="1"> To change the filename</label>
+          <label><input type="radio" name="question-4" value="2"> To enable spell check</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
+      </form>
+      <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
+      <div id="quizReview" class="quiz-review"></div>
+    </section>
+    <section id="certificateSetup" hidden aria-labelledby="certificate-setup-heading">
+      <h2 id="certificate-setup-heading">Create your certificate</h2>
+      <p>Your name is used only to create the certificate on this page. It is not uploaded or saved with your Student ID.</p>
+      <form id="certificateForm">
+        <p><label for="certificateName">Name for certificate</label><br><input id="certificateName" name="name" type="text" autocomplete="name" maxlength="100" required></p>
+        <button type="submit">Create certificate</button>
+      </form>
+      <p id="certificateStatus" role="status" aria-live="polite"></p>
+    </section>
+    <section id="certificateSection" class="certificate" hidden aria-labelledby="certificate-heading">
+      <p class="certificate__eyebrow">Accessible Learning Center</p>
+      <h2 id="certificate-heading">Certificate of Course Completion</h2>
+      <p>This certificate recognizes</p>
+      <p id="certificateStudentName" class="certificate__name"></p>
+      <p>for completing</p>
+      <p id="certificateCourse" class="certificate__course"></p>
+      <div class="certificate__details">
+        <p><strong>Final quiz score:</strong> <span id="certificateScore"></span></p>
+        <p><strong>Completion date:</strong> <span id="certificateDate"></span></p>
+      </div>
+      <p>This certificate records completion of this training course. It is not a professional license or accredited credential.</p>
+      <button id="printCertificate" type="button">Print or Save Certificate</button>
+    </section>
+  </main>
+  <script id="quizData" type="application/json">{"course":"Google Calendar","displayName":"Google Calendar","slug":"calendar","passPercent":80,"questions":[{"answer":0,"explanation":"Complete details help everyone understand the event.","options":["Date, time, time zone, location or link, and description","Only a color","Only a guest name"],"question":"What information belongs in a complete calendar event?"},{"answer":0,"explanation":"Reviewing prevents incorrect invitations.","options":["Event details and guest list","Browser history","Font size only"],"question":"What should be checked before inviting guests?"},{"answer":0,"explanation":"Recurrence automates repeating events.","options":["For an event that repeats on a schedule","For a one-time password","For deleting a calendar"],"question":"When is a recurring event useful?"},{"answer":0,"explanation":"Sharing can expose event information.","options":["Privacy and permission level","Only calendar color","Only event length"],"question":"What should be considered when sharing a calendar?"},{"answer":0,"explanation":"Time-zone errors can shift event times.","options":["To prevent scheduling at the wrong local time","To change the filename","To enable spell check"],"question":"Why confirm the time zone?"}]}</script>
+</body>
+</html>

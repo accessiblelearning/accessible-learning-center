@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Mantis Q40.">
+  <title>Mantis Q40 Final Quiz - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
+  <script src="accessibility.js?v=resource-search-1" defer></script>
+  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Course completion quiz</p>
+    <h1>Mantis Q40 Final Quiz</h1>
+    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Mantis Q40 quiz navigation">
+      <a href="mantis-manual.html">Mantis Q40 manual</a>
+      <a href="mantis-lesson-10.html">Review Lesson 10</a>
+      <a href="lessons.html#mantis-lessons">All Mantis Q40 lessons</a>
+      <a href="resources.html">Help and resource search</a>
+    </nav>
+    <section aria-labelledby="quiz-heading">
+      <h2 id="quiz-heading">Final quiz</h2>
+      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <form id="courseQuiz" novalidate>
+        <fieldset class="quiz-question">
+          <legend>1. What distinguishes the Mantis Q40?</legend>
+          <label><input type="radio" name="question-0" value="0"> A QWERTY keyboard with a refreshable Braille display</label>
+          <label><input type="radio" name="question-0" value="1"> A touchscreen only</label>
+          <label><input type="radio" name="question-0" value="2"> A printer with no display</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. What is Terminal Mode used for?</legend>
+          <label><input type="radio" name="question-1" value="0"> Connecting to a computer or mobile device as a Braille display</label>
+          <label><input type="radio" name="question-1" value="1"> Printing ink pages</label>
+          <label><input type="radio" name="question-1" value="2"> Deleting firmware</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. What should happen before transferring files by USB?</legend>
+          <label><input type="radio" name="question-2" value="0"> Confirm the storage mode, filenames, and safe-eject process</label>
+          <label><input type="radio" name="question-2" value="1"> Unplug during writing</label>
+          <label><input type="radio" name="question-2" value="2"> Rename every folder</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. Why use cursor routing?</legend>
+          <label><input type="radio" name="question-3" value="0"> To move directly to a text position</label>
+          <label><input type="radio" name="question-3" value="1"> To change Wi-Fi password</label>
+          <label><input type="radio" name="question-3" value="2"> To start charging</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. What is the safest update source?</legend>
+          <label><input type="radio" name="question-4" value="0"> Official APH or device documentation</label>
+          <label><input type="radio" name="question-4" value="1"> An unknown attachment</label>
+          <label><input type="radio" name="question-4" value="2"> A social-media comment</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
+      </form>
+      <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
+      <div id="quizReview" class="quiz-review"></div>
+    </section>
+    <section id="certificateSetup" hidden aria-labelledby="certificate-setup-heading">
+      <h2 id="certificate-setup-heading">Create your certificate</h2>
+      <p>Your name is used only to create the certificate on this page. It is not uploaded or saved with your Student ID.</p>
+      <form id="certificateForm">
+        <p><label for="certificateName">Name for certificate</label><br><input id="certificateName" name="name" type="text" autocomplete="name" maxlength="100" required></p>
+        <button type="submit">Create certificate</button>
+      </form>
+      <p id="certificateStatus" role="status" aria-live="polite"></p>
+    </section>
+    <section id="certificateSection" class="certificate" hidden aria-labelledby="certificate-heading">
+      <p class="certificate__eyebrow">Accessible Learning Center</p>
+      <h2 id="certificate-heading">Certificate of Course Completion</h2>
+      <p>This certificate recognizes</p>
+      <p id="certificateStudentName" class="certificate__name"></p>
+      <p>for completing</p>
+      <p id="certificateCourse" class="certificate__course"></p>
+      <div class="certificate__details">
+        <p><strong>Final quiz score:</strong> <span id="certificateScore"></span></p>
+        <p><strong>Completion date:</strong> <span id="certificateDate"></span></p>
+      </div>
+      <p>This certificate records completion of this training course. It is not a professional license or accredited credential.</p>
+      <button id="printCertificate" type="button">Print or Save Certificate</button>
+    </section>
+  </main>
+  <script id="quizData" type="application/json">{"course":"Mantis Q40","displayName":"Mantis Q40","slug":"mantis","passPercent":80,"questions":[{"answer":0,"explanation":"The Mantis combines QWERTY input and Braille output.","options":["A QWERTY keyboard with a refreshable Braille display","A touchscreen only","A printer with no display"],"question":"What distinguishes the Mantis Q40?"},{"answer":0,"explanation":"Terminal Mode provides connected-device access.","options":["Connecting to a computer or mobile device as a Braille display","Printing ink pages","Deleting firmware"],"question":"What is Terminal Mode used for?"},{"answer":0,"explanation":"Safe transfer prevents corruption.","options":["Confirm the storage mode, filenames, and safe-eject process","Unplug during writing","Rename every folder"],"question":"What should happen before transferring files by USB?"},{"answer":0,"explanation":"Routing connects a Braille cell to the editing cursor.","options":["To move directly to a text position","To change Wi-Fi password","To start charging"],"question":"Why use cursor routing?"},{"answer":0,"explanation":"Use official update instructions and files.","options":["Official APH or device documentation","An unknown attachment","A social-media comment"],"question":"What is the safest update source?"}]}</script>
+</body>
+</html>

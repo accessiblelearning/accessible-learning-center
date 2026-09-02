@@ -116,3 +116,10 @@ The resources page provides keyboard-accessible, client-side search across 25 ma
 ## Temporarily pausing assignment uploads
 
 Assignment uploads are intentionally paused in two layers. The lesson script sets UPLOADS_ENABLED to false and removes the hidden upload section. The submissions Worker sets SUBMISSIONS_ENABLED to false and returns HTTP 503 for direct submission attempts. Existing R2 objects and D1 progress records are preserved. To restore uploads deliberately, set both flags to true, validate, deploy both affected services, and perform a private end-to-end upload test.
+
+
+## Final quizzes and certificates
+
+Each of the 25 courses has a five-question final quiz after Lesson 10. Four correct answers, or 80 percent, are required to pass. Learners may review answer explanations and retake quizzes without limit. Passing scores and dates are stored locally under accessibleLearningQuizResults so the progress page can show the result without sending it to a server.
+
+After passing, a learner may enter a name to create a printable certificate showing the course, score, and date. The name is inserted into the current page only and is not uploaded, added to the Student ID, or saved in local storage. Certificates state that they record course completion and are not professional licenses or accredited credentials.

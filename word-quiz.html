@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Microsoft Word.">
+  <title>Microsoft Word Final Quiz - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
+  <script src="accessibility.js?v=resource-search-1" defer></script>
+  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Course completion quiz</p>
+    <h1>Microsoft Word Final Quiz</h1>
+    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Microsoft Word quiz navigation">
+      <a href="word-manual.html">Microsoft Word manual</a>
+      <a href="word-lesson-10.html">Review Lesson 10</a>
+      <a href="lessons.html#word-lessons">All Microsoft Word lessons</a>
+      <a href="resources.html">Help and resource search</a>
+    </nav>
+    <section aria-labelledby="quiz-heading">
+      <h2 id="quiz-heading">Final quiz</h2>
+      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <form id="courseQuiz" novalidate>
+        <fieldset class="quiz-question">
+          <legend>1. Which feature creates navigable document structure?</legend>
+          <label><input type="radio" name="question-0" value="0"> Heading styles</label>
+          <label><input type="radio" name="question-0" value="1"> Bold text alone</label>
+          <label><input type="radio" name="question-0" value="2"> Extra blank lines</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. What should a table include?</legend>
+          <label><input type="radio" name="question-1" value="0"> Clear header cells</label>
+          <label><input type="radio" name="question-1" value="1"> Merged decorative cells everywhere</label>
+          <label><input type="radio" name="question-1" value="2"> Meaning only through color</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. Why should link text be descriptive?</legend>
+          <label><input type="radio" name="question-2" value="0"> It explains the destination out of context</label>
+          <label><input type="radio" name="question-2" value="1"> It makes the link blue</label>
+          <label><input type="radio" name="question-2" value="2"> It prevents saving</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. What should be added to a meaningful image?</legend>
+          <label><input type="radio" name="question-3" value="0"> Accurate alternative text</label>
+          <label><input type="radio" name="question-3" value="1"> A random filename</label>
+          <label><input type="radio" name="question-3" value="2"> More blank lines</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. Which tool helps find common document accessibility problems?</legend>
+          <label><input type="radio" name="question-4" value="0"> Accessibility Checker</label>
+          <label><input type="radio" name="question-4" value="1"> Calculator</label>
+          <label><input type="radio" name="question-4" value="2"> Task Manager</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
+      </form>
+      <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
+      <div id="quizReview" class="quiz-review"></div>
+    </section>
+    <section id="certificateSetup" hidden aria-labelledby="certificate-setup-heading">
+      <h2 id="certificate-setup-heading">Create your certificate</h2>
+      <p>Your name is used only to create the certificate on this page. It is not uploaded or saved with your Student ID.</p>
+      <form id="certificateForm">
+        <p><label for="certificateName">Name for certificate</label><br><input id="certificateName" name="name" type="text" autocomplete="name" maxlength="100" required></p>
+        <button type="submit">Create certificate</button>
+      </form>
+      <p id="certificateStatus" role="status" aria-live="polite"></p>
+    </section>
+    <section id="certificateSection" class="certificate" hidden aria-labelledby="certificate-heading">
+      <p class="certificate__eyebrow">Accessible Learning Center</p>
+      <h2 id="certificate-heading">Certificate of Course Completion</h2>
+      <p>This certificate recognizes</p>
+      <p id="certificateStudentName" class="certificate__name"></p>
+      <p>for completing</p>
+      <p id="certificateCourse" class="certificate__course"></p>
+      <div class="certificate__details">
+        <p><strong>Final quiz score:</strong> <span id="certificateScore"></span></p>
+        <p><strong>Completion date:</strong> <span id="certificateDate"></span></p>
+      </div>
+      <p>This certificate records completion of this training course. It is not a professional license or accredited credential.</p>
+      <button id="printCertificate" type="button">Print or Save Certificate</button>
+    </section>
+  </main>
+  <script id="quizData" type="application/json">{"course":"Microsoft Word","displayName":"Microsoft Word","slug":"word","passPercent":80,"questions":[{"answer":0,"explanation":"Built-in heading styles provide real structure.","options":["Heading styles","Bold text alone","Extra blank lines"],"question":"Which feature creates navigable document structure?"},{"answer":0,"explanation":"Headers help readers understand table relationships.","options":["Clear header cells","Merged decorative cells everywhere","Meaning only through color"],"question":"What should a table include?"},{"answer":0,"explanation":"Screen-reader users may review links as a list.","options":["It explains the destination out of context","It makes the link blue","It prevents saving"],"question":"Why should link text be descriptive?"},{"answer":0,"explanation":"Alternative text communicates the image's purpose.","options":["Accurate alternative text","A random filename","More blank lines"],"question":"What should be added to a meaningful image?"},{"answer":0,"explanation":"The Accessibility Checker identifies many common issues.","options":["Accessibility Checker","Calculator","Task Manager"],"question":"Which tool helps find common document accessibility problems?"}]}</script>
+</body>
+</html>

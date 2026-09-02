@@ -55,7 +55,7 @@
     history.replaceState(null, "", url);
 
     if (!query) {
-      status.textContent = "Enter one or more words to search 25 manuals and 250 lessons.";
+      status.textContent = "Enter one or more words to search 25 manuals, 250 lessons, and 25 final quizzes.";
       return;
     }
 
@@ -91,7 +91,7 @@
       link.textContent = entry.title;
       heading.appendChild(link);
       meta.className = "search-result__meta";
-      meta.textContent = (entry.type === "manual" ? "Manual" : entry.type === "lesson" ? "Lesson" : "Website help") + " · " + entry.course;
+      meta.textContent = (entry.type === "manual" ? "Manual" : entry.type === "lesson" ? "Lesson" : entry.type === "quiz" ? "Final quiz" : "Website help") + " · " + entry.course;
       summary.textContent = entry.snippet;
       article.append(heading, meta, summary);
       item.appendChild(article);
@@ -117,7 +117,7 @@
 
   const params = new URLSearchParams(window.location.search);
   queryInput.value = params.get("q") || "";
-  typeSelect.value = ["manual", "lesson", "help"].includes(params.get("type")) ? params.get("type") : "all";
+  typeSelect.value = ["manual", "lesson", "quiz", "help"].includes(params.get("type")) ? params.get("type") : "all";
 
   fetch("search-index.json?v=resource-search-1", { cache: "no-store" })
     .then(response => {
@@ -127,7 +127,7 @@
     .then(data => {
       entries = Array.isArray(data.entries) ? data.entries : [];
       if (queryInput.value.trim()) render();
-      else status.textContent = "Search is ready. Enter one or more words to search 25 manuals and 250 lessons.";
+      else status.textContent = "Search is ready. Enter one or more words to search 25 manuals, 250 lessons, and 25 final quizzes.";
     })
     .catch(() => {
       status.textContent = "Search is temporarily unavailable. Use the organized resource links below.";

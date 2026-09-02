@@ -447,6 +447,13 @@
       loadProgress();
     }
 
+    let quizResults = {};
+    try {
+      quizResults = JSON.parse(localStorage.getItem("accessibleLearningQuizResults") || "{}");
+    } catch (error) {
+      quizResults = {};
+    }
+
     function createCourseSection(course, records) {
       const section = document.createElement("section");
       section.className = "course-progress";
@@ -500,7 +507,22 @@
         (course.displayName || course.name) + ": " + submittedCount + " of " + course.titles.length + " lessons submitted"
       );
 
-      section.append(heading, summary, meter, list);
+      const quizParagraph = document.createElement("p");
+      const quizLink = document.createElement("a");
+      const quizResult = quizResults[course.name];
+      quizLink.href = course.slug + "-quiz.html";
+      quizLink.textContent = "Final quiz and certificate";
+      if (quizResult && Number(quizResult.score) >= 80) {
+        const date = new Date(quizResult.completedAt);
+        quizParagraph.append(
+          document.createTextNode("Final quiz passed: " + quizResult.score + " percent" + (Number.isNaN(date.getTime()) ? ". " : " on " + date.toLocaleDateString() + ". ")),
+          quizLink
+        );
+      } else {
+        quizParagraph.append(document.createTextNode("Final quiz not passed yet. "), quizLink);
+      }
+
+      section.append(heading, summary, meter, list, quizParagraph);
       return { section, submittedCount };
     }
 

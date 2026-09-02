@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Focus 40 Blue.">
+  <title>Focus 40 Blue Final Quiz - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
+  <script src="accessibility.js?v=resource-search-1" defer></script>
+  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Course completion quiz</p>
+    <h1>Focus 40 Blue Final Quiz</h1>
+    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Focus 40 Blue quiz navigation">
+      <a href="focus-manual.html">Focus 40 Blue manual</a>
+      <a href="focus-lesson-10.html">Review Lesson 10</a>
+      <a href="lessons.html#focus-lessons">All Focus 40 Blue lessons</a>
+      <a href="resources.html">Help and resource search</a>
+    </nav>
+    <section aria-labelledby="quiz-heading">
+      <h2 id="quiz-heading">Final quiz</h2>
+      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <form id="courseQuiz" novalidate>
+        <fieldset class="quiz-question">
+          <legend>1. What is a cursor-routing button used for?</legend>
+          <label><input type="radio" name="question-0" value="0"> Move the active cursor to the corresponding Braille cell</label>
+          <label><input type="radio" name="question-0" value="1"> Turn off Bluetooth</label>
+          <label><input type="radio" name="question-0" value="2"> Delete a book</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. What should be confirmed before updating a Focus display?</legend>
+          <label><input type="radio" name="question-1" value="0"> Power, connection, instructions, and current work</label>
+          <label><input type="radio" name="question-1" value="1"> Only case color</label>
+          <label><input type="radio" name="question-1" value="2"> Nothing</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. What does panning do?</legend>
+          <label><input type="radio" name="question-2" value="0"> Moves to the previous or next portion of Braille text</label>
+          <label><input type="radio" name="question-2" value="1"> Changes the filename</label>
+          <label><input type="radio" name="question-2" value="2"> Starts a slideshow</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. Why use connection profiles carefully?</legend>
+          <label><input type="radio" name="question-3" value="0"> They preserve settings for different devices</label>
+          <label><input type="radio" name="question-3" value="1"> They erase Braille</label>
+          <label><input type="radio" name="question-3" value="2"> They publish files</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. What should be done before cleaning the display?</legend>
+          <label><input type="radio" name="question-4" value="0"> Follow official guidance and disconnect power as instructed</label>
+          <label><input type="radio" name="question-4" value="1"> Pour liquid on the cells</label>
+          <label><input type="radio" name="question-4" value="2"> Use sharp tools</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
+      </form>
+      <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
+      <div id="quizReview" class="quiz-review"></div>
+    </section>
+    <section id="certificateSetup" hidden aria-labelledby="certificate-setup-heading">
+      <h2 id="certificate-setup-heading">Create your certificate</h2>
+      <p>Your name is used only to create the certificate on this page. It is not uploaded or saved with your Student ID.</p>
+      <form id="certificateForm">
+        <p><label for="certificateName">Name for certificate</label><br><input id="certificateName" name="name" type="text" autocomplete="name" maxlength="100" required></p>
+        <button type="submit">Create certificate</button>
+      </form>
+      <p id="certificateStatus" role="status" aria-live="polite"></p>
+    </section>
+    <section id="certificateSection" class="certificate" hidden aria-labelledby="certificate-heading">
+      <p class="certificate__eyebrow">Accessible Learning Center</p>
+      <h2 id="certificate-heading">Certificate of Course Completion</h2>
+      <p>This certificate recognizes</p>
+      <p id="certificateStudentName" class="certificate__name"></p>
+      <p>for completing</p>
+      <p id="certificateCourse" class="certificate__course"></p>
+      <div class="certificate__details">
+        <p><strong>Final quiz score:</strong> <span id="certificateScore"></span></p>
+        <p><strong>Completion date:</strong> <span id="certificateDate"></span></p>
+      </div>
+      <p>This certificate records completion of this training course. It is not a professional license or accredited credential.</p>
+      <button id="printCertificate" type="button">Print or Save Certificate</button>
+    </section>
+  </main>
+  <script id="quizData" type="application/json">{"course":"Focus 40 Blue","displayName":"Focus 40 Blue","slug":"focus","passPercent":80,"questions":[{"answer":0,"explanation":"Routing buttons connect a Braille position with the cursor.","options":["Move the active cursor to the corresponding Braille cell","Turn off Bluetooth","Delete a book"],"question":"What is a cursor-routing button used for?"},{"answer":0,"explanation":"Safe updates require preparation.","options":["Power, connection, instructions, and current work","Only case color","Nothing"],"question":"What should be confirmed before updating a Focus display?"},{"answer":0,"explanation":"Panning moves through text beyond the displayed cells.","options":["Moves to the previous or next portion of Braille text","Changes the filename","Starts a slideshow"],"question":"What does panning do?"},{"answer":0,"explanation":"Profiles help manage multiple connections.","options":["They preserve settings for different devices","They erase Braille","They publish files"],"question":"Why use connection profiles carefully?"},{"answer":0,"explanation":"Official cleaning guidance protects the device.","options":["Follow official guidance and disconnect power as instructed","Pour liquid on the cells","Use sharp tools"],"question":"What should be done before cleaning the display?"}]}</script>
+</body>
+</html>
