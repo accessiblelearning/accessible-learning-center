@@ -130,9 +130,25 @@
     return value.replaceAll("+", " plus ").replace("Ctrl", "Control").replace("Arrow", " Arrow").replace("Grave", "grave accent");
   }
 
+  function lowerFirst(value) {
+    return value.charAt(0).toLowerCase() + value.slice(1);
+  }
+
+  function briefExplanation(value) {
+    return "This command lets you " + lowerFirst(value.replace(/\.$/, "")) + ".";
+  }
+
+  function commandExplanation() {
+    if (!command) return "";
+    if (level.value === "detailed") {
+      return "Here is what this command does. " + command[2];
+    }
+    return briefExplanation(command[1]);
+  }
+
   function describe() {
     if (!command) return "";
-    return "Press " + spokenKeys(command[0]) + ". " + (level.value === "detailed" ? command[2] : command[1]);
+    return "Press " + spokenKeys(command[0]) + ". " + commandExplanation();
   }
 
   function showCommand() {
@@ -140,7 +156,7 @@
     const heading = document.createElement("h3");
     heading.textContent = "Press " + spokenKeys(command[0]);
     const explanation = document.createElement("p");
-    explanation.textContent = level.value === "detailed" ? command[2] : command[1];
+    explanation.textContent = commandExplanation();
     prompt.replaceChildren(heading, explanation);
     status.textContent = "Waiting for " + spokenKeys(command[0]) + ".";
     detected.textContent = "None yet";
@@ -269,7 +285,7 @@
       correctCount += 1;
       tone(true);
       status.textContent = "Correct. You pressed " + displaySignature(pressed) + ".";
-      speak("Correct. You pressed " + displaySignature(pressed) + ". " + command[1]);
+      speak("Correct. You pressed " + displaySignature(pressed) + ". " + briefExplanation(command[1]));
       next.disabled = false;
       next.focus();
     } else {
@@ -293,11 +309,12 @@
     const heading = document.createElement("h3");
     const explanation = document.createElement("p");
     const button = document.createElement("button");
+    const learnOnlyExplanation = "This command " + lowerFirst(item[1]);
     heading.textContent = spokenKeys(item[0]);
-    explanation.textContent = item[1];
+    explanation.textContent = learnOnlyExplanation;
     button.type = "button";
     button.textContent = "Hear explanation";
-    button.addEventListener("click", () => speak(spokenKeys(item[0]) + ". " + item[1]));
+    button.addEventListener("click", () => speak("The command is " + spokenKeys(item[0]) + ". " + learnOnlyExplanation));
     article.append(heading, explanation, button);
     learnOnlyList.appendChild(article);
   });

@@ -196,6 +196,9 @@ check(commandPractice.includes("speechSynthesis"), "Spoken command instructions 
 check(commandPractice.includes("AudioContext"), "Command sound feedback is missing.");
 check(commandPractice.includes("event.preventDefault()"), "Practice key containment is missing.");
 check(commandPractice.includes("insertHeld"), "JAWS Insert-key chord practice is missing.");
+check(commandPractice.includes('return "Press " + spokenKeys(command[0]) + ". " + commandExplanation();'), "Spoken command and explanation are not clearly separated.");
+check(commandPractice.includes('return "This command lets you "'), "General command explanations are missing clear wording.");
+check(commandPractice.includes('return "Here is what this command does. "'), "Detailed command explanations are missing clear wording.");
 check(readFileSync(resolve(root, "command-practice.html"), "utf8").includes("cannot block operating-system"), "System-shortcut safety warning is missing.");
 const quizScript = readFileSync(resolve(root, "quiz.js"), "utf8");
 check(quizScript.includes("data.passPercent"), "Quiz passing-score behavior is missing.");
