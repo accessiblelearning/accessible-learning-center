@@ -51,22 +51,25 @@
 </ul>
 
 <section aria-labelledby="submission-heading">
-
 <h2 id="submission-heading">Submit Lesson 1</h2>
-
 <p id="studentDisplay"></p>
-
+<p>Choose your completed assignment file. Accepted file types are DOCX, PDF, TXT, and BRF. The maximum file size is 10 MB.</p>
+<form id="submissionForm">
 <p>
-For now, this button records that you completed and submitted the lesson.
-The actual Word document upload will be added next.
+<label for="assignmentFile">Assignment file</label><br>
+<input
+  id="assignmentFile"
+  name="file"
+  type="file"
+  accept=".docx,.pdf,.txt,.brf"
+  aria-describedby="fileRequirements"
+  required
+>
 </p>
-
-<button id="submitLesson" type="button">
-Mark Lesson 1 Submitted
-</button>
-
+<p id="fileRequirements">Choose one file that is 10 MB or smaller.</p>
+<button id="submitLesson" type="submit">Upload and Submit Lesson 1</button>
+</form>
 <p id="submissionMessage" role="status" aria-live="polite"></p>
-
 </section>
 
 <p><a href="student-progress.html">View My Progress</a></p>
@@ -75,107 +78,7 @@ Mark Lesson 1 Submitted
 
 </main>
 
-<script>
-
-const API_URL =
-"https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
-
-const studentId =
-localStorage.getItem("accessibleLearningStudentId");
-
-const studentDisplay =
-document.getElementById("studentDisplay");
-
-const submitButton =
-document.getElementById("submitLesson");
-
-const message =
-document.getElementById("submissionMessage");
-
-if (!studentId) {
-
-  message.textContent =
-  "Please enter your Student ID before submitting this lesson.";
-
-  submitButton.disabled = true;
-
-  const loginLink = document.createElement("a");
-
-  loginLink.href = "student-id.html";
-
-  loginLink.textContent = "Enter Student ID";
-
-  message.appendChild(document.createElement("br"));
-
-  message.appendChild(loginLink);
-
-} else {
-
-  studentDisplay.textContent =
-  "Student ID: " + studentId;
-
-}
-
-submitButton.addEventListener("click", async function() {
-
-  if (!studentId) {
-    return;
-  }
-
-  submitButton.disabled = true;
-
-  message.textContent =
-  "Submitting Lesson 1...";
-
-  try {
-
-    const response = await fetch(
-      API_URL + "/progress",
-      {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-          student_id: studentId,
-          course: "Microsoft Word",
-          lesson_number: 1,
-          status: "submitted"
-        })
-      }
-    );
-
-    const data =
-    await response.json();
-
-    if (!response.ok || !data.success) {
-
-      message.textContent =
-      data.error ||
-      "Your lesson could not be submitted.";
-
-      submitButton.disabled = false;
-
-      return;
-    }
-
-    message.textContent =
-    "Lesson 1 was submitted successfully. Your progress has been saved.";
-
-  } catch (error) {
-
-    message.textContent =
-    "There was a connection problem. Please try again.";
-
-    submitButton.disabled = false;
-
-  }
-
-});
-
-</script>
+<script src="assignment-submission.js" data-lesson-number="1"></script>
 
 </body>
 </html>
