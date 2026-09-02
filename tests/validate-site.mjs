@@ -138,8 +138,8 @@ function check(condition, message) {
 
 for (const file of htmlFiles) {
   const html = readFileSync(resolve(root, file), "utf8");
-  check(html.includes('href="styles.css?v=dark-mode-1"') || html.includes('href="styles.css"'), file + " is missing the shared stylesheet.");
-  check(html.includes('src="accessibility.js?v=dark-mode-1"') || html.includes('src="accessibility.js"'), file + " is missing accessibility controls.");
+  check(html.includes('href="styles.css'), file + " is missing the shared stylesheet.");
+  check(html.includes('src="accessibility.js'), file + " is missing accessibility controls.");
   check(!html.includes('href="#"'), file + " contains a dead # link.");
   check(/<html\s+lang="en"/i.test(html), file + ' is missing lang="en".');
   check(/<meta\s+name="viewport"/i.test(html), file + " is missing a viewport setting.");
@@ -160,7 +160,8 @@ for (const course of courses) {
     check(existsSync(resolve(root, file)), file + " is missing.");
     if (!existsSync(resolve(root, file))) continue;
     const html = readFileSync(resolve(root, file), "utf8");
-    check(html.includes('src="assignment-submission.js"'), file + " is missing assignment submission behavior.");
+    check(html.includes('src="assignment-submission.js'), file + " is missing assignment submission behavior.");
+    check(html.includes("hidden data-upload-ui"), file + " must hide the paused upload interface.");
     check(html.includes("Open this lesson in Safari"), file + " is missing the iPhone Safari upload note.");
     if (course.slug !== "word") {
       check(html.includes('data-course="' + course.name + '"'), file + " has the wrong course identifier.");
@@ -181,9 +182,18 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 281, "Expected 281 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 282, "Expected 282 HTML pages, found " + htmlFiles.length + ".");
 check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
+const assignmentScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
+const searchIndex = JSON.parse(readFileSync(resolve(root, "search-index.json"), "utf8"));
+check(existsSync(resolve(root, "resources.html")), "Help and Resource Search page is missing.");
+check(existsSync(resolve(root, "resource-search.js")), "Resource search behavior is missing.");
+check(searchIndex.count === 280 && searchIndex.entries.length === 280, "Search index must contain 280 public learning and help pages.");
+check(assignmentScript.includes("const UPLOADS_ENABLED = false"), "Lesson upload interface is not paused.");
+check(assignmentScript.includes("submissionSection?.remove()"), "Paused upload interface is not removed.");
+check(worker.includes("const SUBMISSIONS_ENABLED = false"), "Submission Worker is not paused.");
+check(worker.includes("Assignment uploads are temporarily unavailable."), "Submission Worker pause response is missing.");
 check(accessibilityScript.includes("Website accessibility settings"), "Accessibility menu label is missing.");
 check(accessibilityScript.includes("darkMode"), "Saved dark-mode preference is missing.");
 check(accessibilityScript.includes('dataset.theme'), "Dark-mode theme state is missing.");
@@ -205,4 +215,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("Validated " + htmlFiles.length + " accessible pages, 25 manuals, 250 lessons, and course-aware private uploads.");
+console.log("Validated " + htmlFiles.length + " accessible pages, 25 manuals, 250 lessons, searchable help, and paused private uploads.");

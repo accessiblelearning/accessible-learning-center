@@ -1,5 +1,7 @@
 const ALLOWED_ORIGIN = "https://accessiblelearning.github.io";
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
+// Change to true only when assignment uploads are intentionally restored.
+const SUBMISSIONS_ENABLED = false;
 const COURSE_EXTENSIONS = new Map([
   ["Choosing a Free Office Suite", new Set(["txt","docx","xlsx","pptx","pdf","brf"])],
   ["LibreOffice Writer", new Set(["odt","docx","pdf","txt","brf"])],
@@ -78,10 +80,14 @@ export default {
 
     if (url.pathname === "/health" && request.method === "GET") {
       return json(
-        { status: "ok", message: "Accessible Learning submissions are ready." },
+        { status: "ok", submissionsEnabled: SUBMISSIONS_ENABLED, message: SUBMISSIONS_ENABLED ? "Accessible Learning submissions are ready." : "Assignment uploads are paused." },
         200,
         origin
       );
+    }
+
+    if (url.pathname === "/submissions" && request.method === "POST" && !SUBMISSIONS_ENABLED) {
+      return json({ error: "Assignment uploads are temporarily unavailable." }, 503, origin);
     }
 
     if (url.pathname !== "/submissions" || request.method !== "POST") {

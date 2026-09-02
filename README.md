@@ -107,3 +107,12 @@ The site includes four no-cost AI courses: AI Fundamentals and Responsible Use, 
 ## Free Microsoft 365 alternatives
 
 Six no-cost courses appear at the end of the learning order: Choosing a Free Office Suite, LibreOffice Writer, LibreOffice Calc, LibreOffice Impress, Google Sheets, and Google Slides. Each course includes a manual and ten lessons. LibreOffice assignments preserve native ODT, ODS, or ODP files while teaching separate DOCX, XLSX, PPTX, CSV, or PDF compatibility checks. No paid trial or payment information is required.
+
+
+## Help and Resource Search
+
+The resources page provides keyboard-accessible, client-side search across 25 manuals, 250 lessons, and five public website-help pages. The search index contains only published website text and no student records. Search runs entirely in the browser and requires no paid service, external search provider, credential, or tracking.
+
+## Temporarily pausing assignment uploads
+
+Assignment uploads are intentionally paused in two layers. The lesson script sets UPLOADS_ENABLED to false and removes the hidden upload section. The submissions Worker sets SUBMISSIONS_ENABLED to false and returns HTTP 503 for direct submission attempts. Existing R2 objects and D1 progress records are preserved. To restore uploads deliberately, set both flags to true, validate, deploy both affected services, and perform a private end-to-end upload test.

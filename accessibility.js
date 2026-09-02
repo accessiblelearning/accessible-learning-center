@@ -97,6 +97,7 @@
         <a href="index.html">Home</a>
         <a href="manuals.html">Manuals</a>
         <a href="lessons.html">Lessons</a>
+        <a href="resources.html">Help &amp; search</a>
         <a href="student-progress.html">My progress</a>
       </div>
     `;

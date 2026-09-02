@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search Accessible Learning Center manuals, lessons, and trusted help resources when you are stuck.">
+  <title>Help and Resource Search - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=resource-search-1">
+  <script src="accessibility.js?v=resource-search-1" defer></script>
+  <script src="resource-search.js?v=resource-search-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Help when you are stuck</p>
+    <h1>Help and Resource Search</h1>
+    <p>Search all manuals, lessons, and website help using the words you know. You do not need to know the name of a course or command.</p>
+  </header>
+  <main id="main-content">
+    <section aria-labelledby="search-heading">
+      <h2 id="search-heading">Search the learning library</h2>
+      <form id="resourceSearchForm" class="resource-search" role="search">
+        <p>
+          <label for="resourceQuery">What do you need help with?</label>
+          <input id="resourceQuery" name="q" type="search" autocomplete="off" spellcheck="true" aria-describedby="searchExamples">
+        </p>
+        <p id="searchExamples">Examples: upload a file, JAWS headings, Excel formula, make an accessible table, or find a saved document.</p>
+        <p>
+          <label for="resourceType">Type of result</label>
+          <select id="resourceType" name="type">
+            <option value="all">Everything</option>
+            <option value="manual">Manuals</option>
+            <option value="lesson">Lessons</option>
+            <option value="help">Website help</option>
+          </select>
+        </p>
+        <div class="resource-search__actions">
+          <button type="submit">Search</button>
+          <button id="clearResourceSearch" type="button">Clear search</button>
+        </div>
+      </form>
+      <p id="resourceSearchStatus" role="status" aria-live="polite">Enter one or more words to search 25 manuals and 250 lessons.</p>
+      <ol id="resourceSearchResults" class="search-results" aria-label="Search results"></ol>
+      <noscript><p class="tip">Search requires JavaScript. The organized help links below remain available without it.</p></noscript>
+    </section>
+
+    <section aria-labelledby="stuck-heading">
+      <h2 id="stuck-heading">When you are stuck</h2>
+      <ol>
+        <li>Stop and listen to the current window title, control name, or error message.</li>
+        <li>Save your work before troubleshooting.</li>
+        <li>Search this page using a few important words from the task or message.</li>
+        <li>Open the matching manual before trying a lesson again.</li>
+        <li>Use the program's official help or ask an instructor when a step could change or delete information.</li>
+      </ol>
+      <p class="tip"><strong>Assignment uploads are currently paused.</strong> Complete each assignment and save it in a location you can find again. Existing submissions and progress records have not been deleted.</p>
+    </section>
+
+    <section aria-labelledby="website-help-heading">
+      <h2 id="website-help-heading">Website and learning help</h2>
+      <ul class="resource-directory">
+        <li><a href="student-id.html">Enter or change a Student ID</a><span>Use the same anonymous Student ID on the same device.</span></li>
+        <li><a href="student-progress.html">Review existing progress</a><span>Previously recorded submissions remain visible.</span></li>
+        <li><a href="manuals.html">Browse all manuals</a><span>Manuals explain commands, concepts, safety, and accessibility before practice.</span></li>
+        <li><a href="lessons.html">Browse all lessons</a><span>Lessons are organized in the recommended learning order.</span></li>
+        <li><a href="windows-manual.html#files">Find and manage files</a><span>Use File Explorer, filenames, folders, search, and safe file handling.</span></li>
+        <li><a href="jaws-manual.html">Choose a screen reader</a><span>Compare JAWS, Narrator, and NVDA commands and workflows.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="screen-reader-resources-heading">
+      <h2 id="screen-reader-resources-heading">Official screen-reader resources</h2>
+      <ul class="resource-directory">
+        <li><a href="https://support.freedomscientific.com/Products/Blindness/JAWS">Freedom Scientific JAWS support</a><span>Official JAWS downloads, documentation, training, and support.</span></li>
+        <li><a href="https://support.microsoft.com/en-us/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">Microsoft Narrator guide</a><span>Official Narrator setup, commands, reading, navigation, and Braille guidance.</span></li>
+        <li><a href="https://www.nvaccess.org/files/nvda/documentation/userGuide.html">NVDA User Guide</a><span>Official NVDA commands, settings, browse mode, and application guidance.</span></li>
+        <li><a href="https://www.microsoft.com/en-us/accessibility/disability-answer-desk">Microsoft Disability Answer Desk</a><span>Accessibility support for Microsoft products and assistive technology.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="office-resources-heading">
+      <h2 id="office-resources-heading">Office and document resources</h2>
+      <ul class="resource-directory">
+        <li><a href="https://support.microsoft.com/en-us/accessibility/office-accessibility/accessibility-tools-for-microsoft-365">Microsoft 365 accessibility tools</a><span>Official Word, Excel, and PowerPoint accessibility resources.</span></li>
+        <li><a href="https://help.libreoffice.org/latest/en-US/text/shared/guide/accessibility.html">LibreOffice accessibility</a><span>Official keyboard, screen-reader, magnification, and assistive-technology information.</span></li>
+        <li><a href="https://support.google.com/docs/answer/1632199">Google Docs editors accessibility</a><span>Official accessibility help for Docs, Sheets, and Slides.</span></li>
+        <li><a href="pdf-manual.html">Accessible PDF manual</a><span>Reading, forms, OCR, tags, checking, export, and document security.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="braille-resources-heading">
+      <h2 id="braille-resources-heading">Braille technology resources</h2>
+      <ul class="resource-directory">
+        <li><a href="https://support.freedomscientific.com/Products/Blindness/FocusBlue">Freedom Scientific Focus Blue support</a><span>Official Focus display documentation, downloads, and support.</span></li>
+        <li><a href="https://www.aph.org/product/mantis-q40/">APH Mantis Q40</a><span>Official product information and documentation.</span></li>
+        <li><a href="https://www.loc.gov/nls/services-and-resources/equipment-for-nls-materials/braille-e-readers/">NLS Braille eReaders</a><span>Official NLS information about Braille eReader devices.</span></li>
+        <li><a href="https://www.brailleblaster.org/">BrailleBlaster</a><span>Official software, documentation, and training information.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="safety-resources-heading">
+      <h2 id="safety-resources-heading">Online safety and responsible AI</h2>
+      <ul class="resource-directory">
+        <li><a href="https://www.cisa.gov/secure-our-world">CISA Secure Our World</a><span>Official practical guidance for passwords, multifactor authentication, phishing, and updates.</span></li>
+        <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a><span>Official principles for understanding and managing AI risks.</span></li>
+        <li><a href="ai-fundamentals-manual.html">AI Fundamentals manual</a><span>Prompting, privacy, verification, bias, accessibility, and human review.</span></li>
+        <li><a href="cybersecurity-manual.html">Cybersecurity manual</a><span>Screen-reader-friendly security lessons and incident-response guidance.</span></li>
+      </ul>
+    </section>
+
+    <p><a href="index.html">Return to Home</a></p>
+  </main>
+</body>
+</html>

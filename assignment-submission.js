@@ -9,6 +9,8 @@
   const MAX_FILE_SIZE = 10 * 1024 * 1024;
   const DEFAULT_EXTENSIONS = ["docx", "pdf", "txt", "brf"];
   const DUPLICATE_WINDOW_MS = 5 * 60 * 1000;
+  // Change to true when assignment uploads are intentionally restored.
+  const UPLOADS_ENABLED = false;
 
   const script = document.currentScript;
   const lessonNumber = Number(script.dataset.lessonNumber);
@@ -27,6 +29,12 @@
   const message = document.getElementById("submissionMessage");
   let duplicateConfirmed = false;
   let activeSubmissionToken = "";
+  const submissionSection = form?.closest("[data-upload-ui]") || form?.closest("section");
+  if (!UPLOADS_ENABLED) {
+    submissionSection?.remove();
+    return;
+  }
+  if (submissionSection) submissionSection.hidden = false;
 
   if (!studentId) {
     message.textContent =
