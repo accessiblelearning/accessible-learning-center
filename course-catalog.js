@@ -40,7 +40,7 @@
     sections.forEach(section => { section.querySelector("details").open = false; });
   });
 
-  const target = location.hash && document.querySelector(location.hash);
+  const target = location.hash ? document.querySelector(location.hash) : null;
   target?.querySelector("details")?.setAttribute("open", "");
   applyFilter();
 })();
