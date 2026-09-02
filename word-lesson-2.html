@@ -6,48 +6,22 @@
 <title>Word Lesson 2 - Accessible Learning Center</title>
 </head>
 <body>
-
-<header>
-<h1>Microsoft Word Lesson 2</h1>
-<p>Moving, Selecting, and Editing Text</p>
-</header>
-
+<header><h1>Microsoft Word Lesson 2</h1><p>Moving, Selecting, and Editing Text</p></header>
 <main>
-
-<h2>Goal</h2>
-<p>Practice moving through text, selecting words, correcting mistakes, copying, cutting, pasting, undoing, and redoing.</p>
-
+<h2>Goal</h2><p>Practice moving through text, selecting words, correcting mistakes, copying, cutting, pasting, undoing, and redoing.</p>
 <h2>Instructions</h2>
-<ol>
-<li>Open Microsoft Word and create a blank document.</li>
-<li>Type: The quick brown fox jumps over the lazy dog.</li>
-<li>Press Enter twice.</li>
-<li>Type: Microsoft Word makes document editing easy.</li>
-<li>Use Ctrl+Left Arrow and Ctrl+Right Arrow to move by word.</li>
-<li>Use Left Arrow and Right Arrow to move by character.</li>
-<li>Select the word easy using Ctrl+Shift+Left Arrow or Ctrl+Shift+Right Arrow.</li>
-<li>Replace easy with efficient.</li>
-<li>Select the words Microsoft Word.</li>
-<li>Press Ctrl+C to copy them.</li>
-<li>Move to the end of the document.</li>
-<li>Press Enter twice and press Ctrl+V.</li>
-<li>Press Ctrl+Z to undo the paste.</li>
-<li>Press Ctrl+Y to redo it.</li>
-<li>Save the file as Word-Lesson-2.docx.</li>
-</ol>
-
-<h2>Your Assignment</h2>
-<p>Submit <strong>Word-Lesson-2.docx</strong>.</p>
-
-<h2>Before Submitting</h2>
-<ul>
-<li>The word easy should have been replaced with efficient.</li>
-<li>Microsoft Word should appear again at the bottom of the document.</li>
-<li>The file should be saved correctly.</li>
-</ul>
-
-<p><a href="lessons.html">Return to Lessons</a></p>
-
+<ol><li>Open Microsoft Word and create a blank document.</li><li>Type: The quick brown fox jumps over the lazy dog.</li><li>Press Enter twice.</li><li>Type: Microsoft Word makes document editing easy.</li><li>Use Ctrl+Left Arrow and Ctrl+Right Arrow to move by word.</li><li>Use Left Arrow and Right Arrow to move by character.</li><li>Select the word easy using Ctrl+Shift+Left Arrow or Ctrl+Shift+Right Arrow.</li><li>Replace easy with efficient.</li><li>Select the words Microsoft Word.</li><li>Press Ctrl+C to copy them.</li><li>Move to the end of the document.</li><li>Press Enter twice and press Ctrl+V.</li><li>Press Ctrl+Z to undo the paste.</li><li>Press Ctrl+Y to redo it.</li><li>Save the file as Word-Lesson-2.docx.</li></ol>
+<h2>Your Assignment</h2><p>Submit <strong>Word-Lesson-2.docx</strong>.</p>
+<h2>Before Submitting</h2><ul><li>The word easy should have been replaced with efficient.</li><li>Microsoft Word should appear again at the bottom of the document.</li><li>The file should be saved correctly.</li></ul>
+<section><h2>Submit Lesson 2</h2><p id="studentDisplay"></p><p>For now, this button records that you completed and submitted the lesson. The actual Word document upload will be added next.</p><button id="submitLesson" type="button">Mark Lesson 2 Submitted</button><p id="submissionMessage" role="status" aria-live="polite"></p></section>
+<p><a href="student-progress.html">View My Progress</a></p><p><a href="lessons.html">Return to Lessons</a></p>
 </main>
+<script>
+const API_URL="https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
+const studentId=localStorage.getItem("accessibleLearningStudentId");
+const studentDisplay=document.getElementById("studentDisplay"),submitButton=document.getElementById("submitLesson"),message=document.getElementById("submissionMessage");
+if(!studentId){message.textContent="Please enter your Student ID before submitting this lesson.";submitButton.disabled=true;const a=document.createElement("a");a.href="student-id.html";a.textContent="Enter Student ID";message.append(document.createElement("br"),a);}else{studentDisplay.textContent="Student ID: "+studentId;}
+submitButton.addEventListener("click",async()=>{if(!studentId)return;submitButton.disabled=true;message.textContent="Submitting Lesson 2...";try{const r=await fetch(API_URL+"/progress",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({student_id:studentId,course:"Microsoft Word",lesson_number:2,status:"submitted"})});const d=await r.json();if(!r.ok||!d.success){message.textContent=d.error||"Your lesson could not be submitted.";submitButton.disabled=false;return;}message.textContent="Lesson 2 was submitted successfully. Your progress has been saved.";}catch(e){message.textContent="There was a connection problem. Please try again.";submitButton.disabled=false;}});
+</script>
 </body>
 </html>
