@@ -5,13 +5,20 @@
     "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
   const SUBMISSIONS_API =
     "https://accessible-learning-submissions.aaccessabilitylearningcenter.workers.dev";
-  const COURSE = "Microsoft Word";
+  const DEFAULT_COURSE = "Microsoft Word";
   const MAX_FILE_SIZE = 10 * 1024 * 1024;
-  const ALLOWED_EXTENSIONS = new Set(["docx", "pdf", "txt", "brf"]);
+  const DEFAULT_EXTENSIONS = ["docx", "pdf", "txt", "brf"];
   const DUPLICATE_WINDOW_MS = 5 * 60 * 1000;
 
   const script = document.currentScript;
   const lessonNumber = Number(script.dataset.lessonNumber);
+  const course = script.dataset.course || DEFAULT_COURSE;
+  const extensionList = (script.dataset.allowedExtensions || DEFAULT_EXTENSIONS.join(","))
+    .split(",")
+    .map(value => value.trim().toLowerCase())
+    .filter(Boolean);
+  const allowedExtensions = new Set(extensionList);
+  const allowedLabel = extensionList.map(value => value.toUpperCase()).join(", ");
   const studentId = localStorage.getItem("accessibleLearningStudentId");
   const studentDisplay = document.getElementById("studentDisplay");
   const form = document.getElementById("submissionForm");
@@ -38,11 +45,25 @@
   studentDisplay.textContent = "Student ID: " + studentId;
 
   const historyKey =
-    "accessibleLearningLastSubmission:" + studentId + ":" + lessonNumber;
+    "accessibleLearningLastSubmission:" +
+    studentId +
+    ":" +
+    course +
+    ":" +
+    lessonNumber;
 
   function readLastSubmission() {
     try {
-      return JSON.parse(localStorage.getItem(historyKey));
+      const currentHistory = localStorage.getItem(historyKey);
+      if (currentHistory) return JSON.parse(currentHistory);
+
+      if (course === DEFAULT_COURSE) {
+        const legacyKey =
+          "accessibleLearningLastSubmission:" + studentId + ":" + lessonNumber;
+        return JSON.parse(localStorage.getItem(legacyKey));
+      }
+
+      return null;
     } catch (error) {
       return null;
     }
@@ -113,8 +134,8 @@
       ? file.name.split(".").pop().toLowerCase()
       : "";
 
-    if (!ALLOWED_EXTENSIONS.has(extension)) {
-      message.textContent = "Choose a DOCX, PDF, TXT, or BRF file.";
+    if (!allowedExtensions.has(extension)) {
+      message.textContent = "Choose one of these file types: " + allowedLabel + ".";
       fileInput.focus();
       return;
     }
@@ -144,7 +165,7 @@
     submitButton.disabled = true;
     fileInput.disabled = true;
     message.textContent =
-      "Uploading your Lesson " + lessonNumber + " assignment. Please wait.";
+      "Uploading your " + course + " Lesson " + lessonNumber + " assignment. Please wait.";
 
     try {
       if (!activeSubmissionToken) {
@@ -153,7 +174,7 @@
 
       const uploadData = new FormData();
       uploadData.append("student_id", studentId);
-      uploadData.append("course", COURSE);
+      uploadData.append("course", course);
       uploadData.append("lesson_number", String(lessonNumber));
       uploadData.append("submission_token", activeSubmissionToken);
       uploadData.append("file", file);
@@ -187,7 +208,7 @@
         },
         body: JSON.stringify({
           student_id: studentId,
-          course: COURSE,
+          course: course,
           lesson_number: lessonNumber,
           status: "submitted"
         })
@@ -205,7 +226,8 @@
       duplicateConfirmed = false;
       activeSubmissionToken = "";
       message.textContent =
-        "Lesson " +
+        course +
+        " Lesson " +
         lessonNumber +
         " was submitted successfully. Your file and progress have been saved.";
     } catch (error) {

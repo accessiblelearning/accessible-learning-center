@@ -50,7 +50,7 @@ for (const file of htmlFiles) {
     );
   }
 
-  if (/^word-lesson-\d+\.html$/.test(file)) {
+  if (/^(?:word|excel)-lesson-\d+\.html$/.test(file)) {
     check(
       html.includes('src="assignment-submission.js"'),
       file + " is missing assignment submission behavior."
@@ -60,9 +60,27 @@ for (const file of htmlFiles) {
       file + " is missing the iPhone Safari upload note."
     );
   }
+
+  if (/^excel-lesson-\d+\.html$/.test(file)) {
+    check(
+      html.includes('data-course="Microsoft Excel"'),
+      file + " is missing its Microsoft Excel course identifier."
+    );
+    check(
+      html.includes('data-allowed-extensions='),
+      file + " is missing its allowed file types."
+    );
+  }
 }
 
-check(htmlFiles.length === 17, "Expected 17 HTML pages.");
+check(htmlFiles.length === 28, "Expected 28 HTML pages.");
+check(existsSync(resolve(root, "excel-manual.html")), "Excel manual is missing.");
+for (let lesson = 1; lesson <= 10; lesson += 1) {
+  check(
+    existsSync(resolve(root, "excel-lesson-" + lesson + ".html")),
+    "Excel Lesson " + lesson + " is missing."
+  );
+}
 check(
   existsSync(resolve(root, "assets/accessible-tech-hero.webp")),
   "Homepage technology artwork is missing."
@@ -85,11 +103,16 @@ check(
 const submissionScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
 const submissionWorker = readFileSync(resolve(root, "submissions/worker.js"), "utf8");
 check(
-  submissionScript.includes('uploadData.append("submission_token"'),
+  submissionScript.includes('uploadData.append("submission_token"') &&
+    submissionScript.includes("script.dataset.course") &&
+    submissionScript.includes("script.dataset.allowedExtensions"),
   "The browser submission retry token is missing."
 );
 check(
-  submissionWorker.includes("safePart(submissionToken)"),
+  submissionWorker.includes("safePart(submissionToken)") &&
+    submissionWorker.includes('["Microsoft Excel"') &&
+    submissionWorker.includes('"xlsx"') &&
+    submissionWorker.includes('"csv"'),
   "The R2 Worker is missing idempotent retry handling."
 );
 
@@ -100,5 +123,5 @@ if (errors.length) {
 }
 
 console.log(
-  "Validated " + htmlFiles.length + " pages, local links, accessibility controls, and lesson uploads."
+  "Validated " + htmlFiles.length + " pages, local links, accessibility controls, Word and Excel uploads, and course progress."
 );

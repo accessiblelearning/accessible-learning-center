@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review saved Microsoft Word and Excel lesson progress.">
   <title>Student Progress - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css">
   <script src="accessibility.js" defer></script>
@@ -14,23 +15,12 @@
   </header>
 
   <main id="main-content">
-    <h2>Microsoft Word</h2>
-
-    <section class="progress-overview" aria-labelledby="progress-summary-heading">
-      <h3 id="progress-summary-heading">Course progress</h3>
-      <p id="progressSummary">Loading completed lessons.</p>
-      <progress id="courseProgress" max="10" value="0">0 of 10 lessons submitted</progress>
-    </section>
-
-    <div id="progressMessage" role="status" aria-live="polite">
-      Loading your progress...
-    </div>
-
-    <ol id="progressList" class="progress-list"></ol>
+    <div id="progressMessage" role="status" aria-live="polite">Loading your progress...</div>
+    <div id="courseProgressSections" class="course-progress-sections"></div>
 
     <nav aria-label="Progress actions">
       <ul class="card-list">
-        <li><a href="lessons.html">Go to lessons</a></li>
+        <li><a href="lessons.html">Go to all lessons</a></li>
         <li><a href="student-id.html">Change Student ID</a></li>
         <li><a href="index.html">Return home</a></li>
       </ul>
@@ -43,28 +33,106 @@
     const studentId = localStorage.getItem("accessibleLearningStudentId");
     const studentName = document.getElementById("studentName");
     const progressMessage = document.getElementById("progressMessage");
-    const progressList = document.getElementById("progressList");
-    const progressSummary = document.getElementById("progressSummary");
-    const courseProgress = document.getElementById("courseProgress");
+    const courseProgressSections = document.getElementById("courseProgressSections");
 
-    const lessons = [
-      "Opening Word, Creating, and Saving a Document",
-      "Moving, Selecting, and Editing Text",
-      "Find, Replace, Save, Close, and Reopen",
-      "Formatting Text and Paragraphs",
-      "Headings, Styles, and Document Navigation",
-      "Bulleted and Numbered Lists",
-      "Creating Accessible Tables",
-      "Links, Alt Text, and Accessibility",
-      "Spelling, Comments, and Track Changes",
-      "Final Independent Word Assignment"
-    ];
+    const courses = [
+      {
+            "name": "Microsoft Word",
+            "slug": "word",
+            "titles": [
+                  "Opening Word, Creating, and Saving a Document",
+                  "Moving, Selecting, and Editing Text",
+                  "Find, Replace, Save, Close, and Reopen",
+                  "Formatting Text and Paragraphs",
+                  "Headings, Styles, and Document Navigation",
+                  "Bulleted and Numbered Lists",
+                  "Creating Accessible Tables",
+                  "Links, Alt Text, and Accessibility",
+                  "Spelling, Comments, and Track Changes",
+                  "Final Independent Word Assignment"
+            ]
+      },
+      {
+            "name": "Microsoft Excel",
+            "slug": "excel",
+            "titles": [
+                  "Excel Basics: Workbooks, Worksheets, and Cells",
+                  "Navigating, Editing, Finding, and Filling Data",
+                  "Formulas, AutoSum, and Basic Calculations",
+                  "Accessible Formatting and Number Formats",
+                  "Tables, Sorting, and Filtering",
+                  "IF, COUNTIF, and Conditional Results",
+                  "Managing Worksheets and Cross-Sheet References",
+                  "Charts, Alternative Text, and Accessibility Checker",
+                  "Data Validation, Consistent Entry, and Review",
+                  "Final Employment Workbook Project"
+            ]
+      }
+];
 
     if (!studentId) {
       window.location.href = "student-id.html";
+    } else {
+      studentName.textContent = "Student ID: " + studentId;
+      loadProgress();
     }
 
-    studentName.textContent = "Student ID: " + studentId;
+    function createCourseSection(course, records) {
+      const section = document.createElement("section");
+      section.className = "course-progress";
+      section.setAttribute("aria-labelledby", course.slug + "-progress-heading");
+
+      const heading = document.createElement("h2");
+      heading.id = course.slug + "-progress-heading";
+      heading.textContent = course.name;
+
+      const summary = document.createElement("p");
+      const meter = document.createElement("progress");
+      const list = document.createElement("ol");
+      list.className = "progress-list";
+
+      let submittedCount = 0;
+
+      for (let i = 1; i <= course.titles.length; i++) {
+        const record = records.find(
+          item =>
+            item.course === course.name &&
+            Number(item.lesson_number) === i
+        );
+        const isSubmitted = Boolean(record && record.status === "submitted");
+        if (isSubmitted) submittedCount += 1;
+
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        const status = document.createElement("span");
+
+        link.href = course.slug + "-lesson-" + i + ".html";
+        link.textContent = "Lesson " + i + ": " + course.titles[i - 1];
+        status.className = isSubmitted
+          ? "lesson-status lesson-status--submitted"
+          : "lesson-status";
+        status.textContent = isSubmitted
+          ? "Submitted. Attempts: " + record.attempts
+          : "Not started";
+
+        item.append(link, status);
+        list.appendChild(item);
+      }
+
+      summary.textContent =
+        submittedCount + " of " + course.titles.length + " lessons submitted.";
+      meter.max = course.titles.length;
+      meter.value = submittedCount;
+      meter.textContent =
+        submittedCount + " of " + course.titles.length + " lessons submitted";
+      meter.setAttribute(
+        "aria-label",
+        course.name + ": " + submittedCount + " of " + course.titles.length + " lessons submitted"
+      );
+
+      section.append(heading, summary, meter, list);
+      return { section, submittedCount };
+    }
 
     async function loadProgress() {
       try {
@@ -73,57 +141,31 @@
         );
         const data = await response.json();
 
-        if (!response.ok) {
+        if (!response.ok || !Array.isArray(data)) {
           progressMessage.textContent = "Your progress could not be loaded.";
           return;
         }
 
-        progressList.replaceChildren();
-        let submittedCount = 0;
+        courseProgressSections.replaceChildren();
+        let completedCourses = 0;
 
-        for (let i = 1; i <= 10; i++) {
-          const record = data.find(
-            item =>
-              item.course === "Microsoft Word" &&
-              Number(item.lesson_number) === i
-          );
-          const isSubmitted = Boolean(record && record.status === "submitted");
-
-          if (isSubmitted) submittedCount += 1;
-
-          const item = document.createElement("li");
-          const lessonLink = document.createElement("a");
-          const status = document.createElement("span");
-
-          lessonLink.href = "word-lesson-" + i + ".html";
-          lessonLink.textContent = "Lesson " + i + ": " + lessons[i - 1];
-          status.className = isSubmitted
-            ? "lesson-status lesson-status--submitted"
-            : "lesson-status";
-          status.textContent = isSubmitted
-            ? "Submitted. Attempts: " + record.attempts
-            : "Not started";
-
-          item.append(lessonLink, status);
-          progressList.appendChild(item);
+        for (const course of courses) {
+          const result = createCourseSection(course, data);
+          courseProgressSections.appendChild(result.section);
+          if (result.submittedCount === course.titles.length) {
+            completedCourses += 1;
+          }
         }
 
-        courseProgress.value = submittedCount;
-        courseProgress.textContent =
-          submittedCount + " of 10 lessons submitted";
-        progressSummary.textContent =
-          submittedCount + " of 10 lessons submitted.";
         progressMessage.textContent =
-          submittedCount === 10
-            ? "Microsoft Word course complete."
-            : "Progress loaded.";
+          completedCourses === courses.length
+            ? "All available courses are complete."
+            : "Progress loaded for Microsoft Word and Microsoft Excel.";
       } catch (error) {
         progressMessage.textContent =
           "There was a connection problem while loading progress.";
       }
     }
-
-    loadProgress();
   </script>
 </body>
 </html>

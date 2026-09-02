@@ -33,3 +33,13 @@ No paid service is required by the current implementation.
 - Older cached pages remain compatible because the Worker creates a fallback token when none is provided.
 - Assignment files remain private in R2.
 - Shared page controls complement, rather than replace, browser and assistive-technology settings.
+
+
+## Microsoft Excel course
+
+The Excel course targets Microsoft 365 desktop on Windows with keyboard-first and JAWS-friendly instructions. Each lesson supplies its course name, lesson number, and accepted file extensions to the shared submission script. The private submission Worker enforces course-specific file types:
+
+- Microsoft Word: DOCX, PDF, TXT, BRF
+- Microsoft Excel: XLSX, CSV, PDF
+
+Existing Microsoft Word progress records and upload behavior remain compatible.

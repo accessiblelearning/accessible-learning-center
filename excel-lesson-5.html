@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Microsoft Excel Lesson 5: Tables, Sorting, and Filtering.">
+  <title>Excel Lesson 5 - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="accessibility.js" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Microsoft Excel course</p>
+    <h1>Excel Lesson 5</h1>
+    <p>Tables, Sorting, and Filtering</p>
+  </header>
+
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="Excel lesson navigation">
+      <a href="excel-manual.html">Excel manual</a>
+      <a href="lessons.html#excel-lessons">All Excel lessons</a>
+      <a href="student-progress.html">My progress</a>
+    </nav>
+
+    <section aria-labelledby="goal-heading">
+      <h2 id="goal-heading">Goal</h2>
+      <p>Convert data into an accessible Excel table and use keyboard commands to sort and filter records.</p>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills practiced</h2>
+      <ul>
+  <li>Create a table with Ctrl+T.</li>
+  <li>Confirm that the table has headers.</li>
+  <li>Open a column filter with Alt+Down Arrow.</li>
+  <li>Sort and filter workplace data.</li>
+</ul>
+    </section>
+
+    <section aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">Step-by-step instructions</h2>
+      <ol>
+  <li>Create a blank workbook with the headers Employee, Department, Training Status, and Due Date in row 1.</li>
+  <li>Enter at least eight fictional employee records. Use Complete, In Progress, or Not Started in the Training Status column.</li>
+  <li>Select any cell in the list and press Ctrl+T.</li>
+  <li>Confirm the correct range and check My table has headers, then press Enter.</li>
+  <li>Move to a header cell and press Alt+Down Arrow to open its filter menu.</li>
+  <li>In the Department header, sort A to Z using the menu.</li>
+  <li>In the Training Status header, filter the table so only Not Started records remain.</li>
+  <li>Review the visible rows with the Arrow keys.</li>
+  <li>Open the filter again and choose Clear Filter so all records return.</li>
+  <li>Give the table a meaningful name through Table Design if available, such as TrainingTracker.</li>
+  <li>Save the workbook as Excel-Lesson-5.xlsx.</li>
+</ol>
+      <p class="tip"><strong>JAWS help:</strong> Press Insert+Spacebar, then J, to search JAWS commands when you forget a keystroke. Ribbon KeyTips can differ slightly by Microsoft 365 update, so Alt+Q search is included where useful.</p>
+    </section>
+
+    <section aria-labelledby="assignment-heading">
+      <h2 id="assignment-heading">Your assignment</h2>
+      <p>Create a training tracker with at least eight fictional employees, convert it to a table, sort by Department, and confirm that filtering by Training Status works.</p>
+      <p>Save the finished assignment as <strong>Excel-Lesson-5.xlsx</strong>.</p>
+
+      <h3>Before submitting</h3>
+      <ul>
+  <li>The list is formatted as an Excel table.</li>
+  <li>The table includes unique, descriptive headers.</li>
+  <li>At least eight records are included.</li>
+  <li>There are no blank rows or columns inside the table.</li>
+  <li>The file is saved as Excel-Lesson-5.xlsx.</li>
+</ul>
+    </section>
+
+    <section aria-labelledby="submission-heading">
+      <h2 id="submission-heading">Submit Excel Lesson 5</h2>
+      <p id="studentDisplay"></p>
+      <p>Choose your completed assignment file. Accepted file types for this lesson are XLSX or PDF. The maximum file size is 10 MB.</p>
+      <p><strong>Using an iPhone?</strong> Open this lesson in Safari before choosing a file. File selection may not open inside an in-app browser.</p>
+      <form id="submissionForm">
+        <p>
+          <label for="assignmentFile">Assignment file</label><br>
+          <input id="assignmentFile" name="file" type="file" accept=".xlsx,.pdf" aria-describedby="fileRequirements" required>
+        </p>
+        <p id="fileRequirements">Choose one XLSX or PDF file that is 10 MB or smaller.</p>
+        <button id="submitLesson" type="submit">Upload and Submit Excel Lesson 5</button>
+      </form>
+      <p id="submissionMessage" role="status" aria-live="polite"></p>
+    </section>
+
+    <nav class="lesson-nav" aria-label="Continue Excel course">
+      <a href="excel-lesson-4.html">Previous lesson</a>
+      <a href="excel-lesson-6.html">Next lesson</a>
+    </nav>
+  </main>
+
+  <script src="assignment-submission.js"
+    data-lesson-number="5"
+    data-course="Microsoft Excel"
+    data-allowed-extensions="xlsx,pdf"></script>
+</body>
+</html>

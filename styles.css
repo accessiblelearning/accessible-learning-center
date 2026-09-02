@@ -569,3 +569,128 @@ html[data-contrast="high"] .submission-history {
     color: #000000;
   }
 }
+
+.lesson-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-block: 1rem 1.5rem;
+  padding: 0.85rem;
+  background: #e7f4ff;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.lesson-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--blue-950);
+  background: #ffffff;
+  border: 2px solid #8dbce9;
+  border-radius: 0.55rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.lesson-nav a:hover {
+  background: #d2efff;
+  border-color: var(--blue-700);
+}
+
+.course-lesson-list {
+  display: grid;
+  gap: 0.7rem;
+  padding-left: 2rem;
+}
+
+.course-lesson-list li {
+  padding: 0.65rem 0.8rem;
+  background: #ffffff;
+  border-left: 0.3rem solid var(--blue-600);
+  border-radius: 0.4rem;
+}
+
+.tip {
+  padding: 0.8rem 1rem;
+  color: #183451;
+  background: #ddf5ff;
+  border-left: 0.35rem solid #087eac;
+  border-radius: 0.4rem;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+caption {
+  padding: 0.8rem;
+  color: var(--blue-950);
+  font-weight: 800;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.7rem;
+  border: 1px solid #8eb6dc;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: #ffffff;
+  background: var(--blue-800);
+}
+
+.course-progress-sections {
+  display: grid;
+  gap: 1.25rem;
+  margin-block: 1.25rem;
+}
+
+.course-progress {
+  margin: 0;
+}
+
+.course-progress progress {
+  width: min(100%, 36rem);
+  height: 1.4rem;
+  accent-color: var(--blue-600);
+}
+
+html[data-contrast="high"] .lesson-nav,
+html[data-contrast="high"] .lesson-nav a,
+html[data-contrast="high"] .tip,
+html[data-contrast="high"] table,
+html[data-contrast="high"] th,
+html[data-contrast="high"] td {
+  color: #000000;
+  background: #ffffff;
+  border-color: #000000;
+}
+
+@media (max-width: 32rem) {
+  .lesson-nav {
+    display: grid;
+  }
+
+  .lesson-nav a {
+    width: 100%;
+  }
+}
+
+.table-scroll:focus-visible {
+  outline: 4px solid var(--focus);
+  outline-offset: 3px;
+}

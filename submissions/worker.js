@@ -1,6 +1,9 @@
 const ALLOWED_ORIGIN = "https://accessiblelearning.github.io";
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
-const ALLOWED_EXTENSIONS = new Set(["docx", "pdf", "txt", "brf"]);
+const COURSE_EXTENSIONS = new Map([
+  ["Microsoft Word", new Set(["docx", "pdf", "txt", "brf"])],
+  ["Microsoft Excel", new Set(["xlsx", "csv", "pdf"])],
+]);
 
 function corsHeaders(origin) {
   const headers = {
@@ -83,8 +86,10 @@ export default {
         );
       }
 
-      if (!course || course.length > 100) {
-        return json({ error: "A valid course name is required." }, 400, origin);
+      const allowedExtensions = COURSE_EXTENSIONS.get(course);
+
+      if (!allowedExtensions) {
+        return json({ error: "Choose a supported course." }, 400, origin);
       }
 
       if (!Number.isInteger(lessonNumber) || lessonNumber < 1 || lessonNumber > 1000) {
@@ -107,9 +112,16 @@ export default {
         ? file.name.split(".").pop().toLowerCase()
         : "";
 
-      if (!ALLOWED_EXTENSIONS.has(extension)) {
+      if (!allowedExtensions.has(extension)) {
         return json(
-          { error: "Upload a DOCX, PDF, TXT, or BRF file." },
+          {
+            error:
+              "Upload a supported " +
+              course +
+              " file: " +
+              Array.from(allowedExtensions, value => value.toUpperCase()).join(", ") +
+              ".",
+          },
           415,
           origin
         );
