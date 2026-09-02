@@ -5,7 +5,7 @@ An accessible GitHub Pages learning website for blind and low-vision students.
 ## Current features
 
 - Anonymous Student IDs stored in the learner's browser
-- Microsoft Word, Excel, PowerPoint, JAWS Screen Reader, and Windows 11 manuals with ten guided lessons per course
+- Word, Excel, PowerPoint, JAWS, Windows 11, and Google Chrome manuals with ten guided lessons per course
 - D1-backed lesson progress tracking
 - Private assignment uploads to Cloudflare R2
 - Course-specific DOCX, XLSX, PPTX, CSV, PDF, TXT, and BRF submissions up to 10 MB
@@ -44,6 +44,7 @@ The Excel course targets Microsoft 365 desktop on Windows with keyboard-first an
 - Microsoft PowerPoint: PPTX, PDF
 - JAWS Screen Reader: TXT, DOCX, PDF, BRF
 - Windows 11: TXT, DOCX, PDF, BRF
+- Google Chrome: TXT, DOCX, PDF, BRF
 
 Existing Microsoft Word progress records and upload behavior remain compatible.
 
@@ -68,3 +69,8 @@ JAWS progress appears separately without changing existing Word, Excel, or Power
 The Windows 11 course provides keyboard-first, screen-reader-friendly instruction for desktop and Start navigation, taskbar and window management, File Explorer, folders and files, selection and search, built-in accessibility settings, Quick Settings and notifications, security and updates, safe troubleshooting, and a final workplace file-management project.
 
 Lessons use reversible practice tasks, warn against changing shared-computer settings or deleting unrelated files, and accept TXT, DOCX, PDF, or BRF reports. Windows 11 progress appears separately without changing existing Word, Excel, PowerPoint, or JAWS records.
+
+
+## Google Chrome course
+
+The Chrome course provides keyboard-first, JAWS-friendly instruction for browser controls, tabs, web navigation, research, bookmarks, history, downloads, uploads, forms, permissions, zoom, accessibility, privacy, Safe Browsing, and a final workplace research project. It uses public or fictional information, warns against bypassing browser security, and keeps existing course records unchanged.

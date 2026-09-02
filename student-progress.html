@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Review saved Word, Excel, PowerPoint, JAWS, and Windows 11 lesson progress.">
+  <meta name="description" content="Review saved Word, Excel, PowerPoint, JAWS, Windows 11, and Chrome progress.">
   <title>Student Progress - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css">
   <script src="accessibility.js" defer></script>
@@ -115,6 +115,22 @@
             "Safe Troubleshooting, Task Manager, and Getting Help",
             "Final Workplace File and Window Management Project"
       ]
+},
+{
+      "name": "Google Chrome",
+      "slug": "chrome",
+      "titles": [
+            "Chrome Layout, Address Bar, and Basic Navigation",
+            "Tabs, Windows, and Restoring Work",
+            "JAWS Web Navigation in Chrome",
+            "Web Search, Research, and Source Evaluation",
+            "Bookmarks, History, and Finding a Page Again",
+            "Downloads, Uploads, and File Verification",
+            "Forms, Forms Mode, and Site Permissions",
+            "Zoom, Full Screen, and Accessible Browser Settings",
+            "Privacy, Safe Browsing, Pop-ups, and Notifications",
+            "Final Accessible Workplace Research Project"
+      ]
 }
 ];
 
@@ -208,7 +224,7 @@
         progressMessage.textContent =
           completedCourses === courses.length
             ? "All available courses are complete."
-            : "Progress loaded for Word, Excel, PowerPoint, JAWS, and Windows 11.";
+            : "Progress loaded for Word, Excel, PowerPoint, JAWS, Windows 11, and Chrome.";
       } catch (error) {
         progressMessage.textContent =
           "There was a connection problem while loading progress.";
