@@ -3,38 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible manuals and guided technology lessons for blind and low-vision learners.">
   <title>Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="accessibility.js" defer></script>
 </head>
-
 <body>
-
-  <header>
-    <h1>Accessible Learning Center</h1>
-    <p>Accessible manuals, guided lessons, and independent practice for blind and low-vision learners.</p>
+  <header class="home-hero">
+    <div>
+      <p class="eyebrow">Accessible technology learning</p>
+      <h1>Accessible Learning Center</h1>
+      <p>Practical manuals, guided lessons, and independent assignments created for blind and low-vision learners.</p>
+    </div>
+    <img class="home-hero__art" src="assets/accessible-tech-hero.webp" alt="" aria-hidden="true" width="1400" height="788">
   </header>
 
-  <main>
-
-    <nav aria-label="Main navigation">
-      <h2>Start Learning</h2>
-      <ul>
-        <li><a href="manuals.html">Manuals</a></li>
-        <li><a href="lessons.html">Lessons</a></li>
-        <li><a href="student-id.html">Student Progress</a></li>
-        <li><a href="#">Submit Assignment</a></li>
+  <main id="main-content">
+    <nav aria-labelledby="start-learning-heading">
+      <h2 id="start-learning-heading">Start learning</h2>
+      <ul class="card-list">
+        <li><a href="manuals.html">Read accessible manuals</a></li>
+        <li><a href="lessons.html">Practice Microsoft Word lessons</a></li>
+        <li><a href="student-id.html">Enter or change Student ID</a></li>
+        <li><a href="student-progress.html">Review my progress</a></li>
       </ul>
     </nav>
 
-    <section>
-      <h2>How It Works</h2>
-      <p>Choose a manual, complete the guided lessons, submit your assignments, and receive helpful feedback.</p>
+    <section aria-labelledby="how-it-works-heading">
+      <h2 id="how-it-works-heading">How it works</h2>
+      <ol>
+        <li>Choose a manual or guided lesson.</li>
+        <li>Complete the assignment using your preferred assistive technology.</li>
+        <li>Upload your work and return to review your saved progress.</li>
+      </ol>
     </section>
-
   </main>
 
   <footer>
     <p>&copy; 2026 Accessible Learning Center</p>
   </footer>
-
 </body>
 </html>
