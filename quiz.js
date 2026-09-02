@@ -12,12 +12,23 @@
   const printButton = document.getElementById("printCertificate");
   let latestScore = 0;
 
+  function resultStorageKey() {
+    const studentId = localStorage.getItem("accessibleLearningStudentId");
+    return studentId
+      ? "accessibleLearningQuizResults:" + studentId
+      : "accessibleLearningQuizResults";
+  }
+
   function saveResult(score) {
     try {
-      const key = "accessibleLearningQuizResults";
-      const results = JSON.parse(localStorage.getItem(key) || "{}");
+      const key = resultStorageKey();
+      const legacyKey = "accessibleLearningQuizResults";
+      const savedResults = localStorage.getItem(key);
+      const legacyResults = key === legacyKey ? null : localStorage.getItem(legacyKey);
+      const results = JSON.parse(savedResults || legacyResults || "{}");
       results[data.course] = { score, completedAt: new Date().toISOString() };
       localStorage.setItem(key, JSON.stringify(results));
+      if (legacyResults) localStorage.removeItem(legacyKey);
     } catch (error) {
       // The quiz and certificate still work when local storage is unavailable.
     }

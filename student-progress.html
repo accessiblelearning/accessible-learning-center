@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Review saved Word, Excel, PowerPoint, JAWS, Windows 11, and Chrome progress.">
+  <meta name="description" content="Review lesson completion and final quiz progress across all Accessible Learning Center courses.">
   <title>Student Progress - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=resource-search-1">
+  <link rel="stylesheet" href="styles.css?v=completion-tracking-1">
   <script src="accessibility.js?v=resource-search-1" defer></script>
 </head>
 <body>
@@ -16,6 +16,10 @@
 
   <main id="main-content">
     <div id="progressMessage" role="status" aria-live="polite">Loading your progress...</div>
+    <section id="continueSection" aria-labelledby="continue-heading" hidden>
+      <h2 id="continue-heading">Continue learning</h2>
+      <p id="continueLearning"></p>
+    </section>
     <div id="courseProgressSections" class="course-progress-sections"></div>
 
     <nav aria-label="Progress actions">
@@ -33,6 +37,8 @@
     const studentId = localStorage.getItem("accessibleLearningStudentId");
     const studentName = document.getElementById("studentName");
     const progressMessage = document.getElementById("progressMessage");
+    const continueSection = document.getElementById("continueSection");
+    const continueLearning = document.getElementById("continueLearning");
     const courseProgressSections = document.getElementById("courseProgressSections");
 
     const courses = [
@@ -447,12 +453,23 @@
       loadProgress();
     }
 
-    let quizResults = {};
-    try {
-      quizResults = JSON.parse(localStorage.getItem("accessibleLearningQuizResults") || "{}");
-    } catch (error) {
-      quizResults = {};
+    function readQuizResults() {
+      try {
+        const studentKey = "accessibleLearningQuizResults:" + studentId;
+        const savedForStudent = localStorage.getItem(studentKey);
+        if (savedForStudent) return JSON.parse(savedForStudent);
+
+        const legacyResults = localStorage.getItem("accessibleLearningQuizResults");
+        if (!legacyResults) return {};
+        localStorage.setItem(studentKey, legacyResults);
+        localStorage.removeItem("accessibleLearningQuizResults");
+        return JSON.parse(legacyResults);
+      } catch (error) {
+        return {};
+      }
     }
+
+    const quizResults = studentId ? readQuizResults() : {};
 
     function createCourseSection(course, records) {
       const section = document.createElement("section");
@@ -468,7 +485,8 @@
       const list = document.createElement("ol");
       list.className = "progress-list";
 
-      let submittedCount = 0;
+      let completedCount = 0;
+      let firstIncomplete = null;
 
       for (let i = 1; i <= course.titles.length; i++) {
         const record = records.find(
@@ -476,8 +494,15 @@
             item.course === course.name &&
             Number(item.lesson_number) === i
         );
-        const isSubmitted = Boolean(record && record.status === "submitted");
-        if (isSubmitted) submittedCount += 1;
+        const isComplete = Boolean(record && ["completed", "submitted"].includes(record.status));
+        if (isComplete) {
+          completedCount += 1;
+        } else if (!firstIncomplete) {
+          firstIncomplete = {
+            href: course.slug + "-lesson-" + i + ".html",
+            text: (course.displayName || course.name) + ", Lesson " + i + ": " + course.titles[i - 1]
+          };
+        }
 
         const item = document.createElement("li");
         const link = document.createElement("a");
@@ -485,11 +510,11 @@
 
         link.href = course.slug + "-lesson-" + i + ".html";
         link.textContent = "Lesson " + i + ": " + course.titles[i - 1];
-        status.className = isSubmitted
-          ? "lesson-status lesson-status--submitted"
+        status.className = isComplete
+          ? "lesson-status lesson-status--completed"
           : "lesson-status";
-        status.textContent = isSubmitted
-          ? "Submitted. Attempts: " + record.attempts
+        status.textContent = isComplete
+          ? (record.status === "submitted" ? "Completed by assignment submission" : "Completed")
           : "Not started";
 
         item.append(link, status);
@@ -497,14 +522,14 @@
       }
 
       summary.textContent =
-        submittedCount + " of " + course.titles.length + " lessons submitted.";
+        completedCount + " of " + course.titles.length + " lessons complete.";
       meter.max = course.titles.length;
-      meter.value = submittedCount;
+      meter.value = completedCount;
       meter.textContent =
-        submittedCount + " of " + course.titles.length + " lessons submitted";
+        completedCount + " of " + course.titles.length + " lessons complete";
       meter.setAttribute(
         "aria-label",
-        (course.displayName || course.name) + ": " + submittedCount + " of " + course.titles.length + " lessons submitted"
+        (course.displayName || course.name) + ": " + completedCount + " of " + course.titles.length + " lessons complete"
       );
 
       const quizParagraph = document.createElement("p");
@@ -523,7 +548,7 @@
       }
 
       section.append(heading, summary, meter, list, quizParagraph);
-      return { section, submittedCount };
+      return { section, completedCount, firstIncomplete };
     }
 
     async function loadProgress() {
@@ -540,13 +565,42 @@
 
         courseProgressSections.replaceChildren();
         let completedCourses = 0;
+        const courseResults = [];
 
         for (const course of courses) {
           const result = createCourseSection(course, data);
           courseProgressSections.appendChild(result.section);
-          if (result.submittedCount === course.titles.length) {
+          courseResults.push(result);
+          if (result.completedCount === course.titles.length) {
             completedCourses += 1;
           }
+        }
+
+        const completedRecords = data
+          .filter(record => ["completed", "submitted"].includes(record.status))
+          .sort((first, second) => String(second.updated_at || "").localeCompare(String(first.updated_at || "")));
+        const recentCourseIndex = completedRecords.length
+          ? courses.findIndex(course => course.name === completedRecords[0].course)
+          : 0;
+        const startIndex = recentCourseIndex >= 0 ? recentCourseIndex : 0;
+        let nextLesson = null;
+        for (let offset = 0; offset < courses.length; offset += 1) {
+          const index = (startIndex + offset) % courses.length;
+          if (courseResults[index].firstIncomplete) {
+            nextLesson = courseResults[index].firstIncomplete;
+            break;
+          }
+        }
+
+        continueLearning.replaceChildren();
+        if (nextLesson) {
+          const nextLink = document.createElement("a");
+          nextLink.href = nextLesson.href;
+          nextLink.textContent = "Continue with " + nextLesson.text;
+          continueLearning.append(nextLink);
+          continueSection.hidden = false;
+        } else {
+          continueSection.hidden = true;
         }
 
         progressMessage.textContent =

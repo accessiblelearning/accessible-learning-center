@@ -518,9 +518,27 @@ html[data-theme="dark"] .lesson-status {
   background: #29425d;
 }
 
-html[data-theme="dark"] .lesson-status--submitted {
+html[data-theme="dark"] .lesson-status--submitted,
+html[data-theme="dark"] .lesson-status--completed {
   color: #dfffee;
   background: #17563b;
+}
+
+.lesson-completion {
+  border-left: .45rem solid #18864b;
+}
+
+.lesson-completion button:disabled {
+  color: #173d28;
+  background: #d9f5e5;
+  border-color: #18864b;
+  opacity: 1;
+}
+
+html[data-theme="dark"] .lesson-completion button:disabled {
+  color: #e9fff1;
+  background: #174b32;
+  border-color: #72dfa4;
 }
 
 html[data-theme="dark"] .skip-link {
@@ -659,7 +677,8 @@ html[data-reduce-motion="true"] *::after {
   font-weight: 750;
 }
 
-.lesson-status--submitted {
+.lesson-status--submitted,
+.lesson-status--completed {
   color: #073d24;
   background: #c9f1dc;
 }
@@ -683,6 +702,7 @@ html[data-reduce-motion="true"] *::after {
 
 html[data-contrast="high"] .lesson-status,
 html[data-contrast="high"] .lesson-status--submitted,
+html[data-contrast="high"] .lesson-status--completed,
 html[data-contrast="high"] .submission-history {
   color: #000000;
   background: #ffffff;

@@ -64,9 +64,16 @@ export default {
         const lessonNumber = Number(data.lesson_number);
         const status = data.status || "in_progress";
 
-        if (!studentId || !course || !lessonNumber) {
+        if (!/^[A-Za-z0-9_-]{3,64}$/.test(studentId) || !course || !Number.isInteger(lessonNumber) || lessonNumber < 1 || lessonNumber > 10) {
           return Response.json(
             { error: "Missing required information." },
+            { status: 400, headers: cors }
+          );
+        }
+
+        if (!["in_progress", "completed", "submitted"].includes(status)) {
+          return Response.json(
+            { error: "Invalid progress status." },
             { status: 400, headers: cors }
           );
         }
@@ -86,7 +93,10 @@ export default {
           ON CONFLICT(student_id, course, lesson_number)
           DO UPDATE SET
             status = excluded.status,
-            attempts = attempts + 1,
+            attempts = CASE
+              WHEN excluded.status = 'submitted' THEN attempts + 1
+              ELSE attempts
+            END,
             updated_at = CURRENT_TIMESTAMP
         `)
           .bind(
@@ -113,7 +123,7 @@ export default {
       try {
         const studentId = url.searchParams.get("student_id");
 
-        if (!studentId) {
+        if (!studentId || !/^[A-Za-z0-9_-]{3,64}$/.test(studentId)) {
           return Response.json(
             { error: "Student ID is required." },
             { status: 400, headers: cors }

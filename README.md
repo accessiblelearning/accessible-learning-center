@@ -6,8 +6,8 @@ An accessible GitHub Pages learning website for blind and low-vision students.
 
 - Anonymous Student IDs stored in the learner's browser
 - Word, Excel, PowerPoint, JAWS, Windows 11, and Google Chrome manuals with ten guided lessons per course
-- D1-backed lesson progress tracking
-- Private assignment uploads to Cloudflare R2
+- D1-backed lesson-completion tracking using anonymous Student IDs
+- Private assignment uploads to Cloudflare R2, currently paused
 - Course-specific DOCX, XLSX, PPTX, CSV, PDF, TXT, and BRF submissions up to 10 MB
 - Site-wide text-size, high-contrast, and reduced-motion controls
 - Responsive blue technology theme
@@ -116,6 +116,8 @@ The resources page provides keyboard-accessible, client-side search across 25 ma
 ## Temporarily pausing assignment uploads
 
 Assignment uploads are intentionally paused in two layers. The lesson script sets UPLOADS_ENABLED to false and removes the hidden upload section. The submissions Worker sets SUBMISSIONS_ENABLED to false and returns HTTP 503 for direct submission attempts. Existing R2 objects and D1 progress records are preserved. To restore uploads deliberately, set both flags to true, validate, deploy both affected services, and perform a private end-to-end upload test.
+
+While uploads are paused, every lesson uses the shared lesson script to provide a keyboard- and screen-reader-accessible Mark this lesson complete button. Completion is stored in D1 under the learner's anonymous Student ID. Earlier submitted records continue to count as complete. The progress page shows completion totals, the next unfinished lesson, and quiz results stored locally for the active Student ID.
 
 
 ## Final quizzes and certificates

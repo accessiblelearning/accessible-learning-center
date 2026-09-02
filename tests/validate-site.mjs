@@ -208,8 +208,17 @@ check(!quizScript.includes("certificateStudentName") || !quizScript.includes("lo
 check(searchIndex.count === 306 && searchIndex.entries.length === 306, "Search index must contain 306 public learning, practice, quiz, and help pages.");
 check(assignmentScript.includes("const UPLOADS_ENABLED = false"), "Lesson upload interface is not paused.");
 check(assignmentScript.includes("submissionSection?.remove()"), "Paused upload interface is not removed.");
+check(assignmentScript.includes("Mark this lesson complete"), "Lesson completion control is missing.");
+check(assignmentScript.includes('status: "completed"'), "Lesson completion is not saved separately from submissions.");
+check(readFileSync(resolve(root, "student-progress.html"), "utf8").includes("Continue learning"), "Next unfinished lesson control is missing.");
+check(readFileSync(resolve(root, "student-progress.html"), "utf8").includes('["completed", "submitted"]'), "Completed and legacy submitted lessons are not both counted.");
+check(readFileSync(resolve(root, "student-progress.html"), "utf8").includes("recentCourseIndex"), "Continue learning does not use the most recently active course.");
+check(quizScript.includes('"accessibleLearningQuizResults:" + studentId'), "Quiz results are not separated by Student ID.");
+check(!readFileSync(resolve(root, "index.html"), "utf8").includes("Upload your work"), "Homepage still instructs learners to upload assignments.");
 check(worker.includes("const SUBMISSIONS_ENABLED = false"), "Submission Worker is not paused.");
 check(worker.includes("Assignment uploads are temporarily unavailable."), "Submission Worker pause response is missing.");
+const progressWorker = readFileSync(resolve(root, "worker.js"), "utf8");
+check(progressWorker.includes('["in_progress", "completed", "submitted"]'), "Progress Worker does not validate supported statuses.");
 check(accessibilityScript.includes("Website accessibility settings"), "Accessibility menu label is missing.");
 check(accessibilityScript.includes("darkMode"), "Saved dark-mode preference is missing.");
 check(accessibilityScript.includes('dataset.theme'), "Dark-mode theme state is missing.");

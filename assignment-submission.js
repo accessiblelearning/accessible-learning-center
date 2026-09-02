@@ -30,6 +30,106 @@
   let duplicateConfirmed = false;
   let activeSubmissionToken = "";
   const submissionSection = form?.closest("[data-upload-ui]") || form?.closest("section");
+
+  function createCompletionSection() {
+    const section = document.createElement("section");
+    const heading = document.createElement("h2");
+    const explanation = document.createElement("p");
+    const status = document.createElement("p");
+
+    section.className = "lesson-completion";
+    section.setAttribute("aria-labelledby", "lesson-completion-heading");
+    heading.id = "lesson-completion-heading";
+    heading.textContent = "Save your lesson progress";
+    explanation.textContent =
+      "After completing the assignment and checking your work, mark this lesson complete. No assignment file will be uploaded.";
+    status.id = "lessonCompletionStatus";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+
+    section.append(heading, explanation);
+
+    if (!studentId) {
+      const signInMessage = document.createElement("p");
+      const studentLink = document.createElement("a");
+      signInMessage.append("Enter an anonymous Student ID before saving completion. ");
+      studentLink.href = "student-id.html";
+      studentLink.textContent = "Enter Student ID";
+      signInMessage.append(studentLink);
+      section.append(signInMessage, status);
+      return section;
+    }
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = "Mark this lesson complete";
+    button.setAttribute("aria-describedby", status.id);
+    section.append(button, status);
+
+    function showCompleted(savedStatus) {
+      button.disabled = true;
+      button.textContent = "Lesson marked complete";
+      status.textContent = savedStatus === "submitted"
+        ? "This lesson was completed through an earlier assignment submission."
+        : "This lesson is saved as complete for Student ID " + studentId + ".";
+    }
+
+    async function checkCompletion() {
+      try {
+        const response = await fetch(
+          PROGRESS_API + "/progress?student_id=" + encodeURIComponent(studentId)
+        );
+        const records = await response.json();
+        if (!response.ok || !Array.isArray(records)) return;
+        const record = records.find(item =>
+          item.course === course &&
+          Number(item.lesson_number) === lessonNumber &&
+          ["completed", "submitted"].includes(item.status)
+        );
+        if (record) showCompleted(record.status);
+      } catch (error) {
+        // The learner can still try to save completion if the initial check fails.
+      }
+    }
+
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      status.textContent = "Saving lesson completion...";
+      try {
+        const response = await fetch(PROGRESS_API + "/progress", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            student_id: studentId,
+            course,
+            lesson_number: lessonNumber,
+            status: "completed"
+          })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+          status.textContent = result.error || "Lesson completion could not be saved. Please try again.";
+          button.disabled = false;
+          return;
+        }
+        showCompleted("completed");
+      } catch (error) {
+        status.textContent = "There was a connection problem. Please try again.";
+        button.disabled = false;
+      }
+    });
+
+    checkCompletion();
+    return section;
+  }
+
+  const completionSection = createCompletionSection();
+  if (submissionSection) {
+    submissionSection.before(completionSection);
+  } else {
+    document.querySelector("main")?.append(completionSection);
+  }
+
   if (!UPLOADS_ENABLED) {
     submissionSection?.remove();
     return;
