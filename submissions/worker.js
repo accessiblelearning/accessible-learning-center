@@ -7,6 +7,14 @@ const COURSE_EXTENSIONS = new Map([
   ["JAWS Screen Reader", new Set(["txt", "docx", "pdf", "brf"])],
   ["Windows 11", new Set(["txt", "docx", "pdf", "brf"])],
   ["Google Chrome", new Set(["txt", "docx", "pdf", "brf"])],
+  ["Google Docs", new Set(["docx","pdf","txt","brf"])],
+  ["Google Calendar", new Set(["pdf","txt","docx","brf"])],
+  ["Adobe Acrobat and Accessible PDFs", new Set(["pdf","docx","txt","brf"])],
+  ["BrailleBlaster", new Set(["brf","bbz","docx","pdf","txt"])],
+  ["Mantis Q40", new Set(["brf","txt","docx","pdf"])],
+  ["NLS Braille eReader", new Set(["brf","txt","docx","pdf"])],
+  ["Cybersecurity for Screen Reader Users", new Set(["txt","docx","pdf","brf"])],
+  ["Accessible Job Search", new Set(["docx","pdf","txt","brf"])],
 ]);
 
 function corsHeaders(origin) {

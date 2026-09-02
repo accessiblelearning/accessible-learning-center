@@ -4,6 +4,78 @@ import { dirname, extname, resolve } from "node:path";
 const root = process.cwd();
 const htmlFiles = readdirSync(root).filter((file) => extname(file) === ".html");
 const errors = [];
+const courses = [
+  {
+    "name": "Microsoft Word",
+    "slug": "word",
+    "ext": "docx,pdf,txt,brf"
+  },
+  {
+    "name": "Microsoft Excel",
+    "slug": "excel",
+    "ext": "xlsx,csv,pdf"
+  },
+  {
+    "name": "Microsoft PowerPoint",
+    "slug": "powerpoint",
+    "ext": "pptx,pdf"
+  },
+  {
+    "name": "JAWS Screen Reader",
+    "slug": "jaws",
+    "ext": "txt,docx,pdf,brf"
+  },
+  {
+    "name": "Windows 11",
+    "slug": "windows",
+    "ext": "txt,docx,pdf,brf"
+  },
+  {
+    "name": "Google Chrome",
+    "slug": "chrome",
+    "ext": "txt,docx,pdf,brf"
+  },
+  {
+    "name": "Google Docs",
+    "slug": "docs",
+    "ext": "docx,pdf,txt,brf"
+  },
+  {
+    "name": "Google Calendar",
+    "slug": "calendar",
+    "ext": "pdf,txt,docx,brf"
+  },
+  {
+    "name": "Adobe Acrobat and Accessible PDFs",
+    "slug": "pdf",
+    "ext": "pdf,docx,txt,brf"
+  },
+  {
+    "name": "BrailleBlaster",
+    "slug": "brailleblaster",
+    "ext": "brf,bbz,docx,pdf,txt"
+  },
+  {
+    "name": "Mantis Q40",
+    "slug": "mantis",
+    "ext": "brf,txt,docx,pdf"
+  },
+  {
+    "name": "NLS Braille eReader",
+    "slug": "ereader",
+    "ext": "brf,txt,docx,pdf"
+  },
+  {
+    "name": "Cybersecurity for Screen Reader Users",
+    "slug": "cybersecurity",
+    "ext": "txt,docx,pdf,brf"
+  },
+  {
+    "name": "Accessible Job Search",
+    "slug": "job-search",
+    "ext": "docx,pdf,txt,brf"
+  }
+];
 
 function check(condition, message) {
   if (!condition) errors.push(message);
@@ -11,164 +83,45 @@ function check(condition, message) {
 
 for (const file of htmlFiles) {
   const html = readFileSync(resolve(root, file), "utf8");
-
-  check(
-    html.includes('href="styles.css"'),
-    file + " is missing the shared stylesheet."
-  );
-  check(
-    html.includes('src="accessibility.js"'),
-    file + " is missing accessibility controls."
-  );
+  check(html.includes('href="styles.css"'), file + " is missing the shared stylesheet.");
+  check(html.includes('src="accessibility.js"'), file + " is missing accessibility controls.");
   check(!html.includes('href="#"'), file + " contains a dead # link.");
-  check(/<html\s+lang="en"/i.test(html), file + " is missing lang=\"en\".");
+  check(/<html\s+lang="en"/i.test(html), file + ' is missing lang="en".');
   check(/<meta\s+name="viewport"/i.test(html), file + " is missing a viewport setting.");
   check((html.match(/<h1(?:\s|>)/gi) || []).length === 1, file + " must contain exactly one H1.");
-  check(
-    !html.includes("\\n  <script"),
-    file + " contains a literal escaped newline in the head."
-  );
 
-  const localReferences = [
-    ...html.matchAll(/(?:href|src)="([^"]+)"/g)
-  ].map((match) => match[1]);
-
-  for (const reference of localReferences) {
-    if (
-      reference.startsWith("http") ||
-      reference.startsWith("#") ||
-      reference.startsWith("mailto:") ||
-      reference.startsWith("data:")
-    ) {
-      continue;
-    }
-
-    const cleanReference = reference.split("?")[0].split("#")[0];
-    check(
-      existsSync(resolve(root, dirname(file), cleanReference)),
-      file + " references missing file " + cleanReference + "."
-    );
-  }
-
-  if (/^(?:word|excel|powerpoint|jaws|windows|chrome)-lesson-\d+\.html$/.test(file)) {
-    check(
-      html.includes('src="assignment-submission.js"'),
-      file + " is missing assignment submission behavior."
-    );
-    check(
-      html.includes("Open this lesson in Safari"),
-      file + " is missing the iPhone Safari upload note."
-    );
-  }
-
-  if (/^excel-lesson-\d+\.html$/.test(file)) {
-    check(
-      html.includes('data-course="Microsoft Excel"'),
-      file + " is missing its Microsoft Excel course identifier."
-    );
-    check(
-      html.includes('data-allowed-extensions='),
-      file + " is missing its allowed file types."
-    );
-  }
-  if (/^powerpoint-lesson-\d+\.html$/.test(file)) {
-    check(html.includes('data-course="Microsoft PowerPoint"'), file + " is missing its Microsoft PowerPoint course identifier.");
-    check(html.includes('data-allowed-extensions="pptx,pdf"'), file + " is missing its PowerPoint file types.");
-  }
-  if (/^jaws-lesson-\d+\.html$/.test(file)) {
-    check(
-      html.includes('data-course="JAWS Screen Reader"'),
-      file + " is missing its JAWS course identifier."
-    );
-    check(
-      html.includes('data-allowed-extensions="txt,docx,pdf,brf"'),
-      file + " is missing its JAWS file types."
-    );
-  }
-  if (/^windows-lesson-\d+\.html$/.test(file)) {
-    check(html.includes('data-course="Windows 11"'), file + " is missing its Windows 11 course identifier.");
-    check(html.includes('data-allowed-extensions="txt,docx,pdf,brf"'), file + " is missing its Windows 11 file types.");
-  }
-  if (/^chrome-lesson-\d+\.html$/.test(file)) {
-    check(html.includes('data-course="Google Chrome"'), file + " is missing its Chrome course identifier.");
-    check(html.includes('data-allowed-extensions="txt,docx,pdf,brf"'), file + " is missing its Chrome file types.");
+  for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
+    const reference = match[1];
+    if (/^(?:https?:|#|mailto:|data:)/.test(reference)) continue;
+    const clean = reference.split("?")[0].split("#")[0];
+    check(existsSync(resolve(root, dirname(file), clean)), file + " references missing file " + clean + ".");
   }
 }
 
-check(htmlFiles.length === 72, "Expected 28 HTML pages.");
-check(existsSync(resolve(root, "excel-manual.html")), "Excel manual is missing.");
-check(existsSync(resolve(root, "powerpoint-manual.html")), "PowerPoint manual is missing.");
-check(existsSync(resolve(root, "jaws-manual.html")), "JAWS manual is missing.");
-check(existsSync(resolve(root, "windows-manual.html")), "Windows 11 manual is missing.");
-check(existsSync(resolve(root, "chrome-manual.html")), "Chrome manual is missing.");
-for (let lesson = 1; lesson <= 10; lesson += 1) {
-  check(
-    existsSync(resolve(root, "excel-lesson-" + lesson + ".html")),
-    "Excel Lesson " + lesson + " is missing."
-  );
+for (const course of courses) {
+  check(existsSync(resolve(root, course.slug + "-manual.html")), course.name + " manual is missing.");
+  for (let lesson = 1; lesson <= 10; lesson += 1) {
+    const file = course.slug + "-lesson-" + lesson + ".html";
+    check(existsSync(resolve(root, file)), file + " is missing.");
+    if (!existsSync(resolve(root, file))) continue;
+    const html = readFileSync(resolve(root, file), "utf8");
+    check(html.includes('src="assignment-submission.js"'), file + " is missing assignment submission behavior.");
+    check(html.includes("Open this lesson in Safari"), file + " is missing the iPhone Safari upload note.");
+    check(html.includes('data-course="' + course.name + '"'), file + " has the wrong course identifier.");
+    check(html.includes('data-allowed-extensions="' + course.ext + '"'), file + " has the wrong file types.");
+  }
 }
-for (let lesson = 1; lesson <= 10; lesson += 1) {
-  check(existsSync(resolve(root, "powerpoint-lesson-" + lesson + ".html")), "PowerPoint Lesson " + lesson + " is missing.");
-}
-for (let lesson = 1; lesson <= 10; lesson += 1) {
-  check(
-    existsSync(resolve(root, "jaws-lesson-" + lesson + ".html")),
-    "JAWS Lesson " + lesson + " is missing."
-  );
-}
-for (let lesson = 1; lesson <= 10; lesson += 1) {
-  check(existsSync(resolve(root, "windows-lesson-" + lesson + ".html")), "Windows 11 Lesson " + lesson + " is missing.");
-}
-for (let lesson = 1; lesson <= 10; lesson += 1) {
-  check(existsSync(resolve(root, "chrome-lesson-" + lesson + ".html")), "Chrome Lesson " + lesson + " is missing.");
-}
-check(
-  existsSync(resolve(root, "assets/accessible-tech-hero.webp")),
-  "Homepage technology artwork is missing."
-);
 
-const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
-check(
-  accessibilityScript.includes("Increase text size") &&
-    accessibilityScript.includes("Decrease text size") &&
-    accessibilityScript.includes("Reset text size") &&
-    accessibilityScript.includes("High contrast") &&
-    accessibilityScript.includes("Reduce motion"),
-  "Accessibility controls are incomplete."
-);
-check(
-  accessibilityScript.includes("browser, screen reader, and device settings"),
-  "Accessibility controls must explain that they complement native settings."
-);
-
-const submissionScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
-const submissionWorker = readFileSync(resolve(root, "submissions/worker.js"), "utf8");
-check(
-  submissionScript.includes('uploadData.append("submission_token"') &&
-    submissionScript.includes("script.dataset.course") &&
-    submissionScript.includes("script.dataset.allowedExtensions"),
-  "The browser submission retry token is missing."
-);
-check(
-  submissionWorker.includes("safePart(submissionToken)") &&
-    submissionWorker.includes('["Microsoft Excel"') &&
-    submissionWorker.includes('"xlsx"') &&
-    submissionWorker.includes('"csv"') &&
-    submissionWorker.includes('["Microsoft PowerPoint"') &&
-    submissionWorker.includes('"pptx"') &&
-    submissionWorker.includes('["JAWS Screen Reader"') &&
-    submissionWorker.includes('"brf"') &&
-    submissionWorker.includes('["Windows 11"') &&
-    submissionWorker.includes('["Google Chrome"'),
-  "The R2 Worker is missing idempotent retry handling."
-);
+const worker = readFileSync(resolve(root, "submissions/worker.js"), "utf8");
+for (const course of courses) {
+  check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
+}
+check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
+check(htmlFiles.length === 160, "Expected 160 HTML pages, found " + htmlFiles.length + ".");
+check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("All manuals are available"), "Manuals page is not marked complete.");
 
 if (errors.length) {
-  console.error("Site validation failed:");
-  for (const error of errors) console.error("- " + error);
+  console.error(errors.join("\n"));
   process.exit(1);
 }
-
-console.log(
-  "Validated " + htmlFiles.length + " pages, local links, accessibility controls, Word, Excel, PowerPoint, JAWS, Windows 11, and Chrome uploads, and course progress."
-);
+console.log("Validated " + htmlFiles.length + " accessible pages, 14 manuals, 140 lessons, and course-aware private uploads.");

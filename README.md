@@ -74,3 +74,22 @@ Lessons use reversible practice tasks, warn against changing shared-computer set
 ## Google Chrome course
 
 The Chrome course provides keyboard-first, JAWS-friendly instruction for browser controls, tabs, web navigation, research, bookmarks, history, downloads, uploads, forms, permissions, zoom, accessibility, privacy, Safe Browsing, and a final workplace research project. It uses public or fictional information, warns against bypassing browser security, and keeps existing course records unchanged.
+
+## Complete course catalog
+
+- **Microsoft Word:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
+- **Microsoft Excel:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (XLSX, CSV, PDF)
+- **Microsoft PowerPoint:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PPTX, PDF)
+- **JAWS Screen Reader:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
+- **Windows 11:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
+- **Google Chrome:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
+- **Google Docs:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
+- **Google Calendar:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PDF, TXT, DOCX, BRF)
+- **Adobe Acrobat and Accessible PDFs:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PDF, DOCX, TXT, BRF)
+- **BrailleBlaster:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, BBZ, DOCX, PDF, TXT)
+- **Mantis Q40:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, TXT, DOCX, PDF)
+- **NLS Braille eReader:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, TXT, DOCX, PDF)
+- **Cybersecurity for Screen Reader Users:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
+- **Accessible Job Search:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
+
+Course content uses fictional, public, instructor-provided, or redacted information. Never submit passwords, recovery codes, protected NLS books, government identifiers, financial data, or private workplace records.
