@@ -19,6 +19,7 @@
   const submitButton = document.getElementById("submitLesson");
   const message = document.getElementById("submissionMessage");
   let duplicateConfirmed = false;
+  let activeSubmissionToken = "";
 
   if (!studentId) {
     message.textContent =
@@ -78,10 +79,24 @@
 
   fileInput.addEventListener("change", () => {
     duplicateConfirmed = false;
+    activeSubmissionToken = "";
     message.textContent = fileInput.files[0]
       ? "Selected file: " + fileInput.files[0].name
       : "";
   });
+
+  function createSubmissionToken() {
+    if (globalThis.crypto && typeof globalThis.crypto.randomUUID === "function") {
+      return globalThis.crypto.randomUUID();
+    }
+
+    return (
+      Date.now().toString(36) +
+      "-" +
+      Math.random().toString(36).slice(2) +
+      Math.random().toString(36).slice(2)
+    );
+  }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -132,10 +147,15 @@
       "Uploading your Lesson " + lessonNumber + " assignment. Please wait.";
 
     try {
+      if (!activeSubmissionToken) {
+        activeSubmissionToken = createSubmissionToken();
+      }
+
       const uploadData = new FormData();
       uploadData.append("student_id", studentId);
       uploadData.append("course", COURSE);
       uploadData.append("lesson_number", String(lessonNumber));
+      uploadData.append("submission_token", activeSubmissionToken);
       uploadData.append("file", file);
 
       const uploadResponse = await fetch(
@@ -156,6 +176,7 @@
         return;
       }
 
+      saveLastSubmission(file, uploadResult.submission_id);
       message.textContent =
         "Your file was uploaded. Saving your lesson progress.";
 
@@ -176,20 +197,20 @@
 
       if (!progressResponse.ok || !progressResult.success) {
         message.textContent =
-          "Your assignment file was uploaded, but your progress could not be updated. Please contact the instructor.";
+          "Your assignment file is safely uploaded, but progress confirmation did not finish. Do not upload it again. Check My Progress, then contact the instructor if it is not listed.";
         return;
       }
 
-      saveLastSubmission(file, uploadResult.submission_id);
       form.reset();
       duplicateConfirmed = false;
+      activeSubmissionToken = "";
       message.textContent =
         "Lesson " +
         lessonNumber +
         " was submitted successfully. Your file and progress have been saved.";
     } catch (error) {
       message.textContent =
-        "There was a connection problem. Please try submitting again.";
+        "The connection ended before confirmation. Press Upload and Submit again to safely retry the same upload.";
       submitButton.disabled = false;
       fileInput.disabled = false;
     }

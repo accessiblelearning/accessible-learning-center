@@ -63,12 +63,16 @@
     const panel = document.createElement("section");
     panel.className = "accessibility-panel";
     panel.setAttribute("aria-labelledby", "accessibility-controls-heading");
+    panel.setAttribute("aria-describedby", "accessibility-controls-note");
     panel.innerHTML = `
       <div class="accessibility-panel__inner">
         <h2 id="accessibility-controls-heading">Accessibility adjustments</h2>
+        <p id="accessibility-controls-note" class="accessibility-note">
+          Optional page controls that complement your browser, screen reader, and device settings.
+        </p>
         <div class="accessibility-controls">
-          <button type="button" data-action="decrease">Decrease text</button>
-          <button type="button" data-action="increase">Increase text</button>
+          <button type="button" data-action="decrease">Decrease text size</button>
+          <button type="button" data-action="increase">Increase text size</button>
           <button type="button" data-action="reset-text">Reset text size</button>
           <button type="button" data-action="contrast" aria-pressed="false">High contrast</button>
           <button type="button" data-action="motion" aria-pressed="false">Reduce motion</button>

@@ -21,6 +21,9 @@ for (const file of htmlFiles) {
     file + " is missing accessibility controls."
   );
   check(!html.includes('href="#"'), file + " contains a dead # link.");
+  check(/<html\s+lang="en"/i.test(html), file + " is missing lang=\"en\".");
+  check(/<meta\s+name="viewport"/i.test(html), file + " is missing a viewport setting.");
+  check((html.match(/<h1(?:\s|>)/gi) || []).length === 1, file + " must contain exactly one H1.");
   check(
     !html.includes("\\n  <script"),
     file + " contains a literal escaped newline in the head."
@@ -63,6 +66,31 @@ check(htmlFiles.length === 17, "Expected 17 HTML pages.");
 check(
   existsSync(resolve(root, "assets/accessible-tech-hero.webp")),
   "Homepage technology artwork is missing."
+);
+
+const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
+check(
+  accessibilityScript.includes("Increase text size") &&
+    accessibilityScript.includes("Decrease text size") &&
+    accessibilityScript.includes("Reset text size") &&
+    accessibilityScript.includes("High contrast") &&
+    accessibilityScript.includes("Reduce motion"),
+  "Accessibility controls are incomplete."
+);
+check(
+  accessibilityScript.includes("browser, screen reader, and device settings"),
+  "Accessibility controls must explain that they complement native settings."
+);
+
+const submissionScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
+const submissionWorker = readFileSync(resolve(root, "submissions/worker.js"), "utf8");
+check(
+  submissionScript.includes('uploadData.append("submission_token"'),
+  "The browser submission retry token is missing."
+);
+check(
+  submissionWorker.includes("safePart(submissionToken)"),
+  "The R2 Worker is missing idempotent retry handling."
 );
 
 if (errors.length) {

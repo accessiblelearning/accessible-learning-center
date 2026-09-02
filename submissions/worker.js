@@ -71,6 +71,8 @@ export default {
       const studentId = String(form.get("student_id") || "").trim();
       const course = String(form.get("course") || "").trim();
       const lessonNumber = Number(form.get("lesson_number"));
+      const rawSubmissionToken = String(form.get("submission_token") || "").trim();
+      const submissionToken = rawSubmissionToken || crypto.randomUUID();
       const file = form.get("file");
 
       if (!/^[a-zA-Z0-9_-]{3,64}$/.test(studentId)) {
@@ -87,6 +89,10 @@ export default {
 
       if (!Number.isInteger(lessonNumber) || lessonNumber < 1 || lessonNumber > 1000) {
         return json({ error: "A valid lesson number is required." }, 400, origin);
+      }
+
+      if (!/^[a-zA-Z0-9_-]{16,80}$/.test(submissionToken)) {
+        return json({ error: "The submission retry token is invalid." }, 400, origin);
       }
 
       if (!(file instanceof File) || !file.name || file.size === 0) {
@@ -114,7 +120,7 @@ export default {
         safePart(studentId),
         safePart(course),
         `lesson-${lessonNumber}`,
-        `${submittedAt.replace(/[:.]/g, "-")}-${crypto.randomUUID()}.${extension}`,
+        `${safePart(submissionToken)}.${extension}`,
       ].join("/");
 
       await env.SUBMISSIONS_BUCKET.put(key, file.stream(), {
@@ -127,6 +133,7 @@ export default {
           lessonNumber: String(lessonNumber),
           originalFilename: file.name.slice(0, 200),
           submittedAt,
+          submissionToken,
         },
       });
 

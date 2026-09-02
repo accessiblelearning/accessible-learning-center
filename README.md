@@ -25,3 +25,11 @@ An accessible GitHub Pages learning website for blind and low-vision students.
 Students should use anonymous IDs rather than names or other personal information. Assignment files are stored in the private `accessible-learning-submissions` bucket and are not publicly browsable.
 
 No paid service is required by the current implementation.
+
+
+## Reliability and accessibility
+
+- Each upload uses a client-generated retry token. If a mobile connection drops before confirmation, retrying the same submission reuses the same R2 object instead of creating a duplicate stored copy.
+- Older cached pages remain compatible because the Worker creates a fallback token when none is provided.
+- Assignment files remain private in R2.
+- Shared page controls complement, rather than replace, browser and assistive-technology settings.

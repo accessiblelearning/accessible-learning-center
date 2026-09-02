@@ -29,7 +29,12 @@ body {
   margin: 0;
   min-height: 100vh;
   color: var(--ink);
-  background: #eaf4ff;
+  background-color: #eaf4ff;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(21, 88, 176, 0.13) 1.2px, transparent 1.3px),
+    linear-gradient(135deg, transparent 0 48%, rgba(22, 139, 234, 0.045) 49% 51%, transparent 52% 100%);
+  background-size: 28px 28px, 112px 112px;
+  background-attachment: fixed;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 1rem;
   line-height: 1.65;
@@ -119,6 +124,13 @@ textarea:focus-visible {
   color: #061a3a;
   background: #9de5ff;
   border-color: #ffffff;
+}
+
+.accessibility-note {
+  max-width: 72ch;
+  margin: 0 0 0.55rem;
+  color: #cdeeff;
+  font-size: 0.9rem;
 }
 
 .accessibility-status {
@@ -385,6 +397,7 @@ html[data-contrast="high"] {
 html[data-contrast="high"] body {
   color: #000000;
   background: #ffffff;
+  background-image: none;
 }
 
 html[data-contrast="high"] body > header,
@@ -531,4 +544,28 @@ html[data-contrast="high"] .submission-history {
   color: #000000;
   background: #ffffff;
   border: 2px solid #000000;
+}
+
+@media print {
+  .skip-link,
+  .accessibility-panel,
+  .site-nav,
+  .home-hero__art {
+    display: none !important;
+  }
+
+  body,
+  body > header,
+  body > main {
+    width: 100%;
+    color: #000000;
+    background: #ffffff;
+    background-image: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  a {
+    color: #000000;
+  }
 }
