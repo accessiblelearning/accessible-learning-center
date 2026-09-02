@@ -1,8 +1,0 @@
-name = "accessible-learning-api"
-main = "worker.js"
-compatibility_date = "2026-09-01"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "accessible-learning-progress"
-database_id = "16a255bd-756a-4f53-9549-967122ee4b01"

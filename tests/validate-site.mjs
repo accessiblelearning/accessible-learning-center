@@ -88,8 +88,8 @@ function check(condition, message) {
 
 for (const file of htmlFiles) {
   const html = readFileSync(resolve(root, file), "utf8");
-  check(/href="styles\\.css(?:\\?[^"]*)?"/.test(html), file + " is missing the shared stylesheet.");
-  check(/src="accessibility\\.js(?:\\?[^"]*)?"/.test(html), file + " is missing accessibility controls.");
+  check(html.includes('href="styles.css?v=dark-mode-1"') || html.includes('href="styles.css"'), file + " is missing the shared stylesheet.");
+  check(html.includes('src="accessibility.js?v=dark-mode-1"') || html.includes('src="accessibility.js"'), file + " is missing accessibility controls.");
   check(!html.includes('href="#"'), file + " contains a dead # link.");
   check(/<html\s+lang="en"/i.test(html), file + ' is missing lang="en".');
   check(/<meta\s+name="viewport"/i.test(html), file + " is missing a viewport setting.");
