@@ -198,8 +198,9 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 311, "Expected 311 HTML pages, found " + htmlFiles.length + ".");
-check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
+check(htmlFiles.length === 318, "Expected 318 HTML pages, found " + htmlFiles.length + ".");
+const manualsHtml = readFileSync(resolve(root, "manuals.html"), "utf8");
+check(manualsHtml.includes("Manuals are grouped by subject"), "Manuals page is not grouped by subject.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 const assignmentScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
 const searchIndex = JSON.parse(readFileSync(resolve(root, "search-index.json"), "utf8"));
@@ -209,12 +210,20 @@ check(existsSync(resolve(root, "command-practice.html")), "Keyboard Command Prac
 check(existsSync(resolve(root, "troubleshooting-lab.html")), "Assistive Technology Troubleshooting Lab page is missing.");
 check(existsSync(resolve(root, "additional-skills-manual.html")), "Additional Screen-Reader Skills manual is missing.");
 const additionalSkills = readFileSync(resolve(root, "additional-skills-manual.html"), "utf8");
-check(additionalSkills.includes("Screen Reader Skills for Work and Independence"), "Independent skills manual title is missing.");
+check(additionalSkills.includes("Independent Skills Manuals"), "Independent skills directory title is missing.");
 check(!additionalSkills.includes("curriculum-audit") && !additionalSkills.includes("topic gaps identified"), "Independent skills manual still contains source-comparison framing.");
 check(readFileSync(resolve(root, "resources.html"), "utf8").includes("The Windows Screen Reader Primer: All the Basics and More, Fifth Edition"), "Screen Reader Primer is missing from Resources.");
-for (const topic of ["Outlook", "Zoom, Microsoft Teams, and Google Meet", "OneDrive, Dropbox", "Google Drive, Gmail, Forms, and Classroom", "Accessible audio", "NotebookLM, Be My Eyes", "Diagnose before restarting"]) {
-  check(additionalSkills.includes(topic), "Additional Skills manual is missing " + topic + ".");
+const independentManualFiles = ["outlook-manual.html", "google-services-manual.html", "cloud-storage-manual.html", "online-meetings-manual.html", "accessible-audio-manual.html", "ai-access-manual.html", "screen-reader-recovery-manual.html"];
+for (const file of independentManualFiles) {
+  check(existsSync(resolve(root, file)), file + " is missing.");
+  const manual = readFileSync(resolve(root, file), "utf8");
+  check(manual.includes("Keyboard command") || manual.includes("Keyboard approach"), file + " is missing keyboard-command guidance.");
+  check(manual.includes("If that does not happen"), file + " is missing recovery guidance.");
+  check(additionalSkills.includes(file), "Independent skills directory is missing " + file + ".");
 }
+check(manualsHtml.indexOf("Microsoft applications") < manualsHtml.indexOf("outlook-manual.html"), "Outlook is not grouped with Microsoft applications.");
+check(manualsHtml.indexOf("Google applications") < manualsHtml.indexOf("google-services-manual.html"), "Google services are not grouped with Google applications.");
+check(manualsHtml.indexOf("Cloud storage and online communication") < manualsHtml.indexOf("cloud-storage-manual.html"), "Cloud storage is not in its category.");
 const troubleshootingLab = readFileSync(resolve(root, "troubleshooting-lab.js"), "utf8");
 check((troubleshootingLab.match(/title: "/g) || []).length === 5, "Troubleshooting Lab must include five scenarios.");
 for (const perspective of ["JAWS", "NVDA", "Narrator", "VoiceOver", "braille display"]) {
@@ -290,4 +299,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("Validated " + htmlFiles.length + " accessible pages, 26 manuals, 250 lessons, 25 final quizzes, command practice, local certificates, searchable help, and paused private uploads.");
+console.log("Validated " + htmlFiles.length + " accessible pages, 33 manuals, 250 lessons, 25 final quizzes, command practice, local certificates, searchable help, and paused private uploads.");

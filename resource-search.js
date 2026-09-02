@@ -9,6 +9,17 @@
   const results = document.getElementById("resourceSearchResults");
   let entries = [];
 
+  const independentManuals = [
+    ["Independent Skills Manuals", "additional-skills-manual.html", "Independent skills", "Choose a separate manual for Outlook, Google services, cloud storage, meetings, audio, AI access, or screen-reader recovery."],
+    ["Microsoft Outlook Accessible Manual", "outlook-manual.html", "Microsoft applications", "Keyboard commands and task steps for email, calendar, search, replies, forwarding, and safer attachments."],
+    ["Google Drive, Gmail, Forms, and Classroom Manual", "google-services-manual.html", "Google applications", "Keyboard-first task guidance for Google Drive, Gmail, Forms, and Classroom."],
+    ["OneDrive, Dropbox, and Cloud Sharing Manual", "cloud-storage-manual.html", "Cloud storage", "File Explorer commands, synchronization, ownership, link permissions, sharing, and version history."],
+    ["Zoom, Microsoft Teams, and Google Meet Manual", "online-meetings-manual.html", "Online communication", "Keyboard commands for microphone, camera, chat, raise hand, captions, and screen sharing."],
+    ["Accessible Audio Recording and Editing Manual", "accessible-audio-manual.html", "Accessible media", "Audacity keyboard commands for recording, playback, selection, saving, and exporting audio."],
+    ["NotebookLM, Be My Eyes, and AI-Assisted Access Manual", "ai-access-manual.html", "Artificial intelligence", "Keyboard navigation, source verification, privacy, and safe use of AI-assisted access tools."],
+    ["Screen-Reader Troubleshooting and Recovery Manual", "screen-reader-recovery-manual.html", "Foundations and recovery", "Commands and diagnostic steps for focus, screen-reader modes, applications, and safe recovery."]
+  ].map(([title, url, course, snippet]) => ({ title, url, type: "manual", course, snippet, text: (title + " " + course + " " + snippet).toLowerCase() }));
+
   const synonyms = new Map([
     ["word", ["writer", "document", "docx"]],
     ["excel", ["calc", "sheets", "spreadsheet", "xlsx"]],
@@ -55,7 +66,7 @@
     history.replaceState(null, "", url);
 
     if (!query) {
-      status.textContent = "Enter one or more words to search 25 manuals, 250 lessons, and 25 final quizzes.";
+      status.textContent = "Enter one or more words to search 33 manuals, 250 lessons, and 25 final quizzes.";
       return;
     }
 
@@ -125,9 +136,9 @@
       return response.json();
     })
     .then(data => {
-      entries = Array.isArray(data.entries) ? data.entries : [];
+      entries = (Array.isArray(data.entries) ? data.entries : []).concat(independentManuals);
       if (queryInput.value.trim()) render();
-      else status.textContent = "Search is ready. Enter one or more words to search 25 manuals, 250 lessons, and 25 final quizzes.";
+      else status.textContent = "Search is ready. Enter one or more words to search 33 manuals, 250 lessons, and 25 final quizzes.";
     })
     .catch(() => {
       status.textContent = "Search is temporarily unavailable. Use the organized resource links below.";
