@@ -29,12 +29,8 @@ body {
   margin: 0;
   min-height: 100vh;
   color: var(--ink);
-  background-color: #eaf4ff;
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(21, 88, 176, 0.13) 1.2px, transparent 1.3px),
-    linear-gradient(135deg, transparent 0 48%, rgba(22, 139, 234, 0.045) 49% 51%, transparent 52% 100%);
-  background-size: 28px 28px, 112px 112px;
-  background-attachment: fixed;
+  background-color: #ffffff;
+  background-image: none;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 1rem;
   line-height: 1.65;
@@ -177,6 +173,8 @@ textarea:focus-visible {
   min-height: 2.75rem;
   padding: 0.5rem 0.8rem;
   color: #ffffff;
+  background: transparent;
+  border: 2px solid #7dcfff;
   border-radius: 0.55rem;
   font-weight: 750;
   text-decoration: none;
@@ -441,19 +439,16 @@ html[data-theme="dark"] {
   --blue-500: #5fc6ff;
   --ink: #edf6ff;
   --muted: #b8cce0;
-  --surface: #101d2d;
-  --surface-soft: #16283d;
-  --border: #3c668c;
+  --surface: #000000;
+  --surface-soft: #080808;
+  --border: #8dd1ff;
   --focus: #ffd166;
   --shadow: 0 18px 44px rgba(0, 0, 0, 0.38);
 }
 
 html[data-theme="dark"] body {
-  color: var(--ink);
-  background-color: #07111f;
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(94, 187, 255, 0.18) 1.2px, transparent 1.3px),
-    linear-gradient(135deg, transparent 0 48%, rgba(43, 145, 221, 0.08) 49% 51%, transparent 52% 100%);
+  color: #ffffff;
+  background: #000000;
 }
 
 html[data-theme="dark"] a {
@@ -468,8 +463,8 @@ html[data-theme="dark"] body > header,
 html[data-theme="dark"] .site-nav,
 html[data-theme="dark"] .accessibility-panel {
   color: #ffffff;
-  background: linear-gradient(135deg, #06101d, #123f68);
-  border-color: #4c83b5;
+  background: #000000;
+  border-color: #8dd1ff;
 }
 
 html[data-theme="dark"] body > header h1,
@@ -487,9 +482,64 @@ html[data-theme="dark"] .progress-list li,
 html[data-theme="dark"] .submission-history,
 html[data-theme="dark"] .tip,
 html[data-theme="dark"] table {
-  color: var(--ink);
-  background: #14263a;
-  border-color: #456f96;
+  color: #ffffff;
+  background: #080808;
+  border-color: #8dd1ff;
+}
+
+html[data-theme="dark"] .accessibility-controls button,
+html[data-theme="dark"] button,
+html[data-theme="dark"] input[type="submit"] {
+  color: #ffffff;
+  background: #000000;
+  border: 2px solid #8dd1ff;
+}
+
+html[data-theme="dark"] .accessibility-controls button:hover,
+html[data-theme="dark"] .accessibility-controls button[aria-pressed="true"],
+html[data-theme="dark"] button:hover,
+html[data-theme="dark"] input[type="submit"]:hover {
+  color: #ffffff;
+  background: #101010;
+  border-color: #ffffff;
+}
+
+html[data-theme="dark"] .accessibility-controls button[aria-pressed="true"] {
+  border-width: 4px;
+  box-shadow: inset 0 0 0 2px #3397e8;
+}
+
+html[data-theme="dark"] .site-nav a,
+html[data-theme="dark"] .site-nav a:hover,
+html[data-theme="dark"] .site-nav a[aria-current="page"] {
+  color: #ffffff;
+  background: #000000;
+  border: 2px solid #8dd1ff;
+}
+
+html[data-theme="dark"] .site-nav a:hover,
+html[data-theme="dark"] .site-nav a[aria-current="page"] {
+  border-color: #ffffff;
+  box-shadow: inset 0 0 0 2px #3397e8;
+}
+
+html[data-theme="dark"] .card-list a {
+  color: #ffffff;
+  background: #000000;
+  border-color: #8dd1ff;
+  box-shadow: none;
+}
+
+html[data-theme="dark"] .card-list a:hover {
+  color: #ffffff;
+  background: #101010;
+  border-color: #ffffff;
+}
+
+html[data-theme="dark"] [role="status"]:not(:empty) {
+  color: #ffffff;
+  background: #000000;
+  border: 2px solid #8dd1ff;
 }
 
 html[data-theme="dark"] .lesson-nav a,
@@ -867,3 +917,53 @@ html[data-contrast="high"] td {
 
 /* Keyboard command practice lab */
 .practice-safety{background:#fff4d6;border-left:.45rem solid #b97800}.practice-settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.8rem}.practice-settings p{margin:0}.practice-settings label:not(:has(input)){display:block;margin-bottom:.35rem;font-weight:850}.practice-settings select{width:100%;min-height:3rem;padding:.6rem;color:#10253d;background:#fff;border:2px solid #527da8;border-radius:.5rem;font:inherit}.practice-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-block:1rem}.command-prompt{padding:1rem;background:#e6f6ff;border-left:.45rem solid var(--blue-700);border-radius:.55rem}.key-capture{margin-block:1rem;padding:clamp(1rem,4vw,2rem);background:#073d78;color:#fff;border:4px solid #7fd0ff;border-radius:.85rem;box-shadow:inset 0 0 0 2px #fff}.key-capture:focus-visible{outline:5px solid var(--focus);outline-offset:4px}.practice-status:not(:empty){margin-block:1rem;padding:1rem;background:#eef8ff;border:2px solid #75addc;border-radius:.55rem;font-weight:800}.learn-only-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:.85rem}.learn-only-list article{padding:1rem;background:#f5faff;border:1px solid #9dc6ea;border-radius:.65rem}.learn-only-list h3{margin-top:0}html[data-theme="dark"] .practice-safety,html[data-theme="dark"] .command-prompt,html[data-theme="dark"] .practice-status,html[data-theme="dark"] .learn-only-list article{color:var(--text);background:#102846;border-color:#69baf3}html[data-theme="dark"] .practice-settings select{color:#fff;background:#071a31;border-color:#8bd0ff}html[data-contrast="high"] .practice-safety,html[data-contrast="high"] .command-prompt,html[data-contrast="high"] .key-capture,html[data-contrast="high"] .practice-status,html[data-contrast="high"] .learn-only-list article,html[data-contrast="high"] .practice-settings select{color:#000;background:#fff;border:3px solid #000;box-shadow:none}@media(max-width:32rem){.practice-actions{display:grid}.practice-actions button{width:100%}}
+
+/* Keep standard dark mode strictly black, white, and outlined. */
+html[data-theme="dark"]:not([data-contrast="high"]) body > main,
+html[data-theme="dark"]:not([data-contrast="high"]) main > section,
+html[data-theme="dark"]:not([data-contrast="high"]) main > nav,
+html[data-theme="dark"]:not([data-contrast="high"]) form,
+html[data-theme="dark"]:not([data-contrast="high"]) .lesson-nav,
+html[data-theme="dark"]:not([data-contrast="high"]) .course-lesson-list li,
+html[data-theme="dark"]:not([data-contrast="high"]) .progress-list li,
+html[data-theme="dark"]:not([data-contrast="high"]) .resource-search,
+html[data-theme="dark"]:not([data-contrast="high"]) .search-results article,
+html[data-theme="dark"]:not([data-contrast="high"]) .resource-directory li,
+html[data-theme="dark"]:not([data-contrast="high"]) .quiz-question,
+html[data-theme="dark"]:not([data-contrast="high"]) .quiz-review li,
+html[data-theme="dark"]:not([data-contrast="high"]) .certificate,
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-safety,
+html[data-theme="dark"]:not([data-contrast="high"]) .command-prompt,
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-status,
+html[data-theme="dark"]:not([data-contrast="high"]) .learn-only-list article {
+  color: #ffffff;
+  background: #000000;
+  border-color: #8dd1ff;
+  box-shadow: none;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) h1,
+html[data-theme="dark"]:not([data-contrast="high"]) h2,
+html[data-theme="dark"]:not([data-contrast="high"]) h3,
+html[data-theme="dark"]:not([data-contrast="high"]) .quiz-question legend,
+html[data-theme="dark"]:not([data-contrast="high"]) .certificate__name,
+html[data-theme="dark"]:not([data-contrast="high"]) .certificate__course {
+  color: #ffffff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) input,
+html[data-theme="dark"]:not([data-contrast="high"]) select,
+html[data-theme="dark"]:not([data-contrast="high"]) textarea,
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-settings select,
+html[data-theme="dark"]:not([data-contrast="high"]) .resource-search input,
+html[data-theme="dark"]:not([data-contrast="high"]) .resource-search select {
+  color: #ffffff;
+  background: #000000;
+  border: 2px solid #8dd1ff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .lesson-completion button:disabled {
+  color: #ffffff;
+  background: #000000;
+  border-color: #72dfa4;
+}

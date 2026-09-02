@@ -235,6 +235,11 @@ check(screenReaderManual.includes("Screen Readers: JAWS, Narrator, and NVDA"), "
 for (const action of ["decrease", "increase", "reset-text", "dark", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }
+const sharedStyles = readFileSync(resolve(root, "styles.css"), "utf8");
+check(sharedStyles.includes('html[data-theme="dark"] body {\n  color: #ffffff;\n  background: #000000;'), "Dark mode does not enforce a black background with white text.");
+check(sharedStyles.includes('html[data-theme="dark"] .site-nav a[aria-current="page"]'), "Dark-mode current navigation is not explicitly styled.");
+check(sharedStyles.includes('html[data-theme="dark"] [role="status"]:not(:empty)'), "Dark-mode status messages are not explicitly styled.");
+check(sharedStyles.includes('html[data-theme="dark"] .accessibility-controls button[aria-pressed="true"]'), "Pressed accessibility controls do not retain a dark outlined style.");
 
 if (errors.length) {
   console.error(errors.join("\n"));
