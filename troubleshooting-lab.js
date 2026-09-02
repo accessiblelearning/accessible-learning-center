@@ -19,9 +19,9 @@
         braille: "The braille line still changes when you press an Arrow key, but speech is silent."
       },
       choices: [
-        ["Close the application immediately", false, "Closing could lose unsaved work. First determine whether only speech is muted."],
-        ["Use the assistive technology's speech-toggle command, then test the current item", true, "Good choice. This is reversible and checks whether speech was accidentally muted without disturbing the document."],
-        ["Restart the computer", false, "Restarting is too disruptive while work may be unsaved. Begin with a reversible speech check."]
+        ["Press the application's save command, then reopen the document", false, "Saving sounds protective, but without speech you cannot confirm the active window, filename, or dialog. First restore or verify feedback without changing the document."],
+        ["Use the assistive technology's speech-toggle command, then request the current item", true, "Best first step. It is reversible and tests both accidental speech muting and whether the assistive technology is still responding."],
+        ["Switch to another application and test whether speech works there", false, "This is a reasonable diagnostic step, but it changes focus while unsaved work is open. A speech-toggle and current-item check is safer and more direct first."]
       ]
     },
     {
@@ -32,9 +32,9 @@
         voiceover: "VoiceOver moves to another rotor item instead of entering text.", braille: "The display moves to a heading instead of inserting the typed character."
       },
       choices: [
-        ["Confirm focus on the edit field and switch to the typing or interaction mode", true, "Correct. The screen reader is still interpreting letters as navigation commands. Confirm the edit field before changing mode."],
-        ["Keep pressing H until it appears", false, "Repeated commands may move farther from the field. Stop, locate the edit field, and confirm the interaction mode."],
-        ["Turn the screen reader off", false, "Turning it off removes useful feedback. Correct the navigation or interaction mode instead."]
+        ["Press the screen reader's mode-toggle command, then return to the field", false, "The mode may be the problem, but toggling it before confirming focus can place the page in the wrong mode. Locate and confirm the edit field first."],
+        ["Confirm focus on the edit field, then enter its typing or interaction mode", true, "Best answer. The order matters: confirm the intended field first, then change the interaction mode."],
+        ["Use Tab once and type a short test character", false, "Tab might reach the field, but it might also move to a different control. Confirm what has focus before typing any test character."]
       ]
     },
     {
@@ -45,9 +45,9 @@
         voiceover: "VoiceOver focus remains in one part of the page.", braille: "The focus indicator repeats the same controls and never reaches Continue."
       },
       choices: [
-        ["Use headings, landmarks, or a controls list to inspect the page structure", true, "Correct. Structural navigation can reveal whether the control is elsewhere, hidden in a dialog, or missing from the keyboard order."],
-        ["Hold Tab down for a long time", false, "Rapid cycling makes focus harder to track. Pause and inspect the page structure."],
-        ["Assume the website is inaccessible and leave", false, "The page may be inaccessible, but first gather evidence by checking headings, landmarks, dialogs, and the controls list."]
+        ["Open the screen reader's controls list and search for Continue", false, "A controls list is useful, but it may omit a control trapped inside a modal dialog or one missing correct semantics. Inspect headings, landmarks, and dialogs as well."],
+        ["Use headings and landmarks to inspect the page, check for an open dialog, and then review the controls list", true, "Best answer. This gathers several kinds of structural evidence before deciding whether the control is absent from the keyboard order."],
+        ["Refresh the page and begin the form again", false, "Refreshing can repair a temporary page state, but it may erase entered information. Inspect the current structure before taking that risk."]
       ]
     },
     {
@@ -59,9 +59,9 @@
         braille: "The displayed line and the active editing cursor do not match."
       },
       choices: [
-        ["Type more text to discover where it goes", false, "That can damage the document. Stop typing until the caret and displayed line are confirmed."],
-        ["Confirm the active window and caret, then route the cursor only after identifying the intended cell", true, "Correct. Confirming focus before routing prevents accidental edits in the wrong location."],
-        ["Disconnect the display immediately", false, "Disconnecting may not fix a focus mismatch. First identify the application focus, caret, and braille cursor." ]
+        ["Press a cursor-routing button at the intended word, then check the active window", false, "Routing may solve the mismatch, but doing it before confirming the active window can move the caret in the wrong application. Reverse the order."],
+        ["Confirm the active window and editing caret, identify the intended braille cell, and then route the cursor", true, "Best answer. Each check narrows the problem before an action changes the document position."],
+        ["Pan away and back to refresh the displayed line before routing", false, "Panning can refresh context, but it does not prove where the editing caret or application focus is. Confirm those first."]
       ]
     },
     {
@@ -71,9 +71,9 @@
         jaws: "Button.", nvda: "Button.", narrator: "Button.", voiceover: "Button.", braille: "btn"
       },
       choices: [
-        ["Check nearby text and compare the control with another screen reader or browser if available", true, "Correct. Comparing contexts helps separate a webpage labeling defect from a product-specific compatibility problem."],
-        ["Guess what the button does and activate it", false, "An unnamed control could perform an unexpected action. Do not activate it until its purpose is known."],
-        ["Change many screen-reader settings at once", false, "Changing several settings destroys useful evidence. Make one reversible comparison at a time."]
+        ["Inspect nearby text and the button's available properties, then make one comparison in another browser or screen reader", true, "Best answer. Context plus one controlled comparison helps distinguish missing webpage labeling from a product-specific compatibility problem."],
+        ["Open the page source or developer tools and inspect the button's code", false, "Code inspection could identify the defect, but it is not the most accessible or broadly available first test. Gather nearby context and make one controlled comparison first."],
+        ["Use the screen reader's graphics or OCR feature to identify the visual label", false, "OCR may reveal visible text, but it cannot determine whether the button has a proper accessible name. It is supporting evidence, not the best first diagnosis."]
       ]
     }
   ];
