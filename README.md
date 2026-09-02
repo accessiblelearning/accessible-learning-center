@@ -77,16 +77,16 @@ The Chrome course provides keyboard-first, JAWS-friendly instruction for browser
 
 ## Complete course catalog
 
-The recommended order begins with Windows and File Explorer, then builds toward screen readers, applications, online safety, employment, braille hardware, and transcription.
+The recommended order begins with Windows and File Explorer, keeps all Microsoft courses together, then keeps all Google courses together before the advanced topics.
 
 - **Windows 11 and File Explorer:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
+- **Microsoft Word:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
+- **Microsoft Excel:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (XLSX, CSV, PDF)
+- **Microsoft PowerPoint:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PPTX, PDF)
 - **JAWS Screen Reader:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Google Chrome:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Google Docs:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
-- **Microsoft Word:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
 - **Google Calendar:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PDF, TXT, DOCX, BRF)
-- **Microsoft Excel:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (XLSX, CSV, PDF)
-- **Microsoft PowerPoint:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PPTX, PDF)
 - **Adobe Acrobat and Accessible PDFs:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PDF, DOCX, TXT, BRF)
 - **Cybersecurity for Screen Reader Users:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Accessible Job Search:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
