@@ -198,7 +198,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 310, "Expected 310 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 311, "Expected 311 HTML pages, found " + htmlFiles.length + ".");
 check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 const assignmentScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
@@ -207,6 +207,11 @@ check(existsSync(resolve(root, "resources.html")), "Help and Resource Search pag
 check(existsSync(resolve(root, "resource-search.js")), "Resource search behavior is missing.");
 check(existsSync(resolve(root, "command-practice.html")), "Keyboard Command Practice Lab page is missing.");
 check(existsSync(resolve(root, "troubleshooting-lab.html")), "Assistive Technology Troubleshooting Lab page is missing.");
+check(existsSync(resolve(root, "additional-skills-manual.html")), "Additional Screen-Reader Skills manual is missing.");
+const additionalSkills = readFileSync(resolve(root, "additional-skills-manual.html"), "utf8");
+for (const topic of ["Outlook", "Zoom, Microsoft Teams, and Google Meet", "OneDrive, Dropbox", "Google Drive, Gmail, Forms, and Classroom", "Accessible audio", "NotebookLM, Be My Eyes", "Diagnose before restarting"]) {
+  check(additionalSkills.includes(topic), "Additional Skills manual is missing " + topic + ".");
+}
 const troubleshootingLab = readFileSync(resolve(root, "troubleshooting-lab.js"), "utf8");
 check((troubleshootingLab.match(/title: "/g) || []).length === 5, "Troubleshooting Lab must include five scenarios.");
 for (const perspective of ["JAWS", "NVDA", "Narrator", "VoiceOver", "braille display"]) {
@@ -282,4 +287,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("Validated " + htmlFiles.length + " accessible pages, 25 manuals, 250 lessons, 25 final quizzes, command practice, local certificates, searchable help, and paused private uploads.");
+console.log("Validated " + htmlFiles.length + " accessible pages, 26 manuals, 250 lessons, 25 final quizzes, command practice, local certificates, searchable help, and paused private uploads.");
