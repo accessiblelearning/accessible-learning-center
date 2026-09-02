@@ -198,7 +198,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 308, "Expected 308 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 309, "Expected 309 HTML pages, found " + htmlFiles.length + ".");
 check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 const assignmentScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
@@ -245,6 +245,9 @@ check(accessibilityScript.includes("darkMode"), "Saved dark-mode preference is m
 check(accessibilityScript.includes('dataset.theme'), "Dark-mode theme state is missing.");
 check(accessibilityScript.includes('details class="accessibility-menu"'), "Accessibility controls are not in a compact details menu.");
 check(accessibilityScript.includes("Last accessibility and structure review:"), "Manual review dates are missing.");
+check(accessibilityScript.includes('href="quizzes.html">Quizzes</a>'), "Primary navigation is missing Quizzes.");
+check(existsSync(resolve(root, "quizzes.html")), "Quizzes page is missing.");
+check((readFileSync(resolve(root, "quizzes.html"), "utf8").match(/-quiz\.html/g) || []).length === 25, "Quizzes page must link all 25 final quizzes.");
 check(existsSync(resolve(root, "course-catalog.js")), "Course catalog filtering behavior is missing.");
 check(readFileSync(resolve(root, "lessons.html"), "utf8").includes('id="courseFilter"'), "Lessons course filter is missing.");
 check(readFileSync(resolve(root, "student-progress.html"), "utf8").includes('id="startedCoursesOnly"'), "Started-courses progress filter is missing.");
