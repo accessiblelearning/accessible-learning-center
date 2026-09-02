@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible JAWS Screen Reader Lesson 6: Forms Mode and Completing Web Forms.">
+  <title>JAWS Lesson 6 - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="accessibility.js" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">JAWS Screen Reader course</p>
+    <h1>JAWS Lesson 6</h1>
+    <p>Forms Mode and Completing Web Forms</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="JAWS lesson navigation">
+      <a href="jaws-manual.html">JAWS manual</a>
+      <a href="lessons.html#jaws-lessons">All JAWS lessons</a>
+      <a href="student-progress.html">My progress</a>
+    </nav>
+    <section aria-labelledby="goal-heading"><h2 id="goal-heading">Goal</h2><p>Complete web forms while understanding the difference between Virtual Cursor navigation and Forms Mode interaction.</p></section>
+    <section aria-labelledby="skills-heading"><h2 id="skills-heading">Skills practiced</h2><ul>
+  <li>Locate form fields with quick keys and element lists.</li>
+  <li>Enter and leave Forms Mode.</li>
+  <li>Complete edit fields, check boxes, radio buttons, combo boxes, and buttons.</li>
+  <li>Review entries before submitting.</li>
+</ul></section>
+    <section aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">Step-by-step instructions</h2>
+      <ol>
+  <li>Open a safe practice form or the Accessible Learning Center Student ID page. Do not enter private information.</li>
+  <li>With the Virtual Cursor on, press F and Shift+F to move among form fields.</li>
+  <li>Press Insert+F5 to open the Form Fields List. Review the available controls and press Escape.</li>
+  <li>Move to an edit field and press Enter to activate Forms Mode.</li>
+  <li>Type fictional practice information. Press Tab to move to the next field.</li>
+  <li>For a check box, press Spacebar to change its state. For radio buttons, use Arrow keys. For a combo box, use Alt+Down Arrow and Arrow keys.</li>
+  <li>Press Num Pad Plus to leave Forms Mode when using the desktop layout. Confirm that JAWS announces the mode change.</li>
+  <li>Use the Virtual Cursor to review nearby instructions and required-field messages.</li>
+  <li>Return to each field, verify the value with Insert+Tab, and do not send real or sensitive information.</li>
+  <li>Create JAWS-Lesson-6.txt describing the form controls practiced, the keys used, and how the student protected personal information.</li>
+</ol>
+      <p class="tip"><strong>Keyboard help:</strong> JAWS commands below use the desktop keyboard layout unless noted. Insert is the JAWS key in desktop layout; Caps Lock is commonly used in laptop layout. Press Insert+1 to toggle Keyboard Help, or use JAWS Commands Search to confirm the command for the installed layout.</p>
+      
+    </section>
+    <section aria-labelledby="assignment-heading">
+      <h2 id="assignment-heading">Your assignment</h2>
+      <p>Submit a form-navigation report using fictional information only.</p>
+      <p>Save the finished assignment as <strong>JAWS-Lesson-6.txt</strong>. DOCX, PDF, and BRF versions are also accepted.</p>
+      <h3>Before submitting</h3><ul>
+  <li>The report distinguishes navigation from Forms Mode.</li>
+  <li>At least four form-control types are covered.</li>
+  <li>The student explains how entries were reviewed.</li>
+  <li>The file is named JAWS-Lesson-6.txt.</li>
+</ul>
+    </section>
+    <section aria-labelledby="submission-heading">
+      <h2 id="submission-heading">Submit JAWS Lesson 6</h2>
+      <p id="studentDisplay"></p>
+      <p>Choose your completed assignment file. Accepted file types are TXT, DOCX, PDF, or BRF. The maximum file size is 10 MB.</p>
+      <p><strong>Using an iPhone?</strong> Open this lesson in Safari before choosing a file. File selection may not open inside an in-app browser.</p>
+      <form id="submissionForm">
+        <p><label for="assignmentFile">Assignment file</label><br>
+        <input id="assignmentFile" name="file" type="file" accept=".txt,.docx,.pdf,.brf" aria-describedby="fileRequirements" required></p>
+        <p id="fileRequirements">Choose one TXT, DOCX, PDF, or BRF file that is 10 MB or smaller.</p>
+        <button id="submitLesson" type="submit">Upload and Submit JAWS Lesson 6</button>
+      </form>
+      <p id="submissionMessage" role="status" aria-live="polite"></p>
+    </section>
+    <nav class="lesson-nav" aria-label="Continue JAWS course">
+      <a href="jaws-manual.html">JAWS manual</a>
+      <a href="jaws-lesson-7.html">Next lesson</a>
+    </nav>
+  </main>
+  <script src="assignment-submission.js" data-lesson-number="6" data-course="JAWS Screen Reader" data-allowed-extensions="txt,docx,pdf,brf"></script>
+</body>
+</html>

@@ -5,7 +5,7 @@ An accessible GitHub Pages learning website for blind and low-vision students.
 ## Current features
 
 - Anonymous Student IDs stored in the learner's browser
-- Microsoft Word, Excel, and PowerPoint manuals with ten guided lessons per course
+- Microsoft Word, Excel, PowerPoint, and JAWS Screen Reader manuals with ten guided lessons per course
 - D1-backed lesson progress tracking
 - Private assignment uploads to Cloudflare R2
 - Course-specific DOCX, XLSX, PPTX, CSV, PDF, TXT, and BRF submissions up to 10 MB
@@ -42,6 +42,7 @@ The Excel course targets Microsoft 365 desktop on Windows with keyboard-first an
 - Microsoft Word: DOCX, PDF, TXT, BRF
 - Microsoft Excel: XLSX, CSV, PDF
 - Microsoft PowerPoint: PPTX, PDF
+- JAWS Screen Reader: TXT, DOCX, PDF, BRF
 
 Existing Microsoft Word progress records and upload behavior remain compatible.
 
@@ -50,3 +51,12 @@ Existing Microsoft Word progress records and upload behavior remain compatible.
 The PowerPoint course targets Microsoft 365 desktop on Windows with keyboard-first and JAWS-friendly instructions. Its ten employment-oriented lessons cover slide layouts and titles, concise text, alternative text, reading order, accessible tables and charts, meaningful links, contrast and fonts, speaker notes, keyboard presenting, and a final accessible workplace presentation.
 
 The course manual links only to official Microsoft accessibility guidance and Freedom Scientific JAWS documentation. PowerPoint progress appears separately without changing existing Word or Excel records.
+
+
+## JAWS Screen Reader course
+
+The JAWS course targets current JAWS on Windows with desktop-layout commands, laptop-layout reminders, keyboard-first practice, and employment-oriented assignments. Its ten lessons cover speech and Keyboard Help, text reading, Windows navigation, dialogs and focus, the Virtual Cursor, Forms Mode, tables, built-in help and troubleshooting, responsible JAWS AI use, and a final workplace navigation project.
+
+Lesson 9 and the manual cover FSCompanion and Picture Smart AI using official Freedom Scientific guidance. They require students to protect confidential information, verify AI results, and use Keyboard Help, Commands Search, official documentation, or an instructor when AI is unavailable. No AI service, credential, or paid feature is added to this website.
+
+JAWS progress appears separately without changing existing Word, Excel, or PowerPoint records.

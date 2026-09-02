@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Review saved Microsoft Word, Excel, and PowerPoint lesson progress.">
+  <meta name="description" content="Review saved Microsoft Word, Excel, PowerPoint, and JAWS lesson progress.">
   <title>Student Progress - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css">
   <script src="accessibility.js" defer></script>
@@ -82,6 +82,22 @@
             "Color, Contrast, Fonts, and Accessible Design",
             "Speaker Notes and Presenting with the Keyboard",
             "Final Accessible Workplace Presentation"
+      ]
+},
+{
+      "name": "JAWS Screen Reader",
+      "slug": "jaws",
+      "titles": [
+            "Starting JAWS, Speech Control, and Keyboard Help",
+            "Reading Text by Character, Word, Line, and Paragraph",
+            "Windows Desktop, Start Menu, Taskbar, and App Switching",
+            "Dialogs, Controls, the PC Cursor, and Keyboard Focus",
+            "Web Navigation with the Virtual Cursor",
+            "Forms Mode and Completing Web Forms",
+            "Tables, Lists, and Structured Information",
+            "Built-in Help, Settings, and Troubleshooting",
+            "JAWS AI: FSCompanion and Picture Smart AI",
+            "Final Workplace Navigation and Problem-Solving Project"
       ]
 }
 ];
@@ -176,7 +192,7 @@
         progressMessage.textContent =
           completedCourses === courses.length
             ? "All available courses are complete."
-            : "Progress loaded for Microsoft Word, Microsoft Excel, and Microsoft PowerPoint.";
+            : "Progress loaded for Microsoft Word, Microsoft Excel, Microsoft PowerPoint, and JAWS Screen Reader.";
       } catch (error) {
         progressMessage.textContent =
           "There was a connection problem while loading progress.";

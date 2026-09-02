@@ -50,7 +50,7 @@ for (const file of htmlFiles) {
     );
   }
 
-  if (/^(?:word|excel|powerpoint)-lesson-\d+\.html$/.test(file)) {
+  if (/^(?:word|excel|powerpoint|jaws)-lesson-\d+\.html$/.test(file)) {
     check(
       html.includes('src="assignment-submission.js"'),
       file + " is missing assignment submission behavior."
@@ -75,11 +75,22 @@ for (const file of htmlFiles) {
     check(html.includes('data-course="Microsoft PowerPoint"'), file + " is missing its Microsoft PowerPoint course identifier.");
     check(html.includes('data-allowed-extensions="pptx,pdf"'), file + " is missing its PowerPoint file types.");
   }
+  if (/^jaws-lesson-\d+\.html$/.test(file)) {
+    check(
+      html.includes('data-course="JAWS Screen Reader"'),
+      file + " is missing its JAWS course identifier."
+    );
+    check(
+      html.includes('data-allowed-extensions="txt,docx,pdf,brf"'),
+      file + " is missing its JAWS file types."
+    );
+  }
 }
 
-check(htmlFiles.length === 39, "Expected 28 HTML pages.");
+check(htmlFiles.length === 50, "Expected 28 HTML pages.");
 check(existsSync(resolve(root, "excel-manual.html")), "Excel manual is missing.");
 check(existsSync(resolve(root, "powerpoint-manual.html")), "PowerPoint manual is missing.");
+check(existsSync(resolve(root, "jaws-manual.html")), "JAWS manual is missing.");
 for (let lesson = 1; lesson <= 10; lesson += 1) {
   check(
     existsSync(resolve(root, "excel-lesson-" + lesson + ".html")),
@@ -88,6 +99,12 @@ for (let lesson = 1; lesson <= 10; lesson += 1) {
 }
 for (let lesson = 1; lesson <= 10; lesson += 1) {
   check(existsSync(resolve(root, "powerpoint-lesson-" + lesson + ".html")), "PowerPoint Lesson " + lesson + " is missing.");
+}
+for (let lesson = 1; lesson <= 10; lesson += 1) {
+  check(
+    existsSync(resolve(root, "jaws-lesson-" + lesson + ".html")),
+    "JAWS Lesson " + lesson + " is missing."
+  );
 }
 check(
   existsSync(resolve(root, "assets/accessible-tech-hero.webp")),
@@ -122,7 +139,9 @@ check(
     submissionWorker.includes('"xlsx"') &&
     submissionWorker.includes('"csv"') &&
     submissionWorker.includes('["Microsoft PowerPoint"') &&
-    submissionWorker.includes('"pptx"'),
+    submissionWorker.includes('"pptx"') &&
+    submissionWorker.includes('["JAWS Screen Reader"') &&
+    submissionWorker.includes('"brf"'),
   "The R2 Worker is missing idempotent retry handling."
 );
 
@@ -133,5 +152,5 @@ if (errors.length) {
 }
 
 console.log(
-  "Validated " + htmlFiles.length + " pages, local links, accessibility controls, Word, Excel, and PowerPoint uploads, and course progress."
+  "Validated " + htmlFiles.length + " pages, local links, accessibility controls, Word, Excel, PowerPoint, and JAWS uploads, and course progress."
 );

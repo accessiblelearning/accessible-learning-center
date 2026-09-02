@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible JAWS Screen Reader Lesson 1: Starting JAWS, Speech Control, and Keyboard Help.">
+  <title>JAWS Lesson 1 - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="accessibility.js" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">JAWS Screen Reader course</p>
+    <h1>JAWS Lesson 1</h1>
+    <p>Starting JAWS, Speech Control, and Keyboard Help</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="JAWS lesson navigation">
+      <a href="jaws-manual.html">JAWS manual</a>
+      <a href="lessons.html#jaws-lessons">All JAWS lessons</a>
+      <a href="student-progress.html">My progress</a>
+    </nav>
+    <section aria-labelledby="goal-heading"><h2 id="goal-heading">Goal</h2><p>Start and identify JAWS, control speech safely, and use built-in keyboard help to learn commands.</p></section>
+    <section aria-labelledby="skills-heading"><h2 id="skills-heading">Skills practiced</h2><ul>
+  <li>Identify the JAWS modifier key for desktop and laptop layouts.</li>
+  <li>Read the active window title and focused control.</li>
+  <li>Stop speech, start Say All, and adjust speech rate temporarily.</li>
+  <li>Use Keyboard Help without accidentally activating commands.</li>
+</ul></section>
+    <section aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">Step-by-step instructions</h2>
+      <ol>
+  <li>Start JAWS from the Windows Start menu. Wait until JAWS announces that it is ready.</li>
+  <li>Press Insert+T to hear the title of the active window. On a laptop layout, use Caps Lock as the JAWS key when required.</li>
+  <li>Press Insert+Tab to hear the currently focused control and its prompt.</li>
+  <li>Press Ctrl once to stop speech. This interrupts speech without closing JAWS.</li>
+  <li>Press Insert+Down Arrow to begin Say All. Press Ctrl to stop.</li>
+  <li>During Say All, press Page Up or Page Down to temporarily increase or decrease the reading rate.</li>
+  <li>Press Insert+1 on the numbers row to turn Keyboard Help on.</li>
+  <li>Press several keys, including Tab, F6, and Insert+T, and listen to their descriptions. Commands are described rather than performed while Keyboard Help is on.</li>
+  <li>Press Insert+1 again to turn Keyboard Help off.</li>
+  <li>Open Notepad and write a short skills log describing what each command did. Save it as JAWS-Lesson-1.txt.</li>
+</ol>
+      <p class="tip"><strong>Keyboard help:</strong> JAWS commands below use the desktop keyboard layout unless noted. Insert is the JAWS key in desktop layout; Caps Lock is commonly used in laptop layout. Press Insert+1 to toggle Keyboard Help, or use JAWS Commands Search to confirm the command for the installed layout.</p>
+      
+    </section>
+    <section aria-labelledby="assignment-heading">
+      <h2 id="assignment-heading">Your assignment</h2>
+      <p>Create a skills log that names the JAWS modifier key you used and explains Insert+T, Insert+Tab, Ctrl, Insert+Down Arrow, and Insert+1.</p>
+      <p>Save the finished assignment as <strong>JAWS-Lesson-1.txt</strong>. DOCX, PDF, and BRF versions are also accepted.</p>
+      <h3>Before submitting</h3><ul>
+  <li>The file names the keyboard layout used.</li>
+  <li>At least five commands are explained in the student’s own words.</li>
+  <li>The student confirms Keyboard Help was turned off.</li>
+  <li>The file is named JAWS-Lesson-1.txt.</li>
+</ul>
+    </section>
+    <section aria-labelledby="submission-heading">
+      <h2 id="submission-heading">Submit JAWS Lesson 1</h2>
+      <p id="studentDisplay"></p>
+      <p>Choose your completed assignment file. Accepted file types are TXT, DOCX, PDF, or BRF. The maximum file size is 10 MB.</p>
+      <p><strong>Using an iPhone?</strong> Open this lesson in Safari before choosing a file. File selection may not open inside an in-app browser.</p>
+      <form id="submissionForm">
+        <p><label for="assignmentFile">Assignment file</label><br>
+        <input id="assignmentFile" name="file" type="file" accept=".txt,.docx,.pdf,.brf" aria-describedby="fileRequirements" required></p>
+        <p id="fileRequirements">Choose one TXT, DOCX, PDF, or BRF file that is 10 MB or smaller.</p>
+        <button id="submitLesson" type="submit">Upload and Submit JAWS Lesson 1</button>
+      </form>
+      <p id="submissionMessage" role="status" aria-live="polite"></p>
+    </section>
+    <nav class="lesson-nav" aria-label="Continue JAWS course">
+      <a href="jaws-manual.html">JAWS manual</a>
+      <a href="jaws-lesson-2.html">Next lesson</a>
+    </nav>
+  </main>
+  <script src="assignment-submission.js" data-lesson-number="1" data-course="JAWS Screen Reader" data-allowed-extensions="txt,docx,pdf,brf"></script>
+</body>
+</html>
