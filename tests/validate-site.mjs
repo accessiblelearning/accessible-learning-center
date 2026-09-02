@@ -132,7 +132,7 @@ for (const course of courses) {
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
 check(htmlFiles.length === 171, "Expected 171 HTML pages, found " + htmlFiles.length + ".");
-check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("All manuals are available"), "Manuals page is not marked complete.");
+check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
 
 if (errors.length) {
   console.error(errors.join("\n"));
