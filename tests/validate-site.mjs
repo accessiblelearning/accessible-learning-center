@@ -135,6 +135,8 @@ check(htmlFiles.length === 171, "Expected 171 HTML pages, found " + htmlFiles.le
 check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 check(accessibilityScript.includes("Website accessibility settings"), "Accessibility menu label is missing.");
+check(accessibilityScript.includes("darkMode"), "Saved dark-mode preference is missing.");
+check(accessibilityScript.includes('data-theme'), "Dark-mode theme state is missing.");
 check(accessibilityScript.includes('details class="accessibility-menu"'), "Accessibility controls are not in a compact details menu.");
 for (let lesson = 1; lesson <= 10; lesson += 1) {
   const screenReaderLesson = readFileSync(resolve(root, "jaws-lesson-" + lesson + ".html"), "utf8");
@@ -145,7 +147,7 @@ for (let lesson = 1; lesson <= 10; lesson += 1) {
 }
 const screenReaderManual = readFileSync(resolve(root, "jaws-manual.html"), "utf8");
 check(screenReaderManual.includes("Screen Readers: JAWS, Narrator, and NVDA"), "Unified Screen Readers manual title is missing.");
-for (const action of ["decrease", "increase", "reset-text", "contrast", "motion"]) {
+for (const action of ["decrease", "increase", "reset-text", "dark", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }
 

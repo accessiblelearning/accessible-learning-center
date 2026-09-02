@@ -8,6 +8,7 @@
   const scaleStep = 10;
   let preferences = {
     textScale: 100,
+    darkMode: false,
     highContrast: false,
     reduceMotion: false
   };
@@ -17,6 +18,7 @@
     if (stored && typeof stored === "object") {
       preferences = {
         textScale: Number(stored.textScale) || 100,
+        darkMode: Boolean(stored.darkMode),
         highContrast: Boolean(stored.highContrast),
         reduceMotion: Boolean(stored.reduceMotion)
       };
@@ -39,6 +41,8 @@
       Math.max(minScale, preferences.textScale)
     );
     root.style.fontSize = preferences.textScale + "%";
+    root.dataset.theme = preferences.darkMode ? "dark" : "light";
+    root.style.colorScheme = preferences.darkMode ? "dark" : "light";
     root.dataset.contrast = preferences.highContrast ? "high" : "standard";
     root.dataset.reduceMotion = preferences.reduceMotion ? "true" : "false";
   }
@@ -75,6 +79,7 @@
               <button type="button" data-action="decrease">Decrease text size</button>
               <button type="button" data-action="increase">Increase text size</button>
               <button type="button" data-action="reset-text">Reset text size</button>
+              <button type="button" data-action="dark" aria-pressed="false">Dark mode</button>
               <button type="button" data-action="contrast" aria-pressed="false">High contrast</button>
               <button type="button" data-action="motion" aria-pressed="false">Reduce motion</button>
             </div>
@@ -107,10 +112,15 @@
     document.body.insertBefore(panel, document.body.firstChild);
 
     const status = panel.querySelector(".accessibility-status");
+    const darkButton = panel.querySelector('[data-action="dark"]');
     const contrastButton = panel.querySelector('[data-action="contrast"]');
     const motionButton = panel.querySelector('[data-action="motion"]');
 
     function updateButtons() {
+      darkButton.setAttribute(
+        "aria-pressed",
+        String(preferences.darkMode)
+      );
       contrastButton.setAttribute(
         "aria-pressed",
         String(preferences.highContrast)
@@ -145,6 +155,13 @@
       } else if (action === "reset-text") {
         preferences.textScale = 100;
         announce("Text size reset to 100 percent.");
+      } else if (action === "dark") {
+        preferences.darkMode = !preferences.darkMode;
+        announce(
+          preferences.darkMode
+            ? "Dark mode turned on."
+            : "Dark mode turned off."
+        );
       } else if (action === "contrast") {
         preferences.highContrast = !preferences.highContrast;
         announce(
