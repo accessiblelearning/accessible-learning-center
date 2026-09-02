@@ -1035,6 +1035,63 @@ html[data-theme="dark"]:not([data-contrast="high"]) main > section[id$="-lessons
   font-size: .95rem;
 }
 
+.simulator-setup,
+.simulator {
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.simulator {
+  border: 0.2rem solid var(--border-color, #27638f);
+}
+
+.simulator-progress progress {
+  width: 100%;
+  min-height: 1.5rem;
+}
+
+.scenario-problem {
+  font-size: 1.15em;
+  font-weight: 700;
+}
+
+.screen-reader-transcript {
+  margin-block: 1rem;
+  padding: 1rem;
+  border-inline-start: 0.4rem solid #1875b8;
+  background: #eef8ff;
+}
+
+.scenario-choices {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.scenario-choices button {
+  width: 100%;
+  text-align: start;
+}
+
+.scenario-feedback:not(:empty) {
+  margin-block: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid currentColor;
+}
+
+.scenario-feedback.is-correct { color: #075f2c; }
+.scenario-feedback.is-incorrect { color: #8a2600; }
+.simulator-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+html[data-theme="dark"] .screen-reader-transcript {
+  color: #ffffff;
+  background: #071d2c;
+  border-color: #7fd0ff;
+}
+
+html[data-theme="dark"] .scenario-feedback.is-correct { color: #9dffc4; }
+html[data-theme="dark"] .scenario-feedback.is-incorrect { color: #ffc0a8; }
+
 @media (max-width: 32rem) {
   .catalog-actions {
     display: grid;

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice diagnosing common screen-reader and braille-display problems in a safe, interactive simulator.">
+  <title>Assistive Technology Troubleshooting Lab - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=troubleshooting-lab-1">
+  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
+  <script src="troubleshooting-lab.js?v=troubleshooting-lab-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Safe, realistic problem-solving practice</p>
+    <h1>Assistive Technology Troubleshooting Lab</h1>
+    <p>Diagnose a problem, choose a safe action, and learn how to recover without risking your work.</p>
+  </header>
+  <main id="main-content">
+    <section class="simulator-setup" aria-labelledby="setup-heading">
+      <h2 id="setup-heading">Choose your assistive technology</h2>
+      <p><label for="atPerspective">Practice perspective</label><br>
+        <select id="atPerspective">
+          <option value="jaws">JAWS</option>
+          <option value="nvda">NVDA</option>
+          <option value="narrator">Narrator</option>
+          <option value="voiceover">VoiceOver on iPhone</option>
+          <option value="braille">Braille display</option>
+        </select>
+      </p>
+      <p class="tip"><strong>Safe simulation:</strong> The answer buttons do not run system or screen-reader commands. They only show what would happen.</p>
+    </section>
+
+    <section class="simulator" aria-labelledby="scenarioTitle">
+      <div class="simulator-progress">
+        <p id="scenarioCount">Scenario 1 of 5</p>
+        <progress id="scenarioProgress" max="5" value="0">0 of 5 scenarios completed</progress>
+      </div>
+      <h2 id="scenarioTitle"></h2>
+      <p id="scenarioProblem" class="scenario-problem"></p>
+
+      <section class="screen-reader-transcript" aria-labelledby="transcriptHeading">
+        <h3 id="transcriptHeading">What your assistive technology reports</h3>
+        <p id="transcript"></p>
+        <button id="speakTranscript" type="button">Read this report aloud</button>
+      </section>
+
+      <fieldset id="choiceGroup">
+        <legend>What is the safest next action?</legend>
+        <div id="choices" class="scenario-choices"></div>
+      </fieldset>
+      <div id="scenarioFeedback" class="scenario-feedback" role="status" aria-live="polite"></div>
+      <div class="simulator-actions">
+        <button id="nextScenario" type="button" hidden>Next scenario</button>
+        <button id="restartLab" type="button">Restart lab</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Troubleshooting habits</h2>
+      <ol>
+        <li>Pause before repeating a command.</li>
+        <li>Confirm the active application and keyboard focus.</li>
+        <li>Identify the current screen-reader or interaction mode.</li>
+        <li>Try a reversible check before restarting or closing anything.</li>
+        <li>Protect unsaved work and private information.</li>
+      </ol>
+      <p id="completionSummary"></p>
+    </section>
+  </main>
+</body>
+</html>

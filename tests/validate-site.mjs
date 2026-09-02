@@ -198,7 +198,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 309, "Expected 309 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 310, "Expected 310 HTML pages, found " + htmlFiles.length + ".");
 check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 const assignmentScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
@@ -206,6 +206,14 @@ const searchIndex = JSON.parse(readFileSync(resolve(root, "search-index.json"), 
 check(existsSync(resolve(root, "resources.html")), "Help and Resource Search page is missing.");
 check(existsSync(resolve(root, "resource-search.js")), "Resource search behavior is missing.");
 check(existsSync(resolve(root, "command-practice.html")), "Keyboard Command Practice Lab page is missing.");
+check(existsSync(resolve(root, "troubleshooting-lab.html")), "Assistive Technology Troubleshooting Lab page is missing.");
+const troubleshootingLab = readFileSync(resolve(root, "troubleshooting-lab.js"), "utf8");
+check((troubleshootingLab.match(/title: "/g) || []).length === 5, "Troubleshooting Lab must include five scenarios.");
+for (const perspective of ["JAWS", "NVDA", "Narrator", "VoiceOver", "braille display"]) {
+  check(troubleshootingLab.includes(perspective), "Troubleshooting Lab is missing the " + perspective + " perspective.");
+}
+check(troubleshootingLab.includes("atTroubleshootingCompleted"), "Troubleshooting Lab local progress is missing.");
+check(troubleshootingLab.includes("speechSynthesis"), "Troubleshooting Lab speech playback is missing.");
 const commandPractice = readFileSync(resolve(root, "command-practice.js"), "utf8");
 check(commandPractice.includes("speechSynthesis"), "Spoken command instructions are missing.");
 check(commandPractice.includes("AudioContext"), "Command sound feedback is missing.");
