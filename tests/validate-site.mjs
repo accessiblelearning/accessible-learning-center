@@ -50,7 +50,7 @@ for (const file of htmlFiles) {
     );
   }
 
-  if (/^(?:word|excel)-lesson-\d+\.html$/.test(file)) {
+  if (/^(?:word|excel|powerpoint)-lesson-\d+\.html$/.test(file)) {
     check(
       html.includes('src="assignment-submission.js"'),
       file + " is missing assignment submission behavior."
@@ -71,15 +71,23 @@ for (const file of htmlFiles) {
       file + " is missing its allowed file types."
     );
   }
+  if (/^powerpoint-lesson-\d+\.html$/.test(file)) {
+    check(html.includes('data-course="Microsoft PowerPoint"'), file + " is missing its Microsoft PowerPoint course identifier.");
+    check(html.includes('data-allowed-extensions="pptx,pdf"'), file + " is missing its PowerPoint file types.");
+  }
 }
 
-check(htmlFiles.length === 28, "Expected 28 HTML pages.");
+check(htmlFiles.length === 39, "Expected 28 HTML pages.");
 check(existsSync(resolve(root, "excel-manual.html")), "Excel manual is missing.");
+check(existsSync(resolve(root, "powerpoint-manual.html")), "PowerPoint manual is missing.");
 for (let lesson = 1; lesson <= 10; lesson += 1) {
   check(
     existsSync(resolve(root, "excel-lesson-" + lesson + ".html")),
     "Excel Lesson " + lesson + " is missing."
   );
+}
+for (let lesson = 1; lesson <= 10; lesson += 1) {
+  check(existsSync(resolve(root, "powerpoint-lesson-" + lesson + ".html")), "PowerPoint Lesson " + lesson + " is missing.");
 }
 check(
   existsSync(resolve(root, "assets/accessible-tech-hero.webp")),
@@ -112,7 +120,9 @@ check(
   submissionWorker.includes("safePart(submissionToken)") &&
     submissionWorker.includes('["Microsoft Excel"') &&
     submissionWorker.includes('"xlsx"') &&
-    submissionWorker.includes('"csv"'),
+    submissionWorker.includes('"csv"') &&
+    submissionWorker.includes('["Microsoft PowerPoint"') &&
+    submissionWorker.includes('"pptx"'),
   "The R2 Worker is missing idempotent retry handling."
 );
 
@@ -123,5 +133,5 @@ if (errors.length) {
 }
 
 console.log(
-  "Validated " + htmlFiles.length + " pages, local links, accessibility controls, Word and Excel uploads, and course progress."
+  "Validated " + htmlFiles.length + " pages, local links, accessibility controls, Word, Excel, and PowerPoint uploads, and course progress."
 );

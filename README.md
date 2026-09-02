@@ -5,10 +5,10 @@ An accessible GitHub Pages learning website for blind and low-vision students.
 ## Current features
 
 - Anonymous Student IDs stored in the learner's browser
-- Microsoft Word manual and ten guided lessons
+- Microsoft Word, Excel, and PowerPoint manuals with ten guided lessons per course
 - D1-backed lesson progress tracking
 - Private assignment uploads to Cloudflare R2
-- DOCX, PDF, TXT, and BRF submissions up to 10 MB
+- Course-specific DOCX, XLSX, PPTX, CSV, PDF, TXT, and BRF submissions up to 10 MB
 - Site-wide text-size, high-contrast, and reduced-motion controls
 - Responsive blue technology theme
 - Screen-reader status messages and keyboard-visible focus
@@ -41,5 +41,12 @@ The Excel course targets Microsoft 365 desktop on Windows with keyboard-first an
 
 - Microsoft Word: DOCX, PDF, TXT, BRF
 - Microsoft Excel: XLSX, CSV, PDF
+- Microsoft PowerPoint: PPTX, PDF
 
 Existing Microsoft Word progress records and upload behavior remain compatible.
+
+## Microsoft PowerPoint course
+
+The PowerPoint course targets Microsoft 365 desktop on Windows with keyboard-first and JAWS-friendly instructions. Its ten employment-oriented lessons cover slide layouts and titles, concise text, alternative text, reading order, accessible tables and charts, meaningful links, contrast and fonts, speaker notes, keyboard presenting, and a final accessible workplace presentation.
+
+The course manual links only to official Microsoft accessibility guidance and Freedom Scientific JAWS documentation. PowerPoint progress appears separately without changing existing Word or Excel records.

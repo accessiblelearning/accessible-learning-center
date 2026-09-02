@@ -3,6 +3,7 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const COURSE_EXTENSIONS = new Map([
   ["Microsoft Word", new Set(["docx", "pdf", "txt", "brf"])],
   ["Microsoft Excel", new Set(["xlsx", "csv", "pdf"])],
+  ["Microsoft PowerPoint", new Set(["pptx", "pdf"])],
 ]);
 
 function corsHeaders(origin) {

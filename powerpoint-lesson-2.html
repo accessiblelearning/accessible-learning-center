@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Microsoft PowerPoint Lesson 2: Slide Layouts, Titles, and Organizing a Presentation.">
+  <title>PowerPoint Lesson 2 - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="accessibility.js" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Microsoft PowerPoint course</p>
+    <h1>PowerPoint Lesson 2</h1>
+    <p>Slide Layouts, Titles, and Organizing a Presentation</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="PowerPoint lesson navigation">
+      <a href="powerpoint-manual.html">PowerPoint manual</a>
+      <a href="lessons.html#powerpoint-lessons">All PowerPoint lessons</a>
+      <a href="student-progress.html">My progress</a>
+    </nav>
+    <section aria-labelledby="goal-heading"><h2 id="goal-heading">Goal</h2><p>Use built-in slide layouts and meaningful titles to create a clear presentation structure.</p></section>
+    <section aria-labelledby="skills-heading"><h2 id="skills-heading">Skills practiced</h2><ul>
+  <li>Add slides with Ctrl+M.</li>
+  <li>Choose a built-in slide layout.</li>
+  <li>Give every slide a unique title.</li>
+  <li>Reorder slides from the thumbnails pane.</li>
+</ul></section>
+    <section aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">Step-by-step instructions</h2>
+      <ol>
+  <li>Open PowerPoint-Lesson-1.pptx.</li>
+  <li>Press Ctrl+M to add a third slide.</li>
+  <li>Press Alt+Q, type Slide Layout, and choose Title and Content.</li>
+  <li>Title slide 3 Training Schedule and add three fictional schedule items.</li>
+  <li>Add slide 4 and title it Contact Information. Add a fictional department email and telephone extension.</li>
+  <li>Press F6 until JAWS announces the thumbnails pane.</li>
+  <li>Use Up Arrow and Down Arrow to review slide titles.</li>
+  <li>Select the Contact Information slide. Press Ctrl+X, move to the position after the title slide, and press Ctrl+V to place it second.</li>
+  <li>Review the new order by moving through the thumbnails pane.</li>
+  <li>Confirm that every slide has a unique title.</li>
+  <li>Save a copy as PowerPoint-Lesson-2.pptx.</li>
+</ol>
+      <p class="tip"><strong>Keyboard help:</strong> Press Alt+Q to search PowerPoint commands when Ribbon KeyTips differ. For JAWS help, press Insert+Spacebar, then J, and search for the task.</p>
+    </section>
+    <section aria-labelledby="assignment-heading">
+      <h2 id="assignment-heading">Your assignment</h2>
+      <p>Expand and reorganize the training presentation so it contains four slides, uses built-in layouts, and has a unique title on every slide.</p>
+      <p>Save the finished assignment as <strong>PowerPoint-Lesson-2.pptx</strong>.</p>
+      <h3>Before submitting</h3><ul>
+  <li>Four slides are present.</li>
+  <li>Each slide has a unique, descriptive title.</li>
+  <li>Built-in slide layouts are used.</li>
+  <li>Contact Information is the second slide.</li>
+  <li>The file is saved as PowerPoint-Lesson-2.pptx.</li>
+</ul>
+    </section>
+    <section aria-labelledby="submission-heading">
+      <h2 id="submission-heading">Submit PowerPoint Lesson 2</h2>
+      <p id="studentDisplay"></p>
+      <p>Choose your completed assignment file. Accepted file types are PPTX or PDF. The maximum file size is 10 MB.</p>
+      <p><strong>Using an iPhone?</strong> Open this lesson in Safari before choosing a file. File selection may not open inside an in-app browser.</p>
+      <form id="submissionForm">
+        <p><label for="assignmentFile">Assignment file</label><br>
+        <input id="assignmentFile" name="file" type="file" accept=".pptx,.pdf" aria-describedby="fileRequirements" required></p>
+        <p id="fileRequirements">Choose one PPTX or PDF file that is 10 MB or smaller.</p>
+        <button id="submitLesson" type="submit">Upload and Submit PowerPoint Lesson 2</button>
+      </form>
+      <p id="submissionMessage" role="status" aria-live="polite"></p>
+    </section>
+    <nav class="lesson-nav" aria-label="Continue PowerPoint course">
+      <a href="powerpoint-lesson-1.html">Previous lesson</a>
+      <a href="powerpoint-lesson-3.html">Next lesson</a>
+    </nav>
+  </main>
+  <script src="assignment-submission.js" data-lesson-number="2" data-course="Microsoft PowerPoint" data-allowed-extensions="pptx,pdf"></script>
+</body>
+</html>

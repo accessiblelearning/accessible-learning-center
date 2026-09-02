@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Microsoft PowerPoint Lesson 1: PowerPoint Basics: Slides, Placeholders, and Saving.">
+  <title>PowerPoint Lesson 1 - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="accessibility.js" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Microsoft PowerPoint course</p>
+    <h1>PowerPoint Lesson 1</h1>
+    <p>PowerPoint Basics: Slides, Placeholders, and Saving</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="PowerPoint lesson navigation">
+      <a href="powerpoint-manual.html">PowerPoint manual</a>
+      <a href="lessons.html#powerpoint-lessons">All PowerPoint lessons</a>
+      <a href="student-progress.html">My progress</a>
+    </nav>
+    <section aria-labelledby="goal-heading"><h2 id="goal-heading">Goal</h2><p>Create a basic presentation, move among slide placeholders with the keyboard, and save the file.</p></section>
+    <section aria-labelledby="skills-heading"><h2 id="skills-heading">Skills practiced</h2><ul>
+  <li>Understand presentations, slides, layouts, and placeholders.</li>
+  <li>Move among PowerPoint panes with F6.</li>
+  <li>Move among objects with Tab and Shift+Tab.</li>
+  <li>Create and save a PPTX presentation.</li>
+</ul></section>
+    <section aria-labelledby="instructions-heading">
+      <h2 id="instructions-heading">Step-by-step instructions</h2>
+      <ol>
+  <li>Open Microsoft PowerPoint and create a Blank Presentation.</li>
+  <li>Press F6 several times and listen as JAWS moves among the slide area, thumbnails pane, notes pane, and ribbon.</li>
+  <li>Return to the slide area. Press Tab to move between the title and subtitle placeholders.</li>
+  <li>Type Workplace Technology Training in the title placeholder.</li>
+  <li>Move to the subtitle placeholder and type Prepared by followed by a fictional name.</li>
+  <li>Press Ctrl+M to create a new slide.</li>
+  <li>Type Training Goals in the title placeholder. In the content placeholder, enter Learn keyboard commands, Practice accessible documents, and Complete workplace assignments as separate lines.</li>
+  <li>Press Page Up and Page Down in the thumbnails pane to review both slides.</li>
+  <li>Press Ctrl+S and save the presentation as PowerPoint-Lesson-1.pptx.</li>
+</ol>
+      <p class="tip"><strong>Keyboard help:</strong> Press Alt+Q to search PowerPoint commands when Ribbon KeyTips differ. For JAWS help, press Insert+Spacebar, then J, and search for the task.</p>
+    </section>
+    <section aria-labelledby="assignment-heading">
+      <h2 id="assignment-heading">Your assignment</h2>
+      <p>Create a two-slide workplace technology training presentation with a title slide and a Training Goals slide.</p>
+      <p>Save the finished assignment as <strong>PowerPoint-Lesson-1.pptx</strong>.</p>
+      <h3>Before submitting</h3><ul>
+  <li>The presentation contains exactly two slides.</li>
+  <li>Both slides have meaningful titles.</li>
+  <li>Slide 2 contains three training goals.</li>
+  <li>The file is saved as PowerPoint-Lesson-1.pptx.</li>
+</ul>
+    </section>
+    <section aria-labelledby="submission-heading">
+      <h2 id="submission-heading">Submit PowerPoint Lesson 1</h2>
+      <p id="studentDisplay"></p>
+      <p>Choose your completed assignment file. Accepted file types are PPTX or PDF. The maximum file size is 10 MB.</p>
+      <p><strong>Using an iPhone?</strong> Open this lesson in Safari before choosing a file. File selection may not open inside an in-app browser.</p>
+      <form id="submissionForm">
+        <p><label for="assignmentFile">Assignment file</label><br>
+        <input id="assignmentFile" name="file" type="file" accept=".pptx,.pdf" aria-describedby="fileRequirements" required></p>
+        <p id="fileRequirements">Choose one PPTX or PDF file that is 10 MB or smaller.</p>
+        <button id="submitLesson" type="submit">Upload and Submit PowerPoint Lesson 1</button>
+      </form>
+      <p id="submissionMessage" role="status" aria-live="polite"></p>
+    </section>
+    <nav class="lesson-nav" aria-label="Continue PowerPoint course">
+      <a href="powerpoint-manual.html">PowerPoint manual</a>
+      <a href="powerpoint-lesson-2.html">Next lesson</a>
+    </nav>
+  </main>
+  <script src="assignment-submission.js" data-lesson-number="1" data-course="Microsoft PowerPoint" data-allowed-extensions="pptx,pdf"></script>
+</body>
+</html>
