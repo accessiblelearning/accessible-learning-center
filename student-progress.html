@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Review lesson completion and final quiz progress across all Accessible Learning Center courses.">
   <title>Student Progress - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=completion-tracking-1">
+  <link rel="stylesheet" href="styles.css?v=course-navigation-1">
   <script src="accessibility.js?v=resource-search-1" defer></script>
 </head>
 <body>
@@ -19,6 +19,16 @@
     <section id="continueSection" aria-labelledby="continue-heading" hidden>
       <h2 id="continue-heading">Continue learning</h2>
       <p id="continueLearning"></p>
+    </section>
+    <section class="catalog-tools" aria-labelledby="progress-filter-heading">
+      <h2 id="progress-filter-heading">Filter course progress</h2>
+      <p><label for="progressCourseFilter">Search courses</label><br><input id="progressCourseFilter" type="search" autocomplete="off"></p>
+      <p><label><input id="startedCoursesOnly" type="checkbox"> Show only courses I started</label></p>
+      <div class="catalog-actions">
+        <button id="expandProgress" type="button">Expand matching courses</button>
+        <button id="collapseProgress" type="button">Collapse all courses</button>
+      </div>
+      <p id="progressFilterStatus" role="status" aria-live="polite"></p>
     </section>
     <div id="courseProgressSections" class="course-progress-sections"></div>
 
@@ -40,6 +50,9 @@
     const continueSection = document.getElementById("continueSection");
     const continueLearning = document.getElementById("continueLearning");
     const courseProgressSections = document.getElementById("courseProgressSections");
+    const progressCourseFilter = document.getElementById("progressCourseFilter");
+    const startedCoursesOnly = document.getElementById("startedCoursesOnly");
+    const progressFilterStatus = document.getElementById("progressFilterStatus");
 
     const courses = [
       {
@@ -484,6 +497,9 @@
       const meter = document.createElement("progress");
       const list = document.createElement("ol");
       list.className = "progress-list";
+      const details = document.createElement("details");
+      const detailsSummary = document.createElement("summary");
+      detailsSummary.textContent = "Show lesson statuses and final quiz";
 
       let completedCount = 0;
       let firstIncomplete = null;
@@ -547,9 +563,36 @@
         quizParagraph.append(document.createTextNode("Final quiz not passed yet. "), quizLink);
       }
 
-      section.append(heading, summary, meter, list, quizParagraph);
+      details.append(detailsSummary, list, quizParagraph);
+      section.dataset.searchText = (course.displayName || course.name).toLowerCase();
+      section.dataset.started = String(completedCount > 0 || Boolean(quizResult));
+      section.append(heading, summary, meter, details);
       return { section, completedCount, firstIncomplete };
     }
+
+    function filterProgress() {
+      const query = progressCourseFilter.value.trim().toLowerCase();
+      let visibleCount = 0;
+      courseProgressSections.querySelectorAll(".course-progress").forEach(section => {
+        const matchesText = !query || section.dataset.searchText.includes(query);
+        const matchesStarted = !startedCoursesOnly.checked || section.dataset.started === "true";
+        section.hidden = !(matchesText && matchesStarted);
+        if (!section.hidden) {
+          visibleCount += 1;
+          if (query) section.querySelector("details").open = true;
+        }
+      });
+      progressFilterStatus.textContent = visibleCount + " course" + (visibleCount === 1 ? "" : "s") + " shown.";
+    }
+
+    progressCourseFilter.addEventListener("input", filterProgress);
+    startedCoursesOnly.addEventListener("change", filterProgress);
+    document.getElementById("expandProgress").addEventListener("click", () => {
+      courseProgressSections.querySelectorAll(".course-progress:not([hidden]) details").forEach(details => { details.open = true; });
+    });
+    document.getElementById("collapseProgress").addEventListener("click", () => {
+      courseProgressSections.querySelectorAll("details").forEach(details => { details.open = false; });
+    });
 
     async function loadProgress() {
       try {
@@ -607,6 +650,7 @@
           completedCourses === courses.length
             ? "All available courses are complete."
             : "Progress loaded for all available courses.";
+        filterProgress();
       } catch (error) {
         progressMessage.textContent =
           "There was a connection problem while loading progress.";

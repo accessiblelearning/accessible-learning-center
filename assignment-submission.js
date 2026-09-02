@@ -42,7 +42,7 @@
     heading.id = "lesson-completion-heading";
     heading.textContent = "Save your lesson progress";
     explanation.textContent =
-      "After completing the assignment and checking your work, mark this lesson complete. No assignment file will be uploaded.";
+      "After completing the assignment and checking your work, mark this lesson complete. You can undo it if needed. No assignment file will be uploaded.";
     status.id = "lessonCompletionStatus";
     status.setAttribute("role", "status");
     status.setAttribute("aria-live", "polite");
@@ -66,12 +66,21 @@
     button.setAttribute("aria-describedby", status.id);
     section.append(button, status);
 
-    function showCompleted(savedStatus) {
-      button.disabled = true;
-      button.textContent = "Lesson marked complete";
-      status.textContent = savedStatus === "submitted"
-        ? "This lesson was completed through an earlier assignment submission."
-        : "This lesson is saved as complete for Student ID " + studentId + ".";
+    let isComplete = false;
+
+    function showCompletionState(complete, savedStatus, announce = true) {
+      isComplete = complete;
+      button.disabled = false;
+      button.textContent = complete
+        ? "Undo lesson completion"
+        : "Mark this lesson complete";
+      button.setAttribute("aria-pressed", String(complete));
+      if (!announce) return;
+      status.textContent = complete
+        ? (savedStatus === "submitted"
+          ? "This lesson was completed through an earlier assignment submission. You can undo completion if needed."
+          : "This lesson is saved as complete for Student ID " + studentId + ".")
+        : "This lesson is not marked complete.";
     }
 
     async function checkCompletion() {
@@ -86,15 +95,18 @@
           Number(item.lesson_number) === lessonNumber &&
           ["completed", "submitted"].includes(item.status)
         );
-        if (record) showCompleted(record.status);
+        if (record) showCompletionState(true, record.status);
       } catch (error) {
         // The learner can still try to save completion if the initial check fails.
       }
     }
 
     button.addEventListener("click", async () => {
+      const newStatus = isComplete ? "in_progress" : "completed";
       button.disabled = true;
-      status.textContent = "Saving lesson completion...";
+      status.textContent = isComplete
+        ? "Removing lesson completion..."
+        : "Saving lesson completion...";
       try {
         const response = await fetch(PROGRESS_API + "/progress", {
           method: "POST",
@@ -103,7 +115,7 @@
             student_id: studentId,
             course,
             lesson_number: lessonNumber,
-            status: "completed"
+            status: newStatus
           })
         });
         const result = await response.json();
@@ -112,7 +124,7 @@
           button.disabled = false;
           return;
         }
-        showCompleted("completed");
+        showCompletionState(newStatus === "completed", newStatus);
       } catch (error) {
         status.textContent = "There was a connection problem. Please try again.";
         button.disabled = false;

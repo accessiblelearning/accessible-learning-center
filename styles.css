@@ -967,3 +967,80 @@ html[data-theme="dark"]:not([data-contrast="high"]) .lesson-completion button:di
   background: #000000;
   border-color: #72dfa4;
 }
+
+/* Searchable, collapsible course catalogs */
+.catalog-tools input[type="search"] {
+  width: min(100%, 38rem);
+  min-height: 3rem;
+  padding: .65rem;
+  color: var(--ink);
+  background: #ffffff;
+  border: 2px solid #7da9d8;
+  border-radius: .65rem;
+  font: inherit;
+}
+
+.catalog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+
+.catalog-shortcuts,
+.course-progress details,
+main > section[id$="-lessons"] > details {
+  margin-block: 1rem;
+  border: 2px solid var(--border);
+  border-radius: .65rem;
+}
+
+.catalog-shortcuts > summary,
+.course-progress details > summary,
+main > section[id$="-lessons"] > details > summary {
+  padding: .8rem 1rem;
+  color: var(--blue-950);
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.catalog-shortcuts[open] > summary,
+.course-progress details[open] > summary,
+main > section[id$="-lessons"] > details[open] > summary {
+  border-bottom: 2px solid var(--border);
+}
+
+.catalog-shortcuts > nav,
+.course-progress details > :not(summary),
+main > section[id$="-lessons"] > details > :not(summary) {
+  margin-inline: 1rem;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .catalog-shortcuts,
+html[data-theme="dark"]:not([data-contrast="high"]) .course-progress details,
+html[data-theme="dark"]:not([data-contrast="high"]) main > section[id$="-lessons"] > details {
+  color: #ffffff;
+  background: #000000;
+  border-color: #8dd1ff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .catalog-shortcuts > summary,
+html[data-theme="dark"]:not([data-contrast="high"]) .course-progress details > summary,
+html[data-theme="dark"]:not([data-contrast="high"]) main > section[id$="-lessons"] > details > summary {
+  color: #ffffff;
+}
+
+.manual-review-date {
+  padding-top: .75rem;
+  border-top: 1px solid currentColor;
+  font-size: .95rem;
+}
+
+@media (max-width: 32rem) {
+  .catalog-actions {
+    display: grid;
+  }
+
+  .catalog-actions button {
+    width: 100%;
+  }
+}

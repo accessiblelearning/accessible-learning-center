@@ -103,6 +103,12 @@
     `;
 
     const currentPage = location.pathname.split("/").pop() || "index.html";
+    if (currentPage.endsWith("-manual.html")) {
+      const reviewNote = document.createElement("p");
+      reviewNote.className = "manual-review-date";
+      reviewNote.innerHTML = "<strong>Last accessibility and structure review:</strong> September 2, 2026. Software interfaces can change; confirm differences using the official references in this manual.";
+      document.querySelector("body > header")?.append(reviewNote);
+    }
     nav.querySelectorAll("a").forEach((link) => {
       if (link.getAttribute("href") === currentPage) {
         link.setAttribute("aria-current", "page");

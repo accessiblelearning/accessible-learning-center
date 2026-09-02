@@ -144,6 +144,21 @@ for (const file of htmlFiles) {
   check(/<html\s+lang="en"/i.test(html), file + ' is missing lang="en".');
   check(/<meta\s+name="viewport"/i.test(html), file + " is missing a viewport setting.");
   check((html.match(/<h1(?:\s|>)/gi) || []).length === 1, file + " must contain exactly one H1.");
+  check(!/tabindex="[1-9][0-9]*"/i.test(html), file + " contains a positive tabindex.");
+
+  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
+  const idSet = new Set(ids);
+  check(ids.length === idSet.size, file + " contains a duplicate element ID.");
+
+  for (const image of html.matchAll(/<img\b[^>]*>/gi)) {
+    check(/\salt="[^"]*"/i.test(image[0]), file + " contains an image without an alt attribute.");
+  }
+
+  for (const relation of html.matchAll(/\saria-(?:labelledby|describedby)="([^"]+)"/gi)) {
+    for (const referencedId of relation[1].trim().split(/\s+/)) {
+      check(idSet.has(referencedId), file + " references missing ARIA target " + referencedId + ".");
+    }
+  }
 
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const reference = match[1];
@@ -196,6 +211,10 @@ check(commandPractice.includes("speechSynthesis"), "Spoken command instructions 
 check(commandPractice.includes("AudioContext"), "Command sound feedback is missing.");
 check(commandPractice.includes("event.preventDefault()"), "Practice key containment is missing.");
 check(commandPractice.includes("insertHeld"), "JAWS Insert-key chord practice is missing.");
+check(commandPractice.includes("missedCommands"), "Missed-command review is missing.");
+for (const categoryName of ["Windows and File Explorer", "Microsoft Word and documents", "Microsoft Excel and spreadsheets", "JAWS commands", "NVDA commands", "Narrator commands", "Braille display keyboard practice"]) {
+  check(commandPractice.includes('"' + categoryName + '"'), "Command Practice is missing " + categoryName + ".");
+}
 check(commandPractice.includes('return "Press " + spokenKeys(command[0]) + ". " + commandExplanation();'), "Spoken command and explanation are not clearly separated.");
 check(commandPractice.includes('return "This command lets you "'), "General command explanations are missing clear wording.");
 check(commandPractice.includes('return "Here is what this command does. "'), "Detailed command explanations are missing clear wording.");
@@ -209,7 +228,9 @@ check(searchIndex.count === 306 && searchIndex.entries.length === 306, "Search i
 check(assignmentScript.includes("const UPLOADS_ENABLED = false"), "Lesson upload interface is not paused.");
 check(assignmentScript.includes("submissionSection?.remove()"), "Paused upload interface is not removed.");
 check(assignmentScript.includes("Mark this lesson complete"), "Lesson completion control is missing.");
-check(assignmentScript.includes('status: "completed"'), "Lesson completion is not saved separately from submissions.");
+check(assignmentScript.includes('isComplete ? "in_progress" : "completed"'), "Lesson completion is not saved separately from submissions.");
+check(assignmentScript.includes('"Undo lesson completion"'), "Lesson completion cannot be undone.");
+check(assignmentScript.includes('isComplete ? "in_progress" : "completed"'), "Undo completion does not restore in-progress status.");
 check(readFileSync(resolve(root, "student-progress.html"), "utf8").includes("Continue learning"), "Next unfinished lesson control is missing.");
 check(readFileSync(resolve(root, "student-progress.html"), "utf8").includes('["completed", "submitted"]'), "Completed and legacy submitted lessons are not both counted.");
 check(readFileSync(resolve(root, "student-progress.html"), "utf8").includes("recentCourseIndex"), "Continue learning does not use the most recently active course.");
@@ -223,6 +244,11 @@ check(accessibilityScript.includes("Website accessibility settings"), "Accessibi
 check(accessibilityScript.includes("darkMode"), "Saved dark-mode preference is missing.");
 check(accessibilityScript.includes('dataset.theme'), "Dark-mode theme state is missing.");
 check(accessibilityScript.includes('details class="accessibility-menu"'), "Accessibility controls are not in a compact details menu.");
+check(accessibilityScript.includes("Last accessibility and structure review:"), "Manual review dates are missing.");
+check(existsSync(resolve(root, "course-catalog.js")), "Course catalog filtering behavior is missing.");
+check(readFileSync(resolve(root, "lessons.html"), "utf8").includes('id="courseFilter"'), "Lessons course filter is missing.");
+check(readFileSync(resolve(root, "student-progress.html"), "utf8").includes('id="startedCoursesOnly"'), "Started-courses progress filter is missing.");
+check(existsSync(resolve(root, "ACCESSIBILITY-TESTING.md")), "Accessibility testing checklist is missing.");
 for (let lesson = 1; lesson <= 10; lesson += 1) {
   const screenReaderLesson = readFileSync(resolve(root, "jaws-lesson-" + lesson + ".html"), "utf8");
   for (const name of ["JAWS", "Narrator", "NVDA"]) {

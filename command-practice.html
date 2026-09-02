@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Practice keyboard and screen-reader command key combinations with spoken instructions and sound feedback in a browser-based learning lab.">
   <title>Keyboard Command Practice Lab - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=command-practice-1">
+  <link rel="stylesheet" href="styles.css?v=command-practice-3">
   <script src="accessibility.js?v=resource-search-1" defer></script>
-  <script src="command-practice.js?v=command-practice-2" defer></script>
+  <script src="command-practice.js?v=command-practice-3" defer></script>
 </head>
 <body>
   <header>
@@ -19,7 +19,7 @@
     <section class="practice-safety" aria-labelledby="safety-heading">
       <h2 id="safety-heading">What this practice lab can safely block</h2>
       <p>While the blue practice area has focus, this page blocks the included practice commands from reaching the webpage. It cannot block operating-system or protected browser commands everywhere.</p>
-      <p><strong>Commands such as Alt+Tab, Windows+E, Windows+D, Ctrl+Alt+Delete, Ctrl+W, and F5 are learn-only on this page.</strong> Do not physically practice those commands here because they could switch, close, reload, or otherwise affect your computer.</p>
+      <p><strong>Commands such as Alt+Tab, Windows+E, Windows+D, Ctrl+Alt+Delete, Ctrl+W, and F5 are learn-only on this page.</strong> Do not physically practice those commands here because they could switch, close, reload, or otherwise affect your computer. A running screen reader may also intercept its own modifier commands before this page receives them; use the screen reader's keyboard or input help when that happens.</p>
     </section>
 
     <section aria-labelledby="setup-heading">
@@ -35,6 +35,7 @@
         <button id="startPractice" type="button">Start command practice</button>
         <button id="repeatCommand" type="button" disabled>Repeat command</button>
         <button id="nextCommand" type="button" disabled>Next command</button>
+        <button id="practiceMissed" type="button" disabled>Practice missed commands</button>
         <button id="stopPractice" type="button" disabled>Stop practice</button>
       </div>
     </section>
@@ -53,7 +54,7 @@
     </section>
 
     <section aria-labelledby="learn-only-heading">
-      <h2 id="learn-only-heading">Learn-only system and browser commands</h2>
+      <h2 id="learn-only-heading">Learn-only system, browser, and device commands</h2>
       <p>Use the Hear explanation buttons to study these commands. Do not press the actual combination in this webpage.</p>
       <div id="learnOnlyCommands" class="learn-only-list"></div>
     </section>

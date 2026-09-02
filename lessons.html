@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Accessible keyboard-first lessons for office tools, web tools, braille technology, cybersecurity, PDFs, and employment.">
   <title>Lessons - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=resource-search-1">
+  <link rel="stylesheet" href="styles.css?v=course-navigation-1">
   <script src="accessibility.js?v=resource-search-1" defer></script>
+  <script src="course-catalog.js?v=course-navigation-1" defer></script>
 </head>
 <body>
   <header>
@@ -15,6 +16,17 @@
   </header>
   <main id="main-content"><p><a href="resources.html">Search for help when you are stuck</a></p>
     <p><a href="command-practice.html">Practice keyboard and screen-reader commands</a></p>
+    <section class="catalog-tools" aria-labelledby="catalog-tools-heading">
+      <h2 id="catalog-tools-heading">Find a course</h2>
+      <p><label for="courseFilter">Search course names and lesson topics</label><br><input id="courseFilter" type="search" autocomplete="off"></p>
+      <div class="catalog-actions">
+        <button id="expandCourses" type="button">Expand matching courses</button>
+        <button id="collapseCourses" type="button">Collapse all courses</button>
+      </div>
+      <p id="courseFilterStatus" role="status" aria-live="polite"></p>
+    </section>
+    <details class="catalog-shortcuts">
+      <summary>Course shortcut links</summary>
     <nav class="lesson-nav" aria-label="Course shortcuts">
       <a href="#jaws-lessons">Screen Readers: JAWS, Narrator, and NVDA lessons</a>
       <a href="#windows-lessons">Windows 11 lessons</a>
@@ -43,6 +55,7 @@
       <a href="#slides-lessons">Google Slides lessons</a>
       <a href="student-progress.html">My progress</a>
     </nav>
+    </details>
 
                 <section id="jaws-lessons" aria-labelledby="jaws-lessons-heading">
       <h2 id="jaws-lessons-heading">Screen Readers: JAWS, Narrator, and NVDA lessons</h2>

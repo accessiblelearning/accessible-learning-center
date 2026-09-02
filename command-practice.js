@@ -14,7 +14,7 @@
       ["Control+I", "Toggle italic formatting.", "Turns italic formatting on or off in supported editors."],
       ["Control+U", "Toggle underline formatting.", "Turns underline formatting on or off in supported editors."]
     ],
-    "Document editing": [
+    "Microsoft Word and documents": [
       ["Control+K", "Insert or edit a link.", "Opens the hyperlink dialog in many document and presentation programs."],
       ["Control+H", "Open Replace.", "Opens Find and Replace in many document editors so repeated text can be changed carefully."],
       ["Control+Enter", "Insert a page break.", "Starts the next content on a new page in many word processors."],
@@ -24,7 +24,7 @@
       ["Control+Shift+Right Arrow", "Select the next word.", "Extends the selection forward by one word."],
       ["Shift+Down Arrow", "Extend selection down one line.", "Selects from the current cursor position into the next visual line."]
     ],
-    "Screen reader navigation": [
+    "Web and screen-reader navigation": [
       ["H", "Move to the next heading.", "In JAWS or NVDA webpage browse mode, H moves to the next heading."],
       ["Shift+H", "Move to the previous heading.", "In JAWS or NVDA browse mode, Shift+H moves backward by heading."],
       ["B", "Move to the next button.", "In common screen-reader browse modes, B moves to the next button."],
@@ -36,7 +36,7 @@
       ["Insert+F6", "Open the JAWS Headings List.", "JAWS Insert+F6 lists headings on the current webpage for fast navigation."],
       ["Insert+F7", "Open the JAWS Links List.", "JAWS Insert+F7 lists links on the current webpage."]
     ],
-    "Spreadsheets": [
+    "Microsoft Excel and spreadsheets": [
       ["Control+Space", "Select the current column.", "In Excel and many spreadsheets, Control+Space selects the active cell's entire column."],
       ["Shift+Space", "Select the current row.", "In Excel and many spreadsheets, Shift+Space selects the active cell's entire row."],
       ["Control+Page Down", "Move to the next worksheet.", "Moves to the next sheet tab in Excel and many spreadsheet programs."],
@@ -51,6 +51,52 @@
       ["Control+Shift+Greater Than", "Increase font size.", "In many editors, Control+Shift+Greater Than increases selected text size."],
       ["Control+Shift+Less Than", "Decrease font size.", "In many editors, Control+Shift+Less Than decreases selected text size."],
       ["Alt+Shift+Left Arrow", "Promote a list item.", "In supported presentation and document outlines, moves a list item to a higher level."]
+    ],
+    "Windows and File Explorer": [
+      ["F2", "Rename the selected item.", "In Windows File Explorer, F2 places the selected file or folder name in edit mode."],
+      ["Control+C", "Copy the selected item.", "Copies the selected file, folder, or text without removing the original."],
+      ["Control+X", "Cut the selected item.", "Places the selected item on the clipboard so it can be moved."],
+      ["Control+V", "Paste the clipboard item.", "Places the copied or cut item into the active folder or field."],
+      ["Control+Z", "Undo the last supported action.", "Reverses the most recent supported file or editing action."],
+      ["Alt+Left Arrow", "Return to the previous location.", "In File Explorer, moves back to the previously viewed folder or location."],
+      ["Alt+Right Arrow", "Move forward to the next location.", "In File Explorer, moves forward after using the Back command."],
+      ["Alt+Up Arrow", "Open the parent folder.", "In File Explorer, moves up one level in the folder structure."]
+    ],
+    "JAWS commands": [
+      ["Insert+T", "Read the window title.", "JAWS Insert+T announces the title of the active window."],
+      ["Insert+Tab", "Read the focused control.", "JAWS Insert+Tab announces the current control and related information."],
+      ["Insert+F6", "Open the Headings List.", "JAWS Insert+F6 lists headings on the current webpage."],
+      ["Insert+F7", "Open the Links List.", "JAWS Insert+F7 lists links on the current webpage."],
+      ["Insert+1", "Toggle Keyboard Help.", "JAWS Insert+1 turns Keyboard Help on or off."],
+      ["H", "Move to the next heading.", "With the JAWS Virtual Cursor active, H moves to the next heading."],
+      ["Shift+H", "Move to the previous heading.", "With the JAWS Virtual Cursor active, Shift+H moves to the previous heading."]
+    ],
+    "NVDA commands": [
+      ["Insert+T", "Read the window title.", "With Insert configured as the NVDA key, Insert+T announces the active window title."],
+      ["Insert+Tab", "Read the focused control.", "With Insert configured as the NVDA key, Insert+Tab announces the focused control."],
+      ["Insert+F7", "Open the Elements List.", "NVDA+F7 opens the Elements List in supported documents and webpages."],
+      ["Insert+F", "Read formatting information.", "NVDA+F announces formatting information for the current text."],
+      ["Insert+1", "Toggle Input Help.", "NVDA+1 turns Input Help on or off."],
+      ["H", "Move to the next heading.", "In NVDA Browse Mode, H moves to the next heading."],
+      ["Shift+H", "Move to the previous heading.", "In NVDA Browse Mode, Shift+H moves to the previous heading."]
+    ],
+    "Narrator commands": [
+      ["Insert+T", "Read the window title.", "When Insert is the Narrator key, Narrator+T reads the active window title."],
+      ["Insert+Tab", "Read the current item.", "When Insert is the Narrator key, Narrator+Tab reads the current item."],
+      ["Insert+1", "Toggle input learning.", "Narrator key+1 turns input learning on or off."],
+      ["Insert+Space", "Toggle Scan Mode.", "Narrator key+Space turns Scan Mode on or off."],
+      ["H", "Move to the next heading.", "In Narrator Scan Mode, H moves to the next heading."],
+      ["Shift+H", "Move to the previous heading.", "In Narrator Scan Mode, Shift+H moves to the previous heading."],
+      ["B", "Move to the next button.", "In Narrator Scan Mode, B moves to the next button."]
+    ],
+    "Braille display keyboard practice": [
+      ["Left Arrow", "Move back one character.", "A braille display or keyboard can emulate Left Arrow to move the cursor backward."],
+      ["Right Arrow", "Move forward one character.", "A braille display or keyboard can emulate Right Arrow to move the cursor forward."],
+      ["Control+Home", "Move to the beginning.", "In many documents, Control+Home moves to the beginning of the content."],
+      ["Control+End", "Move to the end.", "In many documents, Control+End moves to the end of the content."],
+      ["Tab", "Move to the next control.", "Tab moves keyboard focus to the next available control."],
+      ["Shift+Tab", "Move to the previous control.", "Shift+Tab moves keyboard focus to the previous available control."],
+      ["Enter", "Activate the current item.", "Enter activates many focused links, buttons, menu items, and commands."]
     ]
   };
 
@@ -65,6 +111,11 @@
     ["Control+L", "Moves focus to the browser address bar."],
     ["F5", "Reloads a webpage or starts a slide show, depending on the active program."],
     ["Alt+F4", "Closes the active application window."]
+    ,["Windows+L", "Locks the computer. The operating system controls this command, so it is learn-only here."]
+    ,["Control+P", "Opens the print dialog in many programs and browsers, so it is learn-only here."]
+    ,["Pan Left", "Moves a braille display backward. The exact chord varies by display model and cannot be detected reliably by a webpage."]
+    ,["Pan Right", "Moves a braille display forward. The exact chord varies by display model and cannot be detected reliably by a webpage."]
+    ,["Cursor Routing Button", "Moves focus or the text cursor to the character above that routing button. Behavior varies by display and screen reader."]
   ];
 
   const category = document.getElementById("commandCategory");
@@ -75,6 +126,7 @@
   const start = document.getElementById("startPractice");
   const repeat = document.getElementById("repeatCommand");
   const next = document.getElementById("nextCommand");
+  const practiceMissed = document.getElementById("practiceMissed");
   const stop = document.getElementById("stopPractice");
   const prompt = document.getElementById("commandPrompt");
   const capture = document.getElementById("keyCapture");
@@ -91,6 +143,7 @@
   let attempts = 0;
   let audioContext = null;
   let insertHeld = false;
+  let missedCommands = new Map();
 
   Object.keys(categories).forEach(name => {
     const option = document.createElement("option");
@@ -205,6 +258,8 @@
     attempts = 0;
     position = 0;
     order = [...categories[category.value]];
+    missedCommands.clear();
+    practiceMissed.disabled = true;
     if (random.checked) order.sort(() => Math.random() - 0.5);
     start.disabled = true;
     stop.disabled = false;
@@ -227,12 +282,32 @@
       stop.disabled = true;
       repeat.disabled = true;
       next.disabled = true;
-      prompt.innerHTML = "<h3>Category complete</h3><p>You practiced " + correctCount + " commands correctly in " + attempts + " attempts.</p>";
-      status.textContent = "Practice complete.";
-      speak("Practice complete. You practiced " + correctCount + " commands correctly in " + attempts + " attempts.");
-      start.focus();
+      const missedCount = missedCommands.size;
+      prompt.innerHTML = "<h3>Practice complete</h3><p>You practiced " + correctCount + " commands correctly in " + attempts + " attempts.</p>";
+      status.textContent = missedCount
+        ? missedCount + " command" + (missedCount === 1 ? " is" : "s are") + " ready to practice again."
+        : "Practice complete. No missed commands remain.";
+      practiceMissed.disabled = missedCount === 0;
+      speak("Practice complete. You practiced " + correctCount + " commands correctly in " + attempts + " attempts. " + status.textContent);
+      (missedCount ? practiceMissed : start).focus();
       return;
     }
+    showCommand();
+  });
+
+  practiceMissed.addEventListener("click", () => {
+    if (!missedCommands.size) return;
+    order = [...missedCommands.values()];
+    missedCommands = new Map();
+    active = true;
+    position = 0;
+    correctCount = 0;
+    attempts = 0;
+    start.disabled = true;
+    stop.disabled = false;
+    repeat.disabled = false;
+    practiceMissed.disabled = true;
+    updateScore();
     showCommand();
   });
 
@@ -289,6 +364,7 @@
       next.disabled = false;
       next.focus();
     } else {
+      missedCommands.set(command[0], command);
       tone(false);
       status.textContent = "Not quite. You pressed " + displaySignature(pressed) + ". Try " + spokenKeys(command[0]) + ".";
       speak("Not quite. You pressed " + displaySignature(pressed) + ". Try " + spokenKeys(command[0]) + ".");
