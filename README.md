@@ -42,7 +42,7 @@ The Excel course targets Microsoft 365 desktop on Windows with keyboard-first an
 - Microsoft Word: DOCX, PDF, TXT, BRF
 - Microsoft Excel: XLSX, CSV, PDF
 - Microsoft PowerPoint: PPTX, PDF
-- JAWS Screen Reader: TXT, DOCX, PDF, BRF
+- Screen Readers: JAWS, Narrator, and NVDA: TXT, DOCX, PDF, BRF
 - Windows 11: TXT, DOCX, PDF, BRF
 - Google Chrome: TXT, DOCX, PDF, BRF
 
@@ -55,7 +55,7 @@ The PowerPoint course targets Microsoft 365 desktop on Windows with keyboard-fir
 The course manual links only to official Microsoft accessibility guidance and Freedom Scientific JAWS documentation. PowerPoint progress appears separately without changing existing Word or Excel records.
 
 
-## JAWS Screen Reader course
+## Screen Readers: JAWS, Narrator, and NVDA course
 
 The JAWS course targets current JAWS on Windows with desktop-layout commands, laptop-layout reminders, keyboard-first practice, and employment-oriented assignments. Its ten lessons cover speech and Keyboard Help, text reading, Windows navigation, dialogs and focus, the Virtual Cursor, Forms Mode, tables, built-in help and troubleshooting, responsible JAWS AI use, and a final workplace navigation project.
 
@@ -77,13 +77,13 @@ The Chrome course provides keyboard-first, JAWS-friendly instruction for browser
 
 ## Complete course catalog
 
-The recommended order begins with Windows and File Explorer, keeps all Microsoft courses together, then keeps all Google courses together before the advanced topics.
+The recommended order begins with a choice of JAWS, Windows Narrator, or NVDA. It then moves into Windows and File Explorer, keeps Microsoft courses together, keeps Google courses together, and finishes with advanced braille technology and BrailleBlaster.
 
+- **Screen Readers: JAWS, Narrator, and NVDA:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Windows 11 and File Explorer:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Microsoft Word:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
 - **Microsoft Excel:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (XLSX, CSV, PDF)
 - **Microsoft PowerPoint:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PPTX, PDF)
-- **JAWS Screen Reader:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Google Chrome:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Google Docs:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
 - **Google Calendar:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PDF, TXT, DOCX, BRF)
@@ -96,3 +96,6 @@ The recommended order begins with Windows and File Explorer, keeps all Microsoft
 - **BrailleBlaster:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, BBZ, DOCX, PDF, TXT)
 
 Course content uses fictional, public, instructor-provided, or redacted information. Never submit passwords, recovery codes, device serial numbers, protected NLS books, government identifiers, financial data, or private workplace records.
+
+
+For backward compatibility, the Screen Readers course continues to use the existing `JAWS Screen Reader` submission and progress identifier. This preserves earlier student records while the visible course teaches all three screen readers.

@@ -136,6 +136,15 @@ check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in r
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 check(accessibilityScript.includes("Website accessibility settings"), "Accessibility menu label is missing.");
 check(accessibilityScript.includes('details class="accessibility-menu"'), "Accessibility controls are not in a compact details menu.");
+for (let lesson = 1; lesson <= 10; lesson += 1) {
+  const screenReaderLesson = readFileSync(resolve(root, "jaws-lesson-" + lesson + ".html"), "utf8");
+  for (const name of ["JAWS", "Narrator", "NVDA"]) {
+    check(screenReaderLesson.includes(name), "Screen Readers lesson " + lesson + " is missing " + name + ".");
+  }
+  check(screenReaderLesson.includes('data-course="JAWS Screen Reader"'), "Screen Readers lesson " + lesson + " does not preserve legacy progress.");
+}
+const screenReaderManual = readFileSync(resolve(root, "jaws-manual.html"), "utf8");
+check(screenReaderManual.includes("Screen Readers: JAWS, Narrator, and NVDA"), "Unified Screen Readers manual title is missing.");
 for (const action of ["decrease", "increase", "reset-text", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }

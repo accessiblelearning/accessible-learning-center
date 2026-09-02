@@ -37,6 +37,23 @@
 
     const courses = [
       {
+            "name": "JAWS Screen Reader",
+            "slug": "jaws",
+            "titles": [
+                  "Choose, Start, and Stop a Screen Reader",
+                  "Keyboard Help, Speech Control, and Basic Information",
+                  "Read by Character, Word, Line, Paragraph, and Continuously",
+                  "Navigate Windows, Dialogs, and Controls",
+                  "Browse Webpages by Headings, Links, Lists, and Landmarks",
+                  "Complete Forms and Manage Input Modes",
+                  "Navigate Tables, Lists, and Structured Information",
+                  "Read, Edit, and Review Workplace Documents",
+                  "Help, Settings, Updates, Braille, and JAWS AI",
+                  "Final Screen-Reader Workplace Project"
+            ],
+            "displayName": "Screen Readers: JAWS, Narrator, and NVDA"
+      },
+      {
             "name": "Windows 11",
             "slug": "windows",
             "titles": [
@@ -98,22 +115,6 @@
                   "Color, Contrast, Fonts, and Accessible Design",
                   "Speaker Notes and Presenting with the Keyboard",
                   "Final Accessible Workplace Presentation"
-            ]
-      },
-      {
-            "name": "JAWS Screen Reader",
-            "slug": "jaws",
-            "titles": [
-                  "Starting JAWS, Speech Control, and Keyboard Help",
-                  "Reading Text by Character, Word, Line, and Paragraph",
-                  "Windows Desktop, Start Menu, Taskbar, and App Switching",
-                  "Dialogs, Controls, the PC Cursor, and Keyboard Focus",
-                  "Web Navigation with the Virtual Cursor",
-                  "Forms Mode and Completing Web Forms",
-                  "Tables, Lists, and Structured Information",
-                  "Built-in Help, Settings, and Troubleshooting",
-                  "JAWS AI: FSCompanion and Picture Smart AI",
-                  "Final Workplace Navigation and Problem-Solving Project"
             ]
       },
       {
@@ -292,7 +293,7 @@
 
       const heading = document.createElement("h2");
       heading.id = course.slug + "-progress-heading";
-      heading.textContent = course.name;
+      heading.textContent = course.displayName || course.name;
 
       const summary = document.createElement("p");
       const meter = document.createElement("progress");
@@ -335,7 +336,7 @@
         submittedCount + " of " + course.titles.length + " lessons submitted";
       meter.setAttribute(
         "aria-label",
-        course.name + ": " + submittedCount + " of " + course.titles.length + " lessons submitted"
+        (course.displayName || course.name) + ": " + submittedCount + " of " + course.titles.length + " lessons submitted"
       );
 
       section.append(heading, summary, meter, list);
