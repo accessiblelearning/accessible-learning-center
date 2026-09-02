@@ -89,14 +89,33 @@ textarea:focus-visible {
   margin: 0 auto;
 }
 
-.accessibility-panel__inner {
-  padding: 0.7rem 0;
+ .accessibility-panel__inner {
+  padding: 0.35rem 0;
 }
 
-.accessibility-panel h2 {
-  margin: 0 0 0.45rem;
-  font-size: 1rem;
+.accessibility-menu summary {
+  width: fit-content;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.7rem;
   color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.accessibility-menu summary:hover {
+  background: #123f87;
+  border-color: #7dcfff;
+}
+
+.accessibility-menu summary:focus-visible {
+  outline: 4px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.accessibility-menu__content {
+  padding: 0.55rem 0 0.35rem;
 }
 
 .accessibility-controls {

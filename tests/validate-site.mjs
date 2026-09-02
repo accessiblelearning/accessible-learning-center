@@ -133,6 +133,12 @@ for (const course of courses) {
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
 check(htmlFiles.length === 171, "Expected 171 HTML pages, found " + htmlFiles.length + ".");
 check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
+const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
+check(accessibilityScript.includes("Website accessibility settings"), "Accessibility menu label is missing.");
+check(accessibilityScript.includes('details class="accessibility-menu"'), "Accessibility controls are not in a compact details menu.");
+for (const action of ["decrease", "increase", "reset-text", "contrast", "motion"]) {
+  check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
+}
 
 if (errors.length) {
   console.error(errors.join("\n"));
