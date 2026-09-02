@@ -123,3 +123,10 @@ Assignment uploads are intentionally paused in two layers. The lesson script set
 Each of the 25 courses has a five-question final quiz after Lesson 10. Four correct answers, or 80 percent, are required to pass. Learners may review answer explanations and retake quizzes without limit. Passing scores and dates are stored locally under accessibleLearningQuizResults so the progress page can show the result without sending it to a server.
 
 After passing, a learner may enter a name to create a printable certificate showing the course, score, and date. The name is inserted into the current page only and is not uploaded, added to the Student ID, or saved in local storage. Certificates state that they record course completion and are not professional licenses or accredited credentials.
+
+
+## Keyboard Command Practice Lab
+
+The command practice page provides a focused browser-based practice area with optional speech synthesis, brief or detailed explanations, exact key-chord recognition, text status, a three-note success sound, and a lower correction tone. It uses Web Speech and Web Audio APIs locally and does not record keystrokes or send them to a server.
+
+The lab physically practices only commands intended to be contained by the focused webpage. Operating-system and protected browser commands such as Alt+Tab, Windows+E, Windows+D, Ctrl+Alt+Delete, Ctrl+W, and F5 are listed as learn-only because a webpage cannot reliably intercept them. The page must never claim complete isolation from the operating system.

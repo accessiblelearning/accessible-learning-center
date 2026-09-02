@@ -183,19 +183,26 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 307, "Expected 307 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 308, "Expected 308 HTML pages, found " + htmlFiles.length + ".");
 check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("Manuals in recommended learning order"), "Manuals page is not marked complete.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 const assignmentScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
 const searchIndex = JSON.parse(readFileSync(resolve(root, "search-index.json"), "utf8"));
 check(existsSync(resolve(root, "resources.html")), "Help and Resource Search page is missing.");
 check(existsSync(resolve(root, "resource-search.js")), "Resource search behavior is missing.");
+check(existsSync(resolve(root, "command-practice.html")), "Keyboard Command Practice Lab page is missing.");
+const commandPractice = readFileSync(resolve(root, "command-practice.js"), "utf8");
+check(commandPractice.includes("speechSynthesis"), "Spoken command instructions are missing.");
+check(commandPractice.includes("AudioContext"), "Command sound feedback is missing.");
+check(commandPractice.includes("event.preventDefault()"), "Practice key containment is missing.");
+check(commandPractice.includes("insertHeld"), "JAWS Insert-key chord practice is missing.");
+check(readFileSync(resolve(root, "command-practice.html"), "utf8").includes("cannot block operating-system"), "System-shortcut safety warning is missing.");
 const quizScript = readFileSync(resolve(root, "quiz.js"), "utf8");
 check(quizScript.includes("data.passPercent"), "Quiz passing-score behavior is missing.");
 check(quizScript.includes("print-certificate"), "Printable certificate behavior is missing.");
 check(quizScript.includes("accessibleLearningQuizResults"), "Local quiz result storage is missing.");
 check(!quizScript.includes("certificateStudentName") || !quizScript.includes("localStorage.setItem(key, name"), "Certificate names must not be stored.");
-check(searchIndex.count === 305 && searchIndex.entries.length === 305, "Search index must contain 305 public learning, quiz, and help pages.");
+check(searchIndex.count === 306 && searchIndex.entries.length === 306, "Search index must contain 306 public learning, practice, quiz, and help pages.");
 check(assignmentScript.includes("const UPLOADS_ENABLED = false"), "Lesson upload interface is not paused.");
 check(assignmentScript.includes("submissionSection?.remove()"), "Paused upload interface is not removed.");
 check(worker.includes("const SUBMISSIONS_ENABLED = false"), "Submission Worker is not paused.");
@@ -221,4 +228,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("Validated " + htmlFiles.length + " accessible pages, 25 manuals, 250 lessons, 25 final quizzes, local certificates, searchable help, and paused private uploads.");
+console.log("Validated " + htmlFiles.length + " accessible pages, 25 manuals, 250 lessons, 25 final quizzes, command practice, local certificates, searchable help, and paused private uploads.");
