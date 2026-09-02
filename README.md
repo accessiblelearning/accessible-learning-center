@@ -77,19 +77,22 @@ The Chrome course provides keyboard-first, JAWS-friendly instruction for browser
 
 ## Complete course catalog
 
-- **Microsoft Word:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
-- **Microsoft Excel:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (XLSX, CSV, PDF)
-- **Microsoft PowerPoint:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PPTX, PDF)
+The recommended order begins with Windows and File Explorer, then builds toward screen readers, applications, online safety, employment, braille hardware, and transcription.
+
+- **Windows 11 and File Explorer:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **JAWS Screen Reader:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
-- **Windows 11:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Google Chrome:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Google Docs:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
+- **Microsoft Word:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
 - **Google Calendar:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PDF, TXT, DOCX, BRF)
+- **Microsoft Excel:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (XLSX, CSV, PDF)
+- **Microsoft PowerPoint:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PPTX, PDF)
 - **Adobe Acrobat and Accessible PDFs:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (PDF, DOCX, TXT, BRF)
-- **BrailleBlaster:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, BBZ, DOCX, PDF, TXT)
-- **Mantis Q40:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, TXT, DOCX, PDF)
-- **NLS Braille eReader:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, TXT, DOCX, PDF)
 - **Cybersecurity for Screen Reader Users:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
 - **Accessible Job Search:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (DOCX, PDF, TXT, BRF)
+- **Focus 40 Blue:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (TXT, DOCX, PDF, BRF)
+- **Mantis Q40:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, TXT, DOCX, PDF)
+- **NLS Braille eReader:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, TXT, DOCX, PDF)
+- **BrailleBlaster:** 1 manual, 10 keyboard-first lessons, progress tracking, and private assignment uploads (BRF, BBZ, DOCX, PDF, TXT)
 
-Course content uses fictional, public, instructor-provided, or redacted information. Never submit passwords, recovery codes, protected NLS books, government identifiers, financial data, or private workplace records.
+Course content uses fictional, public, instructor-provided, or redacted information. Never submit passwords, recovery codes, device serial numbers, protected NLS books, government identifiers, financial data, or private workplace records.

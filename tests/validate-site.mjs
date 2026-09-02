@@ -6,28 +6,13 @@ const htmlFiles = readdirSync(root).filter((file) => extname(file) === ".html");
 const errors = [];
 const courses = [
   {
-    "name": "Microsoft Word",
-    "slug": "word",
-    "ext": "docx,pdf,txt,brf"
-  },
-  {
-    "name": "Microsoft Excel",
-    "slug": "excel",
-    "ext": "xlsx,csv,pdf"
-  },
-  {
-    "name": "Microsoft PowerPoint",
-    "slug": "powerpoint",
-    "ext": "pptx,pdf"
+    "name": "Windows 11",
+    "slug": "windows",
+    "ext": "txt,docx,pdf,brf"
   },
   {
     "name": "JAWS Screen Reader",
     "slug": "jaws",
-    "ext": "txt,docx,pdf,brf"
-  },
-  {
-    "name": "Windows 11",
-    "slug": "windows",
     "ext": "txt,docx,pdf,brf"
   },
   {
@@ -41,9 +26,24 @@ const courses = [
     "ext": "docx,pdf,txt,brf"
   },
   {
+    "name": "Microsoft Word",
+    "slug": "word",
+    "ext": "docx,pdf,txt,brf"
+  },
+  {
     "name": "Google Calendar",
     "slug": "calendar",
     "ext": "pdf,txt,docx,brf"
+  },
+  {
+    "name": "Microsoft Excel",
+    "slug": "excel",
+    "ext": "xlsx,csv,pdf"
+  },
+  {
+    "name": "Microsoft PowerPoint",
+    "slug": "powerpoint",
+    "ext": "pptx,pdf"
   },
   {
     "name": "Adobe Acrobat and Accessible PDFs",
@@ -51,9 +51,19 @@ const courses = [
     "ext": "pdf,docx,txt,brf"
   },
   {
-    "name": "BrailleBlaster",
-    "slug": "brailleblaster",
-    "ext": "brf,bbz,docx,pdf,txt"
+    "name": "Cybersecurity for Screen Reader Users",
+    "slug": "cybersecurity",
+    "ext": "txt,docx,pdf,brf"
+  },
+  {
+    "name": "Accessible Job Search",
+    "slug": "job-search",
+    "ext": "docx,pdf,txt,brf"
+  },
+  {
+    "name": "Focus 40 Blue",
+    "slug": "focus",
+    "ext": "txt,docx,pdf,brf"
   },
   {
     "name": "Mantis Q40",
@@ -66,14 +76,9 @@ const courses = [
     "ext": "brf,txt,docx,pdf"
   },
   {
-    "name": "Cybersecurity for Screen Reader Users",
-    "slug": "cybersecurity",
-    "ext": "txt,docx,pdf,brf"
-  },
-  {
-    "name": "Accessible Job Search",
-    "slug": "job-search",
-    "ext": "docx,pdf,txt,brf"
+    "name": "BrailleBlaster",
+    "slug": "brailleblaster",
+    "ext": "brf,bbz,docx,pdf,txt"
   }
 ];
 
@@ -126,11 +131,11 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 160, "Expected 160 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 171, "Expected 171 HTML pages, found " + htmlFiles.length + ".");
 check(readFileSync(resolve(root, "manuals.html"), "utf8").includes("All manuals are available"), "Manuals page is not marked complete.");
 
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("Validated " + htmlFiles.length + " accessible pages, 14 manuals, 140 lessons, and course-aware private uploads.");
+console.log("Validated " + htmlFiles.length + " accessible pages, 15 manuals, 150 lessons, and course-aware private uploads.");

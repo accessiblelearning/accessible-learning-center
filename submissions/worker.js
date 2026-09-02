@@ -11,6 +11,7 @@ const COURSE_EXTENSIONS = new Map([
   ["Google Calendar", new Set(["pdf","txt","docx","brf"])],
   ["Adobe Acrobat and Accessible PDFs", new Set(["pdf","docx","txt","brf"])],
   ["BrailleBlaster", new Set(["brf","bbz","docx","pdf","txt"])],
+  ["Focus 40 Blue", new Set(["txt", "docx", "pdf", "brf"])],
   ["Mantis Q40", new Set(["brf","txt","docx","pdf"])],
   ["NLS Braille eReader", new Set(["brf","txt","docx","pdf"])],
   ["Cybersecurity for Screen Reader Users", new Set(["txt","docx","pdf","brf"])],
