@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Review saved Microsoft Word, Excel, PowerPoint, and JAWS lesson progress.">
+  <meta name="description" content="Review saved Word, Excel, PowerPoint, JAWS, and Windows 11 lesson progress.">
   <title>Student Progress - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css">
   <script src="accessibility.js" defer></script>
@@ -99,6 +99,22 @@
             "JAWS AI: FSCompanion and Picture Smart AI",
             "Final Workplace Navigation and Problem-Solving Project"
       ]
+},
+{
+      "name": "Windows 11",
+      "slug": "windows",
+      "titles": [
+            "Desktop, Start Menu, Search, and Taskbar",
+            "Managing Windows, Switching Apps, Snap, and Virtual Desktops",
+            "File Explorer Basics and Location Awareness",
+            "Creating, Renaming, Copying, Moving, and Deleting Files",
+            "Selecting, Sorting, Viewing, and Finding Files",
+            "Settings and Built-in Accessibility Features",
+            "Quick Settings, Notifications, Audio, and Connectivity",
+            "Security, Privacy, Updates, and Safe Downloads",
+            "Safe Troubleshooting, Task Manager, and Getting Help",
+            "Final Workplace File and Window Management Project"
+      ]
 }
 ];
 
@@ -192,7 +208,7 @@
         progressMessage.textContent =
           completedCourses === courses.length
             ? "All available courses are complete."
-            : "Progress loaded for Microsoft Word, Microsoft Excel, Microsoft PowerPoint, and JAWS Screen Reader.";
+            : "Progress loaded for Word, Excel, PowerPoint, JAWS, and Windows 11.";
       } catch (error) {
         progressMessage.textContent =
           "There was a connection problem while loading progress.";

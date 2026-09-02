@@ -5,6 +5,7 @@ const COURSE_EXTENSIONS = new Map([
   ["Microsoft Excel", new Set(["xlsx", "csv", "pdf"])],
   ["Microsoft PowerPoint", new Set(["pptx", "pdf"])],
   ["JAWS Screen Reader", new Set(["txt", "docx", "pdf", "brf"])],
+  ["Windows 11", new Set(["txt", "docx", "pdf", "brf"])],
 ]);
 
 function corsHeaders(origin) {

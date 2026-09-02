@@ -5,7 +5,7 @@ An accessible GitHub Pages learning website for blind and low-vision students.
 ## Current features
 
 - Anonymous Student IDs stored in the learner's browser
-- Microsoft Word, Excel, PowerPoint, and JAWS Screen Reader manuals with ten guided lessons per course
+- Microsoft Word, Excel, PowerPoint, JAWS Screen Reader, and Windows 11 manuals with ten guided lessons per course
 - D1-backed lesson progress tracking
 - Private assignment uploads to Cloudflare R2
 - Course-specific DOCX, XLSX, PPTX, CSV, PDF, TXT, and BRF submissions up to 10 MB
@@ -43,6 +43,7 @@ The Excel course targets Microsoft 365 desktop on Windows with keyboard-first an
 - Microsoft Excel: XLSX, CSV, PDF
 - Microsoft PowerPoint: PPTX, PDF
 - JAWS Screen Reader: TXT, DOCX, PDF, BRF
+- Windows 11: TXT, DOCX, PDF, BRF
 
 Existing Microsoft Word progress records and upload behavior remain compatible.
 
@@ -60,3 +61,10 @@ The JAWS course targets current JAWS on Windows with desktop-layout commands, la
 Lesson 9 and the manual cover FSCompanion and Picture Smart AI using official Freedom Scientific guidance. They require students to protect confidential information, verify AI results, and use Keyboard Help, Commands Search, official documentation, or an instructor when AI is unavailable. No AI service, credential, or paid feature is added to this website.
 
 JAWS progress appears separately without changing existing Word, Excel, or PowerPoint records.
+
+
+## Windows 11 course
+
+The Windows 11 course provides keyboard-first, screen-reader-friendly instruction for desktop and Start navigation, taskbar and window management, File Explorer, folders and files, selection and search, built-in accessibility settings, Quick Settings and notifications, security and updates, safe troubleshooting, and a final workplace file-management project.
+
+Lessons use reversible practice tasks, warn against changing shared-computer settings or deleting unrelated files, and accept TXT, DOCX, PDF, or BRF reports. Windows 11 progress appears separately without changing existing Word, Excel, PowerPoint, or JAWS records.
