@@ -1,6 +1,10 @@
 const ALLOWED_ORIGIN = "https://accessiblelearning.github.io";
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const COURSE_EXTENSIONS = new Map([
+  ["AI Fundamentals", new Set(["txt", "docx", "pdf", "brf"])],
+  ["ChatGPT", new Set(["txt", "docx", "pdf", "brf"])],
+  ["Microsoft Copilot", new Set(["txt", "docx", "pdf", "brf"])],
+  ["Google Gemini", new Set(["txt", "docx", "pdf", "brf"])],
   ["Microsoft Word", new Set(["docx", "pdf", "txt", "brf"])],
   ["Microsoft Excel", new Set(["xlsx", "csv", "pdf"])],
   ["Microsoft PowerPoint", new Set(["pptx", "pdf"])],

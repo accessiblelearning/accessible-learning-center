@@ -99,3 +99,7 @@ Course content uses fictional, public, instructor-provided, or redacted informat
 
 
 For backward compatibility, the Screen Readers course continues to use the existing `JAWS Screen Reader` submission and progress identifier. This preserves earlier student records while the visible course teaches all three screen readers.
+
+## Accessible AI curriculum
+
+The site includes four no-cost AI courses: AI Fundamentals and Responsible Use, ChatGPT, Microsoft Copilot, and Google Gemini. Each course has one manual and ten assignments. Lessons require public or fictional data, source verification, human review, accessible output, and compliance with workplace policy. They do not require a paid plan or new credential.
