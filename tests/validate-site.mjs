@@ -209,6 +209,9 @@ check(existsSync(resolve(root, "command-practice.html")), "Keyboard Command Prac
 check(existsSync(resolve(root, "troubleshooting-lab.html")), "Assistive Technology Troubleshooting Lab page is missing.");
 check(existsSync(resolve(root, "additional-skills-manual.html")), "Additional Screen-Reader Skills manual is missing.");
 const additionalSkills = readFileSync(resolve(root, "additional-skills-manual.html"), "utf8");
+check(additionalSkills.includes("Screen Reader Skills for Work and Independence"), "Independent skills manual title is missing.");
+check(!additionalSkills.includes("curriculum-audit") && !additionalSkills.includes("topic gaps identified"), "Independent skills manual still contains source-comparison framing.");
+check(readFileSync(resolve(root, "resources.html"), "utf8").includes("The Windows Screen Reader Primer: All the Basics and More, Fifth Edition"), "Screen Reader Primer is missing from Resources.");
 for (const topic of ["Outlook", "Zoom, Microsoft Teams, and Google Meet", "OneDrive, Dropbox", "Google Drive, Gmail, Forms, and Classroom", "Accessible audio", "NotebookLM, Be My Eyes", "Diagnose before restarting"]) {
   check(additionalSkills.includes(topic), "Additional Skills manual is missing " + topic + ".");
 }
