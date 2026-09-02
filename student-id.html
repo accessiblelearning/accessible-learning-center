@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student ID - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css">\n  <script src="accessibility.js" defer></script>\n</head>
+  <link rel="stylesheet" href="styles.css">
+  <script src="accessibility.js" defer></script>
+</head>
 
 <body>
 
@@ -23,6 +25,10 @@
         id="studentId"
         name="studentId"
         type="text"
+        minlength="3"
+        maxlength="64"
+        pattern="[A-Za-z0-9_-]{3,64}"
+        title="Use 3 to 64 letters, numbers, hyphens, or underscores."
         required
         autocomplete="username"
         aria-describedby="studentHelp"
@@ -55,8 +61,9 @@
 
       const studentId = studentIdInput.value.trim();
 
-      if (!studentId) {
-        message.textContent = "Please enter a Student ID.";
+      if (!/^[A-Za-z0-9_-]{3,64}$/.test(studentId)) {
+        message.textContent =
+          "Use 3 to 64 letters, numbers, hyphens, or underscores for your Student ID.";
         return;
       }
 

@@ -8,6 +8,7 @@
   const COURSE = "Microsoft Word";
   const MAX_FILE_SIZE = 10 * 1024 * 1024;
   const ALLOWED_EXTENSIONS = new Set(["docx", "pdf", "txt", "brf"]);
+  const DUPLICATE_WINDOW_MS = 5 * 60 * 1000;
 
   const script = document.currentScript;
   const lessonNumber = Number(script.dataset.lessonNumber);
@@ -17,6 +18,7 @@
   const fileInput = document.getElementById("assignmentFile");
   const submitButton = document.getElementById("submitLesson");
   const message = document.getElementById("submissionMessage");
+  let duplicateConfirmed = false;
 
   if (!studentId) {
     message.textContent =
@@ -33,6 +35,53 @@
   }
 
   studentDisplay.textContent = "Student ID: " + studentId;
+
+  const historyKey =
+    "accessibleLearningLastSubmission:" + studentId + ":" + lessonNumber;
+
+  function readLastSubmission() {
+    try {
+      return JSON.parse(localStorage.getItem(historyKey));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function saveLastSubmission(file, submissionId) {
+    try {
+      localStorage.setItem(
+        historyKey,
+        JSON.stringify({
+          filename: file.name,
+          size: file.size,
+          lastModified: file.lastModified,
+          submittedAt: Date.now(),
+          submissionId
+        })
+      );
+    } catch (error) {
+      // A successful upload does not depend on device history storage.
+    }
+  }
+
+  const lastSubmission = readLastSubmission();
+
+  if (lastSubmission && lastSubmission.filename) {
+    const history = document.createElement("p");
+    history.className = "submission-history";
+    history.textContent =
+      "Most recent submission from this device: " +
+      lastSubmission.filename +
+      ". Submitting it again will count as another attempt.";
+    form.before(history);
+  }
+
+  fileInput.addEventListener("change", () => {
+    duplicateConfirmed = false;
+    message.textContent = fileInput.files[0]
+      ? "Selected file: " + fileInput.files[0].name
+      : "";
+  });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -61,6 +110,22 @@
       return;
     }
 
+    const previous = readLastSubmission();
+    const sameRecentFile =
+      previous &&
+      previous.filename === file.name &&
+      previous.size === file.size &&
+      previous.lastModified === file.lastModified &&
+      Date.now() - previous.submittedAt < DUPLICATE_WINDOW_MS;
+
+    if (sameRecentFile && !duplicateConfirmed) {
+      duplicateConfirmed = true;
+      message.textContent =
+        "This same file was submitted within the last five minutes. Press Upload and Submit again only if you want another attempt.";
+      submitButton.focus();
+      return;
+    }
+
     submitButton.disabled = true;
     fileInput.disabled = true;
     message.textContent =
@@ -77,7 +142,7 @@
         SUBMISSIONS_API + "/submissions",
         {
           method: "POST",
-          body: uploadData,
+          body: uploadData
         }
       );
 
@@ -97,14 +162,14 @@
       const progressResponse = await fetch(PROGRESS_API + "/progress", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           student_id: studentId,
           course: COURSE,
           lesson_number: lessonNumber,
-          status: "submitted",
-        }),
+          status: "submitted"
+        })
       });
 
       const progressResult = await progressResponse.json();
@@ -115,7 +180,9 @@
         return;
       }
 
+      saveLastSubmission(file, uploadResult.submission_id);
       form.reset();
+      duplicateConfirmed = false;
       message.textContent =
         "Lesson " +
         lessonNumber +

@@ -4,37 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manuals - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css">\n  <script src="accessibility.js" defer></script>\n</head>
-
+  <link rel="stylesheet" href="styles.css">
+  <script src="accessibility.js" defer></script>
+</head>
 <body>
-
   <header>
     <h1>Manuals</h1>
-    <p>Choose a topic below to open an accessible step-by-step manual.</p>
+    <p>Choose an available topic below to open an accessible step-by-step manual.</p>
   </header>
 
-  <main>
-
-    <ul>
+  <main id="main-content">
+    <h2>Available now</h2>
+    <ul class="card-list">
       <li><a href="word-manual.html">Microsoft Word</a></li>
-      <li><a href="#">Microsoft Excel</a></li>
-      <li><a href="#">Microsoft PowerPoint</a></li>
-      <li><a href="#">Google Docs</a></li>
-      <li><a href="#">Google Chrome</a></li>
-      <li><a href="#">Google Calendar</a></li>
-      <li><a href="#">Adobe Acrobat and Accessible PDFs</a></li>
-      <li><a href="#">Windows 11</a></li>
-      <li><a href="#">JAWS Screen Reader</a></li>
-      <li><a href="#">BrailleBlaster</a></li>
-      <li><a href="#">Mantis Q40</a></li>
-      <li><a href="#">NLS Braille eReader</a></li>
-      <li><a href="#">Cybersecurity for Screen Reader Users</a></li>
-      <li><a href="#">Accessible Job Search</a></li>
     </ul>
 
+    <section aria-labelledby="coming-soon-heading">
+      <h2 id="coming-soon-heading">Coming soon</h2>
+      <p>These manuals are planned but are not available yet.</p>
+      <ul class="coming-soon-list">
+        <li>Microsoft Excel</li>
+        <li>Microsoft PowerPoint</li>
+        <li>Google Docs</li>
+        <li>Google Chrome</li>
+        <li>Google Calendar</li>
+        <li>Adobe Acrobat and Accessible PDFs</li>
+        <li>Windows 11</li>
+        <li>JAWS Screen Reader</li>
+        <li>BrailleBlaster</li>
+        <li>Mantis Q40</li>
+        <li>NLS Braille eReader</li>
+        <li>Cybersecurity for Screen Reader Users</li>
+        <li>Accessible Job Search</li>
+      </ul>
+    </section>
+
     <p><a href="index.html">Return to Home</a></p>
-
   </main>
-
 </body>
 </html>

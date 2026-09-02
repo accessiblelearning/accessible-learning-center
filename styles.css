@@ -466,3 +466,69 @@ html[data-reduce-motion="true"] *::after {
     text-align: center;
   }
 }
+
+
+.progress-overview progress {
+  width: min(100%, 36rem);
+  height: 1.4rem;
+  accent-color: var(--blue-600);
+}
+
+.progress-list {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.75rem;
+}
+
+.progress-list li {
+  padding: 0.9rem 1rem;
+  background: #f5faff;
+  border-left: 0.35rem solid var(--blue-600);
+  border-radius: 0.45rem;
+}
+
+.progress-list a {
+  display: block;
+  font-weight: 800;
+}
+
+.lesson-status {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.25rem 0.55rem;
+  color: #2f4059;
+  background: #e4edf7;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+.lesson-status--submitted {
+  color: #073d24;
+  background: #c9f1dc;
+}
+
+.submission-history {
+  padding: 0.75rem 1rem;
+  color: #263b55;
+  background: #fff7d6;
+  border-left: 0.35rem solid #c28a00;
+  border-radius: 0.4rem;
+}
+
+.coming-soon-list {
+  columns: 2 18rem;
+  column-gap: 2.5rem;
+}
+
+.coming-soon-list li {
+  break-inside: avoid;
+}
+
+html[data-contrast="high"] .lesson-status,
+html[data-contrast="high"] .lesson-status--submitted,
+html[data-contrast="high"] .submission-history {
+  color: #000000;
+  background: #ffffff;
+  border: 2px solid #000000;
+}

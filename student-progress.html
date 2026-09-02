@@ -4,46 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Progress - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css">\n  <script src="accessibility.js" defer></script>\n</head>
-
+  <link rel="stylesheet" href="styles.css">
+  <script src="accessibility.js" defer></script>
+</head>
 <body>
-
   <header>
     <h1>Student Progress</h1>
     <p id="studentName"></p>
   </header>
 
-  <main>
-
+  <main id="main-content">
     <h2>Microsoft Word</h2>
+
+    <section class="progress-overview" aria-labelledby="progress-summary-heading">
+      <h3 id="progress-summary-heading">Course progress</h3>
+      <p id="progressSummary">Loading completed lessons.</p>
+      <progress id="courseProgress" max="10" value="0">0 of 10 lessons submitted</progress>
+    </section>
 
     <div id="progressMessage" role="status" aria-live="polite">
       Loading your progress...
     </div>
 
-    <ol id="progressList"></ol>
+    <ol id="progressList" class="progress-list"></ol>
 
-    <p><a href="lessons.html">Go to Lessons</a></p>
-    <p><a href="student-id.html">Change Student ID</a></p>
-    <p><a href="index.html">Return to Home</a></p>
-
+    <nav aria-label="Progress actions">
+      <ul class="card-list">
+        <li><a href="lessons.html">Go to lessons</a></li>
+        <li><a href="student-id.html">Change Student ID</a></li>
+        <li><a href="index.html">Return home</a></li>
+      </ul>
+    </nav>
   </main>
 
   <script>
     const API_URL =
       "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
-
-    const studentId =
-      localStorage.getItem("accessibleLearningStudentId");
-
-    const studentName =
-      document.getElementById("studentName");
-
-    const progressMessage =
-      document.getElementById("progressMessage");
-
-    const progressList =
-      document.getElementById("progressList");
+    const studentId = localStorage.getItem("accessibleLearningStudentId");
+    const studentName = document.getElementById("studentName");
+    const progressMessage = document.getElementById("progressMessage");
+    const progressList = document.getElementById("progressList");
+    const progressSummary = document.getElementById("progressSummary");
+    const courseProgress = document.getElementById("courseProgress");
 
     const lessons = [
       "Opening Word, Creating, and Saving a Document",
@@ -62,26 +64,22 @@
       window.location.href = "student-id.html";
     }
 
-    studentName.textContent =
-      "Student ID: " + studentId;
+    studentName.textContent = "Student ID: " + studentId;
 
     async function loadProgress() {
       try {
         const response = await fetch(
-          API_URL +
-          "/progress?student_id=" +
-          encodeURIComponent(studentId)
+          API_URL + "/progress?student_id=" + encodeURIComponent(studentId)
         );
-
         const data = await response.json();
 
         if (!response.ok) {
-          progressMessage.textContent =
-            "Your progress could not be loaded.";
+          progressMessage.textContent = "Your progress could not be loaded.";
           return;
         }
 
-        progressMessage.textContent = "";
+        progressList.replaceChildren();
+        let submittedCount = 0;
 
         for (let i = 1; i <= 10; i++) {
           const record = data.find(
@@ -89,31 +87,36 @@
               item.course === "Microsoft Word" &&
               Number(item.lesson_number) === i
           );
+          const isSubmitted = Boolean(record && record.status === "submitted");
+
+          if (isSubmitted) submittedCount += 1;
 
           const item = document.createElement("li");
+          const lessonLink = document.createElement("a");
+          const status = document.createElement("span");
 
-          if (record) {
-            item.textContent =
-              "Lesson " +
-              i +
-              ": " +
-              lessons[i - 1] +
-              " — " +
-              record.status +
-              ". Attempts: " +
-              record.attempts;
-          } else {
-            item.textContent =
-              "Lesson " +
-              i +
-              ": " +
-              lessons[i - 1] +
-              " — Not started";
-          }
+          lessonLink.href = "word-lesson-" + i + ".html";
+          lessonLink.textContent = "Lesson " + i + ": " + lessons[i - 1];
+          status.className = isSubmitted
+            ? "lesson-status lesson-status--submitted"
+            : "lesson-status";
+          status.textContent = isSubmitted
+            ? "Submitted. Attempts: " + record.attempts
+            : "Not started";
 
+          item.append(lessonLink, status);
           progressList.appendChild(item);
         }
 
+        courseProgress.value = submittedCount;
+        courseProgress.textContent =
+          submittedCount + " of 10 lessons submitted";
+        progressSummary.textContent =
+          submittedCount + " of 10 lessons submitted.";
+        progressMessage.textContent =
+          submittedCount === 10
+            ? "Microsoft Word course complete."
+            : "Progress loaded.";
       } catch (error) {
         progressMessage.textContent =
           "There was a connection problem while loading progress.";
@@ -122,6 +125,5 @@
 
     loadProgress();
   </script>
-
 </body>
 </html>
