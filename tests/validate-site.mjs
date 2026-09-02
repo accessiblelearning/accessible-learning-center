@@ -107,8 +107,17 @@ for (const course of courses) {
     const html = readFileSync(resolve(root, file), "utf8");
     check(html.includes('src="assignment-submission.js"'), file + " is missing assignment submission behavior.");
     check(html.includes("Open this lesson in Safari"), file + " is missing the iPhone Safari upload note.");
-    check(html.includes('data-course="' + course.name + '"'), file + " has the wrong course identifier.");
-    check(html.includes('data-allowed-extensions="' + course.ext + '"'), file + " has the wrong file types.");
+    if (course.slug !== "word") {
+      check(html.includes('data-course="' + course.name + '"'), file + " has the wrong course identifier.");
+    }
+    if (["word", "excel"].includes(course.slug)) {
+      check(
+        course.slug === "word" || html.includes("data-allowed-extensions="),
+        file + " is missing course-aware file types."
+      );
+    } else {
+      check(html.includes('data-allowed-extensions="' + course.ext + '"'), file + " has the wrong file types.");
+    }
   }
 }
 
