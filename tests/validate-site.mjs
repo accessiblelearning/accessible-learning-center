@@ -356,6 +356,11 @@ for (const requiredTopic of ["Accounts, Sign-In, and Availability", "Verify Resp
   check(geminiManual.includes(requiredTopic), "Google Gemini manual is missing: " + requiredTopic + ".");
 }
 check((geminiManual.match(/<h2 id="part-/g) || []).length === 26, "Google Gemini manual must contain all 26 full manual parts.");
+const sheetsManual = readFileSync(resolve(root, "sheets-manual.html"), "utf8");
+for (const requiredTopic of ["Turn On Screen Reader and Braille Support", "Rows, Columns, Cells, and Ranges", "Formulas and Cell References", "Relative and Absolute References", "Filters and Filter Views", "Data Validation, Dropdowns, and Checkboxes", "Charts and Accessible Chart Descriptions", "Pivot Tables", "Sharing and Permissions", "Accessible Spreadsheet Design", "JAWS", "NVDA", "Braille Displays", "Troubleshooting", "Final Independence Checklist"]) {
+  check(sheetsManual.includes(requiredTopic), "Google Sheets manual is missing: " + requiredTopic + ".");
+}
+check((sheetsManual.match(/<h2 id="part-/g) || []).length === 36, "Google Sheets manual must contain all 36 full manual parts.");
 for (const action of ["decrease", "increase", "reset-text", "dark", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }

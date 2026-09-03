@@ -1,12 +1,1124 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Accessible keyboard-first Google Sheets manual for blind and low-vision learners."><title>Google Sheets Manual - Accessible Learning Center</title><link rel="stylesheet" href="styles.css?v=manual-review-1"><script src="accessibility.js?v=manual-review-1" defer></script></head><body class="manual-page">
-<a class="skip-link" href="#main-content">Skip to main content</a><header><p class="eyebrow">Free browser-based spreadsheets</p><h1>Google Sheets Manual</h1><p>No-cost office skills, accessible workflows, and Microsoft-compatible file exchange.</p></header><main id="main-content"><nav class="manual-tools lesson-nav" aria-label="Sheets manual navigation"><a href="#cost">Cost</a><a href="#accessibility">Accessibility</a><a href="#files">File formats</a><a href="#screen-readers">Screen readers</a><a href="#compatibility">Compatibility</a><a href="#lessons">Lessons</a></nav>
-<section id="cost" aria-labelledby="cost-heading"><h2 id="cost-heading">No-cost course rule</h2><p>This course must not require a purchase, subscription, paid trial, payment card, or new paid service. LibreOffice is free and open source. Google Docs editors and Microsoft 365 for the web have free account-based options, but internet access, account rules, storage limits, and available features can differ.</p><p>Use an employer-approved program and account for workplace information. A free personal account is not automatically approved for client or organizational data.</p></section>
-<section id="accessibility" aria-labelledby="accessibility-heading"><h2 id="accessibility-heading">Accessibility comes before feature count</h2><p>Before choosing a program, test the actual work tasks with the learner’s preferred screen reader, Braille display, magnification, browser zoom, color settings, and keyboard. Confirm that focus is announced, controls have useful names, editing feedback is understandable, and essential tasks do not require a mouse.</p><ul><li>Use descriptive headings, real lists, clear table headers, meaningful links, alternative text, sufficient contrast, and logical reading order.</li><li>Do not communicate meaning only through color or visual position.</li><li>Run the program’s accessibility checker when available, but also perform a keyboard and screen-reader review.</li><li>Keep an original editable file before exporting PDF or converting formats.</li></ul></section>
-<section id="files" aria-labelledby="files-heading"><h2 id="files-heading">Native and exchange formats</h2><dl><dt>LibreOffice native formats</dt><dd>ODT for Writer, ODS for Calc, and ODP for Impress preserve LibreOffice editing features.</dd><dt>Microsoft exchange formats</dt><dd>DOCX, XLSX, and PPTX are often required by employers or instructors using Microsoft 365.</dd><dt>Other formats</dt><dd>CSV carries plain spreadsheet data without formulas or formatting. PDF is useful for fixed-layout review but may be harder to edit and must be checked for accessibility.</dd></dl><p>Save the native version first. Then save or download a separate exchange copy and review it in the receiving program whenever possible.</p></section>
-<section id="screen-readers" aria-labelledby="screen-readers-heading"><h2 id="screen-readers-heading">JAWS, Narrator, and NVDA</h2><p>Interfaces vary by program and update. Use Tab and Shift+Tab for controls, arrow keys within menus and lists, Enter or Space to activate, Alt or F10 for menus when supported, Ctrl+S to save, Ctrl+O to open, and Ctrl+Z to undo. Listen for the current control name and state instead of memorizing screen position.</p><ul><li><strong>JAWS:</strong> Use Insert+T for the window title, Insert+Tab for focused-control information, and Insert+1 for Keyboard Help.</li><li><strong>NVDA:</strong> Use NVDA+T for the title, NVDA+Tab for focus, and NVDA+1 for Input Help.</li><li><strong>Narrator:</strong> Use Caps Lock+T for the title and Caps Lock+1 for Input Learning. Toggle Scan Mode only when the application or webpage requires it.</li></ul><p>Browser-based editors may have their own screen-reader-support setting and keyboard shortcuts. Read the current official help before changing screen-reader modes.</p></section>
-<section id="compatibility" aria-labelledby="compatibility-heading"><h2 id="compatibility-heading">Compatibility review</h2><ol><li>Keep an untouched native copy.</li><li>Create a separate DOCX, XLSX, PPTX, CSV, or PDF copy.</li><li>Read every heading, cell range, slide title, link, table, image description, formula result, note, and page or slide count.</li><li>Check fonts, spacing, page breaks, charts, animations, formulas, comments, and accessibility metadata.</li><li>Correct the native file and export again rather than repeatedly converting the same exchange copy.</li></ol><p>Never promise perfect compatibility without testing the actual document in the receiving software.</p></section>
-<section aria-labelledby="privacy-heading"><h2 id="privacy-heading">Privacy, accounts, and sharing</h2><p>Use fictional or public information in these lessons. Do not upload client records, medical or disability information, passwords, financial data, or confidential workplace material. For cloud tools, confirm the active account and sharing permission before entering content. For local tools, back up files to an approved location.</p></section>
-<section aria-labelledby="official-heading"><h2 id="official-heading">Official references</h2><ul><li><a href="https://support.google.com/docs/answer/1632199">Google Docs editors accessibility</a></li><li><a href="https://support.google.com/docs/answer/179738">Google Docs editors keyboard shortcuts</a></li><li><a href="https://support.google.com/docs/">Google Docs Editors Help</a></li></ul></section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Comprehensive keyboard-first Google Sheets manual for blind and low-vision learners.">
+  <title>Google Sheets Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-sheets-manual-1">
+  <script src="accessibility.js?v=manual-contents-1" defer></script>
+</head>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible spreadsheets</p>
+    <h1>Google Sheets Manual</h1>
+    <p>Independent self-study guide for Google Sheets with screen readers, braille displays, and keyboard navigation.</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#complete-procedures">Website practice procedures</a>
+      <a href="#lessons">Google Sheets lessons</a>
+    </nav>
+<p><em>Google Sheets with JAWS, NVDA, Narrator, VoiceOver, TalkBack, and Braille</em></p>
+<p><strong>Purpose:</strong> This manual teaches Google Sheets from the beginning, with special attention to keyboard and screen-reader use. It assumes no spreadsheet experience.</p>
+<p><strong>Reference environment:</strong> The main procedures use the current Google Sheets web application on a computer. Separate sections cover JAWS, NVDA, Narrator, VoiceOver, braille, and mobile use.</p>
+<p><strong>Core accessibility model:</strong> Google Sheets behaves like a web application rather than a normal webpage. Screen-reader browse/virtual modes often need to be disabled while editing the grid.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Start with a blank practice spreadsheet rather than an important work file.</p></li>
+<li><p>On Windows, press Ctrl+Alt+Z to turn on or verify screen-reader support.</p></li>
+<li><p>With JAWS, turn Virtual PC Cursor off while editing. With NVDA, use Focus Mode. With VoiceOver on Mac, turn Quick Nav off.</p></li>
+<li><p>Use Arrow keys to move cell by cell. Your screen reader should announce the cell address and contents.</p></li>
+<li><p>Press Ctrl+/ to open Google Sheets' shortcut list.</p></li>
+<li><p>Press Alt+/ on Windows/ChromeOS or Option+/ on Mac to search menus for a command.</p></li>
+<li><p>Use formulas only after you understand cell references.</p></li>
+<li><p>Check important formulas by testing them with known values.</p></li>
+<li><p>Do not use color alone to communicate meaning in an accessible spreadsheet.</p></li>
+<li><p>Give sheets, charts, ranges, and headers meaningful names.</p></li>
+</ul>
+<nav class="manual-contents" aria-labelledby="table-of-contents">
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#part-1---what-google-sheets-is">Part 1 - What Google Sheets Is</a></li>
+<li><a href="#part-2---create-and-open-a-spreadsheet">Part 2 - Create and Open a Spreadsheet</a></li>
+<li><a href="#part-3---turn-on-screen-reader-and-braille-support">Part 3 - Turn On Screen Reader and Braille Support</a></li>
+<li><a href="#part-4---understand-rows-columns-cells-and-ranges">Part 4 - Understand Rows, Columns, Cells, and Ranges</a></li>
+<li><a href="#part-5---move-around-the-grid">Part 5 - Move Around the Grid</a></li>
+<li><a href="#part-6---enter-edit-clear-copy-and-paste-data">Part 6 - Enter, Edit, Clear, Copy, and Paste Data</a></li>
+<li><a href="#part-7---select-cells-rows-columns-and-ranges">Part 7 - Select Cells, Rows, Columns, and Ranges</a></li>
+<li><a href="#part-8---add-delete-resize-and-move-rows-and-columns">Part 8 - Add, Delete, Resize, and Move Rows and Columns</a></li>
+<li><a href="#part-9---multiple-sheets-and-sheet-tabs">Part 9 - Multiple Sheets and Sheet Tabs</a></li>
+<li><a href="#part-10---number-date-currency-and-percent-formats">Part 10 - Number, Date, Currency, and Percent Formats</a></li>
+<li><a href="#part-11---formulas-and-cell-references">Part 11 - Formulas and Cell References</a></li>
+<li><a href="#part-12---common-functions">Part 12 - Common Functions</a></li>
+<li><a href="#part-13---relative-and-absolute-references">Part 13 - Relative and Absolute References</a></li>
+<li><a href="#part-14---fill-and-autofill">Part 14 - Fill and Autofill</a></li>
+<li><a href="#part-15---sort-data">Part 15 - Sort Data</a></li>
+<li><a href="#part-16---filters-and-filter-views">Part 16 - Filters and Filter Views</a></li>
+<li><a href="#part-17---data-validation-dropdowns-and-checkboxes">Part 17 - Data Validation, Dropdowns, and Checkboxes</a></li>
+<li><a href="#part-18---tables-named-ranges-and-named-functions">Part 18 - Tables, Named Ranges, and Named Functions</a></li>
+<li><a href="#part-19---charts-and-accessible-chart-descriptions">Part 19 - Charts and Accessible Chart Descriptions</a></li>
+<li><a href="#part-20---pivot-tables">Part 20 - Pivot Tables</a></li>
+<li><a href="#part-21---find-replace-and-search-menus">Part 21 - Find, Replace, and Search Menus</a></li>
+<li><a href="#part-22---notes-comments-and-collaboration">Part 22 - Notes, Comments, and Collaboration</a></li>
+<li><a href="#part-23---sharing-and-permissions">Part 23 - Sharing and Permissions</a></li>
+<li><a href="#part-24---version-history-and-recovery">Part 24 - Version History and Recovery</a></li>
+<li><a href="#part-25---download-print-and-export">Part 25 - Download, Print, and Export</a></li>
+<li><a href="#part-26---accessible-spreadsheet-design">Part 26 - Accessible Spreadsheet Design</a></li>
+<li><a href="#part-27---jaws">Part 27 - JAWS</a></li>
+<li><a href="#part-28---nvda">Part 28 - NVDA</a></li>
+<li><a href="#part-29---narrator">Part 29 - Narrator</a></li>
+<li><a href="#part-30---voiceover-on-mac">Part 30 - VoiceOver on Mac</a></li>
+<li><a href="#part-31---braille-displays">Part 31 - Braille Displays</a></li>
+<li><a href="#part-32---mobile-voiceover-and-talkback">Part 32 - Mobile: VoiceOver and TalkBack</a></li>
+<li><a href="#part-33---troubleshooting">Part 33 - Troubleshooting</a></li>
+<li><a href="#part-34---independent-practice-course">Part 34 - Independent Practice Course</a></li>
+<li><a href="#part-35---quick-reference">Part 35 - Quick Reference</a></li>
+<li><a href="#part-36---official-google-resources">Part 36 - Official Google Resources</a></li>
+</ol>
+</nav>
+<h2 id="part-1---what-google-sheets-is">Part 1 - What Google Sheets Is</h2>
+<p>Google Sheets is a web-based spreadsheet application. A spreadsheet contains one or more sheets. Each sheet is a grid made of rows and columns.</p>
+<ul>
+<li><p>Column letters run across the top: A, B, C, and so on.</p></li>
+<li><p>Row numbers run down the left side: 1, 2, 3, and so on.</p></li>
+<li><p>A cell is the intersection of a column and row. For example, C4 means column C, row 4.</p></li>
+<li><p>A range is a group of cells, such as A1:C5.</p></li>
+<li><p>A formula begins with an equals sign (=).</p></li>
+<li><p>A function is a built-in formula operation such as SUM or AVERAGE.</p></li>
+</ul>
+<h2 id="part-2---create-and-open-a-spreadsheet">Part 2 - Create and Open a Spreadsheet</h2>
+<h3 id="create-a-blank-spreadsheet">2.1 Create a Blank Spreadsheet</h3>
+<p><strong>What you will learn:</strong> Open a new spreadsheet directly from the browser.</p>
+<p><strong>Before you begin:</strong> Use Chrome or another supported browser and sign in to the intended Google account.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol><li>Press Ctrl+L or Alt+D to focus the browser address bar.</li><li>Type sheet.new.</li><li>Press Enter.</li><li>Wait for Google Sheets to open.</li><li>Listen for 'Screen reader support enabled' if support was previously enabled.</li><li>Use the Arrow keys to confirm that focus is in the grid.</li></ol>
+<p><strong>What should happen:</strong> A blank spreadsheet opens with focus in a cell, usually A1.</p>
+<p><strong>If that does not happen:</strong> If a sign-in page appears, sign in to the correct Google account first. If arrows move browser elements instead of cells, review Part 3.</p>
+<p><strong>Practice:</strong> Create one blank practice spreadsheet.</p>
+<h3 id="rename-the-spreadsheet">2.2 Rename the Spreadsheet</h3>
+<p><strong>What you will learn:</strong> Give the file a meaningful name.</p>
+<p><strong>Before you begin:</strong> A spreadsheet is open.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol><li>Press Alt+/.</li><li>Type rename.</li><li>Use Down Arrow to find the rename action.</li><li>Press Enter.</li><li>Type a descriptive name such as Monthly Budget Practice.</li><li>Press Enter.</li></ol>
+<p><strong>What should happen:</strong> The file name changes and Google Drive saves it automatically.</p>
+<p><strong>If that does not happen:</strong> If menu search does not open, use File menu or Tab to the document title control.</p>
+<p><strong>Practice:</strong> Rename your practice spreadsheet.</p>
+<h2 id="part-3---turn-on-screen-reader-and-braille-support">Part 3 - Turn On Screen Reader and Braille Support</h2>
+<h3 id="enable-screen-reader-support">3.1 Enable Screen Reader Support</h3>
+<p><strong>What you will learn:</strong> Make Sheets expose its optimized accessibility interface.</p>
+<p><strong>Before you begin:</strong> A Google spreadsheet is open.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol><li>On Windows or ChromeOS, press Ctrl+Alt+Z. On Mac, press Command+Option+Z.</li><li>Listen for confirmation that screen reader support is enabled.</li><li>If you need to verify it through menus, open Tools: Windows/ChromeOS Alt+Shift+T; Mac Control+Option+T.</li><li>Choose Accessibility settings.</li><li>Verify Turn on screen reader support is checked.</li><li>Close the dialog.</li></ol>
+<p><strong>What should happen:</strong> Moving through cells causes the screen reader to announce cell address and contents.</p>
+<p><strong>If that does not happen:</strong> If your browser or screen reader intercepts the shortcut, use the Tools &gt; Accessibility settings method.</p>
+<p><strong>Practice:</strong> Turn support off and back on in a disposable spreadsheet so you know the command.</p>
+<h3 id="enable-braille-support">3.2 Enable Braille Support</h3>
+<p><strong>What you will learn:</strong> Improve braille display integration and routing.</p>
+<p><strong>Before you begin:</strong> A braille display is already configured in the screen reader.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol><li>Press Ctrl+Alt+H on Windows/ChromeOS or Command+Option+H on Mac.</li><li>Listen for confirmation.</li><li>Move through several cells.</li><li>Use a routing key on the braille display.</li><li>Type a few characters if braille input is configured.</li></ol>
+<p><strong>What should happen:</strong> The display follows Sheets and routing/input become more responsive.</p>
+<p><strong>If that does not happen:</strong> If you do not use a braille display and Sheets becomes sluggish, turn braille support off using the same shortcut.</p>
+<p><strong>Practice:</strong> Test output, input, and routing.</p>
+<h2 id="part-4---understand-rows-columns-cells-and-ranges">Part 4 - Understand Rows, Columns, Cells, and Ranges</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Reference</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A1</td>
+<td>Column A, row 1</td>
+</tr>
+<tr class="even">
+<td>D7</td>
+<td>Column D, row 7</td>
+</tr>
+<tr class="odd">
+<td>A1:C3</td>
+<td>Rectangular range from A1 through C3</td>
+</tr>
+<tr class="even">
+<td>B:B</td>
+<td>Entire column B</td>
+</tr>
+<tr class="odd">
+<td>5:5</td>
+<td>Entire row 5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="build-a-simple-data-table">4.1 Build a Simple Data Table</h3>
+<p><strong>What you will learn:</strong> Create a predictable header-and-data structure.</p>
+<p><strong>Before you begin:</strong> Use a blank sheet.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol><li>Move to A1.</li><li>Type Name and press Tab.</li><li>Type Quantity and press Tab.</li><li>Type Price and press Enter.</li><li>Move to A2.</li><li>Type Apples and press Tab.</li><li>Type 3 and press Tab.</li><li>Type 1.25 and press Enter.</li><li>Move to A3 and enter another item the same way.</li></ol>
+<p><strong>What should happen:</strong> Row 1 contains headers and later rows contain related records.</p>
+<p><strong>If that does not happen:</strong> If Enter moves in an unexpected direction, use Arrow keys to return to the intended cell.</p>
+<p><strong>Practice:</strong> Create a three-column, four-row practice table.</p>
+<h2 id="part-5---move-around-the-grid">Part 5 - Move Around the Grid</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command / Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One cell</td>
+<td>Arrow keys</td>
+</tr>
+<tr class="even">
+<td>Edge of current data region</td>
+<td>Ctrl+Arrow</td>
+</tr>
+<tr class="odd">
+<td>Beginning of row</td>
+<td>Home</td>
+</tr>
+<tr class="even">
+<td>Beginning of sheet</td>
+<td>Ctrl+Home</td>
+</tr>
+<tr class="odd">
+<td>End of used region</td>
+<td>Ctrl+End</td>
+</tr>
+<tr class="even">
+<td>Go to named cell/range</td>
+<td>Use Name box or menu search for 'Go to range'</td>
+</tr>
+<tr class="odd">
+<td>Next sheet</td>
+<td>Alt+Down Arrow</td>
+</tr>
+<tr class="even">
+<td>Previous sheet</td>
+<td>Alt+Up Arrow</td>
+</tr>
+<tr class="odd">
+<td>Sheet list</td>
+<td>Alt+Shift+K</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="move-efficiently-through-data">5.1 Move Efficiently Through Data</h3>
+<p><strong>What you will learn:</strong> Use structure rather than pressing Arrow hundreds of times.</p>
+<p><strong>Before you begin:</strong> A table has several rows and columns.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol><li>Move to A1.</li><li>Press Ctrl+Right Arrow to move toward the edge of the current data region.</li><li>Press Ctrl+Down Arrow to move toward the bottom of the data region.</li><li>Press Ctrl+Home to return to A1.</li><li>Use ordinary Arrow keys to inspect nearby cells.</li></ol>
+<p><strong>What should happen:</strong> You can travel quickly and still confirm the current cell address.</p>
+<p><strong>If that does not happen:</strong> Blank cells can change where Ctrl+Arrow stops. Use the screen reader's announced cell address to stay oriented.</p>
+<p><strong>Practice:</strong> Navigate from A1 to the lower-right data cell and back.</p>
+<h3 id="hear-row-and-column-context">5.2 Hear Row and Column Context</h3>
+<p><strong>What you will learn:</strong> Use Sheets' verbalize commands to understand a cell in a wide table.</p>
+<p><strong>Before you begin:</strong> Screen reader support is on.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol><li>Move to a data cell.</li><li>Press Ctrl+Alt+Shift+R on Windows/ChromeOS to verbalize the row from the first column to the current column.</li><li>Press Ctrl+Alt+Shift+C to verbalize the column from the first row to the current row.</li><li>Repeat in another cell.</li></ol>
+<p><strong>What should happen:</strong> Sheets announces contextual values that help identify the row/column meaning.</p>
+<p><strong>If that does not happen:</strong> If the shortcut is intercepted, open Accessibility &gt; Verbalize to screen reader and choose the equivalent action.</p>
+<p><strong>Practice:</strong> Use both verbalize commands in a table with headers.</p>
+<h2 id="part-6---enter-edit-clear-copy-and-paste-data">Part 6 - Enter, Edit, Clear, Copy, and Paste Data</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command / Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Enter value and move down</td>
+<td>Type value, Enter</td>
+</tr>
+<tr class="even">
+<td>Enter value and move right</td>
+<td>Type value, Tab</td>
+</tr>
+<tr class="odd">
+<td>Edit focused cell</td>
+<td>Enter or F2, depending browser/platform behavior</td>
+</tr>
+<tr class="even">
+<td>Clear contents</td>
+<td>Delete</td>
+</tr>
+<tr class="odd">
+<td>Copy / Cut / Paste</td>
+<td>Ctrl+C / Ctrl+X / Ctrl+V</td>
+</tr>
+<tr class="even">
+<td>Undo / Redo</td>
+<td>Ctrl+Z / Ctrl+Y</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="edit-an-existing-cell">6.1 Edit an Existing Cell</h3>
+<p><strong>What you will learn:</strong> Correct text without replacing the wrong cell.</p>
+<p><strong>Before you begin:</strong> Focus the cell containing the text.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol><li>Press Enter or use the edit command available in your browser/Sheets environment.</li><li>Use Left/Right Arrow and Ctrl+Left/Right Arrow inside the cell text.</li><li>Use Backspace/Delete to correct characters.</li><li>Press Enter to accept the change.</li><li>Move away and return to verify the final value.</li></ol>
+<p><strong>What should happen:</strong> Only the intended cell changes.</p>
+<p><strong>If that does not happen:</strong> If Arrow keys move to another cell instead of within the text, you are not in cell-edit mode; activate the cell again.</p>
+<p><strong>Practice:</strong> Correct three intentional spelling errors.</p>
+<h3 id="copy-a-formula-or-value">6.2 Copy a Formula or Value</h3>
+<p><strong>What you will learn:</strong> Reuse content without retyping.</p>
+<p><strong>Before you begin:</strong> Focus a filled cell.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol><li>Press Ctrl+C.</li><li>Move to the destination cell.</li><li>Press Ctrl+V.</li><li>Move away and return to verify the result.</li></ol>
+<p><strong>What should happen:</strong> The value/formula is pasted. Formula references may adjust when copied.</p>
+<p><strong>If that does not happen:</strong> If you only wanted the displayed value rather than the formula, use Paste special through Edit/menu search.</p>
+<p><strong>Practice:</strong> Copy one value and one formula.</p>
+<h2 id="part-7---select-cells-rows-columns-and-ranges">Part 7 - Select Cells, Rows, Columns, and Ranges</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command / Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Extend selection</td>
+<td>Shift+Arrow</td>
+</tr>
+<tr class="even">
+<td>Extend to edge of filled data</td>
+<td>Ctrl+Shift+Arrow</td>
+</tr>
+<tr class="odd">
+<td>Select row cells / row</td>
+<td>Shift+Space; press again for full row</td>
+</tr>
+<tr class="even">
+<td>Select column cells / column</td>
+<td>Ctrl+Space; press again for full column</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="select-a-rectangular-range">7.1 Select a Rectangular Range</h3>
+<p><strong>What you will learn:</strong> Prepare cells for formatting, formulas, or sorting.</p>
+<p><strong>Before you begin:</strong> Use a small data table.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol><li>Move to the top-left cell of the intended range.</li><li>Hold Shift.</li><li>Press Right Arrow to extend across columns.</li><li>Press Down Arrow to extend across rows.</li><li>Release Shift.</li><li>Use a screen-reader verbalize/selection command if needed to confirm the range.</li></ol>
+<p><strong>What should happen:</strong> The intended adjacent cells are selected.</p>
+<p><strong>If that does not happen:</strong> If the selection includes too many cells, press Escape and start again from the top-left cell.</p>
+<p><strong>Practice:</strong> Select A1:C4.</p>
+<h2 id="part-8---add-delete-resize-and-move-rows-and-columns">Part 8 - Add, Delete, Resize, and Move Rows and Columns</h2>
+<h3 id="insert-a-row">8.1 Insert a Row</h3>
+<p><strong>What you will learn:</strong> Add space without overwriting existing data.</p>
+<p><strong>Before you begin:</strong> Focus a cell near where the row belongs.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol><li>Open the Insert menu with Alt+Shift+I on Windows/ChromeOS, or search menus with Alt+/.</li><li>Choose Rows.</li><li>Choose Insert 1 row above or Insert 1 row below.</li><li>Move through the new row to verify its location.</li></ol>
+<p><strong>What should happen:</strong> A blank row appears and existing data shifts.</p>
+<p><strong>If that does not happen:</strong> If a column was inserted instead, undo with Ctrl+Z and repeat while listening carefully to the submenu.</p>
+<p><strong>Practice:</strong> Insert and then undo one practice row.</p>
+<h3 id="resize-a-column">8.2 Resize a Column</h3>
+<p><strong>What you will learn:</strong> Make visual width fit data while preserving content.</p>
+<p><strong>Before you begin:</strong> Focus a cell in the target column.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol><li>Select the column with Ctrl+Space twice if needed.</li><li>Use Alt+/ and search for Resize column.</li><li>Open the command.</li><li>Enter a pixel width or choose fit-to-data when offered.</li><li>Confirm.</li></ol>
+<p><strong>What should happen:</strong> The visual width changes; cell contents are unchanged.</p>
+<p><strong>If that does not happen:</strong> Screen-reader users may not notice the visual change. Verify with a sighted check when visual layout matters to recipients.</p>
+<p><strong>Practice:</strong> Resize one practice column.</p>
+<h2 id="part-9---multiple-sheets-and-sheet-tabs">Part 9 - Multiple Sheets and Sheet Tabs</h2>
+<h3 id="add-and-rename-a-sheet">9.1 Add and Rename a Sheet</h3>
+<p><strong>What you will learn:</strong> Organize one workbook into meaningful sections.</p>
+<p><strong>Before you begin:</strong> A spreadsheet is open.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol><li>Use Alt+/ and search for Insert new sheet, or use the plus-sheet command in the interface.</li><li>Open the sheet list with Alt+Shift+K.</li><li>Move to the new sheet.</li><li>Open its context menu with Shift+F10.</li><li>Choose Rename.</li><li>Type a meaningful name such as January.</li><li>Press Enter.</li></ol>
+<p><strong>What should happen:</strong> A new sheet tab has a descriptive name.</p>
+<p><strong>If that does not happen:</strong> If a browser context menu appears instead of the Sheets menu, use the sheet list and menu search commands.</p>
+<p><strong>Practice:</strong> Create sheets named January and February.</p>
+<h3 id="switch-sheets">9.2 Switch Sheets</h3>
+<p><strong>What you will learn:</strong> Move without hunting visually for tabs.</p>
+<p><strong>Before you begin:</strong> The file has multiple sheets.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol><li>Press Alt+Down Arrow to move to the next sheet.</li><li>Press Alt+Up Arrow to move to the previous sheet.</li><li>Press Alt+Shift+K to open the complete list.</li><li>Use Up/Down Arrow and press Enter on the desired sheet.</li></ol>
+<p><strong>What should happen:</strong> The active sheet changes and focus returns to its grid.</p>
+<p><strong>If that does not happen:</strong> If Alt+Arrow is intercepted by your system/browser, use Alt+Shift+K.</p>
+<p><strong>Practice:</strong> Switch among three sheets.</p>
+<h2 id="part-10---number-date-currency-and-percent-formats">Part 10 - Number, Date, Currency, and Percent Formats</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command / Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Date</td>
+<td>Ctrl+Shift+3</td>
+</tr>
+<tr class="even">
+<td>Currency</td>
+<td>Ctrl+Shift+4</td>
+</tr>
+<tr class="odd">
+<td>Percent</td>
+<td>Ctrl+Shift+5</td>
+</tr>
+<tr class="even">
+<td>Scientific</td>
+<td>Ctrl+Shift+6</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="apply-number-formatting">10.1 Apply Number Formatting</h3>
+<p><strong>What you will learn:</strong> Change how a value is displayed without changing its underlying meaning.</p>
+<p><strong>Before you begin:</strong> Enter 0.25 in a practice cell.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol><li>Focus the cell.</li><li>Press Ctrl+Shift+5.</li><li>Move away and return.</li><li>Listen for the displayed percentage.</li><li>Use Format menu or menu search for additional number formats.</li></ol>
+<p><strong>What should happen:</strong> 0.25 displays as 25% with percent formatting.</p>
+<p><strong>If that does not happen:</strong> If the value becomes 0.25% because you typed 0.25 after percent formatting, understand that display format and stored value are separate concepts.</p>
+<p><strong>Practice:</strong> Format practice cells as date, currency, and percent.</p>
+<h2 id="part-11---formulas-and-cell-references">Part 11 - Formulas and Cell References</h2>
+<h3 id="create-a-formula">11.1 Create a Formula</h3>
+<p><strong>What you will learn:</strong> Calculate from cells instead of typing the answer manually.</p>
+<p><strong>Before you begin:</strong> Enter 5 in A1 and 7 in B1.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol><li>Move to C1.</li><li>Type =A1+B1.</li><li>Press Enter.</li><li>Return to C1.</li><li>Listen for the result.</li><li>Edit A1 to 10 and return to C1.</li></ol>
+<p><strong>What should happen:</strong> C1 recalculates automatically from 12 to 17.</p>
+<p><strong>If that does not happen:</strong> If the formula appears as text, verify the cell is not formatted as Plain text and that the formula begins with =.</p>
+<p><strong>Practice:</strong> Create addition, subtraction, multiplication, and division formulas.</p>
+<p><strong>Operators:</strong> Common operators are + addition, - subtraction, * multiplication, / division, and ^ exponent.</p>
+<h2 id="part-12---common-functions">Part 12 - Common Functions</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Example</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SUM</td>
+<td>=SUM(B2:B10)</td>
+<td>Adds values.</td>
+</tr>
+<tr class="even">
+<td>AVERAGE</td>
+<td>=AVERAGE(B2:B10)</td>
+<td>Calculates arithmetic mean.</td>
+</tr>
+<tr class="odd">
+<td>MIN</td>
+<td>=MIN(B2:B10)</td>
+<td>Returns smallest value.</td>
+</tr>
+<tr class="even">
+<td>MAX</td>
+<td>=MAX(B2:B10)</td>
+<td>Returns largest value.</td>
+</tr>
+<tr class="odd">
+<td>COUNT</td>
+<td>=COUNT(B2:B10)</td>
+<td>Counts numeric cells.</td>
+</tr>
+<tr class="even">
+<td>COUNTA</td>
+<td>=COUNTA(A2:A10)</td>
+<td>Counts nonempty cells.</td>
+</tr>
+<tr class="odd">
+<td>IF</td>
+<td>=IF(B2&gt;=70,"Pass","Review")</td>
+<td>Returns one result when a condition is true and another when false.</td>
+</tr>
+<tr class="even">
+<td>COUNTIF</td>
+<td>=COUNTIF(C2:C20,"Yes")</td>
+<td>Counts cells that meet a condition.</td>
+</tr>
+<tr class="odd">
+<td>SUMIF</td>
+<td>=SUMIF(A2:A20,"Food",B2:B20)</td>
+<td>Adds values meeting a condition.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="build-a-sum-function">12.1 Build a SUM Function</h3>
+<p><strong>What you will learn:</strong> Add a column reliably.</p>
+<p><strong>Before you begin:</strong> Enter several numbers in B2:B5.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol><li>Move to B6.</li><li>Type =SUM(B2:B5).</li><li>Press Enter.</li><li>Verify the answer manually with small numbers.</li><li>Change one input and confirm the total recalculates.</li></ol>
+<p><strong>What should happen:</strong> B6 contains the current total.</p>
+<p><strong>If that does not happen:</strong> If the result is an error, spell the function and verify colon/range references.</p>
+<p><strong>Practice:</strong> Create SUM, AVERAGE, MIN, and MAX for the same values.</p>
+<h2 id="part-13---relative-and-absolute-references">Part 13 - Relative and Absolute References</h2>
+<p>A relative reference changes when a formula is copied. An absolute reference keeps a row and/or column fixed using dollar signs.</p>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command / Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A1</td>
+<td>Relative column and row</td>
+</tr>
+<tr class="even">
+<td>$A$1</td>
+<td>Absolute column and row</td>
+</tr>
+<tr class="odd">
+<td>$A1</td>
+<td>Absolute column, relative row</td>
+</tr>
+<tr class="even">
+<td>A$1</td>
+<td>Relative column, absolute row</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="use-an-absolute-reference">13.1 Use an Absolute Reference</h3>
+<p><strong>What you will learn:</strong> Apply one tax/rate cell to many rows.</p>
+<p><strong>Before you begin:</strong> Put a rate such as 0.05 in E1 and amounts in B2:B5.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol><li>Move to C2.</li><li>Type =B2*$E$1.</li><li>Press Enter.</li><li>Copy C2 downward into C3:C5.</li><li>Inspect each formula/result.</li><li>Confirm every formula still points to E1.</li></ol>
+<p><strong>What should happen:</strong> The B-row reference changes while $E$1 stays fixed.</p>
+<p><strong>If that does not happen:</strong> If E1 changes to E2/E3, the reference was not absolute.</p>
+<p><strong>Practice:</strong> Create a tax or commission calculation.</p>
+<h2 id="part-14---fill-and-autofill">Part 14 - Fill and Autofill</h2>
+<h3 id="continue-a-series">14.1 Continue a Series</h3>
+<p><strong>What you will learn:</strong> Fill sequential numbers or dates.</p>
+<p><strong>Before you begin:</strong> Enter 1 in A1 and 2 in A2.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol><li>Select A1:A2.</li><li>Extend the selection downward into several empty cells.</li><li>Press Ctrl+Alt+Enter on Windows/ChromeOS, or Command+Option+Enter on Mac.</li><li>Move through the filled cells.</li></ol>
+<p><strong>What should happen:</strong> Sheets continues the numeric series.</p>
+<p><strong>If that does not happen:</strong> If values simply repeat or remain unchanged, the starting pattern/selection may not define a series.</p>
+<p><strong>Practice:</strong> Autofill 1 through 10 and a short date sequence.</p>
+<h2 id="part-15---sort-data">Part 15 - Sort Data</h2>
+<h3 id="sort-a-table-safely">15.1 Sort a Table Safely</h3>
+<p><strong>What you will learn:</strong> Reorder complete records without separating columns.</p>
+<p><strong>Before you begin:</strong> Use a table with headers and several rows.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol><li>Select the entire data range, including all related columns.</li><li>Open Data using the menu bar or Alt+/ menu search.</li><li>Choose Sort range.</li><li>Indicate that the range has a header row if offered.</li><li>Choose the column and A-to-Z or Z-to-A order.</li><li>Apply the sort.</li><li>Read several rows to verify records stayed together.</li></ol>
+<p><strong>What should happen:</strong> Rows are reordered based on the selected column while record fields stay aligned.</p>
+<p><strong>If that does not happen:</strong> Never sort only one data column in a multi-column record table unless that is truly intended. Undo immediately if records become mismatched.</p>
+<p><strong>Practice:</strong> Sort a practice table by Name and then by Amount.</p>
+<h2 id="part-16---filters-and-filter-views">Part 16 - Filters and Filter Views</h2>
+<h3 id="create-and-use-a-filter">16.1 Create and Use a Filter</h3>
+<p><strong>What you will learn:</strong> Temporarily hide rows that do not meet criteria.</p>
+<p><strong>Before you begin:</strong> Use a table with a header row.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol><li>Select the data range.</li><li>Open Data.</li><li>Choose Create a filter.</li><li>Move into the filtered range; the screen reader should announce when entering it.</li><li>Open the filter control for the desired header using the context/menu controls available.</li><li>Review values or conditions.</li><li>Toggle values to include/exclude.</li><li>Tab to OK and press Enter.</li></ol>
+<p><strong>What should happen:</strong> Rows not meeting the criteria are hidden; Google reports the available row count when the filter is applied.</p>
+<p><strong>If that does not happen:</strong> If colleagues are using the same file, consider a filter view when you do not want your filter to alter their view.</p>
+<p><strong>Practice:</strong> Filter a Category column to one value, then remove the filter.</p>
+<p><strong>Accessibility:</strong> A filtered sheet contains hidden rows. Do not assume missing rows were deleted.</p>
+<h2 id="part-17---data-validation-dropdowns-and-checkboxes">Part 17 - Data Validation, Dropdowns, and Checkboxes</h2>
+<h3 id="create-a-dropdown">17.1 Create a Dropdown</h3>
+<p><strong>What you will learn:</strong> Restrict a cell to known choices.</p>
+<p><strong>Before you begin:</strong> Select one or more practice cells.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol><li>Use Alt+/ and type dropdown, or open Data &gt; Data validation.</li><li>Choose Add rule.</li><li>Choose Dropdown or Dropdown from a range.</li><li>Enter options such as Not started, In progress, Done.</li><li>Choose whether invalid data should be rejected or only warned about.</li><li>Activate Done.</li><li>Focus one dropdown cell and open/select a value.</li></ol>
+<p><strong>What should happen:</strong> The cell offers controlled choices and data validation.</p>
+<p><strong>If that does not happen:</strong> Multiple-selection dropdowns are only available in supported chip configurations; mobile behavior can differ.</p>
+<p><strong>Practice:</strong> Create a three-value status dropdown.</p>
+<h3 id="create-and-toggle-checkboxes">17.2 Create and Toggle Checkboxes</h3>
+<p><strong>What you will learn:</strong> Track yes/no status with a keyboard-accessible control.</p>
+<p><strong>Before you begin:</strong> Select practice cells.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol><li>Open Insert.</li><li>Choose Checkbox.</li><li>Move to a checkbox cell.</li><li>Press Spacebar to toggle it.</li><li>Press Spacebar again to restore the other state.</li></ol>
+<p><strong>What should happen:</strong> The checkbox changes checked state.</p>
+<p><strong>If that does not happen:</strong> If Space types a character, verify the focused cell contains a checkbox and you are not editing text.</p>
+<p><strong>Practice:</strong> Create and toggle five checkboxes.</p>
+<h2 id="part-18---tables-named-ranges-and-named-functions">Part 18 - Tables, Named Ranges, and Named Functions</h2>
+<p>Google Sheets includes higher-level structures that can make formulas easier to understand.</p>
+<ul>
+<li><p>Named range: gives a range a human-readable name instead of using only A1 references.</p></li>
+<li><p>Named function: lets you build a reusable custom function from built-in Sheets formulas.</p></li>
+<li><p>Tables and structured features may vary by account/rollout; use menus and current help to confirm availability.</p></li>
+</ul>
+<h3 id="create-a-named-range">18.1 Create a Named Range</h3>
+<p><strong>What you will learn:</strong> Make an important range easier to refer to.</p>
+<p><strong>Before you begin:</strong> Select a simple numeric range.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol><li>Open Data.</li><li>Choose Named ranges.</li><li>Enter a descriptive name without spaces, such as Sales_Total_Input.</li><li>Confirm the range.</li><li>Save/Done.</li><li>Use the named range in a simple formula if supported.</li></ol>
+<p><strong>What should happen:</strong> The range can be referred to by name in formulas and navigation.</p>
+<p><strong>If that does not happen:</strong> If the name is rejected, use letters, numbers, and underscores and follow Sheets naming rules.</p>
+<p><strong>Practice:</strong> Create one named range.</p>
+<p><strong>Named functions:</strong> Google currently supports Named functions under Data &gt; Named functions and allows them to be imported into other Sheets files.</p>
+<h2 id="part-19---charts-and-accessible-chart-descriptions">Part 19 - Charts and Accessible Chart Descriptions</h2>
+<h3 id="create-a-basic-chart">19.1 Create a Basic Chart</h3>
+<p><strong>What you will learn:</strong> Turn a well-labeled data table into a visual summary.</p>
+<p><strong>Before you begin:</strong> Use a small table with headers.</p>
+<h4 id="exactly-how-to-do-it-24">Exactly how to do it</h4>
+<ol><li>Select the header and data range.</li><li>Open Insert.</li><li>Choose Chart.</li><li>Wait for the chart to be inserted.</li><li>Use Accessibility menu &gt; Select to locate floating charts if needed.</li><li>Review the chart type and data range in Chart editor.</li></ol>
+<p><strong>What should happen:</strong> A chart based on the selected data appears.</p>
+<p><strong>If that does not happen:</strong> If the chart summarizes the wrong range, correct the source range before formatting it.</p>
+<p><strong>Practice:</strong> Create a simple column or line chart.</p>
+<h3 id="add-accessible-chart-text">19.2 Add Accessible Chart Text</h3>
+<p><strong>What you will learn:</strong> Give a chart a meaningful accessible name/description.</p>
+<p><strong>Before you begin:</strong> Focus the chart or its anchored cell.</p>
+<h4 id="exactly-how-to-do-it-25">Exactly how to do it</h4>
+<ol><li>Press Alt+/ on Windows/ChromeOS or Option+/ on Mac.</li><li>Type Alt text.</li><li>Press Enter.</li><li>Tab to Advanced options and expand it.</li><li>Enter a meaningful Title.</li><li>Enter a description if the available control provides one.</li><li>Tab to Close and press Enter.</li></ol>
+<p><strong>What should happen:</strong> Screen-reader selection of the chart uses the title/description rather than only 'Chart'.</p>
+<p><strong>If that does not happen:</strong> If no floating object is selected, use Accessibility &gt; Select to choose the chart first.</p>
+<p><strong>Practice:</strong> Add an accessible title to a practice chart.</p>
+<p><strong>Design rule:</strong> Do not make a chart the only way to access essential values. Keep the underlying labeled data table available.</p>
+<h2 id="part-20---pivot-tables">Part 20 - Pivot Tables</h2>
+<p>Pivot tables summarize larger datasets by grouping fields into rows, columns, values, and filters.</p>
+<h3 id="create-a-simple-pivot-table">20.1 Create a Simple Pivot Table</h3>
+<p><strong>What you will learn:</strong> Summarize categories without writing many formulas.</p>
+<p><strong>Before you begin:</strong> Use a clean table with one header row and no blank header names.</p>
+<h4 id="exactly-how-to-do-it-26">Exactly how to do it</h4>
+<ol><li>Select the complete source data.</li><li>Open Insert or Data and choose Pivot table.</li><li>Choose whether to create it in a new sheet or existing sheet.</li><li>Use the Pivot table editor side panel.</li><li>Add a field under Rows.</li><li>Add a numeric field under Values.</li><li>Review the resulting summary table cell by cell.</li></ol>
+<p><strong>What should happen:</strong> Sheets creates a summary such as total sales by category.</p>
+<p><strong>If that does not happen:</strong> Pivot editor controls can be complex with a screen reader. Use Alt+/ menu search and Tab/Shift+Tab through the side panel; simplify the first practice pivot.</p>
+<p><strong>Practice:</strong> Create a total-by-category pivot.</p>
+<h2 id="part-21---find-replace-and-search-menus">Part 21 - Find, Replace, and Search Menus</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command / Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Find</td>
+<td>Ctrl+F</td>
+</tr>
+<tr class="even">
+<td>Find and replace</td>
+<td>Ctrl+H</td>
+</tr>
+<tr class="odd">
+<td>Search menus</td>
+<td>Alt+/</td>
+</tr>
+<tr class="even">
+<td>Shortcut list</td>
+<td>Ctrl+/</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="find-and-replace-carefully">21.1 Find and Replace Carefully</h3>
+<p><strong>What you will learn:</strong> Correct repeated text without changing unintended cells.</p>
+<p><strong>Before you begin:</strong> Use a copy of practice data.</p>
+<h4 id="exactly-how-to-do-it-27">Exactly how to do it</h4>
+<ol><li>Press Ctrl+H.</li><li>Enter the text to find.</li><li>Enter the replacement.</li><li>Review scope/options.</li><li>Use Find/Replace one occurrence at a time first.</li><li>Use Replace all only after confirming the pattern.</li></ol>
+<p><strong>What should happen:</strong> Matching values are changed within the chosen scope.</p>
+<p><strong>If that does not happen:</strong> Undo with Ctrl+Z immediately if Replace all changed too much.</p>
+<p><strong>Practice:</strong> Replace one misspelled category safely.</p>
+<h2 id="part-22---notes-comments-and-collaboration">Part 22 - Notes, Comments, and Collaboration</h2>
+<h3 id="add-a-note">22.1 Add a Note</h3>
+<p><strong>What you will learn:</strong> Attach information to one cell without starting a discussion.</p>
+<p><strong>Before you begin:</strong> Focus a cell.</p>
+<h4 id="exactly-how-to-do-it-28">Exactly how to do it</h4>
+<ol><li>Press Shift+F2 on Windows/Mac.</li><li>Type the note.</li><li>Press Escape.</li><li>Move away and return to the cell.</li><li>Listen for the note indication.</li></ol>
+<p><strong>What should happen:</strong> The cell contains a note.</p>
+<p><strong>If that does not happen:</strong> A note is different from a comment thread. Use comments when collaboration/action is needed.</p>
+<p><strong>Practice:</strong> Add and delete a practice note.</p>
+<h3 id="add-a-comment">22.2 Add a Comment</h3>
+<p><strong>What you will learn:</strong> Start a collaborative discussion tied to a cell.</p>
+<p><strong>Before you begin:</strong> Focus the target cell.</p>
+<h4 id="exactly-how-to-do-it-29">Exactly how to do it</h4>
+<ol><li>Use Insert &gt; Comment or the current comment shortcut/menu command.</li><li>Type a clear comment.</li><li>Use @ mention if appropriate and permitted.</li><li>Post the comment.</li><li>Review replies/resolution controls.</li></ol>
+<p><strong>What should happen:</strong> Collaborators can reply to and resolve the comment.</p>
+<p><strong>If that does not happen:</strong> Do not put sensitive information in comments unless everyone with access is authorized to see it.</p>
+<p><strong>Practice:</strong> Add a comment to a shared practice file.</p>
+<h2 id="part-23---sharing-and-permissions">Part 23 - Sharing and Permissions</h2>
+<h3 id="share-a-spreadsheet">23.1 Share a Spreadsheet</h3>
+<p><strong>What you will learn:</strong> Give the correct person the minimum necessary permission.</p>
+<p><strong>Before you begin:</strong> Open the correct spreadsheet.</p>
+<h4 id="exactly-how-to-do-it-30">Exactly how to do it</h4>
+<ol><li>Use the Share button through Tab/landmarks or Alt+/ search for Share.</li><li>Enter the recipient's email address.</li><li>Choose Viewer, Commenter, or Editor as appropriate.</li><li>Review the file name and recipient.</li><li>Add a message if needed.</li><li>Send.</li></ol>
+<p><strong>What should happen:</strong> The recipient receives the chosen level of access.</p>
+<p><strong>If that does not happen:</strong> If the file contains sensitive data, confirm account, organization policy, and link-sharing settings before sending.</p>
+<p><strong>Practice:</strong> Inspect sharing on a harmless file.</p>
+<p><strong>Least privilege:</strong> Do not give Editor access when Viewer or Commenter is enough.</p>
+<h2 id="part-24---version-history-and-recovery">Part 24 - Version History and Recovery</h2>
+<h3 id="review-version-history">24.1 Review Version History</h3>
+<p><strong>What you will learn:</strong> Recover earlier work or identify changes.</p>
+<p><strong>Before you begin:</strong> Use a file with several edits.</p>
+<h4 id="exactly-how-to-do-it-31">Exactly how to do it</h4>
+<ol><li>Open File.</li><li>Open Version history.</li><li>Choose See version history.</li><li>Move through saved versions and collaborator/date information.</li><li>Preview a version.</li><li>Restore only after confirming that is the intended version.</li></ol>
+<p><strong>What should happen:</strong> You can inspect earlier states without relying on Undo history.</p>
+<p><strong>If that does not happen:</strong> Restoring a version can affect collaborators; consider making a copy first for important files.</p>
+<p><strong>Practice:</strong> Open version history and exit without restoring.</p>
+<h2 id="part-25---download-print-and-export">Part 25 - Download, Print, and Export</h2>
+<ul>
+<li><p>File &gt; Download can export formats such as Microsoft Excel (.xlsx), PDF, CSV, and others depending on the current file/sheet.</p></li>
+<li><p>CSV exports one sheet at a time and does not preserve formulas/formatting in the same way as a spreadsheet file.</p></li>
+<li><p>PDF is useful for fixed-layout distribution but may be less usable for data analysis than the original accessible sheet.</p></li>
+<li><p>Excel export should be checked after download because formulas, charts, or advanced Sheets features may behave differently.</p></li>
+<li><p>Printing is visual output; use Print settings to define current sheet, selected cells, headers, scaling, and page breaks.</p></li>
+</ul>
+<p><strong>Accessibility:</strong> When distributing data to screen-reader users, offer the original accessible spreadsheet or another structured data format rather than only an image or scanned PDF.</p>
+<h2 id="part-26---accessible-spreadsheet-design">Part 26 - Accessible Spreadsheet Design</h2>
+<ul>
+<li><p>Use a single clear header row at the top of each data table.</p></li>
+<li><p>Give every column a unique, meaningful header.</p></li>
+<li><p>Give each sheet a descriptive name; avoid Sheet1, Sheet2 when the file is shared.</p></li>
+<li><p>Keep one record per row and one field per column.</p></li>
+<li><p>Avoid merged cells in data tables.</p></li>
+<li><p>Avoid blank rows/columns inside the core data region unless they have a real structural purpose.</p></li>
+<li><p>Do not use color alone to indicate status, errors, ownership, or priority.</p></li>
+<li><p>Use text labels such as High, Medium, Low in addition to color.</p></li>
+<li><p>Keep formulas consistent down a calculated column.</p></li>
+<li><p>Provide alt text/title for charts/images and keep source data available.</p></li>
+<li><p>Use notes/comments deliberately and avoid hiding essential instructions only in a comment.</p></li>
+<li><p>Freeze headers visually when useful, but do not rely on freezing as a substitute for meaningful header text.</p></li>
+<li><p>Protect formula/input ranges when appropriate, while ensuring intended users have necessary access.</p></li>
+</ul>
+<h3 id="audit-a-spreadsheet-for-accessibility">26.1 Audit a Spreadsheet for Accessibility</h3>
+<p><strong>What you will learn:</strong> Check structure before sharing.</p>
+<p><strong>Before you begin:</strong> Use a completed practice sheet.</p>
+<h4 id="exactly-how-to-do-it-32">Exactly how to do it</h4>
+<ol><li>Read every sheet name.</li><li>Read the first row of each table and confirm unique headers.</li><li>Navigate down each column and check that data types are consistent.</li><li>Identify merged cells and unnecessary blanks.</li><li>Check whether any meaning exists only through color.</li><li>Check charts/images for accessible titles/alt text.</li><li>Test the spreadsheet with a screen reader from A1 through representative data.</li></ol>
+<p><strong>What should happen:</strong> The file is easier to understand without visual interpretation.</p>
+<p><strong>If that does not happen:</strong> If the sheet only makes sense visually, redesign the structure instead of adding more verbal instructions.</p>
+<p><strong>Practice:</strong> Audit one existing spreadsheet.</p>
+<h2 id="part-27---jaws">Part 27 - JAWS</h2>
+<ul>
+<li><p>Use Google Sheets as a web application, not a normal webpage.</p></li>
+<li><p>Press Ctrl+Alt+Z to enable screen-reader support.</p></li>
+<li><p>Turn JAWS Virtual PC Cursor off with JAWS+Z until JAWS announces it is off.</p></li>
+<li><p>Use Sheets Arrow-key navigation in the grid.</p></li>
+<li><p>Use Ctrl+/ for Sheets shortcut help rather than relying only on JAWS web-navigation keys.</p></li>
+<li><p>If a dialog or side panel appears, Tab/Shift+Tab through its controls and return to the grid when finished.</p></li>
+</ul>
+<h3 id="jaws-orientation-test">27.1 JAWS Orientation Test</h3>
+<p><strong>What you will learn:</strong> Confirm the correct interaction mode before doing real work.</p>
+<p><strong>Before you begin:</strong> JAWS and Google Sheets are open.</p>
+<h4 id="exactly-how-to-do-it-33">Exactly how to do it</h4>
+<ol><li>Press JAWS+Z until Virtual PC Cursor is off.</li><li>Press Ctrl+Alt+Z if screen-reader support is not already on.</li><li>Move Right Arrow three cells.</li><li>Move Down Arrow three cells.</li><li>Listen for each cell address and value.</li><li>Press Alt+/ and search for Rename, then press Escape.</li></ol>
+<p><strong>What should happen:</strong> JAWS follows the Sheets grid and application commands.</p>
+<p><strong>If that does not happen:</strong> If H/L/F web navigation commands begin moving around the browser instead of cells, Virtual PC Cursor may have been turned back on.</p>
+<p><strong>Practice:</strong> Repeat until mode switching is automatic.</p>
+<h2 id="part-28---nvda">Part 28 - NVDA</h2>
+<ul>
+<li><p>Google recommends Focus Mode for editing in Docs Editors.</p></li>
+<li><p>Toggle NVDA Browse/Focus Mode with NVDA+Space.</p></li>
+<li><p>Ensure NVDA's desktop shortcut does not consume Ctrl+Alt+N, which Google editors use for navigation.</p></li>
+<li><p>Press Ctrl+Alt+Z for Sheets screen-reader support.</p></li>
+<li><p>Use the grid's Arrow-key navigation and Sheets shortcuts.</p></li>
+</ul>
+<h3 id="nvda-orientation-test">28.1 NVDA Orientation Test</h3>
+<p><strong>What you will learn:</strong> Verify Focus Mode and cell announcements.</p>
+<p><strong>Before you begin:</strong> NVDA and Sheets are open.</p>
+<h4 id="exactly-how-to-do-it-34">Exactly how to do it</h4>
+<ol><li>Press NVDA+Space until Focus Mode is active.</li><li>Press Ctrl+Alt+Z if needed.</li><li>Move through A1:C3.</li><li>Press NVDA+Tab if you need NVDA to repeat the focused element.</li><li>Press Ctrl+/ to open the Sheets shortcut list and Escape to return.</li></ol>
+<p><strong>What should happen:</strong> NVDA announces addresses/contents rather than treating the sheet as an ordinary webpage.</p>
+<p><strong>If that does not happen:</strong> If the letter keys trigger webpage browse commands, switch back to Focus Mode.</p>
+<p><strong>Practice:</strong> Move through a five-column table.</p>
+<h2 id="part-29---narrator">Part 29 - Narrator</h2>
+<ul>
+<li><p>Turn Narrator on/off with Windows+Ctrl+Enter.</p></li>
+<li><p>Google's editors are optimized around application-style keyboard navigation.</p></li>
+<li><p>Keep Narrator Scan Mode off when Scan Mode prevents Sheets from receiving application shortcuts.</p></li>
+<li><p>Use Ctrl+Alt+Z for Google screen-reader support.</p></li>
+<li><p>Use Narrator+Tab to repeat the focused control if needed.</p></li>
+</ul>
+<p><strong>Practice:</strong> Open a blank sheet, enter headers, move through cells, and use Alt+/ to search for a command while Narrator is running.</p>
+<h2 id="part-30---voiceover-on-mac">Part 30 - VoiceOver on Mac</h2>
+<ul>
+<li><p>Press Command+Option+Z to enable screen-reader support.</p></li>
+<li><p>Turn VoiceOver Quick Nav off by pressing Left Arrow and Right Arrow together until VoiceOver announces Quick Nav off.</p></li>
+<li><p>Google notes that the default Control+Option VoiceOver modifier conflicts with Docs Editors menu shortcuts.</p></li>
+<li><p>Use VO+Tab pass-through before a Control+Option menu shortcut, or configure Caps Lock as the VoiceOver modifier.</p></li>
+<li><p>Use Option+/ to search menus.</p></li>
+<li><p>Use Command+/ for the Sheets shortcut list.</p></li>
+</ul>
+<p><strong>Recovery:</strong> If VoiceOver focus does not enter the correct dialog/editor area, press Escape and use VO+Shift+Down Arrow to interact with the editing area.</p>
+<h2 id="part-31---braille-displays">Part 31 - Braille Displays</h2>
+<ul>
+<li><p>Configure the braille display in JAWS, NVDA, Narrator, VoiceOver, or ChromeVox first.</p></li>
+<li><p>Enable Google braille support with Ctrl+Alt+H on Windows/ChromeOS or Command+Option+H on Mac.</p></li>
+<li><p>Test cell output while moving with Arrow keys.</p></li>
+<li><p>Test braille input inside a cell.</p></li>
+<li><p>Test cursor routing.</p></li>
+<li><p>Google notes that braille mode can also improve punctuation/whitespace announcements and character navigation.</p></li>
+</ul>
+<p><strong>Connection rule:</strong> Screen reader/display connection first -&gt; Google braille support second -&gt; test OUTPUT, INPUT, ROUTING.</p>
+<h2 id="part-32---mobile-voiceover-and-talkback">Part 32 - Mobile: VoiceOver and TalkBack</h2>
+<h3 id="iphoneipad-with-voiceover">32.1 iPhone/iPad with VoiceOver</h3>
+<ul>
+<li><p>Use the Google Sheets app for mobile spreadsheet access.</p></li>
+<li><p>Swipe right/left to move VoiceOver focus through controls and cells; double-tap to activate.</p></li>
+<li><p>Use an external keyboard or braille display for larger editing tasks when possible.</p></li>
+<li><p>Complex sorting, filtering, charts, and data-validation editing are generally easier on desktop.</p></li>
+<li><p>Verify the current cell and formula before making broad changes.</p></li>
+</ul>
+<h3 id="android-with-talkback">32.2 Android with TalkBack</h3>
+<ul>
+<li><p>Use TalkBack swipe navigation and double-tap activation in the Sheets app.</p></li>
+<li><p>Use a physical keyboard/braille display when large-grid navigation is difficult by touch.</p></li>
+<li><p>Dropdown multiple-selection features may be limited on mobile even when configured on desktop.</p></li>
+<li><p>Use desktop Sheets for complex pivot tables, charts, and large structural edits when practical.</p></li>
+</ul>
+<h2 id="part-33---troubleshooting">Part 33 - Troubleshooting</h2>
+<h3 id="arrow-keys-move-the-webpage-instead-of-cells">33.1 Arrow Keys Move the Webpage Instead of Cells</h3>
+<p><strong>What you will learn:</strong> Restore application interaction mode.</p>
+<p><strong>Before you begin:</strong> Sheets is open with a screen reader.</p>
+<h4 id="exactly-how-to-do-it-35">Exactly how to do it</h4>
+<ol><li>Press Escape to close menus/dialogs.</li><li>Verify screen-reader support with Ctrl+Alt+Z.</li><li>JAWS: turn Virtual PC Cursor off with JAWS+Z.</li><li>NVDA: switch to Focus Mode with NVDA+Space.</li><li>VoiceOver: turn Quick Nav off.</li><li>Return to the grid and try Arrow keys.</li></ol>
+<p><strong>What should happen:</strong> Arrow keys move from cell to cell and addresses are announced.</p>
+<p><strong>If that does not happen:</strong> If focus is not in the grid, use Sheets landmarks/Tab navigation or reopen the spreadsheet.</p>
+<p><strong>Practice:</strong> Practice deliberately switching out of and back into editing mode.</p>
+<h3 id="a-formula-shows-an-error">33.2 A Formula Shows an Error</h3>
+<p><strong>What you will learn:</strong> Diagnose syntax and references instead of replacing it blindly.</p>
+<p><strong>Before you begin:</strong> A formula cell shows an error.</p>
+<h4 id="exactly-how-to-do-it-36">Exactly how to do it</h4>
+<ol><li>Edit the formula.</li><li>Check that it begins with =.</li><li>Check function spelling.</li><li>Check parentheses and commas/argument separators.</li><li>Check referenced cells/ranges.</li><li>Check for division by zero or missing values.</li><li>Use the function help box/reference when needed.</li><li>Test the formula on small known values.</li></ol>
+<p><strong>What should happen:</strong> The error becomes understandable or the formula calculates correctly.</p>
+<p><strong>If that does not happen:</strong> Different error types point to different causes; do not hide an error with IFERROR until you understand why it occurs.</p>
+<p><strong>Practice:</strong> Fix one intentionally broken SUM or IF formula.</p>
+<h3 id="data-changed-after-sorting">33.3 Data Changed After Sorting</h3>
+<p><strong>What you will learn:</strong> Check whether the full record range was selected.</p>
+<p><strong>Before you begin:</strong> Rows no longer seem related.</p>
+<h4 id="exactly-how-to-do-it-37">Exactly how to do it</h4>
+<ol><li>Immediately press Ctrl+Z if the sort was just performed.</li><li>Identify all columns that belong to each record.</li><li>Select the entire table.</li><li>Repeat Sort range with the header-row option.</li></ol>
+<p><strong>What should happen:</strong> Complete records move together.</p>
+<p><strong>If that does not happen:</strong> If the file was already saved/edited by others, use Version history to recover the correct state.</p>
+<p><strong>Practice:</strong> Practice sorting a copy.</p>
+<h3 id="screen-reader-stops-announcing-useful-context">33.4 Screen Reader Stops Announcing Useful Context</h3>
+<p><strong>What you will learn:</strong> Re-establish Sheets accessibility state.</p>
+<p><strong>Before you begin:</strong> Cell navigation still works but announcements are poor.</p>
+<h4 id="exactly-how-to-do-it-38">Exactly how to do it</h4>
+<ol><li>Press Ctrl+Alt+Z to verify screen-reader support.</li><li>Use Accessibility &gt; Verbalize to screen reader.</li><li>Use Ctrl+Alt+Shift+R or C for row/column context.</li><li>Check whether braille support should be on/off for your setup.</li><li>Refresh the browser only after saving/sync status is stable.</li></ol>
+<p><strong>What should happen:</strong> Contextual announcements return.</p>
+<p><strong>If that does not happen:</strong> If only one file behaves badly, test a new blank sheet to separate file complexity from screen-reader configuration.</p>
+<p><strong>Practice:</strong> Compare the problem file with sheet.new.</p>
+<h3 id="a-shared-user-cannot-edit">33.5 A Shared User Cannot Edit</h3>
+<p><strong>What you will learn:</strong> Check permissions rather than spreadsheet formulas.</p>
+<p><strong>Before you begin:</strong> The person can open but not modify the file.</p>
+<h4 id="exactly-how-to-do-it-39">Exactly how to do it</h4>
+<ol><li>Open Share.</li><li>Find the person's account.</li><li>Read their permission level.</li><li>Change Viewer/Commenter to Editor only if appropriate.</li><li>Check whether a protected range/sheet is blocking only specific cells.</li><li>Confirm they are signed into the intended Google account.</li></ol>
+<p><strong>What should happen:</strong> The correct person has the intended access.</p>
+<p><strong>If that does not happen:</strong> Do not make the entire file public just to fix one user's permission problem.</p>
+<p><strong>Practice:</strong> Review sharing on a harmless practice file.</p>
+<h3 id="the-spreadsheet-is-too-visually-complex">33.6 The Spreadsheet Is Too Visually Complex</h3>
+<p><strong>What you will learn:</strong> Simplify structure for accessibility.</p>
+<p><strong>Before you begin:</strong> The sheet uses merged cells, color-only meaning, or many scattered tables.</p>
+<h4 id="exactly-how-to-do-it-40">Exactly how to do it</h4>
+<ol><li>Make a backup/copy.</li><li>Give each table a single header row.</li><li>Remove unnecessary merged cells.</li><li>Replace color-only status with text labels.</li><li>Separate unrelated tables onto descriptively named sheets.</li><li>Add accessible titles/descriptions to charts.</li><li>Test keyboard/screen-reader reading order.</li></ol>
+<p><strong>What should happen:</strong> The data can be understood without reconstructing a visual layout mentally.</p>
+<p><strong>If that does not happen:</strong> If the original visual layout must remain, create a second accessible data sheet for structured access.</p>
+<p><strong>Practice:</strong> Simplify one complex practice sheet.</p>
+<h2 id="part-34---independent-practice-course">Part 34 - Independent Practice Course</h2>
+<h3 id="level-1---setup">Level 1 - Setup</h3>
+<p>☐ Create sheet.new.</p>
+<p>☐ Enable screen-reader support.</p>
+<p>☐ Open shortcut list.</p>
+<p>☐ Search menus.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-2---grid">Level 2 - Grid</h3>
+<p>☐ Enter headers.</p>
+<p>☐ Enter records.</p>
+<p>☐ Move with Arrow/Ctrl+Arrow.</p>
+<p>☐ Use verbalize row/column.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-3---editing">Level 3 - Editing</h3>
+<p>☐ Edit cell.</p>
+<p>☐ Copy/paste.</p>
+<p>☐ Undo/redo.</p>
+<p>☐ Clear data.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-4---structure">Level 4 - Structure</h3>
+<p>☐ Select range.</p>
+<p>☐ Insert row/column.</p>
+<p>☐ Rename sheet.</p>
+<p>☐ Switch sheets.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-5---formatting">Level 5 - Formatting</h3>
+<p>☐ Date.</p>
+<p>☐ Currency.</p>
+<p>☐ Percent.</p>
+<p>☐ Text/number consistency.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-6---formulas">Level 6 - Formulas</h3>
+<p>☐ Arithmetic formula.</p>
+<p>☐ SUM.</p>
+<p>☐ AVERAGE.</p>
+<p>☐ IF.</p>
+<p>☐ Absolute reference.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-7---data-tools">Level 7 - Data Tools</h3>
+<p>☐ Autofill.</p>
+<p>☐ Sort.</p>
+<p>☐ Filter.</p>
+<p>☐ Dropdown.</p>
+<p>☐ Checkbox.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-8---analysis">Level 8 - Analysis</h3>
+<p>☐ Named range.</p>
+<p>☐ Chart.</p>
+<p>☐ Chart alt text.</p>
+<p>☐ Simple pivot table.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-9---collaboration">Level 9 - Collaboration</h3>
+<p>☐ Note.</p>
+<p>☐ Comment.</p>
+<p>☐ Share.</p>
+<p>☐ Version history.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-10---accessibility">Level 10 - Accessibility</h3>
+<p>☐ Audit headers.</p>
+<p>☐ Check color use.</p>
+<p>☐ Check chart text.</p>
+<p>☐ Test with screen reader.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-11---screen-reader">Level 11 - Screen Reader</h3>
+<p>☐ Use JAWS/NVDA/Narrator/VoiceOver mode correctly.</p>
+<p>☐ Use shortcut list.</p>
+<p>☐ Recover from lost grid focus.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h3 id="level-12---independent-spreadsheet">Level 12 - Independent Spreadsheet</h3>
+<p>☐ Build a budget/inventory table.</p>
+<p>☐ Add formulas.</p>
+<p>☐ Filter/sort.</p>
+<p>☐ Create chart.</p>
+<p>☐ Share safely.</p>
+<p>☐ Audit accessibility.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked task without another person telling you which key or menu to use.</p>
+<h2 id="part-35---quick-reference">Part 35 - Quick Reference</h2>
+<h3 id="core-windowschromeos-commands">Core Windows/ChromeOS Commands</h3>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command / Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Screen-reader support</td>
+<td>Ctrl+Alt+Z</td>
+</tr>
+<tr class="even">
+<td>Braille support</td>
+<td>Ctrl+Alt+H</td>
+</tr>
+<tr class="odd">
+<td>Shortcut list</td>
+<td>Ctrl+/</td>
+</tr>
+<tr class="even">
+<td>Search menus</td>
+<td>Alt+/</td>
+</tr>
+<tr class="odd">
+<td>Move cell</td>
+<td>Arrow keys</td>
+</tr>
+<tr class="even">
+<td>Move to edge of data</td>
+<td>Ctrl+Arrow</td>
+</tr>
+<tr class="odd">
+<td>Select adjacent cells</td>
+<td>Shift+Arrow</td>
+</tr>
+<tr class="even">
+<td>Select row</td>
+<td>Shift+Space</td>
+</tr>
+<tr class="odd">
+<td>Select column</td>
+<td>Ctrl+Space</td>
+</tr>
+<tr class="even">
+<td>Find / Replace</td>
+<td>Ctrl+F / Ctrl+H</td>
+</tr>
+<tr class="odd">
+<td>Next / previous sheet</td>
+<td>Alt+Down / Alt+Up</td>
+</tr>
+<tr class="even">
+<td>Sheet list</td>
+<td>Alt+Shift+K</td>
+</tr>
+<tr class="odd">
+<td>Date / Currency / Percent</td>
+<td>Ctrl+Shift+3 / 4 / 5</td>
+</tr>
+<tr class="even">
+<td>Autofill selected series</td>
+<td>Ctrl+Alt+Enter</td>
+</tr>
+<tr class="odd">
+<td>Follow link in cell</td>
+<td>Alt+Enter</td>
+</tr>
+<tr class="even">
+<td>Add/edit note</td>
+<td>Shift+F2</td>
+</tr>
+<tr class="odd">
+<td>Verbalize row / column</td>
+<td>Ctrl+Alt+Shift+R / C</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="common-formula-patterns">Common Formula Patterns</h3>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command / Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Add cells</td>
+<td>=A1+B1</td>
+</tr>
+<tr class="even">
+<td>Total range</td>
+<td>=SUM(B2:B10)</td>
+</tr>
+<tr class="odd">
+<td>Average</td>
+<td>=AVERAGE(B2:B10)</td>
+</tr>
+<tr class="even">
+<td>Count numbers</td>
+<td>=COUNT(B2:B10)</td>
+</tr>
+<tr class="odd">
+<td>Count nonblank</td>
+<td>=COUNTA(A2:A10)</td>
+</tr>
+<tr class="even">
+<td>Conditional result</td>
+<td>=IF(B2&gt;=70,"Pass","Review")</td>
+</tr>
+<tr class="odd">
+<td>Count condition</td>
+<td>=COUNTIF(C2:C20,"Yes")</td>
+</tr>
+<tr class="even">
+<td>Fixed rate</td>
+<td>=B2*$E$1</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="screen-reader-mode-reminder">Screen Reader Mode Reminder</h3>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command / Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>JAWS</td>
+<td>Virtual PC Cursor off</td>
+</tr>
+<tr class="even">
+<td>NVDA</td>
+<td>Focus Mode</td>
+</tr>
+<tr class="odd">
+<td>Narrator</td>
+<td>Scan Mode off when it intercepts Sheets commands</td>
+</tr>
+<tr class="even">
+<td>VoiceOver</td>
+<td>Quick Nav off; use pass-through or alternate VO modifier for conflicting menu shortcuts</td>
+</tr>
+<tr class="odd">
+<td>Braille</td>
+<td>Enable screen reader/display connection first, then Google braille support</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="part-36---official-google-resources">Part 36 - Official Google Resources</h2>
+<p><a href="https://support.google.com/accessibility/answer/1632199?hl=en"><u>Use Google Sheets with a screen reader</u></a></p>
+<p><a href="https://support.google.com/docs/answer/6282736?hl=en"><u>Use Google Docs Editors with a screen reader</u></a></p>
+<p><a href="https://support.google.com/docs/table/25273"><u>Google Sheets function list</u></a></p>
+<p><a href="https://support.google.com/docs/answer/46977?hl=en"><u>Add formulas and functions</u></a></p>
+<p><a href="https://support.google.com/docs/answer/186103?hl=en"><u>Create an in-cell dropdown list</u></a></p>
+<p><a href="https://support.google.com/accessibility/answer/2821355?hl=en"><u>Google Workspace accessibility guide</u></a></p>
+<p><a href="https://support.google.com/docs/answer/15931224?hl=en"><u>Use Google Docs Editors with magnification and high contrast</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I can create, rename, and navigate a Google Sheets spreadsheet.</p>
+<p>☐ I can enable screen-reader and braille support.</p>
+<p>☐ I understand cells, rows, columns, ranges, sheets, formulas, and functions.</p>
+<p>☐ I can enter, edit, copy, paste, clear, and select data.</p>
+<p>☐ I can insert and manage rows, columns, and sheet tabs.</p>
+<p>☐ I can apply number/date/currency/percent formatting.</p>
+<p>☐ I can write formulas and common functions.</p>
+<p>☐ I understand relative and absolute references.</p>
+<p>☐ I can use autofill.</p>
+<p>☐ I can sort and filter without breaking records.</p>
+<p>☐ I can create dropdowns and checkboxes.</p>
+<p>☐ I understand named ranges and named functions.</p>
+<p>☐ I can create a chart and add accessible chart text.</p>
+<p>☐ I can create a simple pivot table.</p>
+<p>☐ I can use notes, comments, sharing, and version history.</p>
+<p>☐ I can download/export data appropriately.</p>
+<p>☐ I can design a spreadsheet that does not depend on color or visual layout alone.</p>
+<p>☐ I can use Sheets correctly with my screen reader and braille display.</p>
+<p>☐ I can troubleshoot formulas, sorting, grid focus, announcements, sharing, and complex layouts.</p>
+<p><strong>Most important habit:</strong> Always know the current cell and the current mode. If Arrow keys stop moving through cells, first restore Google screen-reader support and the correct screen-reader application/focus mode before changing the spreadsheet.</p>
+
+<h2 id="website-practice">Website practice and lessons</h2>
+<p>The following procedures preserve the Accessible Learning Center's original guided practice and connect this full manual to the ten-lesson course.</p>
 <section id="complete-procedures" aria-labelledby="complete-procedures-heading">
 <h2 id="complete-procedures-heading">Basic and advanced step-by-step procedures</h2>
 <p>These procedures make the manual usable on its own. The separate lessons provide assignments and progress tracking when you want a course experience.</p>
@@ -123,4 +1235,8 @@
 <p><strong>Practice:</strong> Create an accessible shared-work tracker using fictional data, formulas, documentation, and safe permissions.</p>
 </section>
 </section>
-<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">Google Sheets lessons</h2><ol class="course-lesson-list"><li><a href="sheets-lesson-1.html">Lesson 1: Open Sheets and Enable Screen-Reader Support</a></li><li><a href="sheets-lesson-2.html">Lesson 2: Navigate Cells, Ranges, Sheets, and Menus</a></li><li><a href="sheets-lesson-3.html">Lesson 3: Enter, Edit, Fill, Find, and Format Data</a></li><li><a href="sheets-lesson-4.html">Lesson 4: Create Formulas and Basic Functions</a></li><li><a href="sheets-lesson-5.html">Lesson 5: Use Accessible Headers, Names, and Number Formats</a></li><li><a href="sheets-lesson-6.html">Lesson 6: Sort, Filter, and Protect a Data Range</a></li><li><a href="sheets-lesson-7.html">Lesson 7: Use Data Validation and Conditional Results</a></li><li><a href="sheets-lesson-8.html">Lesson 8: Create a Chart with an Equivalent Text Summary</a></li><li><a href="sheets-lesson-9.html">Lesson 9: Share Safely and Export XLSX, CSV, or PDF</a></li><li><a href="sheets-lesson-10.html">Lesson 10: Final Accessible Sheets Workplace Tracker</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from Sheets manual"><a href="sheets-lesson-1.html">Start Sheets Lesson 1</a><a href="lessons.html#sheets-lessons">All Sheets lessons</a><a href="student-progress.html">My progress</a></nav></main></body></html>
+
+<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">Google Sheets lessons</h2><ol class="course-lesson-list"><li><a href="sheets-lesson-1.html">Lesson 1: Open Sheets and Enable Screen-Reader Support</a></li><li><a href="sheets-lesson-2.html">Lesson 2: Navigate Cells, Ranges, Sheets, and Menus</a></li><li><a href="sheets-lesson-3.html">Lesson 3: Enter, Edit, Fill, Find, and Format Data</a></li><li><a href="sheets-lesson-4.html">Lesson 4: Create Formulas and Basic Functions</a></li><li><a href="sheets-lesson-5.html">Lesson 5: Use Accessible Headers, Names, and Number Formats</a></li><li><a href="sheets-lesson-6.html">Lesson 6: Sort, Filter, and Protect a Data Range</a></li><li><a href="sheets-lesson-7.html">Lesson 7: Use Data Validation and Conditional Results</a></li><li><a href="sheets-lesson-8.html">Lesson 8: Create a Chart with an Equivalent Text Summary</a></li><li><a href="sheets-lesson-9.html">Lesson 9: Share Safely and Export XLSX, CSV, or PDF</a></li><li><a href="sheets-lesson-10.html">Lesson 10: Final Accessible Sheets Workplace Tracker</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from Sheets manual"><a href="sheets-lesson-1.html">Start Sheets Lesson 1</a><a href="lessons.html#sheets-lessons">All Sheets lessons</a><a href="student-progress.html">My progress</a></nav>
+  </main>
+</body>
+</html>
