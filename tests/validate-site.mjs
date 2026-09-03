@@ -225,12 +225,18 @@ check(manualsHtml.indexOf("Microsoft applications") < manualsHtml.indexOf("outlo
 check(manualsHtml.indexOf("Google applications") < manualsHtml.indexOf("google-services-manual.html"), "Google services are not grouped with Google applications.");
 check(manualsHtml.indexOf("Cloud storage and online communication") < manualsHtml.indexOf("cloud-storage-manual.html"), "Cloud storage is not in its category.");
 const troubleshootingLab = readFileSync(resolve(root, "troubleshooting-lab.js"), "utf8");
-check((troubleshootingLab.match(/title: "/g) || []).length === 5, "Troubleshooting Lab must include five scenarios.");
-for (const perspective of ["JAWS", "NVDA", "Narrator", "VoiceOver", "braille display"]) {
-  check(troubleshootingLab.includes(perspective), "Troubleshooting Lab is missing the " + perspective + " perspective.");
+check((troubleshootingLab.match(/category: "/g) || []).length === 8, "Mission Control must include eight command-based missions.");
+for (const perspective of ["JAWS", "NVDA", "Narrator"]) {
+  check(troubleshootingLab.includes(perspective), "Mission Control is missing the " + perspective + " perspective.");
 }
-check(troubleshootingLab.includes("atTroubleshootingCompleted"), "Troubleshooting Lab local progress is missing.");
+for (const topic of ["Screen-reader recovery", "Google applications", "Email and calendar", "Microsoft applications", "Cloud storage", "Online meetings", "Privacy and cybersecurity", "Files and folders"]) {
+  check(troubleshootingLab.includes(topic), "Mission Control is missing the " + topic + " mission.");
+}
+check(troubleshootingLab.includes("missionControlCompleted"), "Mission Control local progress is missing.");
 check(troubleshootingLab.includes("speechSynthesis"), "Troubleshooting Lab speech playback is missing.");
+check(troubleshootingLab.includes('cockpit.addEventListener("keydown"'), "Mission Control does not accept keyboard commands.");
+check(!readFileSync(resolve(root, "troubleshooting-lab.html"), "utf8").includes("What is the safest next action?"), "Mission Control still contains multiple-choice questions.");
+check(readFileSync(resolve(root, "accessibility.js"), "utf8").includes('href="troubleshooting-lab.html">Mission Control Sim</a>'), "Primary navigation is missing Mission Control Sim.");
 const commandPractice = readFileSync(resolve(root, "command-practice.js"), "utf8");
 check(commandPractice.includes("speechSynthesis"), "Spoken command instructions are missing.");
 check(commandPractice.includes("AudioContext"), "Command sound feedback is missing.");

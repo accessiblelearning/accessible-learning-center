@@ -1,160 +1,265 @@
 (() => {
   "use strict";
 
-  const perspectives = {
-    jaws: "JAWS",
-    nvda: "NVDA",
-    narrator: "Narrator",
-    voiceover: "VoiceOver",
-    braille: "the braille display"
+  const screenReaders = {
+    jaws: { name: "JAWS", title: "Insert+T", focus: "Insert+Tab", mode: "Insert+Z" },
+    nvda: { name: "NVDA", title: "NVDA+T", focus: "NVDA+Tab", mode: "NVDA+Space" },
+    narrator: { name: "Narrator", title: "Narrator+T", focus: "Narrator+Tab", mode: "Narrator+Space" }
   };
 
-  const scenarios = [
+  const missions = [
     {
-      title: "Speech suddenly stops",
-      problem: "You are editing a document. After pressing a command, you no longer hear speech. Your work may not be saved.",
-      reports: {
-        jaws: "No speech. The document window still appears active.", nvda: "No speech. The document window still appears active.",
-        narrator: "No speech. The document window still appears active.", voiceover: "No speech. The document remains on screen.",
-        braille: "The braille line still changes when you press an Arrow key, but speech is silent."
-      },
-      choices: [
-        ["Press the application's save command, then reopen the document", false, "Saving sounds protective, but without speech you cannot confirm the active window, filename, or dialog. First restore or verify feedback without changing the document."],
-        ["Use the assistive technology's speech-toggle command, then request the current item", true, "Best first step. It is reversible and tests both accidental speech muting and whether the assistive technology is still responding."],
-        ["Switch to another application and test whether speech works there", false, "This is a reasonable diagnostic step, but it changes focus while unsaved work is open. A speech-toggle and current-item check is safer and more direct first."]
-      ]
+      category: "Screen-reader recovery", title: "The unexpected window",
+      problem: "You were editing a report, but your keys stopped behaving as expected. You are not sure which window has focus. Find out before changing anything.",
+      steps: [
+        { command: "TITLE", success: "Window title: Downloads — File Explorer. You are not in the report.", why: "You identified the active window without changing it." },
+        { command: "ALT+TAB", success: "Quarterly Report — Microsoft Word. Editing area.", why: "You returned to the document after confirming where focus was." },
+        { command: "CTRL+S", success: "Document saved.", why: "You protected the report after safely returning to it." }
+      ],
+      hint: "Begin by asking the screen reader to announce the active window title."
     },
     {
-      title: "Letters run commands instead of typing",
-      problem: "You focus what seems to be a text field, but pressing H moves to a heading instead of typing the letter H.",
-      reports: {
-        jaws: "JAWS announces a nearby heading.", nvda: "NVDA announces a nearby heading.", narrator: "Narrator moves through page items in Scan Mode.",
-        voiceover: "VoiceOver moves to another rotor item instead of entering text.", braille: "The display moves to a heading instead of inserting the typed character."
-      },
-      choices: [
-        ["Press the screen reader's mode-toggle command, then return to the field", false, "The mode may be the problem, but toggling it before confirming focus can place the page in the wrong mode. Locate and confirm the edit field first."],
-        ["Confirm focus on the edit field, then enter its typing or interaction mode", true, "Best answer. The order matters: confirm the intended field first, then change the interaction mode."],
-        ["Use Tab once and type a short test character", false, "Tab might reach the field, but it might also move to a different control. Confirm what has focus before typing any test character."]
-      ]
+      category: "Google applications", title: "Letters navigate instead of typing",
+      problem: "On a web form, pressing H moves to a heading instead of typing. Locate the edit field and enter interaction mode without using the mouse.",
+      steps: [
+        { command: "E", success: "Email address, edit box.", why: "Browse-mode edit-field navigation located the intended field." },
+        { command: "ENTER", success: "Forms mode on. Email address, edit.", why: "Enter placed the screen reader in the field’s interaction mode." },
+        { command: "TAB", success: "Continue, button.", why: "You completed the focus recovery and moved to the next control." }
+      ],
+      hint: "Use a screen-reader navigation key to find the next edit field before changing modes."
     },
     {
-      title: "Tab cannot reach a control",
-      problem: "A page tells you to select Continue, but repeated Tab presses never reach it.",
-      reports: {
-        jaws: "JAWS cycles among the same few links and fields.", nvda: "NVDA cycles among the same few links and fields.", narrator: "Narrator repeats the same controls.",
-        voiceover: "VoiceOver focus remains in one part of the page.", braille: "The focus indicator repeats the same controls and never reaches Continue."
-      },
-      choices: [
-        ["Open the screen reader's controls list and search for Continue", false, "A controls list is useful, but it may omit a control trapped inside a modal dialog or one missing correct semantics. Inspect headings, landmarks, and dialogs as well."],
-        ["Use headings and landmarks to inspect the page, check for an open dialog, and then review the controls list", true, "Best answer. This gathers several kinds of structural evidence before deciding whether the control is absent from the keyboard order."],
-        ["Refresh the page and begin the form again", false, "Refreshing can repair a temporary page state, but it may erase entered information. Inspect the current structure before taking that risk."]
-      ]
+      category: "Email and calendar", title: "Protect the unsent Outlook message",
+      problem: "An Outlook message contains important unsent work. A dialog appeared, and you need to protect the draft before leaving the message.",
+      steps: [
+        { command: "ESCAPE", success: "Dialog closed. Message body, edit.", why: "You dismissed the interruption and returned to the draft." },
+        { command: "CTRL+S", success: "Draft saved.", why: "You saved the message before attempting to leave it." },
+        { command: "ALT+F4", success: "Inbox — Outlook. Draft retained.", why: "You closed the protected message and returned to the Inbox." }
+      ],
+      hint: "First dismiss the temporary dialog with a reversible command."
     },
     {
-      title: "Braille cursor is in the wrong place",
-      problem: "The braille display shows text from the document, but typing inserts text somewhere unexpected.",
-      reports: {
-        jaws: "JAWS reads one line, but the editing caret appears to be elsewhere.", nvda: "NVDA reads one line, but the editing caret appears to be elsewhere.",
-        narrator: "Narrator focus and the text caret do not seem aligned.", voiceover: "VoiceOver focus and the insertion point do not seem aligned.",
-        braille: "The displayed line and the active editing cursor do not match."
-      },
-      choices: [
-        ["Press a cursor-routing button at the intended word, then check the active window", false, "Routing may solve the mismatch, but doing it before confirming the active window can move the caret in the wrong application. Reverse the order."],
-        ["Confirm the active window and editing caret, identify the intended braille cell, and then route the cursor", true, "Best answer. Each check narrows the problem before an action changes the document position."],
-        ["Pan away and back to refresh the displayed line before routing", false, "Panning can refresh context, but it does not prove where the editing caret or application focus is. Confirm those first."]
-      ]
+      category: "Microsoft applications", title: "The risky Word edit",
+      problem: "A large block of text disappeared in Microsoft Word. Do not retype it. Recover the edit and save the corrected document.",
+      steps: [
+        { command: "CTRL+Z", success: "Undo. Selected text restored.", why: "Undo reversed the most recent destructive edit." },
+        { command: "CTRL+S", success: "Document saved.", why: "You saved immediately after verifying the recovery." }
+      ],
+      hint: "Use the standard command that reverses the most recent action."
     },
     {
-      title: "Page problem or screen-reader problem?",
-      problem: "A button is announced only as “button,” with no useful name. You need to decide what is causing the problem.",
-      reports: {
-        jaws: "Button.", nvda: "Button.", narrator: "Button.", voiceover: "Button.", braille: "btn"
-      },
-      choices: [
-        ["Inspect nearby text and the button's available properties, then make one comparison in another browser or screen reader", true, "Best answer. Context plus one controlled comparison helps distinguish missing webpage labeling from a product-specific compatibility problem."],
-        ["Open the page source or developer tools and inspect the button's code", false, "Code inspection could identify the defect, but it is not the most accessible or broadly available first test. Gather nearby context and make one controlled comparison first."],
-        ["Use the screen reader's graphics or OCR feature to identify the visual label", false, "OCR may reveal visible text, but it cannot determine whether the button has a proper accessible name. It is supporting evidence, not the best first diagnosis."]
-      ]
+      category: "Cloud storage", title: "Move without losing the original",
+      problem: "A practice file is selected in a synchronized OneDrive folder. The original must remain where it is while you place a copy in the open destination folder.",
+      steps: [
+        { command: "CTRL+C", success: "Copied: Interview Notes.docx.", why: "Copy preserves the original; Cut would move it." },
+        { command: "CTRL+V", success: "Pasted: Interview Notes.docx. Synchronization pending.", why: "You created one copy in the verified destination." }
+      ],
+      hint: "Choose the clipboard command that preserves the original file."
+    },
+    {
+      category: "Online meetings", title: "The live microphone",
+      problem: "You are in a Zoom meeting and hear private conversation nearby. Mute immediately, then open the participant list to confirm who is present.",
+      steps: [
+        { command: "ALT+A", success: "Audio muted.", why: "You used Zoom’s microphone command immediately." },
+        { command: "ALT+U", success: "Participants panel. Twelve participants.", why: "You opened the participant list after protecting the microphone." }
+      ],
+      hint: "Use Zoom’s Windows command for mute before inspecting anything else."
+    },
+    {
+      category: "Privacy and cybersecurity", title: "The suspicious pop-up",
+      problem: "A pop-up says your computer is infected and tells you to press Enter to call support. Close only the suspicious window without activating its button.",
+      steps: [
+        { command: "ALT+F4", success: "Suspicious pop-up closed. Browser remains open.", why: "You closed the active pop-up without activating its fraudulent control." },
+        { command: "CTRL+L", success: "Address bar, edit. Current site address selected.", why: "You moved to a known browser control so you can leave the suspicious page safely." }
+      ],
+      hint: "Do not press Enter. Use the command that closes the active window."
+    },
+    {
+      category: "Files and folders", title: "Rename the correct file",
+      problem: "Resume Final Copy.docx is selected in File Explorer. Give it the clearer name Amber Price Resume.docx without opening it.",
+      steps: [
+        { command: "F2", success: "Resume Final Copy, filename edit.", why: "F2 opened rename mode for the selected file." },
+        { command: "CTRL+A", success: "Filename selected. The .docx extension remains protected.", why: "You selected the editable filename before replacing it." },
+        { command: "ENTER", success: "Renamed: Amber Price Resume.docx.", why: "The simulator supplied the practice name and Enter confirmed it." }
+      ],
+      hint: "Use File Explorer’s rename command on the selected file."
     }
   ];
 
-  const perspectiveSelect = document.getElementById("atPerspective");
-  const title = document.getElementById("scenarioTitle");
-  const problem = document.getElementById("scenarioProblem");
+  const perspective = document.getElementById("atPerspective");
+  const missionSelect = document.getElementById("missionSelect");
+  const cockpit = document.getElementById("commandCockpit");
+  const title = document.getElementById("missionTitle");
+  const category = document.getElementById("missionCategory");
+  const problem = document.getElementById("missionProblem");
   const transcript = document.getElementById("transcript");
-  const choices = document.getElementById("choices");
+  const lastCommand = document.getElementById("lastCommand");
+  const log = document.getElementById("missionLog");
   const feedback = document.getElementById("scenarioFeedback");
-  const nextButton = document.getElementById("nextScenario");
-  const progress = document.getElementById("scenarioProgress");
-  const count = document.getElementById("scenarioCount");
+  const nextButton = document.getElementById("nextMission");
+  const progress = document.getElementById("missionProgress");
+  const count = document.getElementById("missionCount");
   const summary = document.getElementById("completionSummary");
   let current = 0;
+  let step = 0;
+  let active = false;
   let completed = new Set();
 
-  try {
-    completed = new Set(JSON.parse(localStorage.getItem("atTroubleshootingCompleted") || "[]"));
-  } catch (error) {
-    completed = new Set();
-  }
+  try { completed = new Set(JSON.parse(localStorage.getItem("missionControlCompleted") || "[]")); } catch (error) { completed = new Set(); }
 
   function save() {
-    try { localStorage.setItem("atTroubleshootingCompleted", JSON.stringify([...completed])); } catch (error) {}
+    try { localStorage.setItem("missionControlCompleted", JSON.stringify([...completed])); } catch (error) {}
+  }
+
+  function speak(text) {
+    if (!("speechSynthesis" in window)) return;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+  }
+
+  function announce(text, aloud = true) {
+    transcript.textContent = screenReaders[perspective.value].name + " reports: “" + text + "”";
+    if (aloud) speak(transcript.textContent);
   }
 
   function updateProgress() {
     progress.value = completed.size;
-    progress.textContent = completed.size + " of 5 scenarios completed";
-    summary.textContent = completed.size === scenarios.length
-      ? "All five scenarios completed. You practiced safe diagnosis before disruptive action."
-      : completed.size + " of 5 scenarios completed on this device.";
+    progress.textContent = completed.size + " of " + missions.length + " missions completed";
+    summary.textContent = completed.size === missions.length
+      ? "All current missions completed. Mission Control will add more hangars and more difficult failures over time."
+      : completed.size + " of " + missions.length + " missions completed on this device.";
   }
 
-  function render() {
-    const scenario = scenarios[current];
-    const perspective = perspectiveSelect.value;
-    count.textContent = "Scenario " + (current + 1) + " of " + scenarios.length;
-    title.textContent = scenario.title;
-    problem.textContent = scenario.problem;
-    transcript.textContent = perspectives[perspective] + " reports: “" + scenario.reports[perspective] + "”";
-    feedback.textContent = "";
-    choices.replaceChildren();
-    scenario.choices.forEach((choice, index) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = (index + 1) + ". " + choice[0];
-      button.addEventListener("click", () => answer(choice, button));
-      choices.append(button);
-    });
-    nextButton.hidden = true;
-    updateProgress();
+  function displayedCommand(command) {
+    const sr = screenReaders[perspective.value];
+    return command === "TITLE" ? sr.title : command === "FOCUS" ? sr.focus : command === "MODE" ? sr.mode : command;
   }
 
-  function answer(choice, button) {
-    feedback.className = "scenario-feedback " + (choice[1] ? "is-correct" : "is-incorrect");
-    feedback.innerHTML = "<h3>" + (choice[1] ? "Safe diagnosis" : "Try a safer action") + "</h3><p>" + choice[2] + "</p>";
-    if (choice[1]) {
-      completed.add(current);
-      save();
-      [...choices.querySelectorAll("button")].forEach(item => { item.disabled = true; });
-      button.setAttribute("aria-pressed", "true");
-      nextButton.textContent = current === scenarios.length - 1 ? "Review from scenario 1" : "Next scenario";
-      nextButton.hidden = false;
-      updateProgress();
-      nextButton.focus();
+  function normalizedKey(event) {
+    const parts = [];
+    if (event.ctrlKey) parts.push("CTRL");
+    if (event.altKey) parts.push("ALT");
+    if (event.shiftKey) parts.push("SHIFT");
+    let key = event.key.toUpperCase();
+    if (key === " ") key = "SPACE";
+    if (key === "ESC") key = "ESCAPE";
+    if (!["CONTROL", "ALT", "SHIFT", "META"].includes(key)) parts.push(key);
+    const chord = parts.join("+");
+    const sr = perspective.value;
+    if ((sr === "jaws" && event.key === "Insert") || (sr === "nvda" && (event.key === "Insert" || event.key === "CapsLock")) || (sr === "narrator" && (event.key === "Insert" || event.key === "CapsLock"))) return "MODIFIER";
+    return chord;
+  }
+
+  let modifierHeld = false;
+  cockpit.addEventListener("keydown", event => {
+    if (!active) return;
+    if (["F1", "F2"].includes(event.key)) {
+      event.preventDefault();
+      if (event.key === "F1") announce("Strategy hint: " + missions[current].hint);
+      else speak(problem.textContent);
+      return;
+    }
+    if (normalizedKey(event) === "MODIFIER") {
+      modifierHeld = true;
+      event.preventDefault();
+      return;
+    }
+    let command = normalizedKey(event);
+    if (modifierHeld && !event.ctrlKey && !event.altKey) {
+      const key = event.key.toUpperCase() === " " ? "SPACE" : event.key.toUpperCase();
+      command = key === "T" ? "TITLE" : key === "TAB" ? "FOCUS" : key === "Z" || key === "SPACE" ? "MODE" : "SCREENREADER+" + key;
+    }
+    modifierHeld = false;
+    if (!command || command.endsWith("+")) return;
+    event.preventDefault();
+    processCommand(command);
+  });
+  cockpit.addEventListener("keyup", event => {
+    if (event.key === "Insert" || event.key === "CapsLock") modifierHeld = false;
+  });
+
+  function processCommand(command) {
+    const mission = missions[current];
+    const expected = mission.steps[step];
+    lastCommand.textContent = displayedCommand(command);
+    const item = document.createElement("li");
+    if (command === expected.command) {
+      item.textContent = displayedCommand(command) + ": " + expected.success;
+      log.append(item);
+      announce(expected.success);
+      feedback.className = "scenario-feedback is-correct";
+      feedback.textContent = expected.why;
+      step += 1;
+      if (step === mission.steps.length) finishMission();
+    } else {
+      const response = wrongResponse(command, expected.command);
+      item.textContent = displayedCommand(command) + ": " + response;
+      log.append(item);
+      announce(response);
+      feedback.className = "scenario-feedback is-incorrect";
+      feedback.textContent = "That changed or inspected something, but the problem is not solved. Use the new announcement as evidence and keep working.";
     }
   }
 
-  perspectiveSelect.addEventListener("change", render);
-  nextButton.addEventListener("click", () => { current = (current + 1) % scenarios.length; render(); title.focus(); });
-  document.getElementById("restartLab").addEventListener("click", () => {
-    current = 0; completed.clear(); save(); render(); title.focus();
-  });
-  document.getElementById("speakTranscript").addEventListener("click", () => {
-    if (!("speechSynthesis" in window)) { feedback.textContent = "Speech playback is not available in this browser."; return; }
-    speechSynthesis.cancel();
-    speechSynthesis.speak(new SpeechSynthesisUtterance(transcript.textContent));
-  });
+  function wrongResponse(command, expected) {
+    if (command === "ENTER") return "Focused control activated. The original problem remains.";
+    if (command === "TAB" || command === "SHIFT+TAB") return "Focus moved to another control. The original problem remains.";
+    if (command === "ESCAPE") return "No open menu or dialog responded to Escape.";
+    if (command === "ALT+F4") return expected === "CTRL+S" ? "Close requested. Warning: unsaved changes." : "The active window did not close in this simulated state.";
+    if (command === "CTRL+S") return "Save command received, but the current simulated control cannot be saved.";
+    if (command === "TITLE") return "Window title announced. More action is still required.";
+    if (command === "FOCUS") return "Current focused control announced. More action is still required.";
+    return "Command received. No useful change occurred in the current state.";
+  }
 
-  title.tabIndex = -1;
-  render();
+  function finishMission() {
+    active = false;
+    completed.add(current);
+    save();
+    updateProgress();
+    feedback.className = "scenario-feedback is-correct";
+    feedback.innerHTML = "<h3>Mission complete</h3><p>You solved the problem through keyboard commands and confirmed system feedback.</p>";
+    announce("Mission complete. " + missions[current].title);
+    nextButton.hidden = false;
+    nextButton.focus();
+  }
+
+  function startMission() {
+    current = Number(missionSelect.value);
+    step = 0;
+    active = true;
+    const mission = missions[current];
+    category.textContent = mission.category;
+    title.textContent = mission.title;
+    problem.textContent = mission.problem;
+    count.textContent = "Mission " + (current + 1) + " of " + missions.length;
+    log.replaceChildren();
+    feedback.textContent = "";
+    feedback.className = "scenario-feedback";
+    lastCommand.textContent = "None";
+    nextButton.hidden = true;
+    updateProgress();
+    title.focus();
+    speak("Mission briefing. " + mission.title + ". " + mission.problem + " Move to the Command cockpit and begin.");
+    window.setTimeout(() => cockpit.focus(), 100);
+  }
+
+  missions.forEach((mission, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = mission.category + ": " + mission.title;
+    missionSelect.append(option);
+  });
+  document.getElementById("startMission").addEventListener("click", startMission);
+  document.getElementById("restartMission").addEventListener("click", startMission);
+  document.getElementById("speakTranscript").addEventListener("click", () => speak(transcript.textContent));
+  document.getElementById("repeatProblem").addEventListener("click", () => speak("Mission problem. " + problem.textContent));
+  nextButton.addEventListener("click", () => {
+    missionSelect.value = String((current + 1) % missions.length);
+    startMission();
+  });
+  perspective.addEventListener("change", () => {
+    if (active) announce("Screen-reader perspective changed to " + screenReaders[perspective.value].name + ".");
+  });
+  updateProgress();
 })();

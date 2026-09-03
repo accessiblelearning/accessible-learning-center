@@ -3,68 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Practice diagnosing common screen-reader and braille-display problems in a safe, interactive simulator.">
-  <title>Assistive Technology Troubleshooting Lab - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=troubleshooting-lab-1">
-  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="troubleshooting-lab.js?v=troubleshooting-lab-2" defer></script>
+  <meta name="description" content="Hear realistic screen-reader problems and solve them by pressing keyboard commands in a safe simulator.">
+  <title>Screen Reader Mission Control Sim - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=mission-control-1">
+  <script src="accessibility.js?v=mission-control-1" defer></script>
+  <script src="troubleshooting-lab.js?v=mission-control-1" defer></script>
 </head>
 <body>
   <header>
-    <p class="eyebrow">Safe, realistic problem-solving practice</p>
-    <h1>Assistive Technology Troubleshooting Lab</h1>
-    <p>Diagnose a problem, choose a safe action, and learn how to recover without risking your work.</p>
+    <p class="eyebrow">Realistic command-based training</p>
+    <h1>Screen Reader Mission Control Sim</h1>
+    <p>Hear the problem, inspect the simulated computer, and press keyboard commands to recover—like a flight simulator for assistive technology.</p>
   </header>
   <main id="main-content">
     <section class="simulator-setup" aria-labelledby="setup-heading">
-      <h2 id="setup-heading">Choose your assistive technology</h2>
-      <p><label for="atPerspective">Practice perspective</label><br>
+      <h2 id="setup-heading">Prepare your mission</h2>
+      <p><label for="atPerspective">Screen reader</label><br>
         <select id="atPerspective">
           <option value="jaws">JAWS</option>
           <option value="nvda">NVDA</option>
           <option value="narrator">Narrator</option>
-          <option value="voiceover">VoiceOver on iPhone</option>
-          <option value="braille">Braille display</option>
         </select>
       </p>
-      <p class="tip"><strong>Safe simulation:</strong> The answer buttons do not run system or screen-reader commands. They only show what would happen.</p>
+      <p><label for="missionSelect">Mission</label><br>
+        <select id="missionSelect"></select>
+      </p>
+      <p class="tip"><strong>No multiple choice:</strong> Listen, decide what to inspect, and press the command you believe should come next. Commands are contained in the simulator whenever the browser permits, but operating-system shortcuts cannot always be blocked.</p>
+      <button id="startMission" type="button">Start selected mission</button>
     </section>
 
-    <section class="simulator" aria-labelledby="scenarioTitle">
+    <section class="simulator" aria-labelledby="missionTitle">
       <div class="simulator-progress">
-        <p id="scenarioCount">Scenario 1 of 5</p>
-        <progress id="scenarioProgress" max="5" value="0">0 of 5 scenarios completed</progress>
+        <p id="missionCount">Mission not started</p>
+        <progress id="missionProgress" max="8" value="0">0 of 8 missions completed</progress>
       </div>
-      <h2 id="scenarioTitle"></h2>
-      <p id="scenarioProblem" class="scenario-problem"></p>
+      <p id="missionCategory" class="eyebrow"></p>
+      <h2 id="missionTitle" tabindex="-1">Mission Control is standing by</h2>
+      <p id="missionProblem" class="scenario-problem">Choose a mission and start when you are ready.</p>
 
       <section class="screen-reader-transcript" aria-labelledby="transcriptHeading">
-        <h3 id="transcriptHeading">What your assistive technology reports</h3>
-        <p id="transcript"></p>
-        <button id="speakTranscript" type="button">Read this report aloud</button>
+        <h3 id="transcriptHeading">Simulated screen-reader output</h3>
+        <p id="transcript" aria-live="polite">Standing by.</p>
+        <button id="speakTranscript" type="button">Repeat the latest announcement</button>
+        <button id="repeatProblem" type="button">Repeat the mission problem</button>
       </section>
 
-      <fieldset id="choiceGroup">
-        <legend>What is the safest next action?</legend>
-        <div id="choices" class="scenario-choices"></div>
-      </fieldset>
+      <div id="commandCockpit" class="command-cockpit" tabindex="0" role="application" aria-labelledby="cockpitHeading" aria-describedby="cockpitInstructions">
+        <h3 id="cockpitHeading">Command cockpit</h3>
+        <p id="cockpitInstructions">Move focus here, then press keyboard commands. Press F1 for a strategy hint. Press F2 to hear the problem again.</p>
+        <p><strong>Last command:</strong> <span id="lastCommand">None</span></p>
+      </div>
+
+      <section aria-labelledby="logHeading">
+        <h3 id="logHeading">Mission log</h3>
+        <ol id="missionLog" class="mission-log" aria-live="polite"></ol>
+      </section>
       <div id="scenarioFeedback" class="scenario-feedback" role="status" aria-live="polite"></div>
       <div class="simulator-actions">
-        <button id="nextScenario" type="button" hidden>Next scenario</button>
-        <button id="restartLab" type="button">Restart lab</button>
+        <button id="nextMission" type="button" hidden>Next mission</button>
+        <button id="restartMission" type="button">Restart current mission</button>
       </div>
     </section>
 
-    <section aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Troubleshooting habits</h2>
-      <ol>
-        <li>Pause before repeating a command.</li>
-        <li>Confirm the active application and keyboard focus.</li>
-        <li>Identify the current screen-reader or interaction mode.</li>
-        <li>Try a reversible check before restarting or closing anything.</li>
-        <li>Protect unsaved work and private information.</li>
-      </ol>
-      <p id="completionSummary"></p>
+    <section aria-labelledby="hangar-heading">
+      <h2 id="hangar-heading">Mission hangars</h2>
+      <ul class="card-list">
+        <li>Workplace missions</li><li>Email and calendar</li><li>Cloud storage</li><li>Microsoft applications</li><li>Google applications</li><li>Online meetings</li><li>AI and visual assistance</li><li>Files and folders</li><li>Screen-reader recovery</li><li>Privacy and cybersecurity</li><li>Job search and employment</li><li>Braille technology</li><li>Everyday independence</li>
+      </ul>
+      <p id="completionSummary">No missions completed on this device yet.</p>
+      <p><a href="student-progress.html">Open My Progress</a></p>
     </section>
   </main>
 </body>
