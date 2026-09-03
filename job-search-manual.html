@@ -1,39 +1,1169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="Detailed keyboard-first job-search manual for blind and low-vision learners."><title>Accessible Job Search Manual - Accessible Learning Center</title><link rel="stylesheet" href="styles.css?v=detailed-manuals-1"><script src="accessibility.js?v=nav-quizzes-1" defer></script></head>
-<body><header><p class="eyebrow">Employment skills</p><h1>Accessible Job Search Manual</h1><p>Find legitimate openings, prepare accessible application documents, complete forms, communicate professionally, and plan accommodations.</p></header>
-<main id="main-content">
-<nav class="lesson-nav" aria-label="Job Search manual navigation"><a href="#basic">Basic how-tos</a><a href="#advanced">Advanced how-tos</a><a href="#commands">Command list</a><a href="#path">Ten lessons</a></nav>
-<section aria-labelledby="before-heading"><h2 id="before-heading">Before you begin</h2><ul><li>Create a professional email address and voicemail greeting.</li><li>Use fictional or redacted information while practicing.</li><li>Keep passwords, Social Security numbers, banking information, and identity documents out of practice files.</li><li>Create one Job Search folder with Résumés, Cover Letters, Job Postings, and Applications subfolders.</li><li>Save a master résumé that is never overwritten; create a separate copy for each application.</li></ul></section>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Job Search Screen Reader Manual: step-by-step keyboard and screen-reader instructions, practice, troubleshooting, and command references.">
+  <title>Accessible Job Search Screen Reader Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-manuals-1">
+  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
+</head>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible Learning Center manual</p>
+    <h1>Accessible Job Search Screen Reader Manual</h1>
+    <p>Keyboard-first employment skills</p>
+    <p>Independent Self-Study Guide for Finding and Applying for Work</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#main-content">Start of manual</a>
+    </nav>
+<p><strong>Purpose:</strong> This manual teaches an independent,
+accessible workflow for finding jobs, evaluating postings, preparing
+resumes, completing online applications, requesting application-process
+accommodations when needed, and interviewing with common digital
+tools.</p>
+<p><strong>Platforms:</strong> The main desktop examples use Windows
+with JAWS, NVDA, or Narrator, but the workflow also applies to VoiceOver
+and TalkBack. Dedicated sections cover LinkedIn and Indeed, while
+company career sites are treated as variable third-party systems.</p>
+<p><strong>Legal scope:</strong> The accommodation section provides
+general U.S. employment-access information and practical communication
+guidance, not individualized legal advice.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Build your resume and reusable application information before
+starting a live application.</p></li>
+<li><p>Open every job posting in a separate tab or save the link so you
+can return to it while applying.</p></li>
+<li><p>Read the entire job description before investing time in the
+application.</p></li>
+<li><p>Keep a private application tracker with employer, role, date,
+link, status, contact, and next action.</p></li>
+<li><p>Use headings, landmarks, form controls, and browser Find rather
+than only Tab through long pages.</p></li>
+<li><p>When an application is inaccessible, document the barrier and use
+the employer accommodation/contact route rather than repeatedly fighting
+the same control.</p></li>
+<li><p>Never pay an employer or recruiter to apply, receive equipment,
+cash a check, buy gift cards, or release a job offer.</p></li>
+<li><p>Before interviews, test the meeting platform, microphone, camera
+if used, screen reader, headphones, and any requested
+accommodation.</p></li>
+</ul>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><p>Part 1 - Build a Job-Search Workspace</p></li>
+<li><p>Part 2 - Prepare an Accessible Resume</p></li>
+<li><p>Part 3 - Resume File Formats and Uploads</p></li>
+<li><p>Part 4 - Read a Job Posting Efficiently</p></li>
+<li><p>Part 5 - Evaluate Qualifications and Essential Functions</p></li>
+<li><p>Part 6 - Search on LinkedIn with a Screen Reader</p></li>
+<li><p>Part 7 - Apply on LinkedIn</p></li>
+<li><p>Part 8 - Search and Apply on Indeed</p></li>
+<li><p>Part 9 - Company Career Sites and ATS Systems</p></li>
+<li><p>Part 10 - Online Application Forms</p></li>
+<li><p>Part 11 - Dropdowns, Date Pickers, Autocomplete, and Custom
+Controls</p></li>
+<li><p>Part 12 - Resume Parsing and Re-entering Work History</p></li>
+<li><p>Part 13 - Cover Letters and Application Questions</p></li>
+<li><p>Part 14 - Assessments and Timed Tests</p></li>
+<li><p>Part 15 - Requesting an Application Accommodation</p></li>
+<li><p>Part 16 - Disability Disclosure and Interview Boundaries</p></li>
+<li><p>Part 17 - Job-Search Scams</p></li>
+<li><p>Part 18 - Email and Recruiter Communication</p></li>
+<li><p>Part 19 - Interview Scheduling</p></li>
+<li><p>Part 20 - Zoom, Teams, and Video Interviews</p></li>
+<li><p>Part 21 - Interview Preparation with a Screen Reader</p></li>
+<li><p>Part 22 - After the Interview</p></li>
+<li><p>Part 23 - Application Tracking and Follow-Up</p></li>
+<li><p>Part 24 - Mobile Job Search</p></li>
+<li><p>Part 25 - Troubleshooting Inaccessible Applications</p></li>
+<li><p>Part 26 - Independent Practice Course</p></li>
+<li><p>Part 27 - Quick Reference Checklists</p></li>
+<li><p>Part 28 - Official Resources</p></li>
+</ul>
+<h2 id="part-1---build-a-job-search-workspace">Part 1 - Build a
+Job-Search Workspace</h2>
+<ul>
+<li><p>Create a folder named Job Search with subfolders for Resume,
+Cover Letters, Applications, and Interview Notes.</p></li>
+<li><p>Keep one master resume and create role-specific copies from
+it.</p></li>
+<li><p>Keep a plain-text file with frequently requested information:
+employment dates, supervisor names, addresses, phone numbers, education
+dates, certifications, and references.</p></li>
+<li><p>Keep a private application tracker. Do not store Social Security
+numbers, passwords, full banking details, or identity documents in the
+tracker.</p></li>
+<li><p>Use a professional email address that you check
+regularly.</p></li>
+</ul>
+<h3 id="create-an-application-tracker">1.1 Create an Application
+Tracker</h3>
+<p><strong>What you will learn:</strong> Track jobs so you know what you
+applied to and what comes next.</p>
+<p><strong>Before you begin:</strong> Open Excel, Google Sheets, or
+another accessible spreadsheet.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Create columns for Employer, Job title, Job ID, Location, Date
+found, Date applied, Source/link, Contact, Status, Follow-up date, and
+Notes.</li>
+<li>Enter one practice job.</li>
+<li>Save the tracker in your Job Search folder.</li>
+<li>After every application, update the status immediately.</li>
+</ol>
+<p><strong>What should happen:</strong> You can answer “What have I
+applied to?” without searching your email.</p>
+<p><strong>If that does not happen:</strong> If a spreadsheet is
+cumbersome, use a simple Word table or structured text list instead.</p>
+<p><strong>Practice:</strong> Track three practice postings.</p>
+<h2 id="part-2---prepare-an-accessible-resume">Part 2 - Prepare an
+Accessible Resume</h2>
+<ul>
+<li><p>Use real Word headings for major sections such as Summary,
+Skills, Experience, and Education.</p></li>
+<li><p>Use simple one-column reading order.</p></li>
+<li><p>Prefer standard fonts and ordinary text over text boxes, floating
+shapes, icons, charts, or infographic skill bars.</p></li>
+<li><p>Use actual bullet lists for achievements.</p></li>
+<li><p>Write employer, job title, dates, and accomplishments as text
+that reads logically linearly.</p></li>
+<li><p>Do not use color alone to communicate meaning.</p></li>
+<li><p>Use meaningful link text for LinkedIn/portfolio links.</p></li>
+<li><p>Run Word Accessibility Checker before exporting.</p></li>
+</ul>
+<h3 id="check-resume-reading-order">2.1 Check Resume Reading Order</h3>
+<p><strong>What you will learn:</strong> Make sure the resume reads
+correctly from top to bottom.</p>
+<p><strong>Before you begin:</strong> Open the resume in Word.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Press Ctrl+Home.</li>
+<li>Use Ctrl+Down Arrow or your screen reader reading commands to move
+through the document.</li>
+<li>Listen for each section in the intended order.</li>
+<li>Use the screen reader heading list to verify section headings.</li>
+<li>Use Tab to identify hyperlinks and confirm their text is
+meaningful.</li>
+<li>Run Review &gt; Check Accessibility and fix relevant issues.</li>
+</ol>
+<p><strong>What should happen:</strong> The resume makes sense without
+visual position cues.</p>
+<p><strong>If that does not happen:</strong> If information is announced
+out of order, remove text boxes/columns and rebuild that area in normal
+paragraphs or a simple table.</p>
+<p><strong>Practice:</strong> Read your resume from top to bottom
+without using sighted layout cues.</p>
+<h2 id="part-3---resume-file-formats-and-uploads">Part 3 - Resume File
+Formats and Uploads</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DOCX</td>
+<td>Usually best when the employer explicitly requests Word or when an
+ATS parses Word documents well.</td>
+</tr>
+<tr class="even">
+<td>PDF</td>
+<td>Useful when you want layout preserved; export from an accessible
+source and verify the PDF has real selectable/tagged text.</td>
+</tr>
+<tr class="odd">
+<td>Plain text</td>
+<td>Useful as a fallback for copy/paste fields; not usually the primary
+polished resume.</td>
+</tr>
+<tr class="even">
+<td>Image/scanned PDF</td>
+<td>Avoid. It may be unreadable and difficult for ATS/screen
+readers.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="upload-a-resume-reliably">3.1 Upload a Resume Reliably</h3>
+<p><strong>What you will learn:</strong> Use a file-upload control
+without losing your place.</p>
+<p><strong>Before you begin:</strong> Keep the resume in a known folder
+with a clear filename.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Focus the Upload resume or Choose file button.</li>
+<li>Press Enter or Space.</li>
+<li>In the file chooser, press Ctrl+L if needed to type the folder
+path, or use the normal File Explorer navigation.</li>
+<li>Find the resume filename.</li>
+<li>Press Enter.</li>
+<li>Return to the application and listen for the uploaded filename or
+success message.</li>
+<li>If the site parsed your resume into fields, review every parsed
+field before submission.</li>
+</ol>
+<p><strong>What should happen:</strong> The correct filename is attached
+and the application recognizes it.</p>
+<p><strong>If that does not happen:</strong> If the filename is not
+announced, inspect nearby status text or re-focus the upload control. Do
+not assume the upload worked.</p>
+<p><strong>Practice:</strong> Upload a disposable resume copy to a safe
+form or practice environment.</p>
+<h2 id="part-4---read-a-job-posting-efficiently">Part 4 - Read a Job
+Posting Efficiently</h2>
+<h3 id="build-a-posting-summary">4.1 Build a Posting Summary</h3>
+<p><strong>What you will learn:</strong> Extract the facts you need
+before applying.</p>
+<p><strong>Before you begin:</strong> Open the job posting.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Use H or your screen reader heading-navigation command to find the
+job title and major sections.</li>
+<li>Use browser Find (Ctrl+F) for terms such as salary, location,
+remote, qualifications, required, preferred, schedule, travel,
+clearance, license, benefits, and accommodation.</li>
+<li>Read the entire Responsibilities and Qualifications sections.</li>
+<li>Write down the job ID/requisition number.</li>
+<li>Copy the posting link into your tracker.</li>
+<li>Note the closing date if one is listed.</li>
+</ol>
+<p><strong>What should happen:</strong> You can summarize the job
+without rereading the entire page.</p>
+<p><strong>If that does not happen:</strong> If headings are poor, use
+browser Find and landmarks/form controls instead.</p>
+<p><strong>Practice:</strong> Summarize one posting in five lines.</p>
+<h2 id="part-5---evaluate-qualifications-and-essential-functions">Part 5
+- Evaluate Qualifications and Essential Functions</h2>
+<ul>
+<li><p>Separate clearly required qualifications from preferred
+qualifications.</p></li>
+<li><p>Do not automatically reject yourself because you do not meet
+every preferred item.</p></li>
+<li><p>Focus on whether you can perform the job’s essential functions,
+with or without reasonable accommodation where applicable.</p></li>
+<li><p>Distinguish a true job function from one particular way an
+employer currently performs it.</p></li>
+<li><p>Prepare examples that demonstrate transferable skills.</p></li>
+</ul>
+<p><strong>U.S. access principle:</strong> Department of Labor guidance
+emphasizes evaluating whether a qualified applicant can perform
+essential functions with or without reasonable accommodation, and
+recognizes that there are often multiple ways to accomplish the same
+task.</p>
+<h2 id="part-6---search-on-linkedin-with-a-screen-reader">Part 6 -
+Search on LinkedIn with a Screen Reader</h2>
+<h3 id="search-linkedin-jobs">6.1 Search LinkedIn Jobs</h3>
+<p><strong>What you will learn:</strong> Use LinkedIn’s current
+accessible job-search flow.</p>
+<p><strong>Before you begin:</strong> Sign in to LinkedIn in a supported
+browser.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Activate Jobs from the LinkedIn navigation.</li>
+<li>Move backward from the Jobs link or navigate to the job-search
+input near the top of the page.</li>
+<li>Type the role, skills, location, or natural-language search you
+want.</li>
+<li>Use Up/Down Arrow through suggestions when LinkedIn announces
+them.</li>
+<li>Tab to the Search button and press Enter or Space.</li>
+<li>Navigate by headings to the heading that represents your
+search.</li>
+<li>Move into the result list and open a job with Enter.</li>
+<li>Read the job details before applying.</li>
+</ol>
+<p><strong>What should happen:</strong> LinkedIn displays the result
+list and screen reader focus can move into job details.</p>
+<p><strong>If that does not happen:</strong> LinkedIn changes
+dynamically; if focus becomes confusing, return to the Jobs
+heading/search field and rebuild context rather than tabbing
+endlessly.</p>
+<p><strong>Practice:</strong> Search for two roles and open one job
+detail page.</p>
+<p><strong>LinkedIn current guidance:</strong> LinkedIn publishes a
+dedicated “Find jobs on LinkedIn - Best practices for users with a
+screen reader” article and supports screen-reader navigation of search
+suggestions, results, details, and application flows.</p>
+<h2 id="part-7---apply-on-linkedin">Part 7 - Apply on LinkedIn</h2>
+<h3 id="complete-a-linkedin-application">7.1 Complete a LinkedIn
+Application</h3>
+<p><strong>What you will learn:</strong> Distinguish LinkedIn-hosted
+applications from external company applications.</p>
+<p><strong>Before you begin:</strong> Open a LinkedIn job detail
+page.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Find the Apply now or Apply button.</li>
+<li>Activate it.</li>
+<li>If LinkedIn opens an in-site application dialog, review the
+profile-sharing option, then Continue.</li>
+<li>Move through each form field with Tab/Shift+Tab and form-field
+navigation.</li>
+<li>Upload the correct resume.</li>
+<li>Answer screening questions.</li>
+<li>Use the Review step if offered.</li>
+<li>Read name, email, phone, resume filename, and critical answers one
+final time.</li>
+<li>Activate Submit application.</li>
+<li>Listen for confirmation and update your tracker.</li>
+</ol>
+<p><strong>What should happen:</strong> The application is submitted and
+confirmation is available.</p>
+<p><strong>If that does not happen:</strong> If Apply opens the
+company’s external site, treat it as a new application system and use
+Part 9.</p>
+<p><strong>Practice:</strong> Complete a practice review without
+submitting, where possible.</p>
+<h3 id="set-open-to-work-carefully">7.2 Set Open to Work Carefully</h3>
+<p><strong>What you will learn:</strong> Control who can see your
+job-search status.</p>
+<p><strong>Before you begin:</strong> Be signed in to LinkedIn.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Open your profile.</li>
+<li>Find Open to.</li>
+<li>Choose Finding a new job.</li>
+<li>Enter desired titles, workplaces, locations, start date, and job
+types.</li>
+<li>Find Choose who sees you’re open.</li>
+<li>Review All LinkedIn members versus Recruiters only.</li>
+<li>Select the privacy level you intend.</li>
+<li>Save/Add to profile.</li>
+</ol>
+<p><strong>What should happen:</strong> LinkedIn stores the job
+preferences with the visibility choice you selected.</p>
+<p><strong>If that does not happen:</strong> Do not assume “Open to
+Work” is private unless you explicitly review who can see it.</p>
+<p><strong>Practice:</strong> Inspect the visibility control and decide
+which option fits your situation.</p>
+<h2 id="part-8---search-and-apply-on-indeed">Part 8 - Search and Apply
+on Indeed</h2>
+<p><strong>Current supported combinations:</strong> Indeed currently
+lists JAWS with Chrome and NVDA with Chrome on Windows, VoiceOver with
+Safari on Mac/iOS, and TalkBack with Chrome on Android among its
+supported assistive-technology combinations.</p>
+<h3 id="search-indeed">8.1 Search Indeed</h3>
+<p><strong>What you will learn:</strong> Find jobs and preserve a
+predictable browser workflow.</p>
+<p><strong>Before you begin:</strong> Open Indeed and sign in if you use
+an account.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Navigate to the job-title/keyword search field.</li>
+<li>Enter a role, skill, or employer.</li>
+<li>Move to the location field and enter a location or remote
+preference.</li>
+<li>Activate Search.</li>
+<li>Use headings and links to review results.</li>
+<li>Open a promising result in a new tab when practical so the result
+list remains available.</li>
+<li>Read the entire description and application instructions.</li>
+</ol>
+<p><strong>What should happen:</strong> You can compare multiple jobs
+without losing the search page.</p>
+<p><strong>If that does not happen:</strong> If a result opens a company
+site, note that you have left Indeed and the accessibility behavior may
+change.</p>
+<p><strong>Practice:</strong> Open three results in separate tabs and
+compare them.</p>
+<h3 id="apply-through-indeed">8.2 Apply Through Indeed</h3>
+<p><strong>What you will learn:</strong> Complete Indeed-hosted forms
+and recognize employer-controlled steps.</p>
+<p><strong>Before you begin:</strong> Open a suitable job.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Activate Apply now when available.</li>
+<li>Confirm whether the application remains on Indeed or redirects
+elsewhere.</li>
+<li>Review contact/profile information.</li>
+<li>Upload or select the intended resume.</li>
+<li>Answer employer screening questions.</li>
+<li>Review before submission.</li>
+<li>Submit and save confirmation information.</li>
+</ol>
+<p><strong>What should happen:</strong> The application is recorded and
+your tracker is updated.</p>
+<p><strong>If that does not happen:</strong> If a screening step is
+inaccessible, use the accommodation/contact option where provided rather
+than guessing answers or asking someone to answer for you.</p>
+<p><strong>Practice:</strong> Walk through a noncritical application up
+to the review step.</p>
+<p><strong>Indeed accommodation note:</strong> Indeed’s current
+disability-inclusion FAQ states that job seekers who require
+alternatives in searching, applying, interviewing, or hiring can seek
+assistance; the employer remains responsible for its own application and
+screening content.</p>
+<h2 id="part-9---company-career-sites-and-ats-systems">Part 9 - Company
+Career Sites and ATS Systems</h2>
+<p>Company career sites may use systems such as Workday, Taleo, iCIMS,
+Greenhouse, Lever, SuccessFactors, or custom portals. The exact labels
+vary, so use a structure-first workflow rather than memorizing one
+site.</p>
+<h3 id="orient-to-an-unfamiliar-application-system">9.1 Orient to an
+Unfamiliar Application System</h3>
+<p><strong>What you will learn:</strong> Find the important regions
+before typing data.</p>
+<p><strong>Before you begin:</strong> Open the application in a desktop
+browser.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Press H repeatedly to review headings.</li>
+<li>Use landmarks/regions to find Main, Search, or Application
+content.</li>
+<li>Use F or your screen reader form-control list to identify text
+boxes, combo boxes, checkboxes, and buttons.</li>
+<li>Find Save, Next, Back, Review, and Submit controls before filling
+the entire page.</li>
+<li>Identify whether the site autosaves or provides Save and continue
+later.</li>
+<li>Only then begin entering data.</li>
+</ol>
+<p><strong>What should happen:</strong> You understand the page
+structure and recovery options before investing time.</p>
+<p><strong>If that does not happen:</strong> If there is no reliable
+structure, use Tab while taking notes on field order and save
+frequently.</p>
+<p><strong>Practice:</strong> Map one unfamiliar application page
+without submitting.</p>
+<h2 id="part-10---online-application-forms">Part 10 - Online Application
+Forms</h2>
+<h3 id="complete-forms-systematically">10.1 Complete Forms
+Systematically</h3>
+<p><strong>What you will learn:</strong> Prevent skipped fields and
+accidental submissions.</p>
+<p><strong>Before you begin:</strong> Have your reusable information
+file available.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Start at the first field.</li>
+<li>Read the label before typing.</li>
+<li>Enter only the information requested.</li>
+<li>Use Tab to move forward and Shift+Tab to recheck the previous
+field.</li>
+<li>For checkboxes, listen for checked/not checked before pressing
+Space.</li>
+<li>For radio buttons, use Arrow keys within the group.</li>
+<li>Before Next/Submit, use your screen reader form-field list or
+Shift+Tab review to confirm required fields.</li>
+<li>Use Save/Continue later when available.</li>
+</ol>
+<p><strong>What should happen:</strong> Required information is entered
+into the intended controls.</p>
+<p><strong>If that does not happen:</strong> If a label is missing, use
+surrounding text, screen-reader object information, or request an
+accessible alternative rather than guessing sensitive information.</p>
+<p><strong>Practice:</strong> Complete a practice form with text boxes,
+checkboxes, and radio buttons.</p>
+<h2
+id="part-11---dropdowns-date-pickers-autocomplete-and-custom-controls">Part
+11 - Dropdowns, Date Pickers, Autocomplete, and Custom Controls</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Native combo box</td>
+<td>Enter/Alt+Down to open when needed; Arrow keys; Enter to
+choose.</td>
+</tr>
+<tr class="even">
+<td>Autocomplete edit field</td>
+<td>Type part of the value, then use Arrow keys through announced
+suggestions and Enter to select.</td>
+</tr>
+<tr class="odd">
+<td>Date field</td>
+<td>Prefer typing the documented date format when allowed; otherwise use
+keyboard navigation in the date picker.</td>
+</tr>
+<tr class="even">
+<td>Custom listbox</td>
+<td>Listen for expanded/collapsed and selected state; Arrow keys usually
+move within the list.</td>
+</tr>
+<tr class="odd">
+<td>Slider</td>
+<td>Arrow keys usually adjust the value; listen for the numeric
+state.</td>
+</tr>
+<tr class="even">
+<td>Toggle/switch</td>
+<td>Space or Enter; verify on/off state afterward.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Recovery habit:</strong> After choosing a custom control,
+Shift+Tab back once and listen to the selected value. Dynamic
+applications sometimes accept focus movement without actually saving the
+selection.</p>
+<h2 id="part-12---resume-parsing-and-re-entering-work-history">Part 12 -
+Resume Parsing and Re-entering Work History</h2>
+<ul>
+<li><p>ATS resume parsing is not proof that every field was interpreted
+correctly.</p></li>
+<li><p>Check employer names, job titles, dates, degree names,
+phone/email, and location carefully.</p></li>
+<li><p>Re-enter information manually when required even if it duplicates
+the resume.</p></li>
+<li><p>Do not write “see resume” unless the application explicitly
+permits it.</p></li>
+<li><p>Keep dates in one consistent format to reduce parsing
+errors.</p></li>
+</ul>
+<h3 id="audit-parsed-resume-fields">12.1 Audit Parsed Resume Fields</h3>
+<p><strong>What you will learn:</strong> Correct ATS errors before
+submission.</p>
+<p><strong>Before you begin:</strong> Resume upload has completed.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Move to the first parsed field.</li>
+<li>Compare it with your master resume.</li>
+<li>Correct any split employer/job-title lines.</li>
+<li>Check month/year dates.</li>
+<li>Check that bullet accomplishments were not placed into
+employer/title fields.</li>
+<li>Review education and certifications.</li>
+<li>Save before leaving the page.</li>
+</ol>
+<p><strong>What should happen:</strong> The application data matches the
+resume.</p>
+<p><strong>If that does not happen:</strong> If parsing is severely
+broken, upload a simpler one-column resume version and try again if the
+site allows replacement.</p>
+<p><strong>Practice:</strong> Audit one parsed application profile.</p>
+<h2 id="part-13---cover-letters-and-application-questions">Part 13 -
+Cover Letters and Application Questions</h2>
+<ul>
+<li><p>Answer the question actually asked; do not paste a generic
+paragraph everywhere.</p></li>
+<li><p>Use plain language and concrete examples.</p></li>
+<li><p>For “Why are you interested?” connect the role, organization, and
+your relevant experience.</p></li>
+<li><p>For “Describe a challenge” use a short Situation-Action-Result
+structure.</p></li>
+<li><p>Keep a library of reusable examples, but tailor each final
+answer.</p></li>
+<li><p>Do not disclose private medical information simply because a
+question asks about challenges or strengths.</p></li>
+</ul>
+<h3 id="paste-long-answers-safely">13.1 Paste Long Answers Safely</h3>
+<p><strong>What you will learn:</strong> Avoid losing text in unstable
+web forms.</p>
+<p><strong>Before you begin:</strong> Draft the answer in Word or a
+plain text editor first.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Write and proofread the answer outside the application.</li>
+<li>Copy it.</li>
+<li>Return to the correct application field.</li>
+<li>Confirm the label.</li>
+<li>Paste.</li>
+<li>Use Ctrl+A inside that field only if you need to verify
+length/content, then cancel selection as appropriate.</li>
+<li>Save the application page.</li>
+</ol>
+<p><strong>What should happen:</strong> You keep a backup copy and
+reduce the risk of losing work.</p>
+<p><strong>If that does not happen:</strong> If the site has a character
+limit, shorten the answer in the external editor before pasting
+again.</p>
+<p><strong>Practice:</strong> Draft and paste one 150-word answer.</p>
+<h2 id="part-14---assessments-and-timed-tests">Part 14 - Assessments and
+Timed Tests</h2>
+<ul>
+<li><p>Read the instructions before starting the timer.</p></li>
+<li><p>Check whether the test requires video, drag-and-drop, visual
+pattern recognition, a specific browser, or locked-down
+software.</p></li>
+<li><p>Test keyboard and screen-reader behavior before the timed portion
+if a practice item is available.</p></li>
+<li><p>If the assessment is inaccessible or extra time/another format is
+needed because of disability, request accommodation before starting when
+possible.</p></li>
+<li><p>Do not ask another person to take an assessment for you.</p></li>
+</ul>
+<p><strong>Current platform note:</strong> Indeed announced the
+discontinuation of its own Assessments product, but employers may still
+send third-party pre-employment tests or screening systems.</p>
+<h2 id="part-15---requesting-an-application-accommodation">Part 15 -
+Requesting an Application Accommodation</h2>
+<p><strong>General U.S. principle:</strong> U.S. Department of Labor
+guidance states that qualified applicants may need reasonable
+accommodations to participate in the application process. Examples can
+include alternate formats or adjustments to inaccessible
+recruiting/application technology.</p>
+<h3 id="request-an-accessible-application-method">15.1 Request an
+Accessible Application Method</h3>
+<p><strong>What you will learn:</strong> Ask for a practical alternative
+when a barrier prevents equal participation.</p>
+<p><strong>Before you begin:</strong> Document the barrier before
+contacting the employer.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Write down the employer, job title, job ID, application URL, date,
+and exact inaccessible step.</li>
+<li>Find the accommodation, HR, recruiting, or applicant-support
+contact listed in the posting/application.</li>
+<li>Explain that you are an applicant and identify the job.</li>
+<li>Describe the barrier functionally, such as “the required
+assessment cannot be operated with my screen reader.”</li>
+<li>State the accommodation or alternative you need, such as an
+accessible version, extra time when appropriate, a keyboard-operable
+format, or another way to submit the same information.</li>
+<li>Ask how the employer wants you to proceed.</li>
+<li>Keep a copy of the request and response.</li>
+</ol>
+<p><strong>What should happen:</strong> The employer has enough
+information to address access to the hiring process.</p>
+<p><strong>If that does not happen:</strong> If the posting has no
+contact, use the company careers/HR contact or accessibility channel.
+For legal questions about rights, consult EEOC/JAN or qualified counsel
+rather than relying on a recruiter for legal interpretation.</p>
+<p><strong>Practice:</strong> Write a practice accommodation request for
+an inaccessible timed assessment.</p>
+<h2 id="part-16---disability-disclosure-and-interview-boundaries">Part
+16 - Disability Disclosure and Interview Boundaries</h2>
+<ul>
+<li><p>You do not need to put disability information on a resume unless
+you choose to and it is relevant to your goals.</p></li>
+<li><p>An accommodation request may require enough information to
+explain the need, but it does not require sharing unrelated medical
+history.</p></li>
+<li><p>In the U.S., pre-offer disability-related questions are
+restricted; employers may generally ask whether you can perform job
+functions and may discuss accommodation in appropriate
+circumstances.</p></li>
+<li><p>Keep the conversation focused on job functions, access needs, and
+effective accommodations.</p></li>
+</ul>
+<p><strong>EEOC guidance:</strong> EEOC states that an employer
+generally may not ask a job applicant disability-related questions
+before a job offer, though it may ask whether the applicant can perform
+the job and how the applicant would perform it, with or without
+reasonable accommodation.</p>
+<h2 id="part-17---job-search-scams">Part 17 - Job-Search Scams</h2>
+<ul>
+<li><p>Never pay to receive a legitimate job offer.</p></li>
+<li><p>Be suspicious of interviews conducted only by text/chat with
+immediate offers and no normal hiring process.</p></li>
+<li><p>Never deposit a check and send part of the money back for
+“equipment.”</p></li>
+<li><p>Never buy gift cards or cryptocurrency for an
+employer/recruiter.</p></li>
+<li><p>Check the recruiter’s email domain and the employer’s real
+careers site.</p></li>
+<li><p>Compare the job posting with the company’s official careers
+page.</p></li>
+<li><p>Be cautious when a recruiter moves the conversation to Telegram,
+WhatsApp, Signal, or another private channel immediately.</p></li>
+<li><p>Never provide banking information or identity documents before
+you understand why they are needed and have verified the
+employer.</p></li>
+</ul>
+<h3 id="verify-a-recruiter">17.1 Verify a Recruiter</h3>
+<p><strong>What you will learn:</strong> Confirm identity through an
+independent path.</p>
+<p><strong>Before you begin:</strong> A recruiter contacts you
+unexpectedly.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Read the full email address/domain.</li>
+<li>Find the employer’s official website by a known or independently
+typed address.</li>
+<li>Locate the job on the official careers site if possible.</li>
+<li>Check whether the recruiter appears on the company site or
+LinkedIn profile, but do not rely on profile existence alone.</li>
+<li>Call or email the company through its official contact if the
+request involves sensitive information or money.</li>
+</ol>
+<p><strong>What should happen:</strong> You know whether the recruiting
+contact is plausible before sharing sensitive data.</p>
+<p><strong>If that does not happen:</strong> If the employer cannot
+verify the recruiter, stop the process.</p>
+<p><strong>Practice:</strong> Verify a legitimate recruiter or staffing
+agency using public contact information.</p>
+<h2 id="part-18---email-and-recruiter-communication">Part 18 - Email and
+Recruiter Communication</h2>
+<ul>
+<li><p>Use clear subject lines: “Application - Data Analyst - Job 12345
+- Your Name.”</p></li>
+<li><p>Keep replies concise and answer every scheduling/action
+question.</p></li>
+<li><p>Read the full recipient address before sending sensitive
+documents.</p></li>
+<li><p>Do not send Social Security cards, driver’s licenses, bank
+details, or tax documents during ordinary early recruiting unless you
+have verified a legitimate onboarding process after an offer.</p></li>
+<li><p>Keep copies of important recruiter emails in an application
+folder.</p></li>
+</ul>
+<h2 id="part-19---interview-scheduling">Part 19 - Interview
+Scheduling</h2>
+<h3 id="confirm-an-interview">19.1 Confirm an Interview</h3>
+<p><strong>What you will learn:</strong> Record all logistics
+accessibly.</p>
+<p><strong>Before you begin:</strong> You receive an interview
+invitation.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Read the date, time, time zone, platform, interviewer names, and
+meeting link.</li>
+<li>Add the event to your calendar.</li>
+<li>Add the job description or posting link to the calendar notes.</li>
+<li>If you need an interview accommodation, request it before the
+interview with enough lead time when possible.</li>
+<li>Reply confirming attendance.</li>
+<li>One day before, reopen the meeting link only far enough to test
+the platform/device—not to join unexpectedly if that would be
+inappropriate.</li>
+</ol>
+<p><strong>What should happen:</strong> You have one reliable calendar
+record with all interview details.</p>
+<p><strong>If that does not happen:</strong> If the invitation lacks
+time zone or platform, ask before the interview day.</p>
+<p><strong>Practice:</strong> Create a practice calendar event from a
+sample invitation.</p>
+<h2 id="part-20---zoom-teams-and-video-interviews">Part 20 - Zoom,
+Teams, and Video Interviews</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Zoom</td>
+<td>Test at zoom.us/test; know mute, camera, participants/chat, and
+leave controls.</td>
+</tr>
+<tr class="even">
+<td>Microsoft Teams</td>
+<td>Use the pre-join screen to verify microphone/camera; know mute,
+camera, chat, participants, and leave.</td>
+</tr>
+<tr class="odd">
+<td>Google Meet</td>
+<td>Verify microphone/camera and know captions, chat, people, and leave
+controls.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="prepare-a-video-interview-setup">20.1 Prepare a Video Interview
+Setup</h3>
+<p><strong>What you will learn:</strong> Prevent platform navigation
+from becoming the interview itself.</p>
+<p><strong>Before you begin:</strong> Know the platform.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Update the app/browser before interview day.</li>
+<li>Connect headphones/headset if you use them.</li>
+<li>Test microphone and speakers.</li>
+<li>If camera is expected and you choose/use video, test camera
+framing with a trusted person or built-in preview.</li>
+<li>Practice mute/unmute without searching menus.</li>
+<li>Practice opening chat and participants, then return focus to the
+main meeting.</li>
+<li>Know the Leave command/control.</li>
+<li>Close unrelated apps and silence nonessential notifications.</li>
+</ol>
+<p><strong>What should happen:</strong> You can manage meeting controls
+without losing conversational focus.</p>
+<p><strong>If that does not happen:</strong> If the platform is
+inaccessible, request an alternative or accommodation before the
+interview rather than improvising under time pressure.</p>
+<p><strong>Practice:</strong> Run a ten-minute mock interview call.</p>
+<h2 id="part-21---interview-preparation-with-a-screen-reader">Part 21 -
+Interview Preparation with a Screen Reader</h2>
+<ul>
+<li><p>Keep the job description in a separate document with headings for
+Responsibilities, Required, Preferred, Questions, and Your
+Examples.</p></li>
+<li><p>Prepare five to eight short stories demonstrating skills using
+Situation-Action-Result.</p></li>
+<li><p>Use concise braille or text notes rather than a long script you
+must search during the interview.</p></li>
+<li><p>Keep questions for the employer in a short numbered
+list.</p></li>
+<li><p>If using speech, use headphones so interviewers do not hear
+screen-reader output.</p></li>
+<li><p>If using braille, position the display so routing/typing noises
+do not interfere with the microphone.</p></li>
+</ul>
+<h3 id="build-interview-notes">21.1 Build Interview Notes</h3>
+<p><strong>What you will learn:</strong> Create notes you can retrieve
+quickly while listening.</p>
+<p><strong>Before you begin:</strong> Open Word or a plain-text
+editor.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Create headings: Role, Company, Three priorities, Five examples,
+Questions, Closing.</li>
+<li>Under each heading, use short bullet phrases rather than
+paragraphs.</li>
+<li>Practice moving by heading with your screen reader.</li>
+<li>Try answering one mock question while locating a note without long
+silence.</li>
+</ol>
+<p><strong>What should happen:</strong> You can find a prompt quickly
+without reading a script word-for-word.</p>
+<p><strong>If that does not happen:</strong> If note navigation is slow,
+reduce the notes until each section fits in a few lines.</p>
+<p><strong>Practice:</strong> Run five mock questions using the
+notes.</p>
+<h2 id="part-22---after-the-interview">Part 22 - After the
+Interview</h2>
+<ul>
+<li><p>Immediately write down interviewer names, questions, commitments,
+and follow-up dates.</p></li>
+<li><p>Send a concise thank-you email when appropriate.</p></li>
+<li><p>If you promised a portfolio/sample, send exactly what was
+requested through a verified address/link.</p></li>
+<li><p>Do not assume silence means rejection; follow the stated timeline
+and then follow up once professionally.</p></li>
+</ul>
+<h2 id="part-23---application-tracking-and-follow-up">Part 23 -
+Application Tracking and Follow-Up</h2>
+<h3 id="update-status-after-every-contact">23.1 Update Status After
+Every Contact</h3>
+<p><strong>What you will learn:</strong> Keep the search organized
+across many employers.</p>
+<p><strong>Before you begin:</strong> Open your tracker.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Find the employer/job row.</li>
+<li>Update Status: Saved, Applied, Recruiter screen, Interview,
+Assessment, Offer, Rejected, Withdrawn, or other meaningful state.</li>
+<li>Enter the date of the latest contact.</li>
+<li>Enter the next follow-up date.</li>
+<li>Add a short note with the person/contact and next action.</li>
+</ol>
+<p><strong>What should happen:</strong> You can prioritize follow-ups
+instead of relying on memory.</p>
+<p><strong>If that does not happen:</strong> If the tracker becomes
+large, sort/filter by next follow-up date or active status.</p>
+<p><strong>Practice:</strong> Update five sample applications.</p>
+<h2 id="part-24---mobile-job-search">Part 24 - Mobile Job Search</h2>
+<ul>
+<li><p>LinkedIn and Indeed mobile apps can be useful for searching and
+notifications, but long application forms are often easier on desktop
+with a physical keyboard.</p></li>
+<li><p>VoiceOver: use swipe navigation, rotor headings/forms, and
+double-tap to activate.</p></li>
+<li><p>TalkBack: use swipe navigation, reading controls, and double-tap
+to activate.</p></li>
+<li><p>Keep the resume in Files/Drive/OneDrive so it is available to
+mobile upload controls.</p></li>
+<li><p>For a complex inaccessible mobile form, switch to desktop before
+deciding the application cannot be completed.</p></li>
+</ul>
+<h2 id="part-25---troubleshooting-inaccessible-applications">Part 25 -
+Troubleshooting Inaccessible Applications</h2>
+<h3 id="you-are-tabbing-forever">25.1 You Are Tabbing Forever</h3>
+<p><strong>What you will learn:</strong> Switch from linear Tab
+navigation to structure navigation.</p>
+<p><strong>Before you begin:</strong> A page has many controls.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Press H to inspect headings.</li>
+<li>Use landmarks/regions.</li>
+<li>Use the screen reader forms list or F/form-control navigation.</li>
+<li>Use browser Find for “submit,” “next,” “resume,” or the question
+text.</li>
+<li>Return to Tab only when you are near the intended control.</li>
+</ol>
+<p><strong>What should happen:</strong> Navigation becomes shorter and
+more predictable.</p>
+<p><strong>If that does not happen:</strong> If the site exposes no
+useful structure, document the barrier and use the accommodation
+route.</p>
+<p><strong>Practice:</strong> Navigate a long form without tabbing
+through every link.</p>
+<h3 id="focus-jumps-after-you-choose-a-dropdown">25.2 Focus Jumps After
+You Choose a Dropdown</h3>
+<p><strong>What you will learn:</strong> Reconfirm the selected value
+and your new focus location.</p>
+<p><strong>Before you begin:</strong> A dynamic control refreshed the
+page.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Press Shift+Tab once.</li>
+<li>Listen to the selected value/control label.</li>
+<li>Press Tab forward again.</li>
+<li>If focus returned to the top, use headings/forms navigation to
+return to the next required field.</li>
+<li>Save if the application offers Save.</li>
+</ol>
+<p><strong>What should happen:</strong> You verify the choice before
+continuing.</p>
+<p><strong>If that does not happen:</strong> If the selected value
+repeatedly disappears, capture the exact control label/problem and
+contact applicant support/accommodation.</p>
+<p><strong>Practice:</strong> Practice on a country/state autocomplete
+field.</p>
+<h3 id="captcha-blocks-submission">25.3 CAPTCHA Blocks Submission</h3>
+<p><strong>What you will learn:</strong> Use the site’s accessible
+CAPTCHA or employer alternative.</p>
+<p><strong>Before you begin:</strong> A CAPTCHA appears.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Look for an audio or accessibility alternative.</li>
+<li>Use the provider’s accessibility sign-in/cookie option if
+offered.</li>
+<li>Refresh only if the alternative failed—not repeatedly.</li>
+<li>If no accessible challenge exists, contact application support or
+request an alternative submission method.</li>
+</ol>
+<p><strong>What should happen:</strong> You complete the
+human-verification step without asking another person to submit the
+application for you.</p>
+<p><strong>If that does not happen:</strong> A sighted helper describing
+one inaccessible image may solve a one-time barrier, but a required
+inaccessible hiring process should still be reported/requested as an
+accommodation where appropriate.</p>
+<p><strong>Practice:</strong> Identify the accessible alternative on a
+practice CAPTCHA page if available.</p>
+<h3 id="resume-upload-works-but-fields-are-blankwrong">25.4 Resume
+Upload Works but Fields Are Blank/Wrong</h3>
+<p><strong>What you will learn:</strong> Treat upload and parsing as
+separate tasks.</p>
+<p><strong>Before you begin:</strong> The filename is attached.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Confirm the uploaded filename.</li>
+<li>Move through every parsed field.</li>
+<li>Correct missing/wrong information manually.</li>
+<li>If replacement is allowed, try the simpler accessible resume
+version.</li>
+<li>Save before proceeding.</li>
+</ol>
+<p><strong>What should happen:</strong> The application contains
+accurate data even if parsing was imperfect.</p>
+<p><strong>If that does not happen:</strong> Do not submit based only on
+seeing/hearing the resume filename.</p>
+<p><strong>Practice:</strong> Audit one parsed profile.</p>
+<h3 id="timed-assessment-is-not-accessible">25.5 Timed Assessment Is Not
+Accessible</h3>
+<p><strong>What you will learn:</strong> Stop before consuming the timer
+when possible.</p>
+<p><strong>Before you begin:</strong> You discover a barrier before or
+at the beginning of the test.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Do not continue guessing through inaccessible questions.</li>
+<li>Document the exact barrier and test name.</li>
+<li>Use the employer/test provider accommodation contact.</li>
+<li>Request an accessible version or appropriate modification.</li>
+<li>Keep the confirmation of your request.</li>
+</ol>
+<p><strong>What should happen:</strong> The employer/provider can
+address access before the assessment is completed.</p>
+<p><strong>If that does not happen:</strong> If the timer has already
+started, contact support immediately and document that the barrier
+occurred during the timed attempt.</p>
+<p><strong>Practice:</strong> Write a sample barrier description.</p>
+<h2 id="part-26---independent-practice-course">Part 26 - Independent
+Practice Course</h2>
+<h3 id="level-1---workspace">Level 1 - Workspace</h3>
+<p>☐ Create Job Search folder.</p>
+<p>☐ Create tracker.</p>
+<p>☐ Create reusable information file.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-2---resume">Level 2 - Resume</h3>
+<p>☐ Check headings.</p>
+<p>☐ Run accessibility checker.</p>
+<p>☐ Create DOCX and accessible PDF copies.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-3---posting">Level 3 - Posting</h3>
+<p>☐ Find title/job ID.</p>
+<p>☐ Extract required/preferred qualifications.</p>
+<p>☐ Save link and summary.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-4---linkedin">Level 4 - LinkedIn</h3>
+<p>☐ Search.</p>
+<p>☐ Open result.</p>
+<p>☐ Review Apply flow.</p>
+<p>☐ Inspect Open to Work visibility.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-5---indeed">Level 5 - Indeed</h3>
+<p>☐ Search.</p>
+<p>☐ Open three results.</p>
+<p>☐ Distinguish Indeed-hosted vs external application.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-6---forms">Level 6 - Forms</h3>
+<p>☐ Complete text, checkbox, radio, dropdown, autocomplete, and upload
+controls.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-7---parsing">Level 7 - Parsing</h3>
+<p>☐ Upload resume.</p>
+<p>☐ Audit parsed work history.</p>
+<p>☐ Correct dates/titles.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-8---writing">Level 8 - Writing</h3>
+<p>☐ Draft cover letter paragraph.</p>
+<p>☐ Draft two application answers.</p>
+<p>☐ Paste/review safely.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-9---accommodation">Level 9 - Accommodation</h3>
+<p>☐ Identify an inaccessible barrier.</p>
+<p>☐ Write a functional accommodation request.</p>
+<p>☐ Find employer contact route.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-10---interview-tech">Level 10 - Interview Tech</h3>
+<p>☐ Test microphone/headphones.</p>
+<p>☐ Practice mute/unmute.</p>
+<p>☐ Open chat/participants and return.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-11---interview-notes">Level 11 - Interview Notes</h3>
+<p>☐ Create heading-based notes.</p>
+<p>☐ Answer five mock questions.</p>
+<p>☐ Ask three employer questions.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h3 id="level-12---independence">Level 12 - Independence</h3>
+<p>☐ Find job.</p>
+<p>☐ Evaluate.</p>
+<p>☐ Apply.</p>
+<p>☐ Track.</p>
+<p>☐ Schedule mock interview.</p>
+<p>☐ Follow up.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key, field, or next action
+to use.</p>
+<h2 id="part-27---quick-reference-checklists">Part 27 - Quick Reference
+Checklists</h2>
+<h3 id="before-applying">Before Applying</h3>
+<p>☐ Read whole posting.</p>
+<p>☐ Confirm employer and job ID.</p>
+<p>☐ Separate required vs preferred.</p>
+<p>☐ Save posting/link.</p>
+<p>☐ Choose tailored resume.</p>
+<p>☐ Check application deadline.</p>
+<p>☐ Check accommodation contact if you anticipate a barrier.</p>
+<h3 id="before-submit">Before Submit</h3>
+<p>☐ Name/email/phone correct.</p>
+<p>☐ Resume filename correct.</p>
+<p>☐ Work dates correct.</p>
+<p>☐ Education/certifications correct.</p>
+<p>☐ Screening answers reviewed.</p>
+<p>☐ Attachments correct.</p>
+<p>☐ No accidental disability/medical disclosure.</p>
+<p>☐ Confirmation/tracker plan ready.</p>
+<h3 id="before-interview">Before Interview</h3>
+<p>☐ Date/time/time zone confirmed.</p>
+<p>☐ Platform tested.</p>
+<p>☐ Headphones/microphone ready.</p>
+<p>☐ Accommodation arranged if needed.</p>
+<p>☐ Job description and notes open.</p>
+<p>☐ Five examples prepared.</p>
+<p>☐ Questions prepared.</p>
+<p>☐ Notifications silenced.</p>
+<h3 id="accessibility-recovery-pattern">Accessibility Recovery
+Pattern</h3>
+<p>1. Stop. 2. Identify the current page/field. 3. Use
+headings/landmarks/forms navigation. 4. Recheck state/selected value. 5.
+Save. 6. Try a desktop browser/known supported combination. 7. If the
+barrier remains, document it and use applicant
+support/accommodation.</p>
+<h2 id="part-28---official-resources">Part 28 - Official Resources</h2>
+<p><a
+href="https://www.linkedin.com/help/linkedin/answer/a545514"><u>LinkedIn
+- Find jobs with a screen reader</u></a></p>
+<p><a
+href="https://www.linkedin.com/help/linkedin/answer/a1448025"><u>LinkedIn
+- Add Open to options with screen reader support</u></a></p>
+<p><a href="https://www.indeed.com/esg/accessibility"><u>Indeed -
+Disability Inclusion and Accessibility</u></a></p>
+<p><a
+href="https://support.indeed.com/hc/en-ca/articles/14951070046861-FAQs-Disability-Inclusion-and-Accessibility-at-Indeed"><u>Indeed
+Support - Disability Inclusion and Accessibility FAQ</u></a></p>
+<p><a
+href="https://www.dol.gov/agencies/odep/publications/fact-sheets/opening-doors-to-all-candidates-tips-for-ensuring-access-for-applicants-with-disabilities"><u>U.S.
+Department of Labor - Opening Doors to All Candidates</u></a></p>
+<p><a
+href="https://www.eeoc.gov/disability-discrimination-and-employment-decisions"><u>EEOC
+- Disability Discrimination and Employment Decisions</u></a></p>
+<p><a
+href="https://www.eeoc.gov/laws/guidance/tips-applicants-disabilities-applying-federal-jobs"><u>EEOC
+- Tips for Applicants with Disabilities Applying for Federal
+Jobs</u></a></p>
+<p><a href="https://askjan.org/"><u>Job Accommodation
+Network</u></a></p>
+<p><a href="https://www.careeronestop.org/"><u>CareerOneStop</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I can organize a job search and track applications.</p>
+<p>☐ I can produce an accessible resume in Word/PDF.</p>
+<p>☐ I can read a posting efficiently with a screen reader.</p>
+<p>☐ I can distinguish required and preferred qualifications.</p>
+<p>☐ I can search/apply on LinkedIn.</p>
+<p>☐ I can search/apply on Indeed.</p>
+<p>☐ I can orient to unfamiliar ATS/career sites.</p>
+<p>☐ I can complete online forms and custom controls.</p>
+<p>☐ I can upload and audit parsed resume data.</p>
+<p>☐ I can draft and paste long application answers safely.</p>
+<p>☐ I can identify when an assessment barrier requires
+accommodation.</p>
+<p>☐ I can write a functional application-accommodation request.</p>
+<p>☐ I understand basic disability-disclosure/interview boundaries.</p>
+<p>☐ I can identify common job scams.</p>
+<p>☐ I can schedule and prepare for video interviews.</p>
+<p>☐ I can build accessible interview notes.</p>
+<p>☐ I can follow up and track next actions.</p>
+<p>☐ I can troubleshoot an inaccessible application without endlessly
+tabbing or guessing.</p>
+<p><strong>Most important habit:</strong> Do not let an inaccessible
+application turn into a test of endurance. Use structure navigation,
+save often, document the exact barrier, and use the employer’s
+applicant-support or accommodation process when technology prevents
+equal participation.</p>
 
-<section id="basic" aria-labelledby="basic-heading"><h2 id="basic-heading">Basic how-tos</h2>
-<h3>Choose a job goal and search terms</h3><p><strong>Keyboard commands:</strong> Ctrl+N creates a new Word document. Ctrl+S saves. Ctrl+Shift+S opens Save As in many versions of Word.</p><ol><li>Open Word and create a document titled Career Target.</li><li>Write one target job title, such as Customer Service Representative.</li><li>Add five related titles an employer might use, such as Call Center Representative or Client Support Specialist.</li><li>List five skills, three software tools, preferred location, remote or in-person preference, and minimum schedule requirements.</li><li>Press Ctrl+S and save the file in your Job Search folder as Career Target.docx.</li></ol><p><strong>You should hear:</strong> The filename in the Word window title after saving.</p><p><strong>If that does not happen:</strong> Press Insert+T with JAWS or NVDA+T with NVDA. Confirm the document title and save location before continuing.</p>
-
-<h3>Create a clear master résumé</h3><p><strong>Keyboard commands:</strong> Ctrl+Alt+1 applies Heading 1 in Word. Ctrl+B toggles bold. Ctrl+S saves. F7 starts spelling and grammar review.</p><ol><li>Create a new Word document and type your name as the first line.</li><li>Add professional contact information. Do not include unnecessary personal details such as age, marital status, Social Security number, or a photograph.</li><li>Create section headings for Summary, Skills, Work Experience, Education, and Certifications.</li><li>Select each section heading and press Ctrl+Alt+1 so it is a real heading, not merely bold text.</li><li>List jobs in reverse chronological order. Include employer, job title, dates, and accomplishment-focused bullets.</li><li>Begin bullets with action verbs and include measurable results when accurate.</li><li>Press F7 and review each suggestion rather than accepting everything automatically.</li><li>Press Ctrl+S and save the master as Master Resume.docx.</li></ol><p><strong>You should hear:</strong> Heading level 1 when moving to each résumé section with H in JAWS or NVDA browse mode after opening a saved or previewed version.</p><p><strong>If that does not happen:</strong> Use Word’s Styles pane with Ctrl+Alt+Shift+S and apply actual heading styles.</p>
-
-<h3>Search a job website efficiently</h3><p><strong>Keyboard commands:</strong> E moves to the next edit field, B to the next button, H by heading, and K by link in JAWS and NVDA browse mode. Ctrl+L focuses the browser address bar.</p><ol><li>Open a trusted employer career page or established job-search website.</li><li>Confirm the site and employer name from the page title and address.</li><li>Press E to find the keyword field. Enter one target title or skill.</li><li>Press E again to find the location field and enter a city, state, or Remote.</li><li>Use B to find Search and press Enter.</li><li>Move through results by headings or links. Open promising postings in a new tab with Ctrl+Enter when supported.</li><li>Record the employer, title, location, posting address, and closing date in a search log.</li></ol><p><strong>If that does not happen:</strong> Use Tab and Shift+Tab to inspect current labels. Do not type until the intended field is announced.</p>
-
-<h3>Save and analyze a posting</h3><p><strong>Keyboard commands:</strong> Ctrl+L selects the page address. Ctrl+C copies. Ctrl+N creates a document. Ctrl+V pastes. Ctrl+F finds text on the current page.</p><ol><li>Copy the posting address and paste it into a new document.</li><li>Record the exact job title, employer, posting number, location, and date found.</li><li>Use Ctrl+F on the posting to find headings or words such as qualifications, responsibilities, schedule, salary, and apply.</li><li>Create three lists: Required, Preferred, and Questions.</li><li>Match each required qualification to honest evidence from your experience.</li><li>Save the notes with the employer and job title in the filename.</li></ol><p><strong>If that does not happen:</strong> Save the posting as accessible text or copy one section at a time. Never rely only on the webpage remaining available.</p>
-
-<h3>Complete an online application</h3><p><strong>Keyboard commands:</strong> F or E moves among form fields, B moves among buttons, X among checkboxes, C among combo boxes, and R among radio buttons in JAWS and NVDA browse mode. Insert+F5 in JAWS or NVDA+F7 in NVDA opens an elements list.</p><ol><li>Read the entire first page before entering information.</li><li>Confirm whether an account is required and save the employer’s official address separately.</li><li>Move through fields in order. Listen for the label, required state, instructions, and error message.</li><li>Paste information from your résumé only after confirming the field.</li><li>For combo boxes, open the list with Alt+Down Arrow, choose with arrow keys, and confirm with Enter.</li><li>Upload the targeted résumé and listen for the complete filename.</li><li>Review every page before selecting Next.</li><li>On the final page, verify contact details, documents, voluntary questions, certifications, and consent statements.</li><li>Submit once. Save the confirmation number and a copy of the confirmation page.</li></ol><p><strong>If that does not happen:</strong> Stop before refreshing. Copy any long answers to a separate document, record the field and error, and try another browser or request an accessible application method.</p>
-</section>
-
-<section id="advanced" aria-labelledby="advanced-heading"><h2 id="advanced-heading">Advanced how-tos</h2>
-<h3>Tailor a résumé without damaging the master</h3><p><strong>Keyboard commands:</strong> F12 or Ctrl+Shift+S opens Save As in many Word versions. Ctrl+H opens Find and Replace. Shift+F7 opens the thesaurus in supported versions.</p><ol><li>Open Master Resume.docx and immediately use Save As.</li><li>Name the copy Employer - Job Title - Resume.docx.</li><li>Compare the posting’s required skills with your Summary, Skills, and Experience sections.</li><li>Move the most relevant truthful qualifications earlier; do not copy claims you cannot support.</li><li>Replace vague phrases with specific accomplishments and numbers where accurate.</li><li>Run spelling review and use heading navigation to check structure.</li><li>Save the Word file, then create a PDF copy only if requested.</li><li>Open the PDF with a screen reader and verify reading order, headings, links, and contact information.</li></ol><p><strong>If that does not happen:</strong> Return to the Word copy. Never submit an inaccessible PDF merely because its visual appearance seems correct.</p>
-
-<h3>Write a targeted cover letter</h3><p><strong>Keyboard commands:</strong> Ctrl+N creates a document. Ctrl+S saves. Ctrl+K inserts or edits a link. F7 reviews spelling.</p><ol><li>Copy the employer’s name, position title, and two important qualifications into a planning document.</li><li>Write a specific opening naming the position and why you are interested.</li><li>Use the middle paragraph to connect one or two requirements to concrete experience.</li><li>Close by requesting an interview and providing a professional contact method.</li><li>Keep the letter concise, accurate, and different from the résumé.</li><li>Review organization by paragraph, run F7, and save with the employer and position in the filename.</li></ol><p><strong>If that does not happen:</strong> Start with three labeled notes—Opening, Evidence, and Closing—then turn each note into a paragraph.</p>
-
-<h3>Check whether a posting may be fraudulent</h3><p><strong>Keyboard commands:</strong> Ctrl+L checks the current web address. Ctrl+F searches the page. Alt+Left Arrow returns to the previous page.</p><ol><li>Do not use a link from an unexpected text or email until the sender and destination are verified.</li><li>Navigate independently to the employer’s official website and locate its Careers page.</li><li>Search for the same job title or posting number.</li><li>Check whether the recruiter uses an official company email domain.</li><li>Treat requests for money, gift cards, cryptocurrency, bank credentials, or equipment purchases as warning signs.</li><li>Do not provide identity documents before confirming the employer and legitimate hiring stage.</li><li>Save evidence and report suspected fraud to the job site and appropriate authorities.</li></ol><p><strong>If that does not happen:</strong> Do not continue the application. Contact the employer using a phone number or address obtained independently from its official site.</p>
-
-<h3>Request an application or interview accommodation</h3><p><strong>Keyboard approach:</strong> Use a professional email or the employer’s stated accommodation contact. Keep a copy of the request.</p><ol><li>Identify the barrier and the part of the process affected.</li><li>State that you need a reasonable accommodation to participate in the application or interview process.</li><li>Describe the effective change you need, such as an accessible document, keyboard-accessible form, remote interview link, or extra time caused by an inaccessible interface.</li><li>Do not volunteer unrelated medical details.</li><li>Ask whom to contact and when to expect a response.</li><li>Save the request and all replies in the application folder.</li></ol><p><strong>If that does not happen:</strong> Follow up through the employer’s Human Resources or accommodation channel and document dates, names, and responses.</p>
-
-<h3>Prepare for an accessible interview</h3><p><strong>Keyboard commands:</strong> Ctrl+Shift+M mutes or unmutes in Teams; Alt+A in Zoom; Ctrl+D in Google Meet on Windows.</p><ol><li>Confirm the interview date, time zone, format, interviewer names, and meeting address.</li><li>Research the employer and prepare five accomplishment stories using Situation, Task, Action, and Result.</li><li>Test the meeting platform, microphone, headphones, camera choice, screen reader, and internet connection.</li><li>Place the job description, résumé, questions, and accommodation plan in easy-to-find files.</li><li>Join ten minutes early, muted, and confirm audio.</li><li>Afterward, record questions asked, promised follow-up, and a thank-you deadline.</li></ol><p><strong>If that does not happen:</strong> Use the invitation’s contact method immediately, explain the access problem briefly, and request an alternative connection.</p>
-
-<h3>Track applications and follow up</h3><p><strong>Keyboard commands:</strong> In Excel, Ctrl+Arrow moves to the edge of data, Ctrl+Space selects a column, Shift+Space selects a row, and Ctrl+S saves.</p><ol><li>Create columns for Employer, Position, Posting address, Date applied, Documents used, Contact, Status, Follow-up date, and Notes.</li><li>Enter one application per row.</li><li>Use consistent status terms such as Planned, Applied, Interview, Follow-up, Closed, or Offer.</li><li>Review the tracker at least twice a week.</li><li>Send a concise follow-up when the employer’s timeline allows.</li><li>Keep rejection and closed-position records so you can evaluate patterns without reapplying accidentally.</li></ol><p><strong>If that does not happen:</strong> Use a simple Word table or plain-text list. Consistent information matters more than the program used.</p>
-</section>
-
-<section id="commands" aria-labelledby="commands-heading"><h2 id="commands-heading">Quick command list</h2><ul><li>Ctrl+L: browser address bar</li><li>Ctrl+F: find text</li><li>Ctrl+Enter: open a link in a new tab in common browsers</li><li>H / K / E / B: next heading, link, edit field, or button in JAWS and NVDA browse mode</li><li>Insert+F5: JAWS form-fields list</li><li>NVDA+F7: NVDA elements list</li><li>Alt+Down Arrow: open many combo boxes</li><li>Ctrl+S: save</li><li>F7: spelling and grammar review</li><li>Ctrl+Alt+1: Heading 1 in Word</li></ul></section>
-
-<section id="path" aria-labelledby="path-heading"><h2 id="path-heading">Ten-lesson learning path</h2><ol><li><a href="job-search-lesson-1.html">Set a Career Goal and Search Keywords</a></li><li><a href="job-search-lesson-2.html">Build a Clear Résumé</a></li><li><a href="job-search-lesson-3.html">Check Résumé Accessibility</a></li><li><a href="job-search-lesson-4.html">Search Trusted Job Sites</a></li><li><a href="job-search-lesson-5.html">Analyze a Posting and Check for Scams</a></li><li><a href="job-search-lesson-6.html">Complete Online Applications Accessibly</a></li><li><a href="job-search-lesson-7.html">Write a Targeted Cover Letter</a></li><li><a href="job-search-lesson-8.html">Networking and Professional Email</a></li><li><a href="job-search-lesson-9.html">Interview and Accommodation Planning</a></li><li><a href="job-search-lesson-10.html">Final Accessible Application Package</a></li></ol></section>
-<p><a class="button-link" href="job-search-lesson-1.html">Start Job Search Lesson 1</a></p><p><a href="manuals.html">Return to Manuals</a></p>
-</main></body></html>
+    <p class="back-link"><a href="manuals.html">Return to all manuals</a></p>
+  </main>
+</body>
+</html>

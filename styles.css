@@ -903,6 +903,75 @@ html[data-contrast="high"] td {
   }
 }
 
+/* Full step-by-step manual pages converted from the original Word guides. */
+.manual-page main {
+  max-width: 72rem;
+}
+
+.manual-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin-block: 1rem 2rem;
+  padding: .85rem;
+  border: 2px solid var(--blue-700);
+  border-radius: .7rem;
+}
+
+.manual-tools a {
+  display: inline-block;
+  padding: .55rem .75rem;
+  font-weight: 800;
+  border: 2px solid currentColor;
+  border-radius: .45rem;
+}
+
+.manual-page h2 {
+  margin-top: 2.5rem;
+  padding-top: .75rem;
+  border-top: 2px solid var(--blue-600);
+}
+
+.manual-page h3 {
+  margin-top: 2rem;
+}
+
+.manual-page h4 {
+  margin-top: 1.25rem;
+}
+
+.manual-page ol > li,
+.manual-page ul > li {
+  margin-block: .35rem;
+}
+
+.manual-page .table-scroll {
+  margin-block: 1rem 1.5rem;
+}
+
+.manual-page .back-link {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 2px solid currentColor;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .manual-tools {
+  color: #fff;
+  background: #000;
+  border-color: #8dd1ff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .manual-tools a {
+  color: #fff;
+  background: #000;
+}
+
+@media (max-width: 32rem) {
+  .manual-tools {
+    display: grid;
+  }
+}
+
 .table-scroll:focus-visible {
   outline: 4px solid var(--focus);
   outline-offset: 3px;

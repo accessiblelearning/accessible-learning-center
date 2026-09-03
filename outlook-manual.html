@@ -1,16 +1,1349 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Step-by-step keyboard manual for Microsoft Outlook."><title>Microsoft Outlook Manual - Accessible Learning Center</title><link rel="stylesheet" href="styles.css?v=independent-manuals-2"><script src="accessibility.js?v=nav-quizzes-1" defer></script></head><body>
-<header><p class="eyebrow">Microsoft applications</p><h1>Microsoft Outlook Accessible Manual</h1><p>Learn email and calendar tasks from basic navigation through advanced organization.</p></header><main id="main-content">
-<nav class="lesson-nav" aria-label="Outlook manual sections"><a href="#basic">Basic how-tos</a><a href="#advanced">Advanced how-tos</a><a href="#commands">Command list</a></nav>
-<section id="basic"><h2>Basic how-tos</h2>
-<h3>Open Mail and read a message</h3><p><strong>Keyboard commands:</strong> Ctrl+1 opens Mail in classic Outlook. Up Arrow and Down Arrow move through messages. Enter opens the selected message. Escape closes it.</p><ol><li>Press Ctrl+1.</li><li>Use Tab or Shift+Tab until you hear a folder name or “message list.”</li><li>Select Inbox, then press Tab if needed to reach its messages.</li><li>Use the arrow keys to hear sender, subject, and date.</li><li>Press Enter to open the intended message.</li><li>Use your screen reader’s Say All command to read it. Press Escape to return.</li></ol><p><strong>You should hear:</strong> Inbox, the selected sender and subject, then the message window.</p><p><strong>If that does not happen:</strong> Press Insert+T in JAWS or NVDA+T in NVDA to confirm the active window. New Outlook may use different navigation; locate the labeled Mail button with Tab.</p>
-<h3>Create and send a message</h3><p><strong>Keyboard command:</strong> Ctrl+Shift+M opens a new message. Alt+S sends it.</p><ol><li>Press Ctrl+Shift+M and confirm that a new-message window opens.</li><li>Type the recipient in To and press Tab.</li><li>Type a specific subject and press Tab until you reach the message body.</li><li>Write the message.</li><li>Press Shift+Tab to review the Subject and recipient fields, then return to the body.</li><li>Press Alt+S only after the review is complete.</li></ol><p><strong>You should hear:</strong> To, Subject, and message fields announced separately.</p><p><strong>If that does not happen:</strong> Do not type an address until the correct field is announced. Press Escape and choose to keep the draft if you need to start over.</p>
-<h3>Reply, reply to all, or forward</h3><p><strong>Keyboard commands:</strong> Ctrl+R replies. Ctrl+Shift+R replies to everyone. Ctrl+F forwards.</p><ol><li>Open and verify the original message.</li><li>Choose the command for the audience you intend.</li><li>Review every populated recipient field.</li><li>Write your response and remove private quoted text when necessary.</li><li>Press Alt+S to send.</li></ol><p><strong>If that does not happen:</strong> Close the unsent response, return to the original message, verify focus, and try once more.</p>
-<h3>Add an attachment</h3><p><strong>Keyboard command:</strong> Alt+N, A, F commonly opens Attach File in classic Outlook.</p><ol><li>Save and close the file you plan to attach.</li><li>In the message, press Alt+N, then A, then F.</li><li>Type or navigate to the file’s location.</li><li>Select the file and press Enter.</li><li>Use Shift+Tab and Tab to find the attachment and hear its full filename.</li><li>Review recipients and subject before sending.</li></ol><p><strong>If that does not happen:</strong> Use the Insert or Attach File ribbon command. Do not send until the filename is announced.</p>
-</section>
-<section id="advanced"><h2>Advanced how-tos</h2>
-<h3>Search for a message</h3><p><strong>Keyboard command:</strong> Ctrl+E moves to Search.</p><ol><li>Press Ctrl+E.</li><li>Type a sender, subject word, or phrase and press Enter.</li><li>Move through results with the arrow keys.</li><li>Open a result and verify its sender, subject, and date.</li><li>Press Escape, then clear the search when finished.</li></ol><p><strong>If that does not happen:</strong> Find the Search field with Tab or the ribbon because search behavior varies by Outlook version.</p>
-<h3>Create and move to a folder</h3><p><strong>Keyboard commands:</strong> Ctrl+Shift+E opens Create New Folder in classic Outlook. Ctrl+Shift+V opens Move Item.</p><ol><li>Press Ctrl+Shift+E, type a clear folder name, choose its location, and confirm.</li><li>Select a message you want to move.</li><li>Press Ctrl+Shift+V.</li><li>Choose the destination folder and press Enter.</li><li>Open that folder and confirm the message arrived.</li></ol><p><strong>If that does not happen:</strong> Cancel before repeating. Verify which message and destination are selected.</p>
-<h3>Create a calendar appointment</h3><p><strong>Keyboard commands:</strong> Ctrl+2 opens Calendar in classic Outlook. Ctrl+Shift+A creates an appointment.</p><ol><li>Press Ctrl+2, then Ctrl+Shift+A.</li><li>Enter a descriptive subject and location.</li><li>Move through start date, start time, end date, and end time.</li><li>Add useful notes and reminders.</li><li>Review every field, then press Ctrl+S to save and close the appointment.</li></ol><p><strong>If that does not happen:</strong> Locate Calendar and New event by their announced labels in new Outlook or Outlook on the web.</p>
-</section>
-<section id="commands"><h2>Quick command list</h2><ul><li>Ctrl+1: Mail</li><li>Ctrl+2: Calendar</li><li>Ctrl+Shift+M: New message</li><li>Ctrl+R: Reply</li><li>Ctrl+Shift+R: Reply all</li><li>Ctrl+F: Forward</li><li>Ctrl+E: Search</li><li>Alt+S: Send</li><li>Ctrl+S: Save</li><li>F7: Check spelling</li></ul><p class="tip"><strong>Version note:</strong> These commands are primarily for Outlook on Windows. Confirm the version and focused control before acting.</p></section>
-<p><a href="manuals.html">Return to Manuals</a></p></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Microsoft Outlook Manual: step-by-step keyboard and screen-reader instructions, practice, troubleshooting, and command references.">
+  <title>Microsoft Outlook Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-manuals-1">
+  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
+</head>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible Learning Center manual</p>
+    <h1>Microsoft Outlook Manual</h1>
+    <p>Email, calendar, contacts, Narrator, NVDA, and JAWS</p>
+    <p>Independent Self-Study Guide</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#main-content">Start of manual</a>
+    </nav>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/outlook/screen-reader-support-for-outlook"><u>Microsoft
+Outlook Accessibility Support</u></a></p>
+<p><strong>Purpose:</strong> This manual is written directly to the
+person learning Microsoft Outlook. It assumes little or no prior Outlook
+experience and explains exactly what to press, what should happen, and
+how to recover if the result is different.</p>
+<p><strong>Current interface:</strong> This manual uses new Outlook for
+Windows as its primary reference. Microsoft still supports other Outlook
+versions, so some controls and shortcuts differ in classic Outlook,
+Outlook on the web, Mac, iOS, and Android.</p>
+<p><strong>Screen readers:</strong> Microsoft documents new Outlook with
+Narrator, JAWS, and NVDA. The Windows keyboard steps in this manual work
+regardless of screen reader, while screen-reader-specific notes are
+labeled separately.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Work through Parts 1-12 first if Outlook is completely new to
+you.</p></li>
+<li><p>Do one action at a time and listen to the result before pressing
+another key.</p></li>
+<li><p>Tab moves forward through controls; Shift+Tab moves
+backward.</p></li>
+<li><p>Arrow keys move within lists, menus, and message lists.</p></li>
+<li><p>Enter opens the selected message, event, link, or
+control.</p></li>
+<li><p>Escape closes menus, dialogs, or reading panes in many
+contexts.</p></li>
+<li><p>Ctrl+F6 moves between major Outlook regions in new Outlook and
+Outlook on the web.</p></li>
+<li><p>Microsoft recommends turning the Reading Pane off for some
+screen-reader workflows because it simplifies focus movement.</p></li>
+<li><p>When a command differs between new Outlook and classic Outlook,
+this manual prioritizes new Outlook and labels classic behavior
+separately where useful.</p></li>
+</ul>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><p>Part 1 - What Outlook Is</p></li>
+<li><p>Part 2 - Open Outlook and Identify Your Version</p></li>
+<li><p>Part 3 - Learn the Outlook Window</p></li>
+<li><p>Part 4 - Essential Keyboard Navigation</p></li>
+<li><p>Part 5 - Mail: Open the Inbox and Read Messages</p></li>
+<li><p>Part 6 - Create and Send a New Email</p></li>
+<li><p>Part 7 - Reply, Reply All, and Forward</p></li>
+<li><p>Part 8 - Attach Files and Open Attachments</p></li>
+<li><p>Part 9 - Search for Email</p></li>
+<li><p>Part 10 - Organize the Inbox</p></li>
+<li><p>Part 11 - Folders and Moving Messages</p></li>
+<li><p>Part 12 - Delete, Archive, Flag, Mark Read/Unread</p></li>
+<li><p>Part 13 - Junk, Phishing, and Safe Email Habits</p></li>
+<li><p>Part 14 - Contacts and People</p></li>
+<li><p>Part 15 - Calendar Basics</p></li>
+<li><p>Part 16 - Open and Navigate Calendar Events</p></li>
+<li><p>Part 17 - Create an Appointment</p></li>
+<li><p>Part 18 - Schedule a Meeting and Invite People</p></li>
+<li><p>Part 19 - Respond to Meeting Invitations</p></li>
+<li><p>Part 20 - Join Teams/Online Meetings from Outlook</p></li>
+<li><p>Part 21 - Recurring Meetings</p></li>
+<li><p>Part 22 - Search and Filter Calendar</p></li>
+<li><p>Part 23 - Notifications and Reminders</p></li>
+<li><p>Part 24 - Settings and Accessibility</p></li>
+<li><p>Part 25 - Spell Check, Formatting, and Accessible Email</p></li>
+<li><p>Part 26 - Narrator with Outlook</p></li>
+<li><p>Part 27 - NVDA with Outlook</p></li>
+<li><p>Part 28 - JAWS with Outlook</p></li>
+<li><p>Part 29 - Outlook on the Web</p></li>
+<li><p>Part 30 - Outlook Mobile Basics</p></li>
+<li><p>Part 31 - Troubleshooting</p></li>
+<li><p>Part 32 - Independent Practice Course</p></li>
+<li><p>Part 33 - Quick Reference Commands</p></li>
+<li><p>Part 34 - Official Microsoft Resources</p></li>
+</ul>
+<h2 id="part-1---what-outlook-is">Part 1 - What Outlook Is</h2>
+<p>Microsoft Outlook combines email, calendar, contacts/people, search,
+and Microsoft 365 communication tools in one application. New Outlook
+for Windows has a modern interface similar to Outlook on the web.</p>
+<ul>
+<li><p>Mail contains your inbox, folders, sent items, drafts, junk,
+deleted items, and other mail folders.</p></li>
+<li><p>Calendar contains appointments, meetings, and online-meeting
+links.</p></li>
+<li><p>People/Contacts stores contact information when
+available.</p></li>
+<li><p>Search finds messages, people, events, and other Outlook
+content.</p></li>
+<li><p>The folder/message list and reading/composition areas are
+separate regions of the interface.</p></li>
+</ul>
+<h2 id="part-2---open-outlook-and-identify-your-version">Part 2 - Open
+Outlook and Identify Your Version</h2>
+<h3 id="open-outlook-from-windows-search">2.1 Open Outlook from Windows
+Search</h3>
+<p><strong>What you will learn:</strong> Launch Outlook without a
+mouse.</p>
+<p><strong>Before you begin:</strong> Outlook must be installed or
+provisioned for your account.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol type="1">
+<li><p>Press the Windows key.</p></li>
+<li><p>Type Outlook.</p></li>
+<li><p>Use Up/Down Arrow if more than one Outlook result
+appears.</p></li>
+<li><p>Press Enter on Outlook.</p></li>
+<li><p>Wait for the Outlook window to load.</p></li>
+<li><p>If sign-in is requested, follow your organization or Microsoft
+account sign-in process.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Outlook opens to Mail or the
+last-used Outlook module.</p>
+<p><strong>If that does not happen:</strong> If Outlook does not appear
+in Windows Search, use Outlook on the web or contact your organization
+about installation.</p>
+<p><strong>Practice:</strong> Close and reopen Outlook once.</p>
+<h3 id="identify-new-outlook-vs-classic-outlook">2.2 Identify New
+Outlook vs Classic Outlook</h3>
+<p><strong>What you will learn:</strong> Know which instructions apply
+to your interface.</p>
+<p><strong>Before you begin:</strong> Outlook is open.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol start="7" type="1">
+<li><p>Use Tab or Ctrl+F6 to move through major interface
+regions.</p></li>
+<li><p>Listen for a command such as Try the new Outlook if you are in
+classic Outlook.</p></li>
+<li><p>If you hear Command toolbar and do not hear Try the new Outlook,
+you are likely already using the newer Outlook experience.</p></li>
+<li><p>You can also inspect Outlook Help/About if your organization
+allows it.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You know whether you are using
+new or classic Outlook.</p>
+<p><strong>If that does not happen:</strong> If you are unsure, use
+Microsoft's What version of Outlook do I have guidance or compare the
+current interface with your organization documentation.</p>
+<p><strong>Practice:</strong> Identify the version before learning many
+shortcuts.</p>
+<h2 id="part-3---learn-the-outlook-window">Part 3 - Learn the Outlook
+Window</h2>
+<ul>
+<li><p>App/navigation area: switches among Mail, Calendar, People, and
+other Microsoft 365 apps.</p></li>
+<li><p>Folder pane: Inbox, Sent Items, Drafts, Deleted Items, Junk
+Email, and custom folders.</p></li>
+<li><p>Message list: shows messages in the selected folder.</p></li>
+<li><p>Reading pane: can show the selected message without opening a
+separate window.</p></li>
+<li><p>Command toolbar/ribbon: New mail, Delete, Archive, Move, Flag,
+and other commands.</p></li>
+<li><p>Search: finds mail, contacts, and calendar items.</p></li>
+</ul>
+<h3 id="explore-the-window-with-ctrlf6">3.1 Explore the Window with
+Ctrl+F6</h3>
+<p><strong>What you will learn:</strong> Move among major Outlook
+regions efficiently.</p>
+<p><strong>Before you begin:</strong> Outlook is open.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol start="11" type="1">
+<li><p>Press Ctrl+F6 once.</p></li>
+<li><p>Listen to the region name.</p></li>
+<li><p>Press Ctrl+F6 again.</p></li>
+<li><p>Continue cycling through the major Outlook regions.</p></li>
+<li><p>Within a region, use Tab, Shift+Tab, and arrow keys.</p></li>
+<li><p>Press Escape if you enter a temporary menu or dialog.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Focus cycles through major
+Outlook landmarks/regions.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+F6 behaves
+differently, verify that Outlook rather than your browser has focus. In
+Outlook on the web, Ctrl+F6 is also the expected region-navigation
+key.</p>
+<p><strong>Practice:</strong> Cycle through all major regions twice.</p>
+<h2 id="part-4---essential-keyboard-navigation">Part 4 - Essential
+Keyboard Navigation</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>New email</td>
+<td>Ctrl+N</td>
+</tr>
+<tr class="even">
+<td>Reply</td>
+<td>Ctrl+R</td>
+</tr>
+<tr class="odd">
+<td>Reply all</td>
+<td>Ctrl+Shift+R</td>
+</tr>
+<tr class="even">
+<td>Forward</td>
+<td>Ctrl+F</td>
+</tr>
+<tr class="odd">
+<td>Send</td>
+<td>Ctrl+Enter</td>
+</tr>
+<tr class="even">
+<td>Search</td>
+<td>Ctrl+E</td>
+</tr>
+<tr class="odd">
+<td>Calendar</td>
+<td>Ctrl+2</td>
+</tr>
+<tr class="even">
+<td>Mail</td>
+<td>Ctrl+1</td>
+</tr>
+<tr class="odd">
+<td>Move among major regions</td>
+<td>Ctrl+F6</td>
+</tr>
+<tr class="even">
+<td>Mark read</td>
+<td>Ctrl+Q</td>
+</tr>
+<tr class="odd">
+<td>Mark unread</td>
+<td>Ctrl+U</td>
+</tr>
+<tr class="even">
+<td>Delete selected message</td>
+<td>Delete</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Important:</strong> Shortcut behavior can vary between new
+Outlook, classic Outlook, and Outlook on the web. If a shortcut differs,
+check Microsoft's current keyboard-shortcut page linked at the end of
+this manual.</p>
+<h2 id="part-5---mail-open-the-inbox-and-read-messages">Part 5 - Mail:
+Open the Inbox and Read Messages</h2>
+<h3 id="open-the-inbox-and-move-through-messages">5.1 Open the Inbox and
+Move Through Messages</h3>
+<p><strong>What you will learn:</strong> Read messages from the message
+list.</p>
+<p><strong>Before you begin:</strong> Outlook is open.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol start="17" type="1">
+<li><p>Press Ctrl+1 to move to Mail.</p></li>
+<li><p>Use Ctrl+F6 until the folder pane or message list is
+reached.</p></li>
+<li><p>If focus is in the folder pane, use Up/Down Arrow until Inbox is
+selected and press Enter if needed.</p></li>
+<li><p>Move to the message list with Tab or Ctrl+F6.</p></li>
+<li><p>Press Up/Down Arrow through messages.</p></li>
+<li><p>Listen to sender, subject, date/time, read/unread status,
+attachment status, and flag information when your screen reader
+announces it.</p></li>
+<li><p>Press Enter to open the selected message.</p></li>
+<li><p>Read the message using your screen reader's normal reading
+commands.</p></li>
+<li><p>Press Escape to return to the message list when
+appropriate.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can choose a message, open
+it, read it, and return to the list.</p>
+<p><strong>If that does not happen:</strong> If Enter moves focus into a
+reading pane rather than a separate message, use Ctrl+F6/Tab to locate
+message content or turn the Reading Pane off in Settings for a simpler
+screen-reader workflow.</p>
+<p><strong>Practice:</strong> Read three messages and return to the
+Inbox list after each one.</p>
+<h3 id="read-unread-messages-efficiently">5.2 Read Unread Messages
+Efficiently</h3>
+<p><strong>What you will learn:</strong> Identify messages that still
+need attention.</p>
+<p><strong>Before you begin:</strong> You are in the Inbox message
+list.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol start="26" type="1">
+<li><p>Use Up/Down Arrow through messages.</p></li>
+<li><p>Listen for read/unread status.</p></li>
+<li><p>Open an unread message with Enter.</p></li>
+<li><p>Read the message.</p></li>
+<li><p>Return to the message list.</p></li>
+<li><p>If needed, mark a message unread again with Ctrl+U so you can
+return to it later.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can distinguish read from
+unread mail and control the status.</p>
+<p><strong>If that does not happen:</strong> If your screen reader does
+not announce read/unread status, review verbosity settings or use
+Ctrl+Q/Ctrl+U deliberately and confirm the new state.</p>
+<p><strong>Practice:</strong> Mark one practice message unread, then
+read again.</p>
+<h2 id="part-6---create-and-send-a-new-email">Part 6 - Create and Send a
+New Email</h2>
+<h3 id="write-and-send-a-basic-email">6.1 Write and Send a Basic
+Email</h3>
+<p><strong>What you will learn:</strong> Create a new message from the
+keyboard.</p>
+<p><strong>Before you begin:</strong> Know the recipient address and
+subject.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol start="32" type="1">
+<li><p>Press Ctrl+N.</p></li>
+<li><p>Outlook should place focus in the To field.</p></li>
+<li><p>Type the recipient name or email address.</p></li>
+<li><p>If suggestions appear, use Down Arrow through suggestions and
+press Enter on the correct recipient.</p></li>
+<li><p>Press Tab to move through Cc/Bcc or other fields until Subject is
+reached.</p></li>
+<li><p>Type a clear subject.</p></li>
+<li><p>Press Tab until the message body is focused.</p></li>
+<li><p>Type your message.</p></li>
+<li><p>Review the message before sending.</p></li>
+<li><p>Press Ctrl+Enter to send.</p></li>
+<li><p>If Outlook asks for send confirmation, read the prompt and
+confirm only if the recipient and content are correct.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The message leaves the compose
+window and is sent.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+Enter does not
+send, use Tab to reach the Send button and press Enter. Check whether
+your organization has disabled the Ctrl+Enter send shortcut.</p>
+<p><strong>Practice:</strong> Send a test message to yourself.</p>
+<h3 id="add-cc-or-bcc">6.2 Add Cc or Bcc</h3>
+<p><strong>What you will learn:</strong> Send copies appropriately.</p>
+<p><strong>Before you begin:</strong> A new email is open.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol start="43" type="1">
+<li><p>Move to the Cc or Bcc control using Tab.</p></li>
+<li><p>Activate Cc or Bcc if the field is hidden.</p></li>
+<li><p>Type the recipient name/email.</p></li>
+<li><p>Use Down Arrow through suggestions and Enter on the correct
+person.</p></li>
+<li><p>Continue to Subject and message body.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The copied recipient appears in
+the intended Cc or Bcc field.</p>
+<p><strong>If that does not happen:</strong> If the field is not
+visible, look for an option/button to show Cc/Bcc or use the command
+toolbar.</p>
+<p><strong>Practice:</strong> Create a draft with one To and one Cc
+recipient, then discard the draft.</p>
+<h2 id="part-7---reply-reply-all-and-forward">Part 7 - Reply, Reply All,
+and Forward</h2>
+<h3 id="reply-to-one-sender">7.1 Reply to One Sender</h3>
+<p><strong>What you will learn:</strong> Respond only to the sender.</p>
+<p><strong>Before you begin:</strong> A message is open or selected in
+the message list.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol start="48" type="1">
+<li><p>Press Ctrl+R.</p></li>
+<li><p>Type your reply in the message body.</p></li>
+<li><p>Review the recipient and text.</p></li>
+<li><p>Press Ctrl+Enter to send.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Your reply is sent to the
+original sender.</p>
+<p><strong>If that does not happen:</strong> If you intended to include
+everyone, cancel and use Ctrl+Shift+R instead.</p>
+<p><strong>Practice:</strong> Reply to a test message from yourself.</p>
+<h3 id="reply-to-all">7.2 Reply to All</h3>
+<p><strong>What you will learn:</strong> Respond to all intended
+recipients.</p>
+<p><strong>Before you begin:</strong> A message with multiple recipients
+is open or selected.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol start="52" type="1">
+<li><p>Press Ctrl+Shift+R.</p></li>
+<li><p>Review the To and Cc recipient list carefully.</p></li>
+<li><p>Remove anyone who should not receive the response.</p></li>
+<li><p>Type your reply.</p></li>
+<li><p>Press Ctrl+Enter to send.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The message is sent to the
+remaining recipients.</p>
+<p><strong>If that does not happen:</strong> If the recipient list is
+large or sensitive, review each address before sending.</p>
+<p><strong>Practice:</strong> Open a multi-recipient message and
+identify who would receive Reply All without actually sending.</p>
+<h3 id="forward-an-email">7.3 Forward an Email</h3>
+<p><strong>What you will learn:</strong> Send the original message to a
+new person.</p>
+<p><strong>Before you begin:</strong> A message is open or selected.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol start="57" type="1">
+<li><p>Press Ctrl+F.</p></li>
+<li><p>Type the new recipient name/email.</p></li>
+<li><p>Use Down Arrow and Enter to resolve the correct
+recipient.</p></li>
+<li><p>Tab to the message body.</p></li>
+<li><p>Type a short explanation above the forwarded content if
+appropriate.</p></li>
+<li><p>Press Ctrl+Enter to send.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The original message is
+forwarded to the new recipient.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+F opens browser
+Find instead, you may be using Outlook on the web with browser focus or
+a different shortcut profile; use the Forward button/command.</p>
+<p><strong>Practice:</strong> Forward a non-sensitive test message to
+yourself.</p>
+<h2 id="part-8---attach-files-and-open-attachments">Part 8 - Attach
+Files and Open Attachments</h2>
+<h3 id="attach-a-file-to-a-new-message">8.1 Attach a File to a New
+Message</h3>
+<p><strong>What you will learn:</strong> Send a file with email.</p>
+<p><strong>Before you begin:</strong> Know where the file is saved.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol start="63" type="1">
+<li><p>Create a new message with Ctrl+N.</p></li>
+<li><p>Complete To and Subject.</p></li>
+<li><p>Use Tab through compose controls until Attach/Attach file is
+focused, or open the command toolbar attachment control.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Choose Browse this computer, OneDrive, or another available
+source.</p></li>
+<li><p>Use the file picker to locate the file.</p></li>
+<li><p>Press Enter on the file.</p></li>
+<li><p>Wait for the attachment to finish uploading/attaching.</p></li>
+<li><p>Review the attachment name before sending.</p></li>
+<li><p>Press Ctrl+Enter to send.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The file appears as an
+attachment and sends with the message.</p>
+<p><strong>If that does not happen:</strong> If attachment fails, check
+file size, permissions, network connection, and organizational
+policy.</p>
+<p><strong>Practice:</strong> Attach a harmless text file to a draft and
+remove it before discarding.</p>
+<h3 id="open-or-save-an-attachment">8.2 Open or Save an Attachment</h3>
+<p><strong>What you will learn:</strong> Access a file someone sent to
+you.</p>
+<p><strong>Before you begin:</strong> Open an email containing an
+attachment.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol start="73" type="1">
+<li><p>Use Tab or screen-reader navigation until the attachment is
+focused.</p></li>
+<li><p>Press Enter to open the attachment menu or file.</p></li>
+<li><p>Choose Preview/Open if you only need to read it.</p></li>
+<li><p>Choose Download/Save as if you need a local copy.</p></li>
+<li><p>If saving, use the Windows file picker to choose a folder and
+confirm Save.</p></li>
+<li><p>Scan or verify unexpected attachments before opening when
+security is uncertain.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The attachment opens or is saved
+to the chosen location.</p>
+<p><strong>If that does not happen:</strong> If the attachment is
+blocked, Outlook or your organization may consider the file type
+unsafe.</p>
+<p><strong>Practice:</strong> Save a safe attachment from a test
+message.</p>
+<h2 id="part-9---search-for-email">Part 9 - Search for Email</h2>
+<h3 id="search-by-sender-subject-or-keyword">9.1 Search by Sender,
+Subject, or Keyword</h3>
+<p><strong>What you will learn:</strong> Find a message without browsing
+every folder.</p>
+<p><strong>Before you begin:</strong> Outlook is open.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol start="79" type="1">
+<li><p>Press Ctrl+E.</p></li>
+<li><p>Type a sender name, email address, subject phrase, or distinctive
+keyword.</p></li>
+<li><p>Wait for results.</p></li>
+<li><p>Use Tab and arrow keys to move through filters/results.</p></li>
+<li><p>Open the desired result with Enter.</p></li>
+<li><p>Press Escape or clear the search to return to the normal folder
+view.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Search results narrow to
+matching mail.</p>
+<p><strong>If that does not happen:</strong> If there are too many
+results, add another keyword, sender, or date-related filter.</p>
+<p><strong>Practice:</strong> Find a message from a known sender using
+Search.</p>
+<h2 id="part-10---organize-the-inbox">Part 10 - Organize the Inbox</h2>
+<ul>
+<li><p>Ctrl+Q marks the selected message read.</p></li>
+<li><p>Ctrl+U marks it unread.</p></li>
+<li><p>Flag marks a message for follow-up.</p></li>
+<li><p>Archive removes a message from Inbox without deleting
+it.</p></li>
+<li><p>Move places a message in another folder.</p></li>
+<li><p>Rules/filters can automate organization if your account permits
+them.</p></li>
+</ul>
+<h3 id="mark-read-or-unread">10.1 Mark Read or Unread</h3>
+<p><strong>What you will learn:</strong> Control whether a message still
+appears as needing attention.</p>
+<p><strong>Before you begin:</strong> Select a message in the message
+list.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol start="85" type="1">
+<li><p>Press Ctrl+Q to mark it read.</p></li>
+<li><p>Listen for the status change.</p></li>
+<li><p>Press Ctrl+U to mark it unread.</p></li>
+<li><p>Listen for the status change again.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The message read/unread state
+changes.</p>
+<p><strong>If that does not happen:</strong> If there is no audible
+confirmation, move away and back or inspect the status with your screen
+reader.</p>
+<p><strong>Practice:</strong> Toggle one practice message read and
+unread.</p>
+<h3 id="archive-a-message">10.2 Archive a Message</h3>
+<p><strong>What you will learn:</strong> Remove mail from Inbox without
+deleting it.</p>
+<p><strong>Before you begin:</strong> Select a non-important practice
+message.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol start="89" type="1">
+<li><p>Move to Archive using the command toolbar or current shortcut if
+configured.</p></li>
+<li><p>Activate Archive.</p></li>
+<li><p>Confirm the message disappears from Inbox.</p></li>
+<li><p>Open the Archive folder and locate the message if you want to
+verify it.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The message is stored in Archive
+rather than Deleted Items.</p>
+<p><strong>If that does not happen:</strong> If the account has no
+Archive folder, use Move to place the message in another folder.</p>
+<p><strong>Practice:</strong> Archive a test message and find it
+again.</p>
+<h2 id="part-11---folders-and-moving-messages">Part 11 - Folders and
+Moving Messages</h2>
+<h3 id="open-a-mail-folder">11.1 Open a Mail Folder</h3>
+<p><strong>What you will learn:</strong> Move among Inbox, Sent, Drafts,
+Junk, Deleted, and custom folders.</p>
+<p><strong>Before you begin:</strong> Outlook is in Mail.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol start="93" type="1">
+<li><p>Press Ctrl+F6 until the folder pane is focused.</p></li>
+<li><p>Use Up/Down Arrow through folders.</p></li>
+<li><p>Expand a folder tree with Right Arrow if needed.</p></li>
+<li><p>Press Enter on the desired folder.</p></li>
+<li><p>Move to the message list with Ctrl+F6 or Tab.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The selected folder's message
+list is displayed.</p>
+<p><strong>If that does not happen:</strong> If a folder is collapsed,
+expand the parent account/folder with Right Arrow.</p>
+<p><strong>Practice:</strong> Open Sent Items and return to Inbox.</p>
+<h3 id="move-a-message-to-another-folder">11.2 Move a Message to Another
+Folder</h3>
+<p><strong>What you will learn:</strong> Organize mail into a chosen
+folder.</p>
+<p><strong>Before you begin:</strong> Select a practice message.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol start="98" type="1">
+<li><p>Open the Move command from the command toolbar or context
+menu.</p></li>
+<li><p>Use arrow keys/Search to locate the destination folder.</p></li>
+<li><p>Press Enter on the destination.</p></li>
+<li><p>Open that folder to verify the message moved.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The message leaves the original
+folder and appears in the destination.</p>
+<p><strong>If that does not happen:</strong> If the message remains, you
+may have copied rather than moved it; inspect the Move menu choice.</p>
+<p><strong>Practice:</strong> Move a test message to a Practice folder
+and move it back.</p>
+<h2 id="part-12---delete-archive-flag-mark-readunread">Part 12 - Delete,
+Archive, Flag, Mark Read/Unread</h2>
+<h3 id="delete-a-message-safely">12.1 Delete a Message Safely</h3>
+<p><strong>What you will learn:</strong> Move unwanted mail to Deleted
+Items.</p>
+<p><strong>Before you begin:</strong> Select a non-important
+message.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol start="102" type="1">
+<li><p>Read the sender and subject to confirm selection.</p></li>
+<li><p>Press Delete.</p></li>
+<li><p>Confirm it disappears from the current folder.</p></li>
+<li><p>Open Deleted Items if you need to restore it.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The message moves to Deleted
+Items.</p>
+<p><strong>If that does not happen:</strong> If you deleted the wrong
+message, open Deleted Items promptly and move/restore it.</p>
+<p><strong>Practice:</strong> Delete and restore a practice message.</p>
+<h2 id="part-13---junk-phishing-and-safe-email-habits">Part 13 - Junk,
+Phishing, and Safe Email Habits</h2>
+<ul>
+<li><p>Do not open unexpected attachments simply because they appear to
+come from someone you know.</p></li>
+<li><p>Check the actual sender address, not just the display
+name.</p></li>
+<li><p>Be cautious with urgent requests for passwords, gift cards,
+money, login codes, or account verification.</p></li>
+<li><p>Do not enter a password after following an unexpected email link
+unless you independently verify the site.</p></li>
+<li><p>Use Outlook's Report phishing/Junk controls when appropriate and
+allowed by your organization.</p></li>
+<li><p>When uncertain, contact the sender through a separate known
+method.</p></li>
+</ul>
+<p><strong>Accessibility tip:</strong> Screen-reader users should
+navigate to the actual link destination when possible instead of
+trusting only the visible link text.</p>
+<h2 id="part-14---contacts-and-people">Part 14 - Contacts and
+People</h2>
+<h3 id="find-a-contact">14.1 Find a Contact</h3>
+<p><strong>What you will learn:</strong> Search the People/Contacts
+area.</p>
+<p><strong>Before you begin:</strong> Outlook is open.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol start="106" type="1">
+<li><p>Open People/Contacts from the Outlook app/navigation
+area.</p></li>
+<li><p>Move to Search or use Outlook search if People-specific search is
+available.</p></li>
+<li><p>Type the person's name or email address.</p></li>
+<li><p>Move through results with arrow keys.</p></li>
+<li><p>Press Enter on the correct contact.</p></li>
+<li><p>Use Tab through available phone, email, organization, and contact
+actions.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The contact card/details
+open.</p>
+<p><strong>If that does not happen:</strong> If the person is not saved,
+Outlook may still show directory results from your organization.</p>
+<p><strong>Practice:</strong> Find one known contact and return to
+Mail.</p>
+<h2 id="part-15---calendar-basics">Part 15 - Calendar Basics</h2>
+<h3 id="open-calendar">15.1 Open Calendar</h3>
+<p><strong>What you will learn:</strong> Move from Mail to Calendar.</p>
+<p><strong>Before you begin:</strong> Outlook is open.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol start="112" type="1">
+<li><p>Press Ctrl+2.</p></li>
+<li><p>Listen for Calendar and the current date/view.</p></li>
+<li><p>Use Ctrl+F6 to move among calendar regions.</p></li>
+<li><p>Use Tab within the current region.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Calendar opens.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+2 does not work in
+your Outlook version, use the Calendar button in the navigation
+area.</p>
+<p><strong>Practice:</strong> Switch Mail to Calendar and back with
+Ctrl+1/Ctrl+2.</p>
+<h3 id="change-calendar-view">15.2 Change Calendar View</h3>
+<p><strong>What you will learn:</strong> Choose a useful day/week/month
+view.</p>
+<p><strong>Before you begin:</strong> Calendar is open.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol start="116" type="1">
+<li><p>Press Tab or Shift+Tab until the view controls are
+reached.</p></li>
+<li><p>Use Right/Left Arrow through Day, Work week, Week, Month, or
+available view choices.</p></li>
+<li><p>Press Enter on the desired view.</p></li>
+<li><p>In current new Outlook, Alt+1 through Alt+7 can show a selected
+number of days starting from today where supported.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The calendar changes to the
+selected view.</p>
+<p><strong>If that does not happen:</strong> If shortcut behavior
+differs, use the view buttons on the calendar toolbar.</p>
+<p><strong>Practice:</strong> Switch between Day and Week/Month
+views.</p>
+<h2 id="part-16---open-and-navigate-calendar-events">Part 16 - Open and
+Navigate Calendar Events</h2>
+<h3 id="browse-events">16.1 Browse Events</h3>
+<p><strong>What you will learn:</strong> Move among events in the
+current calendar view.</p>
+<p><strong>Before you begin:</strong> Calendar is open.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol start="120" type="1">
+<li><p>Press Ctrl+Period to move to the next event in the current view
+where supported.</p></li>
+<li><p>Press Ctrl+Comma to move to the previous event.</p></li>
+<li><p>Listen for event title, time, and organizer.</p></li>
+<li><p>Press Enter to open the selected event.</p></li>
+<li><p>Use Tab/Shift+Tab through event details.</p></li>
+<li><p>Press Escape to close and return.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can browse and open
+events.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+Period/Comma does
+not move events in your version, use Tab/arrow navigation within the
+calendar grid/list.</p>
+<p><strong>Practice:</strong> Open two events and return to the calendar
+after each one.</p>
+<h2 id="part-17---create-an-appointment">Part 17 - Create an
+Appointment</h2>
+<h3 id="create-a-personal-calendar-event">17.1 Create a Personal
+Calendar Event</h3>
+<p><strong>What you will learn:</strong> Add an appointment that does
+not require attendees.</p>
+<p><strong>Before you begin:</strong> Calendar is open.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol start="126" type="1">
+<li><p>Move to New event and press Enter.</p></li>
+<li><p>Type the event title.</p></li>
+<li><p>Tab through date and start/end time controls and enter/select the
+correct values.</p></li>
+<li><p>Add a location if needed.</p></li>
+<li><p>Add notes/details.</p></li>
+<li><p>Set reminder time if desired.</p></li>
+<li><p>Review recurrence if it repeats.</p></li>
+<li><p>Move to Save and press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The event appears on your
+calendar.</p>
+<p><strong>If that does not happen:</strong> If Save is unavailable,
+check required date/time fields.</p>
+<p><strong>Practice:</strong> Create a 15-minute practice appointment
+and delete it later.</p>
+<h2 id="part-18---schedule-a-meeting-and-invite-people">Part 18 -
+Schedule a Meeting and Invite People</h2>
+<h3 id="create-a-meeting-invitation">18.1 Create a Meeting
+Invitation</h3>
+<p><strong>What you will learn:</strong> Schedule an event that includes
+attendees.</p>
+<p><strong>Before you begin:</strong> Calendar is open and you know the
+attendee names/emails.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol start="134" type="1">
+<li><p>Open New event.</p></li>
+<li><p>Type the meeting title.</p></li>
+<li><p>Move to Invite attendees.</p></li>
+<li><p>Type the first person's name/email.</p></li>
+<li><p>Use Down Arrow through suggestions and press Enter on the correct
+person.</p></li>
+<li><p>Repeat for additional attendees.</p></li>
+<li><p>Set the date and start/end times.</p></li>
+<li><p>Add a physical location or online meeting option if
+needed.</p></li>
+<li><p>Type an agenda or instructions in the details/body.</p></li>
+<li><p>Review attendees and time carefully.</p></li>
+<li><p>Move to Send and press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Invitations are sent and the
+meeting appears on your calendar.</p>
+<p><strong>If that does not happen:</strong> If a person does not
+resolve, verify spelling/email or choose the correct directory
+suggestion.</p>
+<p><strong>Practice:</strong> Create a practice meeting with yourself or
+a safe test account.</p>
+<h2 id="part-19---respond-to-meeting-invitations">Part 19 - Respond to
+Meeting Invitations</h2>
+<h3 id="accept-tentative-or-decline">19.1 Accept, Tentative, or
+Decline</h3>
+<p><strong>What you will learn:</strong> Respond to an invitation
+deliberately.</p>
+<p><strong>Before you begin:</strong> Open a meeting request email or
+calendar invitation.</p>
+<h4 id="exactly-how-to-do-it-24">Exactly how to do it</h4>
+<ol start="145" type="1">
+<li><p>Read the organizer, title, date, time, and location/online
+information.</p></li>
+<li><p>Move to Accept, Tentative, or Decline.</p></li>
+<li><p>Choose the response that matches your availability.</p></li>
+<li><p>If Outlook asks whether to send a response, choose the
+appropriate option.</p></li>
+<li><p>Check Calendar to confirm the event status.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The organizer receives your
+response when sent, and Calendar reflects your choice.</p>
+<p><strong>If that does not happen:</strong> If the event conflicts with
+another appointment, open Calendar before responding to compare
+times.</p>
+<p><strong>Practice:</strong> Open a test invitation and identify all
+three response options.</p>
+<h2 id="part-20---join-teamsonline-meetings-from-outlook">Part 20 - Join
+Teams/Online Meetings from Outlook</h2>
+<h3 id="join-an-online-meeting-from-calendar">20.1 Join an Online
+Meeting from Calendar</h3>
+<p><strong>What you will learn:</strong> Use Outlook Calendar to launch
+Teams or another online meeting.</p>
+<p><strong>Before you begin:</strong> The event contains an online
+meeting link.</p>
+<h4 id="exactly-how-to-do-it-25">Exactly how to do it</h4>
+<ol start="150" type="1">
+<li><p>Press Ctrl+2 to open Calendar.</p></li>
+<li><p>Navigate to the meeting.</p></li>
+<li><p>Open it with Enter.</p></li>
+<li><p>Tab through details until Join/Join online meeting is
+focused.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Allow Teams/browser/meeting app to open.</p></li>
+<li><p>Complete microphone, camera, and join options in the meeting
+application.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The meeting application opens to
+the correct meeting.</p>
+<p><strong>If that does not happen:</strong> If Join is missing, the
+event may not contain online meeting details or you may be opening an
+outdated occurrence.</p>
+<p><strong>Practice:</strong> Open a future online meeting and locate
+Join without joining.</p>
+<h2 id="part-21---recurring-meetings">Part 21 - Recurring Meetings</h2>
+<h3 id="create-a-recurring-event">21.1 Create a Recurring Event</h3>
+<p><strong>What you will learn:</strong> Schedule repeated events
+without creating each one manually.</p>
+<p><strong>Before you begin:</strong> Create a new calendar event.</p>
+<h4 id="exactly-how-to-do-it-26">Exactly how to do it</h4>
+<ol start="157" type="1">
+<li><p>Enter title, attendees if needed, and first date/time.</p></li>
+<li><p>Move to Repeat/Recurrence.</p></li>
+<li><p>Choose Daily, Weekly, Monthly, or a custom recurrence
+pattern.</p></li>
+<li><p>Set an end date or occurrence limit if appropriate.</p></li>
+<li><p>Review the recurrence summary.</p></li>
+<li><p>Save/Send.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Outlook creates the repeating
+series.</p>
+<p><strong>If that does not happen:</strong> If the recurrence is wrong,
+edit the series before many invitations/occurrences are created.</p>
+<p><strong>Practice:</strong> Create a weekly practice event with a
+short end date, then delete the series.</p>
+<h2 id="part-22---search-and-filter-calendar">Part 22 - Search and
+Filter Calendar</h2>
+<h3 id="find-an-event-by-search">22.1 Find an Event by Search</h3>
+<p><strong>What you will learn:</strong> Locate an event without moving
+day by day.</p>
+<p><strong>Before you begin:</strong> Calendar is open.</p>
+<h4 id="exactly-how-to-do-it-27">Exactly how to do it</h4>
+<ol start="163" type="1">
+<li><p>Move to Search using Ctrl+E or the search box.</p></li>
+<li><p>Type part of the event title, organizer, or keyword.</p></li>
+<li><p>Review results with arrows/Tab.</p></li>
+<li><p>Press Enter on the desired event.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The matching event opens or is
+highlighted.</p>
+<p><strong>If that does not happen:</strong> If search returns mail too,
+refine the query or use Calendar-specific search/filter controls.</p>
+<p><strong>Practice:</strong> Find one known event by keyword.</p>
+<h2 id="part-23---notifications-and-reminders">Part 23 - Notifications
+and Reminders</h2>
+<ul>
+<li><p>Calendar reminders can appear before events according to each
+event's reminder setting.</p></li>
+<li><p>Windows notification settings can block Outlook reminders even
+when Outlook is configured correctly.</p></li>
+<li><p>Focus/Do Not Disturb can suppress or delay visible/audible
+notifications.</p></li>
+<li><p>Screen readers may announce reminder dialogs depending on focus
+and Windows notification behavior.</p></li>
+</ul>
+<h3 id="change-an-event-reminder">23.1 Change an Event Reminder</h3>
+<p><strong>What you will learn:</strong> Control how early Outlook
+reminds you.</p>
+<p><strong>Before you begin:</strong> Open an event you created.</p>
+<h4 id="exactly-how-to-do-it-28">Exactly how to do it</h4>
+<ol start="167" type="1">
+<li><p>Tab to the Reminder control.</p></li>
+<li><p>Open the list.</p></li>
+<li><p>Choose the desired time, such as 5 minutes, 15 minutes, 1 hour,
+or another available value.</p></li>
+<li><p>Save the event.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The event stores the selected
+reminder time.</p>
+<p><strong>If that does not happen:</strong> If no reminder is
+available, check whether the event type/account supports reminders.</p>
+<p><strong>Practice:</strong> Change a practice appointment reminder and
+restore it.</p>
+<h2 id="part-24---settings-and-accessibility">Part 24 - Settings and
+Accessibility</h2>
+<h3 id="open-outlook-settings">24.1 Open Outlook Settings</h3>
+<p><strong>What you will learn:</strong> Change Outlook preferences
+carefully.</p>
+<p><strong>Before you begin:</strong> Outlook is open.</p>
+<h4 id="exactly-how-to-do-it-29">Exactly how to do it</h4>
+<ol start="171" type="1">
+<li><p>Move to Settings using the gear/settings control or its current
+shortcut if assigned.</p></li>
+<li><p>Use Tab/arrow navigation through Settings categories.</p></li>
+<li><p>Find Mail, Calendar, General, Accessibility, or related
+sections.</p></li>
+<li><p>Change only one setting at a time.</p></li>
+<li><p>Close Settings and test the result.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Outlook uses the changed
+setting.</p>
+<p><strong>If that does not happen:</strong> If you cannot find a
+setting in new Outlook, it may be in the Outlook web settings or
+unavailable under organization policy.</p>
+<p><strong>Practice:</strong> Find Reading Pane and notification
+settings without changing them.</p>
+<p><strong>Screen-reader recommendation:</strong> Microsoft
+accessibility guidance notes that turning the Reading Pane off and
+showing emails as Messages rather than Conversations can simplify some
+screen-reader workflows.</p>
+<h2 id="part-25---spell-check-formatting-and-accessible-email">Part 25 -
+Spell Check, Formatting, and Accessible Email</h2>
+<h3 id="review-spelling-and-grammar">25.1 Review Spelling and
+Grammar</h3>
+<p><strong>What you will learn:</strong> Correct obvious writing errors
+before sending.</p>
+<p><strong>Before you begin:</strong> A draft message contains text.</p>
+<h4 id="exactly-how-to-do-it-30">Exactly how to do it</h4>
+<ol start="176" type="1">
+<li><p>Use Outlook's Editor/spelling and grammar controls or the current
+shortcut for spelling review.</p></li>
+<li><p>Move through each suggested issue.</p></li>
+<li><p>Listen to the flagged word and suggested corrections.</p></li>
+<li><p>Accept a correction only when it matches your intended
+meaning.</p></li>
+<li><p>Ignore false positives when appropriate.</p></li>
+<li><p>Return to the message and review before sending.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The draft contains the intended
+corrections.</p>
+<p><strong>If that does not happen:</strong> If Editor does not open,
+check whether your account/version has Microsoft Editor enabled.</p>
+<p><strong>Practice:</strong> Create a draft with one spelling error and
+correct it.</p>
+<ul>
+<li><p>Use meaningful subject lines.</p></li>
+<li><p>Use descriptive link text rather than “click here.”</p></li>
+<li><p>Use headings and lists in long messages when helpful.</p></li>
+<li><p>Add alt text to meaningful images when the compose tools provide
+it.</p></li>
+<li><p>Do not communicate meaning by color alone.</p></li>
+<li><p>Keep tables simple when possible.</p></li>
+<li><p>Use the Accessibility Checker when available for important
+messages.</p></li>
+</ul>
+<h2 id="part-26---narrator-with-outlook">Part 26 - Narrator with
+Outlook</h2>
+<h3 id="read-mail-with-narrator">26.1 Read Mail with Narrator</h3>
+<p><strong>What you will learn:</strong> Use Windows Narrator to move
+through Outlook mail.</p>
+<p><strong>Before you begin:</strong> Narrator is running and Outlook is
+open.</p>
+<h4 id="exactly-how-to-do-it-31">Exactly how to do it</h4>
+<ol start="182" type="1">
+<li><p>Press Ctrl+1 for Mail.</p></li>
+<li><p>Use Ctrl+F6 to move to the folder pane or message list.</p></li>
+<li><p>Use Up/Down Arrow through messages.</p></li>
+<li><p>Press Enter to open a message.</p></li>
+<li><p>Use Narrator reading commands or Scan Mode if the message body
+behaves like document/web content.</p></li>
+<li><p>Press Escape to return.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can move Inbox → message →
+Inbox.</p>
+<p><strong>If that does not happen:</strong> If Narrator begins
+navigating the page instead of typing in a reply field, check Scan Mode
+with Narrator+Spacebar.</p>
+<p><strong>Practice:</strong> Read and reply to a test message using
+Narrator.</p>
+<p><strong>Narrator tip:</strong> Use Narrator+1 Input Learning when you
+need to identify Narrator commands without executing them.</p>
+<h2 id="part-27---nvda-with-outlook">Part 27 - NVDA with Outlook</h2>
+<h3 id="read-and-reply-with-nvda">27.1 Read and Reply with NVDA</h3>
+<p><strong>What you will learn:</strong> Use NVDA with Outlook while
+controlling Browse/Focus behavior.</p>
+<p><strong>Before you begin:</strong> NVDA is running.</p>
+<h4 id="exactly-how-to-do-it-32">Exactly how to do it</h4>
+<ol start="188" type="1">
+<li><p>Open Mail with Ctrl+1.</p></li>
+<li><p>Use Ctrl+F6/Tab and arrows to reach the message list.</p></li>
+<li><p>Move Up/Down Arrow through messages.</p></li>
+<li><p>Press Enter to open one.</p></li>
+<li><p>If NVDA is in Browse Mode for message content, use normal reading
+keys.</p></li>
+<li><p>Press Ctrl+R to reply.</p></li>
+<li><p>If letters navigate rather than type, press NVDA+Space to move to
+Focus Mode.</p></li>
+<li><p>Type the reply and press Ctrl+Enter to send.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can read and reply without
+Browse Mode interfering with typing.</p>
+<p><strong>If that does not happen:</strong> If letters type when you
+want document navigation, use NVDA+Space to return to Browse Mode.</p>
+<p><strong>Practice:</strong> Reply to a test email using NVDA.</p>
+<h2 id="part-28---jaws-with-outlook">Part 28 - JAWS with Outlook</h2>
+<h3 id="read-and-reply-with-jaws">28.1 Read and Reply with JAWS</h3>
+<p><strong>What you will learn:</strong> Use JAWS with Outlook message
+lists and compose fields.</p>
+<p><strong>Before you begin:</strong> JAWS is running.</p>
+<h4 id="exactly-how-to-do-it-33">Exactly how to do it</h4>
+<ol start="196" type="1">
+<li><p>Press Ctrl+1 for Mail.</p></li>
+<li><p>Use Ctrl+F6 and Tab to locate the message list.</p></li>
+<li><p>Use Up/Down Arrow through messages.</p></li>
+<li><p>Press Enter to open a message.</p></li>
+<li><p>Use JAWS reading commands to read the message.</p></li>
+<li><p>Press Ctrl+R to reply.</p></li>
+<li><p>Type the reply.</p></li>
+<li><p>If Virtual Cursor/Forms behavior interferes, use JAWS application
+help with Insert+H or Command Search.</p></li>
+<li><p>Press Ctrl+Enter to send.</p></li>
+</ol>
+<p><strong>What should happen:</strong> JAWS reads the message and
+allows normal reply composition.</p>
+<p><strong>If that does not happen:</strong> If JAWS becomes overly
+verbose or focus seems unusual, review Outlook-specific JAWS Quick
+Settings with Insert+V and avoid changing many settings at once.</p>
+<p><strong>Practice:</strong> Read and reply to a test message using
+JAWS.</p>
+<h2 id="part-29---outlook-on-the-web">Part 29 - Outlook on the Web</h2>
+<p>Outlook on the web runs inside a browser, so browser shortcuts and
+Outlook shortcuts can conflict. Microsoft recommends Microsoft Edge for
+Narrator workflows and notes that Ctrl+F6 is used to jump among major
+Outlook regions.</p>
+<ul>
+<li><p>Use Ctrl+F6 to move among major regions.</p></li>
+<li><p>F1 and Ctrl+O may belong to the browser instead of
+Outlook.</p></li>
+<li><p>Use Outlook's own command toolbar rather than assuming desktop
+shortcuts are identical.</p></li>
+<li><p>Screen readers can use the ARIA structure provided by Outlook on
+the web.</p></li>
+</ul>
+<h2 id="part-30---outlook-mobile-basics">Part 30 - Outlook Mobile
+Basics</h2>
+<ul>
+<li><p>iPhone/iPad users can use VoiceOver with Outlook for
+iOS.</p></li>
+<li><p>Android users can use TalkBack with Outlook for Android.</p></li>
+<li><p>Mobile Outlook provides Mail, Calendar, Search, compose, reply,
+attachment, and meeting functions with touch-screen controls.</p></li>
+<li><p>Because mobile layouts change frequently, use Microsoft's current
+Outlook accessibility pages for exact gesture-by-gesture steps.</p></li>
+</ul>
+<h2 id="part-31---troubleshooting">Part 31 - Troubleshooting</h2>
+<h3 id="you-cannot-find-the-message-list">31.1 You Cannot Find the
+Message List</h3>
+<p><strong>What you will learn:</strong> Recover when focus is in the
+wrong Outlook region.</p>
+<p><strong>Before you begin:</strong> Outlook is open in Mail.</p>
+<h4 id="exactly-how-to-do-it-34">Exactly how to do it</h4>
+<ol start="205" type="1">
+<li><p>Press Escape once.</p></li>
+<li><p>Press Ctrl+F6 and listen to the region name.</p></li>
+<li><p>Continue Ctrl+F6 until the message list/folder pane is
+reached.</p></li>
+<li><p>Use Tab between nearby controls.</p></li>
+<li><p>Use arrows once focus is in the message list.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Focus returns to the message
+list.</p>
+<p><strong>If that does not happen:</strong> If the Reading Pane
+complicates navigation, turn it off temporarily in Settings.</p>
+<p><strong>Practice:</strong> Move from Search to the Inbox message list
+using only Ctrl+F6/Tab.</p>
+<h3 id="new-mail-will-not-send">31.2 New Mail Will Not Send</h3>
+<p><strong>What you will learn:</strong> Check recipient, connection,
+and account issues logically.</p>
+<p><strong>Before you begin:</strong> A draft is open.</p>
+<h4 id="exactly-how-to-do-it-35">Exactly how to do it</h4>
+<ol start="210" type="1">
+<li><p>Confirm the To field contains a resolved recipient.</p></li>
+<li><p>Confirm the message body and subject are valid.</p></li>
+<li><p>Check internet connectivity.</p></li>
+<li><p>Press Ctrl+Enter or activate Send.</p></li>
+<li><p>If the message remains in Outbox, open Outbox and review any
+error information.</p></li>
+<li><p>Check whether Outlook is offline or your account needs
+sign-in.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The message sends or you
+identify the blocking issue.</p>
+<p><strong>If that does not happen:</strong> If all messages fail, this
+is likely an account/network/service problem rather than the individual
+email.</p>
+<p><strong>Practice:</strong> Send a test message to yourself.</p>
+<h3 id="search-finds-too-much">31.3 Search Finds Too Much</h3>
+<p><strong>What you will learn:</strong> Make search more specific.</p>
+<p><strong>Before you begin:</strong> Search results are open.</p>
+<h4 id="exactly-how-to-do-it-36">Exactly how to do it</h4>
+<ol start="216" type="1">
+<li><p>Add the sender name or email address.</p></li>
+<li><p>Add a distinctive subject keyword.</p></li>
+<li><p>Use date/filter controls if available.</p></li>
+<li><p>Check the selected search scope/folder.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The result list becomes smaller
+and more relevant.</p>
+<p><strong>If that does not happen:</strong> If the message may be in
+Deleted/Junk/Archive, broaden the search scope.</p>
+<p><strong>Practice:</strong> Refine a broad search to fewer than ten
+results.</p>
+<h3 id="outlook-is-not-announcing-enough-with-a-screen-reader">31.4
+Outlook Is Not Announcing Enough with a Screen Reader</h3>
+<p><strong>What you will learn:</strong> Separate Outlook focus issues
+from screen-reader settings.</p>
+<p><strong>Before you begin:</strong> A supported screen reader is
+running.</p>
+<h4 id="exactly-how-to-do-it-37">Exactly how to do it</h4>
+<ol start="220" type="1">
+<li><p>Press Ctrl+F6 to move to a known Outlook region.</p></li>
+<li><p>Use Tab and arrows to trigger focus announcements.</p></li>
+<li><p>Check whether the screen reader is in a browse/scan mode that
+changes navigation.</p></li>
+<li><p>Review screen-reader verbosity only after confirming Outlook
+focus.</p></li>
+<li><p>Test the same screen reader in another Windows app.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You identify whether the issue
+is Outlook focus, reading mode, or the screen reader itself.</p>
+<p><strong>If that does not happen:</strong> Do not reset all
+screen-reader settings until you know the problem affects more than
+Outlook.</p>
+<p><strong>Practice:</strong> Practice identifying which layer has
+focus.</p>
+<h2 id="part-32---independent-practice-course">Part 32 - Independent
+Practice Course</h2>
+<h3 id="level-1---orientation">Level 1 - Orientation</h3>
+<p>☐ Open Outlook.</p>
+<p>☐ Move between Mail and Calendar.</p>
+<p>☐ Use Ctrl+F6 through major regions.</p>
+<p>☐ Open and close Settings.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-2---read-mail">Level 2 - Read Mail</h3>
+<p>☐ Open Inbox.</p>
+<p>☐ Move through messages.</p>
+<p>☐ Open/read a message.</p>
+<p>☐ Return to Inbox.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-3---compose">Level 3 - Compose</h3>
+<p>☐ Create a new email.</p>
+<p>☐ Add recipient and subject.</p>
+<p>☐ Type a message.</p>
+<p>☐ Send to yourself.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-4---respond">Level 4 - Respond</h3>
+<p>☐ Reply.</p>
+<p>☐ Reply All on a safe test message.</p>
+<p>☐ Forward a test message.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-5---organize">Level 5 - Organize</h3>
+<p>☐ Mark read/unread.</p>
+<p>☐ Archive.</p>
+<p>☐ Move a message to a folder.</p>
+<p>☐ Delete and restore a practice message.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-6---search-and-attachments">Level 6 - Search and
+Attachments</h3>
+<p>☐ Search for a message.</p>
+<p>☐ Attach a test file.</p>
+<p>☐ Save a safe attachment.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-7---calendar">Level 7 - Calendar</h3>
+<p>☐ Open Calendar.</p>
+<p>☐ Change view.</p>
+<p>☐ Open an event.</p>
+<p>☐ Create an appointment.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-8---meetings">Level 8 - Meetings</h3>
+<p>☐ Schedule a meeting.</p>
+<p>☐ Invite an attendee.</p>
+<p>☐ Respond to an invitation.</p>
+<p>☐ Locate Join on an online meeting.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-9---screen-reader">Level 9 - Screen Reader</h3>
+<p>☐ Use Narrator, NVDA, or JAWS to read/reply.</p>
+<p>☐ Recover from browse/scan/forms mode issues.</p>
+<p>☐ Use screen-reader help if needed.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h2 id="part-33---quick-reference-commands">Part 33 - Quick Reference
+Commands</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mail</td>
+<td>Ctrl+1</td>
+</tr>
+<tr class="even">
+<td>Calendar</td>
+<td>Ctrl+2</td>
+</tr>
+<tr class="odd">
+<td>New email</td>
+<td>Ctrl+N</td>
+</tr>
+<tr class="even">
+<td>Reply</td>
+<td>Ctrl+R</td>
+</tr>
+<tr class="odd">
+<td>Reply all</td>
+<td>Ctrl+Shift+R</td>
+</tr>
+<tr class="even">
+<td>Forward</td>
+<td>Ctrl+F</td>
+</tr>
+<tr class="odd">
+<td>Send</td>
+<td>Ctrl+Enter</td>
+</tr>
+<tr class="even">
+<td>Search</td>
+<td>Ctrl+E</td>
+</tr>
+<tr class="odd">
+<td>Major regions</td>
+<td>Ctrl+F6</td>
+</tr>
+<tr class="even">
+<td>Mark read</td>
+<td>Ctrl+Q</td>
+</tr>
+<tr class="odd">
+<td>Mark unread</td>
+<td>Ctrl+U</td>
+</tr>
+<tr class="even">
+<td>Delete</td>
+<td>Delete</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="calendar-quick-reference">Calendar Quick Reference</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Calendar</td>
+<td>Ctrl+2</td>
+</tr>
+<tr class="even">
+<td>Next event in view</td>
+<td>Ctrl+Period</td>
+</tr>
+<tr class="odd">
+<td>Previous event in view</td>
+<td>Ctrl+Comma</td>
+</tr>
+<tr class="even">
+<td>Next/previous day</td>
+<td>Ctrl+Right/Left Arrow</td>
+</tr>
+<tr class="odd">
+<td>Next/previous week</td>
+<td>Alt+Down/Up Arrow</td>
+</tr>
+<tr class="even">
+<td>Next/previous month</td>
+<td>Alt+Page Down/Page Up</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="part-34---official-microsoft-resources">Part 34 - Official
+Microsoft Resources</h2>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/outlook/screen-reader-support-for-outlook"><u>Outlook
+screen reader support</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-US/accessibility/outlook/keyboard-shortcuts-for-outlook"><u>Keyboard
+shortcuts for Outlook</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/outlook/basic-tasks-using-a-screen-reader-with-email-in-outlook"><u>Basic
+email tasks with a screen reader</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-US/Accessibility/outlook/use-a-screen-reader-to-explore-and-navigate-outlook-mail"><u>Explore
+and navigate Outlook Mail</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/outlook/basic-tasks-using-a-screen-reader-with-the-calendar-in-outlook"><u>Basic
+calendar tasks with a screen reader</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-US/Accessibility/outlook/use-a-screen-reader-to-explore-and-navigate-outlook-calendar"><u>Explore
+and navigate Outlook Calendar</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-US/accessibility/outlook/use-a-screen-reader-to-organize-your-inbox-in-new-outlook"><u>Organize
+your inbox in new Outlook</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-US/accessibility/outlook/check-spelling-and-grammar-with-screen-reader-support-in-new-outlook"><u>Check
+spelling and grammar with a screen reader</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I can open Outlook and identify new vs classic Outlook.</p>
+<p>☐ I can move among major Outlook regions.</p>
+<p>☐ I can read, create, reply to, forward, and send mail.</p>
+<p>☐ I can search and organize my inbox.</p>
+<p>☐ I can use folders, archive, delete, and mark read/unread.</p>
+<p>☐ I can attach and save files safely.</p>
+<p>☐ I can identify suspicious email and phishing warning signs.</p>
+<p>☐ I can use Outlook Calendar.</p>
+<p>☐ I can create appointments and meetings.</p>
+<p>☐ I can respond to invitations and join online meetings.</p>
+<p>☐ I can use Outlook with Narrator, NVDA, or JAWS as appropriate.</p>
+<p>☐ I can recover when focus or reading mode becomes confusing.</p>
+<p>☐ I know where to find Microsoft's current Outlook accessibility
+documentation.</p>
+<p><strong>Most important habit:</strong> Before sending, deleting,
+moving, or responding, stop and confirm the selected message,
+recipients, and action. Outlook is fastest when you combine keyboard
+shortcuts with deliberate confirmation.</p>
+
+    <p class="back-link"><a href="manuals.html">Return to all manuals</a></p>
+  </main>
+</body>
+</html>

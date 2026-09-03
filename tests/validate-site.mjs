@@ -198,7 +198,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 318, "Expected 318 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 337, "Expected 337 HTML pages, found " + htmlFiles.length + ".");
 const manualsHtml = readFileSync(resolve(root, "manuals.html"), "utf8");
 check(manualsHtml.includes("Manuals are grouped by subject"), "Manuals page is not grouped by subject.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
@@ -209,13 +209,38 @@ check(existsSync(resolve(root, "resource-search.js")), "Resource search behavior
 check(existsSync(resolve(root, "command-practice.html")), "Keyboard Command Practice Lab page is missing.");
 check(existsSync(resolve(root, "troubleshooting-lab.html")), "Assistive Technology Troubleshooting Lab page is missing.");
 check(existsSync(resolve(root, "additional-skills-manual.html")), "Additional Screen-Reader Skills manual is missing.");
-for (const file of ["job-search-manual.html", "calendar-manual.html", "docs-manual.html", "cybersecurity-manual.html", "pdf-manual.html", "focus-manual.html", "mantis-manual.html", "ereader-manual.html", "brailleblaster-manual.html"]) {
+for (const file of ["focus-manual.html", "ereader-manual.html", "brailleblaster-manual.html"]) {
   const detailedManual = readFileSync(resolve(root, file), "utf8");
   check(detailedManual.includes("Basic") && detailedManual.includes("advanced"), file + " is missing basic and advanced how-to instruction.");
   check((detailedManual.match(/<ol>/g) || []).length >= 4, file + " needs more step-by-step procedures.");
   check(detailedManual.includes("Keyboard command"), file + " is missing keyboard-command guidance.");
   check(detailedManual.includes("If that does not happen"), file + " is missing recovery guidance.");
 }
+const fullSourceManuals = [
+  "word-manual.html", "excel-manual.html", "job-search-manual.html", "social-media-manual.html",
+  "cybersecurity-manual.html", "edge-manual.html", "windows-manual.html", "windows-screen-reader-manual.html",
+  "brailliant-bi-x-manual.html", "chrome-manual.html", "docs-manual.html", "victor-reader-stream-3-manual.html",
+  "braillenote-touch-plus-manual.html", "calendar-manual.html", "google-drive-manual.html", "bard-mobile-manual.html",
+  "talkback-manual.html", "voiceover-manual.html", "mac-voiceover-manual.html", "onedrive-manual.html",
+  "google-meet-manual.html", "pdf-manual.html", "onenote-manual.html", "mantis-manual.html",
+  "zoom-manual.html", "zoomax-ereader-manual.html", "teams-manual.html",
+  "outlook-manual.html", "gmail-manual.html"
+];
+for (const file of fullSourceManuals) {
+  check(existsSync(resolve(root, file)), file + " is missing.");
+  const manual = readFileSync(resolve(root, file), "utf8");
+  check(manual.includes("What you will learn"), file + " is missing learning outcomes.");
+  check(manual.includes("Before you begin"), file + " is missing preparation guidance.");
+  check(manual.includes("Exactly how to do it"), file + " is missing step-by-step instruction.");
+  check((manual.match(/<ol(?:\s|>)/g) || []).length >= 4, file + " needs more step-by-step procedures.");
+  check(manual.includes("If that does not happen"), file + " is missing recovery guidance.");
+  check(manual.includes("Practice"), file + " is missing learner practice.");
+  check(manualsHtml.includes(file), "Manuals directory is missing " + file + ".");
+}
+const mantisInstructorManual = readFileSync(resolve(root, "mantis-instructor-manual.html"), "utf8");
+check((mantisInstructorManual.match(/<ol(?:\s|>)/g) || []).length >= 10, "Mantis instructor manual needs detailed procedures.");
+check(mantisInstructorManual.includes("Troubleshooting") && mantisInstructorManual.includes("Practice"), "Mantis instructor manual is missing training and troubleshooting guidance.");
+check(manualsHtml.includes("mantis-instructor-manual.html"), "Manuals directory is missing the Mantis instructor manual.");
 const ereaderManual = readFileSync(resolve(root, "ereader-manual.html"), "utf8");
 check(ereaderManual.includes("HumanWare model: Basic and advanced how-tos"), "NLS eReader manual is missing detailed HumanWare instructions.");
 check(ereaderManual.includes("Zoomax model: Basic and advanced how-tos"), "NLS eReader manual is missing detailed Zoomax instructions.");
@@ -227,7 +252,7 @@ const additionalSkills = readFileSync(resolve(root, "additional-skills-manual.ht
 check(additionalSkills.includes("Independent Skills Manuals"), "Independent skills directory title is missing.");
 check(!additionalSkills.includes("curriculum-audit") && !additionalSkills.includes("topic gaps identified"), "Independent skills manual still contains source-comparison framing.");
 check(readFileSync(resolve(root, "resources.html"), "utf8").includes("The Windows Screen Reader Primer: All the Basics and More, Fifth Edition"), "Screen Reader Primer is missing from Resources.");
-const independentManualFiles = ["outlook-manual.html", "google-services-manual.html", "cloud-storage-manual.html", "online-meetings-manual.html", "accessible-audio-manual.html", "ai-access-manual.html", "screen-reader-recovery-manual.html"];
+const independentManualFiles = ["outlook-manual.html", "onenote-manual.html", "onedrive-manual.html", "teams-manual.html", "edge-manual.html", "google-drive-manual.html", "gmail-manual.html", "google-meet-manual.html", "zoom-manual.html", "social-media-manual.html", "bard-mobile-manual.html", "voiceover-manual.html", "talkback-manual.html", "mac-voiceover-manual.html", "accessible-audio-manual.html", "ai-access-manual.html", "screen-reader-recovery-manual.html"];
 for (const file of independentManualFiles) {
   check(existsSync(resolve(root, file)), file + " is missing.");
   const manual = readFileSync(resolve(root, file), "utf8");
@@ -237,7 +262,7 @@ for (const file of independentManualFiles) {
 }
 check(manualsHtml.indexOf("Microsoft applications") < manualsHtml.indexOf("outlook-manual.html"), "Outlook is not grouped with Microsoft applications.");
 check(manualsHtml.indexOf("Google applications") < manualsHtml.indexOf("google-services-manual.html"), "Google services are not grouped with Google applications.");
-check(manualsHtml.indexOf("Cloud storage and online communication") < manualsHtml.indexOf("cloud-storage-manual.html"), "Cloud storage is not in its category.");
+check(/Cloud storage and online communication[\s\S]*onedrive-manual\.html[\s\S]*google-drive-manual\.html/.test(manualsHtml), "Cloud storage is not in its category.");
 const troubleshootingLab = readFileSync(resolve(root, "troubleshooting-lab.js"), "utf8");
 check((troubleshootingLab.match(/category: "/g) || []).length === 8, "Mission Control must include eight command-based missions.");
 for (const perspective of ["JAWS", "NVDA", "Narrator"]) {
@@ -270,7 +295,7 @@ check(quizScript.includes("data.passPercent"), "Quiz passing-score behavior is m
 check(quizScript.includes("print-certificate"), "Printable certificate behavior is missing.");
 check(quizScript.includes("accessibleLearningQuizResults"), "Local quiz result storage is missing.");
 check(!quizScript.includes("certificateStudentName") || !quizScript.includes("localStorage.setItem(key, name"), "Certificate names must not be stored.");
-check(searchIndex.count === 306 && searchIndex.entries.length === 306, "Search index must contain 306 public learning, practice, quiz, and help pages.");
+check(searchIndex.count === 333 && searchIndex.entries.length === 333, "Search index must contain 333 public learning, practice, quiz, and help pages.");
 check(assignmentScript.includes("const UPLOADS_ENABLED = false"), "Lesson upload interface is not paused.");
 check(assignmentScript.includes("submissionSection?.remove()"), "Paused upload interface is not removed.");
 check(assignmentScript.includes("Mark this lesson complete"), "Lesson completion control is missing.");

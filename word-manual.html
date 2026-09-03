@@ -1,1328 +1,1753 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Microsoft Word Screen Reader Manual - Accessible Learning Center</title>
-<style>
-  :root { color-scheme: light dark; }
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    line-height: 1.6;
-    max-width: 76rem;
-    margin: 0 auto;
-    padding: 1rem;
-  }
-  a { text-underline-offset: 0.15em; }
-  .skip-link {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-  }
-  .skip-link:focus {
-    left: 1rem;
-    top: 1rem;
-    padding: .6rem;
-    background: Canvas;
-    color: CanvasText;
-    border: 2px solid currentColor;
-    z-index: 1000;
-  }
-  nav[aria-label="Manual navigation"] {
-    border: 1px solid currentColor;
-    padding: 1rem;
-    margin: 1rem 0 2rem;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 1rem 0;
-  }
-  th, td {
-    border: 1px solid currentColor;
-    padding: .5rem;
-    text-align: left;
-    vertical-align: top;
-  }
-  ul, ol { padding-left: 2rem; }
-  .back-link { margin: 2rem 0 1rem; }
-</style>
-  <link rel="stylesheet" href="styles.css?v=manual-review-1">
-  <script src="accessibility.js?v=manual-review-1" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Microsoft Word Screen Reader Manual: step-by-step keyboard and screen-reader instructions, practice, troubleshooting, and command references.">
+  <title>Microsoft Word Screen Reader Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-manuals-1">
+  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
 </head>
-<body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
-<header>
-  <h1>Microsoft Word Screen Reader Manual</h1>
-  <p>Narrator, NVDA, and JAWS</p>
-  <p>Independent Self-Study Guide for Word on Windows</p>
-</header>
-<main id="main-content">
-
-<p>Microsoft screen reader support for Word</p>
-<p>Purpose: This manual is written directly to a person learning Microsoft Word with a screen reader. It assumes little or no prior Word experience and explains what to press, what should happen, what your screen reader should announce, and how to recover when the result is different.</p>
-<p>Reference version: The manual is written primarily for Word for Microsoft 365 on Windows. Many commands also work in Word 2024, 2021, 2019, and 2016, but ribbon wording can differ.</p>
-<p>Screen readers: Core Word keyboard commands are taught first. Narrator, NVDA, and JAWS are covered separately so screen-reader commands are not mixed together.</p>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible Learning Center manual</p>
+    <h1>Microsoft Word Screen Reader Manual</h1>
+    <p>Narrator, NVDA, and JAWS</p>
+    <p>Independent Self-Study Guide for Word on Windows</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#main-content">Start of manual</a>
+    </nav>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/word/screen-reader-support-for-word"><u>Microsoft
+screen reader support for Word</u></a></p>
+<p><strong>Purpose:</strong> This manual is written directly to a person
+learning Microsoft Word with a screen reader. It assumes little or no
+prior Word experience and explains what to press, what should happen,
+what your screen reader should announce, and how to recover when the
+result is different.</p>
+<p><strong>Reference version:</strong> The manual is written primarily
+for Word for Microsoft 365 on Windows. Many commands also work in Word
+2024, 2021, 2019, and 2016, but ribbon wording can differ.</p>
+<p><strong>Screen readers:</strong> Core Word keyboard commands are
+taught first. Narrator, NVDA, and JAWS are covered separately so
+screen-reader commands are not mixed together.</p>
 <h2 id="how-to-use-this-manual">How to Use This Manual</h2>
 <ul>
-<li>Work through Parts 1-12 before focusing on your screen reader. Those sections teach Word itself.</li>
-<li>Do one action, stop, and listen to what changed before pressing another key.</li>
-<li>Word uses both direct shortcuts and the Ribbon. Direct shortcuts are usually faster once memorized.</li>
-<li>Alt activates Ribbon KeyTips. After pressing Alt, use the letters Word announces for the tab and command you want.</li>
-<li>F6 cycles among major Word regions such as document, Ribbon, status bar, and panes.</li>
-<li>Tab and Shift+Tab move between controls in dialogs and panes.</li>
-<li>Arrow keys move through text, menus, lists, and Ribbon controls depending on context.</li>
-<li>Narrator, NVDA, and JAWS all work with standard Windows text-editing keys.</li>
-<li>Use Word&#x27;s built-in styles instead of making headings look like headings only with bold and larger font.</li>
-<li>Save often with Ctrl+S.</li>
+<li><p>Work through Parts 1-12 before focusing on your screen reader.
+Those sections teach Word itself.</p></li>
+<li><p>Do one action, stop, and listen to what changed before pressing
+another key.</p></li>
+<li><p>Word uses both direct shortcuts and the Ribbon. Direct shortcuts
+are usually faster once memorized.</p></li>
+<li><p>Alt activates Ribbon KeyTips. After pressing Alt, use the letters
+Word announces for the tab and command you want.</p></li>
+<li><p>F6 cycles among major Word regions such as document, Ribbon,
+status bar, and panes.</p></li>
+<li><p>Tab and Shift+Tab move between controls in dialogs and
+panes.</p></li>
+<li><p>Arrow keys move through text, menus, lists, and Ribbon controls
+depending on context.</p></li>
+<li><p>Narrator, NVDA, and JAWS all work with standard Windows
+text-editing keys.</p></li>
+<li><p>Use Word's built-in styles instead of making headings look like
+headings only with bold and larger font.</p></li>
+<li><p>Save often with Ctrl+S.</p></li>
 </ul>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li>Part 1 - What Microsoft Word Is</li>
-<li>Part 2 - Open Word and Create a Document</li>
-<li>Part 3 - Learn the Word Window and Ribbon</li>
-<li>Part 4 - Type, Move, Select, and Edit Text</li>
-<li>Part 5 - Save, Save As, Open, and Close</li>
-<li>Part 6 - Find and Replace</li>
-<li>Part 7 - Character and Paragraph Formatting</li>
-<li>Part 8 - Headings, Styles, and Navigation Pane</li>
-<li>Part 9 - Bulleted and Numbered Lists</li>
-<li>Part 10 - Tables</li>
-<li>Part 11 - Links, Pictures, Alt Text, Headers, and Footers</li>
-<li>Part 12 - Spelling, Grammar, and Editor</li>
-<li>Part 13 - Comments</li>
-<li>Part 14 - Track Changes</li>
-<li>Part 15 - Accessibility Checker and Accessible Document Design</li>
-<li>Part 16 - Print, Export to PDF, and Share</li>
-<li>Part 17 - Narrator with Word</li>
-<li>Part 18 - NVDA with Word</li>
-<li>Part 19 - JAWS with Word</li>
-<li>Part 20 - Reading Long Documents</li>
-<li>Part 21 - Braille Displays with Word</li>
-<li>Part 22 - Word Online</li>
-<li>Part 23 - Troubleshooting</li>
-<li>Part 24 - Independent Practice Course</li>
-<li>Part 25 - Quick Reference Commands</li>
-<li>Part 26 - Official Microsoft Resources</li>
+<li><p>Part 1 - What Microsoft Word Is</p></li>
+<li><p>Part 2 - Open Word and Create a Document</p></li>
+<li><p>Part 3 - Learn the Word Window and Ribbon</p></li>
+<li><p>Part 4 - Type, Move, Select, and Edit Text</p></li>
+<li><p>Part 5 - Save, Save As, Open, and Close</p></li>
+<li><p>Part 6 - Find and Replace</p></li>
+<li><p>Part 7 - Character and Paragraph Formatting</p></li>
+<li><p>Part 8 - Headings, Styles, and Navigation Pane</p></li>
+<li><p>Part 9 - Bulleted and Numbered Lists</p></li>
+<li><p>Part 10 - Tables</p></li>
+<li><p>Part 11 - Links, Pictures, Alt Text, Headers, and
+Footers</p></li>
+<li><p>Part 12 - Spelling, Grammar, and Editor</p></li>
+<li><p>Part 13 - Comments</p></li>
+<li><p>Part 14 - Track Changes</p></li>
+<li><p>Part 15 - Accessibility Checker and Accessible Document
+Design</p></li>
+<li><p>Part 16 - Print, Export to PDF, and Share</p></li>
+<li><p>Part 17 - Narrator with Word</p></li>
+<li><p>Part 18 - NVDA with Word</p></li>
+<li><p>Part 19 - JAWS with Word</p></li>
+<li><p>Part 20 - Reading Long Documents</p></li>
+<li><p>Part 21 - Braille Displays with Word</p></li>
+<li><p>Part 22 - Word Online</p></li>
+<li><p>Part 23 - Troubleshooting</p></li>
+<li><p>Part 24 - Independent Practice Course</p></li>
+<li><p>Part 25 - Quick Reference Commands</p></li>
+<li><p>Part 26 - Official Microsoft Resources</p></li>
 </ul>
-<h2 id="part-1---what-microsoft-word-is">Part 1 - What Microsoft Word Is</h2>
-<p>Microsoft Word is a word-processing application for creating, reading, editing, formatting, reviewing, and sharing documents. Word documents commonly use the DOCX format.</p>
+<h2 id="part-1---what-microsoft-word-is">Part 1 - What Microsoft Word
+Is</h2>
+<p>Microsoft Word is a word-processing application for creating,
+reading, editing, formatting, reviewing, and sharing documents. Word
+documents commonly use the DOCX format.</p>
 <ul>
-<li>Document body: the main area where text is typed and edited.</li>
-<li>Ribbon: a set of tabs such as Home, Insert, Layout, References, Review, and View.</li>
-<li>Status bar: reports information such as page number, word count, and view.</li>
-<li>Navigation Pane: lets you search the document and move among headings.</li>
-<li>Comments pane: contains collaboration comments.</li>
-<li>Review features: Track Changes, accept/reject, comments, compare, spelling, and accessibility tools.</li>
+<li><p>Document body: the main area where text is typed and
+edited.</p></li>
+<li><p>Ribbon: a set of tabs such as Home, Insert, Layout, References,
+Review, and View.</p></li>
+<li><p>Status bar: reports information such as page number, word count,
+and view.</p></li>
+<li><p>Navigation Pane: lets you search the document and move among
+headings.</p></li>
+<li><p>Comments pane: contains collaboration comments.</p></li>
+<li><p>Review features: Track Changes, accept/reject, comments, compare,
+spelling, and accessibility tools.</p></li>
 </ul>
-<h2 id="part-2---open-word-and-create-a-document">Part 2 - Open Word and Create a Document</h2>
-<h2 id="21-open-word-from-windows-search">2.1 Open Word from Windows Search</h2>
-<p>What you will learn: Start Microsoft Word without using a mouse.</p>
-<p>Before you begin: Word must be installed.</p>
-<h3 id="exactly-how-to-do-it">Exactly how to do it</h3>
-<ol>
-<li>Press the Windows key.</li>
-<li>Type Word.</li>
-<li>Use Up/Down Arrow if more than one result appears.</li>
-<li>Press Enter on Microsoft Word.</li>
-<li>Wait for Word to open.</li>
+<h2 id="part-2---open-word-and-create-a-document">Part 2 - Open Word and
+Create a Document</h2>
+<h3 id="open-word-from-windows-search">2.1 Open Word from Windows
+Search</h3>
+<p><strong>What you will learn:</strong> Start Microsoft Word without
+using a mouse.</p>
+<p><strong>Before you begin:</strong> Word must be installed.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol type="1">
+<li><p>Press the Windows key.</p></li>
+<li><p>Type Word.</p></li>
+<li><p>Use Up/Down Arrow if more than one result appears.</p></li>
+<li><p>Press Enter on Microsoft Word.</p></li>
+<li><p>Wait for Word to open.</p></li>
 </ol>
-<p>What should happen: The Word start screen or a document window opens.</p>
-<p>If that does not happen: If Word does not appear in Search, Microsoft 365/Word may not be installed or may use a different organization deployment.</p>
-<p>Practice: Open Word twice using Search.</p>
-<h2 id="22-create-a-blank-document">2.2 Create a Blank Document</h2>
-<p>What you will learn: Start a new editable document.</p>
-<p>Before you begin: Word is open.</p>
-<h3 id="exactly-how-to-do-it-2">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+N.</li>
-<li>Wait for a blank document.</li>
-<li>Type: This is my first Word practice document.</li>
-<li>Press Enter twice.</li>
-<li>Type a second sentence.</li>
+<p><strong>What should happen:</strong> The Word start screen or a
+document window opens.</p>
+<p><strong>If that does not happen:</strong> If Word does not appear in
+Search, Microsoft 365/Word may not be installed or may use a different
+organization deployment.</p>
+<p><strong>Practice:</strong> Open Word twice using Search.</p>
+<h3 id="create-a-blank-document">2.2 Create a Blank Document</h3>
+<p><strong>What you will learn:</strong> Start a new editable
+document.</p>
+<p><strong>Before you begin:</strong> Word is open.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol start="6" type="1">
+<li><p>Press Ctrl+N.</p></li>
+<li><p>Wait for a blank document.</p></li>
+<li><p>Type: This is my first Word practice document.</p></li>
+<li><p>Press Enter twice.</p></li>
+<li><p>Type a second sentence.</p></li>
 </ol>
-<p>What should happen: Text appears in the new document.</p>
-<p>If that does not happen: If Ctrl+N opens a start screen instead of a blank file, choose Blank document with Tab/Enter.</p>
-<p>Practice: Create a new document and type two short paragraphs.</p>
-<h2 id="part-3---learn-the-word-window-and-ribbon">Part 3 - Learn the Word Window and Ribbon</h2>
-<h2 id="31-move-between-word-regions-with-f6">3.1 Move Between Word Regions with F6</h2>
-<p>What you will learn: Understand where keyboard focus is.</p>
-<p>Before you begin: Open a document.</p>
-<h3 id="exactly-how-to-do-it-3">Exactly how to do it</h3>
-<ol>
-<li>Press F6 once.</li>
-<li>Listen to the region or control announced.</li>
-<li>Press F6 again.</li>
-<li>Continue several times.</li>
-<li>Use Shift+F6 to move backward through the regions.</li>
-<li>Stop when focus returns to the document body.</li>
+<p><strong>What should happen:</strong> Text appears in the new
+document.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+N opens a start
+screen instead of a blank file, choose Blank document with
+Tab/Enter.</p>
+<p><strong>Practice:</strong> Create a new document and type two short
+paragraphs.</p>
+<h2 id="part-3---learn-the-word-window-and-ribbon">Part 3 - Learn the
+Word Window and Ribbon</h2>
+<h3 id="move-between-word-regions-with-f6">3.1 Move Between Word Regions
+with F6</h3>
+<p><strong>What you will learn:</strong> Understand where keyboard focus
+is.</p>
+<p><strong>Before you begin:</strong> Open a document.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol start="11" type="1">
+<li><p>Press F6 once.</p></li>
+<li><p>Listen to the region or control announced.</p></li>
+<li><p>Press F6 again.</p></li>
+<li><p>Continue several times.</p></li>
+<li><p>Use Shift+F6 to move backward through the regions.</p></li>
+<li><p>Stop when focus returns to the document body.</p></li>
 </ol>
-<p>What should happen: Focus cycles through Word&#x27;s major regions.</p>
-<p>If that does not happen: If F6 seems to do nothing, make sure Word is the active application and no modal dialog is open.</p>
-<p>Practice: Cycle through all regions once.</p>
-<h2 id="32-use-ribbon-keytips">3.2 Use Ribbon KeyTips</h2>
-<p>What you will learn: Reach a Ribbon command by keyboard.</p>
-<p>Before you begin: Be in a Word document.</p>
-<h3 id="exactly-how-to-do-it-4">Exactly how to do it</h3>
-<ol>
-<li>Press Alt.</li>
-<li>Listen for Ribbon KeyTips.</li>
-<li>Press H for Home.</li>
-<li>Listen as focus enters the Home tab.</li>
-<li>Use Tab/Shift+Tab or arrow keys through controls.</li>
-<li>Press Escape to leave the Ribbon and return toward the document.</li>
+<p><strong>What should happen:</strong> Focus cycles through Word's
+major regions.</p>
+<p><strong>If that does not happen:</strong> If F6 seems to do nothing,
+make sure Word is the active application and no modal dialog is
+open.</p>
+<p><strong>Practice:</strong> Cycle through all regions once.</p>
+<h3 id="use-ribbon-keytips">3.2 Use Ribbon KeyTips</h3>
+<p><strong>What you will learn:</strong> Reach a Ribbon command by
+keyboard.</p>
+<p><strong>Before you begin:</strong> Be in a Word document.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol start="17" type="1">
+<li><p>Press Alt.</p></li>
+<li><p>Listen for Ribbon KeyTips.</p></li>
+<li><p>Press H for Home.</p></li>
+<li><p>Listen as focus enters the Home tab.</p></li>
+<li><p>Use Tab/Shift+Tab or arrow keys through controls.</p></li>
+<li><p>Press Escape to leave the Ribbon and return toward the
+document.</p></li>
 </ol>
-<p>What should happen: The Home Ribbon tab becomes active.</p>
-<p>If that does not happen: If pressing Alt opens an application menu from another program, Word may not have focus.</p>
-<p>Practice: Open Home, Insert, and Review tabs using Alt key sequences.</p>
-<h2 id="part-4---type-move-select-and-edit-text">Part 4 - Type, Move, Select, and Edit Text</h2>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<p><strong>What should happen:</strong> The Home Ribbon tab becomes
+active.</p>
+<p><strong>If that does not happen:</strong> If pressing Alt opens an
+application menu from another program, Word may not have focus.</p>
+<p><strong>Practice:</strong> Open Home, Insert, and Review tabs using
+Alt key sequences.</p>
+<h2 id="part-4---type-move-select-and-edit-text">Part 4 - Type, Move,
+Select, and Edit Text</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Character left/right</td>
 <td>Left / Right Arrow</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Word left/right</td>
 <td>Ctrl+Left / Ctrl+Right</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Line up/down</td>
 <td>Up / Down Arrow</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Start/end of line</td>
 <td>Home / End</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Start/end of document</td>
 <td>Ctrl+Home / Ctrl+End</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Select character</td>
 <td>Shift+Left / Shift+Right</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Select word</td>
 <td>Ctrl+Shift+Left / Ctrl+Shift+Right</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Select line/paragraph portions</td>
 <td>Shift with navigation keys</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Select all</td>
 <td>Ctrl+A</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Delete previous character</td>
 <td>Backspace</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Delete next character</td>
 <td>Delete</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Undo</td>
 <td>Ctrl+Z</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Redo/repeat</td>
 <td>Ctrl+Y</td>
 </tr>
-</tbody></table>
-<h2 id="41-correct-a-typing-error">4.1 Correct a Typing Error</h2>
-<p>What you will learn: Move the insertion point to an exact location and replace text.</p>
-<p>Before you begin: Type a sentence containing one deliberate error.</p>
-<h3 id="exactly-how-to-do-it-5">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+Left Arrow to move backward one word at a time.</li>
-<li>Use Left/Right Arrow to move one character at a time.</li>
-<li>Press Backspace or Delete to remove the incorrect character.</li>
-<li>Type the correct character.</li>
-<li>Use your screen reader&#x27;s line or word reading command to verify the correction.</li>
+</tbody>
+</table></div>
+<h3 id="correct-a-typing-error">4.1 Correct a Typing Error</h3>
+<p><strong>What you will learn:</strong> Move the insertion point to an
+exact location and replace text.</p>
+<p><strong>Before you begin:</strong> Type a sentence containing one
+deliberate error.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol start="23" type="1">
+<li><p>Press Ctrl+Left Arrow to move backward one word at a
+time.</p></li>
+<li><p>Use Left/Right Arrow to move one character at a time.</p></li>
+<li><p>Press Backspace or Delete to remove the incorrect
+character.</p></li>
+<li><p>Type the correct character.</p></li>
+<li><p>Use your screen reader's line or word reading command to verify
+the correction.</p></li>
 </ol>
-<p>What should happen: The correction occurs at the intended position.</p>
-<p>If that does not happen: If text changes in the wrong location, press Ctrl+Home or Ctrl+End to establish a known position and navigate again.</p>
-<p>Practice: Create three errors and correct all three.</p>
-<h2 id="42-select-and-replace-a-word">4.2 Select and Replace a Word</h2>
-<p>What you will learn: Select text with the keyboard.</p>
-<p>Before you begin: Place the caret next to a word.</p>
-<h3 id="exactly-how-to-do-it-6">Exactly how to do it</h3>
-<ol>
-<li>Hold Ctrl+Shift.</li>
-<li>Press Left or Right Arrow to select the word.</li>
-<li>Release the keys.</li>
-<li>Type the replacement word.</li>
+<p><strong>What should happen:</strong> The correction occurs at the
+intended position.</p>
+<p><strong>If that does not happen:</strong> If text changes in the
+wrong location, press Ctrl+Home or Ctrl+End to establish a known
+position and navigate again.</p>
+<p><strong>Practice:</strong> Create three errors and correct all
+three.</p>
+<h3 id="select-and-replace-a-word">4.2 Select and Replace a Word</h3>
+<p><strong>What you will learn:</strong> Select text with the
+keyboard.</p>
+<p><strong>Before you begin:</strong> Place the caret next to a
+word.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol start="28" type="1">
+<li><p>Hold Ctrl+Shift.</p></li>
+<li><p>Press Left or Right Arrow to select the word.</p></li>
+<li><p>Release the keys.</p></li>
+<li><p>Type the replacement word.</p></li>
 </ol>
-<p>What should happen: The selected word is replaced.</p>
-<p>If that does not happen: If extra punctuation or spaces are selected, undo with Ctrl+Z and select more carefully.</p>
-<p>Practice: Replace three words using selection.</p>
-<h2 id="part-5---save-save-as-open-and-close">Part 5 - Save, Save As, Open, and Close</h2>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<p><strong>What should happen:</strong> The selected word is
+replaced.</p>
+<p><strong>If that does not happen:</strong> If extra punctuation or
+spaces are selected, undo with Ctrl+Z and select more carefully.</p>
+<p><strong>Practice:</strong> Replace three words using selection.</p>
+<h2 id="part-5---save-save-as-open-and-close">Part 5 - Save, Save As,
+Open, and Close</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Save</td>
 <td>Ctrl+S</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Save As</td>
 <td>F12 or Ctrl+Shift+S depending Word version/configuration</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Open</td>
 <td>Ctrl+O</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Close document</td>
 <td>Ctrl+W</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Exit Word</td>
 <td>Alt+F4</td>
 </tr>
-</tbody></table>
-<h2 id="51-save-a-new-document">5.1 Save a New Document</h2>
-<p>What you will learn: Choose a filename and location.</p>
-<p>Before you begin: Have an unsaved document open.</p>
-<h3 id="exactly-how-to-do-it-7">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+S.</li>
-<li>If the Save As area appears, navigate to the desired folder/location.</li>
-<li>Move to the File name field.</li>
-<li>Type a descriptive filename without typing .docx unless Word requires it.</li>
-<li>Move to Save.</li>
-<li>Press Enter.</li>
-<li>Wait for Word to return to the document.</li>
+</tbody>
+</table></div>
+<h3 id="save-a-new-document">5.1 Save a New Document</h3>
+<p><strong>What you will learn:</strong> Choose a filename and
+location.</p>
+<p><strong>Before you begin:</strong> Have an unsaved document open.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol start="32" type="1">
+<li><p>Press Ctrl+S.</p></li>
+<li><p>If the Save As area appears, navigate to the desired
+folder/location.</p></li>
+<li><p>Move to the File name field.</p></li>
+<li><p>Type a descriptive filename without typing .docx unless Word
+requires it.</p></li>
+<li><p>Move to Save.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Wait for Word to return to the document.</p></li>
 </ol>
-<p>What should happen: The document is saved as a DOCX file.</p>
-<p>If that does not happen: If Word asks about another file format, choose DOCX unless you intentionally need another format.</p>
-<p>Practice: Save a practice document to Documents.</p>
-<h2 id="52-reopen-a-saved-document">5.2 Reopen a Saved Document</h2>
-<p>What you will learn: Find and open an existing Word file.</p>
-<p>Before you begin: Know the filename or recent location.</p>
-<h3 id="exactly-how-to-do-it-8">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+O.</li>
-<li>Use the Recent list or Browse.</li>
-<li>Navigate to the file.</li>
-<li>Press Enter.</li>
-<li>Wait for the document to load.</li>
-<li>Use Ctrl+Home and begin reading.</li>
+<p><strong>What should happen:</strong> The document is saved as a DOCX
+file.</p>
+<p><strong>If that does not happen:</strong> If Word asks about another
+file format, choose DOCX unless you intentionally need another
+format.</p>
+<p><strong>Practice:</strong> Save a practice document to Documents.</p>
+<h3 id="reopen-a-saved-document">5.2 Reopen a Saved Document</h3>
+<p><strong>What you will learn:</strong> Find and open an existing Word
+file.</p>
+<p><strong>Before you begin:</strong> Know the filename or recent
+location.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol start="39" type="1">
+<li><p>Press Ctrl+O.</p></li>
+<li><p>Use the Recent list or Browse.</p></li>
+<li><p>Navigate to the file.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Wait for the document to load.</p></li>
+<li><p>Use Ctrl+Home and begin reading.</p></li>
 </ol>
-<p>What should happen: The correct document opens.</p>
-<p>If that does not happen: If another file opens, close it with Ctrl+W and verify the filename before selecting.</p>
-<p>Practice: Close and reopen your practice file.</p>
+<p><strong>What should happen:</strong> The correct document opens.</p>
+<p><strong>If that does not happen:</strong> If another file opens,
+close it with Ctrl+W and verify the filename before selecting.</p>
+<p><strong>Practice:</strong> Close and reopen your practice file.</p>
 <h2 id="part-6---find-and-replace">Part 6 - Find and Replace</h2>
-<h2 id="61-find-text">6.1 Find Text</h2>
-<p>What you will learn: Search within a document.</p>
-<p>Before you begin: Open a document containing several paragraphs.</p>
-<h3 id="exactly-how-to-do-it-9">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+F.</li>
-<li>Type the word or phrase you want to find.</li>
-<li>Press Enter if required.</li>
-<li>Press Tab until the results list is announced.</li>
-<li>Use Up/Down Arrow through results.</li>
-<li>Press Enter on a result to move to it.</li>
-<li>Press Escape to close the Navigation Pane when finished.</li>
+<h3 id="find-text">6.1 Find Text</h3>
+<p><strong>What you will learn:</strong> Search within a document.</p>
+<p><strong>Before you begin:</strong> Open a document containing several
+paragraphs.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol start="45" type="1">
+<li><p>Press Ctrl+F.</p></li>
+<li><p>Type the word or phrase you want to find.</p></li>
+<li><p>Press Enter if required.</p></li>
+<li><p>Press Tab until the results list is announced.</p></li>
+<li><p>Use Up/Down Arrow through results.</p></li>
+<li><p>Press Enter on a result to move to it.</p></li>
+<li><p>Press Escape to close the Navigation Pane when finished.</p></li>
 </ol>
-<p>What should happen: Word moves to the selected occurrence.</p>
-<p>If that does not happen: If the Navigation Pane seems confusing, press Escape and reopen with Ctrl+F.</p>
-<p>Practice: Find three different words.</p>
-<h2 id="62-replace-text">6.2 Replace Text</h2>
-<p>What you will learn: Replace one or all occurrences.</p>
-<p>Before you begin: Open a practice document.</p>
-<h3 id="exactly-how-to-do-it-10">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+H.</li>
-<li>Type the old text in Find what.</li>
-<li>Press Tab to Replace with.</li>
-<li>Type the new text.</li>
-<li>Tab to Find Next and activate it.</li>
-<li>Use Replace to change only the current occurrence, or Replace All only when every occurrence should change.</li>
-<li>Read Word&#x27;s replacement count if shown.</li>
+<p><strong>What should happen:</strong> Word moves to the selected
+occurrence.</p>
+<p><strong>If that does not happen:</strong> If the Navigation Pane
+seems confusing, press Escape and reopen with Ctrl+F.</p>
+<p><strong>Practice:</strong> Find three different words.</p>
+<h3 id="replace-text">6.2 Replace Text</h3>
+<p><strong>What you will learn:</strong> Replace one or all
+occurrences.</p>
+<p><strong>Before you begin:</strong> Open a practice document.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol start="52" type="1">
+<li><p>Press Ctrl+H.</p></li>
+<li><p>Type the old text in Find what.</p></li>
+<li><p>Press Tab to Replace with.</p></li>
+<li><p>Type the new text.</p></li>
+<li><p>Tab to Find Next and activate it.</p></li>
+<li><p>Use Replace to change only the current occurrence, or Replace All
+only when every occurrence should change.</p></li>
+<li><p>Read Word's replacement count if shown.</p></li>
 </ol>
-<p>What should happen: The intended text is replaced.</p>
-<p>If that does not happen: If Replace All would change unintended text, press Escape and use Replace one occurrence at a time.</p>
-<p>Practice: Replace one word safely, then undo.</p>
-<h2 id="part-7---character-and-paragraph-formatting">Part 7 - Character and Paragraph Formatting</h2>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<p><strong>What should happen:</strong> The intended text is
+replaced.</p>
+<p><strong>If that does not happen:</strong> If Replace All would change
+unintended text, press Escape and use Replace one occurrence at a
+time.</p>
+<p><strong>Practice:</strong> Replace one word safely, then undo.</p>
+<h2 id="part-7---character-and-paragraph-formatting">Part 7 - Character
+and Paragraph Formatting</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Bold</td>
 <td>Ctrl+B</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Italic</td>
 <td>Ctrl+I</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Underline</td>
 <td>Ctrl+U</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Left align</td>
 <td>Ctrl+L</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Center</td>
 <td>Ctrl+E</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Right align</td>
 <td>Ctrl+R</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Justify</td>
 <td>Ctrl+J</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Increase font size</td>
 <td>Ctrl+Shift+&gt;</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Decrease font size</td>
 <td>Ctrl+Shift+&lt;</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Clear direct character formatting</td>
 <td>Ctrl+Spacebar</td>
 </tr>
-</tbody></table>
-<h2 id="71-apply-bold-to-existing-text">7.1 Apply Bold to Existing Text</h2>
-<p>What you will learn: Format selected text without retyping it.</p>
-<p>Before you begin: Have text available.</p>
-<h3 id="exactly-how-to-do-it-11">Exactly how to do it</h3>
-<ol>
-<li>Select the word or phrase.</li>
-<li>Press Ctrl+B.</li>
-<li>Use your screen reader&#x27;s formatting information command if available to confirm bold.</li>
-<li>Press Right Arrow without Shift to clear the selection and move the caret.</li>
+</tbody>
+</table></div>
+<h3 id="apply-bold-to-existing-text">7.1 Apply Bold to Existing
+Text</h3>
+<p><strong>What you will learn:</strong> Format selected text without
+retyping it.</p>
+<p><strong>Before you begin:</strong> Have text available.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol start="59" type="1">
+<li><p>Select the word or phrase.</p></li>
+<li><p>Press Ctrl+B.</p></li>
+<li><p>Use your screen reader's formatting information command if
+available to confirm bold.</p></li>
+<li><p>Press Right Arrow without Shift to clear the selection and move
+the caret.</p></li>
 </ol>
-<p>What should happen: Selected text becomes bold.</p>
-<p>If that does not happen: If newly typed text continues in bold unexpectedly, press Ctrl+B again to toggle bold off.</p>
-<p>Practice: Bold and unbold a practice phrase.</p>
-<h2 id="72-change-paragraph-alignment">7.2 Change Paragraph Alignment</h2>
-<p>What you will learn: Change how a paragraph is positioned.</p>
-<p>Before you begin: Place the caret anywhere in a paragraph.</p>
-<h3 id="exactly-how-to-do-it-12">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+E to center.</li>
-<li>Listen for any screen-reader formatting feedback.</li>
-<li>Press Ctrl+L to restore left alignment.</li>
+<p><strong>What should happen:</strong> Selected text becomes bold.</p>
+<p><strong>If that does not happen:</strong> If newly typed text
+continues in bold unexpectedly, press Ctrl+B again to toggle bold
+off.</p>
+<p><strong>Practice:</strong> Bold and unbold a practice phrase.</p>
+<h3 id="change-paragraph-alignment">7.2 Change Paragraph Alignment</h3>
+<p><strong>What you will learn:</strong> Change how a paragraph is
+positioned.</p>
+<p><strong>Before you begin:</strong> Place the caret anywhere in a
+paragraph.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol start="63" type="1">
+<li><p>Press Ctrl+E to center.</p></li>
+<li><p>Listen for any screen-reader formatting feedback.</p></li>
+<li><p>Press Ctrl+L to restore left alignment.</p></li>
 </ol>
-<p>What should happen: The paragraph alignment changes.</p>
-<p>If that does not happen: If only part of a paragraph changes unexpectedly, check whether text was selected.</p>
-<p>Practice: Center a heading, then restore left alignment.</p>
-<h2 id="part-8---headings-styles-and-navigation-pane">Part 8 - Headings, Styles, and Navigation Pane</h2>
-<p>Built-in heading styles are critical for accessibility. They let screen readers and Word&#x27;s Navigation Pane understand document structure.</p>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<p><strong>What should happen:</strong> The paragraph alignment
+changes.</p>
+<p><strong>If that does not happen:</strong> If only part of a paragraph
+changes unexpectedly, check whether text was selected.</p>
+<p><strong>Practice:</strong> Center a heading, then restore left
+alignment.</p>
+<h2 id="part-8---headings-styles-and-navigation-pane">Part 8 - Headings,
+Styles, and Navigation Pane</h2>
+<p>Built-in heading styles are critical for accessibility. They let
+screen readers and Word's Navigation Pane understand document
+structure.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Heading 1</td>
 <td>Ctrl+Alt+1</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Heading 2</td>
 <td>Ctrl+Alt+2</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Heading 3</td>
 <td>Ctrl+Alt+3</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Normal style</td>
 <td>Ctrl+Shift+N</td>
 </tr>
-</tbody></table>
-<h2 id="81-apply-a-real-heading-style">8.1 Apply a Real Heading Style</h2>
-<p>What you will learn: Make a section navigable to screen readers.</p>
-<p>Before you begin: Type a short section title on its own line.</p>
-<h3 id="exactly-how-to-do-it-13">Exactly how to do it</h3>
-<ol>
-<li>Place the caret in the title line.</li>
-<li>Press Ctrl+Alt+1 for Heading 1, or Ctrl+Alt+2 for Heading 2.</li>
-<li>Move to the next paragraph and press Ctrl+Shift+N if you need to ensure Normal style for body text.</li>
-<li>Open Navigation Pane with Ctrl+F.</li>
-<li>Move to the Headings view/tab.</li>
-<li>Confirm the heading appears in the headings list.</li>
+</tbody>
+</table></div>
+<h3 id="apply-a-real-heading-style">8.1 Apply a Real Heading Style</h3>
+<p><strong>What you will learn:</strong> Make a section navigable to
+screen readers.</p>
+<p><strong>Before you begin:</strong> Type a short section title on its
+own line.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol start="66" type="1">
+<li><p>Place the caret in the title line.</p></li>
+<li><p>Press Ctrl+Alt+1 for Heading 1, or Ctrl+Alt+2 for Heading
+2.</p></li>
+<li><p>Move to the next paragraph and press Ctrl+Shift+N if you need to
+ensure Normal style for body text.</p></li>
+<li><p>Open Navigation Pane with Ctrl+F.</p></li>
+<li><p>Move to the Headings view/tab.</p></li>
+<li><p>Confirm the heading appears in the headings list.</p></li>
 </ol>
-<p>What should happen: The heading is recognized structurally, not just visually.</p>
-<p>If that does not happen: If the heading is absent from Navigation Pane, it may have direct visual formatting rather than a built-in Heading style.</p>
-<p>Practice: Create Heading 1 and Heading 2 sections and navigate between them.</p>
-<p>Heading order: Use Heading 1, then Heading 2, then Heading 3 as structure requires. Do not skip levels solely to get a visual size.</p>
-<h2 id="82-navigate-by-headings">8.2 Navigate by Headings</h2>
-<p>What you will learn: Jump through a long document.</p>
-<p>Before you begin: The document contains built-in heading styles.</p>
-<h3 id="exactly-how-to-do-it-14">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+F.</li>
-<li>Move to the Headings tab in the Navigation Pane.</li>
-<li>Use Tab/Shift+Tab and arrow keys until the heading list is focused.</li>
-<li>Use Up/Down Arrow through headings.</li>
-<li>Press Enter on the desired heading.</li>
-<li>Press Escape to return to the document.</li>
+<p><strong>What should happen:</strong> The heading is recognized
+structurally, not just visually.</p>
+<p><strong>If that does not happen:</strong> If the heading is absent
+from Navigation Pane, it may have direct visual formatting rather than a
+built-in Heading style.</p>
+<p><strong>Practice:</strong> Create Heading 1 and Heading 2 sections
+and navigate between them.</p>
+<p><strong>Heading order:</strong> Use Heading 1, then Heading 2, then
+Heading 3 as structure requires. Do not skip levels solely to get a
+visual size.</p>
+<h3 id="navigate-by-headings">8.2 Navigate by Headings</h3>
+<p><strong>What you will learn:</strong> Jump through a long
+document.</p>
+<p><strong>Before you begin:</strong> The document contains built-in
+heading styles.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol start="72" type="1">
+<li><p>Press Ctrl+F.</p></li>
+<li><p>Move to the Headings tab in the Navigation Pane.</p></li>
+<li><p>Use Tab/Shift+Tab and arrow keys until the heading list is
+focused.</p></li>
+<li><p>Use Up/Down Arrow through headings.</p></li>
+<li><p>Press Enter on the desired heading.</p></li>
+<li><p>Press Escape to return to the document.</p></li>
 </ol>
-<p>What should happen: The caret moves to the chosen section.</p>
-<p>If that does not happen: If only search results appear, switch the Navigation Pane from Results to Headings.</p>
-<p>Practice: Navigate to three headings without scrolling.</p>
-<h2 id="part-9---bulleted-and-numbered-lists">Part 9 - Bulleted and Numbered Lists</h2>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<p><strong>What should happen:</strong> The caret moves to the chosen
+section.</p>
+<p><strong>If that does not happen:</strong> If only search results
+appear, switch the Navigation Pane from Results to Headings.</p>
+<p><strong>Practice:</strong> Navigate to three headings without
+scrolling.</p>
+<h2 id="part-9---bulleted-and-numbered-lists">Part 9 - Bulleted and
+Numbered Lists</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Bulleted list</td>
 <td>Ctrl+Shift+L</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Numbered list</td>
 <td>Alt+H, N (Ribbon path may continue depending gallery)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Increase indent</td>
 <td>Tab at start of list item</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Decrease indent</td>
 <td>Shift+Tab at start of list item</td>
 </tr>
-</tbody></table>
-<h2 id="91-create-a-bulleted-list">9.1 Create a Bulleted List</h2>
-<p>What you will learn: Create a true list that screen readers recognize.</p>
-<p>Before you begin: Place the caret on a blank line.</p>
-<h3 id="exactly-how-to-do-it-15">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+Shift+L.</li>
-<li>Type the first item.</li>
-<li>Press Enter.</li>
-<li>Type the second item.</li>
-<li>Press Enter.</li>
-<li>Type the third item.</li>
-<li>Press Enter twice to end the list.</li>
+</tbody>
+</table></div>
+<h3 id="create-a-bulleted-list">9.1 Create a Bulleted List</h3>
+<p><strong>What you will learn:</strong> Create a true list that screen
+readers recognize.</p>
+<p><strong>Before you begin:</strong> Place the caret on a blank
+line.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol start="78" type="1">
+<li><p>Press Ctrl+Shift+L.</p></li>
+<li><p>Type the first item.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Type the second item.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Type the third item.</p></li>
+<li><p>Press Enter twice to end the list.</p></li>
 </ol>
-<p>What should happen: Word creates a structured bulleted list.</p>
-<p>If that does not happen: If pressing Enter twice creates another blank bullet instead of ending the list, press Backspace once at the empty bullet.</p>
-<p>Practice: Create a three-item grocery list.</p>
-<h2 id="92-create-a-numbered-list-from-the-ribbon">9.2 Create a Numbered List from the Ribbon</h2>
-<p>What you will learn: Create a structured numbered sequence.</p>
-<p>Before you begin: Place the caret on a blank line.</p>
-<h3 id="exactly-how-to-do-it-16">Exactly how to do it</h3>
-<ol>
-<li>Press Alt+H.</li>
-<li>Press N to open Numbering.</li>
-<li>Use arrow keys through numbering styles.</li>
-<li>Press Enter on the desired numbering style.</li>
-<li>Type each item and press Enter between items.</li>
-<li>Press Enter twice to end the list.</li>
+<p><strong>What should happen:</strong> Word creates a structured
+bulleted list.</p>
+<p><strong>If that does not happen:</strong> If pressing Enter twice
+creates another blank bullet instead of ending the list, press Backspace
+once at the empty bullet.</p>
+<p><strong>Practice:</strong> Create a three-item grocery list.</p>
+<h3 id="create-a-numbered-list-from-the-ribbon">9.2 Create a Numbered
+List from the Ribbon</h3>
+<p><strong>What you will learn:</strong> Create a structured numbered
+sequence.</p>
+<p><strong>Before you begin:</strong> Place the caret on a blank
+line.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol start="85" type="1">
+<li><p>Press Alt+H.</p></li>
+<li><p>Press N to open Numbering.</p></li>
+<li><p>Use arrow keys through numbering styles.</p></li>
+<li><p>Press Enter on the desired numbering style.</p></li>
+<li><p>Type each item and press Enter between items.</p></li>
+<li><p>Press Enter twice to end the list.</p></li>
 </ol>
-<p>What should happen: Word numbers each item automatically.</p>
-<p>If that does not happen: If the numbering gallery does not open with the same key sequence, use Alt and listen to current KeyTips because Office updates can modify Ribbon KeyTips.</p>
-<p>Practice: Create a five-step procedure.</p>
+<p><strong>What should happen:</strong> Word numbers each item
+automatically.</p>
+<p><strong>If that does not happen:</strong> If the numbering gallery
+does not open with the same key sequence, use Alt and listen to current
+KeyTips because Office updates can modify Ribbon KeyTips.</p>
+<p><strong>Practice:</strong> Create a five-step procedure.</p>
 <h2 id="part-10---tables">Part 10 - Tables</h2>
-<p>Simple tables are accessible when they contain a predictable grid and a clearly designated header row. Avoid merged, split, or nested cells when possible.</p>
-<h2 id="101-insert-a-simple-table">10.1 Insert a Simple Table</h2>
-<p>What you will learn: Create a table by specifying rows and columns.</p>
-<p>Before you begin: Place the caret where the table should appear.</p>
-<h3 id="exactly-how-to-do-it-17">Exactly how to do it</h3>
-<ol>
-<li>Press Alt+N to open Insert.</li>
-<li>Use the current Ribbon KeyTip for Table, often T.</li>
-<li>Choose Insert Table if needed.</li>
-<li>Enter the number of columns.</li>
-<li>Enter the number of rows.</li>
-<li>Activate OK/Insert.</li>
-<li>Type the first cell.</li>
-<li>Press Tab to move to the next cell.</li>
-<li>Continue through the table.</li>
+<p>Simple tables are accessible when they contain a predictable grid and
+a clearly designated header row. Avoid merged, split, or nested cells
+when possible.</p>
+<h3 id="insert-a-simple-table">10.1 Insert a Simple Table</h3>
+<p><strong>What you will learn:</strong> Create a table by specifying
+rows and columns.</p>
+<p><strong>Before you begin:</strong> Place the caret where the table
+should appear.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol start="91" type="1">
+<li><p>Press Alt+N to open Insert.</p></li>
+<li><p>Use the current Ribbon KeyTip for Table, often T.</p></li>
+<li><p>Choose Insert Table if needed.</p></li>
+<li><p>Enter the number of columns.</p></li>
+<li><p>Enter the number of rows.</p></li>
+<li><p>Activate OK/Insert.</p></li>
+<li><p>Type the first cell.</p></li>
+<li><p>Press Tab to move to the next cell.</p></li>
+<li><p>Continue through the table.</p></li>
 </ol>
-<p>What should happen: A table appears and Tab moves from cell to cell.</p>
-<p>If that does not happen: If you reach the last cell and press Tab, Word may add another row. Use Shift+Tab to move back if that was accidental.</p>
-<p>Practice: Create a 3-column by 4-row table.</p>
-<h2 id="102-make-the-first-row-a-header-row">10.2 Make the First Row a Header Row</h2>
-<p>What you will learn: Help screen readers identify column names.</p>
-<p>Before you begin: The table has a first row containing column headings.</p>
-<h3 id="exactly-how-to-do-it-18">Exactly how to do it</h3>
-<ol>
-<li>Place the caret anywhere in the table.</li>
-<li>Use the Table Design/Layout contextual tabs that appear on the Ribbon.</li>
-<li>Locate the Header Row option under Table Style Options.</li>
-<li>Turn Header Row on.</li>
-<li>Use Accessibility Checker afterward to verify the table.</li>
+<p><strong>What should happen:</strong> A table appears and Tab moves
+from cell to cell.</p>
+<p><strong>If that does not happen:</strong> If you reach the last cell
+and press Tab, Word may add another row. Use Shift+Tab to move back if
+that was accidental.</p>
+<p><strong>Practice:</strong> Create a 3-column by 4-row table.</p>
+<h3 id="make-the-first-row-a-header-row">10.2 Make the First Row a
+Header Row</h3>
+<p><strong>What you will learn:</strong> Help screen readers identify
+column names.</p>
+<p><strong>Before you begin:</strong> The table has a first row
+containing column headings.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol start="100" type="1">
+<li><p>Place the caret anywhere in the table.</p></li>
+<li><p>Use the Table Design/Layout contextual tabs that appear on the
+Ribbon.</p></li>
+<li><p>Locate the Header Row option under Table Style Options.</p></li>
+<li><p>Turn Header Row on.</p></li>
+<li><p>Use Accessibility Checker afterward to verify the table.</p></li>
 </ol>
-<p>What should happen: Word treats the first row as a header row in supported accessibility contexts.</p>
-<p>If that does not happen: If the contextual table tabs do not appear, make sure the caret is inside the table.</p>
-<p>Practice: Create a Name, Date, Status table with a header row.</p>
-<p>Avoid: Merged cells, split cells, nested tables, and completely blank structural rows/columns can make screen-reader navigation difficult.</p>
-<h2 id="part-11---links-pictures-alt-text-headers-and-footers">Part 11 - Links, Pictures, Alt Text, Headers, and Footers</h2>
-<h2 id="111-insert-a-hyperlink-with-meaningful-text">11.1 Insert a Hyperlink with Meaningful Text</h2>
-<p>What you will learn: Create a link that makes sense when read out of context.</p>
-<p>Before you begin: Select descriptive text such as &#x27;Microsoft Accessibility Support&#x27;.</p>
-<h3 id="exactly-how-to-do-it-19">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+K.</li>
-<li>Move to the Address field.</li>
-<li>Type or paste the web address.</li>
-<li>Press Enter.</li>
-<li>Read the linked text to confirm it is descriptive.</li>
+<p><strong>What should happen:</strong> Word treats the first row as a
+header row in supported accessibility contexts.</p>
+<p><strong>If that does not happen:</strong> If the contextual table
+tabs do not appear, make sure the caret is inside the table.</p>
+<p><strong>Practice:</strong> Create a Name, Date, Status table with a
+header row.</p>
+<p><strong>Avoid:</strong> Merged cells, split cells, nested tables, and
+completely blank structural rows/columns can make screen-reader
+navigation difficult.</p>
+<h2 id="part-11---links-pictures-alt-text-headers-and-footers">Part 11 -
+Links, Pictures, Alt Text, Headers, and Footers</h2>
+<h3 id="insert-a-hyperlink-with-meaningful-text">11.1 Insert a Hyperlink
+with Meaningful Text</h3>
+<p><strong>What you will learn:</strong> Create a link that makes sense
+when read out of context.</p>
+<p><strong>Before you begin:</strong> Select descriptive text such as
+'Microsoft Accessibility Support'.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol start="105" type="1">
+<li><p>Press Ctrl+K.</p></li>
+<li><p>Move to the Address field.</p></li>
+<li><p>Type or paste the web address.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Read the linked text to confirm it is descriptive.</p></li>
 </ol>
-<p>What should happen: The selected text becomes a hyperlink.</p>
-<p>If that does not happen: If the visible text is a raw URL, consider replacing it with descriptive text unless the URL itself is necessary.</p>
-<p>Practice: Create one descriptive hyperlink.</p>
-<h2 id="112-add-alt-text-to-an-image">11.2 Add Alt Text to an Image</h2>
-<p>What you will learn: Make an image understandable to someone who cannot see it.</p>
-<p>Before you begin: Insert or select a picture.</p>
-<h3 id="exactly-how-to-do-it-20">Exactly how to do it</h3>
-<ol>
-<li>Select the image using Word&#x27;s object navigation or Tab/Shift+Tab.</li>
-<li>Open the image context menu with Shift+F10 or use Picture Format.</li>
-<li>Open Alt Text.</li>
-<li>Type a concise description that communicates the image&#x27;s purpose/content.</li>
-<li>If the image is purely decorative, mark it decorative instead of writing meaningless alt text.</li>
-<li>Close the Alt Text pane.</li>
+<p><strong>What should happen:</strong> The selected text becomes a
+hyperlink.</p>
+<p><strong>If that does not happen:</strong> If the visible text is a
+raw URL, consider replacing it with descriptive text unless the URL
+itself is necessary.</p>
+<p><strong>Practice:</strong> Create one descriptive hyperlink.</p>
+<h3 id="add-alt-text-to-an-image">11.2 Add Alt Text to an Image</h3>
+<p><strong>What you will learn:</strong> Make an image understandable to
+someone who cannot see it.</p>
+<p><strong>Before you begin:</strong> Insert or select a picture.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol start="110" type="1">
+<li><p>Select the image using Word's object navigation or
+Tab/Shift+Tab.</p></li>
+<li><p>Open the image context menu with Shift+F10 or use Picture
+Format.</p></li>
+<li><p>Open Alt Text.</p></li>
+<li><p>Type a concise description that communicates the image's
+purpose/content.</p></li>
+<li><p>If the image is purely decorative, mark it decorative instead of
+writing meaningless alt text.</p></li>
+<li><p>Close the Alt Text pane.</p></li>
 </ol>
-<p>What should happen: The image has meaningful alternative text or is marked decorative.</p>
-<p>If that does not happen: If Alt Text is not available from the context menu, use the Picture Format/Accessibility controls or Accessibility Assistant.</p>
-<p>Practice: Add alt text to a practice image.</p>
-<h2 id="113-add-a-page-number-in-the-footer">11.3 Add a Page Number in the Footer</h2>
-<p>What you will learn: Insert repeated page numbers.</p>
-<p>Before you begin: Open a document with more than one page.</p>
-<h3 id="exactly-how-to-do-it-21">Exactly how to do it</h3>
-<ol>
-<li>Press Alt+N for Insert.</li>
-<li>Use the current Ribbon KeyTip for Page Number.</li>
-<li>Choose Bottom of Page or another location.</li>
-<li>Choose a simple page-number style.</li>
-<li>Press Escape when finished editing the header/footer.</li>
+<p><strong>What should happen:</strong> The image has meaningful
+alternative text or is marked decorative.</p>
+<p><strong>If that does not happen:</strong> If Alt Text is not
+available from the context menu, use the Picture Format/Accessibility
+controls or Accessibility Assistant.</p>
+<p><strong>Practice:</strong> Add alt text to a practice image.</p>
+<h3 id="add-a-page-number-in-the-footer">11.3 Add a Page Number in the
+Footer</h3>
+<p><strong>What you will learn:</strong> Insert repeated page
+numbers.</p>
+<p><strong>Before you begin:</strong> Open a document with more than one
+page.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol start="116" type="1">
+<li><p>Press Alt+N for Insert.</p></li>
+<li><p>Use the current Ribbon KeyTip for Page Number.</p></li>
+<li><p>Choose Bottom of Page or another location.</p></li>
+<li><p>Choose a simple page-number style.</p></li>
+<li><p>Press Escape when finished editing the header/footer.</p></li>
 </ol>
-<p>What should happen: Page numbers appear on pages.</p>
-<p>If that does not happen: If the header/footer remains active, press Escape or use the Close Header and Footer command.</p>
-<p>Practice: Insert page numbers, then remove them in a copy.</p>
-<p>Accessibility caution: Do not place essential document content only in headers or footers. Screen-reader users may not encounter header/footer information in the normal reading flow.</p>
-<h2 id="part-12---spelling-grammar-and-editor">Part 12 - Spelling, Grammar, and Editor</h2>
-<h2 id="121-review-spelling-and-grammar">12.1 Review Spelling and Grammar</h2>
-<p>What you will learn: Use Word&#x27;s Editor to correct errors one by one.</p>
-<p>Before you begin: Have a document with a deliberate spelling error.</p>
-<h3 id="exactly-how-to-do-it-22">Exactly how to do it</h3>
-<ol>
-<li>Press F7.</li>
-<li>Wait for Editor/proofing to open.</li>
-<li>Listen to the flagged word and suggestion.</li>
-<li>Use Tab and arrow keys through suggestions/actions.</li>
-<li>Choose the correct suggestion with Enter.</li>
-<li>Use Ignore only when the original word is intentionally correct.</li>
-<li>Continue until Word reports the review is complete or close Editor.</li>
+<p><strong>What should happen:</strong> Page numbers appear on
+pages.</p>
+<p><strong>If that does not happen:</strong> If the header/footer
+remains active, press Escape or use the Close Header and Footer
+command.</p>
+<p><strong>Practice:</strong> Insert page numbers, then remove them in a
+copy.</p>
+<p><strong>Accessibility caution:</strong> Do not place essential
+document content only in headers or footers. Screen-reader users may not
+encounter header/footer information in the normal reading flow.</p>
+<h2 id="part-12---spelling-grammar-and-editor">Part 12 - Spelling,
+Grammar, and Editor</h2>
+<h3 id="review-spelling-and-grammar">12.1 Review Spelling and
+Grammar</h3>
+<p><strong>What you will learn:</strong> Use Word's Editor to correct
+errors one by one.</p>
+<p><strong>Before you begin:</strong> Have a document with a deliberate
+spelling error.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol start="121" type="1">
+<li><p>Press F7.</p></li>
+<li><p>Wait for Editor/proofing to open.</p></li>
+<li><p>Listen to the flagged word and suggestion.</p></li>
+<li><p>Use Tab and arrow keys through suggestions/actions.</p></li>
+<li><p>Choose the correct suggestion with Enter.</p></li>
+<li><p>Use Ignore only when the original word is intentionally
+correct.</p></li>
+<li><p>Continue until Word reports the review is complete or close
+Editor.</p></li>
 </ol>
-<p>What should happen: The error is corrected or intentionally ignored.</p>
-<p>If that does not happen: If F7 performs another laptop function, use Fn+F7 or Review &gt; Editor.</p>
-<p>Practice: Create three spelling errors and correct them.</p>
+<p><strong>What should happen:</strong> The error is corrected or
+intentionally ignored.</p>
+<p><strong>If that does not happen:</strong> If F7 performs another
+laptop function, use Fn+F7 or Review &gt; Editor.</p>
+<p><strong>Practice:</strong> Create three spelling errors and correct
+them.</p>
 <h2 id="part-13---comments">Part 13 - Comments</h2>
-<h2 id="131-add-a-comment">13.1 Add a Comment</h2>
-<p>What you will learn: Attach a collaboration note to selected text.</p>
-<p>Before you begin: Open a document and select a word or phrase.</p>
-<h3 id="exactly-how-to-do-it-23">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+Alt+M.</li>
-<li>Wait for the comment box/pane.</li>
-<li>Type the comment.</li>
-<li>Post the comment using the Post comment button or current keyboard command.</li>
-<li>Return to the document.</li>
+<h3 id="add-a-comment">13.1 Add a Comment</h3>
+<p><strong>What you will learn:</strong> Attach a collaboration note to
+selected text.</p>
+<p><strong>Before you begin:</strong> Open a document and select a word
+or phrase.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol start="128" type="1">
+<li><p>Press Ctrl+Alt+M.</p></li>
+<li><p>Wait for the comment box/pane.</p></li>
+<li><p>Type the comment.</p></li>
+<li><p>Post the comment using the Post comment button or current
+keyboard command.</p></li>
+<li><p>Return to the document.</p></li>
 </ol>
-<p>What should happen: A comment is attached to the selected text.</p>
-<p>If that does not happen: If the comment is not posted, verify that you activated Post rather than simply moving focus away.</p>
-<p>Practice: Add a comment to a practice sentence.</p>
-<h2 id="132-read-and-navigate-comments">13.2 Read and Navigate Comments</h2>
-<p>What you will learn: Review collaboration feedback.</p>
-<p>Before you begin: Open a document containing comments.</p>
-<h3 id="exactly-how-to-do-it-24">Exactly how to do it</h3>
-<ol>
-<li>Open the Review tab with Alt+R.</li>
-<li>Navigate to Comments or the Comments pane.</li>
-<li>Use Tab and arrow keys through comments.</li>
-<li>Listen for author and comment text.</li>
-<li>Use Resolve/Delete only when you intend to change review history.</li>
+<p><strong>What should happen:</strong> A comment is attached to the
+selected text.</p>
+<p><strong>If that does not happen:</strong> If the comment is not
+posted, verify that you activated Post rather than simply moving focus
+away.</p>
+<p><strong>Practice:</strong> Add a comment to a practice sentence.</p>
+<h3 id="read-and-navigate-comments">13.2 Read and Navigate Comments</h3>
+<p><strong>What you will learn:</strong> Review collaboration
+feedback.</p>
+<p><strong>Before you begin:</strong> Open a document containing
+comments.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol start="133" type="1">
+<li><p>Open the Review tab with Alt+R.</p></li>
+<li><p>Navigate to Comments or the Comments pane.</p></li>
+<li><p>Use Tab and arrow keys through comments.</p></li>
+<li><p>Listen for author and comment text.</p></li>
+<li><p>Use Resolve/Delete only when you intend to change review
+history.</p></li>
 </ol>
-<p>What should happen: You can read comments independently.</p>
-<p>If that does not happen: If focus jumps back into the document, reopen the Comments pane and use F6/Shift+F6 to move among Word regions.</p>
-<p>Practice: Read two comments and return to the document.</p>
+<p><strong>What should happen:</strong> You can read comments
+independently.</p>
+<p><strong>If that does not happen:</strong> If focus jumps back into
+the document, reopen the Comments pane and use F6/Shift+F6 to move among
+Word regions.</p>
+<p><strong>Practice:</strong> Read two comments and return to the
+document.</p>
 <h2 id="part-14---track-changes">Part 14 - Track Changes</h2>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Toggle Track Changes</td>
 <td>Ctrl+Shift+E</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Review tab</td>
 <td>Alt+R</td>
 </tr>
-</tbody></table>
-<h2 id="141-turn-track-changes-on-and-off">14.1 Turn Track Changes On and Off</h2>
-<p>What you will learn: Record edits for review.</p>
-<p>Before you begin: Open a practice document.</p>
-<h3 id="exactly-how-to-do-it-25">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+Shift+E.</li>
-<li>Listen for the Track Changes state if your screen reader announces it.</li>
-<li>Type a short word or delete one character.</li>
-<li>Press Ctrl+Shift+E again to stop tracking new changes.</li>
+</tbody>
+</table></div>
+<h3 id="turn-track-changes-on-and-off">14.1 Turn Track Changes On and
+Off</h3>
+<p><strong>What you will learn:</strong> Record edits for review.</p>
+<p><strong>Before you begin:</strong> Open a practice document.</p>
+<h4 id="exactly-how-to-do-it-24">Exactly how to do it</h4>
+<ol start="138" type="1">
+<li><p>Press Ctrl+Shift+E.</p></li>
+<li><p>Listen for the Track Changes state if your screen reader
+announces it.</p></li>
+<li><p>Type a short word or delete one character.</p></li>
+<li><p>Press Ctrl+Shift+E again to stop tracking new changes.</p></li>
 </ol>
-<p>What should happen: Word marks the edit as a tracked change while tracking is on.</p>
-<p>If that does not happen: If the state is unclear, open Review with Alt+R and inspect Track Changes.</p>
-<p>Practice: Track one insertion and one deletion.</p>
-<h2 id="142-accept-or-reject-changes">14.2 Accept or Reject Changes</h2>
-<p>What you will learn: Resolve revisions one at a time.</p>
-<p>Before you begin: Open a document containing tracked changes and use All Markup for best review.</p>
-<h3 id="exactly-how-to-do-it-26">Exactly how to do it</h3>
-<ol>
-<li>Press Alt+R.</li>
-<li>Navigate to Next Change.</li>
-<li>Read the changed content and change type.</li>
-<li>Choose Accept or Reject.</li>
-<li>Move to the next change.</li>
-<li>Repeat until all intended changes are reviewed.</li>
+<p><strong>What should happen:</strong> Word marks the edit as a tracked
+change while tracking is on.</p>
+<p><strong>If that does not happen:</strong> If the state is unclear,
+open Review with Alt+R and inspect Track Changes.</p>
+<p><strong>Practice:</strong> Track one insertion and one deletion.</p>
+<h3 id="accept-or-reject-changes">14.2 Accept or Reject Changes</h3>
+<p><strong>What you will learn:</strong> Resolve revisions one at a
+time.</p>
+<p><strong>Before you begin:</strong> Open a document containing tracked
+changes and use All Markup for best review.</p>
+<h4 id="exactly-how-to-do-it-25">Exactly how to do it</h4>
+<ol start="142" type="1">
+<li><p>Press Alt+R.</p></li>
+<li><p>Navigate to Next Change.</p></li>
+<li><p>Read the changed content and change type.</p></li>
+<li><p>Choose Accept or Reject.</p></li>
+<li><p>Move to the next change.</p></li>
+<li><p>Repeat until all intended changes are reviewed.</p></li>
 </ol>
-<p>What should happen: Accepted changes become permanent; rejected changes are removed/reverted.</p>
-<p>If that does not happen: If Word appears to hide changes, confirm the display option is All Markup rather than No Markup.</p>
-<p>Practice: Accept one practice change and reject another.</p>
-<p>Direct Track Changes shortcut: Microsoft currently documents Ctrl+Shift+E to toggle Track Changes in Word for Windows.</p>
-<h2 id="part-15---accessibility-checker-and-accessible-document-design">Part 15 - Accessibility Checker and Accessible Document Design</h2>
+<p><strong>What should happen:</strong> Accepted changes become
+permanent; rejected changes are removed/reverted.</p>
+<p><strong>If that does not happen:</strong> If Word appears to hide
+changes, confirm the display option is All Markup rather than No
+Markup.</p>
+<p><strong>Practice:</strong> Accept one practice change and reject
+another.</p>
+<p><strong>Direct Track Changes shortcut:</strong> Microsoft currently
+documents Ctrl+Shift+E to toggle Track Changes in Word for Windows.</p>
+<h2
+id="part-15---accessibility-checker-and-accessible-document-design">Part
+15 - Accessibility Checker and Accessible Document Design</h2>
 <ul>
-<li>Use built-in Title, Subtitle, and Heading styles.</li>
-<li>Use headings in logical order.</li>
-<li>Use meaningful link text.</li>
-<li>Add alt text to informative images and mark decorative images decorative.</li>
-<li>Use simple tables with header rows.</li>
-<li>Do not use color alone to convey meaning.</li>
-<li>Use sufficient color contrast.</li>
-<li>Avoid long runs of ALL CAPS and overly decorative fonts.</li>
-<li>Give documents a meaningful title.</li>
-<li>Run Accessibility Checker/Accessibility Assistant before sharing.</li>
+<li><p>Use built-in Title, Subtitle, and Heading styles.</p></li>
+<li><p>Use headings in logical order.</p></li>
+<li><p>Use meaningful link text.</p></li>
+<li><p>Add alt text to informative images and mark decorative images
+decorative.</p></li>
+<li><p>Use simple tables with header rows.</p></li>
+<li><p>Do not use color alone to convey meaning.</p></li>
+<li><p>Use sufficient color contrast.</p></li>
+<li><p>Avoid long runs of ALL CAPS and overly decorative fonts.</p></li>
+<li><p>Give documents a meaningful title.</p></li>
+<li><p>Run Accessibility Checker/Accessibility Assistant before
+sharing.</p></li>
 </ul>
-<h2 id="151-run-accessibility-checker">15.1 Run Accessibility Checker</h2>
-<p>What you will learn: Find common accessibility problems.</p>
-<p>Before you begin: Open a finished practice document.</p>
-<h3 id="exactly-how-to-do-it-27">Exactly how to do it</h3>
-<ol>
-<li>Open Review with Alt+R.</li>
-<li>Navigate to Check Accessibility/Accessibility.</li>
-<li>Open Accessibility Checker or Accessibility Assistant.</li>
-<li>Move through issues in the accessibility pane.</li>
-<li>Select an issue.</li>
-<li>Read why it is a problem and the recommended fix.</li>
-<li>Correct the issue in the document.</li>
-<li>Repeat until no important issues remain.</li>
+<h3 id="run-accessibility-checker">15.1 Run Accessibility Checker</h3>
+<p><strong>What you will learn:</strong> Find common accessibility
+problems.</p>
+<p><strong>Before you begin:</strong> Open a finished practice
+document.</p>
+<h4 id="exactly-how-to-do-it-26">Exactly how to do it</h4>
+<ol start="148" type="1">
+<li><p>Open Review with Alt+R.</p></li>
+<li><p>Navigate to Check Accessibility/Accessibility.</p></li>
+<li><p>Open Accessibility Checker or Accessibility Assistant.</p></li>
+<li><p>Move through issues in the accessibility pane.</p></li>
+<li><p>Select an issue.</p></li>
+<li><p>Read why it is a problem and the recommended fix.</p></li>
+<li><p>Correct the issue in the document.</p></li>
+<li><p>Repeat until no important issues remain.</p></li>
 </ol>
-<p>What should happen: The document has fewer accessibility barriers.</p>
-<p>If that does not happen: If the Accessibility command is unavailable, verify you are using a supported Word version and not a restricted document.</p>
-<p>Practice: Run it on your practice document and fix at least two issues.</p>
-<p>Accessibility Assistant: Current Word for Microsoft 365 on Windows includes Accessibility Assistant, which can surface accessibility issues while you work.</p>
-<h2 id="part-16---print-export-to-pdf-and-share">Part 16 - Print, Export to PDF, and Share</h2>
-<h2 id="161-print-with-keyboard">16.1 Print with Keyboard</h2>
-<p>What you will learn: Review the selected printer and print settings before printing.</p>
-<p>Before you begin: Have a document open.</p>
-<h3 id="exactly-how-to-do-it-28">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+P.</li>
-<li>Listen to the selected printer.</li>
-<li>Use Tab through copies, page range, orientation, paper size, and other settings.</li>
-<li>Confirm the printer and number of copies.</li>
-<li>Move to Print.</li>
-<li>Press Enter.</li>
+<p><strong>What should happen:</strong> The document has fewer
+accessibility barriers.</p>
+<p><strong>If that does not happen:</strong> If the Accessibility
+command is unavailable, verify you are using a supported Word version
+and not a restricted document.</p>
+<p><strong>Practice:</strong> Run it on your practice document and fix
+at least two issues.</p>
+<p><strong>Accessibility Assistant:</strong> Current Word for Microsoft
+365 on Windows includes Accessibility Assistant, which can surface
+accessibility issues while you work.</p>
+<h2 id="part-16---print-export-to-pdf-and-share">Part 16 - Print, Export
+to PDF, and Share</h2>
+<h3 id="print-with-keyboard">16.1 Print with Keyboard</h3>
+<p><strong>What you will learn:</strong> Review the selected printer and
+print settings before printing.</p>
+<p><strong>Before you begin:</strong> Have a document open.</p>
+<h4 id="exactly-how-to-do-it-27">Exactly how to do it</h4>
+<ol start="156" type="1">
+<li><p>Press Ctrl+P.</p></li>
+<li><p>Listen to the selected printer.</p></li>
+<li><p>Use Tab through copies, page range, orientation, paper size, and
+other settings.</p></li>
+<li><p>Confirm the printer and number of copies.</p></li>
+<li><p>Move to Print.</p></li>
+<li><p>Press Enter.</p></li>
 </ol>
-<p>What should happen: The document is sent to the selected printer.</p>
-<p>If that does not happen: If the wrong printer is selected, change it before activating Print.</p>
-<p>Practice: Open Print, review settings, then cancel.</p>
-<h2 id="162-exportsave-as-pdf">16.2 Export/Save as PDF</h2>
-<p>What you will learn: Create a PDF copy while keeping the Word original.</p>
-<p>Before you begin: Save the DOCX first.</p>
-<h3 id="exactly-how-to-do-it-29">Exactly how to do it</h3>
-<ol>
-<li>Open File with Alt+F.</li>
-<li>Navigate to Save As or Export.</li>
-<li>Choose PDF as the file type.</li>
-<li>Enter a filename/location.</li>
-<li>If an accessibility/tagging option is available, keep document structure tags enabled.</li>
-<li>Save.</li>
-<li>Return to Word and confirm the original DOCX remains open.</li>
+<p><strong>What should happen:</strong> The document is sent to the
+selected printer.</p>
+<p><strong>If that does not happen:</strong> If the wrong printer is
+selected, change it before activating Print.</p>
+<p><strong>Practice:</strong> Open Print, review settings, then
+cancel.</p>
+<h3 id="exportsave-as-pdf">16.2 Export/Save as PDF</h3>
+<p><strong>What you will learn:</strong> Create a PDF copy while keeping
+the Word original.</p>
+<p><strong>Before you begin:</strong> Save the DOCX first.</p>
+<h4 id="exactly-how-to-do-it-28">Exactly how to do it</h4>
+<ol start="162" type="1">
+<li><p>Open File with Alt+F.</p></li>
+<li><p>Navigate to Save As or Export.</p></li>
+<li><p>Choose PDF as the file type.</p></li>
+<li><p>Enter a filename/location.</p></li>
+<li><p>If an accessibility/tagging option is available, keep document
+structure tags enabled.</p></li>
+<li><p>Save.</p></li>
+<li><p>Return to Word and confirm the original DOCX remains
+open.</p></li>
 </ol>
-<p>What should happen: A PDF copy is created.</p>
-<p>If that does not happen: If the PDF is intended for accessibility, verify it after export because not every Word feature converts perfectly.</p>
-<p>Practice: Export a practice document and compare filenames.</p>
-<h2 id="163-share-a-document">16.3 Share a Document</h2>
-<p>What you will learn: Share through Microsoft 365 when available.</p>
-<p>Before you begin: The document is saved to OneDrive/SharePoint if cloud sharing is required.</p>
-<h3 id="exactly-how-to-do-it-30">Exactly how to do it</h3>
-<ol>
-<li>Open Share using the Share button or File &gt; Share.</li>
-<li>Enter the recipient&#x27;s email address.</li>
-<li>Review permissions such as Can edit or Can view.</li>
-<li>Add a message if needed.</li>
-<li>Confirm the recipient and permission.</li>
-<li>Activate Send/Share.</li>
+<p><strong>What should happen:</strong> A PDF copy is created.</p>
+<p><strong>If that does not happen:</strong> If the PDF is intended for
+accessibility, verify it after export because not every Word feature
+converts perfectly.</p>
+<p><strong>Practice:</strong> Export a practice document and compare
+filenames.</p>
+<h3 id="share-a-document">16.3 Share a Document</h3>
+<p><strong>What you will learn:</strong> Share through Microsoft 365
+when available.</p>
+<p><strong>Before you begin:</strong> The document is saved to
+OneDrive/SharePoint if cloud sharing is required.</p>
+<h4 id="exactly-how-to-do-it-29">Exactly how to do it</h4>
+<ol start="169" type="1">
+<li><p>Open Share using the Share button or File &gt; Share.</p></li>
+<li><p>Enter the recipient's email address.</p></li>
+<li><p>Review permissions such as Can edit or Can view.</p></li>
+<li><p>Add a message if needed.</p></li>
+<li><p>Confirm the recipient and permission.</p></li>
+<li><p>Activate Send/Share.</p></li>
 </ol>
-<p>What should happen: The recipient receives access according to the selected permission.</p>
-<p>If that does not happen: If Share is unavailable, the file may be stored only locally or your account may not have cloud sharing enabled.</p>
-<p>Practice: Open Share and inspect permission choices without sending.</p>
+<p><strong>What should happen:</strong> The recipient receives access
+according to the selected permission.</p>
+<p><strong>If that does not happen:</strong> If Share is unavailable,
+the file may be stored only locally or your account may not have cloud
+sharing enabled.</p>
+<p><strong>Practice:</strong> Open Share and inspect permission choices
+without sending.</p>
 <h2 id="part-17---narrator-with-word">Part 17 - Narrator with Word</h2>
-<p>Narrator works with Word using standard Windows keyboard focus plus Narrator reading commands. Word&#x27;s own shortcuts still perform document actions.</p>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<p>Narrator works with Word using standard Windows keyboard focus plus
+Narrator reading commands. Word's own shortcuts still perform document
+actions.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Start/stop Narrator</td>
 <td>Windows+Ctrl+Enter</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Narrator key</td>
 <td>Caps Lock or Insert</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Input Learning</td>
 <td>Narrator+1</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Next/previous item</td>
 <td>Narrator+Right/Left Arrow</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Primary action</td>
 <td>Narrator+Enter</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Narrator Settings</td>
 <td>Windows+Ctrl+N</td>
 </tr>
-</tbody></table>
-<h2 id="171-read-and-edit-a-word-document-with-narrator">17.1 Read and Edit a Word Document with Narrator</h2>
-<p>What you will learn: Use Narrator without confusing Word commands and Narrator commands.</p>
-<p>Before you begin: Narrator is on and a Word document is open.</p>
-<h3 id="exactly-how-to-do-it-31">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+Home to move to the start of the document.</li>
-<li>Use Down Arrow to move line by line.</li>
-<li>Use Ctrl+Right Arrow to move by word.</li>
-<li>Use Narrator reading commands when you need more detailed review.</li>
-<li>Type text normally in the document body.</li>
-<li>Use Word shortcuts such as Ctrl+B or Ctrl+S normally.</li>
-<li>Use Narrator+1 Input Learning when you forget a Narrator command.</li>
+</tbody>
+</table></div>
+<h3 id="read-and-edit-a-word-document-with-narrator">17.1 Read and Edit
+a Word Document with Narrator</h3>
+<p><strong>What you will learn:</strong> Use Narrator without confusing
+Word commands and Narrator commands.</p>
+<p><strong>Before you begin:</strong> Narrator is on and a Word document
+is open.</p>
+<h4 id="exactly-how-to-do-it-30">Exactly how to do it</h4>
+<ol start="175" type="1">
+<li><p>Press Ctrl+Home to move to the start of the document.</p></li>
+<li><p>Use Down Arrow to move line by line.</p></li>
+<li><p>Use Ctrl+Right Arrow to move by word.</p></li>
+<li><p>Use Narrator reading commands when you need more detailed
+review.</p></li>
+<li><p>Type text normally in the document body.</p></li>
+<li><p>Use Word shortcuts such as Ctrl+B or Ctrl+S normally.</p></li>
+<li><p>Use Narrator+1 Input Learning when you forget a Narrator
+command.</p></li>
 </ol>
-<p>What should happen: Narrator reads Word while Word editing shortcuts continue to work.</p>
-<p>If that does not happen: If Narrator item navigation moves out of the document unexpectedly, use F6/Shift+F6 or click-free Tab navigation to return to the document area.</p>
-<p>Practice: Read and edit two paragraphs.</p>
-<h2 id="172-navigate-headings-with-narrator-and-word-navigation-pane">17.2 Navigate Headings with Narrator and Word Navigation Pane</h2>
-<p>What you will learn: Jump by document structure.</p>
-<p>Before you begin: The document contains built-in heading styles.</p>
-<h3 id="exactly-how-to-do-it-32">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+F.</li>
-<li>Move to the Headings list.</li>
-<li>Use arrow keys through headings.</li>
-<li>Press Enter on the desired heading.</li>
-<li>Press Escape.</li>
-<li>Use Narrator to read from the new location.</li>
+<p><strong>What should happen:</strong> Narrator reads Word while Word
+editing shortcuts continue to work.</p>
+<p><strong>If that does not happen:</strong> If Narrator item navigation
+moves out of the document unexpectedly, use F6/Shift+F6 or click-free
+Tab navigation to return to the document area.</p>
+<p><strong>Practice:</strong> Read and edit two paragraphs.</p>
+<h3 id="navigate-headings-with-narrator-and-word-navigation-pane">17.2
+Navigate Headings with Narrator and Word Navigation Pane</h3>
+<p><strong>What you will learn:</strong> Jump by document structure.</p>
+<p><strong>Before you begin:</strong> The document contains built-in
+heading styles.</p>
+<h4 id="exactly-how-to-do-it-31">Exactly how to do it</h4>
+<ol start="182" type="1">
+<li><p>Press Ctrl+F.</p></li>
+<li><p>Move to the Headings list.</p></li>
+<li><p>Use arrow keys through headings.</p></li>
+<li><p>Press Enter on the desired heading.</p></li>
+<li><p>Press Escape.</p></li>
+<li><p>Use Narrator to read from the new location.</p></li>
 </ol>
-<p>What should happen: The document moves to the selected heading.</p>
-<p>If that does not happen: If the heading list is empty, the document may not use real heading styles.</p>
-<p>Practice: Navigate to three headings.</p>
+<p><strong>What should happen:</strong> The document moves to the
+selected heading.</p>
+<p><strong>If that does not happen:</strong> If the heading list is
+empty, the document may not use real heading styles.</p>
+<p><strong>Practice:</strong> Navigate to three headings.</p>
 <h2 id="part-18---nvda-with-word">Part 18 - NVDA with Word</h2>
-<p>NVDA follows Word&#x27;s editing caret and keyboard focus. Standard Word navigation keys are usually the fastest way to edit; NVDA adds speech, formatting, object, and review commands.</p>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<p>NVDA follows Word's editing caret and keyboard focus. Standard Word
+navigation keys are usually the fastest way to edit; NVDA adds speech,
+formatting, object, and review commands.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>NVDA menu</td>
 <td>NVDA+N</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Input Help</td>
 <td>NVDA+1</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Say title</td>
 <td>NVDA+T</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Say focused object</td>
 <td>NVDA+Tab</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Report formatting</td>
 <td>NVDA+F</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Say current line</td>
 <td>NVDA+Up Arrow in desktop layout</td>
 </tr>
-</tbody></table>
-<h2 id="181-review-formatting-with-nvda">18.1 Review Formatting with NVDA</h2>
-<p>What you will learn: Hear font and style information for text.</p>
-<p>Before you begin: Open a formatted Word document with NVDA.</p>
-<h3 id="exactly-how-to-do-it-33">Exactly how to do it</h3>
-<ol>
-<li>Move the caret into the text you want to inspect.</li>
-<li>Press NVDA+F.</li>
-<li>Listen for font, size, style, color, alignment, and other available formatting information.</li>
-<li>Move to another paragraph and repeat.</li>
-<li>Use Word&#x27;s built-in style commands to correct formatting if needed.</li>
+</tbody>
+</table></div>
+<h3 id="review-formatting-with-nvda">18.1 Review Formatting with
+NVDA</h3>
+<p><strong>What you will learn:</strong> Hear font and style information
+for text.</p>
+<p><strong>Before you begin:</strong> Open a formatted Word document
+with NVDA.</p>
+<h4 id="exactly-how-to-do-it-32">Exactly how to do it</h4>
+<ol start="188" type="1">
+<li><p>Move the caret into the text you want to inspect.</p></li>
+<li><p>Press NVDA+F.</p></li>
+<li><p>Listen for font, size, style, color, alignment, and other
+available formatting information.</p></li>
+<li><p>Move to another paragraph and repeat.</p></li>
+<li><p>Use Word's built-in style commands to correct formatting if
+needed.</p></li>
 </ol>
-<p>What should happen: NVDA reports formatting at the caret.</p>
-<p>If that does not happen: If the command differs in your NVDA keyboard layout, use NVDA+1 Input Help or the NVDA command reference.</p>
-<p>Practice: Compare Normal text and a Heading 1 paragraph.</p>
-<h2 id="182-use-word-headings-with-nvda">18.2 Use Word Headings with NVDA</h2>
-<p>What you will learn: Navigate structure using Word rather than web Browse Mode.</p>
-<p>Before you begin: Open a structured DOCX.</p>
-<h3 id="exactly-how-to-do-it-34">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+F to open Navigation Pane.</li>
-<li>Move to Headings.</li>
-<li>Use arrows through headings.</li>
-<li>Press Enter on a heading.</li>
-<li>Press Escape.</li>
-<li>Continue reading/editing.</li>
+<p><strong>What should happen:</strong> NVDA reports formatting at the
+caret.</p>
+<p><strong>If that does not happen:</strong> If the command differs in
+your NVDA keyboard layout, use NVDA+1 Input Help or the NVDA command
+reference.</p>
+<p><strong>Practice:</strong> Compare Normal text and a Heading 1
+paragraph.</p>
+<h3 id="use-word-headings-with-nvda">18.2 Use Word Headings with
+NVDA</h3>
+<p><strong>What you will learn:</strong> Navigate structure using Word
+rather than web Browse Mode.</p>
+<p><strong>Before you begin:</strong> Open a structured DOCX.</p>
+<h4 id="exactly-how-to-do-it-33">Exactly how to do it</h4>
+<ol start="193" type="1">
+<li><p>Press Ctrl+F to open Navigation Pane.</p></li>
+<li><p>Move to Headings.</p></li>
+<li><p>Use arrows through headings.</p></li>
+<li><p>Press Enter on a heading.</p></li>
+<li><p>Press Escape.</p></li>
+<li><p>Continue reading/editing.</p></li>
 </ol>
-<p>What should happen: Focus moves to the selected heading.</p>
-<p>If that does not happen: If NVDA Browse Mode behavior appears unexpectedly, remember that desktop Word is not a normal webpage; rely on Word&#x27;s Navigation Pane and document commands.</p>
-<p>Practice: Navigate a structured document.</p>
+<p><strong>What should happen:</strong> Focus moves to the selected
+heading.</p>
+<p><strong>If that does not happen:</strong> If NVDA Browse Mode
+behavior appears unexpectedly, remember that desktop Word is not a
+normal webpage; rely on Word's Navigation Pane and document
+commands.</p>
+<p><strong>Practice:</strong> Navigate a structured document.</p>
 <h2 id="part-19---jaws-with-word">Part 19 - JAWS with Word</h2>
-<p>JAWS provides extensive Word support while standard Word shortcuts remain active.</p>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<p>JAWS provides extensive Word support while standard Word shortcuts
+remain active.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Keyboard Help</td>
 <td>Insert+1</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Hot Key Help</td>
 <td>Insert+H</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Windows Key Help</td>
 <td>Insert+W</td>
 </tr>
-<tr>
+<tr class="even">
 <td>JAWS Command Search</td>
 <td>Insert+Space, then J</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Say title</td>
 <td>Insert+T</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Say line</td>
 <td>Insert+Up Arrow</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Say word</td>
 <td>Insert+Numpad5</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Say font</td>
 <td>Insert+F</td>
 </tr>
-</tbody></table>
-<h2 id="191-review-text-and-formatting-with-jaws">19.1 Review Text and Formatting with JAWS</h2>
-<p>What you will learn: Use JAWS reading commands while editing Word.</p>
-<p>Before you begin: Open a Word document with JAWS.</p>
-<h3 id="exactly-how-to-do-it-35">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+Home.</li>
-<li>Use Down Arrow or JAWS Say Line to read.</li>
-<li>Use Ctrl+Right Arrow through words.</li>
-<li>Press Insert+F to hear font/format information.</li>
-<li>Use standard Word shortcuts to change text/formatting.</li>
-<li>Press Insert+H when you need Word-specific JAWS hotkeys.</li>
+</tbody>
+</table></div>
+<h3 id="review-text-and-formatting-with-jaws">19.1 Review Text and
+Formatting with JAWS</h3>
+<p><strong>What you will learn:</strong> Use JAWS reading commands while
+editing Word.</p>
+<p><strong>Before you begin:</strong> Open a Word document with
+JAWS.</p>
+<h4 id="exactly-how-to-do-it-34">Exactly how to do it</h4>
+<ol start="199" type="1">
+<li><p>Press Ctrl+Home.</p></li>
+<li><p>Use Down Arrow or JAWS Say Line to read.</p></li>
+<li><p>Use Ctrl+Right Arrow through words.</p></li>
+<li><p>Press Insert+F to hear font/format information.</p></li>
+<li><p>Use standard Word shortcuts to change text/formatting.</p></li>
+<li><p>Press Insert+H when you need Word-specific JAWS hotkeys.</p></li>
 </ol>
-<p>What should happen: JAWS reads Word and reports formatting.</p>
-<p>If that does not happen: If a JAWS command is forgotten, use Insert+1 or Command Search instead of guessing.</p>
-<p>Practice: Compare formatting in a heading and body paragraph.</p>
-<h2 id="192-use-jaws-with-navigation-pane">19.2 Use JAWS with Navigation Pane</h2>
-<p>What you will learn: Move by real headings.</p>
-<p>Before you begin: The document uses Heading styles.</p>
-<h3 id="exactly-how-to-do-it-36">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+F.</li>
-<li>Move to Headings in Navigation Pane.</li>
-<li>Use Up/Down Arrow through headings.</li>
-<li>Press Enter.</li>
-<li>Press Escape.</li>
-<li>Use JAWS reading commands at the new location.</li>
+<p><strong>What should happen:</strong> JAWS reads Word and reports
+formatting.</p>
+<p><strong>If that does not happen:</strong> If a JAWS command is
+forgotten, use Insert+1 or Command Search instead of guessing.</p>
+<p><strong>Practice:</strong> Compare formatting in a heading and body
+paragraph.</p>
+<h3 id="use-jaws-with-navigation-pane">19.2 Use JAWS with Navigation
+Pane</h3>
+<p><strong>What you will learn:</strong> Move by real headings.</p>
+<p><strong>Before you begin:</strong> The document uses Heading
+styles.</p>
+<h4 id="exactly-how-to-do-it-35">Exactly how to do it</h4>
+<ol start="205" type="1">
+<li><p>Press Ctrl+F.</p></li>
+<li><p>Move to Headings in Navigation Pane.</p></li>
+<li><p>Use Up/Down Arrow through headings.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Press Escape.</p></li>
+<li><p>Use JAWS reading commands at the new location.</p></li>
 </ol>
-<p>What should happen: The caret moves to the chosen section.</p>
-<p>If that does not happen: If the heading list is empty, correct the document&#x27;s style structure.</p>
-<p>Practice: Navigate to three headings.</p>
-<h2 id="part-20---reading-long-documents">Part 20 - Reading Long Documents</h2>
+<p><strong>What should happen:</strong> The caret moves to the chosen
+section.</p>
+<p><strong>If that does not happen:</strong> If the heading list is
+empty, correct the document's style structure.</p>
+<p><strong>Practice:</strong> Navigate to three headings.</p>
+<h2 id="part-20---reading-long-documents">Part 20 - Reading Long
+Documents</h2>
 <ul>
-<li>Use Ctrl+Home and Ctrl+End to establish a known position.</li>
-<li>Use Ctrl+F for search and Navigation Pane.</li>
-<li>Use built-in headings to jump between sections.</li>
-<li>Use Page Up/Page Down for larger visual/page movement, but rely on headings/search for precise navigation.</li>
-<li>Use comments and Track Changes panes separately from the document body.</li>
-<li>Save before large edits.</li>
-<li>For very long documents, create a structured heading hierarchy before doing detailed editing.</li>
+<li><p>Use Ctrl+Home and Ctrl+End to establish a known
+position.</p></li>
+<li><p>Use Ctrl+F for search and Navigation Pane.</p></li>
+<li><p>Use built-in headings to jump between sections.</p></li>
+<li><p>Use Page Up/Page Down for larger visual/page movement, but rely
+on headings/search for precise navigation.</p></li>
+<li><p>Use comments and Track Changes panes separately from the document
+body.</p></li>
+<li><p>Save before large edits.</p></li>
+<li><p>For very long documents, create a structured heading hierarchy
+before doing detailed editing.</p></li>
 </ul>
-<h2 id="201-build-a-navigation-strategy">20.1 Build a Navigation Strategy</h2>
-<p>What you will learn: Read a long document without getting lost.</p>
-<p>Before you begin: Open a document with several headings.</p>
-<h3 id="exactly-how-to-do-it-37">Exactly how to do it</h3>
-<ol>
-<li>Press Ctrl+Home.</li>
-<li>Open Navigation Pane with Ctrl+F.</li>
-<li>Review the heading list.</li>
-<li>Move to a middle section.</li>
-<li>Search for a keyword within that section/document.</li>
-<li>Press Escape and read from the result.</li>
-<li>Use Ctrl+Home to return to the start when finished.</li>
+<h3 id="build-a-navigation-strategy">20.1 Build a Navigation
+Strategy</h3>
+<p><strong>What you will learn:</strong> Read a long document without
+getting lost.</p>
+<p><strong>Before you begin:</strong> Open a document with several
+headings.</p>
+<h4 id="exactly-how-to-do-it-36">Exactly how to do it</h4>
+<ol start="211" type="1">
+<li><p>Press Ctrl+Home.</p></li>
+<li><p>Open Navigation Pane with Ctrl+F.</p></li>
+<li><p>Review the heading list.</p></li>
+<li><p>Move to a middle section.</p></li>
+<li><p>Search for a keyword within that section/document.</p></li>
+<li><p>Press Escape and read from the result.</p></li>
+<li><p>Use Ctrl+Home to return to the start when finished.</p></li>
 </ol>
-<p>What should happen: You can move intentionally rather than line-by-line through the entire file.</p>
-<p>If that does not happen: If the document has no headings, search and page navigation are still available, but consider adding proper styles if you own the document.</p>
-<p>Practice: Navigate a document by heading, search result, and beginning/end.</p>
-<h2 id="part-21---braille-displays-with-word">Part 21 - Braille Displays with Word</h2>
-<p>A braille display works through the active screen reader. Word itself does not directly control the braille display.</p>
+<p><strong>What should happen:</strong> You can move intentionally
+rather than line-by-line through the entire file.</p>
+<p><strong>If that does not happen:</strong> If the document has no
+headings, search and page navigation are still available, but consider
+adding proper styles if you own the document.</p>
+<p><strong>Practice:</strong> Navigate a document by heading, search
+result, and beginning/end.</p>
+<h2 id="part-21---braille-displays-with-word">Part 21 - Braille Displays
+with Word</h2>
+<p>A braille display works through the active screen reader. Word itself
+does not directly control the braille display.</p>
 <ul>
-<li>Narrator braille settings are configured in Windows Narrator settings.</li>
-<li>NVDA braille displays are configured in NVDA Settings &gt; Braille.</li>
-<li>JAWS braille displays are configured in JAWS braille/display settings.</li>
-<li>Routing keys should move the editing caret to the braille cell&#x27;s represented position when supported.</li>
-<li>Braille panning moves through text beyond the display&#x27;s cell width.</li>
-<li>Translation tables and contracted/uncontracted braille are screen-reader settings, not Word document formatting.</li>
+<li><p>Narrator braille settings are configured in Windows Narrator
+settings.</p></li>
+<li><p>NVDA braille displays are configured in NVDA Settings &gt;
+Braille.</p></li>
+<li><p>JAWS braille displays are configured in JAWS braille/display
+settings.</p></li>
+<li><p>Routing keys should move the editing caret to the braille cell's
+represented position when supported.</p></li>
+<li><p>Braille panning moves through text beyond the display's cell
+width.</p></li>
+<li><p>Translation tables and contracted/uncontracted braille are
+screen-reader settings, not Word document formatting.</p></li>
 </ul>
-<h2 id="211-test-word-with-a-braille-display">21.1 Test Word with a Braille Display</h2>
-<p>What you will learn: Verify output, input, and routing.</p>
-<p>Before you begin: Connect the display and configure it in your screen reader.</p>
-<h3 id="exactly-how-to-do-it-38">Exactly how to do it</h3>
-<ol>
-<li>Open Word and type a short sentence.</li>
-<li>Read the sentence on the braille display.</li>
-<li>Pan right/left if the sentence exceeds the display width.</li>
-<li>Press a routing key over a word.</li>
-<li>Type one character and confirm it appears at the intended location.</li>
-<li>Undo the test change with Ctrl+Z.</li>
+<h3 id="test-word-with-a-braille-display">21.1 Test Word with a Braille
+Display</h3>
+<p><strong>What you will learn:</strong> Verify output, input, and
+routing.</p>
+<p><strong>Before you begin:</strong> Connect the display and configure
+it in your screen reader.</p>
+<h4 id="exactly-how-to-do-it-37">Exactly how to do it</h4>
+<ol start="218" type="1">
+<li><p>Open Word and type a short sentence.</p></li>
+<li><p>Read the sentence on the braille display.</p></li>
+<li><p>Pan right/left if the sentence exceeds the display
+width.</p></li>
+<li><p>Press a routing key over a word.</p></li>
+<li><p>Type one character and confirm it appears at the intended
+location.</p></li>
+<li><p>Undo the test change with Ctrl+Z.</p></li>
 </ol>
-<p>What should happen: Braille follows the Word caret and routing works.</p>
-<p>If that does not happen: If braille changes in other apps but not Word, restart Word/screen reader and verify focus is in the document body.</p>
-<p>Practice: Perform output, input, routing.</p>
+<p><strong>What should happen:</strong> Braille follows the Word caret
+and routing works.</p>
+<p><strong>If that does not happen:</strong> If braille changes in other
+apps but not Word, restart Word/screen reader and verify focus is in the
+document body.</p>
+<p><strong>Practice:</strong> Perform output, input, routing.</p>
 <h2 id="part-22---word-online">Part 22 - Word Online</h2>
-<p>Word for the web runs inside a browser, so browser and screen-reader web modes can interact with Word&#x27;s own shortcuts.</p>
+<p>Word for the web runs inside a browser, so browser and screen-reader
+web modes can interact with Word's own shortcuts.</p>
 <ul>
-<li>Word for the web may use Alt+Windows logo key combinations for Ribbon commands.</li>
-<li>Screen reader Browse/Scan/Virtual modes may need to be adjusted when editing.</li>
-<li>Some desktop features are simplified or unavailable online.</li>
-<li>Use the desktop Word manual sections as concepts, but verify web-specific shortcuts in Microsoft&#x27;s current Word for the web documentation.</li>
+<li><p>Word for the web may use Alt+Windows logo key combinations for
+Ribbon commands.</p></li>
+<li><p>Screen reader Browse/Scan/Virtual modes may need to be adjusted
+when editing.</p></li>
+<li><p>Some desktop features are simplified or unavailable
+online.</p></li>
+<li><p>Use the desktop Word manual sections as concepts, but verify
+web-specific shortcuts in Microsoft's current Word for the web
+documentation.</p></li>
 </ul>
 <h2 id="part-23---troubleshooting">Part 23 - Troubleshooting</h2>
-<h2 id="231-typing-replaces-text-unexpectedly">23.1 Typing Replaces Text Unexpectedly</h2>
-<p>What you will learn: Check whether text is selected or overwrite behavior is active.</p>
-<p>Before you begin: You are editing a document.</p>
-<h3 id="exactly-how-to-do-it-39">Exactly how to do it</h3>
-<ol>
-<li>Press Escape to clear temporary menus.</li>
-<li>Press an Arrow key without Shift to clear any selection.</li>
-<li>Type one test character.</li>
-<li>If text still overwrites existing characters, check Word&#x27;s advanced editing settings for overtype behavior.</li>
-<li>Undo test changes with Ctrl+Z.</li>
+<h3 id="typing-replaces-text-unexpectedly">23.1 Typing Replaces Text
+Unexpectedly</h3>
+<p><strong>What you will learn:</strong> Check whether text is selected
+or overwrite behavior is active.</p>
+<p><strong>Before you begin:</strong> You are editing a document.</p>
+<h4 id="exactly-how-to-do-it-38">Exactly how to do it</h4>
+<ol start="224" type="1">
+<li><p>Press Escape to clear temporary menus.</p></li>
+<li><p>Press an Arrow key without Shift to clear any selection.</p></li>
+<li><p>Type one test character.</p></li>
+<li><p>If text still overwrites existing characters, check Word's
+advanced editing settings for overtype behavior.</p></li>
+<li><p>Undo test changes with Ctrl+Z.</p></li>
 </ol>
-<p>What should happen: Typing inserts text normally.</p>
-<p>If that does not happen: If replacement occurs only after selecting text, that is normal Word behavior: typing replaces the selection.</p>
-<p>Practice: Practice selecting a word and observe deliberate replacement.</p>
-<h2 id="232-the-ribbon-has-focus-and-you-cannot-type">23.2 The Ribbon Has Focus and You Cannot Type</h2>
-<p>What you will learn: Return to the document body.</p>
-<p>Before you begin: Word is open.</p>
-<h3 id="exactly-how-to-do-it-40">Exactly how to do it</h3>
-<ol>
-<li>Press Escape once or twice.</li>
-<li>Press F6 until the document area is announced.</li>
-<li>Press an Arrow key.</li>
-<li>Type a test character.</li>
-<li>Undo with Ctrl+Z.</li>
+<p><strong>What should happen:</strong> Typing inserts text
+normally.</p>
+<p><strong>If that does not happen:</strong> If replacement occurs only
+after selecting text, that is normal Word behavior: typing replaces the
+selection.</p>
+<p><strong>Practice:</strong> Practice selecting a word and observe
+deliberate replacement.</p>
+<h3 id="the-ribbon-has-focus-and-you-cannot-type">23.2 The Ribbon Has
+Focus and You Cannot Type</h3>
+<p><strong>What you will learn:</strong> Return to the document
+body.</p>
+<p><strong>Before you begin:</strong> Word is open.</p>
+<h4 id="exactly-how-to-do-it-39">Exactly how to do it</h4>
+<ol start="229" type="1">
+<li><p>Press Escape once or twice.</p></li>
+<li><p>Press F6 until the document area is announced.</p></li>
+<li><p>Press an Arrow key.</p></li>
+<li><p>Type a test character.</p></li>
+<li><p>Undo with Ctrl+Z.</p></li>
 </ol>
-<p>What should happen: The caret is back in the document.</p>
-<p>If that does not happen: If F6 cycles among panes without reaching the document, close modal panes/dialogs first.</p>
-<p>Practice: Move to Ribbon with Alt, then recover to document.</p>
-<h2 id="233-screen-reader-reads-very-little-or-nothing">23.3 Screen Reader Reads Very Little or Nothing</h2>
-<p>What you will learn: Separate a Word-focus problem from an audio/screen-reader problem.</p>
-<p>Before you begin: Word is open.</p>
-<h3 id="exactly-how-to-do-it-41">Exactly how to do it</h3>
-<ol>
-<li>Press Alt+Tab away from Word and confirm the screen reader speaks another app.</li>
-<li>If it does, Alt+Tab back to Word.</li>
-<li>Press F6 until document is focused.</li>
-<li>Press Ctrl+Home and Down Arrow.</li>
-<li>If speech is still absent, use your screen reader&#x27;s &#x27;say line/current item&#x27; command.</li>
-<li>Restart the screen reader only after checking focus.</li>
+<p><strong>What should happen:</strong> The caret is back in the
+document.</p>
+<p><strong>If that does not happen:</strong> If F6 cycles among panes
+without reaching the document, close modal panes/dialogs first.</p>
+<p><strong>Practice:</strong> Move to Ribbon with Alt, then recover to
+document.</p>
+<h3 id="screen-reader-reads-very-little-or-nothing">23.3 Screen Reader
+Reads Very Little or Nothing</h3>
+<p><strong>What you will learn:</strong> Separate a Word-focus problem
+from an audio/screen-reader problem.</p>
+<p><strong>Before you begin:</strong> Word is open.</p>
+<h4 id="exactly-how-to-do-it-40">Exactly how to do it</h4>
+<ol start="234" type="1">
+<li><p>Press Alt+Tab away from Word and confirm the screen reader speaks
+another app.</p></li>
+<li><p>If it does, Alt+Tab back to Word.</p></li>
+<li><p>Press F6 until document is focused.</p></li>
+<li><p>Press Ctrl+Home and Down Arrow.</p></li>
+<li><p>If speech is still absent, use your screen reader's 'say
+line/current item' command.</p></li>
+<li><p>Restart the screen reader only after checking focus.</p></li>
 </ol>
-<p>What should happen: Speech resumes in Word.</p>
-<p>If that does not happen: If the screen reader is silent everywhere, troubleshoot system audio/screen reader instead of Word.</p>
-<p>Practice: Memorize: test another app &gt; return &gt; F6 &gt; Ctrl+Home &gt; read command.</p>
-<h2 id="234-navigation-pane-shows-no-headings">23.4 Navigation Pane Shows No Headings</h2>
-<p>What you will learn: Determine whether the document has real heading styles.</p>
-<p>Before you begin: Open Navigation Pane.</p>
-<h3 id="exactly-how-to-do-it-42">Exactly how to do it</h3>
-<ol>
-<li>Move to Headings.</li>
-<li>If the list is empty, return to a visible section title.</li>
-<li>Place the caret in the title.</li>
-<li>Apply Heading 1 or Heading 2 with Ctrl+Alt+1/2.</li>
-<li>Return to Navigation Pane.</li>
+<p><strong>What should happen:</strong> Speech resumes in Word.</p>
+<p><strong>If that does not happen:</strong> If the screen reader is
+silent everywhere, troubleshoot system audio/screen reader instead of
+Word.</p>
+<p><strong>Practice:</strong> Memorize: test another app &gt; return
+&gt; F6 &gt; Ctrl+Home &gt; read command.</p>
+<h3 id="navigation-pane-shows-no-headings">23.4 Navigation Pane Shows No
+Headings</h3>
+<p><strong>What you will learn:</strong> Determine whether the document
+has real heading styles.</p>
+<p><strong>Before you begin:</strong> Open Navigation Pane.</p>
+<h4 id="exactly-how-to-do-it-41">Exactly how to do it</h4>
+<ol start="240" type="1">
+<li><p>Move to Headings.</p></li>
+<li><p>If the list is empty, return to a visible section title.</p></li>
+<li><p>Place the caret in the title.</p></li>
+<li><p>Apply Heading 1 or Heading 2 with Ctrl+Alt+1/2.</p></li>
+<li><p>Return to Navigation Pane.</p></li>
 </ol>
-<p>What should happen: The newly styled heading appears.</p>
-<p>If that does not happen: If not, save/reopen the document and verify that the paragraph uses a built-in Heading style.</p>
-<p>Practice: Convert two visually formatted titles into real headings.</p>
-<h2 id="part-24---independent-practice-course">Part 24 - Independent Practice Course</h2>
-<h2 id="level-1---create-and-save">Level 1 - Create and Save</h2>
+<p><strong>What should happen:</strong> The newly styled heading
+appears.</p>
+<p><strong>If that does not happen:</strong> If not, save/reopen the
+document and verify that the paragraph uses a built-in Heading
+style.</p>
+<p><strong>Practice:</strong> Convert two visually formatted titles into
+real headings.</p>
+<h2 id="part-24---independent-practice-course">Part 24 - Independent
+Practice Course</h2>
+<h3 id="level-1---create-and-save">Level 1 - Create and Save</h3>
 <p>☐ Open Word.</p>
 <p>☐ Create blank document.</p>
 <p>☐ Type two paragraphs.</p>
 <p>☐ Save as DOCX.</p>
 <p>☐ Close and reopen.</p>
-<p>Ready to advance: You can complete every checked task without another person telling you which key to press.</p>
-<h2 id="level-2---editing">Level 2 - Editing</h2>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-2---editing">Level 2 - Editing</h3>
 <p>☐ Move by character and word.</p>
 <p>☐ Select a word.</p>
 <p>☐ Replace it.</p>
 <p>☐ Undo/redo.</p>
 <p>☐ Find text.</p>
-<p>Ready to advance: You can complete every checked task without another person telling you which key to press.</p>
-<h2 id="level-3---formatting">Level 3 - Formatting</h2>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-3---formatting">Level 3 - Formatting</h3>
 <p>☐ Bold text.</p>
 <p>☐ Change alignment.</p>
 <p>☐ Create Heading 1 and Heading 2.</p>
 <p>☐ Open Navigation Pane.</p>
-<p>Ready to advance: You can complete every checked task without another person telling you which key to press.</p>
-<h2 id="level-4---lists-and-tables">Level 4 - Lists and Tables</h2>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-4---lists-and-tables">Level 4 - Lists and Tables</h3>
 <p>☐ Create a bulleted list.</p>
 <p>☐ Create a numbered list.</p>
 <p>☐ Insert a 3x4 table.</p>
 <p>☐ Create a header row.</p>
-<p>Ready to advance: You can complete every checked task without another person telling you which key to press.</p>
-<h2 id="level-5---review">Level 5 - Review</h2>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-5---review">Level 5 - Review</h3>
 <p>☐ Run spelling/grammar.</p>
 <p>☐ Add a comment.</p>
 <p>☐ Turn on Track Changes.</p>
 <p>☐ Accept one change.</p>
 <p>☐ Reject one change.</p>
-<p>Ready to advance: You can complete every checked task without another person telling you which key to press.</p>
-<h2 id="level-6---accessibility">Level 6 - Accessibility</h2>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-6---accessibility">Level 6 - Accessibility</h3>
 <p>☐ Add descriptive hyperlink.</p>
 <p>☐ Add image alt text.</p>
 <p>☐ Run Accessibility Checker.</p>
 <p>☐ Fix two issues.</p>
 <p>☐ Verify heading order.</p>
-<p>Ready to advance: You can complete every checked task without another person telling you which key to press.</p>
-<h2 id="level-7---screen-reader">Level 7 - Screen Reader</h2>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-7---screen-reader">Level 7 - Screen Reader</h3>
 <p>☐ Use Narrator, NVDA, or JAWS help.</p>
 <p>☐ Read formatting.</p>
 <p>☐ Navigate headings.</p>
 <p>☐ Recover from Ribbon focus.</p>
-<p>Ready to advance: You can complete every checked task without another person telling you which key to press.</p>
-<h2 id="level-8---braille">Level 8 - Braille</h2>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-8---braille">Level 8 - Braille</h3>
 <p>☐ Read Word text on braille if used.</p>
 <p>☐ Pan text.</p>
 <p>☐ Use routing key.</p>
 <p>☐ Correct one character.</p>
-<p>Ready to advance: You can complete every checked task without another person telling you which key to press.</p>
-<h2 id="level-9---independent-document">Level 9 - Independent Document</h2>
-<p>☐ Create a one-page document with title, headings, list, table, link, and accessible structure.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-9---independent-document">Level 9 - Independent
+Document</h3>
+<p>☐ Create a one-page document with title, headings, list, table, link,
+and accessible structure.</p>
 <p>☐ Run Accessibility Checker.</p>
 <p>☐ Save DOCX and PDF.</p>
-<p>Ready to advance: You can complete every checked task without another person telling you which key to press.</p>
-<h2 id="part-25---quick-reference-commands">Part 25 - Quick Reference Commands</h2>
-<h2 id="word-editing">Word Editing</h2>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h2 id="part-25---quick-reference-commands">Part 25 - Quick Reference
+Commands</h2>
+<h3 id="word-editing">Word Editing</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>New document</td>
 <td>Ctrl+N</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Open</td>
 <td>Ctrl+O</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Save</td>
 <td>Ctrl+S</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Print</td>
 <td>Ctrl+P</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Close document</td>
 <td>Ctrl+W</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Undo / Redo</td>
 <td>Ctrl+Z / Ctrl+Y</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Find / Replace</td>
 <td>Ctrl+F / Ctrl+H</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Select all</td>
 <td>Ctrl+A</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Copy / Cut / Paste</td>
 <td>Ctrl+C / Ctrl+X / Ctrl+V</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Bold / Italic / Underline</td>
 <td>Ctrl+B / Ctrl+I / Ctrl+U</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Heading 1 / 2 / 3</td>
 <td>Ctrl+Alt+1 / 2 / 3</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Normal style</td>
 <td>Ctrl+Shift+N</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Bulleted list</td>
 <td>Ctrl+Shift+L</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Insert hyperlink</td>
 <td>Ctrl+K</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>New comment</td>
 <td>Ctrl+Alt+M</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Track Changes</td>
 <td>Ctrl+Shift+E</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Spelling/Grammar</td>
 <td>F7</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Switch Word regions</td>
 <td>F6 / Shift+F6</td>
 </tr>
-</tbody></table>
-<h2 id="narrator">Narrator</h2>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+</tbody>
+</table></div>
+<h3 id="narrator">Narrator</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Start/stop</td>
 <td>Windows+Ctrl+Enter</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Input Learning</td>
 <td>Narrator+1</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Next/previous item</td>
 <td>Narrator+Right/Left Arrow</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Primary action</td>
 <td>Narrator+Enter</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Settings</td>
 <td>Windows+Ctrl+N</td>
 </tr>
-</tbody></table>
-<h2 id="nvda">NVDA</h2>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+</tbody>
+</table></div>
+<h3 id="nvda">NVDA</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Menu</td>
 <td>NVDA+N</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Input Help</td>
 <td>NVDA+1</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Say title</td>
 <td>NVDA+T</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Say focused object</td>
 <td>NVDA+Tab</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Report formatting</td>
 <td>NVDA+F</td>
 </tr>
-</tbody></table>
-<h2 id="jaws">JAWS</h2>
-<table>
-<thead><tr>
-<th scope="col">Task</th>
-<th scope="col">Command</th>
-</tr></thead><tbody>
-<tr>
+</tbody>
+</table></div>
+<h3 id="jaws">JAWS</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td>Keyboard Help</td>
 <td>Insert+1</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Hot Key Help</td>
 <td>Insert+H</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Command Search</td>
 <td>Insert+Space, then J</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Say title</td>
 <td>Insert+T</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Say line</td>
 <td>Insert+Up Arrow</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Say font</td>
 <td>Insert+F</td>
 </tr>
-</tbody></table>
-<h2 id="part-26---official-microsoft-resources">Part 26 - Official Microsoft Resources</h2>
-<p>Screen reader support for Word</p>
-<p>Basic tasks using a screen reader with Word</p>
-<p>Keyboard shortcuts in Word</p>
-<p>Track and review changes with a screen reader</p>
-<p>Make Word documents accessible</p>
-<p>Accessibility Assistant in Word</p>
-<p>Create headers or footers with a screen reader</p>
+</tbody>
+</table></div>
+<h2 id="part-26---official-microsoft-resources">Part 26 - Official
+Microsoft Resources</h2>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/word/screen-reader-support-for-word"><u>Screen
+reader support for Word</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/word/basic-tasks-using-a-screen-reader-with-word"><u>Basic
+tasks using a screen reader with Word</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/word/keyboard-shortcuts-in-word"><u>Keyboard
+shortcuts in Word</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/word/use-a-screen-reader-to-track-and-review-changes-in-a-document-in-word"><u>Track
+and review changes with a screen reader</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/word/make-your-word-documents-accessible-to-people-with-disabilities"><u>Make
+Word documents accessible</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/word/make-your-word-documents-accessible-to-everyone-with-accessibility-assistant"><u>Accessibility
+Assistant in Word</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/word/use-a-screen-reader-to-create-headers-or-footers-in-word"><u>Create
+headers or footers with a screen reader</u></a></p>
 <h2 id="final-independence-checklist">Final Independence Checklist</h2>
 <p>☐ I can open Word and create a document.</p>
 <p>☐ I can type, move, select, edit, undo, and redo.</p>
@@ -1338,14 +1763,15 @@
 <p>☐ I can run Accessibility Checker/Accessibility Assistant.</p>
 <p>☐ I can print, export to PDF, and share.</p>
 <p>☐ I can use Word with Narrator, NVDA, or JAWS.</p>
-<p>☐ I understand that braille is configured through the screen reader.</p>
+<p>☐ I understand that braille is configured through the screen
+reader.</p>
 <p>☐ I can troubleshoot focus, speech, typing, and heading problems.</p>
-<p>Most important habit: In Word, separate three things in your mind: the document caret, Word&#x27;s Ribbon/panes, and your screen reader. If a command behaves unexpectedly, first determine which of those currently has focus.</p>
+<p><strong>Most important habit:</strong> In Word, separate three things
+in your mind: the document caret, Word's Ribbon/panes, and your screen
+reader. If a command behaves unexpectedly, first determine which of
+those currently has focus.</p>
 
-<p class="back-link"><a href="manuals.html">Return to Manuals</a></p>
-</main>
-<footer>
-  <p>&copy; 2026 Accessible Learning Center</p>
-</footer>
+    <p class="back-link"><a href="manuals.html">Return to all manuals</a></p>
+  </main>
 </body>
 </html>

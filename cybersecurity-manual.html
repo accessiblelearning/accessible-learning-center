@@ -1,102 +1,973 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Accessible Cybersecurity for Screen Reader Users manual for keyboard and JAWS users.">
-<title>Cybersecurity for Screen Reader Users Manual - Accessible Learning Center</title>
-<link rel="stylesheet" href="styles.css?v=manual-review-1">
-<script src="accessibility.js?v=nav-quizzes-1" defer>
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cybersecurity for Screen Reader Users Manual: step-by-step keyboard and screen-reader instructions, practice, troubleshooting, and command references.">
+  <title>Cybersecurity for Screen Reader Users Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-manuals-1">
+  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
 </head>
-<body>
-<header>
-<p class="eyebrow">Accessible technology manual</p>
-<h1>Cybersecurity for Screen Reader Users Accessible Manual</h1>
-<p>A keyboard-first guide for blind and low-vision learners using JAWS.</p>
-</header>
-<main id="main-content">
-<nav class="lesson-nav" aria-label="Cybersecurity manual navigation">
-<a href="manuals.html">All manuals</a>
-<a href="lessons.html#cybersecurity-lessons">Ten Cybersecurity lessons</a>
-<a href="student-progress.html">My progress</a>
-</nav>
-<section aria-labelledby="purpose-heading">
-<h2 id="purpose-heading">Purpose and setup</h2>
-<p>This manual supports independent practice with Cybersecurity for Screen Reader Users on Windows. Use the exact software version, device model, account permissions, and workplace policy available to you. Commands and labels can change after updates.</p>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible Learning Center manual</p>
+    <h1>Cybersecurity for Screen Reader Users Manual</h1>
+    <p>Safer accounts, devices, browsing, and communication</p>
+    <p>Independent Self-Study Guide</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#main-content">Start of manual</a>
+    </nav>
+<p><strong>Purpose:</strong> This manual teaches practical cybersecurity
+to people who use screen readers, braille displays, keyboard navigation,
+or speech access. It assumes no technical security background.</p>
+<p><strong>Core approach:</strong> Security decisions should not depend
+on seeing color, logos, icons, hover previews, or visual layout. This
+guide teaches verification methods that work through accessible text,
+keyboard commands, screen-reader information, known apps, saved
+bookmarks, typed addresses, and trusted contact methods.</p>
+<p><strong>Safety principle:</strong> Urgency is not proof. A legitimate
+bank, employer, government agency, software company, or family member
+can be contacted independently. Never let a message force you to use
+only the contact method inside that same message.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
 <ul>
-<li>Start JAWS before opening the application or connecting a braille device.</li>
-<li>Use Insert+T for the window title, Insert+Tab for focus, and Insert+1 for Keyboard Help.</li>
-<li>Practice with fictional, public, instructor-provided, or redacted information only.</li>
-<li>Never submit passwords, recovery codes, government identifiers, protected books, or private workplace data.</li>
-<li>Save a backup before changing, deleting, converting, or remediating a file.</li>
+<li><p>Work through the manual in order. The first sections establish
+habits used everywhere else.</p></li>
+<li><p>When a message is suspicious, do not click, reply, call the
+included number, or open the attachment just to investigate.</p></li>
+<li><p>Use a known app, saved bookmark, typed website address,
+statement/card phone number, or trusted contact record to verify
+independently.</p></li>
+<li><p>Treat passwords, recovery codes, one-time codes, passkeys,
+security questions, and remote-control access as credentials.</p></li>
+<li><p>Keep software updated; security updates close known
+weaknesses.</p></li>
+<li><p>Use a password manager and unique passwords where passwords are
+still required.</p></li>
+<li><p>Turn on MFA; prefer passkeys or other phishing-resistant methods
+where available.</p></li>
+<li><p>If something goes wrong, act quickly: disconnect remote access,
+secure the account, change credentials, turn on MFA, scan/update
+devices, and contact the legitimate institution.</p></li>
 </ul>
-</section>
-<section aria-labelledby="security-howto-heading"><h2 id="security-howto-heading">Basic and advanced how-tos</h2>
-<h3>Inspect a suspicious link without opening it</h3><p><strong>Keyboard commands:</strong> Insert+F7 opens the JAWS links list. NVDA+F7 opens the NVDA elements list.</p><ol><li>Do not press Enter on the link.</li><li>Open the links list.</li><li>Compare the spoken text with the actual destination when available.</li><li>Check for misspellings, unexpected domains, shortened addresses, and mismatched organizations.</li><li>Navigate independently to the known website.</li></ol><p><strong>If that does not happen:</strong> Treat the link as unverified and contact the sender separately.</p>
-<h3>Create and store a unique password</h3><ol><li>Open a trusted password manager directly.</li><li>Create an item for the exact website domain.</li><li>Generate a long unique password.</li><li>Save the username, password, and site address.</li><li>Sign out and test autofill on the verified site.</li></ol><p><strong>If that does not happen:</strong> Do not store passwords in an unprotected document.</p>
-<h3>Turn on multifactor authentication</h3><ol><li>Open the verified account’s Security settings.</li><li>Choose an authenticator app, security key, passkey, or supported method.</li><li>Complete setup and verify a test approval.</li><li>Store recovery codes securely and separately.</li><li>Add a second recovery method when available.</li></ol><p><strong>If that does not happen:</strong> Do not disable the existing method; use official support.</p>
-<h3>Handle an unexpected attachment</h3><ol><li>Verify the sender and whether the file was expected.</li><li>Hear the complete filename and extension.</li><li>Do not enable macros, bypass warnings, or enter a supplied password.</li><li>Confirm through another communication channel.</li><li>Delete or report it according to policy.</li></ol><p><strong>If that does not happen:</strong> Leave it closed and ask a security contact.</p>
-<h3>Recover after entering credentials on a suspicious page</h3><ol><li>Use a known-safe device or verified application.</li><li>Change the affected password and every reused password.</li><li>Sign out other sessions and review recovery and forwarding settings.</li><li>Enable or reset multifactor authentication.</li><li>Notify the organization or workplace security contact.</li><li>Monitor the account and preserve evidence.</li></ol><p><strong>If that does not happen:</strong> Use the official recovery channel and never pay the suspicious sender.</p></section>
-<section aria-labelledby="path-heading">
-<h2 id="path-heading">Ten-lesson learning path</h2>
-<ol>
-<li>
-<a href="cybersecurity-lesson-1.html">Lesson 1: Recognize Common Digital Threats</a> — Classify five fictional workplace messages and explain the risk.</li>
-<li>
-<a href="cybersecurity-lesson-2.html">Lesson 2: Strong Passwords and Password Managers</a> — Create a password-policy checklist using examples that are not real passwords.</li>
-<li>
-<a href="cybersecurity-lesson-3.html">Lesson 3: Multifactor Authentication and Recovery</a> — Design a fictional MFA and recovery plan without secret codes.</li>
-<li>
-<a href="cybersecurity-lesson-4.html">Lesson 4: Phishing Emails, Texts, and Calls</a> — Analyze four fictional phishing examples with screen-reader steps.</li>
-<li>
-<a href="cybersecurity-lesson-5.html">Lesson 5: Safe Links, Downloads, and Attachments</a> — Create a safe-download checklist for a fictional employee.</li>
-<li>
-<a href="cybersecurity-lesson-6.html">Lesson 6: Privacy, Permissions, and Data Handling</a> — Classify fictional data and choose a safe handling method.</li>
-<li>
-<a href="cybersecurity-lesson-7.html">Lesson 7: Updates, Backups, and Device Security</a> — Create a weekly device-security routine.</li>
-<li>
-<a href="cybersecurity-lesson-8.html">Lesson 8: Public Wi-Fi and Remote Work</a> — Write a secure remote-work plan for a fictional trip.</li>
-<li>
-<a href="cybersecurity-lesson-9.html">Lesson 9: Incident Reporting and Account Recovery</a> — Create a concise incident report from a fictional scenario.</li>
-<li>
-<a href="cybersecurity-lesson-10.html">Lesson 10: Final Accessible Security Scenario</a> — Submit a full screen-reader-friendly cybersecurity response plan.</li>
-</ol>
-</section>
-<section aria-labelledby="routine-heading">
-<h2 id="routine-heading">Accessible working routine</h2>
-<ol>
-<li>Confirm the window, document, device, or webpage title.</li>
-<li>Identify keyboard focus before typing or activating a control.</li>
-<li>Navigate by real structure—headings, lists, fields, tables, or menus—when available.</li>
-<li>Review the result with JAWS or a braille display from beginning to end.</li>
-<li>Verify the destination and filename before saving, uploading, sharing, or deleting.</li>
-<li>Save the requested practice file locally with the exact filename given in the lesson. Assignment uploads are currently paused.</li>
-</ol>
-<p class="tip">
-<strong>Important:</strong> These course controls complement, and do not replace, browser, operating-system, screen-reader, braille-display, or other assistive-technology settings.</p>
-</section>
-<section aria-labelledby="sources-heading">
-<h2 id="sources-heading">Official references</h2>
-<p>Use these primary sources when a label or command differs from the lesson:</p>
+<h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li>
-<a href="https://www.cisa.gov/secure-our-world">CISA Secure Our World</a>
-</li>
-<li>
-<a href="https://www.cisa.gov/secure-our-world/recognize-and-report-phishing">CISA phishing guidance</a>
-</li>
-<li>
-<a href="https://www.cisa.gov/secure-our-world/use-strong-passwords">CISA multifactor authentication</a>
-</li>
+<li><p>Part 1 - The Four Core Cybersecurity Habits</p></li>
+<li><p>Part 2 - What Phishing Is</p></li>
+<li><p>Part 3 - Accessible Sender Verification</p></li>
+<li><p>Part 4 - Accessible Link Verification</p></li>
+<li><p>Part 5 - Suspicious Attachments and Downloads</p></li>
+<li><p>Part 6 - Passwords and Password Managers</p></li>
+<li><p>Part 7 - MFA, Authenticator Apps, and Security Keys</p></li>
+<li><p>Part 8 - Passkeys</p></li>
+<li><p>Part 9 - One-Time Codes and MFA Fatigue</p></li>
+<li><p>Part 10 - Browser and Website Security Warnings</p></li>
+<li><p>Part 11 - Email Safety</p></li>
+<li><p>Part 12 - Text Messages, Calls, and Voicemail Scams</p></li>
+<li><p>Part 13 - Tech-Support and Remote-Access Scams</p></li>
+<li><p>Part 14 - Banking, Payment, Gift Card, and Refund Scams</p></li>
+<li><p>Part 15 - Social Media, Dating, and Impersonation Scams</p></li>
+<li><p>Part 16 - Shopping, Delivery, and Subscription Scams</p></li>
+<li><p>Part 17 - Software Updates and Safe Apps</p></li>
+<li><p>Part 18 - Backups and Ransomware Resilience</p></li>
+<li><p>Part 19 - Public Wi-Fi, Bluetooth, and Device Privacy</p></li>
+<li><p>Part 20 - Screen Reader and Braille Privacy</p></li>
+<li><p>Part 21 - Account Recovery and Security Alerts</p></li>
+<li><p>Part 22 - What to Do After a Scam or Account Compromise</p></li>
+<li><p>Part 23 - Work and School Security</p></li>
+<li><p>Part 24 - Accessible Security Checklists</p></li>
+<li><p>Part 25 - Practice Scenarios</p></li>
+<li><p>Part 26 - Quick Reference</p></li>
+<li><p>Part 27 - Official Security Resources</p></li>
 </ul>
-</section>
-<p>
-<a class="button-link" href="cybersecurity-lesson-1.html">Start Cybersecurity Lesson 1</a>
-</p>
-<p>
-<a href="manuals.html">Return to Manuals</a>
-</p>
-</main>
+<h2 id="part-1---the-four-core-cybersecurity-habits">Part 1 - The Four
+Core Cybersecurity Habits</h2>
+<p>CISA's Secure Our World guidance centers on four simple habits. This
+manual expands them for screen-reader users.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Safer action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Recognize and report phishing</td>
+<td>Do not engage with suspicious messages; verify independently and
+report/delete them.</td>
+</tr>
+<tr class="even">
+<td>Use strong, unique passwords</td>
+<td>Use a password manager; do not reuse a password across
+accounts.</td>
+</tr>
+<tr class="odd">
+<td>Turn on MFA</td>
+<td>Use the strongest option offered; prefer phishing-resistant methods
+where available.</td>
+</tr>
+<tr class="even">
+<td>Install software updates</td>
+<td>Apply security updates promptly from official update
+mechanisms.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Password length:</strong> CISA's current consumer guidance
+recommends passwords of at least 16 characters, random and unique for
+each account, with a password manager to create and store them.</p>
+<h2 id="part-2---what-phishing-is">Part 2 - What Phishing Is</h2>
+<p>Phishing is an attempt to make you open a harmful attachment, visit a
+fake site, reveal information, approve a login, send money, or install
+software.</p>
+<ul>
+<li><p>Urgency: 'Act in 30 minutes or your account will close.'</p></li>
+<li><p>Fear: 'Your computer has a virus.'</p></li>
+<li><p>Authority: 'This is your bank, boss, police, IRS, Microsoft,
+Apple, Google, or IT department.'</p></li>
+<li><p>Reward: 'You won a prize/refund.'</p></li>
+<li><p>Scarcity: 'Only one item left; pay now.'</p></li>
+<li><p>Secrecy: 'Do not tell anyone.'</p></li>
+<li><p>Payment pressure: gift cards, cryptocurrency, wire transfer,
+payment app, or cash.</p></li>
+<li><p>Credential request: password, verification code, recovery code,
+PIN, or remote access.</p></li>
+</ul>
+<p><strong>Screen-reader-specific warning:</strong> A link's spoken text
+can say one thing while its real destination is different. A sender
+display name can also be forged or misleading. Always verify the actual
+address/domain when the decision matters.</p>
+<h2 id="part-3---accessible-sender-verification">Part 3 - Accessible
+Sender Verification</h2>
+<h3 id="verify-an-email-sender">3.1 Verify an Email Sender</h3>
+<p><strong>What you will learn:</strong> Check the actual sender address
+instead of trusting the display name.</p>
+<p><strong>Before you begin:</strong> Do not reply yet.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Open the message without activating links or attachments.</li>
+<li>Move to the From/Sender field.</li>
+<li>Use your email program's message-details or sender-details command
+to read the full email address.</li>
+<li>Spell the domain character by character if necessary.</li>
+<li>Compare the domain with the organization's known official
+domain.</li>
+<li>If the message asks for action, leave the message and contact the
+organization using a known app, saved bookmark, statement/card number,
+or manually typed official website.</li>
+</ol>
+<p><strong>What should happen:</strong> You know the actual sender
+address and have verified the request independently.</p>
+<p><strong>If that does not happen:</strong> If your email client hides
+the full address, open message details/headers or use a different
+trusted client/device. Do not treat a display name as proof.</p>
+<p><strong>Practice:</strong> Inspect three legitimate messages and
+identify their full sender domains.</p>
+<h3 id="verify-a-caller-or-text-sender">3.2 Verify a Caller or Text
+Sender</h3>
+<p><strong>What you will learn:</strong> Do not trust Caller ID or the
+number in the message.</p>
+<p><strong>Before you begin:</strong> A call/text claims to be from an
+institution or person.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Do not provide credentials or money.</li>
+<li>End the call or stop replying.</li>
+<li>Find the contact through a trusted source you already possess.</li>
+<li>Call back using the trusted number, not the number supplied by the
+caller/message.</li>
+<li>For family emergencies, contact the person or another family
+member through a known number.</li>
+</ol>
+<p><strong>What should happen:</strong> You verify identity through a
+separate channel.</p>
+<p><strong>If that does not happen:</strong> Caller ID and message
+sender names/numbers can be spoofed.</p>
+<p><strong>Practice:</strong> Practice finding a bank or utility number
+from an official statement or app.</p>
+<h2 id="part-4---accessible-link-verification">Part 4 - Accessible Link
+Verification</h2>
+<h3 id="inspect-a-link-without-opening-it">4.1 Inspect a Link Without
+Opening It</h3>
+<p><strong>What you will learn:</strong> Determine the destination
+domain first.</p>
+<p><strong>Before you begin:</strong> Focus the link but do not activate
+it.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Listen to the visible link text.</li>
+<li>Use your screen reader's link-information command or the
+application's context menu where available.</li>
+<li>Press Shift+F10 on Windows to open the link context menu.</li>
+<li>Choose Copy link address when available instead of Open.</li>
+<li>Paste the copied address into a safe text editor such as
+Notepad.</li>
+<li>Read/spell the domain carefully.</li>
+<li>Cancel/delete the pasted text after inspection if it contains a
+personal token.</li>
+</ol>
+<p><strong>What should happen:</strong> You can examine the destination
+without visiting it.</p>
+<p><strong>If that does not happen:</strong> Some tracking links are
+long or obscured. If the message is asking you to sign in, skip the link
+entirely and reach the service through a known app/bookmark/typed
+address.</p>
+<p><strong>Practice:</strong> Inspect several trusted links and identify
+the domain.</p>
+<p><strong>Domain rule:</strong> Read the registered domain, not just
+words anywhere in the address. A name such as
+bank.example.com.evil-site.test is controlled by evil-site.test, not by
+'bank.example.com'.</p>
+<h3 id="use-the-independent-path-method">4.2 Use the Independent-Path
+Method</h3>
+<p><strong>What you will learn:</strong> Avoid link analysis when a
+safer route exists.</p>
+<p><strong>Before you begin:</strong> A message says an account needs
+attention.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Close or leave the message.</li>
+<li>Open the institution's official app, your saved trusted bookmark,
+or type the known address yourself.</li>
+<li>Sign in normally.</li>
+<li>Check the account's alerts/messages/activity from inside the
+trusted service.</li>
+<li>If there is no matching alert, treat the original message as
+suspicious.</li>
+</ol>
+<p><strong>What should happen:</strong> You confirm the issue without
+trusting the message's link.</p>
+<p><strong>If that does not happen:</strong> If the organization is
+unfamiliar, search for its official website carefully and compare
+multiple trustworthy sources before entering credentials.</p>
+<p><strong>Practice:</strong> Verify a harmless account notification by
+independent path.</p>
+<h2 id="part-5---suspicious-attachments-and-downloads">Part 5 -
+Suspicious Attachments and Downloads</h2>
+<ul>
+<li><p>Do not open unexpected attachments, even from a known contact,
+until the sender confirms them independently.</p></li>
+<li><p>Be especially cautious with executable/installable files,
+macro-enabled documents, archives, disk images, and files that ask you
+to enable content.</p></li>
+<li><p>A filename can be misleading; the extension/file type
+matters.</p></li>
+<li><p>Do not install an app or browser extension because a website says
+it is required to continue.</p></li>
+<li><p>Use built-in download pages to confirm the filename and source
+before opening.</p></li>
+</ul>
+<h3 id="verify-an-unexpected-attachment">5.1 Verify an Unexpected
+Attachment</h3>
+<p><strong>What you will learn:</strong> Confirm purpose before
+opening.</p>
+<p><strong>Before you begin:</strong> An attachment arrived
+unexpectedly.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Read the sender's actual address.</li>
+<li>Read the attachment filename and file type.</li>
+<li>Do not open it.</li>
+<li>Contact the sender through a known separate method.</li>
+<li>Ask whether they intentionally sent that exact file.</li>
+<li>Open only after verification and only if the file type makes
+sense.</li>
+</ol>
+<p><strong>What should happen:</strong> You reduce the risk of opening
+malware sent from a spoofed or compromised account.</p>
+<p><strong>If that does not happen:</strong> If the sender cannot
+confirm it, delete/report the message and do not open the
+attachment.</p>
+<p><strong>Practice:</strong> Practice identifying filename extensions
+on safe files.</p>
+<h2 id="part-6---passwords-and-password-managers">Part 6 - Passwords and
+Password Managers</h2>
+<ul>
+<li><p>Use a unique password for every account.</p></li>
+<li><p>Prefer a password manager to generate and store
+passwords.</p></li>
+<li><p>Do not create patterns such as SiteName2026! across many
+accounts.</p></li>
+<li><p>Do not store passwords in ordinary notes, email drafts,
+spreadsheets, or unencrypted documents.</p></li>
+<li><p>Protect the password manager itself with strong authentication
+and recovery methods.</p></li>
+</ul>
+<h3 id="use-a-password-manager-safely">6.1 Use a Password Manager
+Safely</h3>
+<p><strong>What you will learn:</strong> Reduce memorization and
+password reuse.</p>
+<p><strong>Before you begin:</strong> Choose a reputable built-in or
+independent password manager.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Create or secure the manager account.</li>
+<li>Turn on MFA/passkey protection for the manager if offered.</li>
+<li>Let it generate a long random password for a test account.</li>
+<li>Save the login.</li>
+<li>Return to the site through a trusted path.</li>
+<li>Use autofill only when the password manager recognizes the correct
+site/domain.</li>
+<li>Review recovery options and store recovery codes securely.</li>
+</ol>
+<p><strong>What should happen:</strong> You no longer need to type/reuse
+the site's password manually.</p>
+<p><strong>If that does not happen:</strong> If autofill does not appear
+on a site you expect, stop and verify the domain before manually copying
+the password.</p>
+<p><strong>Practice:</strong> Create one unique generated password for a
+noncritical test account.</p>
+<p><strong>Useful security signal:</strong> A password manager refusing
+to autofill on a look-alike site can be a warning that the domain does
+not match the saved login.</p>
+<h2 id="part-7---mfa-authenticator-apps-and-security-keys">Part 7 - MFA,
+Authenticator Apps, and Security Keys</h2>
+<p>MFA requires an additional factor beyond a password. Any MFA is
+generally better than none, but methods differ in resistance to
+phishing.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Security note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Passkey / FIDO security key</td>
+<td>Strong phishing resistance</td>
+</tr>
+<tr class="even">
+<td>Authenticator app with number matching or domain-aware approval</td>
+<td>Strong when used carefully</td>
+</tr>
+<tr class="odd">
+<td>Authenticator time-based code</td>
+<td>Useful, but a phishing site can trick you into entering the
+code</td>
+</tr>
+<tr class="even">
+<td>SMS/email code</td>
+<td>Better than password alone, but weaker than phishing-resistant
+options</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="turn-on-mfa">7.1 Turn On MFA</h3>
+<p><strong>What you will learn:</strong> Protect an account even if its
+password is stolen.</p>
+<p><strong>Before you begin:</strong> Sign in through the service's
+known official app/site.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Open Account/Security settings.</li>
+<li>Find Two-factor authentication, Two-step verification, MFA, or
+similar.</li>
+<li>Choose the strongest method you can reliably use.</li>
+<li>Enroll the authenticator, passkey, or security key.</li>
+<li>Complete a test sign-in.</li>
+<li>Generate recovery codes if offered.</li>
+<li>Store recovery codes somewhere secure and separate from the main
+device.</li>
+</ol>
+<p><strong>What should happen:</strong> Future sign-ins require the
+additional factor.</p>
+<p><strong>If that does not happen:</strong> Do not turn off MFA because
+a scammer says it blocks a refund or account repair.</p>
+<p><strong>Practice:</strong> Enable MFA on a low-risk account before
+your most important accounts.</p>
+<h2 id="part-8---passkeys">Part 8 - Passkeys</h2>
+<p>Passkeys use public-key cryptography and are tied to the real
+website/app. Microsoft currently describes passkeys as
+phishing-resistant and as a form of multifactor authentication because
+the passkey is on a device and is unlocked by a PIN or biometric.</p>
+<h3 id="use-a-passkey">8.1 Use a Passkey</h3>
+<p><strong>What you will learn:</strong> Sign in without typing a
+reusable password.</p>
+<p><strong>Before you begin:</strong> Use a service that supports
+passkeys.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Reach the service through its official app/site.</li>
+<li>Open Security or Sign-in methods.</li>
+<li>Choose Add/Create passkey.</li>
+<li>Confirm the trusted device/password-manager location where the
+passkey will be stored.</li>
+<li>Authenticate with your device PIN, fingerprint, face, or other
+unlock method.</li>
+<li>Sign out and test the passkey sign-in.</li>
+</ol>
+<p><strong>What should happen:</strong> The service signs you in without
+exposing a reusable password to the website.</p>
+<p><strong>If that does not happen:</strong> If the device says no
+passkey exists for the site, verify you are on the correct domain and
+signed into the correct password-manager/account ecosystem.</p>
+<p><strong>Practice:</strong> Create a passkey on a noncritical
+supported service if you are comfortable doing so.</p>
+<p><strong>Why this helps:</strong> A passkey created for one registered
+domain cannot simply be presented to a different look-alike domain,
+which blocks a common phishing path.</p>
+<h2 id="part-9---one-time-codes-and-mfa-fatigue">Part 9 - One-Time Codes
+and MFA Fatigue</h2>
+<ul>
+<li><p>Never give a one-time login/security code to someone who
+contacted you.</p></li>
+<li><p>If you receive an MFA prompt you did not initiate, deny
+it.</p></li>
+<li><p>Repeated unexpected MFA prompts can mean someone knows your
+password and is trying to make you approve access.</p></li>
+<li><p>After an unexpected prompt, change the password from a trusted
+device/path and review account sessions/security activity.</p></li>
+<li><p>Recovery codes are more sensitive than ordinary one-time codes
+because they may bypass your normal second factor.</p></li>
+</ul>
+<h2 id="part-10---browser-and-website-security-warnings">Part 10 -
+Browser and Website Security Warnings</h2>
+<ul>
+<li><p>Do not bypass a browser's red/interstitial security warning
+merely because a webpage, caller, or email tells you to.</p></li>
+<li><p>HTTPS means the connection to that domain is encrypted; it does
+not prove that the domain is honest.</p></li>
+<li><p>Certificate/security warnings can indicate a wrong site,
+interception, or configuration problem.</p></li>
+<li><p>Use Ctrl+L or Alt+D to focus the address bar and have your screen
+reader read/spell the domain.</p></li>
+<li><p>Browser Safe Browsing/SmartScreen warnings should be investigated
+through the vendor's official security controls, not through pop-up
+phone numbers.</p></li>
+</ul>
+<p><strong>FTC rule:</strong> The FTC warns that legitimate security
+pop-ups do not tell you to call a phone number for support.</p>
+<h2 id="part-11---email-safety">Part 11 - Email Safety</h2>
+<h3 id="handle-a-suspicious-email">11.1 Handle a Suspicious Email</h3>
+<p><strong>What you will learn:</strong> Use a repeatable no-click
+workflow.</p>
+<p><strong>Before you begin:</strong> The message asks for urgent
+action.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Do not click or reply.</li>
+<li>Read the full sender address.</li>
+<li>Read the subject and request.</li>
+<li>Inspect attachment names without opening.</li>
+<li>Inspect links only if needed; prefer independent path.</li>
+<li>Open the organization's official app/site separately.</li>
+<li>Report the message as phishing/spam if your mail system provides
+that control.</li>
+<li>Delete/archive according to your organization policy.</li>
+</ol>
+<p><strong>What should happen:</strong> You investigate without giving
+the message control over the verification process.</p>
+<p><strong>If that does not happen:</strong> If the message concerns
+work/school, use the organization's phishing-report mechanism or
+IT/security contact.</p>
+<p><strong>Practice:</strong> Practice on a known spam/phishing sample
+without opening links.</p>
+<h2 id="part-12---text-messages-calls-and-voicemail-scams">Part 12 -
+Text Messages, Calls, and Voicemail Scams</h2>
+<ul>
+<li><p>Package-delivery texts often use links to collect payment/card
+information.</p></li>
+<li><p>Bank fraud texts may ask you to call a number or reply YES/NO;
+use the bank's app or known number instead.</p></li>
+<li><p>Government agencies and utilities can be impersonated.</p></li>
+<li><p>Voice cloning can imitate relatives or executives; verify through
+another trusted person/channel.</p></li>
+<li><p>Do not let a caller keep you on the phone while directing every
+computer/phone action.</p></li>
+</ul>
+<h2 id="part-13---tech-support-and-remote-access-scams">Part 13 -
+Tech-Support and Remote-Access Scams</h2>
+<p>FTC guidance is clear: unexpected callers/messages that say your
+computer has a problem are a classic scam pattern. Legitimate technology
+companies do not cold-contact you to announce a virus, and real security
+warnings do not ask you to call a phone number.</p>
+<h3 id="respond-to-a-fake-tech-support-warning">13.1 Respond to a Fake
+Tech-Support Warning</h3>
+<p><strong>What you will learn:</strong> Keep control of your
+device.</p>
+<p><strong>Before you begin:</strong> A pop-up or caller says the
+computer is infected.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Do not call the phone number in the pop-up.</li>
+<li>Do not install remote-control software.</li>
+<li>Do not give anyone a code from a remote-support app.</li>
+<li>Close the browser tab/window if possible.</li>
+<li>Open Windows Security or your known security software through
+Start, not through the pop-up.</li>
+<li>Run updates/scan if you have a genuine concern.</li>
+<li>Contact the computer/software company through its official support
+site if needed.</li>
+</ol>
+<p><strong>What should happen:</strong> You avoid granting a scammer
+remote control.</p>
+<p><strong>If that does not happen:</strong> If the screen is trapped in
+a browser full-screen page, try Escape, F11, Alt+F4, or Task Manager
+before following any instructions shown on the page.</p>
+<p><strong>Practice:</strong> Practice closing a harmless full-screen
+browser page.</p>
+<p><strong>Payment red flag:</strong> FTC warns that tech-support
+scammers commonly demand gift cards, wire/bank transfer, cryptocurrency,
+or payment apps because reversal is difficult.</p>
+<h2 id="part-14---banking-payment-gift-card-and-refund-scams">Part 14 -
+Banking, Payment, Gift Card, and Refund Scams</h2>
+<ul>
+<li><p>No legitimate business or government agency needs gift card
+numbers as payment.</p></li>
+<li><p>Be suspicious of claims that you were accidentally refunded too
+much and must return money immediately.</p></li>
+<li><p>Never move money to a 'safe account' because a caller says your
+current account is compromised.</p></li>
+<li><p>Verify charges directly in your bank/credit-card app or statement
+before responding to a renewal/refund notice.</p></li>
+<li><p>Do not read card numbers, bank credentials, or one-time codes to
+an unsolicited caller.</p></li>
+</ul>
+<h2 id="part-15---social-media-dating-and-impersonation-scams">Part 15 -
+Social Media, Dating, and Impersonation Scams</h2>
+<ul>
+<li><p>Account takeovers can make messages appear to come from real
+friends.</p></li>
+<li><p>Romance/investment scams often build trust over time before
+asking for money or crypto.</p></li>
+<li><p>Executive/boss impersonation scams may request gift cards or
+confidential documents.</p></li>
+<li><p>New accounts, sudden urgency, secrecy, and payment changes
+deserve independent verification.</p></li>
+<li><p>Deepfake audio/video does not replace independent identity
+checks.</p></li>
+</ul>
+<h2 id="part-16---shopping-delivery-and-subscription-scams">Part 16 -
+Shopping, Delivery, and Subscription Scams</h2>
+<ul>
+<li><p>Too-good-to-be-true prices and urgency are common phishing
+signals.</p></li>
+<li><p>Use retailer apps or typed/saved official addresses rather than
+delivery-message links.</p></li>
+<li><p>Subscription-renewal scams often claim a large automatic charge
+and provide a phone number to cancel.</p></li>
+<li><p>Check the actual bank/card account first; if no charge exists,
+the renewal message may simply be bait.</p></li>
+<li><p>Use credit cards or protected payment methods when possible;
+avoid irreversible payment methods demanded by strangers.</p></li>
+</ul>
+<h2 id="part-17---software-updates-and-safe-apps">Part 17 - Software
+Updates and Safe Apps</h2>
+<h3 id="update-from-the-official-mechanism">17.1 Update from the
+Official Mechanism</h3>
+<p><strong>What you will learn:</strong> Install security fixes without
+trusting random pop-ups.</p>
+<p><strong>Before you begin:</strong> The device is online.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Windows: open Settings &gt; Windows Update.</li>
+<li>iPhone/iPad: open Settings &gt; General &gt; Software Update.</li>
+<li>Android: open Settings &gt; System / Software update as provided
+by the manufacturer.</li>
+<li>Browsers/apps: use the built-in update command or official app
+store.</li>
+<li>Install security updates.</li>
+<li>Restart when required.</li>
+</ol>
+<p><strong>What should happen:</strong> Updates come from the operating
+system/vendor rather than a message link.</p>
+<p><strong>If that does not happen:</strong> If a webpage says 'your
+browser is out of date' and offers a download, leave the page and update
+through the browser's official menu or operating system.</p>
+<p><strong>Practice:</strong> Check one device for updates.</p>
+<p><strong>CISA guidance:</strong> CISA's consumer security guidance
+emphasizes installing software updates promptly because they patch known
+weaknesses.</p>
+<h2 id="part-18---backups-and-ransomware-resilience">Part 18 - Backups
+and Ransomware Resilience</h2>
+<ul>
+<li><p>Keep important files in a backup system that is not dependent on
+one device.</p></li>
+<li><p>Cloud sync is useful but is not always the same as a backup;
+deletions/encryption can sometimes synchronize.</p></li>
+<li><p>Use version history/recycle-bin/recovery features where
+available.</p></li>
+<li><p>Keep at least one recovery method that is not continuously
+writable by the main computer when practical.</p></li>
+<li><p>Test restoring a harmless file before assuming a backup
+works.</p></li>
+</ul>
+<h3 id="test-a-backup">18.1 Test a Backup</h3>
+<p><strong>What you will learn:</strong> Prove that recovery actually
+works.</p>
+<p><strong>Before you begin:</strong> Choose a harmless test file.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Back up or synchronize the test file.</li>
+<li>Rename the local copy.</li>
+<li>Use the backup/version-history service to retrieve or restore the
+earlier copy.</li>
+<li>Open the restored file.</li>
+<li>Confirm its contents.</li>
+</ol>
+<p><strong>What should happen:</strong> You know the recovery process
+before an emergency.</p>
+<p><strong>If that does not happen:</strong> If you cannot restore a
+harmless test file, fix the backup process before relying on it for
+important data.</p>
+<p><strong>Practice:</strong> Perform one restore test.</p>
+<h2 id="part-19---public-wi-fi-bluetooth-and-device-privacy">Part 19 -
+Public Wi-Fi, Bluetooth, and Device Privacy</h2>
+<ul>
+<li><p>Prefer your phone hotspot or trusted network for sensitive
+activity when practical.</p></li>
+<li><p>HTTPS protects traffic to the correct domain, but phishing sites
+can also use HTTPS.</p></li>
+<li><p>Turn off automatic connection to unfamiliar Wi-Fi
+networks.</p></li>
+<li><p>Do not accept unexpected Bluetooth pairing requests.</p></li>
+<li><p>Use a screen lock and device encryption when available.</p></li>
+<li><p>Lock the device before handing it to someone or leaving it
+unattended.</p></li>
+</ul>
+<h2 id="part-20---screen-reader-and-braille-privacy">Part 20 - Screen
+Reader and Braille Privacy</h2>
+<p>Assistive technology creates additional ways sensitive information
+can be exposed. These are not flaws in screen readers; they are privacy
+channels that deserve deliberate management.</p>
+<ul>
+<li><p>Speech can be overheard. Use headphones for passwords, banking,
+health, work, or other sensitive tasks in public.</p></li>
+<li><p>Refreshable braille can display passwords, messages, account
+numbers, or MFA prompts to anyone physically close enough to read
+it.</p></li>
+<li><p>Screen-reader history/clipboard viewers can contain sensitive
+text.</p></li>
+<li><p>Braille Terminal connections can expose host-device content on
+another device.</p></li>
+<li><p>Screen curtain/black screen hides visuals but does not protect
+speech, braille, clipboard, network traffic, or malware.</p></li>
+<li><p>Do not announce passwords character-by-character through speech
+when another person is nearby if it can be avoided.</p></li>
+</ul>
+<h3 id="protect-password-entry-in-public">20.1 Protect Password Entry in
+Public</h3>
+<p><strong>What you will learn:</strong> Reduce audible/braille
+exposure.</p>
+<p><strong>Before you begin:</strong> You need to sign in around other
+people.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Use a passkey/biometric if available.</li>
+<li>Use headphones if speech feedback is required.</li>
+<li>Use password-manager autofill instead of reading/copying the
+password manually.</li>
+<li>Clear sensitive clipboard contents afterward if you copied
+anything.</li>
+<li>Lock the device when done.</li>
+</ol>
+<p><strong>What should happen:</strong> The credential is exposed less
+than with manual reading/typing.</p>
+<p><strong>If that does not happen:</strong> If the environment is not
+private enough, postpone the sensitive task.</p>
+<p><strong>Practice:</strong> Practice signing into a low-risk account
+with autofill.</p>
+<h2 id="part-21---account-recovery-and-security-alerts">Part 21 -
+Account Recovery and Security Alerts</h2>
+<ul>
+<li><p>Keep recovery email/phone methods current.</p></li>
+<li><p>Store recovery codes securely and separately.</p></li>
+<li><p>Review signed-in devices/sessions periodically on major
+accounts.</p></li>
+<li><p>Treat unexpected password-reset messages as alerts, not as
+instructions to click.</p></li>
+<li><p>Reach the service independently and inspect security
+activity.</p></li>
+<li><p>Remove unknown sessions/devices and change credentials when
+compromise is suspected.</p></li>
+</ul>
+<h2 id="part-22---what-to-do-after-a-scam-or-account-compromise">Part 22
+- What to Do After a Scam or Account Compromise</h2>
+<h3 id="if-you-gave-remote-access">22.1 If You Gave Remote Access</h3>
+<p><strong>What you will learn:</strong> Contain the device and
+accounts.</p>
+<p><strong>Before you begin:</strong> A scammer controlled your computer
+or phone.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>End/disconnect the remote-support session and close/uninstall the
+remote-access app if safe to do so.</li>
+<li>Disconnect from the network if the attacker may still have
+control.</li>
+<li>From a clean/trusted device, change passwords for important
+accounts starting with email and financial accounts.</li>
+<li>Turn on or strengthen MFA.</li>
+<li>Update security software/operating system and run a scan.</li>
+<li>Contact your bank/card provider if financial information or
+payment was involved.</li>
+<li>Review account sessions and remove unfamiliar devices.</li>
+<li>Report the scam to the appropriate institution and FTC/authorities
+as applicable.</li>
+</ol>
+<p><strong>What should happen:</strong> You limit continued access and
+begin recovery.</p>
+<p><strong>If that does not happen:</strong> FTC guidance recommends
+updating security software, scanning/removing identified problems,
+changing passwords, and turning on two-factor authentication after
+giving a scammer access.</p>
+<p><strong>Practice:</strong> Write these steps somewhere accessible
+before an emergency.</p>
+<h3 id="if-you-gave-away-a-password-or-code">22.2 If You Gave Away a
+Password or Code</h3>
+<p><strong>What you will learn:</strong> Secure the account
+immediately.</p>
+<p><strong>Before you begin:</strong> Use a trusted device/path.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol class="procedure-steps">
+<li>Change the affected password.</li>
+<li>Change any other account that reused that password.</li>
+<li>Turn on MFA/passkey protection.</li>
+<li>Sign out of other sessions/devices.</li>
+<li>Review recovery email/phone and forwarding rules.</li>
+<li>Review recent activity/transactions.</li>
+<li>Report unauthorized activity.</li>
+</ol>
+<p><strong>What should happen:</strong> The stolen credential stops
+being useful or becomes much harder to use.</p>
+<p><strong>If that does not happen:</strong> If the attacker changed
+recovery information, use the service's official account-recovery
+process immediately.</p>
+<p><strong>Practice:</strong> Practice locating security activity on one
+important account.</p>
+<h2 id="part-23---work-and-school-security">Part 23 - Work and School
+Security</h2>
+<ul>
+<li><p>Follow organizational security policy even if a personal shortcut
+seems easier.</p></li>
+<li><p>Use the organization's phishing-report button/address when
+available.</p></li>
+<li><p>Do not forward suspicious work messages to a personal account
+just to inspect them.</p></li>
+<li><p>Verify payment, payroll, banking, gift-card, and
+credential-change requests through established business
+procedures.</p></li>
+<li><p>Do not install remote-control tools, browser extensions, VPNs, or
+accessibility software on managed devices without
+authorization.</p></li>
+<li><p>Report accidental clicks/credential entry promptly; early
+reporting can reduce damage.</p></li>
+</ul>
+<h2 id="part-24---accessible-security-checklists">Part 24 - Accessible
+Security Checklists</h2>
+<h3 id="before-clicking-a-link">24.1 Before Clicking a Link</h3>
+<p>☐ Do I know the real sender address?</p>
+<p>☐ Was I expecting this message?</p>
+<p>☐ Is the request urgent, secret, threatening, or unusually
+rewarding?</p>
+<p>☐ Can I reach the service through a known app/bookmark/typed address
+instead?</p>
+<p>☐ Does the actual destination domain match the organization?</p>
+<p>☐ Am I being asked for a password, code, money, remote access, or
+software install?</p>
+<h3 id="before-sending-money">24.2 Before Sending Money</h3>
+<p>☐ Have I independently verified the person/organization?</p>
+<p>☐ Is the payment method reversible/protected?</p>
+<p>☐ Am I being pressured to use gift cards, crypto, wire transfer, or
+payment app?</p>
+<p>☐ Did someone tell me not to speak with family, bank staff, IT, or
+police?</p>
+<p>☐ Did I verify the request using a known number or official app?</p>
+<h3 id="before-approving-mfa">24.3 Before Approving MFA</h3>
+<p>☐ Did I personally just attempt to sign in?</p>
+<p>☐ Does the service/account name match?</p>
+<p>☐ Does the location/device information make sense?</p>
+<p>☐ Is someone on the phone telling me to approve it? If yes, stop.</p>
+<p>☐ Am I seeing repeated unexpected prompts? If yes, deny and secure
+the account.</p>
+<h2 id="part-25---practice-scenarios">Part 25 - Practice Scenarios</h2>
+<h3 id="scenario-1---bank-text">Scenario 1 - Bank Text</h3>
+<p><strong>Situation:</strong> A text says your debit card is locked and
+gives a link.</p>
+<p><strong>Safer response:</strong> Do not use the link. Open the bank's
+official app or call the number on the card/statement. Check
+alerts/transactions there.</p>
+<h3 id="scenario-2---microsoft-pop-up">Scenario 2 - Microsoft
+Pop-Up</h3>
+<p><strong>Situation:</strong> A browser page says Microsoft found
+viruses and gives a phone number.</p>
+<p><strong>Safer response:</strong> Do not call. Close the tab/window.
+Run Windows Security/update through Start/Settings if concerned.</p>
+<h3 id="scenario-3---boss-gift-cards">Scenario 3 - Boss Gift Cards</h3>
+<p><strong>Situation:</strong> An email display name matches your
+manager and asks for gift cards urgently.</p>
+<p><strong>Safer response:</strong> Read the full sender address and
+verify through the manager's known contact method/work process.</p>
+<h3 id="scenario-4---mfa-prompt">Scenario 4 - MFA Prompt</h3>
+<p><strong>Situation:</strong> Your phone asks you to approve a sign-in
+you did not start.</p>
+<p><strong>Safer response:</strong> Deny. Change the password through
+the official site/app and review sessions.</p>
+<h3 id="scenario-5---delivery-fee">Scenario 5 - Delivery Fee</h3>
+<p><strong>Situation:</strong> A text says a package needs a small
+redelivery fee.</p>
+<p><strong>Safer response:</strong> Go directly to the carrier's known
+official site/app and enter the tracking number independently.</p>
+<h3 id="scenario-6---family-emergency">Scenario 6 - Family
+Emergency</h3>
+<p><strong>Situation:</strong> A caller sounds like a relative and asks
+for immediate money.</p>
+<p><strong>Safer response:</strong> End the call and contact the
+relative/another family member through known numbers.</p>
+<h3 id="scenario-7---shared-document">Scenario 7 - Shared Document</h3>
+<p><strong>Situation:</strong> A colleague sends an unexpected ZIP
+file.</p>
+<p><strong>Safer response:</strong> Confirm with the colleague through a
+separate channel before opening.</p>
+<h3 id="scenario-8---refund">Scenario 8 - Refund</h3>
+<p><strong>Situation:</strong> A caller says you were refunded too much
+and must return money through a payment app.</p>
+<p><strong>Safer response:</strong> Do not pay. Check the real
+account/statement and contact the company through its official support
+channel.</p>
+<h2 id="part-26---quick-reference">Part 26 - Quick Reference</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Safer action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Unexpected account alert</td>
+<td>Open the official app/site independently</td>
+</tr>
+<tr class="even">
+<td>Suspicious sender</td>
+<td>Read full address/domain</td>
+</tr>
+<tr class="odd">
+<td>Suspicious link</td>
+<td>Copy/read destination or avoid it entirely</td>
+</tr>
+<tr class="even">
+<td>Unexpected attachment</td>
+<td>Verify sender separately before opening</td>
+</tr>
+<tr class="odd">
+<td>Unexpected MFA prompt</td>
+<td>Deny, then secure account</td>
+</tr>
+<tr class="even">
+<td>Password needed</td>
+<td>Use password manager; unique password</td>
+</tr>
+<tr class="odd">
+<td>Passkey available</td>
+<td>Prefer it when practical</td>
+</tr>
+<tr class="even">
+<td>Security pop-up gives phone number</td>
+<td>Do not call it</td>
+</tr>
+<tr class="odd">
+<td>Caller requests remote access</td>
+<td>Decline unless you independently initiated trusted support</td>
+</tr>
+<tr class="even">
+<td>Gift card/crypto/wire demanded</td>
+<td>Stop and verify; classic scam indicator</td>
+</tr>
+<tr class="odd">
+<td>Browser warning</td>
+<td>Do not bypass on someone's instruction</td>
+</tr>
+<tr class="even">
+<td>Software update</td>
+<td>Use official Settings/app-store/vendor mechanism</td>
+</tr>
+<tr class="odd">
+<td>Possible compromise</td>
+<td>Change passwords, MFA, sessions, scan/update, contact
+institutions</td>
+</tr>
+<tr class="even">
+<td>Need proof of identity</td>
+<td>Use a separate trusted channel</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="screen-reader-verification-pattern">Screen Reader Verification
+Pattern</h3>
+<p>1. Read the actual sender. 2. Read/copy the actual destination only
+if necessary. 3. Leave the message. 4. Open the service independently.
+5. Verify the alert/activity inside the trusted service. 6.
+Report/delete the suspicious message.</p>
+<h2 id="part-27---official-security-resources">Part 27 - Official
+Security Resources</h2>
+<p><a href="https://www.cisa.gov/secure-our-world"><u>CISA Secure Our
+World</u></a></p>
+<p><a href="https://www.cisa.gov/secure-our-world/turn-mfa"><u>CISA -
+Turn on MFA</u></a></p>
+<p><a
+href="https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"><u>FTC
+- Tech Support Scams</u></a></p>
+<p><a
+href="https://consumer.ftc.gov/articles/what-do-if-you-were-scammed"><u>FTC
+- What To Do if You Were Scammed</u></a></p>
+<p><a
+href="https://consumer.ftc.gov/identity-theft-and-online-security/online-privacy-and-security"><u>FTC
+Consumer Advice - Online Privacy and Security</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accounts-billing/security/passkeys-frequently-asked-questions-faq"><u>Microsoft
+- Passkeys FAQ</u></a></p>
+<p><a
+href="https://support.google.com/accounts/answer/46526?hl=en"><u>Google
+- Make your account more secure</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I know the four core cybersecurity habits.</p>
+<p>☐ I can identify common phishing pressure tactics.</p>
+<p>☐ I can read and verify an actual sender address.</p>
+<p>☐ I can inspect or avoid suspicious links without opening them.</p>
+<p>☐ I can verify an account alert through an independent trusted
+path.</p>
+<p>☐ I know how to handle unexpected attachments/downloads.</p>
+<p>☐ I use unique passwords and understand password managers.</p>
+<p>☐ I understand MFA method differences.</p>
+<p>☐ I understand why passkeys are phishing-resistant.</p>
+<p>☐ I know never to share one-time or recovery codes with an
+unsolicited caller/message.</p>
+<p>☐ I know that HTTPS alone does not prove a site is legitimate.</p>
+<p>☐ I can identify tech-support and remote-access scams.</p>
+<p>☐ I can identify gift-card, refund, payment, delivery, and
+impersonation scam patterns.</p>
+<p>☐ I know how to update software through official mechanisms.</p>
+<p>☐ I understand backups and can test recovery.</p>
+<p>☐ I protect screen-reader speech, braille, and clipboard privacy.</p>
+<p>☐ I know what to do after giving remote access or credentials to a
+scammer.</p>
+<p>☐ I can use the no-click verification checklist independently.</p>
+<p><strong>Most important habit:</strong> A suspicious message should
+never control both the warning and the verification path. Leave the
+message, reach the real service or person independently, and verify
+there. That single habit defeats many phishing and impersonation
+scams.</p>
+
+    <p class="back-link"><a href="manuals.html">Return to all manuals</a></p>
+  </main>
 </body>
 </html>

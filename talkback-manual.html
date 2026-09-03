@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Android TalkBack Manual: step-by-step keyboard and screen-reader instructions, practice, troubleshooting, and command references.">
+  <title>Android TalkBack Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-manuals-1">
+  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
+</head>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible Learning Center manual</p>
+    <h1>Android TalkBack Manual</h1>
+    <p>Touch gestures, navigation, typing, and apps</p>
+    <p>Independent Self-Study Guide</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#main-content">Start of manual</a>
+    </nav>
+<p><a
+href="https://support.google.com/accessibility/android/answer/6283677?hl=en"><u>Google
+Android Accessibility Help - TalkBack</u></a></p>
+<p><strong>Purpose:</strong> This manual teaches Android with TalkBack
+from the beginning. It explains physical orientation, touch exploration,
+navigation, typing, system gestures, web browsing, TalkBack settings,
+braille input/output, external keyboards, security, troubleshooting, and
+independent practice.</p>
+<p><strong>Device differences:</strong> Android phones and tablets vary
+by manufacturer. Pixel, Samsung Galaxy, Motorola, OnePlus, and other
+devices may place buttons differently or rename settings. The TalkBack
+concepts and core gestures are consistent, but exact menus can
+differ.</p>
+<p><strong>Current reference:</strong> The guide is aligned with current
+Android Accessibility Help, including Android 16-era TalkBack features
+and TalkBack 16.2 keyboard/braille changes.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Work through the first gesture sections slowly. TalkBack changes
+how ordinary touch works.</p></li>
+<li><p>Touching an item normally speaks it; activating it usually
+requires a double-tap.</p></li>
+<li><p>One-finger swipes generally move TalkBack focus. Two-finger
+gestures generally scroll or perform system navigation when gesture
+navigation is in use.</p></li>
+<li><p>Use the built-in TalkBack Tutorial and Practice area whenever a
+gesture feels unreliable.</p></li>
+<li><p>On devices that support multi-finger gestures, a three-finger tap
+opens the TalkBack menu.</p></li>
+<li><p>Reading controls change what an up/down swipe navigates:
+characters, words, headings, controls, and more.</p></li>
+<li><p>Braille support is built into TalkBack. BrailleBack is not
+required for current supported braille displays.</p></li>
+<li><p>When typing with the TalkBack braille keyboard, normal TalkBack
+gestures are temporarily replaced by braille-keyboard gestures.</p></li>
+<li><p>Never change several TalkBack settings at once while learning.
+Change one setting, test it, and keep or reverse it.</p></li>
+</ul>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><p>Part 1 - What TalkBack Is</p></li>
+<li><p>Part 2 - Physical Orientation and Android Device Types</p></li>
+<li><p>Part 3 - Turn TalkBack On and Off</p></li>
+<li><p>Part 4 - TalkBack Tutorial and Practice</p></li>
+<li><p>Part 5 - Explore by Touch</p></li>
+<li><p>Part 6 - Core One-Finger Navigation</p></li>
+<li><p>Part 7 - Activate, Long-Press, and Scroll</p></li>
+<li><p>Part 8 - Home, Back, Overview, Notifications, and Quick
+Settings</p></li>
+<li><p>Part 9 - TalkBack Menu and Reading Controls</p></li>
+<li><p>Part 10 - Home Screen and App Drawer</p></li>
+<li><p>Part 11 - Notifications</p></li>
+<li><p>Part 12 - Quick Settings</p></li>
+<li><p>Part 13 - Text Entry with Gboard</p></li>
+<li><p>Part 14 - Text Editing and Selection</p></li>
+<li><p>Part 15 - Voice Typing and Google Assistant</p></li>
+<li><p>Part 16 - Chrome and Web Navigation</p></li>
+<li><p>Part 17 - Messages and Email</p></li>
+<li><p>Part 18 - Phone and Video Calls</p></li>
+<li><p>Part 19 - TalkBack Settings and Speech</p></li>
+<li><p>Part 20 - Hide Screen and Privacy Features</p></li>
+<li><p>Part 21 - TalkBack Braille Keyboard</p></li>
+<li><p>Part 22 - Refreshable Braille Displays</p></li>
+<li><p>Part 23 - External Keyboard and Enhanced Keymap</p></li>
+<li><p>Part 24 - Files, Sharing, and Downloads</p></li>
+<li><p>Part 25 - Device Security and Privacy</p></li>
+<li><p>Part 26 - Manufacturer Differences</p></li>
+<li><p>Part 27 - Troubleshooting</p></li>
+<li><p>Part 28 - Independent Practice Course</p></li>
+<li><p>Part 29 - Quick Reference Gestures</p></li>
+<li><p>Part 30 - Official Google Resources</p></li>
+</ul>
+<h2 id="part-1---what-talkback-is">Part 1 - What TalkBack Is</h2>
+<p>TalkBack is Android's built-in screen reader. It speaks or displays
+in braille what is focused, describes controls and alerts, and changes
+the touch interface so a blind or low-vision user can navigate
+independently.</p>
+<ul>
+<li><p>Focus: the item TalkBack is currently describing.</p></li>
+<li><p>Explore by touch: drag one finger around the screen and TalkBack
+speaks what is under the finger.</p></li>
+<li><p>Swipe navigation: move focus in a predictable sequence without
+needing to know where items are visually.</p></li>
+<li><p>Activation: after focusing an item, double-tap anywhere with one
+finger to activate it.</p></li>
+<li><p>Reading controls: change the navigation unit used by up/down
+swipes.</p></li>
+<li><p>TalkBack menu: quick access to settings, voice commands, screen
+search, hide/show screen, and context actions.</p></li>
+<li><p>Braille: TalkBack supports both an onscreen braille keyboard and
+connected refreshable braille displays.</p></li>
+</ul>
+<h2 id="part-2---physical-orientation-and-android-device-types">Part 2 -
+Physical Orientation and Android Device Types</h2>
+<p><strong>Important:</strong> There is no single physical Android
+layout. Always identify your exact device model before memorizing button
+locations.</p>
+<ul>
+<li><p>Most modern phones have a flat touchscreen on the front, one or
+more cameras near the top, and physical side buttons.</p></li>
+<li><p>Common side buttons include Power/Side key and Volume Up/Down.
+Their side and vertical order vary by manufacturer.</p></li>
+<li><p>USB-C is the standard charging/data connector on most current
+Android phones and tablets and is usually on the bottom edge.</p></li>
+<li><p>Some tablets place USB-C on a side edge depending on
+orientation.</p></li>
+<li><p>Some devices use on-screen gesture navigation; others use a
+three-button navigation bar with Back, Home, and
+Overview/Recents.</p></li>
+<li><p>Foldable phones may have multiple displays and hinge-dependent
+layouts.</p></li>
+</ul>
+<h3 id="identify-your-device-before-learning-gestures">2.1 Identify Your
+Device Before Learning Gestures</h3>
+<p><strong>What you will learn:</strong> Create a reliable physical map
+of your own phone/tablet.</p>
+<p><strong>Before you begin:</strong> Have the device powered on and
+safely held.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol type="1">
+<li><p>Find the screen: the large smooth glass surface on the
+front.</p></li>
+<li><p>Find the Power/Side key and press it briefly once to hear whether
+the screen locks/wakes.</p></li>
+<li><p>Find Volume Up and Volume Down by pressing each once and
+listening for the volume change.</p></li>
+<li><p>Locate the charging port by touch without inserting a cable
+blindly at an angle.</p></li>
+<li><p>Ask Settings &gt; About phone/tablet for the exact manufacturer
+and model name if you do not know it.</p></li>
+<li><p>Write down the exact model and button layout in your own
+notes.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You have a model-specific
+physical map instead of relying on generic assumptions.</p>
+<p><strong>If that does not happen:</strong> If you cannot identify a
+control safely, use the manufacturer's official hardware guide for that
+exact model.</p>
+<p><strong>Practice:</strong> Locate each physical control three times
+with the screen off.</p>
+<h2 id="part-3---turn-talkback-on-and-off">Part 3 - Turn TalkBack On and
+Off</h2>
+<h3 id="turn-talkback-on-in-settings">3.1 Turn TalkBack On in
+Settings</h3>
+<p><strong>What you will learn:</strong> Enable TalkBack using the
+standard Android Settings path.</p>
+<p><strong>Before you begin:</strong> The device is already set up and
+you can access Settings.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol start="7" type="1">
+<li><p>Open Settings.</p></li>
+<li><p>Open Accessibility.</p></li>
+<li><p>Open TalkBack.</p></li>
+<li><p>Turn Use TalkBack on.</p></li>
+<li><p>Confirm the permission/confirmation prompt.</p></li>
+<li><p>Listen to TalkBack begin speaking.</p></li>
+</ol>
+<p><strong>What should happen:</strong> TalkBack starts and touch
+behavior changes.</p>
+<p><strong>If that does not happen:</strong> Menu names vary by
+manufacturer. Use Settings search for TalkBack if necessary.</p>
+<p><strong>Practice:</strong> Turn TalkBack on and enter the
+Tutorial.</p>
+<h3 id="configure-the-talkback-shortcut">3.2 Configure the TalkBack
+Shortcut</h3>
+<p><strong>What you will learn:</strong> Make it possible to toggle
+TalkBack without navigating Settings.</p>
+<p><strong>Before you begin:</strong> TalkBack is on.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol start="13" type="1">
+<li><p>Open Settings &gt; Accessibility &gt; TalkBack.</p></li>
+<li><p>Open TalkBack shortcut.</p></li>
+<li><p>Turn the shortcut on.</p></li>
+<li><p>Follow the device-specific instructions for the offered shortcut
+method.</p></li>
+<li><p>Test the shortcut once to turn TalkBack off, then use it again to
+turn TalkBack on.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can toggle TalkBack using
+the configured accessibility shortcut.</p>
+<p><strong>If that does not happen:</strong> The shortcut varies by
+device and Android version. Do not assume one universal button
+combination.</p>
+<p><strong>Practice:</strong> Toggle TalkBack off and back on without
+opening Settings.</p>
+<h3 id="use-google-assistant-to-toggle-talkback">3.3 Use Google
+Assistant to Toggle TalkBack</h3>
+<p><strong>What you will learn:</strong> Use voice control when
+Assistant is already configured.</p>
+<p><strong>Before you begin:</strong> Google Assistant/Gemini voice
+activation is available on the device.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol start="18" type="1">
+<li><p>Say Hey Google.</p></li>
+<li><p>Say Turn on TalkBack or Turn off TalkBack.</p></li>
+<li><p>Wait for the change to complete.</p></li>
+</ol>
+<p><strong>What should happen:</strong> TalkBack changes state by voice
+command.</p>
+<p><strong>If that does not happen:</strong> If Assistant is not
+configured, use Settings or the accessibility shortcut instead.</p>
+<p><strong>Practice:</strong> Use voice to turn TalkBack on once.</p>
+<p><strong>Android 16 keyboard option:</strong> Google documents an
+Android 16 external-keyboard shortcut for TalkBack using the Action key
++ Alt + T. The Action key depends on the keyboard, such as Windows key
+on a Windows keyboard or Command on a Mac keyboard.</p>
+<h2 id="part-4---talkback-tutorial-and-practice">Part 4 - TalkBack
+Tutorial and Practice</h2>
+<h3 id="open-tutorial-and-help">4.1 Open Tutorial and Help</h3>
+<p><strong>What you will learn:</strong> Practice gestures without fear
+of activating normal app controls.</p>
+<p><strong>Before you begin:</strong> TalkBack is on.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol start="21" type="1">
+<li><p>Open the TalkBack menu with a three-finger tap on supported
+multi-finger devices, or swipe down then right in one motion.</p></li>
+<li><p>Choose TalkBack settings.</p></li>
+<li><p>Choose Tutorial and help.</p></li>
+<li><p>Open the gesture practice/tutorial section.</p></li>
+<li><p>Perform each gesture until TalkBack identifies it
+consistently.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can practice gestures in a
+controlled environment.</p>
+<p><strong>If that does not happen:</strong> If a three-finger tap does
+not open the menu, the device may not support multi-finger TalkBack
+gestures; use swipe down then right.</p>
+<p><strong>Practice:</strong> Practice swipe right, swipe left,
+double-tap, two-finger scroll, and reading-control gestures.</p>
+<h2 id="part-5---explore-by-touch">Part 5 - Explore by Touch</h2>
+<h3 id="explore-the-screen">5.1 Explore the Screen</h3>
+<p><strong>What you will learn:</strong> Learn spatial layout without
+activating anything.</p>
+<p><strong>Before you begin:</strong> TalkBack is on and the Home screen
+is visible.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol start="26" type="1">
+<li><p>Place one finger lightly near the upper-left area of the
+screen.</p></li>
+<li><p>Without lifting the finger, slowly drag across the
+screen.</p></li>
+<li><p>Listen as TalkBack speaks each item your finger crosses.</p></li>
+<li><p>Move toward the bottom edge and sides to learn where persistent
+controls are.</p></li>
+<li><p>Lift your finger when finished. Do not double-tap.</p></li>
+</ol>
+<p><strong>What should happen:</strong> TalkBack describes items under
+the finger without opening them.</p>
+<p><strong>If that does not happen:</strong> If an item opens, you
+likely double-tapped or used single-tap activation. Review TalkBack
+settings.</p>
+<p><strong>Practice:</strong> Explore the Home screen without opening an
+app.</p>
+<h2 id="part-6---core-one-finger-navigation">Part 6 - Core One-Finger
+Navigation</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Gesture / Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Next item</td>
+<td>Swipe right with one finger</td>
+</tr>
+<tr class="even">
+<td>Previous item</td>
+<td>Swipe left with one finger</td>
+</tr>
+<tr class="odd">
+<td>Change reading control / navigate by selected unit</td>
+<td>Swipe up or down with one finger, depending current reading
+control</td>
+</tr>
+<tr class="even">
+<td>Explore by touch</td>
+<td>Drag one finger</td>
+</tr>
+<tr class="odd">
+<td>Focus item by touch</td>
+<td>Tap/touch item</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="move-sequentially">6.1 Move Sequentially</h3>
+<p><strong>What you will learn:</strong> Navigate without knowing the
+screen layout.</p>
+<p><strong>Before you begin:</strong> TalkBack focus is on any item.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol start="31" type="1">
+<li><p>Swipe right once.</p></li>
+<li><p>Listen to the next item.</p></li>
+<li><p>Swipe right several more times.</p></li>
+<li><p>Swipe left to move backward.</p></li>
+<li><p>Continue until you can predict that right means next and left
+means previous.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Focus moves in TalkBack's
+accessibility order.</p>
+<p><strong>If that does not happen:</strong> If swipes scroll instead,
+use one finger, not two.</p>
+<p><strong>Practice:</strong> Move forward ten items and backward
+five.</p>
+<h2 id="part-7---activate-long-press-and-scroll">Part 7 - Activate,
+Long-Press, and Scroll</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Gesture / Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Activate focused item</td>
+<td>Double-tap with one finger anywhere</td>
+</tr>
+<tr class="even">
+<td>Long press focused item</td>
+<td>Double-tap and hold</td>
+</tr>
+<tr class="odd">
+<td>Scroll vertically</td>
+<td>Two-finger swipe up/down or two-finger drag</td>
+</tr>
+<tr class="even">
+<td>Scroll horizontally</td>
+<td>Two-finger swipe left/right when content supports it</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="open-an-app-with-talkback">7.1 Open an App with TalkBack</h3>
+<p><strong>What you will learn:</strong> Focus first, then activate.</p>
+<p><strong>Before you begin:</strong> Be on the Home screen.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol start="36" type="1">
+<li><p>Swipe right/left until the desired app is announced.</p></li>
+<li><p>Double-tap anywhere with one finger.</p></li>
+<li><p>Wait for the app to open.</p></li>
+<li><p>Use swipe right to identify the first controls.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The focused app opens.</p>
+<p><strong>If that does not happen:</strong> If the wrong app opens, you
+activated a different focused item. Swipe to refocus and try again.</p>
+<p><strong>Practice:</strong> Open Settings and return Home.</p>
+<h2
+id="part-8---home-back-overview-notifications-and-quick-settings">Part 8
+- Home, Back, Overview, Notifications, and Quick Settings</h2>
+<p><strong>Gesture navigation:</strong> When Android gesture navigation
+is enabled, TalkBack commonly uses two-finger system gestures so they do
+not conflict with one-finger TalkBack navigation.</p>
+<ul>
+<li><p>Home: on gesture-navigation devices, use the TalkBack/system Home
+gesture appropriate to the device, often a two-finger swipe up from the
+bottom edge.</p></li>
+<li><p>Back: commonly swipe down then left in one motion, or use the
+device's two-finger Back system gesture depending
+configuration.</p></li>
+<li><p>Overview/Recent apps: use the device-specific TalkBack system
+gesture or focus the Overview button on three-button navigation
+devices.</p></li>
+<li><p>Notifications: system gesture varies, but TalkBack can also
+navigate the status/notification shade after it is opened.</p></li>
+<li><p>Quick Settings: usually reached by expanding the shade farther
+than notifications.</p></li>
+</ul>
+<p><strong>Why wording is cautious:</strong> Manufacturers and
+navigation modes differ. Use TalkBack Tutorial &gt; System actions on
+your own device as the authoritative gesture set.</p>
+<h2 id="part-9---talkback-menu-and-reading-controls">Part 9 - TalkBack
+Menu and Reading Controls</h2>
+<h3 id="open-the-talkback-menu">9.1 Open the TalkBack Menu</h3>
+<p><strong>What you will learn:</strong> Reach common TalkBack commands
+quickly.</p>
+<p><strong>Before you begin:</strong> TalkBack is on.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol start="40" type="1">
+<li><p>Three-finger tap the screen if multi-finger gestures are
+supported.</p></li>
+<li><p>If that does not work, swipe down then right in one continuous
+motion.</p></li>
+<li><p>Explore menu items such as TalkBack settings, Screen search,
+Voice commands, Hide/show screen, and context actions.</p></li>
+<li><p>Press Back to close the menu.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The TalkBack menu opens.</p>
+<p><strong>If that does not happen:</strong> If no menu opens with
+three-finger tap, use the one-finger angled gesture.</p>
+<p><strong>Practice:</strong> Open and close the menu three times.</p>
+<h3 id="change-reading-controls">9.2 Change Reading Controls</h3>
+<p><strong>What you will learn:</strong> Choose whether up/down swipes
+navigate characters, words, headings, controls, and other units.</p>
+<p><strong>Before you begin:</strong> TalkBack is on.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol start="44" type="1">
+<li><p>Perform a three-finger swipe up or down on supported devices, or
+the one-finger up-then-down/down-then-up gesture on older/single-finger
+setups.</p></li>
+<li><p>Listen to the selected reading control.</p></li>
+<li><p>Repeat until you hear the unit you want, such as Characters or
+Headings.</p></li>
+<li><p>Use one-finger swipe up/down to move by that unit.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Navigation changes to the
+selected reading unit.</p>
+<p><strong>If that does not happen:</strong> If the gesture scrolls
+content, verify the number of fingers and that TalkBack supports
+multi-finger gestures.</p>
+<p><strong>Practice:</strong> Select Characters, navigate, then select
+Headings on a webpage.</p>
+<h2 id="part-10---home-screen-and-app-drawer">Part 10 - Home Screen and
+App Drawer</h2>
+<h3 id="navigate-the-home-screen">10.1 Navigate the Home Screen</h3>
+<p><strong>What you will learn:</strong> Find apps, folders, widgets,
+and system areas.</p>
+<p><strong>Before you begin:</strong> You are on Home.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol start="48" type="1">
+<li><p>Swipe right through Home-screen items.</p></li>
+<li><p>Listen for app names, folders, widgets, and page
+indicators.</p></li>
+<li><p>Use a two-finger horizontal swipe if the launcher uses multiple
+Home pages.</p></li>
+<li><p>Double-tap the desired app.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can locate and open
+Home-screen items.</p>
+<p><strong>If that does not happen:</strong> Launcher behavior varies by
+manufacturer. If page gestures differ, use explore-by-touch or the app
+drawer.</p>
+<p><strong>Practice:</strong> Find three apps without opening them, then
+open one.</p>
+<h3 id="use-the-app-drawer">10.2 Use the App Drawer</h3>
+<p><strong>What you will learn:</strong> Find an installed app even if
+it is not on the Home screen.</p>
+<p><strong>Before you begin:</strong> Your launcher provides an app
+drawer.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol start="52" type="1">
+<li><p>Use the launcher's app-drawer gesture or activate the Apps button
+if present.</p></li>
+<li><p>Use swipe navigation through apps or focus the search
+field.</p></li>
+<li><p>Type part of the app name when search is available.</p></li>
+<li><p>Double-tap the result.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The desired app opens.</p>
+<p><strong>If that does not happen:</strong> Some launchers do not use a
+traditional app drawer. Use Home-screen search instead.</p>
+<p><strong>Practice:</strong> Open Chrome through app search.</p>
+<h2 id="part-11---notifications">Part 11 - Notifications</h2>
+<h3 id="read-and-dismiss-notifications">11.1 Read and Dismiss
+Notifications</h3>
+<p><strong>What you will learn:</strong> Review alerts without opening
+every app.</p>
+<p><strong>Before you begin:</strong> At least one notification is
+present.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol start="56" type="1">
+<li><p>Open the notification shade using the device-specific
+TalkBack/system gesture.</p></li>
+<li><p>Swipe right through notifications.</p></li>
+<li><p>Listen to app name, sender/title, and available actions.</p></li>
+<li><p>Double-tap a notification to open it, or use its Dismiss/Clear
+action when appropriate.</p></li>
+<li><p>Close the shade with Back/Home.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can review notifications
+independently.</p>
+<p><strong>If that does not happen:</strong> If the shade does not open,
+practice the system-action gesture in TalkBack Tutorial.</p>
+<p><strong>Practice:</strong> Read three notifications and dismiss one
+harmless notification.</p>
+<p><strong>Privacy:</strong> Notification text can reveal sensitive
+messages. Review lock-screen notification settings if other people can
+see your device.</p>
+<h2 id="part-12---quick-settings">Part 12 - Quick Settings</h2>
+<h3 id="change-a-quick-setting">12.1 Change a Quick Setting</h3>
+<p><strong>What you will learn:</strong> Toggle Wi-Fi, Bluetooth, Do Not
+Disturb, or another system control.</p>
+<p><strong>Before you begin:</strong> Open the Quick Settings panel.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol start="61" type="1">
+<li><p>Navigate with swipe right/left.</p></li>
+<li><p>Listen to each tile name and state, such as Wi-Fi on or Bluetooth
+off.</p></li>
+<li><p>Double-tap only the tile you intend to change.</p></li>
+<li><p>Listen for the new state.</p></li>
+<li><p>Close Quick Settings.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The selected setting
+changes.</p>
+<p><strong>If that does not happen:</strong> If the tile opens a
+detailed settings page instead of toggling, use Back after reviewing
+it.</p>
+<p><strong>Practice:</strong> Toggle Bluetooth only if safe, then
+restore its original state.</p>
+<h2 id="part-13---text-entry-with-gboard">Part 13 - Text Entry with
+Gboard</h2>
+<h3 id="type-with-explore-by-touch-gboard">13.1 Type with
+Explore-by-Touch Gboard</h3>
+<p><strong>What you will learn:</strong> Enter text using the standard
+onscreen keyboard.</p>
+<p><strong>Before you begin:</strong> Focus an editable text field and
+open the keyboard.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol start="66" type="1">
+<li><p>Move one finger across the keyboard until TalkBack announces the
+desired letter.</p></li>
+<li><p>Lift your finger to enter that letter on standard TalkBack/Gboard
+touch typing.</p></li>
+<li><p>Repeat for the word.</p></li>
+<li><p>Use Backspace/Delete by locating its key and activating
+it.</p></li>
+<li><p>Use the Back system gesture to dismiss the keyboard when
+finished.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Text appears in the field as
+keys are selected.</p>
+<p><strong>If that does not happen:</strong> Typing behavior can be
+customized. If lifting your finger does not type the key, check TalkBack
+typing preferences.</p>
+<p><strong>Practice:</strong> Type your first name and a short
+sentence.</p>
+<h3 id="use-password-fields-safely">13.2 Use Password Fields Safely</h3>
+<p><strong>What you will learn:</strong> Control how secure text is
+spoken.</p>
+<p><strong>Before you begin:</strong> Open a safe password field or
+TalkBack speech settings.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol start="71" type="1">
+<li><p>Review TalkBack settings for speaking passwords/secure
+fields.</p></li>
+<li><p>Choose the privacy level appropriate to your
+environment.</p></li>
+<li><p>When in public, use headphones or reduced password
+feedback.</p></li>
+<li><p>Never practice with a real password in a public setting.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Password feedback matches your
+privacy needs.</p>
+<p><strong>If that does not happen:</strong> If TalkBack speaks more
+than expected, change secure-field verbosity before entering sensitive
+credentials.</p>
+<p><strong>Practice:</strong> Review the setting without entering a real
+password.</p>
+<h2 id="part-14---text-editing-and-selection">Part 14 - Text Editing and
+Selection</h2>
+<h3 id="review-text-by-character-or-word">14.1 Review Text by Character
+or Word</h3>
+<p><strong>What you will learn:</strong> Move precisely inside an edit
+field.</p>
+<p><strong>Before you begin:</strong> An edit field contains text.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol start="75" type="1">
+<li><p>Focus the edit field.</p></li>
+<li><p>Use reading controls to choose Characters or Words.</p></li>
+<li><p>Swipe up/down to move the cursor/review position by the selected
+unit.</p></li>
+<li><p>Use the TalkBack menu &gt; Edit options when you need selection,
+copy, cut, or paste.</p></li>
+<li><p>Confirm the selected range before deleting/replacing
+text.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can edit without erasing the
+whole field.</p>
+<p><strong>If that does not happen:</strong> If up/down changes volume
+or another function, verify the reading control and current focus.</p>
+<p><strong>Practice:</strong> Correct three spelling errors in a
+practice note.</p>
+<h2 id="part-15---voice-typing-and-google-assistant">Part 15 - Voice
+Typing and Google Assistant</h2>
+<h3 id="dictate-text">15.1 Dictate Text</h3>
+<p><strong>What you will learn:</strong> Use speech input instead of the
+onscreen keyboard.</p>
+<p><strong>Before you begin:</strong> Gboard voice typing is enabled and
+the environment is private enough for dictation.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol start="80" type="1">
+<li><p>Focus the edit field.</p></li>
+<li><p>Find the microphone/voice typing key on Gboard.</p></li>
+<li><p>Double-tap it.</p></li>
+<li><p>Speak a short sentence clearly.</p></li>
+<li><p>Wait for text to appear.</p></li>
+<li><p>Review the text before sending or saving.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Spoken words are converted to
+text.</p>
+<p><strong>If that does not happen:</strong> If voice typing is
+unavailable, check microphone permission, keyboard settings, and
+network/on-device language support.</p>
+<p><strong>Practice:</strong> Dictate one short harmless sentence and
+correct any error manually.</p>
+<h2 id="part-16---chrome-and-web-navigation">Part 16 - Chrome and Web
+Navigation</h2>
+<h3 id="read-a-webpage-with-talkback">16.1 Read a Webpage with
+TalkBack</h3>
+<p><strong>What you will learn:</strong> Navigate headings, links,
+controls, and text in Chrome.</p>
+<p><strong>Before you begin:</strong> Open a webpage in Chrome.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol start="86" type="1">
+<li><p>Use one-finger swipe right/left for sequential
+navigation.</p></li>
+<li><p>Use Reading controls to select Headings.</p></li>
+<li><p>Swipe up/down to move by heading.</p></li>
+<li><p>Select Links or Controls when useful and navigate by that
+unit.</p></li>
+<li><p>Double-tap the focused link/control to activate it.</p></li>
+<li><p>Use the TalkBack menu Screen search when you know a word on the
+current screen.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can move through webpage
+structure efficiently.</p>
+<p><strong>If that does not happen:</strong> Poorly structured websites
+may have few or no useful headings. Use sequential navigation or Chrome
+Find as a fallback.</p>
+<p><strong>Practice:</strong> Navigate one article by headings, then
+follow a link and go Back.</p>
+<p><strong>Physical keyboard:</strong> TalkBack 16.2 introduced an
+Enhanced keymap with Browse mode for physical keyboards. Smart Browse
+mode can automatically leave Browse mode when entering edit fields and
+restore it afterward.</p>
+<h2 id="part-17---messages-and-email">Part 17 - Messages and Email</h2>
+<h3 id="send-a-text-message">17.1 Send a Text Message</h3>
+<p><strong>What you will learn:</strong> Compose and verify a simple
+message.</p>
+<p><strong>Before you begin:</strong> Open your messaging app.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol start="92" type="1">
+<li><p>Find New conversation/Start chat.</p></li>
+<li><p>Enter or select the recipient.</p></li>
+<li><p>Review the recipient name/number carefully.</p></li>
+<li><p>Focus the message field.</p></li>
+<li><p>Type or dictate the message.</p></li>
+<li><p>Review the message.</p></li>
+<li><p>Double-tap Send.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The message is sent to the
+intended recipient.</p>
+<p><strong>If that does not happen:</strong> If several contacts have
+similar names, verify the number or other identifying detail before
+sending.</p>
+<p><strong>Practice:</strong> Draft a harmless message and cancel before
+sending if preferred.</p>
+<h3 id="read-and-reply-to-email">17.2 Read and Reply to Email</h3>
+<p><strong>What you will learn:</strong> Open a message and reply
+without losing context.</p>
+<p><strong>Before you begin:</strong> Open Gmail or another accessible
+mail app.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol start="99" type="1">
+<li><p>Navigate the message list with swipes.</p></li>
+<li><p>Double-tap the desired message.</p></li>
+<li><p>Read sender, subject, and message body.</p></li>
+<li><p>Find Reply.</p></li>
+<li><p>Enter the response.</p></li>
+<li><p>Review it, then send only when ready.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The reply is associated with the
+correct conversation.</p>
+<p><strong>If that does not happen:</strong> If navigation becomes
+noisy, use TalkBack reading controls to move by headings/controls when
+the app exposes them.</p>
+<p><strong>Practice:</strong> Open one non-sensitive email and locate
+Reply.</p>
+<h2 id="part-18---phone-and-video-calls">Part 18 - Phone and Video
+Calls</h2>
+<h3 id="answer-and-end-a-call">18.1 Answer and End a Call</h3>
+<p><strong>What you will learn:</strong> Handle a standard incoming
+phone call.</p>
+<p><strong>Before you begin:</strong> A safe practice call is
+incoming.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol start="105" type="1">
+<li><p>Navigate to the Answer control using TalkBack or the
+device-specific call gesture.</p></li>
+<li><p>Activate Answer.</p></li>
+<li><p>Use Volume buttons to adjust call volume if needed.</p></li>
+<li><p>Locate Mute, Speaker, Keypad, and End call controls by swipe
+navigation.</p></li>
+<li><p>Activate End call when finished.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The call connects and ends
+intentionally.</p>
+<p><strong>If that does not happen:</strong> Call-screen layouts vary by
+manufacturer and dialer app. Practice before relying on it in an urgent
+situation.</p>
+<p><strong>Practice:</strong> Practice with a trusted caller.</p>
+<h2 id="part-19---talkback-settings-and-speech">Part 19 - TalkBack
+Settings and Speech</h2>
+<h3 id="open-talkback-settings">19.1 Open TalkBack Settings</h3>
+<p><strong>What you will learn:</strong> Adjust speech, verbosity,
+gestures, braille, and keyboard features.</p>
+<p><strong>Before you begin:</strong> TalkBack is on.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol start="110" type="1">
+<li><p>Open the TalkBack menu.</p></li>
+<li><p>Choose TalkBack settings.</p></li>
+<li><p>Review Speech, Verbosity, Gestures, Braille keyboard, Braille
+display, Advanced settings, and Tutorial/help.</p></li>
+<li><p>Change only one setting at a time.</p></li>
+<li><p>Test the change before making another.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can customize TalkBack
+without losing track of what changed.</p>
+<p><strong>If that does not happen:</strong> If TalkBack becomes hard to
+use after a change, return to the same setting and restore the previous
+option.</p>
+<p><strong>Practice:</strong> Change speech rate slightly, test, then
+restore it.</p>
+<p><strong>Version check:</strong> Google documents the TalkBack version
+inside TalkBack settings &gt; Advanced settings &gt; Others/Open
+TalkBack at the Play Store path. Menu labels can change slightly over
+releases.</p>
+<h2 id="part-20---hide-screen-and-privacy-features">Part 20 - Hide
+Screen and Privacy Features</h2>
+<h3 id="hide-or-show-the-screen">20.1 Hide or Show the Screen</h3>
+<p><strong>What you will learn:</strong> Prevent nearby people from
+visually reading the display while TalkBack continues.</p>
+<p><strong>Before you begin:</strong> TalkBack is on.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol start="115" type="1">
+<li><p>Open the TalkBack menu.</p></li>
+<li><p>Choose Hide or show screen.</p></li>
+<li><p>Confirm the screen is hidden while TalkBack continues
+speaking.</p></li>
+<li><p>Use the TalkBack menu again to show the screen when
+needed.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The visual display is hidden
+without turning TalkBack off.</p>
+<p><strong>If that does not happen:</strong> If you need sighted
+assistance, show the screen before handing the device to another
+person.</p>
+<p><strong>Practice:</strong> Hide the screen, navigate two items, then
+show it again.</p>
+<h2 id="part-21---talkback-braille-keyboard">Part 21 - TalkBack Braille
+Keyboard</h2>
+<p><strong>Important:</strong> The TalkBack braille keyboard uses six
+fingers to enter 6-dot braille. Google says TalkBack must be on and
+Magnification must be off.</p>
+<h3 id="set-up-the-talkback-braille-keyboard">21.1 Set Up the TalkBack
+Braille Keyboard</h3>
+<p><strong>What you will learn:</strong> Enable the onscreen braille
+keyboard.</p>
+<p><strong>Before you begin:</strong> TalkBack is on.</p>
+<h4 id="exactly-how-to-do-it-24">Exactly how to do it</h4>
+<ol start="119" type="1">
+<li><p>Open the TalkBack menu.</p></li>
+<li><p>Choose TalkBack settings.</p></li>
+<li><p>Open Braille keyboard.</p></li>
+<li><p>Choose Set up braille keyboard and follow the prompts.</p></li>
+<li><p>Open an editable field.</p></li>
+<li><p>Choose the input-method switcher.</p></li>
+<li><p>Select TalkBack braille keyboard.</p></li>
+<li><p>Complete the tutorial the first time.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The screen becomes a six-dot
+braille input surface.</p>
+<p><strong>If that does not happen:</strong> If the keyboard option is
+missing, confirm TalkBack is current and that Magnification is off.</p>
+<p><strong>Practice:</strong> Complete the braille-keyboard
+tutorial.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Gesture / Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Delete a letter</td>
+<td>Swipe left</td>
+</tr>
+<tr class="even">
+<td>Delete a word</td>
+<td>Two-finger swipe left</td>
+</tr>
+<tr class="odd">
+<td>Space</td>
+<td>Swipe right</td>
+</tr>
+<tr class="even">
+<td>New line</td>
+<td>Two-finger swipe right</td>
+</tr>
+<tr class="odd">
+<td>Submit text</td>
+<td>Two-finger swipe up</td>
+</tr>
+<tr class="even">
+<td>Hide braille keyboard</td>
+<td>Two-finger swipe down</td>
+</tr>
+<tr class="odd">
+<td>Next keyboard</td>
+<td>Three-finger swipe down</td>
+</tr>
+<tr class="even">
+<td>Help/options</td>
+<td>Three-finger swipe up</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Gesture mode change:</strong> While the TalkBack braille
+keyboard is active, ordinary TalkBack gestures are not available. Hide
+the keyboard with a two-finger swipe down before returning to normal
+TalkBack navigation.</p>
+<h2 id="part-22---refreshable-braille-displays">Part 22 - Refreshable
+Braille Displays</h2>
+<p><strong>Current model:</strong> Google states that BrailleBack is not
+required to connect a supported braille display to TalkBack.</p>
+<h3 id="connect-a-braille-display">22.1 Connect a Braille Display</h3>
+<p><strong>What you will learn:</strong> Pair a refreshable braille
+display with TalkBack.</p>
+<p><strong>Before you begin:</strong> The display is supported and ready
+to pair.</p>
+<h4 id="exactly-how-to-do-it-25">Exactly how to do it</h4>
+<ol start="127" type="1">
+<li><p>Open TalkBack settings.</p></li>
+<li><p>Open Braille display.</p></li>
+<li><p>Choose the connection/pairing option offered by the
+device.</p></li>
+<li><p>Put the braille display into its Bluetooth/USB pairing
+mode.</p></li>
+<li><p>Select the display when it appears.</p></li>
+<li><p>Confirm pairing if a code is requested.</p></li>
+<li><p>Open Braille display commands to review device-specific
+keystrokes.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Braille output follows TalkBack
+focus.</p>
+<p><strong>If that does not happen:</strong> If the device does not
+appear, verify Bluetooth/USB mode and supported-display guidance for
+that model.</p>
+<p><strong>Practice:</strong> Pair the display and read three
+Home-screen items.</p>
+<h3 id="test-output-input-and-routing">22.2 Test Output, Input, and
+Routing</h3>
+<p><strong>What you will learn:</strong> Verify the three essential
+braille functions.</p>
+<p><strong>Before you begin:</strong> The display is connected.</p>
+<h4 id="exactly-how-to-do-it-26">Exactly how to do it</h4>
+<ol start="134" type="1">
+<li><p>Move TalkBack focus through several items and confirm braille
+output changes.</p></li>
+<li><p>Open an edit field.</p></li>
+<li><p>Use a routing key on the field or press Enter/Dot 8 as
+appropriate to activate editing.</p></li>
+<li><p>Type a short word from the braille display.</p></li>
+<li><p>Use routing/arrow keys to move within the text.</p></li>
+<li><p>Correct one character.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Braille output, input, and
+routing all function.</p>
+<p><strong>If that does not happen:</strong> If one function fails,
+inspect TalkBack settings &gt; Braille display &gt; Braille display
+commands for that specific display.</p>
+<p><strong>Practice:</strong> Perform output, input, routing.</p>
+<h2 id="part-23---external-keyboard-and-enhanced-keymap">Part 23 -
+External Keyboard and Enhanced Keymap</h2>
+<p><strong>TalkBack 16.2:</strong> Google documents two keymaps: Default
+and Enhanced. On first activation of TalkBack 16.2 or later, Enhanced
+keymap is turned on by default.</p>
+<h3 id="review-physical-keyboard-talkback-commands">23.1 Review
+Physical-Keyboard TalkBack Commands</h3>
+<p><strong>What you will learn:</strong> Use a keyboard for efficient
+navigation and web browsing.</p>
+<p><strong>Before you begin:</strong> A Bluetooth/USB keyboard is
+connected.</p>
+<h4 id="exactly-how-to-do-it-27">Exactly how to do it</h4>
+<ol start="140" type="1">
+<li><p>Open TalkBack settings &gt; Advanced settings &gt; Keyboard
+shortcuts.</p></li>
+<li><p>Review Choose a keymap.</p></li>
+<li><p>Select Enhanced keymap if you want Browse-mode commands and it is
+not already selected.</p></li>
+<li><p>Identify the TalkBack modifier key configured for your
+keyboard.</p></li>
+<li><p>Test TalkBack key + Right Arrow for next item and TalkBack key +
+Left Arrow for previous item.</p></li>
+<li><p>Double-press the TalkBack key to enter Browse mode when using the
+Enhanced keymap.</p></li>
+<li><p>Test headings/links lists in a browser if available.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The physical keyboard can
+control TalkBack efficiently.</p>
+<p><strong>If that does not happen:</strong> If the modifier conflicts
+with another system shortcut, change the TalkBack key in Keyboard
+shortcuts settings.</p>
+<p><strong>Practice:</strong> Navigate ten items and one webpage using
+the keyboard.</p>
+<h2 id="part-24---files-sharing-and-downloads">Part 24 - Files, Sharing,
+and Downloads</h2>
+<h3 id="open-a-download-safely">24.1 Open a Download Safely</h3>
+<p><strong>What you will learn:</strong> Find a downloaded file and
+verify it before opening.</p>
+<p><strong>Before you begin:</strong> A known-safe file has been
+downloaded.</p>
+<h4 id="exactly-how-to-do-it-28">Exactly how to do it</h4>
+<ol start="147" type="1">
+<li><p>Open the Files app or Downloads area.</p></li>
+<li><p>Navigate to Downloads.</p></li>
+<li><p>Listen to the full filename and file type.</p></li>
+<li><p>Open only if the source and file type are expected.</p></li>
+<li><p>Use Share only after checking which app/person will receive the
+file.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The correct file opens or is
+shared intentionally.</p>
+<p><strong>If that does not happen:</strong> If the file is unexpected,
+do not open it; delete or verify the source first.</p>
+<p><strong>Practice:</strong> Locate one known download without opening
+it immediately.</p>
+<h2 id="part-25---device-security-and-privacy">Part 25 - Device Security
+and Privacy</h2>
+<ul>
+<li><p>Use a secure screen lock such as PIN/password plus biometrics
+when appropriate.</p></li>
+<li><p>Configure lock-screen notifications so private message content is
+not exposed unnecessarily.</p></li>
+<li><p>Review app permissions for microphone, camera, location,
+contacts, and files.</p></li>
+<li><p>Do not grant Accessibility service permissions to unknown apps;
+accessibility services can have extensive control over a
+device.</p></li>
+<li><p>Use Play Protect and install apps from trusted sources.</p></li>
+<li><p>When using Hide screen, remember the device is still active and
+can perform actions.</p></li>
+<li><p>Use headphones when TalkBack might speak private content in
+public.</p></li>
+<li><p>Before sharing the screen in a video meeting, close sensitive
+apps and notifications.</p></li>
+</ul>
+<h2 id="part-26---manufacturer-differences">Part 26 - Manufacturer
+Differences</h2>
+<ul>
+<li><p>Pixel devices generally follow Google's Android Accessibility
+Help most closely.</p></li>
+<li><p>Samsung Galaxy devices may add Samsung-specific settings, One UI
+navigation, and different default apps.</p></li>
+<li><p>Motorola, OnePlus, Xiaomi, and others can rename settings and
+change launcher/call-screen layouts.</p></li>
+<li><p>The position of Power and Volume buttons varies by
+model.</p></li>
+<li><p>Some devices use manufacturer screen readers or accessibility
+features in addition to TalkBack.</p></li>
+<li><p>When a step in this manual does not match your device, search
+Settings for the feature name rather than guessing a different
+gesture.</p></li>
+</ul>
+<h2 id="part-27---troubleshooting">Part 27 - Troubleshooting</h2>
+<h3 id="one-finger-swipes-scroll-instead-of-moving-focus">27.1
+One-Finger Swipes Scroll Instead of Moving Focus</h3>
+<p><strong>What you will learn:</strong> Check whether TalkBack is on
+and whether too many fingers are being used.</p>
+<p><strong>Before you begin:</strong> The device is unlocked.</p>
+<h4 id="exactly-how-to-do-it-29">Exactly how to do it</h4>
+<ol start="152" type="1">
+<li><p>Confirm TalkBack is speaking.</p></li>
+<li><p>Try a slow one-finger swipe right.</p></li>
+<li><p>If the screen scrolls, lift all fingers and retry with exactly
+one finger.</p></li>
+<li><p>Open Tutorial and practice if needed.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Swipe right moves to the next
+focused item.</p>
+<p><strong>If that does not happen:</strong> If TalkBack is off,
+re-enable it using the configured shortcut.</p>
+<p><strong>Practice:</strong> Practice five clean one-finger swipes.</p>
+<h3 id="double-tap-activates-the-wrong-item">27.2 Double-Tap Activates
+the Wrong Item</h3>
+<p><strong>What you will learn:</strong> Separate focusing from
+activation.</p>
+<p><strong>Before you begin:</strong> TalkBack is on.</p>
+<h4 id="exactly-how-to-do-it-30">Exactly how to do it</h4>
+<ol start="156" type="1">
+<li><p>Swipe until the exact item is announced.</p></li>
+<li><p>Pause.</p></li>
+<li><p>Double-tap anywhere on the screen without touching a different
+item first.</p></li>
+<li><p>Listen for the result.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The focused item activates.</p>
+<p><strong>If that does not happen:</strong> If another item activates,
+you changed focus immediately before the double-tap. Slow the sequence
+down.</p>
+<p><strong>Practice:</strong> Open and close Settings using
+swipe-then-double-tap.</p>
+<h3 id="three-finger-gestures-do-not-work">27.3 Three-Finger Gestures Do
+Not Work</h3>
+<p><strong>What you will learn:</strong> Determine whether the device
+supports multi-finger TalkBack gestures.</p>
+<p><strong>Before you begin:</strong> TalkBack is on.</p>
+<h4 id="exactly-how-to-do-it-31">Exactly how to do it</h4>
+<ol start="160" type="1">
+<li><p>Three-finger tap the screen.</p></li>
+<li><p>If the TalkBack menu opens, multi-finger gestures are
+supported.</p></li>
+<li><p>If nothing happens, use swipe down then right to open the
+TalkBack menu.</p></li>
+<li><p>Use the one-finger angled reading-control gestures when
+needed.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You know which gesture family
+your device supports.</p>
+<p><strong>If that does not happen:</strong> Older/unsupported devices
+may provide only one-finger TalkBack gestures.</p>
+<p><strong>Practice:</strong> Test TalkBack menu access both ways.</p>
+<h3 id="you-cannot-type-in-a-field">27.4 You Cannot Type in a Field</h3>
+<p><strong>What you will learn:</strong> Make sure the field is
+activated and the intended keyboard is active.</p>
+<p><strong>Before you begin:</strong> Focus an edit field.</p>
+<h4 id="exactly-how-to-do-it-32">Exactly how to do it</h4>
+<ol start="164" type="1">
+<li><p>Double-tap the field.</p></li>
+<li><p>Listen for editing/keyboard feedback.</p></li>
+<li><p>Explore the keyboard by touch.</p></li>
+<li><p>If the TalkBack braille keyboard is active unintentionally, hide
+it with a two-finger swipe down or switch keyboards with a three-finger
+swipe down.</p></li>
+<li><p>Type one test character.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Text appears in the field.</p>
+<p><strong>If that does not happen:</strong> If no keyboard appears, the
+control may not be editable or another input method may be selected.</p>
+<p><strong>Practice:</strong> Enter and exit a text field three
+times.</p>
+<h3 id="braille-display-connects-but-does-not-type">27.5 Braille Display
+Connects but Does Not Type</h3>
+<p><strong>What you will learn:</strong> Check edit activation and
+braille commands.</p>
+<p><strong>Before you begin:</strong> The display already shows TalkBack
+output.</p>
+<h4 id="exactly-how-to-do-it-33">Exactly how to do it</h4>
+<ol start="169" type="1">
+<li><p>Focus an edit field.</p></li>
+<li><p>Press a routing key on the field, or press Enter/Dot 8 if the
+display lacks routing keys.</p></li>
+<li><p>Try typing.</p></li>
+<li><p>Open TalkBack settings &gt; Braille display &gt; Braille display
+commands.</p></li>
+<li><p>Confirm the input command mapping for the display.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Braille input works in the edit
+field.</p>
+<p><strong>If that does not happen:</strong> Output working by itself
+does not prove input/routing are configured. Test all three
+separately.</p>
+<p><strong>Practice:</strong> Test output, input, and routing after
+every new display pairing.</p>
+<h3 id="speech-is-too-fast-or-too-detailed">27.6 Speech Is Too Fast or
+Too Detailed</h3>
+<p><strong>What you will learn:</strong> Adjust one setting at a
+time.</p>
+<p><strong>Before you begin:</strong> TalkBack is usable but
+uncomfortable.</p>
+<h4 id="exactly-how-to-do-it-34">Exactly how to do it</h4>
+<ol start="174" type="1">
+<li><p>Open TalkBack settings.</p></li>
+<li><p>Adjust speech rate slightly.</p></li>
+<li><p>Test for a minute.</p></li>
+<li><p>If verbosity is the problem, open Verbosity and change only the
+relevant category.</p></li>
+<li><p>Restore the previous value if the change is worse.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Speech becomes more comfortable
+without creating new problems.</p>
+<p><strong>If that does not happen:</strong> Avoid large multi-setting
+changes that make it hard to identify what caused a problem.</p>
+<p><strong>Practice:</strong> Adjust one speech setting and restore
+it.</p>
+<h2 id="part-28---independent-practice-course">Part 28 - Independent
+Practice Course</h2>
+<h3 id="level-1---orientation">Level 1 - Orientation</h3>
+<p>☐ Identify exact device model.</p>
+<p>☐ Locate Power and Volume buttons.</p>
+<p>☐ Turn TalkBack on/off.</p>
+<p>☐ Open Tutorial.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-2---core-gestures">Level 2 - Core Gestures</h3>
+<p>☐ Explore by touch.</p>
+<p>☐ Swipe next/previous.</p>
+<p>☐ Double-tap to activate.</p>
+<p>☐ Two-finger scroll.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-3---system-navigation">Level 3 - System Navigation</h3>
+<p>☐ Go Home.</p>
+<p>☐ Go Back.</p>
+<p>☐ Open Overview/Recents.</p>
+<p>☐ Open Notifications.</p>
+<p>☐ Open Quick Settings.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-4---apps">Level 4 - Apps</h3>
+<p>☐ Open Settings.</p>
+<p>☐ Open Chrome.</p>
+<p>☐ Use app search/app drawer.</p>
+<p>☐ Return Home.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-5---typing">Level 5 - Typing</h3>
+<p>☐ Open edit field.</p>
+<p>☐ Type with Gboard.</p>
+<p>☐ Correct text.</p>
+<p>☐ Dismiss keyboard.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-6---reading-controls">Level 6 - Reading Controls</h3>
+<p>☐ Select Characters.</p>
+<p>☐ Select Words.</p>
+<p>☐ Select Headings on web.</p>
+<p>☐ Open TalkBack menu.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-7---communication">Level 7 - Communication</h3>
+<p>☐ Draft a text.</p>
+<p>☐ Open an email.</p>
+<p>☐ Locate Reply.</p>
+<p>☐ Practice answering a trusted call.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-8---privacy">Level 8 - Privacy</h3>
+<p>☐ Hide/show screen.</p>
+<p>☐ Review lock-screen notifications.</p>
+<p>☐ Review one app permission.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-9---braille-keyboard">Level 9 - Braille Keyboard</h3>
+<p>☐ Enable braille keyboard.</p>
+<p>☐ Type a word.</p>
+<p>☐ Delete a letter.</p>
+<p>☐ Add a space.</p>
+<p>☐ Hide keyboard.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-10---braille-display">Level 10 - Braille Display</h3>
+<p>☐ Connect display.</p>
+<p>☐ Read output.</p>
+<p>☐ Type input.</p>
+<p>☐ Use routing.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-11---external-keyboard">Level 11 - External Keyboard</h3>
+<p>☐ Select keymap.</p>
+<p>☐ Navigate next/previous.</p>
+<p>☐ Enter Browse mode.</p>
+<p>☐ Navigate headings/links.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h3 id="level-12---independent-android-use">Level 12 - Independent
+Android Use</h3>
+<p>☐ Unlock device.</p>
+<p>☐ Find an app.</p>
+<p>☐ Read notification.</p>
+<p>☐ Send a safe message.</p>
+<p>☐ Browse a webpage.</p>
+<p>☐ Adjust a setting.</p>
+<p>☐ Return Home.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you what gesture to perform.</p>
+<h2 id="part-29---quick-reference-gestures">Part 29 - Quick Reference
+Gestures</h2>
+<h3 id="core-talkback-gestures">Core TalkBack Gestures</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Gesture / Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Explore by touch</td>
+<td>Drag one finger</td>
+</tr>
+<tr class="even">
+<td>Next item</td>
+<td>Swipe right</td>
+</tr>
+<tr class="odd">
+<td>Previous item</td>
+<td>Swipe left</td>
+</tr>
+<tr class="even">
+<td>Activate focused item</td>
+<td>Double-tap</td>
+</tr>
+<tr class="odd">
+<td>Long press focused item</td>
+<td>Double-tap and hold</td>
+</tr>
+<tr class="even">
+<td>Scroll</td>
+<td>Two-finger swipe/drag</td>
+</tr>
+<tr class="odd">
+<td>TalkBack menu - multi-finger devices</td>
+<td>Three-finger tap</td>
+</tr>
+<tr class="even">
+<td>TalkBack menu - one-finger alternative</td>
+<td>Swipe down then right</td>
+</tr>
+<tr class="odd">
+<td>Change reading control - multi-finger devices</td>
+<td>Three-finger swipe up/down</td>
+</tr>
+<tr class="even">
+<td>Change reading control - one-finger alternative</td>
+<td>Swipe up then down / down then up</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="talkback-braille-keyboard">TalkBack Braille Keyboard</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Gesture / Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Space</td>
+<td>Swipe right</td>
+</tr>
+<tr class="even">
+<td>Delete letter</td>
+<td>Swipe left</td>
+</tr>
+<tr class="odd">
+<td>Delete word</td>
+<td>Two-finger swipe left</td>
+</tr>
+<tr class="even">
+<td>New line</td>
+<td>Two-finger swipe right</td>
+</tr>
+<tr class="odd">
+<td>Submit</td>
+<td>Two-finger swipe up</td>
+</tr>
+<tr class="even">
+<td>Hide keyboard</td>
+<td>Two-finger swipe down</td>
+</tr>
+<tr class="odd">
+<td>Next keyboard</td>
+<td>Three-finger swipe down</td>
+</tr>
+<tr class="even">
+<td>Help/options</td>
+<td>Three-finger swipe up</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="physical-keyboard---common-enhanced-keymap-concepts">Physical
+Keyboard - Common Enhanced Keymap Concepts</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Gesture / Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Next item</td>
+<td>TalkBack key + Right Arrow</td>
+</tr>
+<tr class="even">
+<td>Previous item</td>
+<td>TalkBack key + Left Arrow</td>
+</tr>
+<tr class="odd">
+<td>Next/previous reading category</td>
+<td>TalkBack key + Up / Down Arrow</td>
+</tr>
+<tr class="even">
+<td>First/last item</td>
+<td>TalkBack key + Ctrl + Left / Right Arrow</td>
+</tr>
+<tr class="odd">
+<td>Headings list</td>
+<td>TalkBack key + Ctrl + H</td>
+</tr>
+<tr class="even">
+<td>Links list</td>
+<td>TalkBack key + Ctrl + K</td>
+</tr>
+<tr class="odd">
+<td>Forms list</td>
+<td>TalkBack key + Ctrl + F</td>
+</tr>
+<tr class="even">
+<td>Tables list</td>
+<td>TalkBack key + Ctrl + T</td>
+</tr>
+<tr class="odd">
+<td>Toggle Browse mode</td>
+<td>Double-press TalkBack key</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Reminder:</strong> The TalkBack key/modifier can be
+customized. Confirm it in TalkBack settings &gt; Advanced settings &gt;
+Keyboard shortcuts.</p>
+<h2 id="part-30---official-google-resources">Part 30 - Official Google
+Resources</h2>
+<p><a
+href="https://support.google.com/accessibility/android/answer/6007100?hl=en"><u>Turn
+on TalkBack</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/6151827?hl=en"><u>Use
+TalkBack gestures</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/6006598?hl=en"><u>Navigate
+your device with TalkBack</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/6007066?hl=en"><u>TalkBack
+menu and reading controls</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/6006589?hl=en"><u>TalkBack
+settings and privacy</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/9728765?hl=en"><u>TalkBack
+braille keyboard</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/3535886?hl=en"><u>Use
+braille keystrokes</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/6007083?hl=en"><u>Input
+text with a braille display</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/6110948?hl=en"><u>TalkBack
+keyboard shortcuts</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/16800105?hl=en"><u>What
+is new with TalkBack 16.2</u></a></p>
+<p><a
+href="https://support.google.com/accessibility/android/answer/6006564?hl=en"><u>Android
+accessibility overview</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I know my exact Android device model and physical button
+layout.</p>
+<p>☐ I can turn TalkBack on and off.</p>
+<p>☐ I can use TalkBack Tutorial and Practice.</p>
+<p>☐ I can explore by touch and navigate next/previous.</p>
+<p>☐ I can activate and long-press items.</p>
+<p>☐ I can scroll with TalkBack.</p>
+<p>☐ I can use Home, Back, Overview, Notifications, and Quick Settings
+on my own device.</p>
+<p>☐ I can use the TalkBack menu and reading controls.</p>
+<p>☐ I can open apps and use the app drawer/search.</p>
+<p>☐ I can type and edit with Gboard.</p>
+<p>☐ I can navigate Chrome by headings/links when available.</p>
+<p>☐ I can send/read messages and email.</p>
+<p>☐ I can answer/end a call on my device.</p>
+<p>☐ I can adjust TalkBack speech and verbosity.</p>
+<p>☐ I can hide/show the screen for privacy.</p>
+<p>☐ I can use the TalkBack braille keyboard.</p>
+<p>☐ I can connect and test a refreshable braille display.</p>
+<p>☐ I can use an external keyboard and understand the Enhanced
+keymap.</p>
+<p>☐ I can manage downloads and sharing safely.</p>
+<p>☐ I can troubleshoot common TalkBack, typing, gesture, and braille
+problems.</p>
+<p><strong>Most important habit:</strong> When something goes wrong,
+identify which layer is the problem before changing settings: physical
+device, Android system navigation, TalkBack focus/gesture mode, the
+current app, or an input method such as Gboard/braille keyboard.</p>
+
+    <p class="back-link"><a href="manuals.html">Return to all manuals</a></p>
+  </main>
+</body>
+</html>

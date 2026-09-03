@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Windows 11 Screen Reader Manual: step-by-step keyboard and screen-reader instructions, practice, troubleshooting, and command references.">
+  <title>Windows 11 Screen Reader Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-manuals-1">
+  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
+</head>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible Learning Center manual</p>
+    <h1>Windows 11 Screen Reader Manual</h1>
+    <p>Narrator, NVDA, and JAWS</p>
+    <p>Independent Self-Study Guide</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#main-content">Start of manual</a>
+    </nav>
+<p><strong>Purpose:</strong> This manual is written directly to a person
+learning Windows 11 with a screen reader. It assumes little or no prior
+experience and explains exactly what to press, what you should hear, and
+how to recover when the result is different.</p>
+<p><strong>Three screen readers:</strong> Narrator is built into Windows
+11. NVDA is a free third-party screen reader from NV Access. JAWS is a
+commercial screen reader from Freedom Scientific. Their commands are not
+interchangeable.</p>
+<p><strong>Command labels:</strong> Every procedure identifies whether a
+command belongs to WINDOWS, NARRATOR, NVDA, or JAWS.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Begin with Parts 1-12 even if you eventually plan to use NVDA or
+JAWS. These sections teach Windows 11 keyboard navigation that all three
+screen readers rely on.</p></li>
+<li><p>Do one action, stop, and listen to what changed before pressing
+another key.</p></li>
+<li><p>Tab normally moves forward through controls. Shift+Tab moves
+backward.</p></li>
+<li><p>Arrow keys normally move within lists, menus, radio-button
+groups, tree views, and text.</p></li>
+<li><p>Enter activates many buttons, links, selected files, and menu
+commands.</p></li>
+<li><p>Spacebar toggles checkboxes and many buttons.</p></li>
+<li><p>Escape closes menus/dialogs or backs out of temporary
+interfaces.</p></li>
+<li><p>Alt+Tab switches among open applications.</p></li>
+<li><p>Windows key opens Start. Windows+S opens Search.</p></li>
+<li><p>Learn Windows keyboard navigation first, then add the commands
+for your chosen screen reader.</p></li>
+</ul>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><p>Part 1 - What a Screen Reader Does</p></li>
+<li><p>Part 2 - Windows 11 Keyboard Foundations</p></li>
+<li><p>Part 3 - Start, Search, Taskbar, and Switching Apps</p></li>
+<li><p>Part 4 - Windows Settings</p></li>
+<li><p>Part 5 - File Explorer</p></li>
+<li><p>Part 6 - Dialog Boxes, Menus, and Common Controls</p></li>
+<li><p>Part 7 - Reading and Editing Text</p></li>
+<li><p>Part 8 - Web Browsing Concepts</p></li>
+<li><p>Part 9 - Notifications, Quick Settings, and System Tray</p></li>
+<li><p>Part 10 - Copy, Cut, Paste, Rename, and Delete</p></li>
+<li><p>Part 11 - Keyboard Troubleshooting and Recovery</p></li>
+<li><p>Part 12 - Choosing Narrator, NVDA, or JAWS</p></li>
+<li><p>Part 13 - Narrator: Start, Stop, and Narrator Key</p></li>
+<li><p>Part 14 - Narrator: Input Learning and Basic Navigation</p></li>
+<li><p>Part 15 - Narrator: Scan Mode</p></li>
+<li><p>Part 16 - Narrator: Reading Text and Views</p></li>
+<li><p>Part 17 - Narrator: Web Navigation</p></li>
+<li><p>Part 18 - Narrator: Settings, Speech, Verbosity, and
+Punctuation</p></li>
+<li><p>Part 19 - Narrator: Braille</p></li>
+<li><p>Part 20 - Narrator: Troubleshooting</p></li>
+<li><p>Part 21 - NVDA: Start, Stop, and NVDA Key</p></li>
+<li><p>Part 22 - NVDA: Basic Navigation and Speech</p></li>
+<li><p>Part 23 - NVDA: Browse Mode and Web Navigation</p></li>
+<li><p>Part 24 - NVDA: Settings, Add-ons, and Braille</p></li>
+<li><p>Part 25 - NVDA: Troubleshooting</p></li>
+<li><p>Part 26 - JAWS: Start, Stop, and JAWS Key</p></li>
+<li><p>Part 27 - JAWS: Basic Reading and Help</p></li>
+<li><p>Part 28 - JAWS: Virtual Cursor and Web Navigation</p></li>
+<li><p>Part 29 - JAWS: Forms, Lists, and Windows Explorer</p></li>
+<li><p>Part 30 - JAWS: Settings, Quick Settings, and Braille</p></li>
+<li><p>Part 31 - JAWS: Troubleshooting</p></li>
+<li><p>Part 32 - Comparing Narrator, NVDA, and JAWS</p></li>
+<li><p>Part 33 - Independent Practice Course</p></li>
+<li><p>Part 34 - Quick Reference Commands</p></li>
+<li><p>Part 35 - Official Resources</p></li>
+</ul>
+<h2 id="part-1---what-a-screen-reader-does">Part 1 - What a Screen
+Reader Does</h2>
+<p>A screen reader converts information from the Windows interface into
+speech and, when connected, refreshable braille. It follows keyboard
+focus, a screen-reader cursor, browse/scan mode, or another navigation
+system.</p>
+<ul>
+<li><p>Focus is the Windows control currently ready to receive
+input.</p></li>
+<li><p>A button performs an action.</p></li>
+<li><p>A checkbox can be checked or unchecked.</p></li>
+<li><p>A combo box lets you choose from a list.</p></li>
+<li><p>An edit field is where you type text.</p></li>
+<li><p>A dialog box asks for information or a decision.</p></li>
+<li><p>A screen reader usually announces both the control name and
+control type.</p></li>
+</ul>
+<h2 id="part-2---windows-11-keyboard-foundations">Part 2 - Windows 11
+Keyboard Foundations</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Next control</td>
+<td>Tab</td>
+</tr>
+<tr class="even">
+<td>Previous control</td>
+<td>Shift+Tab</td>
+</tr>
+<tr class="odd">
+<td>Activate</td>
+<td>Enter</td>
+</tr>
+<tr class="even">
+<td>Toggle checkbox/button</td>
+<td>Spacebar</td>
+</tr>
+<tr class="odd">
+<td>Move in list/menu</td>
+<td>Arrow keys</td>
+</tr>
+<tr class="even">
+<td>Close/back</td>
+<td>Escape</td>
+</tr>
+<tr class="odd">
+<td>Context menu</td>
+<td>Shift+F10</td>
+</tr>
+<tr class="even">
+<td>Switch applications</td>
+<td>Alt+Tab</td>
+</tr>
+<tr class="odd">
+<td>Close window</td>
+<td>Alt+F4</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="navigate-a-window-with-tab">2.1 Navigate a Window with Tab</h3>
+<p><strong>What you will learn:</strong> Move through controls without a
+mouse.</p>
+<p><strong>Before you begin:</strong> Open Settings or another simple
+Windows app.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol type="1">
+<li><p>Press Tab once.</p></li>
+<li><p>Listen to the focused control.</p></li>
+<li><p>Press Tab again.</p></li>
+<li><p>Continue through five controls.</p></li>
+<li><p>Press Shift+Tab twice to move backward.</p></li>
+<li><p>If focus enters a list, use Up/Down Arrow.</p></li>
+<li><p>Press Escape if a menu opens accidentally.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Focus moves from control to
+control.</p>
+<p><strong>If that does not happen:</strong> If Tab seems stuck, press
+Escape once, then Tab again. If focus is in a list, use arrow keys.</p>
+<p><strong>Practice:</strong> Move forward ten controls and backward
+five.</p>
+<h2 id="part-3---start-search-taskbar-and-switching-apps">Part 3 -
+Start, Search, Taskbar, and Switching Apps</h2>
+<h3 id="open-an-app-from-startsearch">3.1 Open an App from
+Start/Search</h3>
+<p><strong>What you will learn:</strong> Launch programs without
+locating desktop icons.</p>
+<p><strong>Before you begin:</strong> Be anywhere in Windows.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol start="8" type="1">
+<li><p>Press the Windows key.</p></li>
+<li><p>Type the app name, for example Notepad.</p></li>
+<li><p>Wait for search results.</p></li>
+<li><p>Use Up/Down Arrow if multiple results appear.</p></li>
+<li><p>Press Enter on the correct result.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The app opens.</p>
+<p><strong>If that does not happen:</strong> If the wrong result opens,
+press Alt+F4 and search using a more specific name.</p>
+<p><strong>Practice:</strong> Open Notepad, Settings, and
+Calculator.</p>
+<h3 id="switch-between-open-apps">3.2 Switch Between Open Apps</h3>
+<p><strong>What you will learn:</strong> Move among running
+applications.</p>
+<p><strong>Before you begin:</strong> Open at least two apps.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol start="13" type="1">
+<li><p>Hold Alt.</p></li>
+<li><p>Press Tab repeatedly while holding Alt.</p></li>
+<li><p>Listen to each app name.</p></li>
+<li><p>Release Alt on the desired app.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The selected app receives
+focus.</p>
+<p><strong>If that does not happen:</strong> If it is not listed, it may
+not be open.</p>
+<p><strong>Practice:</strong> Switch between Notepad and Settings three
+times.</p>
+<h3 id="use-the-taskbar">3.3 Use the Taskbar</h3>
+<p><strong>What you will learn:</strong> Reach pinned/running apps.</p>
+<p><strong>Before you begin:</strong> Be anywhere in Windows.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol start="17" type="1">
+<li><p>Press Windows+T.</p></li>
+<li><p>Use Left/Right Arrow through taskbar items.</p></li>
+<li><p>Press Enter to open or switch to the selected app.</p></li>
+<li><p>Press Escape when finished.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Taskbar focus moves among
+apps.</p>
+<p><strong>If that does not happen:</strong> If Windows+T seems silent,
+press it again and listen for a taskbar item.</p>
+<p><strong>Practice:</strong> Open one pinned app.</p>
+<h2 id="part-4---windows-settings">Part 4 - Windows Settings</h2>
+<h3 id="open-and-search-settings">4.1 Open and Search Settings</h3>
+<p><strong>What you will learn:</strong> Find a Windows option
+efficiently.</p>
+<p><strong>Before you begin:</strong> Be anywhere in Windows.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol start="21" type="1">
+<li><p>Press Windows+I.</p></li>
+<li><p>Wait for Settings.</p></li>
+<li><p>Tab to the search box if needed.</p></li>
+<li><p>Type Narrator, Bluetooth, Sound, or Accessibility.</p></li>
+<li><p>Use Down Arrow through results.</p></li>
+<li><p>Press Enter on the desired result.</p></li>
+<li><p>Use Tab/Shift+Tab through controls.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The requested Settings page
+opens.</p>
+<p><strong>If that does not happen:</strong> If the exact phrase is not
+found, search with a broader word.</p>
+<p><strong>Practice:</strong> Find Accessibility &gt; Narrator.</p>
+<h2 id="part-5---file-explorer">Part 5 - File Explorer</h2>
+<h3 id="open-file-explorer">5.1 Open File Explorer</h3>
+<p><strong>What you will learn:</strong> Browse folders and files.</p>
+<p><strong>Before you begin:</strong> Be anywhere in Windows.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol start="28" type="1">
+<li><p>Press Windows+E.</p></li>
+<li><p>Wait for File Explorer.</p></li>
+<li><p>Press Tab through major panes.</p></li>
+<li><p>When focus is in the file list, use arrow keys through
+files.</p></li>
+<li><p>Press Enter to open a folder/file.</p></li>
+<li><p>Press Alt+Left Arrow to go back.</p></li>
+<li><p>Press Alt+Up Arrow to move up one folder.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can enter and leave
+folders.</p>
+<p><strong>If that does not happen:</strong> If arrow keys do not move
+files, press Tab until the file list is focused.</p>
+<p><strong>Practice:</strong> Open Documents, enter a folder, then
+return.</p>
+<h3 id="rename-a-file-or-folder">5.2 Rename a File or Folder</h3>
+<p><strong>What you will learn:</strong> Change an item's name.</p>
+<p><strong>Before you begin:</strong> Select a practice item.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol start="35" type="1">
+<li><p>Move to the item.</p></li>
+<li><p>Press F2.</p></li>
+<li><p>Type the new name.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Listen to confirm the new name.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The item is renamed.</p>
+<p><strong>If that does not happen:</strong> If F2 does nothing, confirm
+the file itself is selected.</p>
+<p><strong>Practice:</strong> Rename a practice file and rename it
+back.</p>
+<h2 id="part-6---dialog-boxes-menus-and-common-controls">Part 6 - Dialog
+Boxes, Menus, and Common Controls</h2>
+<ul>
+<li><p>Button: Enter or Spacebar.</p></li>
+<li><p>Checkbox: Spacebar toggles.</p></li>
+<li><p>Radio buttons: Arrow keys.</p></li>
+<li><p>Combo box: Alt+Down Arrow opens, arrows choose, Enter
+confirms.</p></li>
+<li><p>Tabs: Ctrl+Tab / Ctrl+Shift+Tab often changes tabs.</p></li>
+<li><p>Context menu: Shift+F10.</p></li>
+<li><p>Menus: Alt or F10 can expose menus in many desktop apps.</p></li>
+</ul>
+<h3 id="use-a-combo-box">6.1 Use a Combo Box</h3>
+<p><strong>What you will learn:</strong> Choose an option in a
+drop-down.</p>
+<p><strong>Before you begin:</strong> Focus is on a combo box.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol start="40" type="1">
+<li><p>Press Alt+Down Arrow.</p></li>
+<li><p>Listen to the current item.</p></li>
+<li><p>Press Up/Down Arrow through choices.</p></li>
+<li><p>Press Enter on the desired choice.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The combo box closes with the
+selected value.</p>
+<p><strong>If that does not happen:</strong> If it does not open, try
+Spacebar or Enter.</p>
+<p><strong>Practice:</strong> Change a harmless option and restore
+it.</p>
+<h2 id="part-7---reading-and-editing-text">Part 7 - Reading and Editing
+Text</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Character</td>
+<td>Left/Right Arrow</td>
+</tr>
+<tr class="even">
+<td>Word</td>
+<td>Ctrl+Left/Right Arrow</td>
+</tr>
+<tr class="odd">
+<td>Line</td>
+<td>Up/Down Arrow</td>
+</tr>
+<tr class="even">
+<td>Line start/end</td>
+<td>Home / End</td>
+</tr>
+<tr class="odd">
+<td>Document start/end</td>
+<td>Ctrl+Home / Ctrl+End</td>
+</tr>
+<tr class="even">
+<td>Select word</td>
+<td>Ctrl+Shift+Left/Right Arrow</td>
+</tr>
+<tr class="odd">
+<td>Select all</td>
+<td>Ctrl+A</td>
+</tr>
+<tr class="even">
+<td>Copy/Cut/Paste</td>
+<td>Ctrl+C / Ctrl+X / Ctrl+V</td>
+</tr>
+<tr class="odd">
+<td>Undo</td>
+<td>Ctrl+Z</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="type-and-correct-a-sentence">7.1 Type and Correct a
+Sentence</h3>
+<p><strong>What you will learn:</strong> Use standard editing
+commands.</p>
+<p><strong>Before you begin:</strong> Open Notepad.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol start="44" type="1">
+<li><p>Type: The quick brown fox jumps over the lazy dog.</p></li>
+<li><p>Press Ctrl+Left Arrow to move backward by word.</p></li>
+<li><p>Press Left/Right Arrow by character.</p></li>
+<li><p>Use Backspace/Delete to remove text.</p></li>
+<li><p>Type the correction.</p></li>
+<li><p>Press Ctrl+Home.</p></li>
+<li><p>Use your screen reader's reading command to review.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The correction occurs at the
+caret.</p>
+<p><strong>If that does not happen:</strong> If the caret is lost, use
+Ctrl+Home or Ctrl+End and navigate again.</p>
+<p><strong>Practice:</strong> Create and correct three errors.</p>
+<h2 id="part-8---web-browsing-concepts">Part 8 - Web Browsing
+Concepts</h2>
+<p>Narrator calls its webpage reading mode Scan Mode, NVDA calls it
+Browse Mode, and JAWS uses the Virtual Cursor. In these modes, single
+letters can jump to page structures instead of typing.</p>
+<ul>
+<li><p>Tab moves among focusable links and form controls.</p></li>
+<li><p>Enter activates.</p></li>
+<li><p>H often moves by heading.</p></li>
+<li><p>Shift+H often moves backward by heading.</p></li>
+<li><p>Typing fields require a typing/focus/forms mode rather than
+page-navigation mode.</p></li>
+</ul>
+<p><strong>Key idea:</strong> If letters navigate instead of typing,
+check the screen reader's reading mode. If letters type when you
+expected heading navigation, check whether you are in a
+typing/focus/forms mode.</p>
+<h2 id="part-9---notifications-quick-settings-and-system-tray">Part 9 -
+Notifications, Quick Settings, and System Tray</h2>
+<h3 id="open-quick-settings">9.1 Open Quick Settings</h3>
+<p><strong>What you will learn:</strong> Reach Wi-Fi, volume, Bluetooth,
+and accessibility controls.</p>
+<p><strong>Before you begin:</strong> Be anywhere in Windows.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol start="51" type="1">
+<li><p>Press Windows+A.</p></li>
+<li><p>Use Tab and arrows through controls.</p></li>
+<li><p>Press Spacebar/Enter to toggle or activate.</p></li>
+<li><p>Press Escape to close.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Quick Settings opens.</p>
+<p><strong>If that does not happen:</strong> If it does not, verify the
+Windows key is functioning.</p>
+<p><strong>Practice:</strong> Open it, find volume, and close it.</p>
+<h3 id="open-notification-center">9.2 Open Notification Center</h3>
+<p><strong>What you will learn:</strong> Review recent
+notifications.</p>
+<p><strong>Before you begin:</strong> Be anywhere in Windows.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol start="55" type="1">
+<li><p>Press Windows+N.</p></li>
+<li><p>Use Tab and arrows through notifications/calendar.</p></li>
+<li><p>Press Enter on a notification if desired.</p></li>
+<li><p>Press Escape to close.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Notification Center opens.</p>
+<p><strong>If that does not happen:</strong> If there are no
+notifications, you may hear only date/calendar information.</p>
+<p><strong>Practice:</strong> Open and close it.</p>
+<h2 id="part-10---copy-cut-paste-rename-and-delete">Part 10 - Copy, Cut,
+Paste, Rename, and Delete</h2>
+<h3 id="copy-and-paste-a-file">10.1 Copy and Paste a File</h3>
+<p><strong>What you will learn:</strong> Duplicate a file.</p>
+<p><strong>Before you begin:</strong> Select a practice file.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol start="59" type="1">
+<li><p>Press Ctrl+C.</p></li>
+<li><p>Navigate to the destination folder.</p></li>
+<li><p>Press Ctrl+V.</p></li>
+<li><p>Wait for the copy.</p></li>
+<li><p>Find the copied file.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The copied file appears.</p>
+<p><strong>If that does not happen:</strong> If it does not, verify
+selection and destination permissions.</p>
+<p><strong>Practice:</strong> Copy a practice file.</p>
+<h3 id="delete-safely">10.2 Delete Safely</h3>
+<p><strong>What you will learn:</strong> Delete a selected item
+deliberately.</p>
+<p><strong>Before you begin:</strong> Select a disposable practice
+file.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol start="64" type="1">
+<li><p>Read the filename carefully.</p></li>
+<li><p>Press Delete.</p></li>
+<li><p>If asked to confirm, read the dialog before choosing
+Yes.</p></li>
+<li><p>Avoid Shift+Delete for practice because it bypasses normal
+Recycle Bin behavior.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The item is removed/moved to
+Recycle Bin.</p>
+<p><strong>If that does not happen:</strong> If the wrong item is
+selected, press Escape before confirming.</p>
+<p><strong>Practice:</strong> Delete and restore a practice item.</p>
+<h2 id="part-11---keyboard-troubleshooting-and-recovery">Part 11 -
+Keyboard Troubleshooting and Recovery</h2>
+<ul>
+<li><p>Press Escape once or twice if focus seems trapped.</p></li>
+<li><p>Use Alt+Tab away and back if an app's focus becomes
+confusing.</p></li>
+<li><p>Use Windows+S as a stable way to start another task.</p></li>
+<li><p>If typing fails on a webpage, inspect the screen reader's
+browse/scan/forms mode.</p></li>
+<li><p>If speech is silent, check system volume/output before changing
+many screen-reader settings.</p></li>
+</ul>
+<h2 id="part-12---choosing-narrator-nvda-or-jaws">Part 12 - Choosing
+Narrator, NVDA, or JAWS</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Screen reader</th>
+<th>Overview</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Narrator</td>
+<td>Built into Windows 11; immediate access; no installation.</td>
+</tr>
+<tr class="even">
+<td>NVDA</td>
+<td>Free/open-source; strong web and application support.</td>
+</tr>
+<tr class="odd">
+<td>JAWS</td>
+<td>Commercial; extensive training, Office/web support, scripting, and
+enterprise use.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Backup strategy:</strong> Even if NVDA or JAWS is your main
+screen reader, Narrator can be valuable because it is built into
+Windows.</p>
+<h2 id="part-13---narrator-start-stop-and-narrator-key">Part 13 -
+Narrator: Start, Stop, and Narrator Key</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Start/stop Narrator</td>
+<td>Windows+Ctrl+Enter</td>
+</tr>
+<tr class="even">
+<td>Exit Narrator</td>
+<td>Narrator+Esc</td>
+</tr>
+<tr class="odd">
+<td>Narrator Settings</td>
+<td>Windows+Ctrl+N</td>
+</tr>
+<tr class="even">
+<td>Narrator key</td>
+<td>Caps Lock or Insert by default</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="start-narrator">13.1 Start Narrator</h3>
+<p><strong>What you will learn:</strong> Turn on Windows 11's built-in
+screen reader.</p>
+<p><strong>Before you begin:</strong> Be at the keyboard.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol start="68" type="1">
+<li><p>Hold Windows and Ctrl.</p></li>
+<li><p>Press Enter once.</p></li>
+<li><p>Release all keys.</p></li>
+<li><p>Listen for Narrator speech.</p></li>
+<li><p>If Narrator Home opens, use Tab through it or close/minimize
+it.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Narrator announces the current
+item.</p>
+<p><strong>If that does not happen:</strong> If nothing happens, press
+Windows+Ctrl+N and turn Narrator on in Settings.</p>
+<p><strong>Practice:</strong> Start and stop Narrator twice.</p>
+<h2 id="part-14---narrator-input-learning-and-basic-navigation">Part 14
+- Narrator: Input Learning and Basic Navigation</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Input Learning</td>
+<td>Narrator+1</td>
+</tr>
+<tr class="even">
+<td>Next item</td>
+<td>Narrator+Right Arrow</td>
+</tr>
+<tr class="odd">
+<td>Previous item</td>
+<td>Narrator+Left Arrow</td>
+</tr>
+<tr class="even">
+<td>Primary action</td>
+<td>Narrator+Enter</td>
+</tr>
+<tr class="odd">
+<td>Commands list</td>
+<td>Narrator+F1</td>
+</tr>
+<tr class="even">
+<td>Current-item commands</td>
+<td>Narrator+F2</td>
+</tr>
+<tr class="odd">
+<td>Pass next key</td>
+<td>Narrator+3</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="use-input-learning">14.1 Use Input Learning</h3>
+<p><strong>What you will learn:</strong> Discover commands safely.</p>
+<p><strong>Before you begin:</strong> Narrator is on.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol start="73" type="1">
+<li><p>Press Narrator+1.</p></li>
+<li><p>Press a Narrator command.</p></li>
+<li><p>Listen to its description.</p></li>
+<li><p>Try several commands.</p></li>
+<li><p>Press Narrator+1 again to turn Input Learning off.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Narrator describes commands
+without normally executing them.</p>
+<p><strong>If that does not happen:</strong> If commands act normally,
+Input Learning may be off.</p>
+<p><strong>Practice:</strong> Identify Next, Previous, Primary action,
+and Scan Mode.</p>
+<h3 id="move-by-narrator-item">14.2 Move by Narrator Item</h3>
+<p><strong>What you will learn:</strong> Use Narrator's own item
+navigation.</p>
+<p><strong>Before you begin:</strong> Narrator is on.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol start="78" type="1">
+<li><p>Press Narrator+Right Arrow.</p></li>
+<li><p>Listen to the item.</p></li>
+<li><p>Press it again.</p></li>
+<li><p>Press Narrator+Left Arrow to return.</p></li>
+<li><p>Press Narrator+Enter on a harmless selected control.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Narrator moves through items and
+activates the selected control.</p>
+<p><strong>If that does not happen:</strong> If nothing changes, press
+Tab to ensure the app has keyboard focus.</p>
+<p><strong>Practice:</strong> Move through five items.</p>
+<h2 id="part-15---narrator-scan-mode">Part 15 - Narrator: Scan Mode</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Toggle Scan Mode</td>
+<td>Narrator+Spacebar</td>
+</tr>
+<tr class="even">
+<td>Primary action</td>
+<td>Enter or Spacebar</td>
+</tr>
+<tr class="odd">
+<td>Next/previous paragraph</td>
+<td>P / Shift+P</td>
+</tr>
+<tr class="even">
+<td>Next/previous line</td>
+<td>Ctrl+Down / Ctrl+Up</td>
+</tr>
+<tr class="odd">
+<td>Next/previous word</td>
+<td>Ctrl+Right / Ctrl+Left</td>
+</tr>
+<tr class="even">
+<td>Next/previous character</td>
+<td>Right / Left</td>
+</tr>
+<tr class="odd">
+<td>First/last line</td>
+<td>Ctrl+Home / Ctrl+End</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="use-scan-mode-on-a-webpage">15.1 Use Scan Mode on a Webpage</h3>
+<p><strong>What you will learn:</strong> Read and navigate web
+content.</p>
+<p><strong>Before you begin:</strong> Open Edge, Chrome, or Firefox with
+Narrator.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol start="83" type="1">
+<li><p>Press Narrator+Spacebar if you need to confirm/toggle Scan
+Mode.</p></li>
+<li><p>Press Down Arrow through content.</p></li>
+<li><p>Press H to move to the next heading where supported.</p></li>
+<li><p>Press Shift+H for previous heading.</p></li>
+<li><p>Press Tab to a link or form control.</p></li>
+<li><p>Press Enter to activate.</p></li>
+<li><p>Type normally when focus enters an edit field; Scan Mode may turn
+off automatically.</p></li>
+<li><p>Use Up/Down Arrow to leave the edit field and resume
+reading.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can navigate page structure
+and enter text.</p>
+<p><strong>If that does not happen:</strong> If letters type instead of
+navigate, Scan Mode may be off.</p>
+<p><strong>Practice:</strong> Navigate by headings and links.</p>
+<h2 id="part-16---narrator-reading-text-and-views">Part 16 - Narrator:
+Reading Text and Views</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Change view</td>
+<td>Narrator+Page Up / Page Down</td>
+</tr>
+<tr class="even">
+<td>Move in selected view</td>
+<td>Narrator+Left/Right Arrow</td>
+</tr>
+<tr class="odd">
+<td>Time/date</td>
+<td>Narrator+F12</td>
+</tr>
+<tr class="even">
+<td>Battery/network</td>
+<td>Narrator+Shift+B</td>
+</tr>
+<tr class="odd">
+<td>Screen curtain</td>
+<td>Narrator+Ctrl+C</td>
+</tr>
+<tr class="even">
+<td>Describe image</td>
+<td>Narrator+Ctrl+D</td>
+</tr>
+<tr class="odd">
+<td>Webpage summary</td>
+<td>Narrator+S</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="change-narrator-view">16.1 Change Narrator View</h3>
+<p><strong>What you will learn:</strong> Navigate by word, line,
+paragraph, heading, link, or other unit.</p>
+<p><strong>Before you begin:</strong> Narrator is on.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol start="91" type="1">
+<li><p>Press Narrator+Page Down until the desired view is
+announced.</p></li>
+<li><p>Press Narrator+Right Arrow to move forward in that view.</p></li>
+<li><p>Press Narrator+Left Arrow to move backward.</p></li>
+<li><p>Change view again when needed.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Movement follows the chosen
+unit.</p>
+<p><strong>If that does not happen:</strong> Some views exist only in
+certain contexts.</p>
+<p><strong>Practice:</strong> Practice word, paragraph, and heading
+views.</p>
+<h2 id="part-17---narrator-web-navigation">Part 17 - Narrator: Web
+Navigation</h2>
+<ul>
+<li><p>Scan Mode turns on automatically in many supported
+browsers.</p></li>
+<li><p>Narrator+S gives a webpage summary.</p></li>
+<li><p>Narrator+Ctrl+D can request an image description when an image is
+focused.</p></li>
+<li><p>G and Shift+G can move among graphics/images in current Scan Mode
+support.</p></li>
+</ul>
+<h3 id="complete-a-web-form">17.1 Complete a Web Form</h3>
+<p><strong>What you will learn:</strong> Move between reading and typing
+safely.</p>
+<p><strong>Before you begin:</strong> Open a safe practice form.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol start="95" type="1">
+<li><p>Navigate to an edit field.</p></li>
+<li><p>Press Enter/Spacebar if needed.</p></li>
+<li><p>Type text.</p></li>
+<li><p>Press Tab to the next control.</p></li>
+<li><p>Press Spacebar on checkboxes.</p></li>
+<li><p>Use Alt+Down Arrow for combo boxes.</p></li>
+<li><p>Review before submitting.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can type and navigate
+controls.</p>
+<p><strong>If that does not happen:</strong> If letters jump around the
+page, verify focus and Scan Mode state.</p>
+<p><strong>Practice:</strong> Complete a non-sensitive practice
+form.</p>
+<h2
+id="part-18---narrator-settings-speech-verbosity-and-punctuation">Part
+18 - Narrator: Settings, Speech, Verbosity, and Punctuation</h2>
+<h3 id="open-narrator-settings">18.1 Open Narrator Settings</h3>
+<p><strong>What you will learn:</strong> Adjust Narrator
+preferences.</p>
+<p><strong>Before you begin:</strong> Narrator may be on or off.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol start="102" type="1">
+<li><p>Press Windows+Ctrl+N.</p></li>
+<li><p>Use Tab through settings.</p></li>
+<li><p>Review voice, speed, pitch, volume, verbosity, typing feedback,
+Narrator key, and startup options.</p></li>
+<li><p>Change one setting at a time.</p></li>
+<li><p>Test and restore if needed.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Narrator uses the changed
+setting.</p>
+<p><strong>If that does not happen:</strong> If you become lost, close
+Settings and reopen with Windows+Ctrl+N.</p>
+<p><strong>Practice:</strong> Change speech rate slightly and restore
+it.</p>
+<p><strong>Narrator key:</strong> Caps Lock and Insert both serve as the
+Narrator key by default.</p>
+<h2 id="part-19---narrator-braille">Part 19 - Narrator: Braille</h2>
+<ul>
+<li><p>Connect a compatible braille display by USB/Bluetooth.</p></li>
+<li><p>Open Narrator Settings &gt; Braille.</p></li>
+<li><p>Configure the display and braille input/output tables.</p></li>
+<li><p>Device-specific routing/panning commands vary.</p></li>
+<li><p>Narrator+Alt+B toggles the Braille Viewer.</p></li>
+</ul>
+<h3 id="verify-braille">19.1 Verify Braille</h3>
+<p><strong>What you will learn:</strong> Confirm output, input, and
+routing.</p>
+<p><strong>Before you begin:</strong> Connect a supported display.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol start="107" type="1">
+<li><p>Move Narrator with Narrator+Right Arrow.</p></li>
+<li><p>Confirm braille changes.</p></li>
+<li><p>Open an edit field and type if display input is
+supported.</p></li>
+<li><p>Use a routing key and confirm focus/caret movement.</p></li>
+<li><p>Pan left/right with display controls.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Output follows Narrator and
+supported input/routing work.</p>
+<p><strong>If that does not happen:</strong> If Windows sees the display
+but Narrator does not, check Narrator Braille settings and
+supported-display mappings.</p>
+<p><strong>Practice:</strong> Perform output, input, routing.</p>
+<h2 id="part-20---narrator-troubleshooting">Part 20 - Narrator:
+Troubleshooting</h2>
+<h3 id="narrator-is-silent">20.1 Narrator Is Silent</h3>
+<p><strong>What you will learn:</strong> Restore speech logically.</p>
+<p><strong>Before you begin:</strong> Narrator should be running.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol start="112" type="1">
+<li><p>Press Windows+Ctrl+Enter to confirm state.</p></li>
+<li><p>Check system volume/output.</p></li>
+<li><p>Press Tab or Narrator+Right Arrow to trigger speech.</p></li>
+<li><p>Open Narrator Settings with Windows+Ctrl+N.</p></li>
+<li><p>Restart Narrator.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Speech returns.</p>
+<p><strong>If that does not happen:</strong> If Windows has no audio in
+any app, troubleshoot system sound.</p>
+<p><strong>Practice:</strong> Memorize the sequence.</p>
+<h2 id="part-21---nvda-start-stop-and-nvda-key">Part 21 - NVDA: Start,
+Stop, and NVDA Key</h2>
+<p>NVDA is a free screen reader from NV Access. The NVDA modifier is
+commonly Insert, Caps Lock, or both depending on settings.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NVDA menu</td>
+<td>NVDA+N</td>
+</tr>
+<tr class="even">
+<td>Exit</td>
+<td>NVDA+Q</td>
+</tr>
+<tr class="odd">
+<td>Input Help</td>
+<td>NVDA+1</td>
+</tr>
+<tr class="even">
+<td>Stop speech</td>
+<td>Ctrl</td>
+</tr>
+<tr class="odd">
+<td>Say title</td>
+<td>NVDA+T</td>
+</tr>
+<tr class="even">
+<td>Say focused object</td>
+<td>NVDA+Tab</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="start-nvda">21.1 Start NVDA</h3>
+<p><strong>What you will learn:</strong> Launch NVDA and verify it is
+active.</p>
+<p><strong>Before you begin:</strong> NVDA must be installed.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol start="117" type="1">
+<li><p>Press Windows key.</p></li>
+<li><p>Type NVDA.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Wait for startup speech/sound.</p></li>
+<li><p>Press NVDA+N.</p></li>
+<li><p>Press Escape to close the menu.</p></li>
+</ol>
+<p><strong>What should happen:</strong> NVDA is running.</p>
+<p><strong>If that does not happen:</strong> If Search cannot find NVDA,
+it may not be installed.</p>
+<p><strong>Practice:</strong> Start NVDA and open its menu.</p>
+<h2 id="part-22---nvda-basic-navigation-and-speech">Part 22 - NVDA:
+Basic Navigation and Speech</h2>
+<h3 id="use-nvda-input-help">22.1 Use NVDA Input Help</h3>
+<p><strong>What you will learn:</strong> Discover commands safely.</p>
+<p><strong>Before you begin:</strong> NVDA is running.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol start="123" type="1">
+<li><p>Press NVDA+1.</p></li>
+<li><p>Press keys/commands to identify.</p></li>
+<li><p>Listen to NVDA explain them.</p></li>
+<li><p>Press NVDA+1 again to turn Input Help off.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Commands are described without
+normal action.</p>
+<p><strong>If that does not happen:</strong> If actions occur, Input
+Help is not active.</p>
+<p><strong>Practice:</strong> Identify NVDA menu, quit, title, and
+focused-object commands.</p>
+<p><strong>Windows focus:</strong> NVDA generally follows Windows
+keyboard focus, so standard Tab, arrows, Enter, Spacebar, Windows
+Search, and File Explorer commands remain essential.</p>
+<h2 id="part-23---nvda-browse-mode-and-web-navigation">Part 23 - NVDA:
+Browse Mode and Web Navigation</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Next/previous heading</td>
+<td>H / Shift+H</td>
+</tr>
+<tr class="even">
+<td>Heading level</td>
+<td>1 through 6</td>
+</tr>
+<tr class="odd">
+<td>Next/previous link</td>
+<td>K / Shift+K</td>
+</tr>
+<tr class="even">
+<td>Form field</td>
+<td>F / Shift+F</td>
+</tr>
+<tr class="odd">
+<td>Edit field</td>
+<td>E / Shift+E</td>
+</tr>
+<tr class="even">
+<td>Button</td>
+<td>B / Shift+B</td>
+</tr>
+<tr class="odd">
+<td>Checkbox</td>
+<td>X / Shift+X</td>
+</tr>
+<tr class="even">
+<td>Table</td>
+<td>T / Shift+T</td>
+</tr>
+<tr class="odd">
+<td>Landmark</td>
+<td>D / Shift+D</td>
+</tr>
+<tr class="even">
+<td>Toggle Browse/Focus Mode</td>
+<td>NVDA+Space</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="navigate-a-webpage-with-nvda">23.1 Navigate a Webpage with
+NVDA</h3>
+<p><strong>What you will learn:</strong> Use structural quick keys.</p>
+<p><strong>Before you begin:</strong> Open a webpage with NVDA.</p>
+<h4 id="exactly-how-to-do-it-24">Exactly how to do it</h4>
+<ol start="127" type="1">
+<li><p>Press H for the next heading.</p></li>
+<li><p>Press Shift+H to move back.</p></li>
+<li><p>Press K for next link.</p></li>
+<li><p>Press F for next form field.</p></li>
+<li><p>Press Enter on an interactive item.</p></li>
+<li><p>If you need to type and remain in Browse Mode, press NVDA+Space
+to switch to Focus Mode.</p></li>
+<li><p>Press NVDA+Space again to return when needed.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can scan the page and type
+in fields.</p>
+<p><strong>If that does not happen:</strong> If letters type when you
+expected navigation, you are likely in Focus Mode.</p>
+<p><strong>Practice:</strong> Find a heading, link, and edit field.</p>
+<h2 id="part-24---nvda-settings-add-ons-and-braille">Part 24 - NVDA:
+Settings, Add-ons, and Braille</h2>
+<h3 id="open-nvda-settings">24.1 Open NVDA Settings</h3>
+<p><strong>What you will learn:</strong> Adjust speech, keyboard,
+browse, and braille preferences.</p>
+<p><strong>Before you begin:</strong> NVDA is running.</p>
+<h4 id="exactly-how-to-do-it-25">Exactly how to do it</h4>
+<ol start="134" type="1">
+<li><p>Press NVDA+N.</p></li>
+<li><p>Open Preferences &gt; Settings.</p></li>
+<li><p>Use the category list to find Speech, Keyboard, Browse Mode,
+Braille, or other settings.</p></li>
+<li><p>Change one setting at a time.</p></li>
+<li><p>Apply/OK.</p></li>
+</ol>
+<p><strong>What should happen:</strong> NVDA uses the new
+preference.</p>
+<p><strong>If that does not happen:</strong> Restore the old value if
+behavior worsens.</p>
+<p><strong>Practice:</strong> Find Speech and Braille without changing
+them.</p>
+<p><strong>Add-ons:</strong> Install add-ons only from trusted sources
+and verify compatibility with your current NVDA release.</p>
+<h2 id="part-25---nvda-troubleshooting">Part 25 - NVDA:
+Troubleshooting</h2>
+<ul>
+<li><p>If NVDA is silent, press Ctrl, then navigate to trigger speech
+and check system audio.</p></li>
+<li><p>If letters navigate instead of typing, switch to Focus Mode with
+NVDA+Space.</p></li>
+<li><p>If letters type instead of navigating, return to Browse Mode with
+NVDA+Space.</p></li>
+<li><p>After an NVDA update, test without optional add-ons if unusual
+behavior begins.</p></li>
+<li><p>Use NVDA+1 when you forget a command.</p></li>
+</ul>
+<h2 id="part-26---jaws-start-stop-and-jaws-key">Part 26 - JAWS: Start,
+Stop, and JAWS Key</h2>
+<p>JAWS traditionally uses Insert as the JAWS key in Desktop layout.
+Laptop layout commonly uses Caps Lock.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Keyboard Help</td>
+<td>Insert+1</td>
+</tr>
+<tr class="even">
+<td>Context-sensitive Help</td>
+<td>Insert+F1</td>
+</tr>
+<tr class="odd">
+<td>Hot Key Help</td>
+<td>Insert+H</td>
+</tr>
+<tr class="even">
+<td>Windows Key Help</td>
+<td>Insert+W</td>
+</tr>
+<tr class="odd">
+<td>JAWS Command Search</td>
+<td>Insert+Space, then J</td>
+</tr>
+<tr class="even">
+<td>JAWS window</td>
+<td>Insert+J</td>
+</tr>
+<tr class="odd">
+<td>Exit JAWS</td>
+<td>Insert+F4</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="start-jaws">26.1 Start JAWS</h3>
+<p><strong>What you will learn:</strong> Launch JAWS and verify it is
+active.</p>
+<p><strong>Before you begin:</strong> JAWS must be installed and
+authorized as required.</p>
+<h4 id="exactly-how-to-do-it-26">Exactly how to do it</h4>
+<ol start="139" type="1">
+<li><p>Press Windows key.</p></li>
+<li><p>Type JAWS.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Wait for startup speech.</p></li>
+<li><p>Press Insert+T to hear the current window title.</p></li>
+<li><p>Press Insert+1 to enable Keyboard Help.</p></li>
+<li><p>Press Insert+1 again to turn it off.</p></li>
+</ol>
+<p><strong>What should happen:</strong> JAWS announces the active
+interface.</p>
+<p><strong>If that does not happen:</strong> If JAWS does not start,
+verify installation/authorization.</p>
+<p><strong>Practice:</strong> Start JAWS and identify the window
+title.</p>
+<h2 id="part-27---jaws-basic-reading-and-help">Part 27 - JAWS: Basic
+Reading and Help</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Say word</td>
+<td>Insert+Numpad5</td>
+</tr>
+<tr class="even">
+<td>Say line</td>
+<td>Insert+Up Arrow</td>
+</tr>
+<tr class="odd">
+<td>Window title</td>
+<td>Insert+T</td>
+</tr>
+<tr class="even">
+<td>Current control/prompt</td>
+<td>Insert+Tab</td>
+</tr>
+<tr class="odd">
+<td>Say font</td>
+<td>Insert+F</td>
+</tr>
+<tr class="even">
+<td>Interrupt speech</td>
+<td>Ctrl</td>
+</tr>
+<tr class="odd">
+<td>Refresh screen</td>
+<td>Insert+Esc</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="use-jaws-help-before-guessing">27.1 Use JAWS Help Before
+Guessing</h3>
+<p><strong>What you will learn:</strong> Find commands from JAWS
+itself.</p>
+<p><strong>Before you begin:</strong> JAWS is running.</p>
+<h4 id="exactly-how-to-do-it-27">Exactly how to do it</h4>
+<ol start="146" type="1">
+<li><p>Press Insert+H for application hot keys.</p></li>
+<li><p>Read the commands.</p></li>
+<li><p>Press Escape.</p></li>
+<li><p>Press Insert+W for common Windows keys.</p></li>
+<li><p>Press Insert+Space, then J for Command Search.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can look up commands
+independently.</p>
+<p><strong>If that does not happen:</strong> If one help method is not
+useful, use Command Search.</p>
+<p><strong>Practice:</strong> Look up a web-navigation command.</p>
+<h2 id="part-28---jaws-virtual-cursor-and-web-navigation">Part 28 -
+JAWS: Virtual Cursor and Web Navigation</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Next heading</td>
+<td>H</td>
+</tr>
+<tr class="even">
+<td>Heading level</td>
+<td>1 through 6</td>
+</tr>
+<tr class="odd">
+<td>Next link</td>
+<td>Tab</td>
+</tr>
+<tr class="even">
+<td>Edit box</td>
+<td>E</td>
+</tr>
+<tr class="odd">
+<td>Form control</td>
+<td>F</td>
+</tr>
+<tr class="even">
+<td>Button</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>Checkbox</td>
+<td>X</td>
+</tr>
+<tr class="even">
+<td>Table</td>
+<td>T</td>
+</tr>
+<tr class="odd">
+<td>Region</td>
+<td>R</td>
+</tr>
+<tr class="even">
+<td>Main region</td>
+<td>Q</td>
+</tr>
+<tr class="odd">
+<td>Headings list</td>
+<td>Insert+F6</td>
+</tr>
+<tr class="even">
+<td>Links list</td>
+<td>Insert+F7</td>
+</tr>
+<tr class="odd">
+<td>Form fields list</td>
+<td>Insert+F5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="scan-a-webpage-with-jaws">28.1 Scan a Webpage with JAWS</h3>
+<p><strong>What you will learn:</strong> Use quick keys and element
+lists.</p>
+<p><strong>Before you begin:</strong> Open a webpage with JAWS.</p>
+<h4 id="exactly-how-to-do-it-28">Exactly how to do it</h4>
+<ol start="151" type="1">
+<li><p>Press H through headings.</p></li>
+<li><p>Press Shift+H backward.</p></li>
+<li><p>Press Insert+F6 for Headings List.</p></li>
+<li><p>Choose a heading and press Enter.</p></li>
+<li><p>Press Insert+F7 for Links List.</p></li>
+<li><p>Choose a link and press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can jump directly to page
+structures.</p>
+<p><strong>If that does not happen:</strong> If quick keys type into a
+field, Forms Mode may be active; return to the Virtual Cursor/browsing
+mode.</p>
+<p><strong>Practice:</strong> Use both H and Headings List on one
+page.</p>
+<h2 id="part-29---jaws-forms-lists-and-windows-explorer">Part 29 - JAWS:
+Forms, Lists, and Windows Explorer</h2>
+<h3 id="fill-a-web-form-with-jaws">29.1 Fill a Web Form with JAWS</h3>
+<p><strong>What you will learn:</strong> Enter and exit Forms Mode
+correctly.</p>
+<p><strong>Before you begin:</strong> Open a safe practice form.</p>
+<h4 id="exactly-how-to-do-it-29">Exactly how to do it</h4>
+<ol start="157" type="1">
+<li><p>Press F or E to the desired field.</p></li>
+<li><p>Press Enter to enter Forms Mode if needed.</p></li>
+<li><p>Type text.</p></li>
+<li><p>Press Tab to next control.</p></li>
+<li><p>Use Spacebar for checkboxes.</p></li>
+<li><p>Use Alt+Down Arrow/arrows/Enter for combo boxes.</p></li>
+<li><p>Press Numpad Plus in Desktop layout to exit Forms Mode when
+needed.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can type without
+quick-navigation letters taking over.</p>
+<p><strong>If that does not happen:</strong> If H or other quick keys
+type after the form, exit Forms Mode.</p>
+<p><strong>Practice:</strong> Complete a safe practice form.</p>
+<p><strong>File Explorer:</strong> Useful Windows Explorer keys with
+JAWS include F2 Rename, Delete, Alt+Enter Properties, F5 Refresh,
+Tab/Shift+Tab between panes, and arrow keys through files.</p>
+<h2 id="part-30---jaws-settings-quick-settings-and-braille">Part 30 -
+JAWS: Settings, Quick Settings, and Braille</h2>
+<ul>
+<li><p>Insert+V opens Quick Settings for the current
+application.</p></li>
+<li><p>Insert+F2 opens JAWS managers/tools.</p></li>
+<li><p>JAWS supports many braille displays; device commands
+vary.</p></li>
+<li><p>Use Settings Center/Quick Settings for verbosity, punctuation,
+typing echo, web behavior, braille, and application-specific
+behavior.</p></li>
+</ul>
+<h3 id="open-quick-settings-1">30.1 Open Quick Settings</h3>
+<p><strong>What you will learn:</strong> Change an application-specific
+option.</p>
+<p><strong>Before you begin:</strong> JAWS is running in the target
+app.</p>
+<h4 id="exactly-how-to-do-it-30">Exactly how to do it</h4>
+<ol start="164" type="1">
+<li><p>Press Insert+V.</p></li>
+<li><p>Search or move through settings.</p></li>
+<li><p>Change only the intended option.</p></li>
+<li><p>Confirm/close.</p></li>
+<li><p>Test the application.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The option changes for that
+context.</p>
+<p><strong>If that does not happen:</strong> Restore the previous value
+if behavior worsens.</p>
+<p><strong>Practice:</strong> Locate one setting without changing
+it.</p>
+<h2 id="part-31---jaws-troubleshooting">Part 31 - JAWS:
+Troubleshooting</h2>
+<ul>
+<li><p>Press Insert+Esc to refresh screen information.</p></li>
+<li><p>Use Insert+1, Insert+H, or Command Search when you forget a
+key.</p></li>
+<li><p>If web quick keys type into a field, exit Forms Mode/return to
+Virtual Cursor.</p></li>
+<li><p>Test another browser before changing many JAWS settings if one
+website behaves badly.</p></li>
+<li><p>Review Quick Settings if an app-specific setting causes
+unexpected behavior.</p></li>
+</ul>
+<h2 id="part-32---comparing-narrator-nvda-and-jaws">Part 32 - Comparing
+Narrator, NVDA, and JAWS</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Narrator</th>
+<th>NVDA</th>
+<th>JAWS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Built into Windows</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Cost</td>
+<td>Included</td>
+<td>Free</td>
+<td>Commercial</td>
+</tr>
+<tr class="odd">
+<td>Web mode</td>
+<td>Scan Mode</td>
+<td>Browse Mode</td>
+<td>Virtual Cursor</td>
+</tr>
+<tr class="even">
+<td>Command learning</td>
+<td>Narrator+1</td>
+<td>NVDA+1</td>
+<td>Insert+1</td>
+</tr>
+<tr class="odd">
+<td>Common modifier</td>
+<td>Caps Lock/Insert</td>
+<td>Insert/Caps Lock</td>
+<td>Insert desktop; Caps Lock often laptop</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Do not mix commands:</strong> Narrator+Space toggles Narrator
+Scan Mode; NVDA+Space toggles NVDA Browse/Focus Mode; JAWS uses Virtual
+Cursor and Forms Mode controls.</p>
+<h2 id="part-33---independent-practice-course">Part 33 - Independent
+Practice Course</h2>
+<h3 id="level-1---windows-keyboard">Level 1 - Windows Keyboard</h3>
+<p>☐ Open Search.</p>
+<p>☐ Open Notepad.</p>
+<p>☐ Use Tab/Shift+Tab.</p>
+<p>☐ Switch apps with Alt+Tab.</p>
+<p>☐ Close with Alt+F4.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-2---settings-and-files">Level 2 - Settings and Files</h3>
+<p>☐ Open Settings.</p>
+<p>☐ Search Accessibility.</p>
+<p>☐ Open File Explorer.</p>
+<p>☐ Enter/leave folders.</p>
+<p>☐ Rename a practice file.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-3---text-editing">Level 3 - Text Editing</h3>
+<p>☐ Type a paragraph.</p>
+<p>☐ Move by word.</p>
+<p>☐ Select text.</p>
+<p>☐ Copy/paste.</p>
+<p>☐ Undo.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-4---narrator">Level 4 - Narrator</h3>
+<p>☐ Start/stop Narrator.</p>
+<p>☐ Use Input Learning.</p>
+<p>☐ Move next/previous item.</p>
+<p>☐ Toggle Scan Mode.</p>
+<p>☐ Navigate headings.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-5---narrator-advanced">Level 5 - Narrator Advanced</h3>
+<p>☐ Change View.</p>
+<p>☐ Open Narrator Settings.</p>
+<p>☐ Use webpage summary.</p>
+<p>☐ Test braille if applicable.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-6---nvda">Level 6 - NVDA</h3>
+<p>☐ Start NVDA.</p>
+<p>☐ Use Input Help.</p>
+<p>☐ Open NVDA menu.</p>
+<p>☐ Navigate with H/K/F.</p>
+<p>☐ Toggle Browse/Focus Mode.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-7---jaws">Level 7 - JAWS</h3>
+<p>☐ Start JAWS.</p>
+<p>☐ Use Keyboard Help.</p>
+<p>☐ Use Insert+H.</p>
+<p>☐ Use heading/link lists.</p>
+<p>☐ Enter/exit Forms Mode.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-8---recovery">Level 8 - Recovery</h3>
+<p>☐ Escape from a menu.</p>
+<p>☐ Recover when letters won't type.</p>
+<p>☐ Recover when letters type instead of navigate.</p>
+<p>☐ Identify which screen reader is active.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h2 id="part-34---quick-reference-commands">Part 34 - Quick Reference
+Commands</h2>
+<h3 id="windows-11">Windows 11</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Start</td>
+<td>Windows key</td>
+</tr>
+<tr class="even">
+<td>Search</td>
+<td>Windows+S</td>
+</tr>
+<tr class="odd">
+<td>Settings</td>
+<td>Windows+I</td>
+</tr>
+<tr class="even">
+<td>File Explorer</td>
+<td>Windows+E</td>
+</tr>
+<tr class="odd">
+<td>Quick Settings</td>
+<td>Windows+A</td>
+</tr>
+<tr class="even">
+<td>Notifications</td>
+<td>Windows+N</td>
+</tr>
+<tr class="odd">
+<td>Taskbar</td>
+<td>Windows+T</td>
+</tr>
+<tr class="even">
+<td>Switch apps</td>
+<td>Alt+Tab</td>
+</tr>
+<tr class="odd">
+<td>Close app</td>
+<td>Alt+F4</td>
+</tr>
+<tr class="even">
+<td>Context menu</td>
+<td>Shift+F10</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="narrator">Narrator</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Start/stop</td>
+<td>Windows+Ctrl+Enter</td>
+</tr>
+<tr class="even">
+<td>Settings</td>
+<td>Windows+Ctrl+N</td>
+</tr>
+<tr class="odd">
+<td>Input Learning</td>
+<td>Narrator+1</td>
+</tr>
+<tr class="even">
+<td>Next/previous</td>
+<td>Narrator+Right/Left Arrow</td>
+</tr>
+<tr class="odd">
+<td>Primary action</td>
+<td>Narrator+Enter</td>
+</tr>
+<tr class="even">
+<td>Scan Mode</td>
+<td>Narrator+Spacebar</td>
+</tr>
+<tr class="odd">
+<td>Commands</td>
+<td>Narrator+F1</td>
+</tr>
+<tr class="even">
+<td>Exit</td>
+<td>Narrator+Esc</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="nvda">NVDA</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Menu</td>
+<td>NVDA+N</td>
+</tr>
+<tr class="even">
+<td>Exit</td>
+<td>NVDA+Q</td>
+</tr>
+<tr class="odd">
+<td>Input Help</td>
+<td>NVDA+1</td>
+</tr>
+<tr class="even">
+<td>Browse/Focus Mode</td>
+<td>NVDA+Space</td>
+</tr>
+<tr class="odd">
+<td>Say title</td>
+<td>NVDA+T</td>
+</tr>
+<tr class="even">
+<td>Focused object</td>
+<td>NVDA+Tab</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="jaws">JAWS</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Keyboard Help</td>
+<td>Insert+1</td>
+</tr>
+<tr class="even">
+<td>Context help</td>
+<td>Insert+F1</td>
+</tr>
+<tr class="odd">
+<td>Hot Key Help</td>
+<td>Insert+H</td>
+</tr>
+<tr class="even">
+<td>Windows Key Help</td>
+<td>Insert+W</td>
+</tr>
+<tr class="odd">
+<td>Command Search</td>
+<td>Insert+Space, then J</td>
+</tr>
+<tr class="even">
+<td>Say title</td>
+<td>Insert+T</td>
+</tr>
+<tr class="odd">
+<td>Quick Settings</td>
+<td>Insert+V</td>
+</tr>
+<tr class="even">
+<td>Refresh screen</td>
+<td>Insert+Esc</td>
+</tr>
+<tr class="odd">
+<td>Exit</td>
+<td>Insert+F4</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="part-35---official-resources">Part 35 - Official Resources</h2>
+<p><strong>Microsoft Complete Guide to Narrator</strong><br />
+https://support.microsoft.com/en-us/accessibility/windows/narrator/complete-guide-to-narrator</p>
+<p><strong>Microsoft Narrator Scan Mode</strong><br />
+https://support.microsoft.com/en-us/accessibility/windows/narrator/chapter-3-using-scan-mode</p>
+<p><strong>Microsoft Narrator Keyboard Commands</strong><br />
+https://support.microsoft.com/en-us/windows/appendix-b-narrator-keyboard-commands-and-touch-gestures-8bdab3f4-b3e9-4554-7f28-8b15bd37410a</p>
+<p><strong>Microsoft Narrator Braille</strong><br />
+https://support.microsoft.com/en-us/windows/chapter-8-using-narrator-with-braille-3e5f065b-1c9d-6eb2-ec6d-1d07c9e94b20</p>
+<p><strong>NV Access NVDA User Guide and Key Commands</strong><br />
+https://download.nvaccess.org/releases/stable/documentation/en/</p>
+<p><strong>Freedom Scientific JAWS Training</strong><br />
+https://www.freedomscientific.com/training/jaws/</p>
+<p><strong>Freedom Scientific JAWS Hotkeys</strong><br />
+https://www.freedomscientific.com/training/jaws/hotkeys/</p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I can navigate Windows 11 using the keyboard.</p>
+<p>☐ I can use Start/Search, Settings, File Explorer, Taskbar, Quick
+Settings, and Notifications.</p>
+<p>☐ I can type and edit text without a mouse.</p>
+<p>☐ I understand focus and browse/scan/forms modes.</p>
+<p>☐ I can start/stop and use Narrator.</p>
+<p>☐ I understand Narrator Scan Mode and Views.</p>
+<p>☐ I can use Narrator braille if needed.</p>
+<p>☐ I can start and use NVDA if installed.</p>
+<p>☐ I understand NVDA Browse and Focus Modes.</p>
+<p>☐ I can start and use JAWS if installed.</p>
+<p>☐ I understand JAWS Virtual Cursor and Forms Mode.</p>
+<p>☐ I know how to use each screen reader's built-in help.</p>
+<p>☐ I can troubleshoot common speech, focus, typing, and web-navigation
+problems.</p>
+<p><strong>Most important habit:</strong> Always know which layer you
+are controlling: Windows itself, Narrator, NVDA, or JAWS. When a key
+behaves unexpectedly, first identify which screen reader and navigation
+mode are active.</p>
+
+    <p class="back-link"><a href="manuals.html">Return to all manuals</a></p>
+  </main>
+</body>
+</html>

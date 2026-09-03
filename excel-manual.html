@@ -3,138 +3,1814 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible Microsoft Excel manual for Microsoft 365 desktop on Windows with JAWS and keyboard-first instruction.">
-  <title>Microsoft Excel Manual - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=manual-review-1">
-  <script src="accessibility.js?v=manual-review-1" defer></script>
+  <meta name="description" content="Microsoft Excel Screen Reader Manual: step-by-step keyboard and screen-reader instructions, practice, troubleshooting, and command references.">
+  <title>Microsoft Excel Screen Reader Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-manuals-1">
+  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
 </head>
-<body>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header>
-    <p class="eyebrow">Keyboard-first Microsoft 365 training</p>
-    <h1>Microsoft Excel Accessible Manual</h1>
-    <p>A practical guide to creating, navigating, calculating, organizing, and checking spreadsheets with JAWS on Windows.</p>
+    <p class="eyebrow">Accessible Learning Center manual</p>
+    <h1>Microsoft Excel Screen Reader Manual</h1>
+    <p>Narrator, NVDA, and JAWS</p>
+    <p>Independent Self-Study Guide for Excel on Windows</p>
   </header>
-
-  <main id="main-content">
-    <nav class="lesson-nav" aria-label="Excel manual navigation">
-      <a href="#quick-reference">Keyboard quick reference</a>
-      <a href="#accessible-workbooks">Accessible workbook practices</a>
-      <a href="#course-lessons">Course lessons</a>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#main-content">Start of manual</a>
     </nav>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/screen-reader-support-for-excel"><u>Microsoft
+screen reader support for Excel</u></a></p>
+<p><strong>Purpose:</strong> This manual teaches Microsoft Excel from
+the beginning to a person using a screen reader. It explains exactly
+what to press, what cell or control should receive focus, what your
+screen reader should announce, and how to recover when the result is
+different.</p>
+<p><strong>Reference version:</strong> The manual is written primarily
+for Excel for Microsoft 365 on Windows. Many commands also work in Excel
+2024, 2021, 2019, and 2016, though Ribbon labels and newer features can
+vary.</p>
+<p><strong>Screen readers:</strong> Core Excel commands are taught
+first. Narrator, NVDA, and JAWS are covered separately later so commands
+are not mixed together.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Work through Parts 1-15 before concentrating on your screen
+reader. Those sections teach Excel itself.</p></li>
+<li><p>Always know the active cell address. A screen reader often
+announces both the cell reference and its value.</p></li>
+<li><p>Arrow keys move one cell at a time unless you are editing inside
+a cell.</p></li>
+<li><p>Enter normally moves down one cell after data entry. Tab normally
+moves right one cell.</p></li>
+<li><p>F2 puts the current cell into edit mode. Escape cancels an
+unfinished edit.</p></li>
+<li><p>Ctrl+Arrow jumps to an edge of the current data region. Use it
+carefully on large sheets.</p></li>
+<li><p>Ctrl+G opens Go To and is one of the safest ways to reach an
+exact cell.</p></li>
+<li><p>Ctrl+Page Up and Ctrl+Page Down switch worksheets.</p></li>
+<li><p>Use real Excel Tables with headers when data belongs in a
+structured table.</p></li>
+<li><p>Save often with Ctrl+S.</p></li>
+</ul>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><p>Part 1 - What Excel Is</p></li>
+<li><p>Part 2 - Workbooks, Worksheets, Cells, Rows, and Columns</p></li>
+<li><p>Part 3 - Open Excel and Create a Workbook</p></li>
+<li><p>Part 4 - Move Around a Worksheet</p></li>
+<li><p>Part 5 - Enter, Edit, and Clear Cell Data</p></li>
+<li><p>Part 6 - Select Cells, Rows, Columns, and Ranges</p></li>
+<li><p>Part 7 - Save, Open, Close, and Rename</p></li>
+<li><p>Part 8 - Formulas and Functions</p></li>
+<li><p>Part 9 - Copy, Fill, Paste, and AutoSum</p></li>
+<li><p>Part 10 - Worksheets: Add, Rename, Move, and Navigate</p></li>
+<li><p>Part 11 - Excel Tables</p></li>
+<li><p>Part 12 - Sort and Filter</p></li>
+<li><p>Part 13 - Find and Replace</p></li>
+<li><p>Part 14 - Formatting Numbers, Text, Alignment, and
+Columns</p></li>
+<li><p>Part 15 - Comments and Notes</p></li>
+<li><p>Part 16 - Charts and Visual Objects</p></li>
+<li><p>Part 17 - Accessibility and Accessible Spreadsheet
+Design</p></li>
+<li><p>Part 18 - Print and Page Setup</p></li>
+<li><p>Part 19 - Narrator with Excel</p></li>
+<li><p>Part 20 - NVDA with Excel</p></li>
+<li><p>Part 21 - JAWS with Excel</p></li>
+<li><p>Part 22 - Large Worksheets and Efficient Navigation</p></li>
+<li><p>Part 23 - Braille Displays with Excel</p></li>
+<li><p>Part 24 - Excel for the Web</p></li>
+<li><p>Part 25 - Troubleshooting</p></li>
+<li><p>Part 26 - Independent Practice Course</p></li>
+<li><p>Part 27 - Quick Reference Commands</p></li>
+<li><p>Part 28 - Official Microsoft Resources</p></li>
+</ul>
+<h2 id="part-1---what-excel-is">Part 1 - What Excel Is</h2>
+<p>Microsoft Excel is a spreadsheet application. It organizes
+information into a grid of rows and columns. The point where a row and
+column meet is a cell.</p>
+<ul>
+<li><p>A workbook is the Excel file.</p></li>
+<li><p>A worksheet is one sheet/tab inside the workbook.</p></li>
+<li><p>Columns use letters such as A, B, C, and AA.</p></li>
+<li><p>Rows use numbers such as 1, 2, and 100.</p></li>
+<li><p>A cell address combines column and row, such as A1, C12, or
+AA250.</p></li>
+<li><p>A range is a group of cells, such as A1:C10.</p></li>
+<li><p>A formula begins with an equals sign.</p></li>
+<li><p>A function is a built-in formula such as SUM or AVERAGE.</p></li>
+</ul>
+<h2 id="part-2---workbooks-worksheets-cells-rows-and-columns">Part 2 -
+Workbooks, Worksheets, Cells, Rows, and Columns</h2>
+<h3 id="understand-cell-addresses">2.1 Understand Cell Addresses</h3>
+<p><strong>What you will learn:</strong> Use cell references as your
+primary orientation system.</p>
+<p><strong>Before you begin:</strong> Open a blank workbook.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol type="1">
+<li><p>Press Ctrl+G.</p></li>
+<li><p>Type A1.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Listen for your screen reader to announce cell A1.</p></li>
+<li><p>Press Right Arrow once; you should move to B1.</p></li>
+<li><p>Press Down Arrow once; you should move to B2.</p></li>
+<li><p>Press Left Arrow once; you should move to A2.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can predict the current cell
+address after each move.</p>
+<p><strong>If that does not happen:</strong> If your screen reader
+announces only values and not addresses, adjust its Excel verbosity or
+use its current-cell command.</p>
+<p><strong>Practice:</strong> Move to C5 using arrows, then return to A1
+with Ctrl+G.</p>
+<h2 id="part-3---open-excel-and-create-a-workbook">Part 3 - Open Excel
+and Create a Workbook</h2>
+<h3 id="open-excel">3.1 Open Excel</h3>
+<p><strong>What you will learn:</strong> Start Excel without a
+mouse.</p>
+<p><strong>Before you begin:</strong> Excel must be installed.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol start="8" type="1">
+<li><p>Press the Windows key.</p></li>
+<li><p>Type Excel.</p></li>
+<li><p>Use Up/Down Arrow if multiple results appear.</p></li>
+<li><p>Press Enter on Microsoft Excel.</p></li>
+<li><p>Wait for the Excel start screen.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Excel opens.</p>
+<p><strong>If that does not happen:</strong> If Excel does not appear in
+Search, Microsoft 365/Excel may not be installed.</p>
+<p><strong>Practice:</strong> Open Excel twice with Windows Search.</p>
+<h3 id="create-a-blank-workbook">3.2 Create a Blank Workbook</h3>
+<p><strong>What you will learn:</strong> Open a worksheet ready for data
+entry.</p>
+<p><strong>Before you begin:</strong> Excel is open.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol start="13" type="1">
+<li><p>Press Ctrl+N.</p></li>
+<li><p>Wait for a new workbook.</p></li>
+<li><p>Listen for the active cell, normally A1.</p></li>
+<li><p>Type Name.</p></li>
+<li><p>Press Tab.</p></li>
+<li><p>Type Score.</p></li>
+<li><p>Press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> A new workbook contains headings
+in A1 and B1, and the active cell moves according to Excel's entry
+behavior.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+N opens a start
+page, choose Blank workbook with Tab/Enter.</p>
+<p><strong>Practice:</strong> Create a workbook with Name and Score
+headings.</p>
+<h2 id="part-4---move-around-a-worksheet">Part 4 - Move Around a
+Worksheet</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One cell</td>
+<td>Arrow keys</td>
+</tr>
+<tr class="even">
+<td>Next cell to right</td>
+<td>Tab</td>
+</tr>
+<tr class="odd">
+<td>Previous cell to left</td>
+<td>Shift+Tab</td>
+</tr>
+<tr class="even">
+<td>Next row/down after entry</td>
+<td>Enter</td>
+</tr>
+<tr class="odd">
+<td>Previous row/up</td>
+<td>Shift+Enter</td>
+</tr>
+<tr class="even">
+<td>Edge of current data region</td>
+<td>Ctrl+Arrow</td>
+</tr>
+<tr class="odd">
+<td>Go to exact cell</td>
+<td>Ctrl+G</td>
+</tr>
+<tr class="even">
+<td>Beginning of row</td>
+<td>Home</td>
+</tr>
+<tr class="odd">
+<td>Cell A1</td>
+<td>Ctrl+Home</td>
+</tr>
+<tr class="even">
+<td>Last used cell/region end</td>
+<td>Ctrl+End</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="go-to-an-exact-cell">4.1 Go to an Exact Cell</h3>
+<p><strong>What you will learn:</strong> Reach a known address safely on
+a large worksheet.</p>
+<p><strong>Before you begin:</strong> Open any worksheet.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol start="20" type="1">
+<li><p>Press Ctrl+G.</p></li>
+<li><p>Type D25.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Listen for D25.</p></li>
+<li><p>Type Test.</p></li>
+<li><p>Press Ctrl+G.</p></li>
+<li><p>Type A1.</p></li>
+<li><p>Press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can jump directly without
+counting rows/columns.</p>
+<p><strong>If that does not happen:</strong> If Go To stays open, press
+Enter again or Tab to OK.</p>
+<p><strong>Practice:</strong> Jump to Z100, then back to A1.</p>
+<h3 id="use-ctrlarrow-carefully">4.2 Use Ctrl+Arrow Carefully</h3>
+<p><strong>What you will learn:</strong> Move to the edge of a data
+block.</p>
+<p><strong>Before you begin:</strong> Create a small block of data
+first.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol start="28" type="1">
+<li><p>Place focus inside the data.</p></li>
+<li><p>Press Ctrl+Right Arrow.</p></li>
+<li><p>Listen to the cell address and value.</p></li>
+<li><p>Press Ctrl+Down Arrow.</p></li>
+<li><p>Listen again.</p></li>
+<li><p>Use Ctrl+Left Arrow and Ctrl+Up Arrow to return toward the
+upper-left edge.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Focus jumps to the edge of
+contiguous data.</p>
+<p><strong>If that does not happen:</strong> If Excel jumps very far,
+there may be blank cells or unexpected used cells in the sheet. Use
+Ctrl+G to recover.</p>
+<p><strong>Practice:</strong> Practice within a 5-by-5 block.</p>
+<h2 id="part-5---enter-edit-and-clear-cell-data">Part 5 - Enter, Edit,
+and Clear Cell Data</h2>
+<h3 id="enter-data-into-a-cell">5.1 Enter Data into a Cell</h3>
+<p><strong>What you will learn:</strong> Type a value and commit it.</p>
+<p><strong>Before you begin:</strong> Focus an empty cell.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol start="34" type="1">
+<li><p>Type a word or number.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Listen for focus to move down one cell.</p></li>
+<li><p>Press Up Arrow to return and confirm the value.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The value is stored in the
+cell.</p>
+<p><strong>If that does not happen:</strong> If typing starts a Ribbon
+command, the worksheet may not have focus. Press Escape/F6 until a cell
+is active.</p>
+<p><strong>Practice:</strong> Enter five names in column A.</p>
+<h3 id="edit-existing-cell-content">5.2 Edit Existing Cell Content</h3>
+<p><strong>What you will learn:</strong> Change only part of a cell
+value.</p>
+<p><strong>Before you begin:</strong> Focus a cell containing text.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol start="38" type="1">
+<li><p>Press F2.</p></li>
+<li><p>Listen for edit mode or the cell contents.</p></li>
+<li><p>Use Left/Right Arrow to move within the text.</p></li>
+<li><p>Use Backspace/Delete to remove characters.</p></li>
+<li><p>Type the correction.</p></li>
+<li><p>Press Enter to save the edit.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The same cell contains the
+corrected value.</p>
+<p><strong>If that does not happen:</strong> If arrow keys move to
+another cell, F2 did not enter edit mode. Return and press F2 again.</p>
+<p><strong>Practice:</strong> Correct three deliberate spelling
+errors.</p>
+<h3 id="clear-a-cell-without-deleting-the-row">5.3 Clear a Cell Without
+Deleting the Row</h3>
+<p><strong>What you will learn:</strong> Remove content only.</p>
+<p><strong>Before you begin:</strong> Focus a non-important practice
+cell.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol start="44" type="1">
+<li><p>Press Delete.</p></li>
+<li><p>Listen for the cell to become blank.</p></li>
+<li><p>Move away and back to verify.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The cell remains in place but
+its content is cleared.</p>
+<p><strong>If that does not happen:</strong> If a Delete dialog opens,
+you may have used a different delete command. Press Escape and use the
+Delete key for Clear Contents.</p>
+<p><strong>Practice:</strong> Clear one practice value.</p>
+<h2 id="part-6---select-cells-rows-columns-and-ranges">Part 6 - Select
+Cells, Rows, Columns, and Ranges</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Extend selection one cell</td>
+<td>Shift+Arrow</td>
+</tr>
+<tr class="even">
+<td>Extend to region edge</td>
+<td>Ctrl+Shift+Arrow</td>
+</tr>
+<tr class="odd">
+<td>Select entire row</td>
+<td>Shift+Space</td>
+</tr>
+<tr class="even">
+<td>Select entire column</td>
+<td>Ctrl+Space</td>
+</tr>
+<tr class="odd">
+<td>Select current region</td>
+<td>Ctrl+A once in many data contexts</td>
+</tr>
+<tr class="even">
+<td>Select all worksheet</td>
+<td>Ctrl+A again or Ctrl+Shift+Space depending context</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="select-a-range">6.1 Select a Range</h3>
+<p><strong>What you will learn:</strong> Select multiple adjacent cells
+by keyboard.</p>
+<p><strong>Before you begin:</strong> Start at A1.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol start="47" type="1">
+<li><p>Press Ctrl+G, type A1, press Enter.</p></li>
+<li><p>Hold Shift.</p></li>
+<li><p>Press Right Arrow twice.</p></li>
+<li><p>Press Down Arrow twice while continuing to hold Shift.</p></li>
+<li><p>Release Shift.</p></li>
+<li><p>Listen for your screen reader's selected-range announcement if
+available.</p></li>
+</ol>
+<p><strong>What should happen:</strong> A rectangular range from A1
+through C3 is selected.</p>
+<p><strong>If that does not happen:</strong> If typing would replace
+data, press Escape to cancel the selection before typing.</p>
+<p><strong>Practice:</strong> Select B2:D6 and then press Escape.</p>
+<h3 id="select-a-whole-row-or-column">6.2 Select a Whole Row or
+Column</h3>
+<p><strong>What you will learn:</strong> Apply an action to an entire
+row/column.</p>
+<p><strong>Before you begin:</strong> Focus any cell.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol start="53" type="1">
+<li><p>Press Shift+Space to select the whole row.</p></li>
+<li><p>Press Escape.</p></li>
+<li><p>Press Ctrl+Space to select the whole column.</p></li>
+<li><p>Press Escape.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The entire row or column is
+selected temporarily.</p>
+<p><strong>If that does not happen:</strong> If the screen reader does
+not announce the selection, use its selection-reporting command or test
+only with harmless formatting.</p>
+<p><strong>Practice:</strong> Select and cancel one row and one
+column.</p>
+<h2 id="part-7---save-open-close-and-rename">Part 7 - Save, Open, Close,
+and Rename</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Save</td>
+<td>Ctrl+S</td>
+</tr>
+<tr class="even">
+<td>Open</td>
+<td>Ctrl+O</td>
+</tr>
+<tr class="odd">
+<td>Close workbook</td>
+<td>Ctrl+W</td>
+</tr>
+<tr class="even">
+<td>Exit Excel</td>
+<td>Alt+F4</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="save-a-workbook">7.1 Save a Workbook</h3>
+<p><strong>What you will learn:</strong> Save an XLSX file to a known
+location.</p>
+<p><strong>Before you begin:</strong> Have unsaved data in a
+workbook.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol start="57" type="1">
+<li><p>Press Ctrl+S.</p></li>
+<li><p>Choose a folder/location if prompted.</p></li>
+<li><p>Move to File name.</p></li>
+<li><p>Type a descriptive name such as ExcelPractice.</p></li>
+<li><p>Keep the XLSX format unless you intentionally need another
+format.</p></li>
+<li><p>Activate Save.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The workbook is saved.</p>
+<p><strong>If that does not happen:</strong> If Excel warns about losing
+features, you may have chosen CSV or another format. Choose XLSX for a
+normal workbook.</p>
+<p><strong>Practice:</strong> Save your practice workbook.</p>
+<h3 id="reopen-a-workbook">7.2 Reopen a Workbook</h3>
+<p><strong>What you will learn:</strong> Open a previously saved Excel
+file.</p>
+<p><strong>Before you begin:</strong> Know the filename.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol start="63" type="1">
+<li><p>Press Ctrl+O.</p></li>
+<li><p>Choose Recent or Browse.</p></li>
+<li><p>Navigate to the workbook.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Wait for the sheet to load.</p></li>
+<li><p>Press Ctrl+Home.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The workbook opens and focus
+returns to A1 or the appropriate starting location.</p>
+<p><strong>If that does not happen:</strong> If Protected View opens for
+a downloaded file, review the source before enabling editing.</p>
+<p><strong>Practice:</strong> Close and reopen your practice
+workbook.</p>
+<h2 id="part-8---formulas-and-functions">Part 8 - Formulas and
+Functions</h2>
+<h3 id="enter-a-simple-formula">8.1 Enter a Simple Formula</h3>
+<p><strong>What you will learn:</strong> Calculate using cell
+references.</p>
+<p><strong>Before you begin:</strong> Enter 10 in A1 and 5 in B1.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol start="69" type="1">
+<li><p>Move to C1.</p></li>
+<li><p>Type =A1+B1.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Move back to C1.</p></li>
+<li><p>Listen for the calculated value.</p></li>
+<li><p>Press F2 to hear/edit the formula if needed.</p></li>
+<li><p>Press Escape to leave edit mode unchanged.</p></li>
+</ol>
+<p><strong>What should happen:</strong> C1 displays 15 while the formula
+remains =A1+B1.</p>
+<p><strong>If that does not happen:</strong> If Excel shows the formula
+text instead of the result, the cell may be formatted as Text or formula
+display may be enabled.</p>
+<p><strong>Practice:</strong> Create formulas for subtraction,
+multiplication, and division.</p>
+<h3 id="use-the-sum-function">8.2 Use the SUM Function</h3>
+<p><strong>What you will learn:</strong> Add a range of values.</p>
+<p><strong>Before you begin:</strong> Enter numbers in A1:A5.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol start="76" type="1">
+<li><p>Move to A6.</p></li>
+<li><p>Type =SUM(A1:A5).</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Return to A6 and read the result.</p></li>
+</ol>
+<p><strong>What should happen:</strong> A6 contains the total.</p>
+<p><strong>If that does not happen:</strong> If the total is wrong,
+inspect each source cell and confirm that values are numeric rather than
+text.</p>
+<p><strong>Practice:</strong> Sum five numbers.</p>
+<h3 id="understand-relative-references">8.3 Understand Relative
+References</h3>
+<p><strong>What you will learn:</strong> See how copied formulas
+adjust.</p>
+<p><strong>Before you begin:</strong> Enter numbers in A1:B3.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol start="80" type="1">
+<li><p>Move to C1.</p></li>
+<li><p>Type =A1+B1.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Copy C1 with Ctrl+C.</p></li>
+<li><p>Select C2:C3.</p></li>
+<li><p>Press Ctrl+V.</p></li>
+<li><p>Move through C1:C3 and listen to the results.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Excel adjusts the row references
+in copied formulas.</p>
+<p><strong>If that does not happen:</strong> If you need a reference not
+to change, learn absolute references using dollar signs, such as
+$A$1.</p>
+<p><strong>Practice:</strong> Copy one formula down three rows.</p>
+<h2 id="part-9---copy-fill-paste-and-autosum">Part 9 - Copy, Fill,
+Paste, and AutoSum</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Copy</td>
+<td>Ctrl+C</td>
+</tr>
+<tr class="even">
+<td>Cut</td>
+<td>Ctrl+X</td>
+</tr>
+<tr class="odd">
+<td>Paste</td>
+<td>Ctrl+V</td>
+</tr>
+<tr class="even">
+<td>Fill down</td>
+<td>Ctrl+D</td>
+</tr>
+<tr class="odd">
+<td>Fill right</td>
+<td>Ctrl+R</td>
+</tr>
+<tr class="even">
+<td>AutoSum</td>
+<td>Alt+=</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="copy-a-value-or-formula">9.1 Copy a Value or Formula</h3>
+<p><strong>What you will learn:</strong> Duplicate content into another
+cell.</p>
+<p><strong>Before you begin:</strong> Focus a cell with practice
+data.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol start="87" type="1">
+<li><p>Press Ctrl+C.</p></li>
+<li><p>Move to the destination cell.</p></li>
+<li><p>Press Ctrl+V.</p></li>
+<li><p>Move away and back to verify.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The destination receives the
+copied content.</p>
+<p><strong>If that does not happen:</strong> If a formula changes
+references unexpectedly, that is normal relative-reference behavior.</p>
+<p><strong>Practice:</strong> Copy text, then copy a formula and
+compare.</p>
+<h3 id="use-autosum">9.2 Use AutoSum</h3>
+<p><strong>What you will learn:</strong> Let Excel create a SUM
+formula.</p>
+<p><strong>Before you begin:</strong> Place numbers in A1:A5.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol start="91" type="1">
+<li><p>Move to A6.</p></li>
+<li><p>Press Alt+=.</p></li>
+<li><p>Listen to the proposed range.</p></li>
+<li><p>Press Enter if the range is correct.</p></li>
+<li><p>Read the result.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Excel inserts a SUM formula.</p>
+<p><strong>If that does not happen:</strong> If the proposed range is
+wrong, edit the highlighted range before pressing Enter or type the
+formula manually.</p>
+<p><strong>Practice:</strong> Use AutoSum on one column and one row.</p>
+<h2 id="part-10---worksheets-add-rename-move-and-navigate">Part 10 -
+Worksheets: Add, Rename, Move, and Navigate</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Next worksheet</td>
+<td>Ctrl+Page Down</td>
+</tr>
+<tr class="even">
+<td>Previous worksheet</td>
+<td>Ctrl+Page Up</td>
+</tr>
+<tr class="odd">
+<td>Insert new worksheet</td>
+<td>Shift+F11</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="add-and-rename-a-worksheet">10.1 Add and Rename a Worksheet</h3>
+<p><strong>What you will learn:</strong> Create meaningful sheet
+names.</p>
+<p><strong>Before you begin:</strong> Open a workbook.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol start="96" type="1">
+<li><p>Press Shift+F11.</p></li>
+<li><p>Listen for the new sheet name.</p></li>
+<li><p>Open the sheet tab context menu with Shift+F10 when the tab is
+focused.</p></li>
+<li><p>Choose Rename.</p></li>
+<li><p>Type Practice Data.</p></li>
+<li><p>Press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> A new sheet exists with the new
+name.</p>
+<p><strong>If that does not happen:</strong> If Shift+F10 opens a cell
+context menu, focus is still in the grid. Use the sheet-navigation
+controls or Ribbon to reach the sheet tab before renaming.</p>
+<p><strong>Practice:</strong> Create sheets named January and
+February.</p>
+<h3 id="switch-worksheets">10.2 Switch Worksheets</h3>
+<p><strong>What you will learn:</strong> Move without using sheet tabs
+visually.</p>
+<p><strong>Before you begin:</strong> Have at least two worksheets.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol start="102" type="1">
+<li><p>Press Ctrl+Page Down.</p></li>
+<li><p>Listen to the worksheet name.</p></li>
+<li><p>Press Ctrl+Page Down again if another sheet exists.</p></li>
+<li><p>Press Ctrl+Page Up to move back.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Focus moves between
+worksheets.</p>
+<p><strong>If that does not happen:</strong> If Page Up/Down keys
+require Fn on your keyboard, include Fn.</p>
+<p><strong>Practice:</strong> Move through every sheet and return to the
+first.</p>
+<h2 id="part-11---excel-tables">Part 11 - Excel Tables</h2>
+<p>An Excel Table is more than a visually formatted range. It gives data
+a structured object with headers, filter controls, and predictable
+expansion.</p>
+<h3 id="convert-data-to-an-excel-table">11.1 Convert Data to an Excel
+Table</h3>
+<p><strong>What you will learn:</strong> Turn a data range into a
+structured table.</p>
+<p><strong>Before you begin:</strong> Create a data block with one
+header row and no completely blank rows/columns inside it.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol start="106" type="1">
+<li><p>Move to any cell inside the data.</p></li>
+<li><p>Press Ctrl+T.</p></li>
+<li><p>Listen to the proposed range.</p></li>
+<li><p>Confirm the range is correct.</p></li>
+<li><p>Make sure My table has headers is checked if the first row
+contains headings.</p></li>
+<li><p>Press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The range becomes an Excel
+Table.</p>
+<p><strong>If that does not happen:</strong> If the range is wrong,
+cancel and select the correct range first.</p>
+<p><strong>Practice:</strong> Create a Name, Department, Score
+table.</p>
+<h3 id="give-a-table-a-meaningful-name">11.2 Give a Table a Meaningful
+Name</h3>
+<p><strong>What you will learn:</strong> Make the table easier to
+identify and reference.</p>
+<p><strong>Before you begin:</strong> Focus a cell in the table.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol start="112" type="1">
+<li><p>Open the Table Design contextual tab using Alt and the announced
+KeyTip.</p></li>
+<li><p>Move to Table Name.</p></li>
+<li><p>Type a short descriptive name with no spaces, such as
+EmployeeScores.</p></li>
+<li><p>Press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The table has a meaningful
+internal name.</p>
+<p><strong>If that does not happen:</strong> If the name is rejected,
+remove spaces and special characters.</p>
+<p><strong>Practice:</strong> Name one practice table.</p>
+<p><strong>Accessibility:</strong> Use clear column headers. Avoid
+merged cells inside data tables. Keep each column focused on one kind of
+data.</p>
+<h2 id="part-12---sort-and-filter">Part 12 - Sort and Filter</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Toggle filters on a range/table</td>
+<td>Ctrl+Shift+L</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="turn-filters-on-or-off">12.1 Turn Filters On or Off</h3>
+<p><strong>What you will learn:</strong> Add filter controls to a header
+row.</p>
+<p><strong>Before you begin:</strong> Focus inside a range with
+headers.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol start="116" type="1">
+<li><p>Press Ctrl+Shift+L.</p></li>
+<li><p>Move to a header cell.</p></li>
+<li><p>Use Alt+Down Arrow to open the header's filter menu.</p></li>
+<li><p>Press Escape to close the menu without changing
+anything.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Filter drop-downs become
+available on the headers.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+Shift+L removes
+filters, they were already on. Press it again to restore them.</p>
+<p><strong>Practice:</strong> Toggle filters twice.</p>
+<h3 id="filter-one-column">12.2 Filter One Column</h3>
+<p><strong>What you will learn:</strong> Show only rows matching a
+condition.</p>
+<p><strong>Before you begin:</strong> Filters are enabled.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol start="120" type="1">
+<li><p>Move to the header of the column you want to filter.</p></li>
+<li><p>Press Alt+Down Arrow.</p></li>
+<li><p>Use Tab/arrow keys through the menu.</p></li>
+<li><p>Choose the desired filter condition or value.</p></li>
+<li><p>Apply/OK.</p></li>
+<li><p>Move through the visible rows and verify the result.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Only matching rows are shown;
+hidden rows remain in the worksheet.</p>
+<p><strong>If that does not happen:</strong> If you think data was
+deleted, clear the filter first. Filtering hides rows; it does not
+normally delete them.</p>
+<p><strong>Practice:</strong> Filter a Status column, then clear the
+filter.</p>
+<h3 id="sort-data">12.3 Sort Data</h3>
+<p><strong>What you will learn:</strong> Reorder rows by a column
+value.</p>
+<p><strong>Before you begin:</strong> Use a properly structured
+table/range.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol start="126" type="1">
+<li><p>Move to the header cell for the sort column.</p></li>
+<li><p>Press Alt+Down Arrow.</p></li>
+<li><p>Choose Sort A to Z / Smallest to Largest or the reverse.</p></li>
+<li><p>Confirm the rows reorder together.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Whole rows are sorted based on
+the selected column.</p>
+<p><strong>If that does not happen:</strong> If only one column changes
+independently, undo immediately with Ctrl+Z and convert the data to a
+proper table/range before trying again.</p>
+<p><strong>Practice:</strong> Sort a practice table ascending and
+undo.</p>
+<h2 id="part-13---find-and-replace">Part 13 - Find and Replace</h2>
+<h3 id="find-data-with-narrator-or-nvda">13.1 Find Data with Narrator or
+NVDA</h3>
+<p><strong>What you will learn:</strong> Search for a value in the
+worksheet.</p>
+<p><strong>Before you begin:</strong> Use Narrator or NVDA.</p>
+<h4 id="exactly-how-to-do-it-24">Exactly how to do it</h4>
+<ol start="130" type="1">
+<li><p>Press Ctrl+F.</p></li>
+<li><p>Type the value or text.</p></li>
+<li><p>Use Find Next or press Enter as appropriate.</p></li>
+<li><p>Listen to the cell Excel moves to.</p></li>
+<li><p>Repeat to find the next occurrence.</p></li>
+<li><p>Press Escape when finished.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Excel moves through matching
+cells.</p>
+<p><strong>If that does not happen:</strong> If focus remains in the
+Find box, Tab to Find Next and activate it.</p>
+<p><strong>Practice:</strong> Find the same word in two cells.</p>
+<p><strong>JAWS difference:</strong> Microsoft documents that in some
+Excel screen-reader workflows, JAWS users may use Ctrl+H to open Find
+and Replace rather than Ctrl+F. Follow the JAWS-specific instructions
+later in this manual if Ctrl+F does not behave as expected.</p>
+<h3 id="replace-data">13.2 Replace Data</h3>
+<p><strong>What you will learn:</strong> Change a matching value
+deliberately.</p>
+<p><strong>Before you begin:</strong> Use a practice sheet.</p>
+<h4 id="exactly-how-to-do-it-25">Exactly how to do it</h4>
+<ol start="136" type="1">
+<li><p>Press Ctrl+H.</p></li>
+<li><p>Type the old value in Find what.</p></li>
+<li><p>Tab to Replace with.</p></li>
+<li><p>Type the new value.</p></li>
+<li><p>Use Find Next first.</p></li>
+<li><p>Choose Replace for one occurrence or Replace All only when every
+match should change.</p></li>
+<li><p>Read the replacement count.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Only the intended matches
+change.</p>
+<p><strong>If that does not happen:</strong> If Replace All could affect
+formulas or unrelated cells, cancel and use one-at-a-time Replace.</p>
+<p><strong>Practice:</strong> Replace one practice value and undo.</p>
+<h2 id="part-14---formatting-numbers-text-alignment-and-columns">Part 14
+- Formatting Numbers, Text, Alignment, and Columns</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bold</td>
+<td>Ctrl+B</td>
+</tr>
+<tr class="even">
+<td>Italic</td>
+<td>Ctrl+I</td>
+</tr>
+<tr class="odd">
+<td>Underline</td>
+<td>Ctrl+U</td>
+</tr>
+<tr class="even">
+<td>Format Cells dialog</td>
+<td>Ctrl+1</td>
+</tr>
+<tr class="odd">
+<td>Currency format</td>
+<td>Ctrl+Shift+$</td>
+</tr>
+<tr class="even">
+<td>Percent format</td>
+<td>Ctrl+Shift+%</td>
+</tr>
+<tr class="odd">
+<td>Number format</td>
+<td>Ctrl+Shift+!</td>
+</tr>
+<tr class="even">
+<td>Date format</td>
+<td>Ctrl+Shift+#</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="apply-a-number-format">14.1 Apply a Number Format</h3>
+<p><strong>What you will learn:</strong> Make numeric meaning clear.</p>
+<p><strong>Before you begin:</strong> Focus a numeric cell.</p>
+<h4 id="exactly-how-to-do-it-26">Exactly how to do it</h4>
+<ol start="143" type="1">
+<li><p>Press Ctrl+1.</p></li>
+<li><p>Use the category list to choose Number, Currency, Percentage,
+Date, or another format.</p></li>
+<li><p>Tab through format options.</p></li>
+<li><p>Choose the desired decimal places/symbol/date style.</p></li>
+<li><p>Press Enter/OK.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The stored value stays the same
+but its presentation changes.</p>
+<p><strong>If that does not happen:</strong> If the value itself changes
+unexpectedly, undo and inspect whether you edited the cell instead of
+formatting it.</p>
+<p><strong>Practice:</strong> Format one value as Currency and one as
+Percentage.</p>
+<h3 id="autofit-a-column">14.2 AutoFit a Column</h3>
+<p><strong>What you will learn:</strong> Make a column wide enough for
+its content.</p>
+<p><strong>Before you begin:</strong> Focus a cell in the column.</p>
+<h4 id="exactly-how-to-do-it-27">Exactly how to do it</h4>
+<ol start="148" type="1">
+<li><p>Select the column with Ctrl+Space.</p></li>
+<li><p>Open Home with Alt+H.</p></li>
+<li><p>Use the current Ribbon KeyTips for Format and AutoFit Column
+Width.</p></li>
+<li><p>Press Enter if required.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The column width adjusts to its
+longest displayed content.</p>
+<p><strong>If that does not happen:</strong> If the KeyTips differ,
+press Alt and follow Excel's current announced letters instead of
+relying on memorized letters.</p>
+<p><strong>Practice:</strong> AutoFit two columns.</p>
+<h2 id="part-15---comments-and-notes">Part 15 - Comments and Notes</h2>
+<p>Modern Excel comments are threaded collaboration conversations. Notes
+are the older cell-annotation style.</p>
+<h3 id="add-a-comment">15.1 Add a Comment</h3>
+<p><strong>What you will learn:</strong> Attach collaborative feedback
+to a cell.</p>
+<p><strong>Before you begin:</strong> Focus a practice cell.</p>
+<h4 id="exactly-how-to-do-it-28">Exactly how to do it</h4>
+<ol start="152" type="1">
+<li><p>Open Review with Alt+R.</p></li>
+<li><p>Navigate to New Comment.</p></li>
+<li><p>Activate it.</p></li>
+<li><p>Type the comment.</p></li>
+<li><p>Post the comment.</p></li>
+<li><p>Return to the worksheet.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The cell has a comment
+associated with it.</p>
+<p><strong>If that does not happen:</strong> If you need a simple
+non-threaded annotation, use a Note instead of a modern Comment.</p>
+<p><strong>Practice:</strong> Add a comment to a practice cell.</p>
+<h3 id="read-comments">15.2 Read Comments</h3>
+<p><strong>What you will learn:</strong> Review feedback without
+searching cell by cell.</p>
+<p><strong>Before you begin:</strong> Open a workbook with comments.</p>
+<h4 id="exactly-how-to-do-it-29">Exactly how to do it</h4>
+<ol start="158" type="1">
+<li><p>Open Review.</p></li>
+<li><p>Open the Comments pane.</p></li>
+<li><p>Use F6/Shift+F6 or Tab to move into the pane.</p></li>
+<li><p>Use arrows/Tab through comments.</p></li>
+<li><p>Listen for author, cell reference, and text.</p></li>
+<li><p>Close the pane when finished.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can review comments and
+return to the grid.</p>
+<p><strong>If that does not happen:</strong> If the pane has focus and
+arrow keys do not return to the worksheet, press F6 until a cell is
+announced.</p>
+<p><strong>Practice:</strong> Read two comments and return.</p>
+<h2 id="part-16---charts-and-visual-objects">Part 16 - Charts and Visual
+Objects</h2>
+<h3 id="create-a-basic-chart">16.1 Create a Basic Chart</h3>
+<p><strong>What you will learn:</strong> Create a chart from selected
+data.</p>
+<p><strong>Before you begin:</strong> Create a small labeled data
+range.</p>
+<h4 id="exactly-how-to-do-it-30">Exactly how to do it</h4>
+<ol start="164" type="1">
+<li><p>Select the data range.</p></li>
+<li><p>Press Alt+F1.</p></li>
+<li><p>Wait for Excel to insert a default chart on the current
+worksheet.</p></li>
+<li><p>Use F6/Tab to move focus to the chart if needed.</p></li>
+<li><p>Use chart accessibility/object commands from your screen reader
+to inspect its title and elements.</p></li>
+</ol>
+<p><strong>What should happen:</strong> A chart is inserted based on the
+selected data.</p>
+<p><strong>If that does not happen:</strong> If the chart is not useful,
+delete it and select a simpler range with clear row/column labels.</p>
+<p><strong>Practice:</strong> Create a chart from a two-column
+category/value table.</p>
+<p><strong>Accessibility:</strong> Charts should have a descriptive
+title and should not be the only way important data is communicated.
+Keep the underlying accessible data table available.</p>
+<h2 id="part-17---accessibility-and-accessible-spreadsheet-design">Part
+17 - Accessibility and Accessible Spreadsheet Design</h2>
+<ul>
+<li><p>Give every worksheet a meaningful name.</p></li>
+<li><p>Start important tables near the upper-left of the worksheet when
+practical.</p></li>
+<li><p>Use one clear header row for tabular data.</p></li>
+<li><p>Convert true data ranges into Excel Tables when
+appropriate.</p></li>
+<li><p>Give tables meaningful names/titles.</p></li>
+<li><p>Avoid merged cells in data regions.</p></li>
+<li><p>Do not communicate meaning with color alone.</p></li>
+<li><p>Use sufficient color contrast.</p></li>
+<li><p>Keep blank rows/columns out of the middle of data
+tables.</p></li>
+<li><p>Use meaningful link text.</p></li>
+<li><p>Add alt text to meaningful images and charts.</p></li>
+<li><p>Run Accessibility Checker before sharing.</p></li>
+</ul>
+<h3 id="run-accessibility-checker">17.1 Run Accessibility Checker</h3>
+<p><strong>What you will learn:</strong> Find common accessibility
+barriers.</p>
+<p><strong>Before you begin:</strong> Open a finished practice
+workbook.</p>
+<h4 id="exactly-how-to-do-it-31">Exactly how to do it</h4>
+<ol start="169" type="1">
+<li><p>Open Review using Alt+R.</p></li>
+<li><p>Navigate to Check Accessibility/Accessibility.</p></li>
+<li><p>Open Accessibility Checker.</p></li>
+<li><p>Use the pane to move through issues.</p></li>
+<li><p>Read why each issue matters.</p></li>
+<li><p>Correct one issue at a time.</p></li>
+<li><p>Recheck after fixes.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The workbook has fewer
+accessibility barriers.</p>
+<p><strong>If that does not happen:</strong> If the command is
+unavailable, verify your Excel version and workbook state.</p>
+<p><strong>Practice:</strong> Fix at least two practice issues.</p>
+<h3 id="title-a-table">17.2 Title a Table</h3>
+<p><strong>What you will learn:</strong> Give screen-reader users
+clearer context for a structured table.</p>
+<p><strong>Before you begin:</strong> Use an Excel Table.</p>
+<h4 id="exactly-how-to-do-it-32">Exactly how to do it</h4>
+<ol start="176" type="1">
+<li><p>Focus inside the table.</p></li>
+<li><p>Open the relevant table design/properties controls.</p></li>
+<li><p>Locate the table name/title controls supported by your Excel
+version.</p></li>
+<li><p>Enter a descriptive name.</p></li>
+<li><p>Confirm the change.</p></li>
+</ol>
+<p><strong>What should happen:</strong> The table has an identifiable
+descriptive name.</p>
+<p><strong>If that does not happen:</strong> If the current Microsoft
+365 interface offers a dedicated accessibility table-title feature, use
+that control and follow its prompts.</p>
+<p><strong>Practice:</strong> Give one table a meaningful
+title/name.</p>
+<h2 id="part-18---print-and-page-setup">Part 18 - Print and Page
+Setup</h2>
+<h3 id="print-a-worksheet">18.1 Print a Worksheet</h3>
+<p><strong>What you will learn:</strong> Review printer and worksheet
+scope before printing.</p>
+<p><strong>Before you begin:</strong> Open the sheet to print.</p>
+<h4 id="exactly-how-to-do-it-33">Exactly how to do it</h4>
+<ol start="181" type="1">
+<li><p>Press Ctrl+P.</p></li>
+<li><p>Listen to the selected printer.</p></li>
+<li><p>Tab through Copies and Settings.</p></li>
+<li><p>Choose Print Active Sheets, Entire Workbook, or Selection as
+intended.</p></li>
+<li><p>Review orientation, paper size, margins, and scaling.</p></li>
+<li><p>Move to Print and press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Excel sends the intended content
+to the selected printer.</p>
+<p><strong>If that does not happen:</strong> If the preview suggests
+columns are cut off, adjust orientation/scaling before printing.</p>
+<p><strong>Practice:</strong> Open Print settings and cancel without
+printing.</p>
+<p><strong>Print accessibility:</strong> Printed layout is separate from
+screen-reader accessibility. A sheet can be accessible electronically
+and still print poorly, or vice versa.</p>
+<h2 id="part-19---narrator-with-excel">Part 19 - Narrator with
+Excel</h2>
+<p>Narrator works with Excel's cell grid and Ribbon using standard
+Windows focus plus Narrator commands.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Start/stop Narrator</td>
+<td>Windows+Ctrl+Enter</td>
+</tr>
+<tr class="even">
+<td>Narrator key</td>
+<td>Caps Lock or Insert</td>
+</tr>
+<tr class="odd">
+<td>Input Learning</td>
+<td>Narrator+1</td>
+</tr>
+<tr class="even">
+<td>Next/previous item</td>
+<td>Narrator+Right/Left Arrow</td>
+</tr>
+<tr class="odd">
+<td>Primary action</td>
+<td>Narrator+Enter</td>
+</tr>
+<tr class="even">
+<td>Narrator Settings</td>
+<td>Windows+Ctrl+N</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="navigate-cells-with-narrator">19.1 Navigate Cells with
+Narrator</h3>
+<p><strong>What you will learn:</strong> Use Excel cell movement while
+Narrator speaks location/value.</p>
+<p><strong>Before you begin:</strong> Narrator is on and a worksheet is
+active.</p>
+<h4 id="exactly-how-to-do-it-34">Exactly how to do it</h4>
+<ol start="187" type="1">
+<li><p>Press Ctrl+Home.</p></li>
+<li><p>Listen for A1.</p></li>
+<li><p>Press Right Arrow.</p></li>
+<li><p>Listen for B1 and its value.</p></li>
+<li><p>Press Down Arrow.</p></li>
+<li><p>Listen for B2.</p></li>
+<li><p>Use Ctrl+G to move to F20.</p></li>
+<li><p>Type a practice value.</p></li>
+<li><p>Press Ctrl+Home.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Narrator follows the Excel
+active cell.</p>
+<p><strong>If that does not happen:</strong> If Narrator moves through
+interface objects instead of cells, use F6/Shift+F6 until the worksheet
+grid is active.</p>
+<p><strong>Practice:</strong> Navigate to ten different cells.</p>
+<h3 id="read-a-formula-with-narrator">19.2 Read a Formula with
+Narrator</h3>
+<p><strong>What you will learn:</strong> Inspect formula content and
+result.</p>
+<p><strong>Before you begin:</strong> Focus a formula cell.</p>
+<h4 id="exactly-how-to-do-it-35">Exactly how to do it</h4>
+<ol start="196" type="1">
+<li><p>Listen to the calculated value.</p></li>
+<li><p>Press F2.</p></li>
+<li><p>Listen to or review the formula text.</p></li>
+<li><p>Press Escape to leave without changing it.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can distinguish the
+displayed result from the underlying formula.</p>
+<p><strong>If that does not happen:</strong> If F2 triggers a laptop
+function, use Fn+F2.</p>
+<p><strong>Practice:</strong> Inspect three formulas.</p>
+<h2 id="part-20---nvda-with-excel">Part 20 - NVDA with Excel</h2>
+<p>NVDA follows Excel's active cell and can announce coordinates,
+values, formulas, and formatting depending on settings.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NVDA menu</td>
+<td>NVDA+N</td>
+</tr>
+<tr class="even">
+<td>Input Help</td>
+<td>NVDA+1</td>
+</tr>
+<tr class="odd">
+<td>Say title</td>
+<td>NVDA+T</td>
+</tr>
+<tr class="even">
+<td>Say focused object</td>
+<td>NVDA+Tab</td>
+</tr>
+<tr class="odd">
+<td>Report formatting</td>
+<td>NVDA+F</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="navigate-and-read-cells-with-nvda">20.1 Navigate and Read Cells
+with NVDA</h3>
+<p><strong>What you will learn:</strong> Use NVDA with Excel's standard
+grid commands.</p>
+<p><strong>Before you begin:</strong> NVDA is running.</p>
+<h4 id="exactly-how-to-do-it-36">Exactly how to do it</h4>
+<ol start="200" type="1">
+<li><p>Press Ctrl+Home.</p></li>
+<li><p>Use Arrow keys through cells.</p></li>
+<li><p>Use Ctrl+Arrow to move to data edges.</p></li>
+<li><p>Press NVDA+Tab when you want NVDA to repeat the focused
+cell/object.</p></li>
+<li><p>Press F2 to inspect/edit a cell.</p></li>
+<li><p>Press Escape to exit edit mode.</p></li>
+</ol>
+<p><strong>What should happen:</strong> NVDA follows active-cell
+movement.</p>
+<p><strong>If that does not happen:</strong> If cell coordinates are not
+announced clearly enough, review NVDA's document formatting/spreadsheet
+reporting settings.</p>
+<p><strong>Practice:</strong> Move through a small table and identify
+each header/value.</p>
+<h3 id="review-cell-formatting-with-nvda">20.2 Review Cell Formatting
+with NVDA</h3>
+<p><strong>What you will learn:</strong> Hear formatting information for
+a cell.</p>
+<p><strong>Before you begin:</strong> Focus a formatted cell.</p>
+<h4 id="exactly-how-to-do-it-37">Exactly how to do it</h4>
+<ol start="206" type="1">
+<li><p>Press NVDA+F.</p></li>
+<li><p>Listen for number format, font, style, alignment, color, and
+other available details.</p></li>
+<li><p>Move to another cell and compare.</p></li>
+</ol>
+<p><strong>What should happen:</strong> NVDA reports formatting
+information.</p>
+<p><strong>If that does not happen:</strong> If the command differs in
+your keyboard layout/version, use NVDA+1 Input Help.</p>
+<p><strong>Practice:</strong> Compare a Currency cell and a Percentage
+cell.</p>
+<h2 id="part-21---jaws-with-excel">Part 21 - JAWS with Excel</h2>
+<p>JAWS has extensive Excel support and often announces cell
+coordinates, values, headers, formulas, and table context.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Keyboard Help</td>
+<td>Insert+1</td>
+</tr>
+<tr class="even">
+<td>Hot Key Help</td>
+<td>Insert+H</td>
+</tr>
+<tr class="odd">
+<td>Windows Key Help</td>
+<td>Insert+W</td>
+</tr>
+<tr class="even">
+<td>JAWS Command Search</td>
+<td>Insert+Space, then J</td>
+</tr>
+<tr class="odd">
+<td>Say title</td>
+<td>Insert+T</td>
+</tr>
+<tr class="even">
+<td>Say current control</td>
+<td>Insert+Tab</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="navigate-a-worksheet-with-jaws">21.1 Navigate a Worksheet with
+JAWS</h3>
+<p><strong>What you will learn:</strong> Use Excel movement while JAWS
+reports the grid.</p>
+<p><strong>Before you begin:</strong> JAWS is running and the worksheet
+has focus.</p>
+<h4 id="exactly-how-to-do-it-38">Exactly how to do it</h4>
+<ol start="209" type="1">
+<li><p>Press Ctrl+Home.</p></li>
+<li><p>Use Arrow keys through cells.</p></li>
+<li><p>Listen for coordinate and value.</p></li>
+<li><p>Use Ctrl+G to move to a specific address.</p></li>
+<li><p>Use Ctrl+Page Down/Up to switch sheets.</p></li>
+<li><p>Use Insert+H when you want Excel-specific JAWS help.</p></li>
+</ol>
+<p><strong>What should happen:</strong> JAWS follows Excel's active
+cell.</p>
+<p><strong>If that does not happen:</strong> If JAWS reports Ribbon
+controls instead of cells, press F6 until the worksheet grid is
+active.</p>
+<p><strong>Practice:</strong> Navigate a 5-by-5 table.</p>
+<h3 id="find-data-with-jaws">21.2 Find Data with JAWS</h3>
+<p><strong>What you will learn:</strong> Use Microsoft's documented
+JAWS-friendly Find workflow when needed.</p>
+<p><strong>Before you begin:</strong> JAWS is active in Excel.</p>
+<h4 id="exactly-how-to-do-it-39">Exactly how to do it</h4>
+<ol start="215" type="1">
+<li><p>Press Ctrl+H if Ctrl+F does not produce the expected Find
+experience.</p></li>
+<li><p>Move to Find what.</p></li>
+<li><p>Type the search value.</p></li>
+<li><p>Use Find Next.</p></li>
+<li><p>Listen for the destination cell.</p></li>
+<li><p>Press Escape when finished.</p></li>
+</ol>
+<p><strong>What should happen:</strong> JAWS and Excel move to matching
+data.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+F works normally in
+your configuration, you may use it; this manual calls out Ctrl+H because
+Microsoft documents that difference in some screen-reader workflows.</p>
+<p><strong>Practice:</strong> Find two matching values.</p>
+<h2 id="part-22---large-worksheets-and-efficient-navigation">Part 22 -
+Large Worksheets and Efficient Navigation</h2>
+<ul>
+<li><p>Use Ctrl+G when you know the exact cell address.</p></li>
+<li><p>Use Ctrl+Home to recover to a known location.</p></li>
+<li><p>Use Excel Tables with headers instead of unstructured
+blocks.</p></li>
+<li><p>Use Ctrl+Arrow to move to region edges.</p></li>
+<li><p>Use Find instead of scanning thousands of rows.</p></li>
+<li><p>Use filters to reduce visible rows.</p></li>
+<li><p>Use worksheet names that describe content.</p></li>
+<li><p>Keep one major data table per worksheet when possible.</p></li>
+<li><p>Freeze panes can help visual users but does not replace proper
+screen-reader context/header reporting.</p></li>
+</ul>
+<h3 id="navigate-a-large-data-set-without-losing-your-place">22.1
+Navigate a Large Data Set Without Losing Your Place</h3>
+<p><strong>What you will learn:</strong> Combine Go To, Find, table
+headers, and sheet navigation.</p>
+<p><strong>Before you begin:</strong> Use a workbook with multiple
+sheets and a larger table.</p>
+<h4 id="exactly-how-to-do-it-40">Exactly how to do it</h4>
+<ol start="221" type="1">
+<li><p>Press Ctrl+Home.</p></li>
+<li><p>Press Ctrl+G and go to a middle cell such as A500 if it
+exists.</p></li>
+<li><p>Use Ctrl+F or your screen-reader-specific Find method for a known
+value.</p></li>
+<li><p>Use Ctrl+Page Down to move to another worksheet.</p></li>
+<li><p>Press Ctrl+Home on that sheet.</p></li>
+<li><p>Return with Ctrl+Page Up.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You can move intentionally
+without counting hundreds of rows.</p>
+<p><strong>If that does not happen:</strong> If you become disoriented,
+use Ctrl+Home and then Ctrl+G to a known address.</p>
+<p><strong>Practice:</strong> Practice with three known addresses across
+two sheets.</p>
+<h2 id="part-23---braille-displays-with-excel">Part 23 - Braille
+Displays with Excel</h2>
+<p>Braille support comes through Narrator, NVDA, or JAWS rather than
+Excel directly.</p>
+<ul>
+<li><p>The braille display should present the active cell's coordinate,
+value, and/or other information according to screen-reader
+settings.</p></li>
+<li><p>Routing keys can move focus/caret within editable cell content
+when supported.</p></li>
+<li><p>While not editing, routing behavior may move to a cell or object
+according to the screen reader/display mapping.</p></li>
+<li><p>Braille panning is useful for long formulas and long cell
+text.</p></li>
+<li><p>Spreadsheet verbosity and braille status information can often be
+customized in the screen reader.</p></li>
+</ul>
+<h3 id="test-braille-with-excel">23.1 Test Braille with Excel</h3>
+<p><strong>What you will learn:</strong> Verify grid output, editing,
+and routing.</p>
+<p><strong>Before you begin:</strong> Connect/configure the braille
+display in your screen reader.</p>
+<h4 id="exactly-how-to-do-it-41">Exactly how to do it</h4>
+<ol start="227" type="1">
+<li><p>Move to A1.</p></li>
+<li><p>Confirm the braille display changes as you Arrow through
+cells.</p></li>
+<li><p>Enter a long sentence in one cell.</p></li>
+<li><p>Press F2.</p></li>
+<li><p>Pan through the text.</p></li>
+<li><p>Use a routing key within the text if supported.</p></li>
+<li><p>Press Escape or Enter to leave edit mode.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Braille follows cell movement
+and editable content.</p>
+<p><strong>If that does not happen:</strong> If braille follows other
+apps but not Excel, verify worksheet focus and restart Excel/screen
+reader before changing global braille settings.</p>
+<p><strong>Practice:</strong> Test output, edit mode, and routing.</p>
+<h2 id="part-24---excel-for-the-web">Part 24 - Excel for the Web</h2>
+<p>Excel for the web runs inside a browser, so some desktop shortcuts
+differ. Microsoft notes that Ctrl+F6 is used in the web app where F6 may
+be used to jump among command regions in desktop Office.</p>
+<ul>
+<li><p>Browser shortcuts can conflict with Excel for the web.</p></li>
+<li><p>Microsoft documents Alt+Shift+A as an Accessibility Shortcuts
+Menu in Excel for the web.</p></li>
+<li><p>Ctrl+G goes to a specific cell.</p></li>
+<li><p>Ctrl+P prints the workbook through the web experience.</p></li>
+<li><p>Use Microsoft Edge with Narrator; Microsoft also documents JAWS
+and NVDA in Chrome for many web scenarios.</p></li>
+<li><p>Use the desktop manual for concepts but verify web-specific
+commands in Microsoft's current shortcut page.</p></li>
+</ul>
+<h2 id="part-25---troubleshooting">Part 25 - Troubleshooting</h2>
+<h3 id="arrow-keys-move-inside-text-instead-of-between-cells">25.1 Arrow
+Keys Move Inside Text Instead of Between Cells</h3>
+<p><strong>What you will learn:</strong> Exit cell edit mode.</p>
+<p><strong>Before you begin:</strong> You are in Excel and arrows are
+moving by character.</p>
+<h4 id="exactly-how-to-do-it-42">Exactly how to do it</h4>
+<ol start="234" type="1">
+<li><p>Press Escape once.</p></li>
+<li><p>Listen for the cell address.</p></li>
+<li><p>Press Right Arrow.</p></li>
+<li><p>Confirm focus moves to the next cell.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Arrow keys return to cell
+navigation.</p>
+<p><strong>If that does not happen:</strong> If Escape cancels data you
+meant to save, re-enter the edit and press Enter instead when
+finished.</p>
+<p><strong>Practice:</strong> Enter edit mode with F2, then recover with
+Escape.</p>
+<h3 id="typing-replaces-existing-cell-content">25.2 Typing Replaces
+Existing Cell Content</h3>
+<p><strong>What you will learn:</strong> Understand normal Excel entry
+behavior.</p>
+<p><strong>Before you begin:</strong> Focus a cell that already contains
+data.</p>
+<h4 id="exactly-how-to-do-it-43">Exactly how to do it</h4>
+<ol start="238" type="1">
+<li><p>Remember that typing while a cell is selected starts a new value
+and replaces the old value when committed.</p></li>
+<li><p>If you want to edit the existing content, press F2
+first.</p></li>
+<li><p>Make your change.</p></li>
+<li><p>Press Enter.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Existing content is edited
+rather than completely replaced.</p>
+<p><strong>If that does not happen:</strong> If you accidentally
+overwrite a cell, press Ctrl+Z immediately.</p>
+<p><strong>Practice:</strong> Practice replacing vs editing on
+disposable cells.</p>
+<h3 id="you-do-not-know-where-you-are">25.3 You Do Not Know Where You
+Are</h3>
+<p><strong>What you will learn:</strong> Return to a known cell and
+rebuild context.</p>
+<p><strong>Before you begin:</strong> You feel lost in the grid.</p>
+<h4 id="exactly-how-to-do-it-44">Exactly how to do it</h4>
+<ol start="242" type="1">
+<li><p>Press Ctrl+Home.</p></li>
+<li><p>Listen for A1.</p></li>
+<li><p>Press Ctrl+G.</p></li>
+<li><p>Type the cell you actually want.</p></li>
+<li><p>Press Enter.</p></li>
+<li><p>Listen for the coordinate and value.</p></li>
+<li><p>If needed, move to the header row/column to rebuild
+context.</p></li>
+</ol>
+<p><strong>What should happen:</strong> You return to a predictable
+location.</p>
+<p><strong>If that does not happen:</strong> If Ctrl+Home goes somewhere
+unexpected, the sheet may use frozen panes or unusual used ranges;
+Ctrl+G A1 is definitive.</p>
+<p><strong>Practice:</strong> Recover from three random locations.</p>
+<h3
+id="the-screen-reader-announces-ribbon-controls-instead-of-cells">25.4
+The Screen Reader Announces Ribbon Controls Instead of Cells</h3>
+<p><strong>What you will learn:</strong> Return focus to the
+worksheet.</p>
+<p><strong>Before you begin:</strong> Excel is open.</p>
+<h4 id="exactly-how-to-do-it-45">Exactly how to do it</h4>
+<ol start="249" type="1">
+<li><p>Press Escape once or twice.</p></li>
+<li><p>Press F6.</p></li>
+<li><p>Listen to the announced region.</p></li>
+<li><p>Continue F6 or Shift+F6 until a cell coordinate is
+announced.</p></li>
+<li><p>Press an Arrow key to verify grid movement.</p></li>
+</ol>
+<p><strong>What should happen:</strong> Focus returns to cells.</p>
+<p><strong>If that does not happen:</strong> If a modal dialog is open,
+close/cancel it first.</p>
+<p><strong>Practice:</strong> Move to Ribbon and back deliberately.</p>
+<h3 id="filtered-data-seems-to-be-missing">25.5 Filtered Data Seems to
+Be Missing</h3>
+<p><strong>What you will learn:</strong> Check whether rows are hidden
+by a filter.</p>
+<p><strong>Before you begin:</strong> A table/range has filters.</p>
+<h4 id="exactly-how-to-do-it-46">Exactly how to do it</h4>
+<ol start="254" type="1">
+<li><p>Move to the filtered column header.</p></li>
+<li><p>Press Alt+Down Arrow.</p></li>
+<li><p>Look for Clear filter or Select All.</p></li>
+<li><p>Clear the filter.</p></li>
+<li><p>Return to the grid and verify previously hidden rows
+reappear.</p></li>
+</ol>
+<p><strong>What should happen:</strong> All rows are visible again.</p>
+<p><strong>If that does not happen:</strong> If rows are still missing,
+they may be manually hidden or deleted rather than filtered.</p>
+<p><strong>Practice:</strong> Filter and clear a practice table.</p>
+<h2 id="part-26---independent-practice-course">Part 26 - Independent
+Practice Course</h2>
+<h3 id="level-1---orientation">Level 1 - Orientation</h3>
+<p>☐ Open Excel.</p>
+<p>☐ Create blank workbook.</p>
+<p>☐ Identify A1.</p>
+<p>☐ Move by arrows.</p>
+<p>☐ Use Ctrl+G.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-2---data-entry">Level 2 - Data Entry</h3>
+<p>☐ Enter text and numbers.</p>
+<p>☐ Edit with F2.</p>
+<p>☐ Clear a cell.</p>
+<p>☐ Use Ctrl+Home.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-3---selection-and-copy">Level 3 - Selection and Copy</h3>
+<p>☐ Select a range.</p>
+<p>☐ Select row/column.</p>
+<p>☐ Copy/paste.</p>
+<p>☐ Fill down.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-4---formulas">Level 4 - Formulas</h3>
+<p>☐ Create addition formula.</p>
+<p>☐ Use SUM.</p>
+<p>☐ Use AutoSum.</p>
+<p>☐ Copy a relative formula.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-5---worksheets">Level 5 - Worksheets</h3>
+<p>☐ Add worksheet.</p>
+<p>☐ Rename it.</p>
+<p>☐ Switch sheets.</p>
+<p>☐ Save/reopen workbook.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-6---tables-and-filters">Level 6 - Tables and Filters</h3>
+<p>☐ Create Excel Table.</p>
+<p>☐ Confirm headers.</p>
+<p>☐ Filter one column.</p>
+<p>☐ Clear filter.</p>
+<p>☐ Sort and undo.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-7---formatting">Level 7 - Formatting</h3>
+<p>☐ Apply Currency.</p>
+<p>☐ Apply Percentage.</p>
+<p>☐ AutoFit column.</p>
+<p>☐ Inspect formatting with screen reader.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-8---accessibility">Level 8 - Accessibility</h3>
+<p>☐ Name worksheets meaningfully.</p>
+<p>☐ Check table headers.</p>
+<p>☐ Run Accessibility Checker.</p>
+<p>☐ Fix two issues.</p>
+<p>☐ Add descriptive table name/title.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-9---screen-reader">Level 9 - Screen Reader</h3>
+<p>☐ Use Narrator, NVDA, or JAWS help.</p>
+<p>☐ Read cell coordinates.</p>
+<p>☐ Inspect formula.</p>
+<p>☐ Recover from Ribbon focus.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h3 id="level-10---independent-workbook">Level 10 - Independent
+Workbook</h3>
+<p>☐ Create a two-sheet workbook.</p>
+<p>☐ Build one accessible table.</p>
+<p>☐ Use formulas.</p>
+<p>☐ Filter/sort.</p>
+<p>☐ Add comment.</p>
+<p>☐ Create chart.</p>
+<p>☐ Run Accessibility Checker.</p>
+<p>☐ Save and print-preview.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked
+task without another person telling you which key to press.</p>
+<h2 id="part-27---quick-reference-commands">Part 27 - Quick Reference
+Commands</h2>
+<h3 id="excel-grid-and-workbook">Excel Grid and Workbook</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>New workbook</td>
+<td>Ctrl+N</td>
+</tr>
+<tr class="even">
+<td>Open</td>
+<td>Ctrl+O</td>
+</tr>
+<tr class="odd">
+<td>Save</td>
+<td>Ctrl+S</td>
+</tr>
+<tr class="even">
+<td>Print</td>
+<td>Ctrl+P</td>
+</tr>
+<tr class="odd">
+<td>Close workbook</td>
+<td>Ctrl+W</td>
+</tr>
+<tr class="even">
+<td>Go To cell</td>
+<td>Ctrl+G</td>
+</tr>
+<tr class="odd">
+<td>Cell A1</td>
+<td>Ctrl+Home</td>
+</tr>
+<tr class="even">
+<td>Last used area</td>
+<td>Ctrl+End</td>
+</tr>
+<tr class="odd">
+<td>Region edge</td>
+<td>Ctrl+Arrow</td>
+</tr>
+<tr class="even">
+<td>Next/previous sheet</td>
+<td>Ctrl+Page Down / Ctrl+Page Up</td>
+</tr>
+<tr class="odd">
+<td>New worksheet</td>
+<td>Shift+F11</td>
+</tr>
+<tr class="even">
+<td>Edit cell</td>
+<td>F2</td>
+</tr>
+<tr class="odd">
+<td>Format Cells</td>
+<td>Ctrl+1</td>
+</tr>
+<tr class="even">
+<td>Copy/Cut/Paste</td>
+<td>Ctrl+C / Ctrl+X / Ctrl+V</td>
+</tr>
+<tr class="odd">
+<td>Undo/Redo</td>
+<td>Ctrl+Z / Ctrl+Y</td>
+</tr>
+<tr class="even">
+<td>AutoSum</td>
+<td>Alt+=</td>
+</tr>
+<tr class="odd">
+<td>Create table</td>
+<td>Ctrl+T</td>
+</tr>
+<tr class="even">
+<td>Toggle filters</td>
+<td>Ctrl+Shift+L</td>
+</tr>
+<tr class="odd">
+<td>Find</td>
+<td>Ctrl+F (JAWS may use Ctrl+H in Microsoft-documented workflow)</td>
+</tr>
+<tr class="even">
+<td>Replace</td>
+<td>Ctrl+H</td>
+</tr>
+<tr class="odd">
+<td>Insert chart</td>
+<td>Alt+F1</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="selection">Selection</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Extend selection</td>
+<td>Shift+Arrow</td>
+</tr>
+<tr class="even">
+<td>Extend to data edge</td>
+<td>Ctrl+Shift+Arrow</td>
+</tr>
+<tr class="odd">
+<td>Select row</td>
+<td>Shift+Space</td>
+</tr>
+<tr class="even">
+<td>Select column</td>
+<td>Ctrl+Space</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="screen-reader-reminders">Screen Reader Reminders</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Keyboard command reference table"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Narrator Input Learning</td>
+<td>Narrator+1</td>
+</tr>
+<tr class="even">
+<td>NVDA Input Help</td>
+<td>NVDA+1</td>
+</tr>
+<tr class="odd">
+<td>JAWS Keyboard Help</td>
+<td>Insert+1</td>
+</tr>
+<tr class="even">
+<td>Narrator next/previous item</td>
+<td>Narrator+Right/Left Arrow</td>
+</tr>
+<tr class="odd">
+<td>NVDA current focus</td>
+<td>NVDA+Tab</td>
+</tr>
+<tr class="even">
+<td>JAWS Hot Key Help</td>
+<td>Insert+H</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="part-28---official-microsoft-resources">Part 28 - Official
+Microsoft Resources</h2>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/screen-reader-support-for-excel"><u>Screen
+reader support for Excel</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/use-a-screen-reader-to-explore-and-navigate-excel"><u>Explore
+and navigate Excel with a screen reader</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel"><u>Keyboard
+shortcuts in Excel</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/use-a-screen-reader-to-insert-a-table-in-an-excel-worksheet"><u>Insert
+a table with a screen reader</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/use-a-screen-reader-to-find-and-replace-data-in-excel"><u>Find
+and replace data with a screen reader</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/use-a-screen-reader-to-work-with-comments-in-excel"><u>Work
+with comments in Excel</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/use-a-screen-reader-to-print-an-excel-workbook"><u>Print
+an Excel workbook with a screen reader</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/accessibility-tools-for-excel"><u>Accessibility
+tools for Excel</u></a></p>
+<p><a
+href="https://support.microsoft.com/en-us/accessibility/excel/use-a-screen-reader-to-title-a-table-in-excel"><u>Title
+a table in Excel with a screen reader</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I understand workbooks, worksheets, rows, columns, cells, and
+ranges.</p>
+<p>☐ I can move to exact cells and navigate data regions.</p>
+<p>☐ I can enter, edit, clear, and select cell data.</p>
+<p>☐ I can save, open, and close workbooks.</p>
+<p>☐ I can create and copy formulas.</p>
+<p>☐ I can use SUM and AutoSum.</p>
+<p>☐ I can add, rename, and switch worksheets.</p>
+<p>☐ I can create an Excel Table with headers.</p>
+<p>☐ I can sort and filter safely.</p>
+<p>☐ I can find and replace data.</p>
+<p>☐ I can format numbers and columns.</p>
+<p>☐ I can add and review comments.</p>
+<p>☐ I understand chart accessibility.</p>
+<p>☐ I can run Accessibility Checker.</p>
+<p>☐ I can use Excel with Narrator, NVDA, or JAWS.</p>
+<p>☐ I understand that braille support comes through the screen
+reader.</p>
+<p>☐ I can troubleshoot edit mode, focus, filters, and orientation
+problems.</p>
+<p><strong>Most important habit:</strong> In Excel, always know the
+active cell address before performing an action. If you get lost, use
+Ctrl+G and go to a known cell such as A1.</p>
 
-    <section aria-labelledby="about-heading">
-      <h2 id="about-heading">About this manual</h2>
-      <p>This manual is written for Microsoft Excel in Microsoft 365 desktop on Windows. It focuses on keyboard use with JAWS, but most standard Excel shortcuts also work with other screen readers and magnification.</p>
-      <p>Excel is organized as workbooks containing worksheets. Each worksheet is a grid of columns, rows, and cells. A cell address combines its column letter and row number, such as B4. JAWS normally announces the active cell address, cell contents, and useful formatting or formula information.</p>
-      <p>Microsoft 365 changes over time. If a Ribbon KeyTip differs, press <strong>Alt+Q</strong>, type the command name, and choose it from Search. For JAWS command help, press <strong>Insert+Spacebar, then J</strong> to open JAWS Commands Search.</p>
-    </section>
-
-    <section id="quick-reference" aria-labelledby="quick-reference-heading">
-      <h2 id="quick-reference-heading">Keyboard quick reference</h2>
-      <div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable Excel keyboard command table">
-        <table>
-          <caption>Common Excel and JAWS commands used in this course</caption>
-          <thead><tr><th scope="col">Task</th><th scope="col">Command</th></tr></thead>
-          <tbody>
-            <tr><td>Move one cell</td><td>Arrow keys</td></tr>
-            <tr><td>Move to the edge of a data region</td><td>Ctrl+Arrow key</td></tr>
-            <tr><td>Move to cell A1</td><td>Ctrl+Home</td></tr>
-            <tr><td>Move to the last used cell</td><td>Ctrl+End</td></tr>
-            <tr><td>Go directly to a cell</td><td>Ctrl+G, type the cell address, Enter</td></tr>
-            <tr><td>Edit the active cell</td><td>F2</td></tr>
-            <tr><td>Find or replace</td><td>Ctrl+F or Ctrl+H</td></tr>
-            <tr><td>Save</td><td>Ctrl+S</td></tr>
-            <tr><td>Save As</td><td>F12</td></tr>
-            <tr><td>Open Format Cells</td><td>Ctrl+1</td></tr>
-            <tr><td>AutoSum</td><td>Alt+Equals</td></tr>
-            <tr><td>Create a table</td><td>Ctrl+T</td></tr>
-            <tr><td>Open a table header filter</td><td>Alt+Down Arrow</td></tr>
-            <tr><td>Move to next or previous worksheet</td><td>Ctrl+Page Down or Ctrl+Page Up</td></tr>
-            <tr><td>Insert a worksheet</td><td>Shift+F11</td></tr>
-            <tr><td>Create a chart on the current sheet</td><td>Alt+F1</td></tr>
-            <tr><td>Office command search</td><td>Alt+Q</td></tr>
-            <tr><td>JAWS Commands Search</td><td>Insert+Spacebar, then J</td></tr>
-            <tr><td>List cells with data in current column</td><td>Insert+Shift+C</td></tr>
-            <tr><td>List cells with data in current row</td><td>Insert+Shift+R</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="accessible-workbooks" aria-labelledby="accessible-heading">
-      <h2 id="accessible-heading">Accessible workbook practices</h2>
-      <ul>
-        <li>Use a short, unique header for every column and keep headers in one row.</li>
-        <li>Keep one kind of information in each column and one record in each row.</li>
-        <li>Avoid merged cells. Screen readers can repeat, skip, or misidentify merged content.</li>
-        <li>Avoid blank rows and columns inside a data table.</li>
-        <li>Use real number formats for currency, percentages, and dates instead of typing visual symbols as text.</li>
-        <li>Do not use color as the only way to communicate status or instructions. Include words or symbols with text equivalents.</li>
-        <li>Give worksheets meaningful names and remove unused blank worksheets before sharing.</li>
-        <li>For charts and other visual objects, add concise alternative text and keep the source data available in cells.</li>
-        <li>Use an Excel table when possible so headers and data boundaries are explicit.</li>
-        <li>Run Review, Check Accessibility before submitting or sharing a workbook.</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="formula-heading">
-      <h2 id="formula-heading">Formula essentials</h2>
-      <p>Every Excel formula begins with an equals sign. A formula can contain numbers, cell references, operators, and functions.</p>
-      <ul>
-        <li><strong>=B2*C2</strong> multiplies the values in B2 and C2.</li>
-        <li><strong>=SUM(D2:D10)</strong> adds the values from D2 through D10.</li>
-        <li><strong>=AVERAGE(D2:D10)</strong> calculates the average.</li>
-        <li><strong>=MIN(D2:D10)</strong> and <strong>=MAX(D2:D10)</strong> return the lowest and highest values.</li>
-        <li><strong>=IF(B2&gt;=C2,"Complete","Needs Training")</strong> returns text based on a condition.</li>
-        <li><strong>=COUNTIF(D2:D10,"Complete")</strong> counts cells matching the word Complete.</li>
-      </ul>
-      <p>Press F2 to edit and inspect the active cell's formula. When copying formulas, confirm that relative cell references changed as intended.</p>
-    </section>
-
-    <section aria-labelledby="tables-heading">
-      <h2 id="tables-heading">Tables, sorting, and filtering</h2>
-      <p>Select a cell in a continuous data list and press Ctrl+T to create a table. Confirm the range and that the table has headers. On a table header, press Alt+Down Arrow to open sorting and filtering choices.</p>
-      <p>After filtering, remember that some rows are hidden. Clear filters before sharing unless the filtered view is intentional, and describe the active filter in a nearby cell or instructions worksheet.</p>
-    </section>
-
-    <section aria-labelledby="charts-heading">
-      <h2 id="charts-heading">Charts and nonvisual access</h2>
-      <p>A chart should never be the only source of information. Keep the labeled source table, add useful alternative text, and include a short text summary of the important trend or conclusion. Avoid descriptions such as “chart” that do not explain its purpose.</p>
-    </section>
-
-    <section id="course-lessons" aria-labelledby="lessons-heading">
-      <h2 id="lessons-heading">Ten-lesson course sequence</h2>
-      <ol>
-      <li><a href="excel-lesson-1.html">Lesson 1: Excel Basics: Workbooks, Worksheets, and Cells</a> — Open Excel, understand the worksheet grid, enter a simple workplace contact list, and save a workbook.</li>
-      <li><a href="excel-lesson-2.html">Lesson 2: Navigating, Editing, Finding, and Filling Data</a> — Move efficiently through a worksheet, edit cells, find and replace information, and copy values without relying on a mouse.</li>
-      <li><a href="excel-lesson-3.html">Lesson 3: Formulas, AutoSum, and Basic Calculations</a> — Create a small expense worksheet and calculate totals and averages with formulas.</li>
-      <li><a href="excel-lesson-4.html">Lesson 4: Accessible Formatting and Number Formats</a> — Apply meaningful formatting and number formats while keeping the worksheet usable with screen readers and magnification.</li>
-      <li><a href="excel-lesson-5.html">Lesson 5: Tables, Sorting, and Filtering</a> — Convert data into an accessible Excel table and use keyboard commands to sort and filter records.</li>
-      <li><a href="excel-lesson-6.html">Lesson 6: IF, COUNTIF, and Conditional Results</a> — Use logical and counting functions to turn raw workplace data into useful status information.</li>
-      <li><a href="excel-lesson-7.html">Lesson 7: Managing Worksheets and Cross-Sheet References</a> — Organize related information across worksheets and create a summary that refers to another sheet.</li>
-      <li><a href="excel-lesson-8.html">Lesson 8: Charts, Alternative Text, and Accessibility Checker</a> — Create a simple chart, provide a text equivalent, and use Excel accessibility checks.</li>
-      <li><a href="excel-lesson-9.html">Lesson 9: Data Validation, Consistent Entry, and Review</a> — Create a reliable data-entry sheet with controlled choices and check it for common accessibility problems.</li>
-      <li><a href="excel-lesson-10.html">Lesson 10: Final Employment Workbook Project</a> — Independently build an accessible workbook that organizes, calculates, summarizes, and communicates workplace information.</li>
-      </ol>
-      <p><a href="excel-lesson-1.html">Begin Excel Lesson 1</a></p>
-    </section>
-
-    <section aria-labelledby="sources-heading">
-      <h2 id="sources-heading">Official references and further learning</h2>
-      <ul>
-        <li><a href="https://support.microsoft.com/en-us/accessibility/excel/accessibility-best-practices-with-excel-spreadsheets">Microsoft: Accessibility best practices with Excel spreadsheets</a></li>
-        <li><a href="https://support.microsoft.com/en-us/accessibility/excel/screen-reader-support-for-excel">Microsoft: Screen reader support for Excel</a></li>
-        <li><a href="https://support.microsoft.com/en-us/accessibility/office-accessibility/improve-accessibility-with-the-accessibility-checker">Microsoft: Accessibility Checker</a></li>
-        <li><a href="https://www.freedomscientific.com/webinars/ten-power-tips-for-improving-productivity-in-excel-with-jaws/">Freedom Scientific: Excel productivity with JAWS</a></li>
-        <li><a href="https://blog.freedomscientific.com/3-quick-tips-for-navigating-excel-spreadsheets-with-jaws/">Freedom Scientific: Navigating Excel spreadsheets with JAWS</a></li>
-      </ul>
-    </section>
-
-    <nav class="lesson-nav" aria-label="Excel manual actions">
-      <a href="lessons.html#excel-lessons">View Excel lessons</a>
-      <a href="student-progress.html">View my progress</a>
-      <a href="manuals.html">Return to manuals</a>
-    </nav>
+    <p class="back-link"><a href="manuals.html">Return to all manuals</a></p>
   </main>
 </body>
 </html>
