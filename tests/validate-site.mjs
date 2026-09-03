@@ -251,6 +251,8 @@ for (const file of htmlFiles.filter(file => file.endsWith("-manual.html"))) {
 const instructionalManualFiles = htmlFiles.filter(file => file.endsWith("-manual.html") && file !== "additional-skills-manual.html");
 for (const file of instructionalManualFiles) {
   const manual = readFileSync(resolve(root, file), "utf8");
+  check(manual.includes('manual-contents'), file + " is missing a linked table of contents.");
+  check(/manual-contents[\s\S]*?href="#[^"]+"/.test(manual), file + " table of contents has no topic links.");
   for (const requiredPart of ["What you will learn", "Before you begin", "Exactly how to do it", "What should happen", "If that does not happen", "Practice"]) {
     check(manual.includes(requiredPart), file + " is missing the full manual component: " + requiredPart + ".");
   }

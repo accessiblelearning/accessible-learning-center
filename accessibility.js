@@ -190,5 +190,16 @@
       updateButtons();
       savePreferences();
     });
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest('.manual-contents a[href^="#"]');
+      if (!link) return;
+
+      const target = document.getElementById(link.hash.slice(1));
+      if (!target) return;
+
+      target.setAttribute("tabindex", "-1");
+      window.setTimeout(() => target.focus({ preventScroll: true }), 0);
+    });
   });
 })();
