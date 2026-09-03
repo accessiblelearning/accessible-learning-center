@@ -1,13 +1,674 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Accessible keyboard-first Google Gemini manual for blind and low-vision learners."><title>Google Gemini Manual - Accessible Learning Center</title><link rel="stylesheet" href="styles.css?v=manual-review-1"><script src="accessibility.js?v=manual-review-1" defer></script></head><body class="manual-page">
-<a class="skip-link" href="#main-content">Skip to main content</a><header><p class="eyebrow">Accessible Google Gemini course</p><h1>Google Gemini Manual</h1><p>Practical, responsible AI skills for work, learning, and independent problem-solving.</p></header><main id="main-content"><nav class="manual-tools lesson-nav" aria-label="Gemini manual navigation"><a href="#basics">Basics</a><a href="#prompting">Prompting</a><a href="#verification">Verification</a><a href="#privacy">Privacy</a><a href="#screen-readers">Screen readers</a><a href="#lessons">Lessons</a></nav>
-<section id="basics" aria-labelledby="basics-heading"><h2 id="basics-heading">What generative AI does</h2><p>Generative AI predicts and creates text or other content from patterns in training data and the information supplied in a conversation. It can help brainstorm, organize, explain, summarize, and draft. It does not understand a situation the way a person does, and it can produce confident but incorrect or invented information.</p><p>Use AI as an assistant, not as the final decision-maker. A person remains responsible for checking accuracy, appropriateness, accessibility, and compliance with workplace rules.</p></section>
-<section id="prompting" aria-labelledby="prompting-heading"><h2 id="prompting-heading">A reliable prompt pattern</h2><ol><li><strong>Task:</strong> State exactly what you want.</li><li><strong>Context:</strong> Explain the audience and purpose using nonprivate information.</li><li><strong>Constraints:</strong> Give length, tone, reading level, deadline, or other limits.</li><li><strong>Format:</strong> Request headings, bullets, a numbered procedure, or a simple table.</li><li><strong>Checks:</strong> Ask the tool to identify uncertainty and provide sources when appropriate.</li></ol><p>Continue the conversation with specific follow-ups. For example: “Shorten this to 150 words,” “Explain the second step,” or “Which statements need verification?”</p></section>
-<section id="verification" aria-labelledby="verification-heading"><h2 id="verification-heading">Verify before using the result</h2><ul><li>Open original sources instead of trusting an AI summary or citation.</li><li>Confirm names, dates, quotations, calculations, contact details, laws, policies, and software instructions.</li><li>Prefer current primary sources from the organization responsible for the information.</li><li>Compare important claims with a second reliable source.</li><li>Test instructions safely before giving them to another person.</li><li>Rewrite the final result in your own voice and keep a record of corrections.</li></ul></section>
-<section id="privacy" aria-labelledby="privacy-heading"><h2 id="privacy-heading">Privacy and workplace rules</h2><p>Do not enter client records, medical or disability details, passwords, financial account information, private addresses, confidential workplace material, copyrighted documents you are not permitted to share, or information that identifies another person. Use fictional or public information in these lessons.</p><p>Follow the employer’s approved-tool, retention, disclosure, and human-review requirements. A personal free account is not automatically approved for organizational data. Never allow AI to make an employment, benefit, medical, legal, financial, safety, or accommodation decision for a person.</p></section>
-<section aria-labelledby="accessibility-heading"><h2 id="accessibility-heading">Accessible output</h2><p>Ask for descriptive headings, short paragraphs, meaningful link text, numbered steps, and simple tables. Ask for image descriptions when an image matters, but verify the description with a trusted person when accuracy is important. Avoid layouts that communicate meaning only through color, position, or visual formatting.</p></section>
-<section id="screen-readers" aria-labelledby="screen-readers-heading"><h2 id="screen-readers-heading">JAWS, Narrator, and NVDA</h2><p>AI interfaces change often. Use Tab and Shift+Tab to move among controls, Enter or Space to activate a control, and the screen reader’s heading, landmark, link, button, edit-field, and browse-mode commands to review the page. Use browser Find to locate words such as “Sources,” “Copy,” or part of your prompt.</p><ul><li><strong>JAWS:</strong> H moves by heading, B by button, E by edit field, Insert+F7 opens links, and Insert+F5 opens form fields.</li><li><strong>NVDA:</strong> H moves by heading, B by button, E by edit field, NVDA+F7 opens the Elements List, and NVDA+Space switches browse and focus modes.</li><li><strong>Narrator:</strong> Use Caps Lock or Insert with arrow keys for Scan Mode navigation; press Caps Lock+Space to toggle Scan Mode when needed.</li></ul><p>After sending a prompt, allow time for the response to finish. Move by heading or paragraph and confirm whether focus changed. Product-specific keyboard behavior may change after updates.</p></section>
-<section aria-labelledby="cost-heading"><h2 id="cost-heading">Free-course rule</h2><p>These lessons can be completed with an available free AI service or by studying the examples without creating an account. Do not start a paid trial, enter payment information, or purchase a subscription for this course.</p></section>
-<section aria-labelledby="official-heading"><h2 id="official-heading">Official references</h2><ul><li><a href="https://support.google.com/gemini/">Official Gemini Apps Help</a></li><li><a href="https://support.google.com/gemini/answer/13594961">Google: Verify responses from Gemini Apps</a></li></ul></section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Comprehensive keyboard-first Google Gemini manual for blind and low-vision learners.">
+  <title>Google Gemini Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-gemini-manual-1">
+  <script src="accessibility.js?v=manual-contents-1" defer></script>
+</head>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible artificial intelligence tools</p>
+    <h1>Google Gemini Manual</h1>
+    <p>Independent self-study guide for Gemini on the web, mobile devices, connected Google apps, and assistive technology.</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#complete-procedures">Website practice procedures</a>
+      <a href="#lessons">Gemini lessons</a>
+    </nav>
+<p><em>Web, Mobile, Gemini Live, Files, Gems, Deep Research, Connected Apps, Accessibility, Privacy, and Responsible Use</em></p>
+<p><strong>Purpose:</strong> This manual teaches Google Gemini from the beginning. It assumes no prior AI experience and explains exact workflows, expected results, common problems, privacy choices, accessibility techniques, and responsible-use habits.</p>
+<p><strong>Reference:</strong> This guide reflects current Google Gemini Apps Help as of September 2026. Gemini changes frequently; features can depend on account type, age, country, device, language, subscription, administrator settings, and staged rollout.</p>
+<p><strong>Important account distinction:</strong> Personal Google Accounts, work/school Google Workspace accounts, and supervised accounts can have different eligibility, retention, privacy, Connected Apps, and administrator controls. This manual marks those differences where they matter.</p>
+<p><strong>Accuracy warning:</strong> Google states that Gemini Apps can make mistakes and recommends double-checking responses and not relying on Gemini responses for professional advice.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Learn ordinary chat first, then files, sources, Gems, Deep Research, Connected Apps, and mobile features.</p></li>
+<li><p>Use a new chat when an old conversation has accumulated irrelevant context.</p></li>
+<li><p>For current or consequential facts, ask Gemini for sources and verify the sources yourself.</p></li>
+<li><p>Do not paste passwords, recovery codes, private keys, or unnecessary confidential information into Gemini.</p></li>
+<li><p>When Gemini uses Gmail, Drive, Calendar, Tasks, or Keep, confirm the exact account and review the source or resulting action.</p></li>
+<li><p>For screen readers, use normal web navigation first: headings, landmarks/regions, buttons, edit fields, and links. Switch browse/focus modes only when needed.</p></li>
+<li><p>Feature availability changes. If a control named in this manual is absent, use Gemini Help for your exact account/device before assuming something is wrong.</p></li>
+</ul>
+<nav class="manual-contents" aria-labelledby="table-of-contents">
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#part-1---what-google-gemini-is">Part 1 - What Google Gemini Is</a></li>
+<li><a href="#part-2---accounts-sign-in-and-availability">Part 2 - Accounts, Sign-In, and Availability</a></li>
+<li><a href="#part-3---open-and-navigate-gemini-on-the-web">Part 3 - Open and Navigate Gemini on the Web</a></li>
+<li><a href="#part-4---start-continue-and-manage-chats">Part 4 - Start, Continue, and Manage Chats</a></li>
+<li><a href="#part-5---prompting-fundamentals">Part 5 - Prompting Fundamentals</a></li>
+<li><a href="#part-6---models-reasoning-and-limits">Part 6 - Models, Reasoning, and Limits</a></li>
+<li><a href="#part-7---verify-responses-and-related-sources">Part 7 - Verify Responses and Related Sources</a></li>
+<li><a href="#part-8---upload-and-analyze-files">Part 8 - Upload and Analyze Files</a></li>
+<li><a href="#part-9---work-with-images-and-generated-media">Part 9 - Work with Images and Generated Media</a></li>
+<li><a href="#part-10---gemini-live">Part 10 - Gemini Live</a></li>
+<li><a href="#part-11---gems">Part 11 - Gems</a></li>
+<li><a href="#part-12---deep-research">Part 12 - Deep Research</a></li>
+<li><a href="#part-13---canvas-notebooks-and-generated-files">Part 13 - Canvas, Notebooks, and Generated Files</a></li>
+<li><a href="#part-14---connected-apps">Part 14 - Connected Apps</a></li>
+<li><a href="#part-15---gmail-drive-docs-calendar-tasks-and-keep">Part 15 - Gmail, Drive, Docs, Calendar, Tasks, and Keep</a></li>
+<li><a href="#part-16---gemini-in-chrome">Part 16 - Gemini in Chrome</a></li>
+<li><a href="#part-17---android-gemini-app">Part 17 - Android Gemini App</a></li>
+<li><a href="#part-18---iphone-and-ipad-gemini-app">Part 18 - iPhone and iPad Gemini App</a></li>
+<li><a href="#part-19---screen-readers-and-braille">Part 19 - Screen Readers and Braille</a></li>
+<li><a href="#part-20---gemini-apps-activity-keep-activity-and-privacy">Part 20 - Gemini Apps Activity, Keep Activity, and Privacy</a></li>
+<li><a href="#part-21---work-and-school-accounts">Part 21 - Work and School Accounts</a></li>
+<li><a href="#part-22---responsible-and-safe-use">Part 22 - Responsible and Safe Use</a></li>
+<li><a href="#part-23---troubleshooting">Part 23 - Troubleshooting</a></li>
+<li><a href="#part-24---independent-practice-course">Part 24 - Independent Practice Course</a></li>
+<li><a href="#part-25---quick-reference">Part 25 - Quick Reference</a></li>
+<li><a href="#part-26---official-google-resources">Part 26 - Official Google Resources</a></li>
+</ol>
+</nav>
+<h2 id="part-1---what-google-gemini-is">Part 1 - What Google Gemini Is</h2>
+<p>Gemini Apps are Google AI experiences that let you ask questions, create and transform content, work with files and images, conduct research, and—when you choose to connect supported services—work with information from other Google products.</p>
+<ul>
+<li><p>Gemini web app: gemini.google.com in a supported browser.</p></li>
+<li><p>Gemini mobile apps: Android and iPhone/iPad experiences.</p></li>
+<li><p>Gemini Live: conversational voice interaction with optional camera/screen sharing in supported mobile contexts.</p></li>
+<li><p>Gems: reusable customized versions of Gemini with instructions and, in some cases, reference files.</p></li>
+<li><p>Deep Research: a research workflow that creates a plan, researches selected sources, and produces a report.</p></li>
+<li><p>Connected Apps: optional links to supported Google and other services.</p></li>
+<li><p>Gemini in Chrome: an integrated browser experience available only to eligible users/devices and subject to rollout.</p></li>
+</ul>
+<p><strong>Mental model:</strong> Gemini is an AI assistant, not an authority. It can generate plausible but incorrect information, so important answers still need verification.</p>
+<h2 id="part-2---accounts-sign-in-and-availability">Part 2 - Accounts, Sign-In, and Availability</h2>
+<ul>
+<li><p>Some Gemini web features can be used without signing in in supported locations, but sign-in is required for additional features and saved activity.</p></li>
+<li><p>A personal Google Account can be used subject to age and regional requirements.</p></li>
+<li><p>Work accounts require a qualifying Google Workspace setup and may be controlled by an administrator.</p></li>
+<li><p>School accounts require the institution to enable Gemini Apps; age requirements can apply.</p></li>
+<li><p>The web app currently supports Chrome, Safari, Firefox, Opera, and Microsoft Edge (Google Help may display Edge under its Chromium naming).</p></li>
+<li><p>Feature availability varies by language, country, device, account type, subscription, and rollout.</p></li>
+</ul>
+<h3 id="sign-in-on-the-web">2.1 Sign In on the Web</h3>
+<p><strong>What you will learn:</strong> Open Gemini with the intended Google Account.</p>
+<p><strong>Before you begin:</strong> Use a trusted browser.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol><li>Open the browser address bar with Ctrl+L (Windows) or Command+L (Mac).</li><li>Type gemini.google.com and press Enter.</li><li>Find the Sign in button if you are signed out.</li><li>Activate Sign in.</li><li>Choose or enter the intended Google Account.</li><li>Complete any two-step verification.</li><li>After Gemini loads, open the account/profile menu and verify the account if the task involves personal or work data.</li></ol>
+<p><strong>What should happen:</strong> Gemini opens under the intended account.</p>
+<p><strong>If that does not happen:</strong> If access is denied, check age, administrator, region, browser, and account eligibility rather than repeatedly changing account security settings.</p>
+<p><strong>Practice:</strong> Sign in, verify the account, then sign out only if safe to do so.</p>
+<h2 id="part-3---open-and-navigate-gemini-on-the-web">Part 3 - Open and Navigate Gemini on the Web</h2>
+<h3 id="start-a-simple-chat">3.1 Start a Simple Chat</h3>
+<p><strong>What you will learn:</strong> Enter a prompt and read the response.</p>
+<p><strong>Before you begin:</strong> Gemini is open.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol><li>Move to the prompt/edit box near the main chat area.</li><li>Type a harmless question such as: Explain cloud storage in three bullet points.</li><li>Activate Submit or press Enter when the edit box supports submission.</li><li>Wait for generation to finish.</li><li>Move into the response using screen-reader reading commands or ordinary browser navigation.</li><li>Read any sources, action buttons, or follow-up controls after the response.</li></ol>
+<p><strong>What should happen:</strong> Gemini produces a response in the conversation.</p>
+<p><strong>If that does not happen:</strong> If Enter inserts a new line instead of submitting, use the Submit button. If focus is lost, use headings/landmarks or Shift+Tab/Tab to return to the prompt area.</p>
+<p><strong>Practice:</strong> Ask three low-risk questions.</p>
+<p><strong>Web orientation:</strong> The Gemini web interface can contain a navigation/sidebar, New chat, recent chats, feature areas such as Gems, and the current conversation. Exact labels and order change over time; use landmarks/headings/buttons rather than memorizing visual coordinates.</p>
+<h2 id="part-4---start-continue-and-manage-chats">Part 4 - Start, Continue, and Manage Chats</h2>
+<h3 id="start-a-new-chat">4.1 Start a New Chat</h3>
+<p><strong>What you will learn:</strong> Separate unrelated tasks so old context does not affect new work.</p>
+<p><strong>Before you begin:</strong> A conversation is open.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol><li>Find and activate New chat. If the sidebar is collapsed, first open Menu.</li><li>Wait for a blank prompt area.</li><li>Enter the new task.</li><li>Check that previous messages are no longer part of the visible conversation.</li></ol>
+<p><strong>What should happen:</strong> A fresh conversation starts.</p>
+<p><strong>If that does not happen:</strong> If New chat is unavailable while signed out, sign in if needed for the feature or reload the app.</p>
+<p><strong>Practice:</strong> Start one chat for travel ideas and another for a writing task.</p>
+<h3 id="edit-a-prompt">4.2 Edit a Prompt</h3>
+<p><strong>What you will learn:</strong> Correct a prompt and regenerate the response.</p>
+<p><strong>Before you begin:</strong> You are signed in and the prompt is editable.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol><li>Move to your most recent prompt.</li><li>Find Edit text or the edit action associated with the prompt.</li><li>Activate it.</li><li>Change the wording.</li><li>Activate Update.</li><li>Read the regenerated response.</li></ol>
+<p><strong>What should happen:</strong> Gemini responds to the revised prompt.</p>
+<p><strong>If that does not happen:</strong> If edit is unavailable, send a follow-up correction or start a new chat.</p>
+<p><strong>Practice:</strong> Change one prompt from a general request to a specific one.</p>
+<p><strong>Other drafts:</strong> For some responses, Gemini may offer other drafts. Google notes this is not available for every response, including some responses generated using apps.</p>
+<h2 id="part-5---prompting-fundamentals">Part 5 - Prompting Fundamentals</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Task</strong></th>
+<th><strong>How / Where</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Goal</td>
+<td>State exactly what you want Gemini to produce.</td>
+</tr>
+<tr class="even">
+<td>Context</td>
+<td>Give only the background needed for the task.</td>
+</tr>
+<tr class="odd">
+<td>Constraints</td>
+<td>Specify audience, length, tone, exclusions, date range, or format.</td>
+</tr>
+<tr class="even">
+<td>Input</td>
+<td>Provide the text, file, image, or data Gemini should work from.</td>
+</tr>
+<tr class="odd">
+<td>Verification</td>
+<td>Ask Gemini to identify uncertainty and provide sources when facts matter.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="build-a-better-prompt">5.1 Build a Better Prompt</h3>
+<p><strong>What you will learn:</strong> Turn a vague request into a useful one.</p>
+<p><strong>Before you begin:</strong> Choose a low-risk task.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol><li>State the goal.</li><li>Add the audience or purpose.</li><li>Add important constraints.</li><li>Ask for a specific output format.</li><li>Ask Gemini to mark uncertainty or cite current sources if factual accuracy matters.</li></ol>
+<p><strong>What should happen:</strong> The response is more relevant and structured.</p>
+<p><strong>If that does not happen:</strong> If Gemini still misses the task, ask what assumption it made, then revise the prompt.</p>
+<p><strong>Practice:</strong> Improve the prompt “Tell me about budgeting” into a specific beginner task.</p>
+<h2 id="part-6---models-reasoning-and-limits">Part 6 - Models, Reasoning, and Limits</h2>
+<p>Gemini may let signed-in users choose among available models or reasoning modes. Google changes model names, access levels, and limits over time.</p>
+<ul>
+<li><p>A chat uses one selected model; Google notes that switching models in an existing chat can start a new chat.</p></li>
+<li><p>Subscription plans can provide higher limits or access to stronger models/features.</p></li>
+<li><p>More reasoning does not eliminate hallucinations.</p></li>
+<li><p>Use the model selector only when you understand why you need a different model; otherwise the default is usually appropriate.</p></li>
+<li><p>If a task depends on current information, source access matters as much as model capability.</p></li>
+</ul>
+<p><strong>Do not memorize model names:</strong> Because model names and plan entitlements change frequently, this manual teaches the model selector concept rather than a fixed 2026 product list.</p>
+<h2 id="part-7---verify-responses-and-related-sources">Part 7 - Verify Responses and Related Sources</h2>
+<h3 id="check-a-factual-answer">7.1 Check a Factual Answer</h3>
+<p><strong>What you will learn:</strong> Confirm that important claims are supported.</p>
+<p><strong>Before you begin:</strong> Use a claim that can be verified publicly.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol><li>Ask Gemini the factual question.</li><li>Look for Related sources, source links, or citations associated with the answer.</li><li>Open a source in a new tab when practical.</li><li>Confirm the source is reputable and current.</li><li>Find the passage that supports the claim.</li><li>Compare the source with Gemini’s wording.</li><li>If the claim is consequential, check a second independent source or primary source.</li></ol>
+<p><strong>What should happen:</strong> You know whether the claim is supported rather than merely plausible.</p>
+<p><strong>If that does not happen:</strong> If no source is supplied, search independently. If a source does not support the claim, do not repeat the claim as verified.</p>
+<p><strong>Practice:</strong> Verify three claims from one response.</p>
+<p><strong>Google warning:</strong> Google itself tells users to double-check Gemini responses and not rely on them for professional advice.</p>
+<h2 id="part-8---upload-and-analyze-files">Part 8 - Upload and Analyze Files</h2>
+<h3 id="upload-a-file">8.1 Upload a File</h3>
+<p><strong>What you will learn:</strong> Ask Gemini about a document or supported file.</p>
+<p><strong>Before you begin:</strong> Use a non-confidential practice file.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol><li>Open a new chat.</li><li>Find Add files.</li><li>Choose Upload files or Add from Drive when available.</li><li>Select the intended file.</li><li>Wait until the file is visibly/verbally attached to the prompt.</li><li>Ask a specific question such as: Summarize this document in five bullets and list anything you are uncertain about.</li><li>Submit the prompt.</li><li>Compare the answer with the source file.</li></ol>
+<p><strong>What should happen:</strong> Gemini uses the uploaded file as context.</p>
+<p><strong>If that does not happen:</strong> If the file is rejected, check current supported formats/size limits. If the document is sensitive, stop and use an approved environment instead.</p>
+<p><strong>Practice:</strong> Upload a harmless PDF or DOCX and ask for a summary.</p>
+<p><strong>Generated files:</strong> Current Gemini Help states that Gemini can also generate supported files from chats, including Google Docs/Sheets and formats such as PDF, DOCX, XLSX, CSV, LaTeX, TXT, RTF, and Markdown, subject to feature availability.</p>
+<h2 id="part-9---work-with-images-and-generated-media">Part 9 - Work with Images and Generated Media</h2>
+<ul>
+<li><p>You can attach images and ask Gemini to describe, analyze, transform, or reason about them, subject to policy and capability.</p></li>
+<li><p>Image descriptions can be useful for accessibility but should not be treated as guaranteed identification of people, medication, hazards, colors, signs, or other safety-critical details.</p></li>
+<li><p>Gemini Apps can generate and edit images where the feature is available.</p></li>
+<li><p>Google provides a separate verification feature for certain AI-generated images, video, and audio; current limits and supported media vary.</p></li>
+</ul>
+<h3 id="ask-about-an-image-accessibly">9.1 Ask About an Image Accessibly</h3>
+<p><strong>What you will learn:</strong> Use Gemini as an image-description aid while keeping human verification for important details.</p>
+<p><strong>Before you begin:</strong> Use a non-sensitive image.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol><li>Choose Add files.</li><li>Upload one image.</li><li>Ask for a neutral description before asking interpretive questions.</li><li>Ask Gemini to separate visible facts from inferences.</li><li>Ask follow-up questions about layout, text, or objects.</li><li>Verify any safety-critical or identity-related conclusion through another method.</li></ol>
+<p><strong>What should happen:</strong> You receive a structured text description.</p>
+<p><strong>If that does not happen:</strong> If the description conflicts with known facts, do not keep prompting until you get the desired answer; treat the image interpretation as uncertain.</p>
+<p><strong>Practice:</strong> Describe one simple image and identify which statements are observations versus inferences.</p>
+<h2 id="part-10---gemini-live">Part 10 - Gemini Live</h2>
+<p>Gemini Live provides a spoken conversational mode on supported mobile devices. Depending on device and feature availability, you can converse by voice and may choose to share your camera or screen.</p>
+<h3 id="start-a-gemini-live-conversation">10.1 Start a Gemini Live Conversation</h3>
+<p><strong>What you will learn:</strong> Use hands-free conversational interaction.</p>
+<p><strong>Before you begin:</strong> Gemini mobile app is installed and microphone permission is appropriate.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol><li>Open the Gemini app.</li><li>Find and activate Live.</li><li>Allow microphone access if you intentionally want to use voice.</li><li>Speak a simple question.</li><li>Listen to Gemini’s spoken answer.</li><li>Ask a follow-up naturally.</li><li>End Live when finished.</li></ol>
+<p><strong>What should happen:</strong> The conversation continues by voice without retyping each message.</p>
+<p><strong>If that does not happen:</strong> If Gemini cannot hear you, check microphone permission, audio routing, and whether Live is listening.</p>
+<p><strong>Practice:</strong> Use Live for a low-risk brainstorming task.</p>
+<p><strong>Privacy:</strong> If Keep Activity is on, Google states that Gemini Live transcripts and data you choose to share can appear in Gemini Apps Activity. Separate controls govern whether audio and Live recordings are used to improve Google services; Google states that improvement setting is off by default.</p>
+<h2 id="part-11---gems">Part 11 - Gems</h2>
+<p>Gems are customized versions of Gemini that reuse instructions for recurring tasks. Google provides premade Gems and lets eligible users create/customize Gems.</p>
+<h3 id="use-a-premade-gem">11.1 Use a Premade Gem</h3>
+<p><strong>What you will learn:</strong> Try specialized instructions without recreating them each time.</p>
+<p><strong>Before you begin:</strong> You are signed in and Gems are available.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol><li>Open the Gemini sidebar/menu.</li><li>Choose Gems. If Gems is not shown directly, check Settings and help &gt; Gems.</li><li>Under premade Gems, choose one appropriate for a harmless task.</li><li>Enter a prompt.</li><li>Review how the Gem’s standing instructions affect the response.</li></ol>
+<p><strong>What should happen:</strong> The Gem responds according to its specialized instructions.</p>
+<p><strong>If that does not happen:</strong> If Gems is missing, the feature may be unavailable for the account/device/age/region.</p>
+<p><strong>Practice:</strong> Compare the same prompt in ordinary Gemini and a premade Gem.</p>
+<h3 id="create-a-custom-gem">11.2 Create a Custom Gem</h3>
+<p><strong>What you will learn:</strong> Save repeatable instructions.</p>
+<p><strong>Before you begin:</strong> Gem creation is available for your account.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol><li>Open Gems and choose the create/customize option.</li><li>Give the Gem a descriptive name.</li><li>Write instructions describing its role, audience, style, boundaries, and required checks.</li><li>Optionally add non-sensitive knowledge files if supported.</li><li>Save the Gem.</li><li>Start a chat with it and test a typical prompt.</li><li>Edit the Gem if it behaves incorrectly.</li></ol>
+<p><strong>What should happen:</strong> The same instructions are applied to future chats with that Gem.</p>
+<p><strong>If that does not happen:</strong> Do not put passwords, secrets, or unnecessary private data into Gem instructions/knowledge.</p>
+<p><strong>Practice:</strong> Create a “Plain Language Editor” Gem for non-sensitive text.</p>
+<h2 id="part-12---deep-research">Part 12 - Deep Research</h2>
+<p>Deep Research creates a research plan, searches selected sources, and produces a longer report. Google currently requires users to be signed in and at least 18. Usage limits vary by plan.</p>
+<h3 id="run-a-deep-research-report">12.1 Run a Deep Research Report</h3>
+<p><strong>What you will learn:</strong> Research a topic with a visible plan and sources.</p>
+<p><strong>Before you begin:</strong> You meet account/age requirements.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol><li>Open gemini.google.com.</li><li>Open Add files and choose Deep Research.</li><li>Optionally add files.</li><li>Open Sources and choose the sources to include. Google Search is included by default unless you deselect it.</li><li>Enter the research question.</li><li>Submit the prompt.</li><li>Review the proposed research plan.</li><li>Edit the plan if needed.</li><li>Activate Start research.</li><li>When the report is ready, open it and review the citations/sources.</li></ol>
+<p><strong>What should happen:</strong> Gemini produces a structured research report grounded in the selected sources.</p>
+<p><strong>If that does not happen:</strong> If Gmail/Drive sources are unavailable, check whether Google Workspace is connected and whether the account permits it. If a source is weak, verify independently.</p>
+<p><strong>Practice:</strong> Research a low-risk topic and verify three citations.</p>
+<p><strong>Source controls:</strong> Current Google Help says Deep Research can use Google Search by default and, when connected/eligible, can add sources such as Gmail, Drive, uploaded files, and NotebookLM notebooks.</p>
+<h2 id="part-13---canvas-notebooks-and-generated-files">Part 13 - Canvas, Notebooks, and Generated Files</h2>
+<ul>
+<li><p>Canvas in Gemini Apps can be used to create and refine documents, code, apps, and other structured work where available.</p></li>
+<li><p>Gemini Apps Help currently also lists notebooks as a project-organization feature. Availability can depend on account and rollout.</p></li>
+<li><p>Generated files can be downloaded or exported to Drive in supported formats.</p></li>
+<li><p>Before exporting, read the complete generated content and verify factual claims, formulas, citations, and accessibility.</p></li>
+</ul>
+<h3 id="export-a-useful-response">13.1 Export a Useful Response</h3>
+<p><strong>What you will learn:</strong> Move reviewed Gemini output into a normal file.</p>
+<p><strong>Before you begin:</strong> Use non-sensitive generated content.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol><li>Ask Gemini to produce the desired content and format.</li><li>Review and edit the content in chat/Canvas if available.</li><li>Choose the available export/download option.</li><li>Open the resulting file in its native application.</li><li>Check headings, tables, formulas, links, and accessibility.</li><li>Save the reviewed final version.</li></ol>
+<p><strong>What should happen:</strong> You have a normal document/file rather than relying only on chat history.</p>
+<p><strong>If that does not happen:</strong> If formatting breaks during export, copy the content into the destination app and format it there.</p>
+<p><strong>Practice:</strong> Export one short document and inspect it in Google Docs or Word.</p>
+<h2 id="part-14---connected-apps">Part 14 - Connected Apps</h2>
+<p>Connected Apps let Gemini work with supported Google and third-party services. Availability depends on account, region, settings, and administrator policies.</p>
+<h3 id="review-connected-apps">14.1 Review Connected Apps</h3>
+<p><strong>What you will learn:</strong> Know what Gemini is allowed to access.</p>
+<p><strong>Before you begin:</strong> You are signed in.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol><li>Open Settings and help.</li><li>Open Connected Apps.</li><li>Review which services are connected.</li><li>Read the permission/availability information for any service you do not recognize.</li><li>Disconnect a service only if you intentionally want Gemini to stop using it.</li></ol>
+<p><strong>What should happen:</strong> You understand which services Gemini may use in supported prompts.</p>
+<p><strong>If that does not happen:</strong> If a connection is controlled by work/school policy, contact the administrator rather than trying to bypass it.</p>
+<p><strong>Practice:</strong> Review the list without changing it.</p>
+<p><strong>Least access:</strong> Connect only services you intend to use. A connected service can increase convenience, but it also broadens the information Gemini can draw on for your requests.</p>
+<h2 id="part-15---gmail-drive-docs-calendar-tasks-and-keep">Part 15 - Gmail, Drive, Docs, Calendar, Tasks, and Keep</h2>
+<p>Google’s current Workspace connection can help Gemini find/summarize information in Gmail, Docs, and Drive; create or retrieve Calendar events, Tasks, Keep notes/lists, and related productivity information, subject to account settings and feature availability.</p>
+<h3 id="ask-gemini-about-google-workspace-data">15.1 Ask Gemini About Google Workspace Data</h3>
+<p><strong>What you will learn:</strong> Retrieve information while checking the source.</p>
+<p><strong>Before you begin:</strong> Use the same Google Account that has the Workspace information and make sure the Workspace app is connected.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol><li>Start a new chat.</li><li>Ask for the service explicitly, such as: Find the latest email from [known sender] about [topic].</li><li>You can type @ and select a supported service when the interface offers it.</li><li>Read Gemini’s response.</li><li>Open/review the listed source after the response.</li><li>Confirm the date and content against the actual Gmail/Drive/Calendar item before acting.</li></ol>
+<p><strong>What should happen:</strong> Gemini returns information based on connected Workspace data and lists sources where supported.</p>
+<p><strong>If that does not happen:</strong> Google warns that Gemini can hallucinate or use older information; if the answer matters, always open the source item.</p>
+<p><strong>Practice:</strong> Ask for a harmless recent email or calendar fact and verify it in the source app.</p>
+<p><strong>Current requirement:</strong> Google says Keep Activity must be on for personal-account Google Workspace connection in Gemini Apps. Work/school availability also depends on administrator controls and Workspace settings.</p>
+<p><strong>Current limitations:</strong> Google documents limits including inability, in this connection workflow, to access some comments/images in Docs or Gmail, access standalone pictures/videos in Drive, manage Drive folders, or count Drive/Gmail items/storage in the ways users may expect.</p>
+<h2 id="part-16---gemini-in-chrome">Part 16 - Gemini in Chrome</h2>
+<p>Gemini in Chrome is a browser-integrated Gemini experience being rolled out to eligible users. It can use content from the current tab and, on computers, can optionally use multiple shared tabs.</p>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Task</strong></th>
+<th><strong>How / Where</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Open/close Gemini in Chrome - Windows</td>
+<td>Alt+G</td>
+</tr>
+<tr class="even">
+<td>Switch between tab and Gemini - Windows</td>
+<td>Alt+Shift+G</td>
+</tr>
+<tr class="odd">
+<td>Selection mode - Windows</td>
+<td>Ctrl+Alt+G</td>
+</tr>
+<tr class="even">
+<td>Open/close - Mac</td>
+<td>Control+G</td>
+</tr>
+<tr class="odd">
+<td>Switch tab/Gemini - Mac</td>
+<td>Control+Command+G</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shortcut caveat:</strong> Google lets users customize these shortcuts. Treat the table as the current defaults, not immutable commands.</p>
+<p><strong>Privacy:</strong> Gemini in Chrome can use current tab content when you invoke it. Review connected-app and Chrome Gemini settings if you do not want specific content included.</p>
+<h2 id="part-17---android-gemini-app">Part 17 - Android Gemini App</h2>
+<ul>
+<li><p>Gemini can function as the Gemini mobile app and, on eligible Android configurations, as a digital-assistant experience.</p></li>
+<li><p>You can type, speak, attach images/files, use Live, and invoke Gemini over supported screens/apps.</p></li>
+<li><p>Screen actions can send information from the current screen/file/page to Gemini; Google notes that some actions auto-submit content unless you disable auto-submit.</p></li>
+<li><p>Connected Apps can enable calls, messages, smart-home controls, calendar/task actions, and other supported functions, depending on region/device/account.</p></li>
+</ul>
+<h3 id="ask-about-the-current-screen">17.1 Ask About the Current Screen</h3>
+<p><strong>What you will learn:</strong> Use screen context deliberately rather than sharing it accidentally.</p>
+<p><strong>Before you begin:</strong> Use a non-sensitive screen.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol><li>Open Gemini over the current app/page using the supported Android invocation method.</li><li>Review the suggestion chips or Ask about option.</li><li>Before activating a screen action, decide whether the displayed content is safe to upload/share with Gemini.</li><li>Use Ask about for a deliberate question.</li><li>If you do not want actions to auto-submit screen content, press and hold a suggestion and turn off auto-submit when the control is available.</li></ol>
+<p><strong>What should happen:</strong> Gemini responds using the selected screen context.</p>
+<p><strong>If that does not happen:</strong> If the screen contains passwords, messages, health, financial, or work data you should not share, cancel the action and ask without screen context.</p>
+<p><strong>Practice:</strong> Practice on a public webpage.</p>
+<h2 id="part-18---iphone-and-ipad-gemini-app">Part 18 - iPhone and iPad Gemini App</h2>
+<ul>
+<li><p>The Gemini iOS app supports text, voice, images, and camera-based interaction on eligible devices and accounts.</p></li>
+<li><p>Some features can be available without sign-in, while saved activity and additional features require a Google Account.</p></li>
+<li><p>Use VoiceOver standard navigation: swipe right/left through controls, double-tap to activate, and use the rotor for text/navigation when useful.</p></li>
+<li><p>Feature parity with Android is not guaranteed; Android-only assistant/system integrations may not exist on iPhone/iPad.</p></li>
+</ul>
+<h3 id="start-a-voiceover-friendly-chat">18.1 Start a VoiceOver-Friendly Chat</h3>
+<p><strong>What you will learn:</strong> Use Gemini without relying on visual location.</p>
+<p><strong>Before you begin:</strong> VoiceOver is on and Gemini is installed.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol><li>Open Gemini.</li><li>Swipe right until the prompt/edit field is announced.</li><li>Double-tap to edit.</li><li>Type or dictate the prompt.</li><li>Move to Submit and double-tap.</li><li>Use VoiceOver heading/link/control navigation to review the response and any sources.</li><li>Return to the edit field for a follow-up.</li></ol>
+<p><strong>What should happen:</strong> You can conduct the conversation entirely with VoiceOver.</p>
+<p><strong>If that does not happen:</strong> If focus becomes trapped in a generated object or media area, use the rotor, headings, or return to the top/navigation controls and re-enter the conversation.</p>
+<p><strong>Practice:</strong> Complete a three-turn chat using only VoiceOver gestures.</p>
+<h2 id="part-19---screen-readers-and-braille">Part 19 - Screen Readers and Braille</h2>
+<p>Gemini’s web interface is a dynamic web application. The most reliable strategy is to combine browser/screen-reader structural navigation with ordinary Tab/Shift+Tab control navigation.</p>
+<h3 id="jaws">19.1 JAWS</h3>
+<ul>
+<li><p>Use Chrome or another supported browser. Browse/Virtual Cursor is useful for reading responses and headings; Forms Mode/direct focus is useful in the prompt box.</p></li>
+<li><p>Use H/Shift+H for headings, B for buttons, E for edit fields, and Tab for interactive controls where appropriate.</p></li>
+<li><p>If a Gemini shortcut conflicts with JAWS, use the visible control or JAWS command-help rather than guessing.</p></li>
+</ul>
+<h3 id="nvda">19.2 NVDA</h3>
+<ul>
+<li><p>Browse Mode is useful for reading responses; Focus Mode is useful in the prompt editor and app-like controls.</p></li>
+<li><p>Use H for headings, B for buttons, E for edit fields, K for links, and NVDA+Space to switch Browse/Focus Mode as needed.</p></li>
+</ul>
+<h3 id="narrator">19.3 Narrator</h3>
+<ul>
+<li><p>Use Scan Mode for reading web content and Narrator+Space to toggle Scan Mode when direct app interaction is needed.</p></li>
+<li><p>Use Narrator navigation commands or Tab/Shift+Tab to move among controls.</p></li>
+</ul>
+<h3 id="voiceover-on-mac">19.4 VoiceOver on Mac</h3>
+<ul>
+<li><p>Use VO+Right/Left Arrow through controls, VO+Command+H through headings, and VoiceOver interaction commands where grouped web content requires it.</p></li>
+<li><p>Quick Nav can help with reading but may need to be adjusted when editing or using app-like controls.</p></li>
+</ul>
+<h3 id="braille-displays">19.5 Braille Displays</h3>
+<ul>
+<li><p>Braille works through the active screen reader rather than through a separate Gemini braille mode.</p></li>
+<li><p>Test the prompt edit field, response text, links/sources, and routing keys.</p></li>
+<li><p>Long generated responses can be easier to navigate with headings requested in the prompt.</p></li>
+<li><p>Ask Gemini to avoid decorative emoji/symbols if they create excessive braille/speech clutter.</p></li>
+<li><p>For tables that are hard to navigate, ask Gemini to convert the information to a list.</p></li>
+</ul>
+<h2 id="part-20---gemini-apps-activity-keep-activity-and-privacy">Part 20 - Gemini Apps Activity, Keep Activity, and Privacy</h2>
+<p>For personal accounts, Google provides Gemini Apps Activity controls. When Keep Activity is on, Gemini Apps activity is stored in the Google Account and can be reviewed/deleted. Google states that even when Keep Activity is off, conversations can still be saved for up to 72 hours to provide the service and process feedback, but they do not appear in Gemini Apps Activity.</p>
+<h3 id="review-gemini-apps-activity">20.1 Review Gemini Apps Activity</h3>
+<p><strong>What you will learn:</strong> See what your account has stored.</p>
+<p><strong>Before you begin:</strong> Use a personal Google Account.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol><li>Open gemini.google.com.</li><li>Open Settings and help.</li><li>Choose Activity.</li><li>Review recent Gemini activity.</li><li>Open an item’s details if you need to understand associated audio, screen-sharing, video, files, or other data.</li><li>Delete selected activity or change Keep Activity only if you understand the effect.</li></ol>
+<p><strong>What should happen:</strong> You can see and manage stored Gemini Apps activity.</p>
+<p><strong>If that does not happen:</strong> Work/school accounts can have administrator-controlled retention and may not expose the same controls.</p>
+<p><strong>Practice:</strong> Review activity without deleting it.</p>
+<p><strong>Live data:</strong> Google states that when Keep Activity is on, Live transcripts and media you choose to share can be saved in Gemini Apps Activity. A separate setting controls whether audio/Live recordings may be used to improve Google services, and Google states this improvement setting is off by default.</p>
+<p><strong>Privacy habit:</strong> Do not use privacy settings as a substitute for data minimization. Avoid sending information Gemini does not need.</p>
+<h2 id="part-21---work-and-school-accounts">Part 21 - Work and School Accounts</h2>
+<ul>
+<li><p>Work/school access depends on Google Workspace edition, licensing, age, and administrator configuration.</p></li>
+<li><p>Administrators can control access to Gemini Apps, Connected Apps, and retention-related settings.</p></li>
+<li><p>Use the organization-approved account for organizational data; do not move private work/school data into a personal Gemini account to bypass restrictions.</p></li>
+<li><p>Before using Gemini for confidential work, review the organization’s AI/data policy and the Workspace protections that apply to that account.</p></li>
+<li><p>Features available to personal Google Accounts can be unavailable or configured differently for work/school accounts.</p></li>
+</ul>
+<p><strong>Rule:</strong> If an administrator has disabled a feature, do not try to bypass the control. Use the approved workflow or ask the organization for an accessible alternative.</p>
+<h2 id="part-22---responsible-and-safe-use">Part 22 - Responsible and Safe Use</h2>
+<ul>
+<li><p>Verify important facts, citations, calculations, legal/policy statements, medical/financial information, and current product instructions.</p></li>
+<li><p>Do not treat an AI-generated source list as verified until you open the sources.</p></li>
+<li><p>Protect confidential and personal information.</p></li>
+<li><p>Use human review for consequential decisions affecting another person.</p></li>
+<li><p>Do not use Gemini to impersonate someone, mislead people about synthetic media, or bypass security controls.</p></li>
+<li><p>When Gemini can take actions through Connected Apps, confirm the recipient, date/time, content, and target before allowing the action.</p></li>
+<li><p>For accessibility descriptions, distinguish observation from inference and verify safety-critical details.</p></li>
+</ul>
+<h3 id="use-a-responsible-use-check-before-acting">22.1 Use a Responsible-Use Check Before Acting</h3>
+<p><strong>What you will learn:</strong> Decide whether a Gemini answer is safe to use.</p>
+<p><strong>Before you begin:</strong> The output could affect money, school, work, health, safety, privacy, or another person.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol><li>Identify the consequence if the answer is wrong.</li><li>Identify any sensitive data used in the prompt.</li><li>List the factual claims that matter.</li><li>Verify those claims with current trustworthy sources.</li><li>Check the applicable workplace/school/platform policy.</li><li>Keep a human responsible for the final action.</li><li>Only then use or share the result.</li></ol>
+<p><strong>What should happen:</strong> Gemini is treated as assistance rather than authority.</p>
+<p><strong>If that does not happen:</strong> If verification is impossible and the stakes are high, do not act from the Gemini output alone.</p>
+<p><strong>Practice:</strong> Apply the check to one low-risk and one hypothetical high-risk task.</p>
+<h2 id="part-23---troubleshooting">Part 23 - Troubleshooting</h2>
+<h3 id="gemini-gives-an-incorrect-or-invented-answer">23.1 Gemini Gives an Incorrect or Invented Answer</h3>
+<p><strong>What you will learn:</strong> Shift from generation to evidence.</p>
+<p><strong>Before you begin:</strong> You suspect a factual error.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol><li>Ask Gemini to identify the specific claims and sources.</li><li>Open the sources.</li><li>Check current primary/official sources independently.</li><li>Correct the prompt or provide authoritative source material.</li><li>Remove unsupported claims from anything you plan to use.</li></ol>
+<p><strong>What should happen:</strong> You determine what is supported.</p>
+<p><strong>If that does not happen:</strong> Do not keep regenerating until Gemini happens to agree with you. Verification is external evidence, not repetition.</p>
+<p><strong>Practice:</strong> Correct one deliberately testable error.</p>
+<h3 id="gemini-cannot-find-gmail-or-drive-information">23.2 Gemini Cannot Find Gmail or Drive Information</h3>
+<p><strong>What you will learn:</strong> Check connection, account, settings, and source wording.</p>
+<p><strong>Before you begin:</strong> You expected Workspace access.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol><li>Verify you are signed into the same Google Account that owns the information.</li><li>Open Connected Apps and confirm Google Workspace is connected.</li><li>For personal accounts, verify Keep Activity is on if the connection requires it.</li><li>Check Gmail smart-features/personalization requirements when applicable.</li><li>Ask explicitly for Gmail, Drive, Docs, Calendar, Tasks, or Keep and include distinctive keywords.</li><li>Open the resulting source to verify it.</li></ol>
+<p><strong>What should happen:</strong> Gemini either finds the item or the missing prerequisite becomes clear.</p>
+<p><strong>If that does not happen:</strong> Do not paste a confidential document URL/content into a personal account simply to bypass an organizational control.</p>
+<p><strong>Practice:</strong> Locate one harmless source item.</p>
+<h3 id="a-feature-is-missing">23.3 A Feature Is Missing</h3>
+<p><strong>What you will learn:</strong> Determine whether the issue is eligibility or navigation.</p>
+<p><strong>Before you begin:</strong> A tutorial names a feature you cannot find.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol><li>Open Gemini Help for the feature.</li><li>Check age, country, language, device, plan, account type, and administrator requirements.</li><li>Check whether the feature is web-only or mobile-only.</li><li>Check whether Google describes it as a gradual rollout.</li><li>Return to Gemini and search Settings/sidebar only after confirming eligibility.</li></ol>
+<p><strong>What should happen:</strong> You distinguish “not available” from “I cannot find it.”</p>
+<p><strong>If that does not happen:</strong> Do not change account security or payment settings blindly to chase a feature.</p>
+<p><strong>Practice:</strong> Check availability requirements for Deep Research or Gemini in Chrome.</p>
+<h3 id="screen-reader-focus-is-lost">23.4 Screen Reader Focus Is Lost</h3>
+<p><strong>What you will learn:</strong> Rebuild web-app location without refreshing unnecessarily.</p>
+<p><strong>Before you begin:</strong> Gemini is still open.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol><li>Press Escape to close a menu/dialog if one is open.</li><li>Use the screen reader’s heading/landmark navigation to locate the main conversation or New chat.</li><li>Use E/edit-field navigation or Tab/Shift+Tab to return to the prompt box.</li><li>If a generated table/object is difficult, ask Gemini to restate it as headings and lists.</li><li>Refresh the page only if ordinary focus recovery fails.</li></ol>
+<p><strong>What should happen:</strong> You return to a predictable control.</p>
+<p><strong>If that does not happen:</strong> If the issue is repeatable, try another Google-supported browser and report accessibility feedback to Google.</p>
+<p><strong>Practice:</strong> Recover focus after opening the sidebar and a source link.</p>
+<h3 id="gemini-uses-an-old-email-or-source">23.5 Gemini Uses an Old Email or Source</h3>
+<p><strong>What you will learn:</strong> Force date/source verification.</p>
+<p><strong>Before you begin:</strong> The answer may be based on stale connected data.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol><li>Ask Gemini for the exact source item and date.</li><li>Open that source.</li><li>Check for newer messages/files/events.</li><li>Rephrase the prompt to request the most recent item after a specific date.</li><li>Verify the final answer in the source app.</li></ol>
+<p><strong>What should happen:</strong> The latest source is distinguished from older material.</p>
+<p><strong>If that does not happen:</strong> Google explicitly warns that connected Workspace responses can be outdated or hallucinated; never assume “latest” without checking.</p>
+<p><strong>Practice:</strong> Compare two dated source items.</p>
+<h2 id="part-24---independent-practice-course">Part 24 - Independent Practice Course</h2>
+<h3 id="level-1---basics">Level 1 - Basics</h3>
+<p>☐ Open Gemini web app.</p>
+<p>☐ Verify account.</p>
+<p>☐ Start a chat.</p>
+<p>☐ Read response.</p>
+<p>☐ Start New chat.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-2---prompting">Level 2 - Prompting</h3>
+<p>☐ Write goal/context/constraints prompt.</p>
+<p>☐ Ask a follow-up.</p>
+<p>☐ Edit a prompt.</p>
+<p>☐ Request a structured answer.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-3---verification">Level 3 - Verification</h3>
+<p>☐ Open a related source.</p>
+<p>☐ Check date.</p>
+<p>☐ Verify three claims.</p>
+<p>☐ Identify uncertainty.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-4---files">Level 4 - Files</h3>
+<p>☐ Upload a harmless file.</p>
+<p>☐ Summarize it.</p>
+<p>☐ Ask a question from it.</p>
+<p>☐ Compare with original.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-5---images">Level 5 - Images</h3>
+<p>☐ Upload an image.</p>
+<p>☐ Request neutral description.</p>
+<p>☐ Separate observation/inference.</p>
+<p>☐ Verify one detail.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-6---gems">Level 6 - Gems</h3>
+<p>☐ Open a premade Gem.</p>
+<p>☐ Compare with ordinary Gemini.</p>
+<p>☐ Create/customize a simple Gem if eligible.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-7---deep-research">Level 7 - Deep Research</h3>
+<p>☐ Choose sources.</p>
+<p>☐ Review/edit plan.</p>
+<p>☐ Run research.</p>
+<p>☐ Verify three citations.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-8---connected-apps">Level 8 - Connected Apps</h3>
+<p>☐ Review Connected Apps.</p>
+<p>☐ Ask for harmless Workspace data if enabled.</p>
+<p>☐ Open and verify source.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-9---mobile">Level 9 - Mobile</h3>
+<p>☐ Send text prompt.</p>
+<p>☐ Use voice/Live if available.</p>
+<p>☐ Attach an image.</p>
+<p>☐ Review privacy before screen actions.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-10---accessibility">Level 10 - Accessibility</h3>
+<p>☐ Navigate with screen reader headings/buttons/edit fields.</p>
+<p>☐ Switch browse/focus modes.</p>
+<p>☐ Use braille routing.</p>
+<p>☐ Request list instead of difficult table.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-11---privacy">Level 11 - Privacy</h3>
+<p>☐ Review Activity.</p>
+<p>☐ Explain Keep Activity.</p>
+<p>☐ Sanitize a fictional prompt.</p>
+<p>☐ Identify work/personal account boundary.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h3 id="level-12---independence">Level 12 - Independence</h3>
+<p>☐ Choose a real low-risk task.</p>
+<p>☐ Prompt Gemini.</p>
+<p>☐ Use sources/files if appropriate.</p>
+<p>☐ Verify output.</p>
+<p>☐ Export/save reviewed result.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control to use or what to verify.</p>
+<h2 id="part-25---quick-reference">Part 25 - Quick Reference</h2>
+<h3 id="core-web-workflow">Core Web Workflow</h3>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Task</strong></th>
+<th><strong>How / Where</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Open Gemini</td>
+<td>Type gemini.google.com in the browser address bar</td>
+</tr>
+<tr class="even">
+<td>New conversation</td>
+<td>New chat</td>
+</tr>
+<tr class="odd">
+<td>Enter prompt</td>
+<td>Prompt/edit box</td>
+</tr>
+<tr class="even">
+<td>Add context</td>
+<td>Add files</td>
+</tr>
+<tr class="odd">
+<td>Check facts</td>
+<td>Open related sources and verify</td>
+</tr>
+<tr class="even">
+<td>Feature settings</td>
+<td>Settings and help</td>
+</tr>
+<tr class="odd">
+<td>Activity controls</td>
+<td>Settings and help &gt; Activity</td>
+</tr>
+<tr class="even">
+<td>Connected services</td>
+<td>Settings and help &gt; Connected Apps</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="accessibility-pattern">Accessibility Pattern</h3>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Task</strong></th>
+<th><strong>How / Where</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Read response</td>
+<td>Browse/Scan/Quick Nav mode as appropriate</td>
+</tr>
+<tr class="even">
+<td>Enter prompt</td>
+<td>Edit field / Focus Mode / direct interaction</td>
+</tr>
+<tr class="odd">
+<td>Move controls</td>
+<td>Tab / Shift+Tab</td>
+</tr>
+<tr class="even">
+<td>Find structure</td>
+<td>Headings, landmarks/regions, buttons, links</td>
+</tr>
+<tr class="odd">
+<td>Problematic table</td>
+<td>Ask Gemini to convert to a list</td>
+</tr>
+<tr class="even">
+<td>Long response</td>
+<td>Ask for headings and a concise summary</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="verification-pattern">Verification Pattern</h3>
+<p>1. Identify the factual claim. 2. Open the listed source. 3. Check date and authority. 4. Confirm the source actually supports the claim. 5. Check a second/primary source when stakes are meaningful. 6. Act only after verification.</p>
+<h3 id="privacy-pattern">Privacy Pattern</h3>
+<p>Use the correct account, minimize the data, review Connected Apps, understand Keep Activity, and never paste credentials or unnecessary confidential information.</p>
+<h2 id="part-26---official-google-resources">Part 26 - Official Google Resources</h2>
+<p><a href="https://support.google.com/gemini"><u>Gemini Apps Help</u></a></p>
+<p><a href="https://support.google.com/gemini/answer/13275745?hl=en"><u>Use Gemini Apps</u></a></p>
+<p><a href="https://support.google.com/gemini/answer/13594961?hl=en"><u>Gemini Apps Privacy Hub</u></a></p>
+<p><a href="https://support.google.com/gemini/answer/13278892?hl=en"><u>Manage &amp; delete your activity in Gemini Apps</u></a></p>
+<p><a href="https://support.google.com/gemini/answer/15236321?hl=en"><u>Get started with Gems</u></a></p>
+<p><a href="https://support.google.com/gemini/answer/15719111?hl=en"><u>Use Deep Research in Gemini Apps</u></a></p>
+<p><a href="https://support.google.com/gemini/answer/15229592?hl=en"><u>Connect the Google Workspace app to Gemini Apps</u></a></p>
+<p><a href="https://support.google.com/gemini/answer/16283624?hl=en"><u>Use Gemini in Chrome</u></a></p>
+<p><a href="https://support.google.com/gemini/answer/16722517?hl=en"><u>Verify AI-generated images, videos, and audio</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I understand what Gemini Apps are and which account I am using.</p>
+<p>☐ I can open Gemini on the web and start/manage chats.</p>
+<p>☐ I can write clear prompts and useful follow-ups.</p>
+<p>☐ I understand model selection and changing feature limits.</p>
+<p>☐ I can open and verify related sources.</p>
+<p>☐ I can upload and analyze non-sensitive files.</p>
+<p>☐ I can use image input responsibly.</p>
+<p>☐ I can use Gemini Live where available.</p>
+<p>☐ I can use or create Gems where eligible.</p>
+<p>☐ I can run Deep Research and verify its citations.</p>
+<p>☐ I understand Canvas/notebooks/generated-file concepts and availability.</p>
+<p>☐ I can review and manage Connected Apps.</p>
+<p>☐ I can verify Gmail/Drive/Calendar information in the source app.</p>
+<p>☐ I understand Gemini in Chrome and its content-sharing implications.</p>
+<p>☐ I can use Gemini on Android and iPhone/iPad.</p>
+<p>☐ I can navigate Gemini with a screen reader and braille display.</p>
+<p>☐ I understand Keep Activity and personal versus work/school privacy controls.</p>
+<p>☐ I can identify when a feature is unavailable versus simply hard to find.</p>
+<p>☐ I can recover from focus problems, stale sources, and hallucinated answers.</p>
+<p>☐ I know when not to rely on Gemini without independent human/source verification.</p>
+<p><strong>Most important habit:</strong> Gemini can help you think, create, research, and work across Google services, but the final responsibility stays with you. Use the correct account, share only necessary data, verify important sources, and keep human control over consequential decisions and actions.</p>
+
+<h2 id="website-practice">Website practice and lessons</h2>
+<p>The following procedures preserve the Accessible Learning Center's original guided practice and connect this full manual to the ten-lesson course.</p>
 <section id="complete-procedures" aria-labelledby="complete-procedures-heading">
 <h2 id="complete-procedures-heading">Basic and advanced step-by-step procedures</h2>
 <p>These procedures make the manual usable on its own. The separate lessons provide assignments and progress tracking when you want a course experience.</p>
@@ -124,4 +785,8 @@
 <p><strong>Practice:</strong> Complete a fictional Google Workspace project using Gemini, verification, human editing, and safe data practices.</p>
 </section>
 </section>
-<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">Google Gemini lessons</h2><ol class="course-lesson-list"><li><a href="gemini-lesson-1.html">Lesson 1: Open Gemini and Navigate the Chat Interface</a></li><li><a href="gemini-lesson-2.html">Lesson 2: Write Prompts with Purpose, Context, and Format</a></li><li><a href="gemini-lesson-3.html">Lesson 3: Refine a Response through Follow-Up Prompts</a></li><li><a href="gemini-lesson-4.html">Lesson 4: Create Clear Workplace Checklists and Plans</a></li><li><a href="gemini-lesson-5.html">Lesson 5: Summarize Public Web Information and Verify It</a></li><li><a href="gemini-lesson-6.html">Lesson 6: Draft Content for Google Docs and Gmail</a></li><li><a href="gemini-lesson-7.html">Lesson 7: Plan Calendar Tasks and Spreadsheet Information</a></li><li><a href="gemini-lesson-8.html">Lesson 8: Review Sources, Bias, and Missing Information</a></li><li><a href="gemini-lesson-9.html">Lesson 9: Use Gemini with JAWS, Narrator, or NVDA</a></li><li><a href="gemini-lesson-10.html">Lesson 10: Final Google Gemini Workplace Project</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from Gemini manual"><a href="gemini-lesson-1.html">Start Gemini Lesson 1</a><a href="lessons.html#gemini-lessons">All Gemini lessons</a><a href="student-progress.html">My progress</a></nav></main></body></html>
+
+<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">Google Gemini lessons</h2><ol class="course-lesson-list"><li><a href="gemini-lesson-1.html">Lesson 1: Open Gemini and Navigate the Chat Interface</a></li><li><a href="gemini-lesson-2.html">Lesson 2: Write Prompts with Purpose, Context, and Format</a></li><li><a href="gemini-lesson-3.html">Lesson 3: Refine a Response through Follow-Up Prompts</a></li><li><a href="gemini-lesson-4.html">Lesson 4: Create Clear Workplace Checklists and Plans</a></li><li><a href="gemini-lesson-5.html">Lesson 5: Summarize Public Web Information and Verify It</a></li><li><a href="gemini-lesson-6.html">Lesson 6: Draft Content for Google Docs and Gmail</a></li><li><a href="gemini-lesson-7.html">Lesson 7: Plan Calendar Tasks and Spreadsheet Information</a></li><li><a href="gemini-lesson-8.html">Lesson 8: Review Sources, Bias, and Missing Information</a></li><li><a href="gemini-lesson-9.html">Lesson 9: Use Gemini with JAWS, Narrator, or NVDA</a></li><li><a href="gemini-lesson-10.html">Lesson 10: Final Google Gemini Workplace Project</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from Gemini manual"><a href="gemini-lesson-1.html">Start Gemini Lesson 1</a><a href="lessons.html#gemini-lessons">All Gemini lessons</a><a href="student-progress.html">My progress</a></nav>
+  </main>
+</body>
+</html>

@@ -351,6 +351,11 @@ for (const requiredTopic of ["Personal vs Work or School Copilot", "Upload Files
   check(copilotManual.includes(requiredTopic), "Microsoft Copilot manual is missing: " + requiredTopic + ".");
 }
 check((copilotManual.match(/<h2 id="part-/g) || []).length === 32, "Microsoft Copilot manual must contain all 32 full manual parts.");
+const geminiManual = readFileSync(resolve(root, "gemini-manual.html"), "utf8");
+for (const requiredTopic of ["Accounts, Sign-In, and Availability", "Verify Responses and Related Sources", "Upload and Analyze Files", "Gemini Live", "Gems", "Deep Research", "Connected Apps", "Gmail, Drive, Docs, Calendar, Tasks, and Keep", "Screen Readers and Braille", "Gemini Apps Activity", "Work and School Accounts", "Troubleshooting", "Final Independence Checklist"]) {
+  check(geminiManual.includes(requiredTopic), "Google Gemini manual is missing: " + requiredTopic + ".");
+}
+check((geminiManual.match(/<h2 id="part-/g) || []).length === 26, "Google Gemini manual must contain all 26 full manual parts.");
 for (const action of ["decrease", "increase", "reset-text", "dark", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }
