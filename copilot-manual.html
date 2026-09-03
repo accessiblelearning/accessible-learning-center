@@ -1,13 +1,748 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Accessible keyboard-first Microsoft Copilot manual for blind and low-vision learners."><title>Microsoft Copilot Manual - Accessible Learning Center</title><link rel="stylesheet" href="styles.css?v=manual-review-1"><script src="accessibility.js?v=manual-review-1" defer></script></head><body class="manual-page">
-<a class="skip-link" href="#main-content">Skip to main content</a><header><p class="eyebrow">Accessible Microsoft Copilot course</p><h1>Microsoft Copilot Manual</h1><p>Practical, responsible AI skills for work, learning, and independent problem-solving.</p></header><main id="main-content"><nav class="manual-tools lesson-nav" aria-label="Copilot manual navigation"><a href="#basics">Basics</a><a href="#prompting">Prompting</a><a href="#verification">Verification</a><a href="#privacy">Privacy</a><a href="#screen-readers">Screen readers</a><a href="#lessons">Lessons</a></nav>
-<section id="basics" aria-labelledby="basics-heading"><h2 id="basics-heading">What generative AI does</h2><p>Generative AI predicts and creates text or other content from patterns in training data and the information supplied in a conversation. It can help brainstorm, organize, explain, summarize, and draft. It does not understand a situation the way a person does, and it can produce confident but incorrect or invented information.</p><p>Use AI as an assistant, not as the final decision-maker. A person remains responsible for checking accuracy, appropriateness, accessibility, and compliance with workplace rules.</p></section>
-<section id="prompting" aria-labelledby="prompting-heading"><h2 id="prompting-heading">A reliable prompt pattern</h2><ol><li><strong>Task:</strong> State exactly what you want.</li><li><strong>Context:</strong> Explain the audience and purpose using nonprivate information.</li><li><strong>Constraints:</strong> Give length, tone, reading level, deadline, or other limits.</li><li><strong>Format:</strong> Request headings, bullets, a numbered procedure, or a simple table.</li><li><strong>Checks:</strong> Ask the tool to identify uncertainty and provide sources when appropriate.</li></ol><p>Continue the conversation with specific follow-ups. For example: “Shorten this to 150 words,” “Explain the second step,” or “Which statements need verification?”</p></section>
-<section id="verification" aria-labelledby="verification-heading"><h2 id="verification-heading">Verify before using the result</h2><ul><li>Open original sources instead of trusting an AI summary or citation.</li><li>Confirm names, dates, quotations, calculations, contact details, laws, policies, and software instructions.</li><li>Prefer current primary sources from the organization responsible for the information.</li><li>Compare important claims with a second reliable source.</li><li>Test instructions safely before giving them to another person.</li><li>Rewrite the final result in your own voice and keep a record of corrections.</li></ul></section>
-<section id="privacy" aria-labelledby="privacy-heading"><h2 id="privacy-heading">Privacy and workplace rules</h2><p>Do not enter client records, medical or disability details, passwords, financial account information, private addresses, confidential workplace material, copyrighted documents you are not permitted to share, or information that identifies another person. Use fictional or public information in these lessons.</p><p>Follow the employer’s approved-tool, retention, disclosure, and human-review requirements. A personal free account is not automatically approved for organizational data. Never allow AI to make an employment, benefit, medical, legal, financial, safety, or accommodation decision for a person.</p></section>
-<section aria-labelledby="accessibility-heading"><h2 id="accessibility-heading">Accessible output</h2><p>Ask for descriptive headings, short paragraphs, meaningful link text, numbered steps, and simple tables. Ask for image descriptions when an image matters, but verify the description with a trusted person when accuracy is important. Avoid layouts that communicate meaning only through color, position, or visual formatting.</p></section>
-<section id="screen-readers" aria-labelledby="screen-readers-heading"><h2 id="screen-readers-heading">JAWS, Narrator, and NVDA</h2><p>AI interfaces change often. Use Tab and Shift+Tab to move among controls, Enter or Space to activate a control, and the screen reader’s heading, landmark, link, button, edit-field, and browse-mode commands to review the page. Use browser Find to locate words such as “Sources,” “Copy,” or part of your prompt.</p><ul><li><strong>JAWS:</strong> H moves by heading, B by button, E by edit field, Insert+F7 opens links, and Insert+F5 opens form fields.</li><li><strong>NVDA:</strong> H moves by heading, B by button, E by edit field, NVDA+F7 opens the Elements List, and NVDA+Space switches browse and focus modes.</li><li><strong>Narrator:</strong> Use Caps Lock or Insert with arrow keys for Scan Mode navigation; press Caps Lock+Space to toggle Scan Mode when needed.</li></ul><p>After sending a prompt, allow time for the response to finish. Move by heading or paragraph and confirm whether focus changed. Product-specific keyboard behavior may change after updates.</p></section>
-<section aria-labelledby="cost-heading"><h2 id="cost-heading">Free-course rule</h2><p>These lessons can be completed with an available free AI service or by studying the examples without creating an account. Do not start a paid trial, enter payment information, or purchase a subscription for this course.</p></section>
-<section aria-labelledby="official-heading"><h2 id="official-heading">Official references</h2><ul><li><a href="https://support.microsoft.com/en-us/copilot">Official Microsoft Copilot help and learning</a></li><li><a href="https://support.microsoft.com/en-us/topic/welcome-to-copilot-on-windows-675708af-8c16-4675-afeb-85a5a476ccb0">Microsoft Copilot on Windows</a></li></ul></section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Comprehensive keyboard-first Microsoft Copilot manual for blind and low-vision learners.">
+  <title>Microsoft Copilot Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-copilot-manual-1">
+  <script src="accessibility.js?v=manual-contents-1" defer></script>
+</head>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible artificial intelligence tools</p>
+    <h1>Microsoft Copilot Manual</h1>
+    <p>Independent self-study guide for Copilot on Windows, the web, mobile devices, and Microsoft 365.</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#complete-procedures">Website practice procedures</a>
+      <a href="#lessons">Copilot lessons</a>
+    </nav>
+<p><em>Windows, Web, Mobile, Microsoft 365, Screen Readers, Privacy, and Responsible Use</em></p>
+<p><strong>Purpose:</strong> This manual teaches Microsoft Copilot from the beginning. It explains how to open Copilot, chat effectively, upload files, use current creation and voice features, verify results, manage privacy, use Copilot with screen readers, and understand how personal and work/school accounts differ.</p>
+<p><strong>Current reference:</strong> This guide is written for the current Microsoft Copilot experience available in September 2026. Microsoft released an updated Copilot app for web, desktop, and mobile on August 18, 2026, so some older tutorials and screenshots may not match the current interface.</p>
+<p><strong>Important account distinction:</strong> Copilot signed in with a personal Microsoft account and Copilot signed in with a work or school Microsoft Entra account have different data protections, settings, licensing, and features. Always identify which account you are using before entering sensitive information.</p>
+<p><strong>AI accuracy warning:</strong> Copilot is generative AI. Microsoft states that answers may not always be accurate. Verify important facts before making decisions or taking action.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Work through Parts 1 through 8 before using Copilot for important tasks.</p></li>
+<li><p>Use Tab and Shift+Tab to move among controls in the Windows/web Copilot interface; use Arrow keys inside lists and menus.</p></li>
+<li><p>When using a screen reader, identify whether focus is in the navigation pane, chat pane, message edit field, or a generated response before typing.</p></li>
+<li><p>Use low-risk practice prompts first. Do not begin by uploading confidential work, medical, financial, school, or client information.</p></li>
+<li><p>Ask Copilot for sources when facts matter, then open the sources and verify that they support the answer.</p></li>
+<li><p>If a feature such as Vision, Agents, Create, Search, Notebooks, or a Microsoft 365 integration is missing, your account, subscription, region, rollout stage, or organization policy may not include it.</p></li>
+<li><p>For work/school accounts, follow organizational policy even if a personal Copilot account offers a feature that seems more convenient.</p></li>
+</ul>
+<nav class="manual-contents" aria-labelledby="table-of-contents">
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#part-1---what-microsoft-copilot-is">Part 1 - What Microsoft Copilot Is</a></li>
+<li><a href="#part-2---personal-vs-work-or-school-copilot">Part 2 - Personal vs Work or School Copilot</a></li>
+<li><a href="#part-3---open-copilot-on-windows-and-the-web">Part 3 - Open Copilot on Windows and the Web</a></li>
+<li><a href="#part-4---understand-the-copilot-interface">Part 4 - Understand the Copilot Interface</a></li>
+<li><a href="#part-5---start-a-chat">Part 5 - Start a Chat</a></li>
+<li><a href="#part-6---write-better-prompts">Part 6 - Write Better Prompts</a></li>
+<li><a href="#part-7---follow-up-questions-and-iteration">Part 7 - Follow-Up Questions and Iteration</a></li>
+<li><a href="#part-8---verify-answers-and-sources">Part 8 - Verify Answers and Sources</a></li>
+<li><a href="#part-9---web-search-and-current-information">Part 9 - Web Search and Current Information</a></li>
+<li><a href="#part-10---upload-files-and-images">Part 10 - Upload Files and Images</a></li>
+<li><a href="#part-11---work-with-pdfs-word-excel-and-powerpoint-files">Part 11 - Work with PDFs, Word, Excel, and PowerPoint Files</a></li>
+<li><a href="#part-12---generate-and-edit-images">Part 12 - Generate and Edit Images</a></li>
+<li><a href="#part-13---copilot-voice">Part 13 - Copilot Voice</a></li>
+<li><a href="#part-14---copilot-vision">Part 14 - Copilot Vision</a></li>
+<li><a href="#part-15---conversation-history">Part 15 - Conversation History</a></li>
+<li><a href="#part-16---memory-personalization-and-temporary-chat">Part 16 - Memory, Personalization, and Temporary Chat</a></li>
+<li><a href="#part-17---search-library-and-create-in-the-workschool-copilot-app">Part 17 - Search, Library, and Create in the Work/School Copilot App</a></li>
+<li><a href="#part-18---agents-and-specialized-experiences">Part 18 - Agents and Specialized Experiences</a></li>
+<li><a href="#part-19---copilot-in-word">Part 19 - Copilot in Word</a></li>
+<li><a href="#part-20---copilot-in-excel">Part 20 - Copilot in Excel</a></li>
+<li><a href="#part-21---copilot-in-powerpoint">Part 21 - Copilot in PowerPoint</a></li>
+<li><a href="#part-22---copilot-in-outlook">Part 22 - Copilot in Outlook</a></li>
+<li><a href="#part-23---copilot-in-onenote-and-teams">Part 23 - Copilot in OneNote and Teams</a></li>
+<li><a href="#part-24---accessibility-with-narrator-nvda-and-jaws">Part 24 - Accessibility with Narrator, NVDA, and JAWS</a></li>
+<li><a href="#part-25---voiceover-talkback-and-braille">Part 25 - VoiceOver, TalkBack, and Braille</a></li>
+<li><a href="#part-26---privacy-for-personal-microsoft-accounts">Part 26 - Privacy for Personal Microsoft Accounts</a></li>
+<li><a href="#part-27---enterprise-data-protection-for-work-or-school">Part 27 - Enterprise Data Protection for Work or School</a></li>
+<li><a href="#part-28---responsible-use-and-high-stakes-tasks">Part 28 - Responsible Use and High-Stakes Tasks</a></li>
+<li><a href="#part-29---troubleshooting">Part 29 - Troubleshooting</a></li>
+<li><a href="#part-30---independent-practice-course">Part 30 - Independent Practice Course</a></li>
+<li><a href="#part-31---quick-reference">Part 31 - Quick Reference</a></li>
+<li><a href="#part-32---official-microsoft-resources">Part 32 - Official Microsoft Resources</a></li>
+</ol>
+</nav>
+<h2 id="part-1---what-microsoft-copilot-is">Part 1 - What Microsoft Copilot Is</h2>
+<p>Microsoft Copilot is Microsoft's AI assistant. Depending on the account and product, it can answer questions, draft and rewrite text, search for current information, analyze uploaded files, generate images, hold voice conversations, work with Microsoft 365 content, and use specialized agents or connected experiences.</p>
+<ul>
+<li><p>Copilot chat: conversational AI in the Copilot app or web experience.</p></li>
+<li><p>Microsoft 365 integration: Copilot features inside apps such as Word, Excel, PowerPoint, Outlook, OneNote, and Teams when included in your plan/account.</p></li>
+<li><p>Work or school Copilot: can be grounded in organizational data you already have permission to access, subject to licensing and policy.</p></li>
+<li><p>Personal Copilot: uses a personal Microsoft account and has consumer privacy/data controls that differ from enterprise data protection.</p></li>
+<li><p>Copilot does not guarantee that generated facts, calculations, citations, interpretations, or recommendations are correct.</p></li>
+</ul>
+<h2 id="part-2---personal-vs-work-or-school-copilot">Part 2 - Personal vs Work or School Copilot</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Account context</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Personal Microsoft account</td>
+<td>Examples: outlook.com, hotmail.com, live.com or another Microsoft account used personally. Consumer privacy controls apply.</td>
+</tr>
+<tr class="even">
+<td>Work/school Microsoft Entra account</td>
+<td>Organizational account. Enterprise data protection applies to Copilot Chat prompts/responses and organizational data according to Microsoft 365 protections.</td>
+</tr>
+<tr class="odd">
+<td>Microsoft 365 home apps</td>
+<td>Copilot inside Word/Excel/PowerPoint/Outlook/OneNote with eligible personal Microsoft 365 subscriptions has separate Microsoft 365-home privacy rules.</td>
+</tr>
+<tr class="even">
+<td>Feature availability</td>
+<td>Can differ by subscription, license, region, device, rollout, and administrator policy.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="identify-your-account-before-you-work">2.1 Identify Your Account Before You Work</h3>
+<p><strong>What you will learn:</strong> Know which privacy and data rules apply.</p>
+<p><strong>Before you begin:</strong> Open Copilot.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol><li>Find your profile/account control using Tab or the navigation menu.</li><li>Open the profile/account menu.</li><li>Read the signed-in email address and organization name if shown.</li><li>Decide whether it is a personal Microsoft account or a work/school organizational account.</li><li>If you are about to use employer/school data, verify that the organizational account and approved Copilot experience are active.</li></ol>
+<p><strong>What should happen:</strong> You know which identity is currently controlling the Copilot session.</p>
+<p><strong>If that does not happen:</strong> If the account is unclear, sign out and sign in deliberately with the intended identity before entering sensitive information.</p>
+<p><strong>Practice:</strong> Practice switching only if you have two non-sensitive test accounts.</p>
+<h2 id="part-3---open-copilot-on-windows-and-the-web">Part 3 - Open Copilot on Windows and the Web</h2>
+<h3 id="open-the-copilot-app-in-windows">3.1 Open the Copilot App in Windows</h3>
+<p><strong>What you will learn:</strong> Start Copilot without using a mouse.</p>
+<p><strong>Before you begin:</strong> Copilot is installed or available from Microsoft Store.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol><li>Press the Windows key.</li><li>Type Microsoft Copilot.</li><li>Press Enter.</li><li>Wait for the Copilot app to open.</li><li>If using a screen reader, listen for focus in the message/chat area.</li></ol>
+<p><strong>What should happen:</strong> The Copilot app opens.</p>
+<p><strong>If that does not happen:</strong> If Copilot is not installed, use Microsoft Store or the web version at copilot.com. Organization-managed PCs may restrict installation.</p>
+<p><strong>Practice:</strong> Open and close Copilot twice.</p>
+<h3 id="open-copilot-on-the-web">3.2 Open Copilot on the Web</h3>
+<p><strong>What you will learn:</strong> Use Copilot from a browser.</p>
+<p><strong>Before you begin:</strong> Use a current browser and internet connection.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol><li>Open your browser.</li><li>Press Ctrl+L or Alt+D to focus the address bar.</li><li>Type copilot.com.</li><li>Press Enter.</li><li>Use Tab to reach sign-in or the message field.</li><li>Sign in with the intended account if needed.</li></ol>
+<p><strong>What should happen:</strong> Copilot opens in the browser.</p>
+<p><strong>If that does not happen:</strong> If the site is blocked, use an approved organizational method or contact IT rather than bypassing policy.</p>
+<p><strong>Practice:</strong> Open Copilot on the web and identify the message field.</p>
+<h2 id="part-4---understand-the-copilot-interface">Part 4 - Understand the Copilot Interface</h2>
+<p>The current Copilot interface changes depending on account type and feature availability. In Microsoft's work/school screen-reader documentation, the navigation pane can include items such as Search, Library, Create, Agents, Notebooks, and Apps. The chat area contains the message field, generated responses, and related controls.</p>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Message Copilot edit field</td>
+<td>Type the prompt here, then press Enter.</td>
+</tr>
+<tr class="even">
+<td>New chat</td>
+<td>Starts a separate conversation.</td>
+</tr>
+<tr class="odd">
+<td>Navigation pane</td>
+<td>Contains available experiences such as Search, Library, Create, Agents, Notebooks, and Apps in supported work/school versions.</td>
+</tr>
+<tr class="even">
+<td>Copilot chats and more / Settings</td>
+<td>Opens settings, history/recent pages, personalization, and other options depending on account.</td>
+</tr>
+<tr class="odd">
+<td>Temporary chat</td>
+<td>Starts a chat designed not to use/store personalization/history in supported versions.</td>
+</tr>
+<tr class="even">
+<td>Work / Web modes</td>
+<td>May be available for organizational accounts to control whether Copilot grounds responses in work data or the web.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Screen-reader navigation:</strong> Microsoft documents Tab/Shift+Tab for moving among the navigation pane, chat pane, and other sections, with Arrow keys used inside navigation choices.</p>
+<h2 id="part-5---start-a-chat">Part 5 - Start a Chat</h2>
+<h3 id="ask-your-first-question">5.1 Ask Your First Question</h3>
+<p><strong>What you will learn:</strong> Send a basic text prompt.</p>
+<p><strong>Before you begin:</strong> Focus is in the Message Copilot field.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol><li>Type a harmless question such as: Explain the difference between a file and a folder in Windows 11.</li><li>Press Enter.</li><li>Wait for the response.</li><li>Use your screen reader reading commands or Arrow keys to review the answer.</li><li>Press Tab through nearby response controls such as copy, feedback, sources, or follow-up actions when available.</li></ol>
+<p><strong>What should happen:</strong> Copilot generates a response and keeps the conversation open for follow-up.</p>
+<p><strong>If that does not happen:</strong> If Enter creates a new line instead of sending, use the visible Send button or the keyboard behavior documented by your current client.</p>
+<p><strong>Practice:</strong> Ask three low-risk questions.</p>
+<h3 id="start-a-new-chat">5.2 Start a New Chat</h3>
+<p><strong>What you will learn:</strong> Keep unrelated topics from becoming mixed together.</p>
+<p><strong>Before you begin:</strong> You already have an active conversation.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol><li>Press Tab until you find Start a new chat / New chat.</li><li>Press Enter.</li><li>Confirm that the message field is empty and the old conversation is no longer the active thread.</li><li>Type the new topic and press Enter.</li></ol>
+<p><strong>What should happen:</strong> A separate conversation begins.</p>
+<p><strong>If that does not happen:</strong> If the prior conversation remains active, use the chat-history/sidebar navigation and choose New chat explicitly.</p>
+<p><strong>Practice:</strong> Start a new chat for a different subject.</p>
+<h2 id="part-6---write-better-prompts">Part 6 - Write Better Prompts</h2>
+<p>A strong prompt usually includes a goal, context, requirements, output format, and verification request.</p>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Goal</td>
+<td>What you want Copilot to do.</td>
+</tr>
+<tr class="even">
+<td>Context</td>
+<td>Background Copilot needs to understand the task.</td>
+</tr>
+<tr class="odd">
+<td>Requirements</td>
+<td>Length, audience, tone, exclusions, constraints, and required details.</td>
+</tr>
+<tr class="even">
+<td>Output format</td>
+<td>Paragraphs, headings, numbered steps, table, checklist, email draft, etc.</td>
+</tr>
+<tr class="odd">
+<td>Verification</td>
+<td>Ask for sources, uncertainty, assumptions, or current-document grounding when appropriate.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="turn-a-weak-prompt-into-a-strong-prompt">6.1 Turn a Weak Prompt into a Strong Prompt</h3>
+<p><strong>What you will learn:</strong> Get more useful and testable output.</p>
+<p><strong>Before you begin:</strong> Choose a harmless topic.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol><li>Start with a vague prompt such as: Help me with Excel.</li><li>Identify what is missing: task, audience, version, data, output, or constraints.</li><li>Rewrite it: I use Excel for Microsoft 365 on Windows with NVDA. Explain exactly how to create a table from A1:D20 using only the keyboard. Include expected screen-reader feedback and troubleshooting.</li><li>Send the improved prompt.</li><li>Compare the two responses.</li></ol>
+<p><strong>What should happen:</strong> The second response should be more specific and actionable.</p>
+<p><strong>If that does not happen:</strong> If Copilot still gives visual-only directions, explicitly ask for exact keyboard/screen-reader steps.</p>
+<p><strong>Practice:</strong> Improve three vague prompts.</p>
+<h2 id="part-7---follow-up-questions-and-iteration">Part 7 - Follow-Up Questions and Iteration</h2>
+<ul>
+<li><p>Ask Copilot to explain one step in more detail.</p></li>
+<li><p>Ask for alternatives and tradeoffs rather than one answer.</p></li>
+<li><p>Ask which assumptions it made.</p></li>
+<li><p>Ask which claims need verification.</p></li>
+<li><p>Ask it to reformat an answer for a screen reader: headings, numbered procedures, fewer decorative symbols, descriptive links.</p></li>
+<li><p>Ask it to shorten or expand the answer without changing the factual meaning.</p></li>
+</ul>
+<p><strong>Important:</strong> Repeatedly asking the same model does not create independent evidence. Use external sources when accuracy matters.</p>
+<h2 id="part-8---verify-answers-and-sources">Part 8 - Verify Answers and Sources</h2>
+<h3 id="verify-a-copilot-answer">8.1 Verify a Copilot Answer</h3>
+<p><strong>What you will learn:</strong> Treat important claims as unverified until checked.</p>
+<p><strong>Before you begin:</strong> Choose a factual Copilot response.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol><li>Identify the claims that matter.</li><li>Ask Copilot for sources or open the source citations it provides.</li><li>Read the original source rather than only the Copilot summary.</li><li>Check the publication or update date.</li><li>Confirm that the source actually supports the claim.</li><li>For important matters, compare another trustworthy source or primary source.</li></ol>
+<p><strong>What should happen:</strong> You know which claims are supported and which are uncertain.</p>
+<p><strong>If that does not happen:</strong> If Copilot provides no usable source, do not repeat the claim as established fact.</p>
+<p><strong>Practice:</strong> Verify three current claims.</p>
+<h2 id="part-9---web-search-and-current-information">Part 9 - Web Search and Current Information</h2>
+<p>Copilot can use web search in supported experiences. Work/school versions may also have a Work/Web choice. Current information should be checked against recent sources, especially for news, prices, software, policies, laws, schedules, public figures, and product features.</p>
+<h3 id="ask-for-current-information-safely">9.1 Ask for Current Information Safely</h3>
+<p><strong>What you will learn:</strong> Use web-grounded information without assuming it is correct.</p>
+<p><strong>Before you begin:</strong> Use a low-risk current topic.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol><li>Ask Copilot to search for the current information and cite sources.</li><li>Open at least one primary or authoritative source.</li><li>Check the date.</li><li>Compare the event date with the publication date.</li><li>If sources disagree, ask Copilot to summarize the disagreement rather than choosing a side without evidence.</li></ol>
+<p><strong>What should happen:</strong> The answer is tied to current sources you can inspect.</p>
+<p><strong>If that does not happen:</strong> If Copilot appears to answer from memory without current sources, restate that current verification is required.</p>
+<p><strong>Practice:</strong> Verify a current Microsoft feature announcement.</p>
+<h2 id="part-10---upload-files-and-images">Part 10 - Upload Files and Images</h2>
+<p>Microsoft currently documents file upload in personal Copilot for PDF, DOCX, XLSX, PPTX, PNG, JPEG/JFIF/PJP, TXT/TEXT, JSON, CSV, and Markdown. Microsoft says up to 20 files can be uploaded in one conversation in the current personal Copilot experience.</p>
+<h3 id="upload-a-file">10.1 Upload a File</h3>
+<p><strong>What you will learn:</strong> Ask Copilot about content you provide.</p>
+<p><strong>Before you begin:</strong> Use a non-sensitive practice file.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol><li>Focus the message composer.</li><li>Press Tab until you find the Open/Add/plus control for files or images.</li><li>Press Enter.</li><li>Choose Add images or files.</li><li>Use the file picker to select the practice file.</li><li>Confirm the filename is attached.</li><li>Type a prompt such as: Summarize this document in five bullets and list anything that appears ambiguous.</li><li>Press Enter.</li></ol>
+<p><strong>What should happen:</strong> Copilot analyzes the uploaded file and responds about its content.</p>
+<p><strong>If that does not happen:</strong> If upload is unavailable, your account/client/policy may not support it. Do not move sensitive files to a personal account just to gain the feature.</p>
+<p><strong>Practice:</strong> Upload a simple TXT or DOCX practice file.</p>
+<p><strong>Personal-account privacy:</strong> Microsoft currently states that files uploaded to personal Copilot are stored securely for no longer than 18 months and that uploaded file contents are not used for model training. Review current privacy controls before relying on this for sensitive material.</p>
+<h2 id="part-11---work-with-pdfs-word-excel-and-powerpoint-files">Part 11 - Work with PDFs, Word, Excel, and PowerPoint Files</h2>
+<ul>
+<li><p>PDF: ask for summary, headings, key facts, table extraction, or questions about the text. Scanned/image-only PDFs may require OCR and can produce errors.</p></li>
+<li><p>DOCX: ask for summary, outline, rewrite suggestions, comparison, or accessibility improvements.</p></li>
+<li><p>XLSX/CSV: ask for trends or explanations, but verify calculations/formulas independently.</p></li>
+<li><p>PPTX: ask for slide outline, speaker-note summary, accessibility review, or missing-context questions.</p></li>
+<li><p>Never assume Copilot interpreted a complex table, chart, footnote, scanned page, or hidden worksheet perfectly.</p></li>
+</ul>
+<h3 id="check-copilot-against-the-source-file">11.1 Check Copilot Against the Source File</h3>
+<p><strong>What you will learn:</strong> Prevent a summary from replacing the document.</p>
+<p><strong>Before you begin:</strong> Use a practice document you know well.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol><li>Upload the document.</li><li>Ask for a concise summary.</li><li>Ask Copilot to identify where in the document each important claim came from.</li><li>Open the original file and locate those sections yourself.</li><li>Correct any mismatch.</li></ol>
+<p><strong>What should happen:</strong> You know whether Copilot preserved the source meaning.</p>
+<p><strong>If that does not happen:</strong> If Copilot cannot identify supporting locations, treat the summary as a draft aid only.</p>
+<p><strong>Practice:</strong> Compare five claims with the source.</p>
+<h2 id="part-12---generate-and-edit-images">Part 12 - Generate and Edit Images</h2>
+<p>Microsoft Copilot can generate images from text prompts and can edit an uploaded image in supported versions.</p>
+<h3 id="generate-an-image">12.1 Generate an Image</h3>
+<p><strong>What you will learn:</strong> Create a new image from a text description.</p>
+<p><strong>Before you begin:</strong> Do not include a real person or private information in the practice prompt.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol><li>Type a descriptive prompt beginning with Create an image of...</li><li>Include subject, setting, style, mood, orientation, and important details.</li><li>Send the prompt.</li><li>Wait for the generated result.</li><li>If using a screen reader, ask Copilot to describe the resulting image in text and verify critical details when possible.</li></ol>
+<p><strong>What should happen:</strong> Copilot produces one or more images or a creation result.</p>
+<p><strong>If that does not happen:</strong> If image generation is unavailable or capacity-limited, use a text task and try later through an eligible experience.</p>
+<p><strong>Practice:</strong> Generate a simple diagram-like or decorative practice image.</p>
+<h3 id="edit-an-image">12.2 Edit an Image</h3>
+<p><strong>What you will learn:</strong> Describe a requested change to an image you have the right to use.</p>
+<p><strong>Before you begin:</strong> Use your own practice image.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol><li>Use the plus/Open control.</li><li>Choose Add images or files.</li><li>Select the image.</li><li>Type a change request such as: Remove the plain background and replace it with a neutral office wall.</li><li>Send the prompt.</li><li>Review the result and ask for further changes if needed.</li></ol>
+<p><strong>What should happen:</strong> Copilot creates an edited result based on the request.</p>
+<p><strong>If that does not happen:</strong> Microsoft instructs users to upload images they own or have rights to use and to respect other people's privacy and rights.</p>
+<p><strong>Practice:</strong> Edit a non-sensitive image you own.</p>
+<h2 id="part-13---copilot-voice">Part 13 - Copilot Voice</h2>
+<p>Current Copilot voice features include dictation, read aloud, and voice chat in supported experiences/languages. Voice chat lets you speak conversationally and hear spoken Copilot responses.</p>
+<h3 id="start-a-voice-conversation">13.1 Start a Voice Conversation</h3>
+<p><strong>What you will learn:</strong> Use Copilot hands-free.</p>
+<p><strong>Before you begin:</strong> A microphone is connected and microphone access is permitted.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol><li>Open Copilot.</li><li>Move to the microphone/voice control near the composer.</li><li>Activate it.</li><li>Grant microphone permission if prompted and you agree.</li><li>Speak a simple question.</li><li>Listen to the spoken response.</li><li>End the voice conversation using the available stop/end control.</li></ol>
+<p><strong>What should happen:</strong> Copilot responds aloud and a text transcript is available after the conversation.</p>
+<p><strong>If that does not happen:</strong> If Copilot cannot hear you, check the selected microphone and browser/Windows microphone permission.</p>
+<p><strong>Practice:</strong> Have a one-minute low-risk voice conversation.</p>
+<p><strong>Voice privacy:</strong> Microsoft currently states that normal Copilot Voice audio is not stored after processing; text transcripts are managed like text conversations. Feedback-related audio retention can have separate temporary rules, so review current settings before discussing sensitive topics.</p>
+<h2 id="part-14---copilot-vision">Part 14 - Copilot Vision</h2>
+<p>Copilot Vision can analyze a screen, webpage/app, or mobile camera feed that you deliberately share and answer questions about what it sees. Availability depends on the current Copilot plan/account and rollout. Vision is guidance: Microsoft states that it does not directly manipulate items on your device.</p>
+<h3 id="use-vision-as-an-accessibility-aid">14.1 Use Vision as an Accessibility Aid</h3>
+<p><strong>What you will learn:</strong> Ask Copilot about visual content you choose to share.</p>
+<p><strong>Before you begin:</strong> Use only non-sensitive visual content and confirm Vision is available to your account.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol><li>Start a Copilot Voice conversation when required by the current client.</li><li>Activate the Vision/share-screen or camera control.</li><li>Choose only the screen, app, page, or camera view you intend to share.</li><li>Ask a specific question such as: Describe the layout and tell me the text of the main heading.</li><li>Ask follow-up questions about individual controls or visual elements.</li><li>End Vision when finished.</li></ol>
+<p><strong>What should happen:</strong> Copilot describes or reasons about the shared visual content.</p>
+<p><strong>If that does not happen:</strong> Do not rely on Vision alone for safety-critical visual information such as medication identity, traffic, hazards, financial amounts, or identity verification.</p>
+<p><strong>Practice:</strong> Use Vision on a harmless settings screen if available.</p>
+<p><strong>Vision privacy:</strong> Microsoft states that Vision is user-initiated and session-bound. Current retention and subscription details vary between personal and organizational Copilot experiences; review the privacy notice displayed by your current client.</p>
+<h2 id="part-15---conversation-history">Part 15 - Conversation History</h2>
+<p>When signed in, Copilot can save conversation history so you can reopen past chats. Microsoft currently states that personal Copilot keeps the last 18 months of conversation history by default, with controls to delete individual conversations or history.</p>
+<h3 id="reopen-a-previous-conversation">15.1 Reopen a Previous Conversation</h3>
+<p><strong>What you will learn:</strong> Continue a prior topic without retyping context.</p>
+<p><strong>Before you begin:</strong> You are signed in and history is enabled.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol><li>Open the sidebar/navigation pane.</li><li>Move through conversation history/recent chats.</li><li>Select a conversation by title/date.</li><li>Press Enter.</li><li>Read enough of the prior conversation to confirm it is the correct one before continuing.</li></ol>
+<p><strong>What should happen:</strong> The prior thread opens.</p>
+<p><strong>If that does not happen:</strong> If the conversation is missing, it may have been deleted, created in temporary chat, or history may be disabled/unavailable.</p>
+<p><strong>Practice:</strong> Open one harmless prior conversation.</p>
+<h2 id="part-16---memory-personalization-and-temporary-chat">Part 16 - Memory, Personalization, and Temporary Chat</h2>
+<p>Current Copilot versions can remember preferences and details for personalization. Microsoft provides controls to view/delete saved memories and turn memory/personalization off. Temporary chat is designed for conversations that do not use or add personalized memory and do not appear in normal chat history in supported experiences.</p>
+<h3 id="review-copilot-memory">16.1 Review Copilot Memory</h3>
+<p><strong>What you will learn:</strong> See what Copilot may remember about you.</p>
+<p><strong>Before you begin:</strong> Sign in to a Copilot version with memory controls.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol><li>Open Settings / Chat settings.</li><li>Open Personalization or Memory.</li><li>Choose Manage saved memories.</li><li>Review each memory.</li><li>Delete anything you do not want remembered.</li><li>Turn saved memory/personalization off if that better fits your privacy preference.</li></ol>
+<p><strong>What should happen:</strong> You know what personalization data is being retained in the feature.</p>
+<p><strong>If that does not happen:</strong> Turning off memory may not automatically delete every already-saved item; use the delete controls as well.</p>
+<p><strong>Practice:</strong> Review memory without adding new private information.</p>
+<h3 id="start-a-temporary-chat">16.2 Start a Temporary Chat</h3>
+<p><strong>What you will learn:</strong> Discuss something without using normal personalization/history when the feature is available.</p>
+<p><strong>Before you begin:</strong> Temporary chat is offered in your version.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol><li>Find Temporary chat near the new-chat controls.</li><li>Activate it.</li><li>Confirm the interface indicates Temporary chat.</li><li>Ask a harmless question.</li><li>Close the temporary conversation and verify it is not available as a normal history item.</li></ol>
+<p><strong>What should happen:</strong> The temporary conversation is separated from normal history/personalization.</p>
+<p><strong>If that does not happen:</strong> Do not treat Temporary chat as permission to share confidential information; service and organizational rules still apply.</p>
+<p><strong>Practice:</strong> Use one harmless temporary chat.</p>
+<h2 id="part-17---search-library-and-create-in-the-workschool-copilot-app">Part 17 - Search, Library, and Create in the Work/School Copilot App</h2>
+<p>Microsoft's current screen-reader guidance for organizational Copilot describes Search, Library, Create, Agents, Notebooks, and Apps in the navigation pane. Availability depends on account and organization settings.</p>
+<h3 id="use-search-with-a-screen-reader">17.1 Use Search with a Screen Reader</h3>
+<p><strong>What you will learn:</strong> Find organizational files and content you already have permission to access.</p>
+<p><strong>Before you begin:</strong> Signed in with a supported work/school account.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol><li>Press Tab until you reach the side navigation panel and expand it if necessary.</li><li>Move to Search using the navigation list and Down Arrow.</li><li>Press Enter.</li><li>Type a keyword/query.</li><li>Press Enter.</li><li>Use Tab and Arrow keys through results and Quick access tabs such as Recent, Shared, and Favorites when available.</li><li>Press Enter on the intended file.</li></ol>
+<p><strong>What should happen:</strong> Search returns content available to your account.</p>
+<p><strong>If that does not happen:</strong> Search does not grant new permissions; if a file is unavailable, request access through normal organizational channels rather than trying to bypass permissions.</p>
+<p><strong>Practice:</strong> Search for one known non-sensitive work/school file.</p>
+<h3 id="use-library-and-create">17.2 Use Library and Create</h3>
+<p><strong>What you will learn:</strong> Open existing content or start an AI-created artifact.</p>
+<p><strong>Before you begin:</strong> The navigation items are available.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol><li>Open the side navigation panel.</li><li>Move to Library and press Enter to browse saved/recent items.</li><li>Return to navigation.</li><li>Move to Create and press Enter.</li><li>Use Arrow keys through creation options such as image, video, infographic, story, poster, or edit image when those options are available.</li><li>Choose a harmless practice creation option and enter a prompt.</li></ol>
+<p><strong>What should happen:</strong> You can reach both existing content and creation tools without a mouse.</p>
+<p><strong>If that does not happen:</strong> If items are not present, your license/organization may not include them.</p>
+<p><strong>Practice:</strong> Open Library and Create without generating confidential content.</p>
+<h2 id="part-18---agents-and-specialized-experiences">Part 18 - Agents and Specialized Experiences</h2>
+<p>Current organizational Copilot experiences may include specialized agents such as Researcher, Analyst, Files, Writing Coach, Prompt Coach, Idea Coach, and organization-specific agents. Availability varies by license and administrator settings.</p>
+<ul>
+<li><p>An agent is specialized for a task or data source; it is not automatically more accurate.</p></li>
+<li><p>Check what data and permissions the agent can access.</p></li>
+<li><p>Use the same verification rules for an agent's factual output.</p></li>
+<li><p>Do not create an agent with broader organizational permissions than its job requires.</p></li>
+<li><p>Use least privilege and human confirmation for actions that affect files, people, money, external communications, or records.</p></li>
+</ul>
+<h3 id="open-an-agent-with-a-screen-reader">18.1 Open an Agent with a Screen Reader</h3>
+<p><strong>What you will learn:</strong> Use a specialized agent without losing navigation context.</p>
+<p><strong>Before you begin:</strong> Agents are available in your organizational Copilot.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol><li>Expand the navigation pane.</li><li>Move to Agents and press Enter.</li><li>Use Down Arrow through available agents.</li><li>Press Enter on the desired agent.</li><li>Read its description before giving it information.</li><li>Send a low-risk test prompt.</li></ol>
+<p><strong>What should happen:</strong> The specialized agent opens in a chat-like workspace.</p>
+<p><strong>If that does not happen:</strong> If you do not recognize an agent or its data access, ask your organization/IT before using sensitive information.</p>
+<p><strong>Practice:</strong> Try Prompt Coach or Writing Coach if available.</p>
+<h2 id="part-19---copilot-in-word">Part 19 - Copilot in Word</h2>
+<ul>
+<li><p>Draft: generate a starting draft from a prompt or referenced content when available.</p></li>
+<li><p>Rewrite: improve selected text, tone, clarity, or length.</p></li>
+<li><p>Summarize: produce a summary of document content.</p></li>
+<li><p>Ask about document: query information grounded in the open file.</p></li>
+<li><p>Always review generated text for factual accuracy, tone, citations, accessibility, and organization policy before accepting it.</p></li>
+</ul>
+<p><strong>Screen-reader workflow:</strong> Use Word's normal keyboard navigation to position focus/selection, then open Copilot through the current Ribbon/Copilot control. Microsoft publishes separate screen-reader instructions for Copilot in Word because commands and pane structure can change.</p>
+<h2 id="part-20---copilot-in-excel">Part 20 - Copilot in Excel</h2>
+<ul>
+<li><p>Ask Copilot to explain data, trends, formulas, or possible visualizations when supported.</p></li>
+<li><p>Keep data in a clean table/range with meaningful headers for better analysis.</p></li>
+<li><p>Verify every generated formula by checking cell references and testing with known values.</p></li>
+<li><p>Do not rely on Copilot alone for financial, statistical, compliance, or scientific calculations.</p></li>
+<li><p>Ask it to explain how it reached a result rather than accepting the number alone.</p></li>
+</ul>
+<h2 id="part-21---copilot-in-powerpoint">Part 21 - Copilot in PowerPoint</h2>
+<ul>
+<li><p>Use Copilot for presentation outlines, draft slides, summaries, and rewriting.</p></li>
+<li><p>Check slide order, factual claims, speaker notes, citations, alt text, reading order, and color/contrast.</p></li>
+<li><p>Do not assume an AI-generated visual is accessible to blind/low-vision users.</p></li>
+<li><p>Run PowerPoint Accessibility Checker before sharing important presentations.</p></li>
+</ul>
+<h2 id="part-22---copilot-in-outlook">Part 22 - Copilot in Outlook</h2>
+<ul>
+<li><p>Summarize long email threads when supported, then read critical messages yourself before acting.</p></li>
+<li><p>Draft/rewrite email, but verify recipient, tone, promises, dates, attachments, and confidential content.</p></li>
+<li><p>Do not let a summary hide a disagreement, exception, deadline, or legal/compliance language.</p></li>
+<li><p>For work/school use, organizational data protection and policy govern what Copilot can use and what you may send.</p></li>
+</ul>
+<h2 id="part-23---copilot-in-onenote-and-teams">Part 23 - Copilot in OneNote and Teams</h2>
+<h3 id="onenote">23.1 OneNote</h3>
+<ul>
+<li><p>Use Copilot to summarize notes, generate task lists, reorganize ideas, or explain selected content when available.</p></li>
+<li><p>Check notebook/section/page privacy before asking Copilot to act on shared notes.</p></li>
+<li><p>Keep source notes available so you can verify the generated summary.</p></li>
+</ul>
+<h3 id="teams">23.2 Teams</h3>
+<ul>
+<li><p>Copilot can summarize meetings/chats and help identify decisions or action items when the required licensing/policy is enabled.</p></li>
+<li><p>Verify names, assignments, dates, and decisions against the actual meeting/chat record before sending follow-up.</p></li>
+<li><p>Respect meeting recording, transcription, retention, and organizational privacy policies.</p></li>
+</ul>
+<h2 id="part-24---accessibility-with-narrator-nvda-and-jaws">Part 24 - Accessibility with Narrator, NVDA, and JAWS</h2>
+<h3 id="navigate-the-copilot-app-with-a-windows-screen-reader">24.1 Navigate the Copilot App with a Windows Screen Reader</h3>
+<p><strong>What you will learn:</strong> Move predictably among chat and navigation areas.</p>
+<p><strong>Before you begin:</strong> Narrator, NVDA, or JAWS is running.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol><li>Press Windows, type Microsoft Copilot, and press Enter.</li><li>Listen for focus in the Message Copilot edit field/chat area.</li><li>Press Tab and Shift+Tab to move among major regions and controls.</li><li>When focus reaches the navigation pane/list, use Down/Up Arrow through options.</li><li>Press Enter to activate the selected option.</li><li>Return to the message field with Tab/Shift+Tab and type a prompt.</li><li>After the response arrives, use screen-reader reading/navigation commands to review it before moving to action buttons.</li></ol>
+<p><strong>What should happen:</strong> You can reach chat, navigation, settings, and feature areas without a mouse.</p>
+<p><strong>If that does not happen:</strong> If your screen reader begins reading the whole window rather than interacting with controls, confirm whether its browse/scan mode needs to be changed for the current control. Use the screen reader's help rather than guessing.</p>
+<p><strong>Practice:</strong> Navigate New chat, Settings, and one navigation item.</p>
+<h2 id="part-25---voiceover-talkback-and-braille">Part 25 - VoiceOver, TalkBack, and Braille</h2>
+<h3 id="voiceover-and-talkback">25.1 VoiceOver and TalkBack</h3>
+<ul>
+<li><p>Use standard swipe/navigation gestures through labeled buttons, the composer, history, settings, and generated responses.</p></li>
+<li><p>Double-tap the focused control to activate it.</p></li>
+<li><p>Use rotor/reading controls to move by headings or form controls where exposed.</p></li>
+<li><p>When using Copilot Voice or Vision, confirm microphone/camera/screen-sharing state before discussing private content.</p></li>
+<li><p>Mobile UI can roll out independently from Windows/web, so rely on control labels rather than memorized screen coordinates.</p></li>
+</ul>
+<h3 id="refreshable-braille">25.2 Refreshable Braille</h3>
+<ul>
+<li><p>Braille follows the active screen reader: Narrator, NVDA, JAWS, VoiceOver, or TalkBack.</p></li>
+<li><p>Test three functions: braille output from Copilot, braille input into the message field, and routing within editable text.</p></li>
+<li><p>Long AI responses may be easier to navigate with headings, lists, or shortened output; explicitly ask Copilot for that format.</p></li>
+<li><p>Protect privacy: Copilot can display account, work, email, and uploaded-document content on the braille display.</p></li>
+</ul>
+<h2 id="part-26---privacy-for-personal-microsoft-accounts">Part 26 - Privacy for Personal Microsoft Accounts</h2>
+<p>Microsoft's current personal-account privacy controls include conversation history, personalization/memory, model-training choices, and other consumer privacy settings. Microsoft released updated privacy documentation with the August 18, 2026 Copilot app.</p>
+<ul>
+<li><p>Review Settings &gt; privacy/personalization controls in the current app.</p></li>
+<li><p>Microsoft currently lets personal users control whether conversation activity is used to train generative AI models.</p></li>
+<li><p>Personal Copilot conversation history is retained for a limited period (currently documented as 18 months by default) unless deleted sooner.</p></li>
+<li><p>You can delete individual conversations or history.</p></li>
+<li><p>Uploaded files and images have their own current retention rules; verify them before uploading sensitive information.</p></li>
+<li><p>Vision has separate session-bound privacy rules from ordinary uploaded files/images.</p></li>
+</ul>
+<p><strong>Rule:</strong> A personal Copilot account is not an employer-approved secure workspace just because it is a Microsoft product.</p>
+<h2 id="part-27---enterprise-data-protection-for-work-or-school">Part 27 - Enterprise Data Protection for Work or School</h2>
+<p>Microsoft states that Copilot Chat for work/school processes prompts and responses within the Microsoft 365 service boundary with enterprise data protection. Microsoft also states that Microsoft 365 Copilot prompts, responses, and Microsoft Graph data are not used to train foundation LLMs.</p>
+<ul>
+<li><p>Copilot can only ground in organizational content the signed-in user is permitted to access.</p></li>
+<li><p>Existing Microsoft 365 security, privacy, and compliance controls continue to apply.</p></li>
+<li><p>Organization administrators can restrict features, connected experiences, agents, Vision, and other capabilities.</p></li>
+<li><p>Enterprise protection does not mean every use is allowed; organizational policy still governs what employees/students may submit and what actions they may take.</p></li>
+</ul>
+<h3 id="check-before-using-organizational-data">27.1 Check Before Using Organizational Data</h3>
+<p><strong>What you will learn:</strong> Avoid accidentally putting work/school data into the wrong Copilot context.</p>
+<p><strong>Before you begin:</strong> You are about to use nonpublic organizational information.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol><li>Confirm the signed-in account is your organizational account.</li><li>Confirm the Copilot experience shows the expected organizational/work context.</li><li>Check whether your organization has an AI/Copilot policy for this data category.</li><li>Use only the minimum data required.</li><li>Review the response before sharing it outside the organization.</li></ol>
+<p><strong>What should happen:</strong> Organizational information stays within the approved workflow.</p>
+<p><strong>If that does not happen:</strong> If you cannot determine whether the Copilot session is covered by your organization, stop and ask IT/security rather than using a personal session.</p>
+<p><strong>Practice:</strong> Practice with a non-sensitive internal document only if policy permits.</p>
+<h2 id="part-28---responsible-use-and-high-stakes-tasks">Part 28 - Responsible Use and High-Stakes Tasks</h2>
+<ul>
+<li><p>Copilot can be wrong even when the answer sounds confident.</p></li>
+<li><p>Do not use Copilot alone to make medical, legal, financial, employment, safety, disciplinary, or other high-stakes decisions.</p></li>
+<li><p>Verify facts with authoritative current sources and qualified professionals when needed.</p></li>
+<li><p>Do not upload other people's sensitive personal information merely because Copilot can analyze it.</p></li>
+<li><p>Review AI-generated images and text for bias, inappropriate assumptions, accessibility, copyright/rights issues, and disclosure requirements.</p></li>
+<li><p>Keep a human responsible for external messages, files, purchases, deletions, security changes, and decisions that affect other people.</p></li>
+</ul>
+<p><strong>Microsoft guidance:</strong> Microsoft's Copilot voice FAQ explicitly warns that generative AI answers may not always be accurate and recommends double-checking facts before decisions or actions.</p>
+<h2 id="part-29---troubleshooting">Part 29 - Troubleshooting</h2>
+<h3 id="copilot-gives-an-incorrect-or-invented-answer">29.1 Copilot Gives an Incorrect or Invented Answer</h3>
+<p><strong>What you will learn:</strong> Recover without arguing with the model.</p>
+<p><strong>Before you begin:</strong> You suspect the answer is wrong.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol><li>Ask Copilot to separate verified facts from assumptions.</li><li>Ask for current primary sources.</li><li>Open those sources yourself.</li><li>Remove unsupported claims from your work.</li><li>Start a new chat if the conversation contains conflicting assumptions.</li><li>For high-stakes topics, use qualified human guidance.</li></ol>
+<p><strong>What should happen:</strong> The unsupported content is isolated and corrected.</p>
+<p><strong>If that does not happen:</strong> Do not keep prompting until Copilot produces the answer you hoped to hear.</p>
+<p><strong>Practice:</strong> Verify one deliberately testable claim.</p>
+<h3 id="copilot-cannot-see-a-file-or-work-item">29.2 Copilot Cannot See a File or Work Item</h3>
+<p><strong>What you will learn:</strong> Check account, permission, and attachment state.</p>
+<p><strong>Before you begin:</strong> A file exists but Copilot cannot use it.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol><li>Confirm the correct account is signed in.</li><li>For uploads, confirm the file is actually attached to the current chat.</li><li>For organizational Search/Library, confirm you personally have permission to open the file outside Copilot.</li><li>Check whether the file format/size is supported by the current client.</li><li>Ask IT/owner for normal file access if required.</li></ol>
+<p><strong>What should happen:</strong> You identify upload, account, permission, or feature support as the cause.</p>
+<p><strong>If that does not happen:</strong> Copilot must not be used to bypass access control.</p>
+<p><strong>Practice:</strong> Diagnose a harmless test file.</p>
+<h3 id="voice-does-not-hear-you">29.3 Voice Does Not Hear You</h3>
+<p><strong>What you will learn:</strong> Restore microphone access methodically.</p>
+<p><strong>Before you begin:</strong> Copilot Voice is open.</p>
+<h4 id="exactly-how-to-do-it-24">Exactly how to do it</h4>
+<ol><li>Check that the correct microphone is connected and unmuted.</li><li>Check Windows/browser microphone permission for Copilot.</li><li>Reduce background noise.</li><li>End and restart the voice session.</li><li>Test the microphone in another trusted app.</li></ol>
+<p><strong>What should happen:</strong> Voice input works or the microphone/permission problem is isolated.</p>
+<p><strong>If that does not happen:</strong> Do not repeatedly reinstall Copilot until the basic microphone test is done.</p>
+<p><strong>Practice:</strong> Run a microphone test.</p>
+<h3 id="copilot-screen-reader-focus-is-confusing">29.4 Copilot Screen Reader Focus Is Confusing</h3>
+<p><strong>What you will learn:</strong> Reestablish the region before changing screen-reader settings.</p>
+<p><strong>Before you begin:</strong> Copilot is open with Narrator/NVDA/JAWS.</p>
+<h4 id="exactly-how-to-do-it-25">Exactly how to do it</h4>
+<ol><li>Press Escape to close menus/dialogs.</li><li>Use Tab/Shift+Tab to identify the focused control.</li><li>Move to the navigation pane or message field deliberately.</li><li>Use the screen reader's focus-repeat command to confirm location.</li><li>Only toggle browse/scan/focus mode if the current control requires it.</li></ol>
+<p><strong>What should happen:</strong> You regain predictable keyboard focus.</p>
+<p><strong>If that does not happen:</strong> If the UI changed after an update, use Microsoft's current screen-reader article instead of old memorized positions.</p>
+<p><strong>Practice:</strong> Recover from navigation pane to message field.</p>
+<h3 id="a-feature-is-missing">29.5 A Feature Is Missing</h3>
+<p><strong>What you will learn:</strong> Determine whether it is a rollout/license/policy issue.</p>
+<p><strong>Before you begin:</strong> You saw a feature in documentation or another user's account.</p>
+<h4 id="exactly-how-to-do-it-26">Exactly how to do it</h4>
+<ol><li>Check whether you are using personal or work/school Copilot.</li><li>Check Copilot/app updates.</li><li>Check subscription/license requirements in Microsoft Support.</li><li>Check organization policy/admin restrictions.</li><li>Check region/language/device requirements.</li><li>Use an alternative supported workflow instead of trying to circumvent restrictions.</li></ol>
+<p><strong>What should happen:</strong> You understand why the UI differs or know what to check next.</p>
+<p><strong>If that does not happen:</strong> Copilot features roll out and change frequently; a missing feature is not automatically a malfunction.</p>
+<p><strong>Practice:</strong> Compare the navigation items available in your account with the manual.</p>
+<h2 id="part-30---independent-practice-course">Part 30 - Independent Practice Course</h2>
+<h3 id="level-1---orientation">Level 1 - Orientation</h3>
+<p>☐ Open Copilot on Windows.</p>
+<p>☐ Open copilot.com.</p>
+<p>☐ Identify the signed-in account type.</p>
+<p>☐ Find the message field and New chat.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-2---basic-chat">Level 2 - Basic Chat</h3>
+<p>☐ Send a prompt.</p>
+<p>☐ Read the answer.</p>
+<p>☐ Ask a follow-up.</p>
+<p>☐ Start a new chat.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-3---prompting">Level 3 - Prompting</h3>
+<p>☐ Write goal/context/requirements prompt.</p>
+<p>☐ Ask for numbered steps.</p>
+<p>☐ Ask for uncertainty.</p>
+<p>☐ Ask for sources.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-4---verification">Level 4 - Verification</h3>
+<p>☐ Open a source.</p>
+<p>☐ Check its date.</p>
+<p>☐ Confirm the claim.</p>
+<p>☐ Correct an unsupported statement.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-5---files">Level 5 - Files</h3>
+<p>☐ Upload a safe file.</p>
+<p>☐ Summarize it.</p>
+<p>☐ Ask source-location questions.</p>
+<p>☐ Compare output to original.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-6---images">Level 6 - Images</h3>
+<p>☐ Generate a harmless image.</p>
+<p>☐ Ask for a text description.</p>
+<p>☐ Edit an image you own.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-7---voicevision">Level 7 - Voice/Vision</h3>
+<p>☐ Start Voice.</p>
+<p>☐ End Voice.</p>
+<p>☐ If available, use Vision on harmless content.</p>
+<p>☐ Confirm sharing stops.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-8---historymemory">Level 8 - History/Memory</h3>
+<p>☐ Open history.</p>
+<p>☐ Reopen a chat.</p>
+<p>☐ Review memory/personalization.</p>
+<p>☐ Use Temporary chat if available.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-9---workschool-navigation">Level 9 - Work/School Navigation</h3>
+<p>☐ Open Search.</p>
+<p>☐ Open Library.</p>
+<p>☐ Open Create.</p>
+<p>☐ Open an agent if available.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-10---microsoft-365">Level 10 - Microsoft 365</h3>
+<p>☐ Use one approved Copilot feature in Word/Excel/PowerPoint/Outlook/OneNote/Teams.</p>
+<p>☐ Verify final content before saving/sending.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-11---accessibility">Level 11 - Accessibility</h3>
+<p>☐ Navigate with screen reader.</p>
+<p>☐ Use braille input/output if available.</p>
+<p>☐ Request accessible formatting.</p>
+<p>☐ Recover lost focus.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h3 id="level-12---responsible-use">Level 12 - Responsible Use</h3>
+<p>☐ Identify data sensitivity.</p>
+<p>☐ Choose correct account.</p>
+<p>☐ Verify high-impact facts.</p>
+<p>☐ Explain when not to use Copilot.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you which control to use or what to verify.</p>
+<h2 id="part-31---quick-reference">Part 31 - Quick Reference</h2>
+<h3 id="core-windowsweb-navigation">Core Windows/Web Navigation</h3>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Open Windows app</td>
+<td>Windows key, type Microsoft Copilot, Enter</td>
+</tr>
+<tr class="even">
+<td>Open web version</td>
+<td>Ctrl+L / Alt+D, type copilot.com, Enter</td>
+</tr>
+<tr class="odd">
+<td>Move forward/backward among controls</td>
+<td>Tab / Shift+Tab</td>
+</tr>
+<tr class="even">
+<td>Move in navigation lists</td>
+<td>Up/Down Arrow</td>
+</tr>
+<tr class="odd">
+<td>Activate focused control</td>
+<td>Enter or Space as appropriate</td>
+</tr>
+<tr class="even">
+<td>Close menu/dialog</td>
+<td>Escape</td>
+</tr>
+<tr class="odd">
+<td>Send prompt</td>
+<td>Enter in the standard message composer</td>
+</tr>
+<tr class="even">
+<td>New conversation</td>
+<td>New chat / Start a new chat button</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="prompt-checklist">Prompt Checklist</h3>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Goal</td>
+<td>What should Copilot do?</td>
+</tr>
+<tr class="even">
+<td>Context</td>
+<td>What does it need to know?</td>
+</tr>
+<tr class="odd">
+<td>Requirements</td>
+<td>What constraints must it follow?</td>
+</tr>
+<tr class="even">
+<td>Format</td>
+<td>How should the answer be structured?</td>
+</tr>
+<tr class="odd">
+<td>Verification</td>
+<td>What facts/sources should it check?</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="before-you-trust-or-act">Before You Trust or Act</h3>
+<p>☐ Confirm current account/context.</p>
+<p>☐ Protect private/confidential information.</p>
+<p>☐ Open and read important sources.</p>
+<p>☐ Check names, dates, numbers, formulas, links, and quotations.</p>
+<p>☐ Get qualified human review for high-stakes matters.</p>
+<p>☐ Review every external message/file/action before sending or publishing.</p>
+<h2 id="part-32---official-microsoft-resources">Part 32 - Official Microsoft Resources</h2>
+<p><a href="https://support.microsoft.com/en-us/microsoft-copilot/getting-started-with-microsoft-copilot"><u>Getting started with Microsoft Copilot</u></a></p>
+<p><a href="https://support.microsoft.com/en-us/accessibility/copilot/accessibility-tools-for-microsoft-copilot"><u>Accessibility tools for Microsoft Copilot</u></a></p>
+<p><a href="https://support.microsoft.com/en-us/accessibility/copilot/use-a-screen-reader-to-explore-and-navigate-the-microsoft-365-copilot-app"><u>Use a screen reader to explore and navigate the Microsoft Copilot app</u></a></p>
+<p><a href="https://support.microsoft.com/en-us/microsoft-copilot/file-upload-in-microsoft-copilot"><u>File upload in Microsoft Copilot</u></a></p>
+<p><a href="https://support.microsoft.com/en-us/microsoft-copilot/using-image-generation-in-microsoft-copilot"><u>Using Image Generation in Microsoft Copilot</u></a></p>
+<p><a href="https://support.microsoft.com/en-us/Microsoft-Copilot/using-copilot-voice-with-microsoft-copilot"><u>Using Copilot Voice with Microsoft Copilot</u></a></p>
+<p><a href="https://support.microsoft.com/en-us/microsoft-copilot/using-copilot-vision-with-microsoft-copilot"><u>Using Copilot Vision with Microsoft Copilot</u></a></p>
+<p><a href="https://support.microsoft.com/en-us/microsoft-copilot/conversation-history-in-microsoft-copilot"><u>Conversation history in Microsoft Copilot</u></a></p>
+<p><a href="https://support.microsoft.com/en-us/privacy/microsoft-copilot/overview"><u>Microsoft Copilot for individuals - data, privacy, and responsible AI</u></a></p>
+<p><a href="https://support.microsoft.com/en-us/privacy/microsoft-copilot/privacy-controls"><u>Microsoft Copilot for individuals - privacy controls and choices</u></a></p>
+<p><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-privacy"><u>Data, Privacy, and Security for Microsoft 365 Copilot</u></a></p>
+<p><a href="https://learn.microsoft.com/en-us/copilot/privacy-and-protections"><u>Microsoft Copilot Chat privacy and protections</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I can explain what Microsoft Copilot is and what it cannot guarantee.</p>
+<p>☐ I can distinguish personal Copilot from work/school Copilot.</p>
+<p>☐ I can open Copilot on Windows and the web.</p>
+<p>☐ I can identify the message field, navigation pane, New chat, history, and settings.</p>
+<p>☐ I can write a structured prompt and improve it with follow-up questions.</p>
+<p>☐ I can verify sources and current information.</p>
+<p>☐ I can upload a safe file and compare Copilot output with the source.</p>
+<p>☐ I can generate/edit images while respecting rights and privacy.</p>
+<p>☐ I can use Copilot Voice and understand microphone/privacy considerations.</p>
+<p>☐ I understand what Copilot Vision can and cannot do.</p>
+<p>☐ I can manage conversation history, memory, personalization, and Temporary chat where available.</p>
+<p>☐ I can navigate Search, Library, Create, and Agents when my account includes them.</p>
+<p>☐ I understand Copilot use in Word, Excel, PowerPoint, Outlook, OneNote, and Teams.</p>
+<p>☐ I can use Copilot with Narrator, NVDA, JAWS, VoiceOver, TalkBack, or braille.</p>
+<p>☐ I understand consumer privacy choices for a personal Microsoft account.</p>
+<p>☐ I understand enterprise data protection for a work/school account.</p>
+<p>☐ I know when AI output requires authoritative human review.</p>
+<p>☐ I can troubleshoot incorrect answers, files, voice, screen-reader focus, and missing features.</p>
+<p><strong>Most important habit:</strong> Before every important Copilot task, confirm the account, protect the data, state the task clearly, verify the evidence, and keep a human responsible for the final action.</p>
+
+<h2 id="website-practice">Website practice and lessons</h2>
+<p>The following procedures preserve the Accessible Learning Center's original guided practice and connect this full manual to the ten-lesson course.</p>
 <section id="complete-procedures" aria-labelledby="complete-procedures-heading">
 <h2 id="complete-procedures-heading">Basic and advanced step-by-step procedures</h2>
 <p>These procedures make the manual usable on its own. The separate lessons provide assignments and progress tracking when you want a course experience.</p>
@@ -124,4 +859,8 @@
 <p><strong>Practice:</strong> Complete a fictional Microsoft 365 project using prompting, source checks, human revision, and safe data handling.</p>
 </section>
 </section>
-<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">Microsoft Copilot lessons</h2><ol class="course-lesson-list"><li><a href="copilot-lesson-1.html">Lesson 1: Open Copilot and Understand Its Main Controls</a></li><li><a href="copilot-lesson-2.html">Lesson 2: Write Clear Prompts for Microsoft Work Tasks</a></li><li><a href="copilot-lesson-3.html">Lesson 3: Refine Responses with Follow-Up Instructions</a></li><li><a href="copilot-lesson-4.html">Lesson 4: Draft and Improve Professional Messages</a></li><li><a href="copilot-lesson-5.html">Lesson 5: Summarize Public Documents and Verify Key Points</a></li><li><a href="copilot-lesson-6.html">Lesson 6: Create Word, Excel, and PowerPoint Planning Content</a></li><li><a href="copilot-lesson-7.html">Lesson 7: Research with Citations and Check Original Sources</a></li><li><a href="copilot-lesson-8.html">Lesson 8: Protect Organizational Data and Follow Permissions</a></li><li><a href="copilot-lesson-9.html">Lesson 9: Use Copilot with JAWS, Narrator, or NVDA</a></li><li><a href="copilot-lesson-10.html">Lesson 10: Final Microsoft Copilot Workplace Project</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from Copilot manual"><a href="copilot-lesson-1.html">Start Copilot Lesson 1</a><a href="lessons.html#copilot-lessons">All Copilot lessons</a><a href="student-progress.html">My progress</a></nav></main></body></html>
+
+<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">Microsoft Copilot lessons</h2><ol class="course-lesson-list"><li><a href="copilot-lesson-1.html">Lesson 1: Open Copilot and Understand Its Main Controls</a></li><li><a href="copilot-lesson-2.html">Lesson 2: Write Clear Prompts for Microsoft Work Tasks</a></li><li><a href="copilot-lesson-3.html">Lesson 3: Refine Responses with Follow-Up Instructions</a></li><li><a href="copilot-lesson-4.html">Lesson 4: Draft and Improve Professional Messages</a></li><li><a href="copilot-lesson-5.html">Lesson 5: Summarize Public Documents and Verify Key Points</a></li><li><a href="copilot-lesson-6.html">Lesson 6: Create Word, Excel, and PowerPoint Planning Content</a></li><li><a href="copilot-lesson-7.html">Lesson 7: Research with Citations and Check Original Sources</a></li><li><a href="copilot-lesson-8.html">Lesson 8: Protect Organizational Data and Follow Permissions</a></li><li><a href="copilot-lesson-9.html">Lesson 9: Use Copilot with JAWS, Narrator, or NVDA</a></li><li><a href="copilot-lesson-10.html">Lesson 10: Final Microsoft Copilot Workplace Project</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from Copilot manual"><a href="copilot-lesson-1.html">Start Copilot Lesson 1</a><a href="lessons.html#copilot-lessons">All Copilot lessons</a><a href="student-progress.html">My progress</a></nav>
+  </main>
+</body>
+</html>

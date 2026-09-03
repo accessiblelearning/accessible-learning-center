@@ -346,6 +346,11 @@ for (const requiredTopic of ["Large Language Models and Tokens", "Hallucinations
   check(aiManual.includes(requiredTopic), "AI Fundamentals manual is missing: " + requiredTopic + ".");
 }
 check((aiManual.match(/<h2 id="part-/g) || []).length === 29, "AI Fundamentals manual must contain all 29 full manual parts.");
+const copilotManual = readFileSync(resolve(root, "copilot-manual.html"), "utf8");
+for (const requiredTopic of ["Personal vs Work or School Copilot", "Upload Files and Images", "Copilot Voice", "Copilot Vision", "Search, Library, and Create", "Copilot in Word", "Accessibility with Narrator, NVDA, and JAWS", "VoiceOver, TalkBack, and Braille", "Enterprise Data Protection", "Troubleshooting", "Final Independence Checklist"]) {
+  check(copilotManual.includes(requiredTopic), "Microsoft Copilot manual is missing: " + requiredTopic + ".");
+}
+check((copilotManual.match(/<h2 id="part-/g) || []).length === 32, "Microsoft Copilot manual must contain all 32 full manual parts.");
 for (const action of ["decrease", "increase", "reset-text", "dark", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }
