@@ -361,6 +361,11 @@ for (const requiredTopic of ["Turn On Screen Reader and Braille Support", "Rows,
   check(sheetsManual.includes(requiredTopic), "Google Sheets manual is missing: " + requiredTopic + ".");
 }
 check((sheetsManual.match(/<h2 id="part-/g) || []).length === 36, "Google Sheets manual must contain all 36 full manual parts.");
+const chatgptManual = readFileSync(resolve(root, "chatgpt-manual.html"), "utf8");
+for (const requiredTopic of ["Chat, Work, and Codex", "Prompting Fundamentals", "Search the Web", "Verify Answers and Sources", "Upload and Work with Files", "Data Analysis and Spreadsheets", "Images: Analyze, Generate, and Edit", "Projects", "Plugins and Connected Apps", "Deep Research", "Scheduled Tasks and Monitoring", "Memory and Personalization", "Temporary Chat", "Data Controls and Privacy", "Screen Reader Use on Windows", "VoiceOver on Mac and iPhone/iPad", "TalkBack on Android", "Braille Displays", "Responsible and Safe Use", "Troubleshooting", "Final Independence Checklist"]) {
+  check(chatgptManual.includes(requiredTopic), "ChatGPT manual is missing: " + requiredTopic + ".");
+}
+check((chatgptManual.match(/<h2 id="part-/g) || []).length === 37, "ChatGPT manual must contain all 37 full manual parts.");
 for (const action of ["decrease", "increase", "reset-text", "dark", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }

@@ -1,13 +1,833 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Accessible keyboard-first ChatGPT manual for blind and low-vision learners."><title>ChatGPT Manual - Accessible Learning Center</title><link rel="stylesheet" href="styles.css?v=manual-review-1"><script src="accessibility.js?v=manual-review-1" defer></script></head><body class="manual-page">
-<a class="skip-link" href="#main-content">Skip to main content</a><header><p class="eyebrow">Accessible ChatGPT course</p><h1>ChatGPT Manual</h1><p>Practical, responsible AI skills for work, learning, and independent problem-solving.</p></header><main id="main-content"><nav class="manual-tools lesson-nav" aria-label="ChatGPT manual navigation"><a href="#basics">Basics</a><a href="#prompting">Prompting</a><a href="#verification">Verification</a><a href="#privacy">Privacy</a><a href="#screen-readers">Screen readers</a><a href="#lessons">Lessons</a></nav>
-<section id="basics" aria-labelledby="basics-heading"><h2 id="basics-heading">What generative AI does</h2><p>Generative AI predicts and creates text or other content from patterns in training data and the information supplied in a conversation. It can help brainstorm, organize, explain, summarize, and draft. It does not understand a situation the way a person does, and it can produce confident but incorrect or invented information.</p><p>Use AI as an assistant, not as the final decision-maker. A person remains responsible for checking accuracy, appropriateness, accessibility, and compliance with workplace rules.</p></section>
-<section id="prompting" aria-labelledby="prompting-heading"><h2 id="prompting-heading">A reliable prompt pattern</h2><ol><li><strong>Task:</strong> State exactly what you want.</li><li><strong>Context:</strong> Explain the audience and purpose using nonprivate information.</li><li><strong>Constraints:</strong> Give length, tone, reading level, deadline, or other limits.</li><li><strong>Format:</strong> Request headings, bullets, a numbered procedure, or a simple table.</li><li><strong>Checks:</strong> Ask the tool to identify uncertainty and provide sources when appropriate.</li></ol><p>Continue the conversation with specific follow-ups. For example: “Shorten this to 150 words,” “Explain the second step,” or “Which statements need verification?”</p></section>
-<section id="verification" aria-labelledby="verification-heading"><h2 id="verification-heading">Verify before using the result</h2><ul><li>Open original sources instead of trusting an AI summary or citation.</li><li>Confirm names, dates, quotations, calculations, contact details, laws, policies, and software instructions.</li><li>Prefer current primary sources from the organization responsible for the information.</li><li>Compare important claims with a second reliable source.</li><li>Test instructions safely before giving them to another person.</li><li>Rewrite the final result in your own voice and keep a record of corrections.</li></ul></section>
-<section id="privacy" aria-labelledby="privacy-heading"><h2 id="privacy-heading">Privacy and workplace rules</h2><p>Do not enter client records, medical or disability details, passwords, financial account information, private addresses, confidential workplace material, copyrighted documents you are not permitted to share, or information that identifies another person. Use fictional or public information in these lessons.</p><p>Follow the employer’s approved-tool, retention, disclosure, and human-review requirements. A personal free account is not automatically approved for organizational data. Never allow AI to make an employment, benefit, medical, legal, financial, safety, or accommodation decision for a person.</p></section>
-<section aria-labelledby="accessibility-heading"><h2 id="accessibility-heading">Accessible output</h2><p>Ask for descriptive headings, short paragraphs, meaningful link text, numbered steps, and simple tables. Ask for image descriptions when an image matters, but verify the description with a trusted person when accuracy is important. Avoid layouts that communicate meaning only through color, position, or visual formatting.</p></section>
-<section id="screen-readers" aria-labelledby="screen-readers-heading"><h2 id="screen-readers-heading">JAWS, Narrator, and NVDA</h2><p>AI interfaces change often. Use Tab and Shift+Tab to move among controls, Enter or Space to activate a control, and the screen reader’s heading, landmark, link, button, edit-field, and browse-mode commands to review the page. Use browser Find to locate words such as “Sources,” “Copy,” or part of your prompt.</p><ul><li><strong>JAWS:</strong> H moves by heading, B by button, E by edit field, Insert+F7 opens links, and Insert+F5 opens form fields.</li><li><strong>NVDA:</strong> H moves by heading, B by button, E by edit field, NVDA+F7 opens the Elements List, and NVDA+Space switches browse and focus modes.</li><li><strong>Narrator:</strong> Use Caps Lock or Insert with arrow keys for Scan Mode navigation; press Caps Lock+Space to toggle Scan Mode when needed.</li></ul><p>After sending a prompt, allow time for the response to finish. Move by heading or paragraph and confirm whether focus changed. Product-specific keyboard behavior may change after updates.</p></section>
-<section aria-labelledby="cost-heading"><h2 id="cost-heading">Free-course rule</h2><p>These lessons can be completed with an available free AI service or by studying the examples without creating an account. Do not start a paid trial, enter payment information, or purchase a subscription for this course.</p></section>
-<section aria-labelledby="official-heading"><h2 id="official-heading">Official references</h2><ul><li><a href="https://help.openai.com/en/collections/3742473-chatgpt">Official ChatGPT help</a></li><li><a href="https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth">OpenAI: Does ChatGPT tell the truth?</a></li><li><a href="https://help.openai.com/en/articles/7730893-data-controls-faq">OpenAI Data Controls FAQ</a></li></ul></section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Comprehensive keyboard-first ChatGPT manual for blind and low-vision learners.">
+  <title>ChatGPT Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-chatgpt-manual-1">
+  <script src="accessibility.js?v=manual-contents-1" defer></script>
+</head>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible artificial intelligence</p>
+    <h1>ChatGPT Manual</h1>
+    <p>Independent self-study guide for ChatGPT, Work, and Codex with screen readers, braille displays, and keyboard navigation.</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#complete-procedures">Website practice procedures</a>
+      <a href="#lessons">ChatGPT lessons</a>
+    </nav>
+<p><strong>Independent Self-Study Guide</strong></p>
+<p><em>Chat, Search, Files, Images, Voice, Projects, Work, Memory, Privacy, Accessibility, and Responsible Use</em></p>
+<p><strong>Purpose:</strong> This manual teaches ChatGPT from the beginning. It assumes no previous AI experience and explains how to ask questions, work with files and images, verify answers, manage privacy and memory, use advanced features when available, and use ChatGPT effectively with screen readers and braille.</p>
+<p><strong>Current reference:</strong> This guide reflects the current ChatGPT product as of September 2026. Features can vary by plan, region, device, workspace policy, model, and rollout.</p>
+<p><strong>Core principle:</strong> ChatGPT can be useful without being automatically correct. Verify important facts, protect sensitive information, and keep human control over important decisions and actions.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Begin with ordinary Chat before exploring advanced features.</p></li>
+<li><p>Use a new chat for a new topic when old context may cause confusion.</p></li>
+<li><p>Give clear goals, relevant context, constraints, and desired output format.</p></li>
+<li><p>For current facts, ask ChatGPT to search the web and check the cited sources.</p></li>
+<li><p>Do not paste passwords, security codes, private keys, or sensitive records into a general chat.</p></li>
+<li><p>Use Temporary Chat when you want a conversation that does not appear in normal history and does not create memory.</p></li>
+<li><p>Use Projects to keep related chats, files, and instructions together.</p></li>
+<li><p>Use Work for longer multi-step deliverables or delegated tasks when your plan provides it.</p></li>
+<li><p>Use screen-reader heading, landmark, button, and edit-field navigation to move efficiently through ChatGPT.</p></li>
+<li><p>Always review important output before sending, publishing, submitting, or acting on it.</p></li>
+</ul>
+<nav class="manual-contents" aria-labelledby="table-of-contents">
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#part-1---what-chatgpt-is">Part 1 - What ChatGPT Is</a></li>
+<li><a href="#part-2---chat-work-and-codex">Part 2 - Chat, Work, and Codex</a></li>
+<li><a href="#part-3---open-chatgpt-and-start-a-chat">Part 3 - Open ChatGPT and Start a Chat</a></li>
+<li><a href="#part-4---understand-the-chat-interface">Part 4 - Understand the Chat Interface</a></li>
+<li><a href="#part-5---prompting-fundamentals">Part 5 - Prompting Fundamentals</a></li>
+<li><a href="#part-6---better-prompts-and-follow-up-questions">Part 6 - Better Prompts and Follow-Up Questions</a></li>
+<li><a href="#part-7---conversation-context-and-new-chats">Part 7 - Conversation Context and New Chats</a></li>
+<li><a href="#part-8---models-and-modes">Part 8 - Models and Modes</a></li>
+<li><a href="#part-9---search-the-web">Part 9 - Search the Web</a></li>
+<li><a href="#part-10---verify-answers-and-sources">Part 10 - Verify Answers and Sources</a></li>
+<li><a href="#part-11---upload-and-work-with-files">Part 11 - Upload and Work with Files</a></li>
+<li><a href="#part-12---data-analysis-and-spreadsheets">Part 12 - Data Analysis and Spreadsheets</a></li>
+<li><a href="#part-13---images-analyze-generate-and-edit">Part 13 - Images: Analyze, Generate, and Edit</a></li>
+<li><a href="#part-14---voice">Part 14 - Voice</a></li>
+<li><a href="#part-15---writing-blocks-and-code-blocks">Part 15 - Writing Blocks and Code Blocks</a></li>
+<li><a href="#part-16---projects">Part 16 - Projects</a></li>
+<li><a href="#part-17---work">Part 17 - Work</a></li>
+<li><a href="#part-18---plugins-and-connected-apps">Part 18 - Plugins and Connected Apps</a></li>
+<li><a href="#part-19---deep-research">Part 19 - Deep Research</a></li>
+<li><a href="#part-20---study-mode">Part 20 - Study Mode</a></li>
+<li><a href="#part-21---scheduled-tasks-and-monitoring">Part 21 - Scheduled Tasks and Monitoring</a></li>
+<li><a href="#part-22---memory-and-personalization">Part 22 - Memory and Personalization</a></li>
+<li><a href="#part-23---temporary-chat">Part 23 - Temporary Chat</a></li>
+<li><a href="#part-24---chat-history-archive-delete-and-library">Part 24 - Chat History, Archive, Delete, and Library</a></li>
+<li><a href="#part-25---data-controls-and-privacy">Part 25 - Data Controls and Privacy</a></li>
+<li><a href="#part-26---sharing-conversations-and-projects">Part 26 - Sharing Conversations and Projects</a></li>
+<li><a href="#part-27---screen-reader-use-on-windows">Part 27 - Screen Reader Use on Windows</a></li>
+<li><a href="#part-28---voiceover-on-mac-and-iphoneipad">Part 28 - VoiceOver on Mac and iPhone/iPad</a></li>
+<li><a href="#part-29---talkback-on-android">Part 29 - TalkBack on Android</a></li>
+<li><a href="#part-30---braille-displays">Part 30 - Braille Displays</a></li>
+<li><a href="#part-31---accessibility-prompting-techniques">Part 31 - Accessibility Prompting Techniques</a></li>
+<li><a href="#part-32---responsible-and-safe-use">Part 32 - Responsible and Safe Use</a></li>
+<li><a href="#part-33---common-limitations-and-hallucinations">Part 33 - Common Limitations and Hallucinations</a></li>
+<li><a href="#part-34---troubleshooting">Part 34 - Troubleshooting</a></li>
+<li><a href="#part-35---independent-practice-course">Part 35 - Independent Practice Course</a></li>
+<li><a href="#part-36---quick-reference">Part 36 - Quick Reference</a></li>
+<li><a href="#part-37---official-openai-resources">Part 37 - Official OpenAI Resources</a></li>
+</ol>
+</nav>
+<h2 id="part-1---what-chatgpt-is">Part 1 - What ChatGPT Is</h2>
+<p>ChatGPT is an AI assistant from OpenAI. It can work with natural-language instructions and, depending on the experience and plan, can search the web, analyze files and images, generate images, run data analysis, use voice, organize work in Projects, use connected apps, perform deep research, schedule tasks, and complete longer multi-step work.</p>
+<ul>
+<li><p>ChatGPT generates responses from the conversation and available tools/context.</p></li>
+<li><p>It can make mistakes, including confident factual errors.</p></li>
+<li><p>It does not automatically know that information has changed unless current information is retrieved.</p></li>
+<li><p>Different plans and workspaces may expose different models, tools, limits, and permissions.</p></li>
+<li><p>An organization's administrator may restrict plugins, apps, Work, file use, browsing, or data settings.</p></li>
+</ul>
+<h2 id="part-2---chat-work-and-codex">Part 2 - Chat, Work, and Codex</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Experience</th>
+<th>Best use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chat</td>
+<td>Fast conversational help, questions, brainstorming, search, files, images, voice, and everyday assistance.</td>
+</tr>
+<tr class="even">
+<td>Work</td>
+<td>Longer multi-step work and finished deliverables; can use files, apps, browsers, tasks, and approvals when available.</td>
+</tr>
+<tr class="odd">
+<td>Codex</td>
+<td>Software-development experience for writing/debugging code, repositories, tests, terminals, and developer workflows.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Availability:</strong> Chat is the default experience. Work is available to eligible paid plans and may be controlled by workspace administrators. Codex availability depends on the product surface and plan.</p>
+<p><strong>Important UI change:</strong> Older ChatGPT instructions may refer to Canvas. Current writing and coding workflows are delivered through writing blocks, code blocks, Work, and other current tools instead.</p>
+<h2 id="part-3---open-chatgpt-and-start-a-chat">Part 3 - Open ChatGPT and Start a Chat</h2>
+<h3 id="start-a-new-chat-on-the-web">3.1 Start a New Chat on the Web</h3>
+<p><strong>What you will learn:</strong> Open a clean conversation.</p>
+<p><strong>Before you begin:</strong> Use an up-to-date supported browser.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol><li>Press Ctrl+L or Alt+D to focus the browser address bar.</li><li>Type chatgpt.com.</li><li>Press Enter.</li><li>Sign in if required.</li><li>Find and activate New chat using Tab/Shift+Tab, screen-reader button navigation, or the sidebar.</li><li>Move to the message/prompt edit field.</li><li>Type a simple question such as: Explain what a spreadsheet is in three sentences.</li><li>Activate Send or press Enter when the edit field uses Enter to submit.</li></ol>
+<p><strong>What should happen:</strong> A new assistant response appears in the conversation.</p>
+<p><strong>If that does not happen:</strong> If Enter inserts a new line instead of sending, locate and activate the Send button. If focus is lost, use edit-field navigation to return to the prompt.</p>
+<p><strong>Practice:</strong> Start three low-risk chats on different topics.</p>
+<h3 id="continue-a-conversation">3.2 Continue a Conversation</h3>
+<p><strong>What you will learn:</strong> Ask a follow-up without repeating all context.</p>
+<p><strong>Before you begin:</strong> A response is already present.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol><li>Return to the prompt edit field.</li><li>Ask a follow-up that clearly refers to the prior answer, such as: Give me an example.</li><li>Send the message.</li><li>Read the new response.</li><li>Ask one more follow-up that changes the format, such as: Turn that into a checklist.</li></ol>
+<p><strong>What should happen:</strong> ChatGPT uses the existing conversation context.</p>
+<p><strong>If that does not happen:</strong> If it misunderstands what 'that' refers to, restate the subject explicitly.</p>
+<p><strong>Practice:</strong> Use three follow-ups in one chat.</p>
+<h2 id="part-4---understand-the-chat-interface">Part 4 - Understand the Chat Interface</h2>
+<ul>
+<li><p>Sidebar/Recents: previous chats and Projects; exact names and ordering can change.</p></li>
+<li><p>New chat: begins a fresh conversation.</p></li>
+<li><p>Conversation area: contains your messages, assistant responses, citations, widgets, files, and other results.</p></li>
+<li><p>Prompt/message field: where you type or dictate the next request.</p></li>
+<li><p>Attachment/plus controls: can expose file, image, search, study, or other tools depending on plan/device.</p></li>
+<li><p>Model/mode or experience controls: can change the model, Chat/Work experience, Temporary Chat, or other behavior depending on current UI.</p></li>
+<li><p>Profile/Settings: account, personalization, data controls, notifications, apps/plugins, and other preferences.</p></li>
+</ul>
+<p><strong>Screen reader strategy:</strong> Navigate by headings, buttons, edit fields, and landmarks instead of pressing Tab through every element in a long conversation.</p>
+<h2 id="part-5---prompting-fundamentals">Part 5 - Prompting Fundamentals</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>How / What to know</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Goal</td>
+<td>What do you want ChatGPT to do?</td>
+</tr>
+<tr class="even">
+<td>Context</td>
+<td>What background is needed?</td>
+</tr>
+<tr class="odd">
+<td>Constraints</td>
+<td>Length, audience, tone, exclusions, date, platform, or other requirements.</td>
+</tr>
+<tr class="even">
+<td>Input</td>
+<td>Text, file, data, problem, or question to work with.</td>
+</tr>
+<tr class="odd">
+<td>Output</td>
+<td>Paragraph, numbered steps, table, email, checklist, code, etc.</td>
+</tr>
+<tr class="even">
+<td>Verification</td>
+<td>Ask for current sources or uncertainty when correctness matters.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="write-a-strong-basic-prompt">5.1 Write a Strong Basic Prompt</h3>
+<p><strong>What you will learn:</strong> Get a useful answer without unnecessary back-and-forth.</p>
+<p><strong>Before you begin:</strong> Choose a harmless task.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol><li>State the goal first.</li><li>Add the audience or purpose.</li><li>Add only relevant context.</li><li>Specify output format.</li><li>Add any important limits.</li><li>For factual/current work, ask for sources or web verification.</li></ol>
+<p><strong>What should happen:</strong> The answer is more targeted and structured.</p>
+<p><strong>If that does not happen:</strong> If the result is still vague, identify which requirement was missing and add it.</p>
+<p><strong>Practice:</strong> Ask ChatGPT to explain one familiar topic to a complete beginner in five steps.</p>
+<h2 id="part-6---better-prompts-and-follow-up-questions">Part 6 - Better Prompts and Follow-Up Questions</h2>
+<ul>
+<li><p>Ask for assumptions: 'List the assumptions you made.'</p></li>
+<li><p>Ask for alternatives: 'Give me three options and the tradeoffs.'</p></li>
+<li><p>Ask for simplification: 'Explain this without jargon.'</p></li>
+<li><p>Ask for exact procedure: 'Give the exact keys/buttons and expected result.'</p></li>
+<li><p>Ask for verification: 'Which statements here need current verification?'</p></li>
+<li><p>Ask for restructuring: 'Turn this into headings and numbered steps.'</p></li>
+<li><p>Ask for a revision: 'Keep the content, but make it shorter and more formal.'</p></li>
+</ul>
+<p><strong>Good correction pattern:</strong> Tell ChatGPT exactly what is wrong: 'The shortcut in step 4 is outdated. Verify the current official command and rewrite that section.'</p>
+<h2 id="part-7---conversation-context-and-new-chats">Part 7 - Conversation Context and New Chats</h2>
+<p>ChatGPT uses prior messages in the current conversation. Long or mixed-topic chats can create confusion.</p>
+<h3 id="start-fresh-when-context-is-working-against-you">7.1 Start Fresh When Context Is Working Against You</h3>
+<p><strong>What you will learn:</strong> Remove irrelevant conversation baggage.</p>
+<p><strong>Before you begin:</strong> A long chat has started producing confused answers.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol><li>Write down the current task and essential requirements.</li><li>Start a new chat.</li><li>Paste a concise task brief rather than the entire old conversation.</li><li>Provide only the files/context needed for the new task.</li><li>Continue from the clean conversation.</li></ol>
+<p><strong>What should happen:</strong> The model receives a simpler instruction set.</p>
+<p><strong>If that does not happen:</strong> If important context was lost, add it explicitly in the new brief.</p>
+<p><strong>Practice:</strong> Turn a long request into a five-line clean brief.</p>
+<h2 id="part-8---models-and-modes">Part 8 - Models and Modes</h2>
+<p>ChatGPT can expose different models or modes depending on plan, workspace, task, and rollout. Model names and availability change over time.</p>
+<ul>
+<li><p>Use the default/Instant experience for normal everyday work when it meets the task.</p></li>
+<li><p>Use a reasoning-oriented option for complex analysis when available and useful.</p></li>
+<li><p>Use Search when the answer depends on current external information.</p></li>
+<li><p>Use Deep Research for a larger multi-source research task when available.</p></li>
+<li><p>Use Work for longer multi-step deliverables when available.</p></li>
+<li><p>Do not choose a model only because its name sounds more advanced; test whether the result fits the task.</p></li>
+</ul>
+<p><strong>Current-model caution:</strong> This manual intentionally does not hard-code a single model list because OpenAI changes model availability over time.</p>
+<h2 id="part-9---search-the-web">Part 9 - Search the Web</h2>
+<h3 id="ask-chatgpt-for-current-information">9.1 Ask ChatGPT for Current Information</h3>
+<p><strong>What you will learn:</strong> Use web search instead of relying only on model knowledge.</p>
+<p><strong>Before you begin:</strong> The question depends on recent information.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol><li>State that you want current information.</li><li>Ask ChatGPT to search the web.</li><li>Include the date/time window when relevant, such as today, this week, or the latest official release.</li><li>Read the answer.</li><li>Move through the citations/source links.</li><li>Open at least one important source and confirm the claim.</li></ol>
+<p><strong>What should happen:</strong> The answer includes current retrieved information and citations when Search is used.</p>
+<p><strong>If that does not happen:</strong> If the answer has no current sources, ask explicitly: Search the web and cite the sources you used.</p>
+<p><strong>Practice:</strong> Research one current software version.</p>
+<p><strong>Search example:</strong> Search the web for the current Windows 11 accessibility shortcuts and use Microsoft sources.</p>
+<h2 id="part-10---verify-answers-and-sources">Part 10 - Verify Answers and Sources</h2>
+<h3 id="verify-a-chatgpt-claim">10.1 Verify a ChatGPT Claim</h3>
+<p><strong>What you will learn:</strong> Separate a plausible statement from an evidenced statement.</p>
+<p><strong>Before you begin:</strong> Choose an important factual claim.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol><li>Ask ChatGPT for the source.</li><li>Open the source.</li><li>Confirm the source title, date, and publisher.</li><li>Find the statement that supports the claim.</li><li>Check whether the source includes a limitation ChatGPT omitted.</li><li>Use a second trustworthy source when the stakes justify it.</li></ol>
+<p><strong>What should happen:</strong> You know whether the claim is genuinely supported.</p>
+<p><strong>If that does not happen:</strong> If the cited source does not support the claim, treat the statement as incorrect or unverified.</p>
+<p><strong>Practice:</strong> Verify three claims from one research response.</p>
+<p><strong>Citation warning:</strong> A citation is useful only when the linked source actually supports the sentence.</p>
+<h2 id="part-11---upload-and-work-with-files">Part 11 - Upload and Work with Files</h2>
+<h3 id="upload-a-file">11.1 Upload a File</h3>
+<p><strong>What you will learn:</strong> Give ChatGPT a document to summarize or analyze.</p>
+<p><strong>Before you begin:</strong> Use a non-sensitive practice file.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol><li>Find the attachment or plus button near the prompt.</li><li>Activate it.</li><li>Choose the file-upload option.</li><li>Select the file from your device or available Library/source.</li><li>Wait for the file to appear as attached.</li><li>Ask a specific question such as: Summarize the three main sections and cite page numbers if available.</li><li>Send the prompt.</li></ol>
+<p><strong>What should happen:</strong> ChatGPT analyzes the uploaded file and answers from it when supported.</p>
+<p><strong>If that does not happen:</strong> If the file fails to upload, check file type, size, plan limits, browser/app version, and network connection.</p>
+<p><strong>Practice:</strong> Upload a harmless PDF or DOCX and ask five questions.</p>
+<ul>
+<li><p>Files can include PDFs, presentations, text documents, spreadsheets, and other supported formats.</p></li>
+<li><p>File support and limits vary by plan and product surface.</p></li>
+<li><p>Do not assume a visually complex or scanned document was parsed perfectly.</p></li>
+<li><p>Ask ChatGPT to identify uncertainty when content is missing or unreadable.</p></li>
+</ul>
+<h2 id="part-12---data-analysis-and-spreadsheets">Part 12 - Data Analysis and Spreadsheets</h2>
+<h3 id="analyze-a-spreadsheet">12.1 Analyze a Spreadsheet</h3>
+<p><strong>What you will learn:</strong> Use ChatGPT to summarize structured data.</p>
+<p><strong>Before you begin:</strong> Upload a non-sensitive CSV/XLSX practice file.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol><li>Attach the spreadsheet.</li><li>Describe the question in plain language.</li><li>Ask ChatGPT to explain which columns/rows it used.</li><li>Ask for a table or chart when helpful.</li><li>Check totals/percentages against a small manual calculation.</li><li>Ask for the output file when you need a transformed spreadsheet and the feature supports file creation.</li></ol>
+<p><strong>What should happen:</strong> ChatGPT can calculate, summarize, clean, or visualize structured data.</p>
+<p><strong>If that does not happen:</strong> If the numbers matter, independently verify key calculations. A polished chart does not prove the calculation was correct.</p>
+<p><strong>Practice:</strong> Analyze a ten-row practice dataset.</p>
+<h2 id="part-13---images-analyze-generate-and-edit">Part 13 - Images: Analyze, Generate, and Edit</h2>
+<h3 id="analyze-an-image">13.1 Analyze an Image</h3>
+<ol><li>Attach a PNG, JPEG/JPG, or supported image.</li><li>Ask a concrete question: Describe the layout, read visible labels, or identify the main chart trend.</li><li>For important details, ask ChatGPT to state uncertainty.</li><li>Verify high-stakes details such as medication labels, identities, hazards, or legal documents independently.</li></ol>
+<p><strong>Expected result:</strong> ChatGPT provides a text interpretation of the image.</p>
+<p><strong>Limitation:</strong> Image analysis can be incomplete or wrong; do not use it as the sole basis for safety-critical decisions.</p>
+<h3 id="generate-or-edit-an-image">13.2 Generate or Edit an Image</h3>
+<ol><li>Describe the image you want in the prompt.</li><li>Include subject, setting, composition, text requirements, and accessibility needs.</li><li>Ask ChatGPT to generate the image.</li><li>For an existing uploaded image, describe the exact edit such as removing an object or changing the background.</li><li>Review the result and ask for another revision if necessary.</li></ol>
+<p><strong>Accessibility:</strong> Ask for a concise text description/alt-text draft for generated images you intend to share.</p>
+<h2 id="part-14---voice">Part 14 - Voice</h2>
+<h3 id="start-a-voice-conversation">14.1 Start a Voice Conversation</h3>
+<p><strong>What you will learn:</strong> Talk with ChatGPT instead of typing.</p>
+<p><strong>Before you begin:</strong> Use a supported web/mobile/desktop surface and grant microphone permission when appropriate.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol><li>Find the Voice control near the prompt/composer.</li><li>Activate it.</li><li>Choose/confirm a voice if prompted.</li><li>Speak naturally.</li><li>Pause or interrupt when the voice experience supports interruption.</li><li>End Voice using the on-screen control.</li></ol>
+<p><strong>What should happen:</strong> ChatGPT responds with speech and, in current supported experiences, text also appears in the chat.</p>
+<p><strong>If that does not happen:</strong> If Voice cannot hear you, check microphone permissions and selected input device.</p>
+<p><strong>Practice:</strong> Ask a simple question, interrupt with a follow-up, then end Voice.</p>
+<p><strong>Current product note:</strong> The current GPT-Live voice experience can use web search and memory in supported consumer experiences. Availability can differ for managed workspaces.</p>
+<p><strong>Privacy:</strong> Voice conversations can contain sensitive spoken information. Use headphones and an appropriate environment.</p>
+<h2 id="part-15---writing-blocks-and-code-blocks">Part 15 - Writing Blocks and Code Blocks</h2>
+<p>Current ChatGPT places reusable drafts and code into interactive blocks inside the conversation.</p>
+<ul>
+<li><p>Writing blocks: editable draft areas for emails, messages, social posts, and documents.</p></li>
+<li><p>Code blocks: separate code from prose and can support copy, edit, preview, or run actions depending on the language and environment.</p></li>
+<li><p>Actions vary by plan, device, workspace settings, model, and rollout.</p></li>
+<li><p>Edits generally remain associated with the conversation.</p></li>
+</ul>
+<h3 id="revise-a-writing-block">15.1 Revise a Writing Block</h3>
+<p><strong>What you will learn:</strong> Edit a draft without rebuilding it from scratch.</p>
+<p><strong>Before you begin:</strong> Ask ChatGPT for a complete draft.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol><li>Open/focus the writing block.</li><li>Edit the text directly if the current interface supports editing.</li><li>Or tell ChatGPT exactly what to change.</li><li>Review the revised block.</li><li>Copy, save, send, or continue editing using the available actions.</li></ol>
+<p><strong>What should happen:</strong> The draft remains a reusable artifact inside the conversation.</p>
+<p><strong>If that does not happen:</strong> If you do not receive a writing block, ask for a complete reusable draft rather than a brainstorming list.</p>
+<p><strong>Practice:</strong> Create and revise a short email draft.</p>
+<p><strong>Older instructions:</strong> Canvas was used in older ChatGPT versions. Current manuals should teach writing blocks, code blocks, Projects, and Work instead.</p>
+<h2 id="part-16---projects">Part 16 - Projects</h2>
+<h3 id="create-a-project">16.1 Create a Project</h3>
+<p><strong>What you will learn:</strong> Keep related chats, files, and instructions together.</p>
+<p><strong>Before you begin:</strong> You are signed in.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol><li>Find Projects in the sidebar/navigation.</li><li>Activate New project or the equivalent create control.</li><li>Give the project a descriptive name.</li><li>Add project instructions when useful.</li><li>Upload relevant reference files.</li><li>Start a chat inside the project.</li></ol>
+<p><strong>What should happen:</strong> New project chats can use the project's shared context, files, and instructions according to current settings.</p>
+<p><strong>If that does not happen:</strong> If Projects is not visible, check the account/surface and current rollout. Projects are intended to be available broadly to signed-in users.</p>
+<p><strong>Practice:</strong> Create a harmless practice project with one file.</p>
+<ul>
+<li><p>Projects are useful for long-running writing, research, planning, reporting, and repeated work.</p></li>
+<li><p>Shared-project availability and permissions depend on plan/workspace.</p></li>
+<li><p>Do not place confidential information in a shared project unless every participant is authorized.</p></li>
+</ul>
+<h2 id="part-17---work">Part 17 - Work</h2>
+<p>ChatGPT Work is the current agent/workspace for longer multi-step tasks and finished deliverables on eligible paid plans.</p>
+<h3 id="start-a-work-task">17.1 Start a Work Task</h3>
+<p><strong>What you will learn:</strong> Delegate a multi-step outcome while retaining control.</p>
+<p><strong>Before you begin:</strong> Your account includes Work.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol><li>Select Work instead of ordinary Chat.</li><li>Start a new Work chat or open a Project.</li><li>Attach relevant files and context.</li><li>Describe the finished outcome you need.</li><li>Review progress updates and answer questions when needed.</li><li>Review any request to approve an important external action.</li><li>Inspect the finished deliverable before using it.</li></ol>
+<p><strong>What should happen:</strong> Work carries out a longer task and produces a result/deliverable.</p>
+<p><strong>If that does not happen:</strong> If Work is absent, the plan, region, rollout, or workspace policy may not provide it. Use ordinary Chat for the same task in smaller steps.</p>
+<p><strong>Practice:</strong> Use Work for a harmless research or document task if available.</p>
+<p><strong>Cloud browser:</strong> Work can use a separate cloud browser for supported web tasks on eligible plans. The cloud browser has its own cookies/sessions and may continue remotely until it needs your input or confirmation.</p>
+<p><strong>Consequential actions:</strong> Review website, account, recipient, amount, destination, and final action before approving transactions, messages, bookings, or other hard-to-reverse steps.</p>
+<h2 id="part-18---plugins-and-connected-apps">Part 18 - Plugins and Connected Apps</h2>
+<p>ChatGPT can connect to external services through apps, now discovered primarily through the Plugin directory in the current product.</p>
+<ul>
+<li><p>Apps can search or reference external data such as files, messages, calendars, or other connected services.</p></li>
+<li><p>Some apps can take supported write actions.</p></li>
+<li><p>Some plugins combine apps with reusable skills or workflows.</p></li>
+<li><p>Availability depends on plan, region, workspace, role, model, and permissions.</p></li>
+<li><p>Workspace administrators may restrict plugins/apps.</p></li>
+</ul>
+<h3 id="connect-an-app-safely">18.1 Connect an App Safely</h3>
+<p><strong>What you will learn:</strong> Grant only the permissions needed.</p>
+<p><strong>Before you begin:</strong> Choose a low-risk supported service.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol><li>Open Settings/Plugins or the current plugin directory.</li><li>Choose the plugin/app.</li><li>Read the requested permissions.</li><li>Authenticate through the provider's official sign-in flow.</li><li>Return to ChatGPT.</li><li>Ask ChatGPT for a harmless read-only task first.</li><li>Review Settings &gt; Apps/Plugins to disconnect when no longer needed.</li></ol>
+<p><strong>What should happen:</strong> ChatGPT can access only the permissions that were granted and supported.</p>
+<p><strong>If that does not happen:</strong> Never paste a password or security code into the chat to connect an app; use the secure sign-in flow.</p>
+<p><strong>Practice:</strong> Connect and disconnect a low-risk service if available.</p>
+<h2 id="part-19---deep-research">Part 19 - Deep Research</h2>
+<p>Deep Research is designed for multi-step research across multiple online sources and can produce structured cited outputs. Availability depends on plan and workspace.</p>
+<h3 id="run-a-deep-research-task">19.1 Run a Deep Research Task</h3>
+<p><strong>What you will learn:</strong> Use a slower, broader research workflow when ordinary Search is not enough.</p>
+<p><strong>Before you begin:</strong> Choose a research question that benefits from several sources.</p>
+<h4 id="exactly-how-to-do-it-13">Exactly how to do it</h4>
+<ol><li>Select Deep Research when available.</li><li>State the research question and scope.</li><li>Specify date range, countries, industries, source types, or exclusions.</li><li>Attach relevant files if supported.</li><li>Start the research.</li><li>Read the final structured report and citations.</li><li>Open important sources and verify key claims.</li></ol>
+<p><strong>What should happen:</strong> You receive a longer multi-source research result.</p>
+<p><strong>If that does not happen:</strong> Deep Research reduces manual source gathering but does not eliminate the need to check sources and conclusions.</p>
+<p><strong>Practice:</strong> Research a low-stakes comparison of two public technologies.</p>
+<h2 id="part-20---study-mode">Part 20 - Study Mode</h2>
+<h3 id="use-study-mode-as-a-tutor">20.1 Use Study Mode as a Tutor</h3>
+<p><strong>What you will learn:</strong> Practice learning rather than simply requesting an answer.</p>
+<p><strong>Before you begin:</strong> Choose a topic you are studying.</p>
+<h4 id="exactly-how-to-do-it-14">Exactly how to do it</h4>
+<ol><li>Open Study Mode from the available tools or supported direct entry point.</li><li>Tell ChatGPT what subject and level you are studying.</li><li>Ask it to teach using questions and hints.</li><li>Answer in your own words.</li><li>Ask for a quiz or flashcard-style review.</li><li>Upload course notes/images when allowed and ask Study Mode to use them.</li></ol>
+<p><strong>What should happen:</strong> Study Mode guides you through learning with questions, explanations, and practice.</p>
+<p><strong>If that does not happen:</strong> If it gives the answer too quickly, say: Ask one question at a time and give hints before the answer.</p>
+<p><strong>Practice:</strong> Complete a five-question practice session.</p>
+<p><strong>Availability:</strong> Study Mode is currently available across ChatGPT plans on web, iOS, and Android, though individual learning shortcuts can vary.</p>
+<h2 id="part-21---scheduled-tasks-and-monitoring">Part 21 - Scheduled Tasks and Monitoring</h2>
+<h3 id="create-a-reminder-or-recurring-task">21.1 Create a Reminder or Recurring Task</h3>
+<p><strong>What you will learn:</strong> Have ChatGPT deliver something later or repeatedly when supported.</p>
+<p><strong>Before you begin:</strong> Your account has Scheduled Tasks.</p>
+<h4 id="exactly-how-to-do-it-15">Exactly how to do it</h4>
+<ol><li>Tell ChatGPT the action and schedule, such as: Remind me every weekday morning to review my task list.</li><li>Review the task confirmation.</li><li>Open Scheduled or Settings &gt; Notifications &gt; Manage tasks to review it.</li><li>Edit, pause, resume, or delete the task as needed.</li><li>Review notification settings for push/email delivery.</li></ol>
+<p><strong>What should happen:</strong> ChatGPT runs the task on the supported schedule.</p>
+<p><strong>If that does not happen:</strong> Task frequency, exact timing, monitoring, connected-app support, and limits depend on plan and account.</p>
+<p><strong>Practice:</strong> Create one harmless one-time reminder and delete it after testing.</p>
+<p><strong>Sensitive information:</strong> Do not put passwords, account numbers, health/financial secrets, or other sensitive personal information into a task title or instructions that may be shared or surfaced in notifications.</p>
+<p><strong>Project limitation:</strong> Current scheduled-task documentation notes that a task created in a Project cannot access files uploaded to that Project.</p>
+<h2 id="part-22---memory-and-personalization">Part 22 - Memory and Personalization</h2>
+<p>Memory can personalize future replies. Depending on account and settings, ChatGPT may use saved memories and/or relevant past conversation history.</p>
+<h3 id="review-memory-settings">22.1 Review Memory Settings</h3>
+<p><strong>What you will learn:</strong> Decide what ChatGPT may remember.</p>
+<p><strong>Before you begin:</strong> Open Settings.</p>
+<h4 id="exactly-how-to-do-it-16">Exactly how to do it</h4>
+<ol><li>Open Personalization or Memory settings.</li><li>Review Reference saved memories and Reference chat history when offered.</li><li>Turn features on/off according to your preference.</li><li>Open Manage memories.</li><li>Review individual saved items.</li><li>Delete an item you no longer want remembered.</li></ol>
+<p><strong>What should happen:</strong> Memory behavior reflects your selected settings.</p>
+<p><strong>If that does not happen:</strong> If memory controls are absent or restricted, the account/workspace may use different settings.</p>
+<p><strong>Practice:</strong> Review what ChatGPT remembers and remove one disposable test memory.</p>
+<p><strong>Ask directly:</strong> You can also ask ChatGPT what it remembers about you and request that a specific memory be forgotten.</p>
+<h2 id="part-23---temporary-chat">Part 23 - Temporary Chat</h2>
+<h3 id="start-a-temporary-chat">23.1 Start a Temporary Chat</h3>
+<p><strong>What you will learn:</strong> Have a conversation that starts without normal saved-history/memory behavior.</p>
+<p><strong>Before you begin:</strong> Open a new chat.</p>
+<h4 id="exactly-how-to-do-it-17">Exactly how to do it</h4>
+<ol><li>Find the Temporary control near the top of the new-chat interface.</li><li>Activate Temporary.</li><li>Choose personalization behavior if the current interface offers that choice.</li><li>Confirm that the conversation is marked Temporary.</li><li>Use the chat normally.</li></ol>
+<p><strong>What should happen:</strong> An unsaved Temporary Chat does not appear in ordinary history, does not create new memories, and is not used to improve models while it remains temporary.</p>
+<p><strong>If that does not happen:</strong> Temporary chats may still be retained for up to 30 days for safety/security purposes. Saving a temporary chat converts it into a regular chat.</p>
+<p><strong>Practice:</strong> Use a Temporary Chat for a harmless test question.</p>
+<p><strong>Current detail:</strong> Current Temporary Chat can be non-personalized by default, with some interfaces allowing a personalized temporary conversation that can reference existing memories without creating new ones.</p>
+<h2 id="part-24---chat-history-archive-delete-and-library">Part 24 - Chat History, Archive, Delete, and Library</h2>
+<ul>
+<li><p>Regular chats remain in account history until deleted, subject to account/workspace retention rules.</p></li>
+<li><p>Archive hides a chat from the normal sidebar but keeps it in the account.</p></li>
+<li><p>Delete removes it from the account view and schedules deletion from OpenAI systems, subject to documented exceptions/retention.</p></li>
+<li><p>Deletion is not the same as archiving.</p></li>
+<li><p>Files saved in Library are managed separately from chats when Library is available; deleting a chat does not automatically delete a file saved in Library.</p></li>
+</ul>
+<h3 id="archive-or-delete-deliberately">24.1 Archive or Delete Deliberately</h3>
+<p><strong>What you will learn:</strong> Avoid confusing 'hide' with 'remove'.</p>
+<p><strong>Before you begin:</strong> Choose a disposable test chat.</p>
+<h4 id="exactly-how-to-do-it-18">Exactly how to do it</h4>
+<ol><li>Open the chat's more-options menu.</li><li>Choose Archive if you only want to remove it from normal Recents.</li><li>Open Settings and find archived chats to confirm it still exists.</li><li>For a truly disposable chat, use Delete.</li><li>Read the confirmation and complete deletion only when sure.</li></ol>
+<p><strong>What should happen:</strong> You understand the difference between archive and delete.</p>
+<p><strong>If that does not happen:</strong> Deleted chats cannot normally be recovered. Use Archive when you may need the chat later.</p>
+<p><strong>Practice:</strong> Archive one test chat and delete another.</p>
+<h2 id="part-25---data-controls-and-privacy">Part 25 - Data Controls and Privacy</h2>
+<h3 id="turn-off-model-improvement-for-future-chats">25.1 Turn Off Model Improvement for Future Chats</h3>
+<p><strong>What you will learn:</strong> Change whether new personal-account conversations may be used to improve models.</p>
+<p><strong>Before you begin:</strong> Open Settings.</p>
+<h4 id="exactly-how-to-do-it-19">Exactly how to do it</h4>
+<ol><li>Open Data Controls.</li><li>Find Improve the model for everyone.</li><li>Turn it off if that is your preference.</li><li>Close Settings.</li></ol>
+<p><strong>What should happen:</strong> New conversations remain in history but are not used to improve models under this setting.</p>
+<p><strong>If that does not happen:</strong> Managed Business/Enterprise/Edu workspaces have different organizational data policies and may not expose the same consumer control.</p>
+<p><strong>Practice:</strong> Locate the setting and decide deliberately.</p>
+<ul>
+<li><p>Temporary Chats are not used to improve models while temporary.</p></li>
+<li><p>Personal-account memory controls are separate from model-improvement controls.</p></li>
+<li><p>Connected apps and external services have their own privacy policies and permissions.</p></li>
+<li><p>Consumer, Business, Enterprise, Edu, Healthcare, and other workspaces can have different retention and data-handling rules.</p></li>
+<li><p>Never assume a chat is appropriate for confidential data simply because model training is turned off.</p></li>
+</ul>
+<h2 id="part-26---sharing-conversations-and-projects">Part 26 - Sharing Conversations and Projects</h2>
+<h3 id="share-a-conversation-carefully">26.1 Share a Conversation Carefully</h3>
+<p><strong>What you will learn:</strong> Create a shareable link only after reviewing the content.</p>
+<p><strong>Before you begin:</strong> Use a non-sensitive chat.</p>
+<h4 id="exactly-how-to-do-it-20">Exactly how to do it</h4>
+<ol><li>Open the chat's Share control.</li><li>Review what part of the conversation will be shared.</li><li>Remove or avoid private information.</li><li>Create/copy the share link.</li><li>Open the link in a separate/private browser session if practical to see what the recipient will see.</li><li>Delete the shared link later if it should no longer be accessible.</li></ol>
+<p><strong>What should happen:</strong> Recipients can view the shared snapshot/content according to the current sharing system.</p>
+<p><strong>If that does not happen:</strong> Do not rely on obscurity of a link as access control for confidential information.</p>
+<p><strong>Practice:</strong> Share a harmless practice chat and revoke the link.</p>
+<p><strong>Projects:</strong> Shared Projects can expose chats, uploaded files, and project context to collaborators. Verify membership and file sensitivity before sharing.</p>
+<h2 id="part-27---screen-reader-use-on-windows">Part 27 - Screen Reader Use on Windows</h2>
+<p>ChatGPT is a dynamic web application. JAWS, NVDA, and Narrator can be used effectively by combining browser navigation with form controls, headings, landmarks, and ordinary editing.</p>
+<h3 id="jaws">27.1 JAWS</h3>
+<ul>
+<li><p>Use H/Shift+H for headings when Virtual PC Cursor is on.</p></li>
+<li><p>Use E/Shift+E for edit fields and B/Shift+B for buttons when supported by JAWS web navigation.</p></li>
+<li><p>Press Enter on the prompt edit field and type normally.</p></li>
+<li><p>Use JAWS+Z to switch Virtual PC Cursor off/on if a complex interactive control works better in Forms/application mode.</p></li>
+<li><p>Use JAWS heading/link lists when a long response is difficult to scan.</p></li>
+</ul>
+<h3 id="nvda">27.2 NVDA</h3>
+<ul>
+<li><p>Use H/Shift+H for headings in Browse Mode.</p></li>
+<li><p>Use E/Shift+E for edit fields and B/Shift+B for buttons.</p></li>
+<li><p>Press NVDA+Space to switch Browse/Focus Mode when an interactive control requires it.</p></li>
+<li><p>Use NVDA+F7 Elements List for headings/links/form fields when useful.</p></li>
+</ul>
+<h3 id="narrator">27.3 Narrator</h3>
+<ul>
+<li><p>Use Narrator+Space to turn Scan Mode on/off as needed.</p></li>
+<li><p>Use heading/form-control navigation in Scan Mode to locate the prompt and response headings.</p></li>
+<li><p>Turn Scan Mode off when typing or interacting with a control that needs direct keystrokes.</p></li>
+<li><p>Use Narrator+Tab to repeat the focused control when orientation is unclear.</p></li>
+</ul>
+<p><strong>Keyboard shortcut list:</strong> ChatGPT has a keyboard-shortcut list available from the interface; Ctrl+/ is a commonly documented shortcut for opening it. Because shortcuts can evolve, use the current shortcut list before memorizing less common commands.</p>
+<h2 id="part-28---voiceover-on-mac-and-iphoneipad">Part 28 - VoiceOver on Mac and iPhone/iPad</h2>
+<h3 id="mac">28.1 Mac</h3>
+<ul>
+<li><p>Use VO+Command+H/Shift+VO+Command+H to move through headings in webpages where supported.</p></li>
+<li><p>Use VO+U Rotor to find headings, links, form controls, and landmarks.</p></li>
+<li><p>Interact with the prompt/composer area using VO+Shift+Down Arrow when required.</p></li>
+<li><p>Stop interacting with VO+Shift+Up Arrow.</p></li>
+<li><p>Use browser/application shortcuts only after checking for VoiceOver conflicts.</p></li>
+</ul>
+<h3 id="iphoneipad">28.2 iPhone/iPad</h3>
+<ul>
+<li><p>Swipe right/left to move VoiceOver focus through controls.</p></li>
+<li><p>Use the Rotor to jump among headings, links, form controls, or other elements.</p></li>
+<li><p>Double-tap the prompt field to edit.</p></li>
+<li><p>Use Dictation or a braille display for longer prompts.</p></li>
+<li><p>Use the Voice control when a spoken conversation is easier than text navigation.</p></li>
+<li><p>Review attached files/images and Share controls carefully before activation.</p></li>
+</ul>
+<h2 id="part-29---talkback-on-android">Part 29 - TalkBack on Android</h2>
+<ul>
+<li><p>Swipe right/left through controls and double-tap to activate.</p></li>
+<li><p>Use TalkBack reading controls to move by headings/controls when available in the current app/webview.</p></li>
+<li><p>Use the current ChatGPT app controls and labels; app updates can move or rename buttons.</p></li>
+<li><p>Use Gboard voice typing or TalkBack braille keyboard for longer prompts.</p></li>
+<li><p>Use a physical braille display/keyboard for efficient long conversations when configured.</p></li>
+<li><p>Use the ChatGPT Voice control for hands-free interaction when available.</p></li>
+</ul>
+<p><strong>Correction habit:</strong> If TalkBack labels differ after an app update, explore the current controls instead of relying on the old physical screen position.</p>
+<h2 id="part-30---braille-displays">Part 30 - Braille Displays</h2>
+<p>ChatGPT does not require a special proprietary braille protocol. The braille display works through the active screen reader: JAWS, NVDA, Narrator, VoiceOver, or TalkBack.</p>
+<h3 id="test-braille-with-chatgpt">30.1 Test Braille with ChatGPT</h3>
+<p><strong>What you will learn:</strong> Verify output, input, and routing.</p>
+<p><strong>Before you begin:</strong> The braille display is already configured in the screen reader.</p>
+<h4 id="exactly-how-to-do-it-21">Exactly how to do it</h4>
+<ol><li>Open ChatGPT.</li><li>Move to a heading and read it in braille.</li><li>Move to the prompt edit field.</li><li>Type a short prompt using braille input.</li><li>Send it.</li><li>Read the response.</li><li>Use a routing key inside the prompt or response if the screen reader supports routing there.</li></ol>
+<p><strong>What should happen:</strong> Braille follows screen-reader focus and editing.</p>
+<p><strong>If that does not happen:</strong> If braille works in other apps but not ChatGPT, first check browser/app focus and screen-reader mode before changing display pairing.</p>
+<p><strong>Practice:</strong> Test OUTPUT, INPUT, and ROUTING.</p>
+<h2 id="part-31---accessibility-prompting-techniques">Part 31 - Accessibility Prompting Techniques</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>How / What to know</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Visual instruction is vague</td>
+<td>Ask: Give exact keyboard/screen-reader steps, expected feedback, and recovery.</td>
+</tr>
+<tr class="even">
+<td>Dense table is hard to navigate</td>
+<td>Ask: Convert this table into a structured list grouped by topic.</td>
+</tr>
+<tr class="odd">
+<td>Image has important information</td>
+<td>Ask: Describe layout and text, then state uncertain details explicitly.</td>
+</tr>
+<tr class="even">
+<td>Response is full of emojis</td>
+<td>Ask: Rewrite without decorative emoji or repeated symbols.</td>
+</tr>
+<tr class="odd">
+<td>Long response is hard to scan</td>
+<td>Ask: Add descriptive headings and a short summary at the top.</td>
+</tr>
+<tr class="even">
+<td>Need accessible link text</td>
+<td>Ask: Replace raw URLs with meaningful descriptive link labels when possible.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Procedure standard:</strong> For assistive-technology instructions, ask for: exact command -&gt; where focus starts -&gt; what should be announced -&gt; what to do if it fails -&gt; practice.</p>
+<h2 id="part-32---responsible-and-safe-use">Part 32 - Responsible and Safe Use</h2>
+<ul>
+<li><p>Verify important factual claims.</p></li>
+<li><p>Do not use ChatGPT as the sole authority for medical, legal, financial, safety, or other high-stakes decisions.</p></li>
+<li><p>Protect confidential and personal information.</p></li>
+<li><p>Do not use generated accusations or profiles as evidence about real people.</p></li>
+<li><p>Review generated code before running it.</p></li>
+<li><p>Review generated messages before sending them.</p></li>
+<li><p>Review external actions before approving them.</p></li>
+<li><p>Follow school, employer, professional, and organizational AI-use policies.</p></li>
+<li><p>Disclose AI assistance when required.</p></li>
+</ul>
+<h2 id="part-33---common-limitations-and-hallucinations">Part 33 - Common Limitations and Hallucinations</h2>
+<p>ChatGPT can produce a confident answer that is wrong. It can also misunderstand a file, image, ambiguous prompt, current event, or niche technical command.</p>
+<ul>
+<li><p>Invented or outdated citations.</p></li>
+<li><p>Wrong keyboard shortcuts or menu names.</p></li>
+<li><p>Incorrect calculations.</p></li>
+<li><p>Misread text from complex images/documents.</p></li>
+<li><p>Overconfident statements about people or current events.</p></li>
+<li><p>Assuming a feature is available to every plan.</p></li>
+<li><p>Continuing an earlier mistaken assumption through several follow-ups.</p></li>
+</ul>
+<p><strong>Recovery:</strong> Stop, identify the disputed claim, ask for current official verification, and check the source yourself.</p>
+<h2 id="part-34---troubleshooting">Part 34 - Troubleshooting</h2>
+<h3 id="chatgpt-misunderstands-the-task">34.1 ChatGPT Misunderstands the Task</h3>
+<p><strong>What you will learn:</strong> Reset the instruction instead of adding vague corrections.</p>
+<p><strong>Before you begin:</strong> The answer is going in the wrong direction.</p>
+<h4 id="exactly-how-to-do-it-22">Exactly how to do it</h4>
+<ol><li>State what is wrong in one sentence.</li><li>Restate the desired outcome.</li><li>Restate nonnegotiable constraints.</li><li>Provide a short example if useful.</li><li>Ask ChatGPT to rewrite from the corrected instruction.</li></ol>
+<p><strong>What should happen:</strong> The next response follows a cleaner instruction.</p>
+<p><strong>If that does not happen:</strong> If the conversation contains too many conflicting instructions, start a new chat.</p>
+<p><strong>Practice:</strong> Correct one deliberately vague prompt.</p>
+<h3 id="the-answer-looks-outdated">34.2 The Answer Looks Outdated</h3>
+<p><strong>What you will learn:</strong> Force current verification.</p>
+<p><strong>Before you begin:</strong> The question involves software, law, news, prices, schedules, public figures, or another changing topic.</p>
+<h4 id="exactly-how-to-do-it-23">Exactly how to do it</h4>
+<ol><li>Say: Search the web for the current information.</li><li>Specify today's date or required time window.</li><li>Ask for official/primary sources.</li><li>Open the sources.</li><li>Compare the published/update dates.</li></ol>
+<p><strong>What should happen:</strong> The response uses fresher external information.</p>
+<p><strong>If that does not happen:</strong> If the product cannot search in the current mode, open a new standard Chat/Search conversation or verify independently.</p>
+<p><strong>Practice:</strong> Verify one current product feature.</p>
+<h3 id="file-analysis-misses-important-content">34.3 File Analysis Misses Important Content</h3>
+<p><strong>What you will learn:</strong> Improve the source or narrow the question.</p>
+<p><strong>Before you begin:</strong> An uploaded file seems partially understood.</p>
+<h4 id="exactly-how-to-do-it-24">Exactly how to do it</h4>
+<ol><li>Ask ChatGPT which pages/sections it could read.</li><li>Specify the exact page/heading/table you need.</li><li>Upload a cleaner copy if available.</li><li>For scanned pages, provide a higher-quality version or extracted text.</li><li>Verify the answer against the original.</li></ol>
+<p><strong>What should happen:</strong> The analysis becomes more focused.</p>
+<p><strong>If that does not happen:</strong> Do not trust an answer based on unreadable source material.</p>
+<p><strong>Practice:</strong> Test with a simple known PDF.</p>
+<h3 id="screen-reader-focus-is-lost">34.4 Screen Reader Focus Is Lost</h3>
+<p><strong>What you will learn:</strong> Return to a known structural point.</p>
+<p><strong>Before you begin:</strong> The prompt or controls are hard to find.</p>
+<h4 id="exactly-how-to-do-it-25">Exactly how to do it</h4>
+<ol><li>Press Escape to close an open menu/dialog.</li><li>Use heading navigation to find the conversation heading.</li><li>Use edit-field navigation to locate the prompt.</li><li>Use button navigation to find Send/Voice/attachment controls.</li><li>Switch screen-reader browse/focus mode if the control needs direct interaction.</li></ol>
+<p><strong>What should happen:</strong> You return to the prompt or a known response location.</p>
+<p><strong>If that does not happen:</strong> If the web app became unresponsive, refresh only after ensuring unsent text is copied or no longer needed.</p>
+<p><strong>Practice:</strong> Practice recovery from an open menu.</p>
+<h3 id="voice-does-not-hear-you">34.5 Voice Does Not Hear You</h3>
+<p><strong>What you will learn:</strong> Check permissions and input hardware.</p>
+<p><strong>Before you begin:</strong> Voice is open but not responding.</p>
+<h4 id="exactly-how-to-do-it-26">Exactly how to do it</h4>
+<ol><li>End Voice.</li><li>Check browser/app microphone permission.</li><li>Check the selected operating-system input device.</li><li>Test the microphone in another app.</li><li>Return to ChatGPT Voice.</li><li>Speak a short test phrase.</li></ol>
+<p><strong>What should happen:</strong> Voice begins receiving speech.</p>
+<p><strong>If that does not happen:</strong> If microphone access is blocked by workspace policy or hardware, use text chat.</p>
+<p><strong>Practice:</strong> Test before an important voice session.</p>
+<h3 id="memory-produced-an-unwanted-assumption">34.6 Memory Produced an Unwanted Assumption</h3>
+<p><strong>What you will learn:</strong> Correct personalization rather than repeatedly correcting every answer.</p>
+<p><strong>Before you begin:</strong> ChatGPT keeps using an old preference or fact.</p>
+<h4 id="exactly-how-to-do-it-27">Exactly how to do it</h4>
+<ol><li>Tell ChatGPT the information is wrong/outdated.</li><li>Ask it to forget that specific memory.</li><li>Open Settings &gt; Personalization/Memory.</li><li>Review Manage memories.</li><li>Delete the outdated item.</li><li>Start a new chat and test.</li></ol>
+<p><strong>What should happen:</strong> The unwanted personalization stops influencing new chats when the relevant memory is removed.</p>
+<p><strong>If that does not happen:</strong> If the detail comes from chat-history reference rather than a saved memory, review the chat-history personalization control or use Temporary Chat.</p>
+<p><strong>Practice:</strong> Create and remove a harmless test preference.</p>
+<h3 id="a-tool-or-feature-is-missing">34.7 A Tool or Feature Is Missing</h3>
+<p><strong>What you will learn:</strong> Check availability rather than assuming an error.</p>
+<p><strong>Before you begin:</strong> A manual step references a feature you cannot find.</p>
+<h4 id="exactly-how-to-do-it-28">Exactly how to do it</h4>
+<ol><li>Check whether you are signed in to the intended account/workspace.</li><li>Check your plan.</li><li>Check web versus mobile versus desktop availability.</li><li>Check workspace/admin restrictions.</li><li>Check the current OpenAI Help Center for rollout/region requirements.</li><li>Use the closest standard Chat alternative when possible.</li></ol>
+<p><strong>What should happen:</strong> You identify availability instead of repeatedly searching the UI.</p>
+<p><strong>If that does not happen:</strong> Features may roll out gradually or change names; use current official documentation.</p>
+<p><strong>Practice:</strong> Compare feature availability on two devices if you use both.</p>
+<h2 id="part-35---independent-practice-course">Part 35 - Independent Practice Course</h2>
+<h3 id="level-1---basic-chat">Level 1 - Basic Chat</h3>
+<p>☐ Open ChatGPT.</p>
+<p>☐ Start new chat.</p>
+<p>☐ Send prompt.</p>
+<p>☐ Ask follow-up.</p>
+<p>☐ Start another chat.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-2---prompting">Level 2 - Prompting</h3>
+<p>☐ Write goal/context/constraints prompt.</p>
+<p>☐ Request numbered steps.</p>
+<p>☐ Request shorter rewrite.</p>
+<p>☐ Ask for assumptions.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-3---search">Level 3 - Search</h3>
+<p>☐ Ask current question.</p>
+<p>☐ Search web.</p>
+<p>☐ Open citation.</p>
+<p>☐ Verify claim.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-4---files">Level 4 - Files</h3>
+<p>☐ Upload file.</p>
+<p>☐ Summarize.</p>
+<p>☐ Ask targeted question.</p>
+<p>☐ Verify against source.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-5---data-and-images">Level 5 - Data and Images</h3>
+<p>☐ Upload small spreadsheet.</p>
+<p>☐ Check calculation.</p>
+<p>☐ Analyze image.</p>
+<p>☐ Request alt-text draft.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-6---voice">Level 6 - Voice</h3>
+<p>☐ Start Voice.</p>
+<p>☐ Ask question.</p>
+<p>☐ Interrupt/follow up.</p>
+<p>☐ End session.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-7---writingcode-blocks">Level 7 - Writing/Code Blocks</h3>
+<p>☐ Request reusable draft.</p>
+<p>☐ Edit/revise.</p>
+<p>☐ Copy/save result.</p>
+<p>☐ Open shortcut list.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-8---projects">Level 8 - Projects</h3>
+<p>☐ Create project.</p>
+<p>☐ Add instruction.</p>
+<p>☐ Upload file.</p>
+<p>☐ Start project chat.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-9---advanced-tools">Level 9 - Advanced Tools</h3>
+<p>☐ Identify Work availability.</p>
+<p>☐ Identify Deep Research.</p>
+<p>☐ Identify Plugins/Apps.</p>
+<p>☐ Identify Study Mode.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-10---scheduled-work">Level 10 - Scheduled Work</h3>
+<p>☐ Create test reminder if available.</p>
+<p>☐ Find Scheduled.</p>
+<p>☐ Edit/pause/delete.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-11---privacy">Level 11 - Privacy</h3>
+<p>☐ Review Memory.</p>
+<p>☐ Review Data Controls.</p>
+<p>☐ Start Temporary Chat.</p>
+<p>☐ Archive/delete test chats.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-12---accessibility">Level 12 - Accessibility</h3>
+<p>☐ Navigate by headings.</p>
+<p>☐ Find prompt by edit fields.</p>
+<p>☐ Use correct screen-reader mode.</p>
+<p>☐ Test braille output/input/routing.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-13---responsible-use">Level 13 - Responsible Use</h3>
+<p>☐ Find hallucinated claim.</p>
+<p>☐ Verify source.</p>
+<p>☐ Sanitize sensitive prompt.</p>
+<p>☐ Explain when not to use ChatGPT alone.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h3 id="level-14---independent-project">Level 14 - Independent Project</h3>
+<p>☐ Choose a real low-risk task.</p>
+<p>☐ Select Chat/Search/Project/Work appropriately.</p>
+<p>☐ Complete it.</p>
+<p>☐ Verify result.</p>
+<p>☐ Save/share safely.</p>
+<p><strong>Ready to advance:</strong> You can complete every checked task without another person telling you what control, prompt, or verification step to use.</p>
+<h2 id="part-36---quick-reference">Part 36 - Quick Reference</h2>
+<h3 id="choose-the-right-chatgpt-experience">Choose the Right ChatGPT Experience</h3>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>How / What to know</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Everyday question / brainstorming</td>
+<td>Chat</td>
+</tr>
+<tr class="even">
+<td>Current fact / news / latest info</td>
+<td>Chat + Search</td>
+</tr>
+<tr class="odd">
+<td>Multi-source research report</td>
+<td>Deep Research, when available</td>
+</tr>
+<tr class="even">
+<td>Long multi-step deliverable</td>
+<td>Work, when available</td>
+</tr>
+<tr class="odd">
+<td>Ongoing topic with files/instructions</td>
+<td>Project</td>
+</tr>
+<tr class="even">
+<td>Guided learning</td>
+<td>Study Mode</td>
+</tr>
+<tr class="odd">
+<td>Reminder/recurring update</td>
+<td>Scheduled Task, when available</td>
+</tr>
+<tr class="even">
+<td>Software development</td>
+<td>Codex</td>
+</tr>
+<tr class="odd">
+<td>Hands-free conversation</td>
+<td>Voice</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="privacy-checklist">Privacy Checklist</h3>
+<p>☐ Is this data confidential or sensitive?</p>
+<p>☐ Do I need a Temporary Chat?</p>
+<p>☐ Is model improvement enabled or disabled as I intend?</p>
+<p>☐ Is Memory appropriate for this topic?</p>
+<p>☐ Am I connecting an external app?</p>
+<p>☐ Does a shared link/project expose information to someone else?</p>
+<h3 id="verification-checklist">Verification Checklist</h3>
+<p>☐ Does this answer depend on current information?</p>
+<p>☐ Did ChatGPT search the web if needed?</p>
+<p>☐ Did I open the important source?</p>
+<p>☐ Does the source actually support the claim?</p>
+<p>☐ Did I check names, dates, numbers, and links?</p>
+<p>☐ Would a mistake create serious consequences?</p>
+<h3 id="screen-reader-recovery-pattern">Screen Reader Recovery Pattern</h3>
+<p>1. Escape out of menus. 2. Move by headings/landmarks. 3. Find the prompt by edit-field navigation. 4. Switch Browse/Focus/Scan/Virtual mode as needed. 5. Use button navigation for Send, Voice, attachments, and menus. 6. Refresh only after protecting unsent text.</p>
+<h2 id="part-37---official-openai-resources">Part 37 - Official OpenAI Resources</h2>
+<p><a href="https://help.openai.com/en/collections/3742473-chatgpt"><u>ChatGPT Help Center</u></a></p>
+<p><a href="https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"><u>ChatGPT Capabilities Overview</u></a></p>
+<p><a href="https://help.openai.com/en/articles/9237897"><u>Search with ChatGPT</u></a></p>
+<p><a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt"><u>Projects in ChatGPT</u></a></p>
+<p><a href="https://help.openai.com/en/articles/20001275"><u>ChatGPT Work and Codex</u></a></p>
+<p><a href="https://help.openai.com/en/articles/20001246"><u>Writing blocks and code blocks</u></a></p>
+<p><a href="https://help.openai.com/en/articles/11487775"><u>Apps in ChatGPT</u></a></p>
+<p><a href="https://help.openai.com/en/articles/11780217-using-study-mode-in-chatgpt"><u>Study Mode</u></a></p>
+<p><a href="https://help.openai.com/en/articles/10291617"><u>Scheduled Tasks</u></a></p>
+<p><a href="https://help.openai.com/en/articles/8914046-temporary-chat-faq"><u>Temporary Chat FAQ</u></a></p>
+<p><a href="https://help.openai.com/en/articles/7730893-data-controls"><u>Data Controls FAQ</u></a></p>
+<p><a href="https://help.openai.com/en/articles/8983778-chat-and-file-retention-policies-in-chatgpt"><u>Chat and File Retention</u></a></p>
+<p><a href="https://openai.com/consumer-privacy/"><u>OpenAI Consumer Privacy</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I can open ChatGPT and start a new chat.</p>
+<p>☐ I can write a clear prompt with goal, context, constraints, and output format.</p>
+<p>☐ I can use follow-up questions to improve an answer.</p>
+<p>☐ I know when to begin a clean new conversation.</p>
+<p>☐ I understand that model/mode availability can change.</p>
+<p>☐ I can ask ChatGPT to search the web for current information.</p>
+<p>☐ I can inspect and verify citations.</p>
+<p>☐ I can upload and analyze files.</p>
+<p>☐ I can use ChatGPT for data analysis while checking important calculations.</p>
+<p>☐ I can analyze, generate, and edit images responsibly.</p>
+<p>☐ I can use Voice and protect spoken privacy.</p>
+<p>☐ I understand writing blocks and code blocks.</p>
+<p>☐ I can create and use Projects.</p>
+<p>☐ I understand when Work is appropriate and how approvals matter.</p>
+<p>☐ I understand plugins/connected apps and permissions.</p>
+<p>☐ I understand Deep Research and Study Mode.</p>
+<p>☐ I can create/manage Scheduled Tasks when available.</p>
+<p>☐ I can review and control Memory.</p>
+<p>☐ I can use Temporary Chat.</p>
+<p>☐ I understand archive versus delete and chat versus Library files.</p>
+<p>☐ I can review Data Controls.</p>
+<p>☐ I can share chats/projects without exposing private information.</p>
+<p>☐ I can navigate ChatGPT with my screen reader.</p>
+<p>☐ I can use a braille display through my active screen reader.</p>
+<p>☐ I can request more accessible response formatting.</p>
+<p>☐ I understand hallucinations and responsible-use limits.</p>
+<p>☐ I can troubleshoot missing features, focus problems, file problems, and outdated answers.</p>
+<p><strong>Most important habit:</strong> For important work, combine three habits: give ChatGPT a precise task, verify the facts and sources, and review the final result yourself before it affects another person, account, file, decision, or real-world action.</p>
+
+<h2 id="website-practice">Website practice and lessons</h2>
+<p>The following procedures preserve the Accessible Learning Center's original guided practice and connect this full manual to the ten-lesson course.</p>
 <section id="complete-procedures" aria-labelledby="complete-procedures-heading">
 <h2 id="complete-procedures-heading">Basic and advanced step-by-step procedures</h2>
 <p>These procedures make the manual usable on its own. The separate lessons provide assignments and progress tracking when you want a course experience.</p>
@@ -124,4 +944,8 @@
 <p><strong>Practice:</strong> Use ChatGPT to plan and draft a fictional workplace task, verify it, revise it, and document how AI helped.</p>
 </section>
 </section>
-<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">ChatGPT lessons</h2><ol class="course-lesson-list"><li><a href="chatgpt-lesson-1.html">Lesson 1: Open ChatGPT and Navigate the Conversation Interface</a></li><li><a href="chatgpt-lesson-2.html">Lesson 2: Write and Send an Effective First Prompt</a></li><li><a href="chatgpt-lesson-3.html">Lesson 3: Use Follow-Up Prompts to Improve an Answer</a></li><li><a href="chatgpt-lesson-4.html">Lesson 4: Create Accessible Lists, Tables, and Step-by-Step Instructions</a></li><li><a href="chatgpt-lesson-5.html">Lesson 5: Summarize Public Information and Check the Source</a></li><li><a href="chatgpt-lesson-6.html">Lesson 6: Draft and Revise Professional Email</a></li><li><a href="chatgpt-lesson-7.html">Lesson 7: Brainstorm, Compare Options, and Make a Decision</a></li><li><a href="chatgpt-lesson-8.html">Lesson 8: Work with Files Safely and Protect Private Information</a></li><li><a href="chatgpt-lesson-9.html">Lesson 9: Use ChatGPT with Screen Readers and Keyboard Navigation</a></li><li><a href="chatgpt-lesson-10.html">Lesson 10: Final ChatGPT Workplace Assistant Project</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from ChatGPT manual"><a href="chatgpt-lesson-1.html">Start ChatGPT Lesson 1</a><a href="lessons.html#chatgpt-lessons">All ChatGPT lessons</a><a href="student-progress.html">My progress</a></nav></main></body></html>
+
+<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">ChatGPT lessons</h2><ol class="course-lesson-list"><li><a href="chatgpt-lesson-1.html">Lesson 1: Open ChatGPT and Navigate the Conversation Interface</a></li><li><a href="chatgpt-lesson-2.html">Lesson 2: Write and Send an Effective First Prompt</a></li><li><a href="chatgpt-lesson-3.html">Lesson 3: Use Follow-Up Prompts to Improve an Answer</a></li><li><a href="chatgpt-lesson-4.html">Lesson 4: Create Accessible Lists, Tables, and Step-by-Step Instructions</a></li><li><a href="chatgpt-lesson-5.html">Lesson 5: Summarize Public Information and Check the Source</a></li><li><a href="chatgpt-lesson-6.html">Lesson 6: Draft and Revise Professional Email</a></li><li><a href="chatgpt-lesson-7.html">Lesson 7: Brainstorm, Compare Options, and Make a Decision</a></li><li><a href="chatgpt-lesson-8.html">Lesson 8: Work with Files Safely and Protect Private Information</a></li><li><a href="chatgpt-lesson-9.html">Lesson 9: Use ChatGPT with Screen Readers and Keyboard Navigation</a></li><li><a href="chatgpt-lesson-10.html">Lesson 10: Final ChatGPT Workplace Assistant Project</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from ChatGPT manual"><a href="chatgpt-lesson-1.html">Start ChatGPT Lesson 1</a><a href="lessons.html#chatgpt-lessons">All ChatGPT lessons</a><a href="student-progress.html">My progress</a></nav>
+  </main>
+</body>
+</html>
