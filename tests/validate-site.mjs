@@ -234,7 +234,8 @@ for (const topic of ["Screen-reader recovery", "Google applications", "Email and
 }
 check(troubleshootingLab.includes("missionControlCompleted"), "Mission Control local progress is missing.");
 check(troubleshootingLab.includes("speechSynthesis"), "Troubleshooting Lab speech playback is missing.");
-check(troubleshootingLab.includes('cockpit.addEventListener("keydown"'), "Mission Control does not accept keyboard commands.");
+check(troubleshootingLab.includes('missionControl.addEventListener("keydown"'), "Mission Control does not accept keyboard commands.");
+check(!/cockpit/i.test(troubleshootingLab + readFileSync(resolve(root, "troubleshooting-lab.html"), "utf8")), "Mission Control still uses cockpit terminology.");
 check(!readFileSync(resolve(root, "troubleshooting-lab.html"), "utf8").includes("What is the safest next action?"), "Mission Control still contains multiple-choice questions.");
 check(readFileSync(resolve(root, "accessibility.js"), "utf8").includes('href="troubleshooting-lab.html">Mission Control Sim</a>'), "Primary navigation is missing Mission Control Sim.");
 const commandPractice = readFileSync(resolve(root, "command-practice.js"), "utf8");

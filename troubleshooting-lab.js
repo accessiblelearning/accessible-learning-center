@@ -88,7 +88,7 @@
 
   const perspective = document.getElementById("atPerspective");
   const missionSelect = document.getElementById("missionSelect");
-  const cockpit = document.getElementById("commandCockpit");
+  const missionControl = document.getElementById("missionControlStation");
   const title = document.getElementById("missionTitle");
   const category = document.getElementById("missionCategory");
   const problem = document.getElementById("missionProblem");
@@ -151,7 +151,7 @@
   }
 
   let modifierHeld = false;
-  cockpit.addEventListener("keydown", event => {
+  missionControl.addEventListener("keydown", event => {
     if (!active) return;
     if (["F1", "F2"].includes(event.key)) {
       event.preventDefault();
@@ -174,7 +174,7 @@
     event.preventDefault();
     processCommand(command);
   });
-  cockpit.addEventListener("keyup", event => {
+  missionControl.addEventListener("keyup", event => {
     if (event.key === "Insert" || event.key === "CapsLock") modifierHeld = false;
   });
 
@@ -240,8 +240,8 @@
     nextButton.hidden = true;
     updateProgress();
     title.focus();
-    speak("Mission briefing. " + mission.title + ". " + mission.problem + " Move to the Command cockpit and begin.");
-    window.setTimeout(() => cockpit.focus(), 100);
+    speak("Mission briefing. " + mission.title + ". " + mission.problem + " Move to Mission Control and begin.");
+    window.setTimeout(() => missionControl.focus(), 100);
   }
 
   missions.forEach((mission, index) => {

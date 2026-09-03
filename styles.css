@@ -1092,7 +1092,7 @@ html[data-theme="dark"] .screen-reader-transcript {
 html[data-theme="dark"] .scenario-feedback.is-correct { color: #9dffc4; }
 html[data-theme="dark"] .scenario-feedback.is-incorrect { color: #ffc0a8; }
 
-.command-cockpit {
+.mission-control-station {
   margin-block: 1.25rem;
   padding: 1.25rem;
   color: #ffffff;
@@ -1102,12 +1102,12 @@ html[data-theme="dark"] .scenario-feedback.is-incorrect { color: #ffc0a8; }
   box-shadow: inset 0 0 0 2px #ffffff;
 }
 
-.command-cockpit:focus {
+.mission-control-station:focus {
   outline: 5px solid var(--focus);
   outline-offset: 4px;
 }
 
-.command-cockpit h3 {
+.mission-control-station h3 {
   color: #ffffff;
 }
 
