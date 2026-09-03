@@ -209,6 +209,16 @@ check(existsSync(resolve(root, "resource-search.js")), "Resource search behavior
 check(existsSync(resolve(root, "command-practice.html")), "Keyboard Command Practice Lab page is missing.");
 check(existsSync(resolve(root, "troubleshooting-lab.html")), "Assistive Technology Troubleshooting Lab page is missing.");
 check(existsSync(resolve(root, "additional-skills-manual.html")), "Additional Screen-Reader Skills manual is missing.");
+for (const file of ["job-search-manual.html", "calendar-manual.html", "docs-manual.html", "cybersecurity-manual.html", "pdf-manual.html"]) {
+  const detailedManual = readFileSync(resolve(root, file), "utf8");
+  check(detailedManual.includes("Basic") && detailedManual.includes("advanced"), file + " is missing basic and advanced how-to instruction.");
+  check((detailedManual.match(/<ol>/g) || []).length >= 4, file + " needs more step-by-step procedures.");
+  check(detailedManual.includes("Keyboard command"), file + " is missing keyboard-command guidance.");
+  check(detailedManual.includes("If that does not happen"), file + " is missing recovery guidance.");
+}
+for (const file of htmlFiles.filter(file => file.endsWith("-manual.html"))) {
+  check(!readFileSync(resolve(root, file), "utf8").includes("private assignment uploader"), file + " still directs learners to the paused uploader.");
+}
 const additionalSkills = readFileSync(resolve(root, "additional-skills-manual.html"), "utf8");
 check(additionalSkills.includes("Independent Skills Manuals"), "Independent skills directory title is missing.");
 check(!additionalSkills.includes("curriculum-audit") && !additionalSkills.includes("topic gaps identified"), "Independent skills manual still contains source-comparison framing.");
