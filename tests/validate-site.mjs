@@ -198,7 +198,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 337, "Expected 337 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 339, "Expected 339 HTML pages, found " + htmlFiles.length + ".");
 const manualsHtml = readFileSync(resolve(root, "manuals.html"), "utf8");
 check(manualsHtml.includes("Manuals are grouped by subject"), "Manuals page is not grouped by subject.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
@@ -304,7 +304,7 @@ check(quizScript.includes("data.passPercent"), "Quiz passing-score behavior is m
 check(quizScript.includes("print-certificate"), "Printable certificate behavior is missing.");
 check(quizScript.includes("accessibleLearningQuizResults"), "Local quiz result storage is missing.");
 check(!quizScript.includes("certificateStudentName") || !quizScript.includes("localStorage.setItem(key, name"), "Certificate names must not be stored.");
-check(searchIndex.count === 333 && searchIndex.entries.length === 333, "Search index must contain 333 public learning, practice, quiz, and help pages.");
+check(searchIndex.count === 335 && searchIndex.entries.length === 335, "Search index must contain 335 public learning, practice, quiz, and help pages.");
 check(assignmentScript.includes("const UPLOADS_ENABLED = false"), "Lesson upload interface is not paused.");
 check(assignmentScript.includes("submissionSection?.remove()"), "Paused upload interface is not removed.");
 check(assignmentScript.includes("Mark this lesson complete"), "Lesson completion control is missing.");
@@ -371,6 +371,21 @@ for (const requiredTopic of ["AI-Assisted Access: The Big Picture", "Create a No
   check(aiAccessManual.includes(requiredTopic), "AI-Assisted Access manual is missing: " + requiredTopic + ".");
 }
 check((aiAccessManual.match(/<h2 id="part-/g) || []).length === 30, "AI-Assisted Access manual must contain all 30 full manual parts.");
+const expandedGoogleManuals = [
+  ["google-drive-manual.html", 20, ["Screen Reader Setup", "Create Folders and Files", "Sharing and Permissions", "Drive for Desktop", "Braille and Mobile", "Troubleshooting"]],
+  ["gmail-manual.html", 30, ["Turn On Gmail Keyboard Shortcuts", "Compose and Send Email", "Attachments", "Create Filters", "Security and Phishing", "Gmail with JAWS", "Gmail on Android", "Troubleshooting", "Final Independence Checklist"]],
+  ["google-forms-manual.html", 23, ["Add Questions", "Required Questions and Validation", "Sections and Branching", "Preview and Publish", "Quizzes and Grading", "Accessible Form Design", "Braille and Mobile", "Troubleshooting"]],
+  ["google-classroom-manual.html", 27, ["Join a Class - Student", "Complete an Assignment - Student", "Turn In, Unsubmit, and Resubmit", "Teacher: Create a Class", "Teacher: Review, Grade, and Return Work", "Gemini and Learning Tools in Classroom", "Braille and Accessibility", "Troubleshooting"]],
+];
+for (const [filename, partCount, topics] of expandedGoogleManuals) {
+  const manual = readFileSync(resolve(root, filename), "utf8");
+  for (const topic of topics) check(manual.includes(topic), filename + " is missing: " + topic + ".");
+  check((manual.match(/<h2 id="part-/g) || []).length === partCount, filename + " has an incomplete full-manual section count.");
+}
+const manualsPage = readFileSync(resolve(root, "manuals.html"), "utf8");
+for (const filename of ["google-forms-manual.html", "google-classroom-manual.html"]) {
+  check(manualsPage.includes('href="' + filename + '"'), "Manuals page does not link " + filename + ".");
+}
 for (const action of ["decrease", "increase", "reset-text", "dark", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }
