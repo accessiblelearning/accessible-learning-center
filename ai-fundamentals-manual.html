@@ -1,13 +1,703 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Accessible keyboard-first AI Fundamentals and Responsible Use manual for blind and low-vision learners."><title>AI Fundamentals and Responsible Use Manual - Accessible Learning Center</title><link rel="stylesheet" href="styles.css?v=manual-review-1"><script src="accessibility.js?v=manual-review-1" defer></script></head><body class="manual-page">
-<a class="skip-link" href="#main-content">Skip to main content</a><header><p class="eyebrow">Accessible artificial intelligence foundations</p><h1>AI Fundamentals and Responsible Use Manual</h1><p>Practical, responsible AI skills for work, learning, and independent problem-solving.</p></header><main id="main-content"><nav class="manual-tools lesson-nav" aria-label="AI Fundamentals manual navigation"><a href="#basics">Basics</a><a href="#prompting">Prompting</a><a href="#verification">Verification</a><a href="#privacy">Privacy</a><a href="#screen-readers">Screen readers</a><a href="#lessons">Lessons</a></nav>
-<section id="basics" aria-labelledby="basics-heading"><h2 id="basics-heading">What generative AI does</h2><p>Generative AI predicts and creates text or other content from patterns in training data and the information supplied in a conversation. It can help brainstorm, organize, explain, summarize, and draft. It does not understand a situation the way a person does, and it can produce confident but incorrect or invented information.</p><p>Use AI as an assistant, not as the final decision-maker. A person remains responsible for checking accuracy, appropriateness, accessibility, and compliance with workplace rules.</p></section>
-<section id="prompting" aria-labelledby="prompting-heading"><h2 id="prompting-heading">A reliable prompt pattern</h2><ol><li><strong>Task:</strong> State exactly what you want.</li><li><strong>Context:</strong> Explain the audience and purpose using nonprivate information.</li><li><strong>Constraints:</strong> Give length, tone, reading level, deadline, or other limits.</li><li><strong>Format:</strong> Request headings, bullets, a numbered procedure, or a simple table.</li><li><strong>Checks:</strong> Ask the tool to identify uncertainty and provide sources when appropriate.</li></ol><p>Continue the conversation with specific follow-ups. For example: “Shorten this to 150 words,” “Explain the second step,” or “Which statements need verification?”</p></section>
-<section id="verification" aria-labelledby="verification-heading"><h2 id="verification-heading">Verify before using the result</h2><ul><li>Open original sources instead of trusting an AI summary or citation.</li><li>Confirm names, dates, quotations, calculations, contact details, laws, policies, and software instructions.</li><li>Prefer current primary sources from the organization responsible for the information.</li><li>Compare important claims with a second reliable source.</li><li>Test instructions safely before giving them to another person.</li><li>Rewrite the final result in your own voice and keep a record of corrections.</li></ul></section>
-<section id="privacy" aria-labelledby="privacy-heading"><h2 id="privacy-heading">Privacy and workplace rules</h2><p>Do not enter client records, medical or disability details, passwords, financial account information, private addresses, confidential workplace material, copyrighted documents you are not permitted to share, or information that identifies another person. Use fictional or public information in these lessons.</p><p>Follow the employer’s approved-tool, retention, disclosure, and human-review requirements. A personal free account is not automatically approved for organizational data. Never allow AI to make an employment, benefit, medical, legal, financial, safety, or accommodation decision for a person.</p></section>
-<section aria-labelledby="accessibility-heading"><h2 id="accessibility-heading">Accessible output</h2><p>Ask for descriptive headings, short paragraphs, meaningful link text, numbered steps, and simple tables. Ask for image descriptions when an image matters, but verify the description with a trusted person when accuracy is important. Avoid layouts that communicate meaning only through color, position, or visual formatting.</p></section>
-<section id="screen-readers" aria-labelledby="screen-readers-heading"><h2 id="screen-readers-heading">JAWS, Narrator, and NVDA</h2><p>AI interfaces change often. Use Tab and Shift+Tab to move among controls, Enter or Space to activate a control, and the screen reader’s heading, landmark, link, button, edit-field, and browse-mode commands to review the page. Use browser Find to locate words such as “Sources,” “Copy,” or part of your prompt.</p><ul><li><strong>JAWS:</strong> H moves by heading, B by button, E by edit field, Insert+F7 opens links, and Insert+F5 opens form fields.</li><li><strong>NVDA:</strong> H moves by heading, B by button, E by edit field, NVDA+F7 opens the Elements List, and NVDA+Space switches browse and focus modes.</li><li><strong>Narrator:</strong> Use Caps Lock or Insert with arrow keys for Scan Mode navigation; press Caps Lock+Space to toggle Scan Mode when needed.</li></ul><p>After sending a prompt, allow time for the response to finish. Move by heading or paragraph and confirm whether focus changed. Product-specific keyboard behavior may change after updates.</p></section>
-<section aria-labelledby="cost-heading"><h2 id="cost-heading">Free-course rule</h2><p>These lessons can be completed with an available free AI service or by studying the examples without creating an account. Do not start a paid trial, enter payment information, or purchase a subscription for this course.</p></section>
-<section aria-labelledby="official-heading"><h2 id="official-heading">Official references</h2><ul><li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a></li><li><a href="https://www.nist.gov/itl/ai-risk-management-framework/generative-artificial-intelligence-profile">NIST Generative AI Profile</a></li></ul></section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Comprehensive keyboard-first AI fundamentals and responsible-use manual for blind and low-vision learners.">
+  <title>AI Fundamentals and Responsible Use Manual - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=full-ai-manual-1">
+  <script src="accessibility.js?v=manual-contents-1" defer></script>
+</head>
+<body class="manual-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <p class="eyebrow">Accessible artificial intelligence foundations</p>
+    <h1>AI Fundamentals and Responsible Use Manual</h1>
+    <p>Independent self-study guide for responsible, accessible AI use.</p>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <nav class="manual-tools" aria-label="Manual tools">
+      <a href="manuals.html">All manuals</a>
+      <a href="#table-of-contents">Table of contents</a>
+      <a href="#complete-procedures">Website practice procedures</a>
+      <a href="#lessons">AI lessons</a>
+    </nav>
+<p><strong>Purpose:</strong> This manual explains artificial intelligence from the beginning and teaches how to use AI tools responsibly. It assumes no prior technical knowledge.</p>
+<p><strong>Who this is for:</strong> Students, employees, job seekers, independent learners, screen-reader and braille users, and anyone who wants to understand AI before relying on it.</p>
+<p><strong>Core principle:</strong> AI can be useful without being authoritative. Treat AI output as assistance that may require verification, not as automatic truth.</p>
+<p><strong>Responsible-use foundation:</strong> The guide reflects current responsible-AI principles from NIST and UNESCO, including risk management, transparency, fairness, privacy, human oversight, and awareness of generative-AI-specific risks.</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<ul>
+<li><p>Read Parts 1 through 8 before using AI for important work; they establish the concepts needed to judge AI output.</p></li>
+<li><p>Practice with low-risk tasks first, such as brainstorming, rewriting your own text, or generating study questions.</p></li>
+<li><p>Do not paste confidential, private, regulated, or employer/client data into an AI system unless the relevant policy and service terms permit it.</p></li>
+<li><p>Verify important factual claims using trustworthy independent sources.</p></li>
+<li><p>Keep the human decision-maker responsible for important decisions.</p></li>
+<li><p>Use AI to support accessibility and independence, but check outputs that describe images, documents, people, or environments.</p></li>
+<li><p>When an AI tool cannot provide sources, treat precise factual claims with extra caution.</p></li>
+<li><p>Keep records of significant AI use when school, workplace, legal, or organizational policy requires disclosure.</p></li>
+</ul>
+<nav class="manual-contents" aria-labelledby="table-of-contents">
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#part-1---what-artificial-intelligence-is">Part 1 - What Artificial Intelligence Is</a></li>
+<li><a href="#part-2---ai-machine-learning-deep-learning-and-generative-ai">Part 2 - AI, Machine Learning, Deep Learning, and Generative AI</a></li>
+<li><a href="#part-3---how-generative-ai-produces-an-answer">Part 3 - How Generative AI Produces an Answer</a></li>
+<li><a href="#part-4---large-language-models-and-tokens">Part 4 - Large Language Models and Tokens</a></li>
+<li><a href="#part-5---training-data-context-and-knowledge-limits">Part 5 - Training Data, Context, and Knowledge Limits</a></li>
+<li><a href="#part-6---what-ai-is-good-at">Part 6 - What AI Is Good At</a></li>
+<li><a href="#part-7---what-ai-is-not-good-at">Part 7 - What AI Is Not Good At</a></li>
+<li><a href="#part-8---hallucinations-and-confident-errors">Part 8 - Hallucinations and Confident Errors</a></li>
+<li><a href="#part-9---prompting-fundamentals">Part 9 - Prompting Fundamentals</a></li>
+<li><a href="#part-10---better-prompt-structure">Part 10 - Better Prompt Structure</a></li>
+<li><a href="#part-11---follow-up-questions-and-iteration">Part 11 - Follow-Up Questions and Iteration</a></li>
+<li><a href="#part-12---sources-search-and-grounding">Part 12 - Sources, Search, and Grounding</a></li>
+<li><a href="#part-13---verification-and-fact-checking">Part 13 - Verification and Fact-Checking</a></li>
+<li><a href="#part-14---privacy-and-sensitive-information">Part 14 - Privacy and Sensitive Information</a></li>
+<li><a href="#part-15---security-and-prompt-injection">Part 15 - Security and Prompt Injection</a></li>
+<li><a href="#part-16---bias-fairness-and-representation">Part 16 - Bias, Fairness, and Representation</a></li>
+<li><a href="#part-17---copyright-attribution-and-ownership">Part 17 - Copyright, Attribution, and Ownership</a></li>
+<li><a href="#part-18---education-and-academic-integrity">Part 18 - Education and Academic Integrity</a></li>
+<li><a href="#part-19---workplace-and-professional-use">Part 19 - Workplace and Professional Use</a></li>
+<li><a href="#part-20---high-stakes-decisions">Part 20 - High-Stakes Decisions</a></li>
+<li><a href="#part-21---accessibility-and-assistive-technology">Part 21 - Accessibility and Assistive Technology</a></li>
+<li><a href="#part-22---images-audio-video-and-deepfakes">Part 22 - Images, Audio, Video, and Deepfakes</a></li>
+<li><a href="#part-23---ai-agents-and-automated-actions">Part 23 - AI Agents and Automated Actions</a></li>
+<li><a href="#part-24---responsible-human-oversight">Part 24 - Responsible Human Oversight</a></li>
+<li><a href="#part-25---a-practical-responsible-use-framework">Part 25 - A Practical Responsible-Use Framework</a></li>
+<li><a href="#part-26---troubleshooting-poor-ai-results">Part 26 - Troubleshooting Poor AI Results</a></li>
+<li><a href="#part-27---practice-course">Part 27 - Practice Course</a></li>
+<li><a href="#part-28---quick-reference-checklists">Part 28 - Quick Reference Checklists</a></li>
+<li><a href="#part-29---official-resources">Part 29 - Official Resources</a></li>
+</ol>
+</nav>
+<h2 id="part-1---what-artificial-intelligence-is">Part 1 - What Artificial Intelligence Is</h2>
+<p>Artificial intelligence is a broad term for computer systems designed to perform tasks that people associate with intelligent behavior, such as recognizing patterns, understanding language, generating content, making predictions, recommending actions, or controlling devices.</p>
+<ul>
+<li><p>AI is not one single technology.</p></li>
+<li><p>An AI system may be narrow and specialized, such as spam detection or speech recognition.</p></li>
+<li><p>An AI system may generate new content, such as text, images, audio, video, or code.</p></li>
+<li><p>An AI system may recommend or rank options without generating visible content.</p></li>
+<li><p>AI output is produced by a system, not by an independent human expert reviewing your situation.</p></li>
+</ul>
+<p><strong>Important distinction:</strong> A system can produce a fluent answer without having human experience, personal awareness, or guaranteed understanding of the real-world situation.</p>
+<h2 id="part-2---ai-machine-learning-deep-learning-and-generative-ai">Part 2 - AI, Machine Learning, Deep Learning, and Generative AI</h2>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>What to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Artificial intelligence (AI)</td>
+<td>The broad field of systems that perform tasks associated with intelligent behavior.</td>
+</tr>
+<tr class="even">
+<td>Machine learning (ML)</td>
+<td>A way of building systems that learn patterns from data rather than relying only on hand-written rules.</td>
+</tr>
+<tr class="odd">
+<td>Deep learning</td>
+<td>Machine learning using multi-layer neural networks; widely used in speech, vision, and modern generative systems.</td>
+</tr>
+<tr class="even">
+<td>Generative AI</td>
+<td>AI that creates new content such as text, images, audio, video, or code.</td>
+</tr>
+<tr class="odd">
+<td>Large language model (LLM)</td>
+<td>A generative model trained to work with language and related symbolic information.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Relationship:</strong> Generative AI is part of AI. Many current generative systems use deep-learning methods, but not every AI system is generative.</p>
+<h2 id="part-3---how-generative-ai-produces-an-answer">Part 3 - How Generative AI Produces an Answer</h2>
+<p>A generative model receives your input, combines it with the conversation/context and system instructions, and predicts a useful continuation. For language models, this involves predicting sequences of tokens.</p>
+<ul>
+<li><p>The answer is generated at request time; it is not normally retrieved as one complete prewritten paragraph.</p></li>
+<li><p>Generation is influenced by the prompt, prior conversation, system instructions, model design, and available tools/data.</p></li>
+<li><p>A fluent answer can contain invented details because plausible language is not the same as verified truth.</p></li>
+<li><p>Different prompts can lead to different answers to the same underlying question.</p></li>
+</ul>
+<p><strong>Mental model:</strong> Think of generative AI as a powerful pattern-and-language engine with reasoning capabilities that still needs verification, not as an infallible encyclopedia.</p>
+<h2 id="part-4---large-language-models-and-tokens">Part 4 - Large Language Models and Tokens</h2>
+<p>Large language models process text in smaller units called tokens. A token can be a whole word, part of a word, punctuation, or another unit.</p>
+<ul>
+<li><p>Long conversations consume context space.</p></li>
+<li><p>The model may pay less attention to older details when a conversation becomes very long.</p></li>
+<li><p>Exact token counts depend on the model and tokenizer.</p></li>
+<li><p>Giving clear, relevant context is usually more useful than giving large amounts of unrelated text.</p></li>
+</ul>
+<p><strong>Practical lesson:</strong> If an AI starts forgetting instructions in a long conversation, restate the key requirements or begin a clean conversation with a concise summary.</p>
+<h2 id="part-5---training-data-context-and-knowledge-limits">Part 5 - Training Data, Context, and Knowledge Limits</h2>
+<p>Models learn statistical patterns during training. At use time, a model may also receive current context, uploaded files, retrieved information, or web/search results if the product supports those tools.</p>
+<ul>
+<li><p>Training data is not the same thing as a live database.</p></li>
+<li><p>A model may not know that a fact has changed unless it has current retrieval/search access.</p></li>
+<li><p>A model may mix accurate information with outdated or incorrect information.</p></li>
+<li><p>An answer about current laws, prices, schedules, public figures, software versions, or news should be verified with current sources.</p></li>
+<li><p>Uploaded documents and connected data can improve relevance but increase privacy responsibility.</p></li>
+</ul>
+<p><strong>Current information rule:</strong> For time-sensitive questions, ask the AI to verify with current sources when the product can browse or search.</p>
+<h2 id="part-6---what-ai-is-good-at">Part 6 - What AI Is Good At</h2>
+<ul>
+<li><p>Brainstorming ideas and alternatives.</p></li>
+<li><p>Explaining a concept at different reading levels.</p></li>
+<li><p>Summarizing text you provide.</p></li>
+<li><p>Rewriting your own material for clarity, tone, or structure.</p></li>
+<li><p>Generating practice questions or study aids.</p></li>
+<li><p>Creating outlines, checklists, templates, and first drafts.</p></li>
+<li><p>Classifying or organizing information with human review.</p></li>
+<li><p>Translating or simplifying material, with verification for important use.</p></li>
+<li><p>Helping with code, formulas, and troubleshooting when results are tested.</p></li>
+<li><p>Accessibility support such as describing visual structure or converting information into a more usable format.</p></li>
+</ul>
+<p><strong>Best use pattern:</strong> AI is often strongest when the user can evaluate the result or verify it independently.</p>
+<h2 id="part-7---what-ai-is-not-good-at">Part 7 - What AI Is Not Good At</h2>
+<ul>
+<li><p>Guaranteeing that a factual statement is true.</p></li>
+<li><p>Knowing unstated facts about a person, event, image, or organization.</p></li>
+<li><p>Replacing professional judgment in high-stakes medical, legal, financial, employment, or safety decisions.</p></li>
+<li><p>Determining whether an accusation is true without reliable evidence.</p></li>
+<li><p>Knowing whether a source exists just because it can generate a plausible citation.</p></li>
+<li><p>Understanding every local policy, law, procedure, or cultural context automatically.</p></li>
+<li><p>Making an important decision without human accountability.</p></li>
+</ul>
+<p><strong>Warning sign:</strong> The more serious the consequence of being wrong, the stronger the verification and human-review requirement should be.</p>
+<h2 id="part-8---hallucinations-and-confident-errors">Part 8 - Hallucinations and Confident Errors</h2>
+<p>A hallucination is an AI-generated statement that sounds plausible but is unsupported, false, or invented. NIST's generative-AI risk profile treats confabulation and related misinformation risks as important issues to manage.</p>
+<ul>
+<li><p>Invented references, article titles, court cases, statistics, quotes, or links.</p></li>
+<li><p>Correct-sounding but false explanations.</p></li>
+<li><p>Combining details from two different people, products, or events.</p></li>
+<li><p>Making up settings, buttons, commands, or software features.</p></li>
+<li><p>Claiming certainty where the evidence is weak.</p></li>
+</ul>
+<h3 id="test-an-ai-claim">8.1 Test an AI Claim</h3>
+<p><strong>What you will learn:</strong> Verify a factual answer before using it.</p>
+<p><strong>Before you begin:</strong> Choose a low-risk factual claim.</p>
+<h4 id="exactly-how-to-do-it">Exactly how to do it</h4>
+<ol><li>Ask the AI to state the claim clearly.</li><li>Ask for the source or evidence.</li><li>Open or independently locate the source.</li><li>Check that the source actually says what the AI claimed.</li><li>Check the publication/update date.</li><li>Check whether another trustworthy source agrees.</li><li>Correct your notes if the AI was wrong.</li></ol>
+<p><strong>What should happen:</strong> You separate fluency from evidence.</p>
+<p><strong>If that does not happen:</strong> If the AI cannot provide a verifiable source, treat the claim as unverified rather than repeating it as fact.</p>
+<p><strong>Practice:</strong> Verify three AI-generated claims.</p>
+<h2 id="part-9---prompting-fundamentals">Part 9 - Prompting Fundamentals</h2>
+<p>A prompt is the instruction or information you give the AI. Good prompts reduce ambiguity but do not guarantee correctness.</p>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>What to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Goal</td>
+<td>What do you want the AI to produce?</td>
+</tr>
+<tr class="even">
+<td>Context</td>
+<td>What background is needed to understand the task?</td>
+</tr>
+<tr class="odd">
+<td>Constraints</td>
+<td>Length, tone, format, audience, sources, exclusions, or other requirements.</td>
+</tr>
+<tr class="even">
+<td>Input</td>
+<td>The text, data, problem, or material to work on.</td>
+</tr>
+<tr class="odd">
+<td>Verification</td>
+<td>What should be checked, cited, or marked as uncertain?</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="write-a-basic-prompt">9.1 Write a Basic Prompt</h3>
+<p><strong>What you will learn:</strong> Give enough information without oversharing.</p>
+<p><strong>Before you begin:</strong> Choose a harmless task.</p>
+<h4 id="exactly-how-to-do-it-1">Exactly how to do it</h4>
+<ol><li>State the goal in one sentence.</li><li>Add the audience or purpose.</li><li>Add important constraints.</li><li>Provide only the input needed.</li><li>Ask the AI to identify uncertainty when appropriate.</li></ol>
+<p><strong>What should happen:</strong> The response is more relevant and structured.</p>
+<p><strong>If that does not happen:</strong> If the response misses the task, identify which prompt element was vague and revise it.</p>
+<p><strong>Practice:</strong> Prompt the AI to explain one familiar concept for a beginner.</p>
+<h2 id="part-10---better-prompt-structure">Part 10 - Better Prompt Structure</h2>
+<p>A reusable prompt structure is: Task - Context - Requirements - Output Format - Verification.</p>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>What to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Task</td>
+<td>Summarize this policy.</td>
+</tr>
+<tr class="even">
+<td>Context</td>
+<td>I am a new employee with no technical background.</td>
+</tr>
+<tr class="odd">
+<td>Requirements</td>
+<td>Explain key duties and deadlines; do not invent missing information.</td>
+</tr>
+<tr class="even">
+<td>Output format</td>
+<td>Use headings and a final checklist.</td>
+</tr>
+<tr class="odd">
+<td>Verification</td>
+<td>Quote no more than short necessary phrases and flag anything unclear.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Avoid fake authority:</strong> Telling an AI to 'act as the world's greatest expert' may change style, but it does not create credentials or guarantee accuracy.</p>
+<h2 id="part-11---follow-up-questions-and-iteration">Part 11 - Follow-Up Questions and Iteration</h2>
+<ul>
+<li><p>Ask for clarification: 'Which part of my request was ambiguous?'</p></li>
+<li><p>Ask for alternatives: 'Give me three approaches with tradeoffs.'</p></li>
+<li><p>Ask for compression: 'Reduce this to a five-item checklist.'</p></li>
+<li><p>Ask for expansion: 'Explain step 3 in beginner terms.'</p></li>
+<li><p>Ask for verification: 'Which claims here need external checking?'</p></li>
+<li><p>Ask for assumptions: 'List the assumptions you made.'</p></li>
+</ul>
+<p><strong>Iteration rule:</strong> Use follow-up questions to improve usefulness, but do not confuse repeated agreement with independent verification.</p>
+<h2 id="part-12---sources-search-and-grounding">Part 12 - Sources, Search, and Grounding</h2>
+<p>Grounding means tying an answer to external information such as retrieved documents, databases, tools, or web sources.</p>
+<ul>
+<li><p>A sourced answer is stronger only if the sources are relevant and accurately represented.</p></li>
+<li><p>A citation can be wrong, outdated, or unrelated.</p></li>
+<li><p>Primary sources are often best for laws, policies, official product instructions, standards, and statistics.</p></li>
+<li><p>Secondary sources can be useful for explanation and comparison.</p></li>
+<li><p>Do not assume an AI-generated bibliography is real until you verify each item.</p></li>
+</ul>
+<h3 id="check-a-citation">12.1 Check a Citation</h3>
+<p><strong>What you will learn:</strong> Confirm that a cited source exists and supports the claim.</p>
+<p><strong>Before you begin:</strong> The AI supplied a source.</p>
+<h4 id="exactly-how-to-do-it-2">Exactly how to do it</h4>
+<ol><li>Open the source through a trusted path.</li><li>Confirm title, publisher/author, and date.</li><li>Find the relevant passage.</li><li>Compare the source's wording/meaning with the AI's paraphrase.</li><li>Check whether the AI omitted an important limitation.</li><li>Record the source separately if you will rely on it.</li></ol>
+<p><strong>What should happen:</strong> You know whether the citation genuinely supports the answer.</p>
+<p><strong>If that does not happen:</strong> If the source cannot be found, treat the citation as potentially fabricated.</p>
+<p><strong>Practice:</strong> Verify one article and one official source.</p>
+<h2 id="part-13---verification-and-fact-checking">Part 13 - Verification and Fact-Checking</h2>
+<p>A practical verification ladder:</p>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>What to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low stakes</td>
+<td>Quick plausibility check may be enough.</td>
+</tr>
+<tr class="even">
+<td>Moderate stakes</td>
+<td>Check one or two trustworthy independent sources.</td>
+</tr>
+<tr class="odd">
+<td>High stakes</td>
+<td>Use authoritative primary sources and qualified human review.</td>
+</tr>
+<tr class="even">
+<td>Irreversible action</td>
+<td>Do not proceed from AI output alone.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="verify-an-important-answer">13.1 Verify an Important Answer</h3>
+<p><strong>What you will learn:</strong> Use a structured evidence process.</p>
+<p><strong>Before you begin:</strong> The result could affect money, health, school, work, legal rights, safety, or another person.</p>
+<h4 id="exactly-how-to-do-it-3">Exactly how to do it</h4>
+<ol><li>Separate facts from suggestions/opinions.</li><li>List the factual claims that matter to the decision.</li><li>Identify the best authoritative source for each claim.</li><li>Check current information.</li><li>Ask a qualified human when professional judgment is needed.</li><li>Document what you verified.</li><li>Make the decision yourself or through the responsible human process.</li></ol>
+<p><strong>What should happen:</strong> The AI becomes one input rather than the final authority.</p>
+<p><strong>If that does not happen:</strong> If reliable evidence conflicts with the AI, trust the verified evidence and correct the AI-derived work.</p>
+<p><strong>Practice:</strong> Practice on a harmless policy question.</p>
+<h2 id="part-14---privacy-and-sensitive-information">Part 14 - Privacy and Sensitive Information</h2>
+<ul>
+<li><p>Do not paste passwords, security codes, private keys, or recovery codes into a general AI chat.</p></li>
+<li><p>Do not upload confidential client, patient, student, employee, financial, legal, or proprietary data unless policy and service terms explicitly allow it.</p></li>
+<li><p>Remove unnecessary names, account numbers, addresses, IDs, and other identifying details.</p></li>
+<li><p>Know whether your organization provides an approved enterprise AI tool with specific data protections.</p></li>
+<li><p>Review the service's privacy/data-control settings before using it for sensitive work.</p></li>
+</ul>
+<h3 id="minimize-data-before-prompting">14.1 Minimize Data Before Prompting</h3>
+<p><strong>What you will learn:</strong> Give the AI what it needs without giving it everything.</p>
+<p><strong>Before you begin:</strong> Use a fictional or sanitized example.</p>
+<h4 id="exactly-how-to-do-it-4">Exactly how to do it</h4>
+<ol><li>Identify what the task actually requires.</li><li>Remove names and direct identifiers.</li><li>Replace real account or case numbers with placeholders.</li><li>Generalize dates/locations when exact details are not necessary.</li><li>Submit the minimized version.</li><li>Check the answer before reconnecting it to real records.</li></ol>
+<p><strong>What should happen:</strong> The AI can help while receiving less sensitive data.</p>
+<p><strong>If that does not happen:</strong> If the task cannot be done without protected data, use an approved system or do not use AI for that task.</p>
+<p><strong>Practice:</strong> Sanitize a fictional case description.</p>
+<h2 id="part-15---security-and-prompt-injection">Part 15 - Security and Prompt Injection</h2>
+<p>Prompt injection is an attempt to make an AI system follow malicious or untrusted instructions embedded in webpages, documents, emails, tool output, or other content.</p>
+<ul>
+<li><p>Treat instructions inside untrusted content as data, not automatically as commands.</p></li>
+<li><p>Do not allow an AI agent to send messages, move money, delete files, or publish content without appropriate confirmation.</p></li>
+<li><p>Be cautious when an AI says a webpage/document instructed it to ignore previous rules.</p></li>
+<li><p>Do not expose credentials or secrets to satisfy instructions found in retrieved content.</p></li>
+<li><p>Use least privilege: give AI tools only the permissions needed for the task.</p></li>
+</ul>
+<p><strong>Security principle:</strong> Untrusted content should not be allowed to silently change the user's real-world intent.</p>
+<h2 id="part-16---bias-fairness-and-representation">Part 16 - Bias, Fairness, and Representation</h2>
+<p>AI can reproduce or amplify patterns and biases present in data, design choices, evaluation methods, or deployment context.</p>
+<ul>
+<li><p>Do not use AI stereotypes as evidence about a person or group.</p></li>
+<li><p>Review hiring, admissions, discipline, lending, housing, benefits, and other consequential outputs for unfair patterns.</p></li>
+<li><p>Test whether wording changes associated with identity characteristics change the AI's recommendation.</p></li>
+<li><p>Include diverse perspectives when evaluating systems that affect diverse populations.</p></li>
+<li><p>Give people meaningful human review and appeal processes when AI influences important decisions.</p></li>
+</ul>
+<p><strong>UNESCO principle:</strong> UNESCO's AI ethics framework emphasizes human dignity, fairness and non-discrimination, transparency, inclusiveness, and human oversight.</p>
+<h2 id="part-17---copyright-attribution-and-ownership">Part 17 - Copyright, Attribution, and Ownership</h2>
+<p>AI-generated content can raise copyright, licensing, attribution, plagiarism, and ownership questions. Rules vary by country, platform, employer, school, and intended use.</p>
+<ul>
+<li><p>Do not assume AI output is automatically free of third-party rights.</p></li>
+<li><p>Do not ask AI to reproduce a copyrighted work when you do not have permission.</p></li>
+<li><p>Verify quotations and citations.</p></li>
+<li><p>Follow employer, publisher, school, and platform disclosure rules.</p></li>
+<li><p>Keep records of substantial human editing and creative contribution where relevant.</p></li>
+</ul>
+<p><strong>U.S. Copyright Office:</strong> The U.S. Copyright Office's January 2025 report states that copyright protection can apply where a human author contributes sufficient expressive elements, while merely providing prompts is not by itself enough for authorship of AI-generated output.</p>
+<p><strong>Not legal advice:</strong> For significant commercial or legal decisions, consult current law and qualified counsel.</p>
+<h2 id="part-18---education-and-academic-integrity">Part 18 - Education and Academic Integrity</h2>
+<ul>
+<li><p>Read the assignment/school AI policy before using AI.</p></li>
+<li><p>Use AI for tutoring, practice, brainstorming, and feedback only when permitted.</p></li>
+<li><p>Do not submit AI-generated work as your own if the rules prohibit it.</p></li>
+<li><p>Do not invent citations or sources.</p></li>
+<li><p>Disclose AI assistance when required.</p></li>
+<li><p>Keep enough of your own process to explain and defend the submitted work.</p></li>
+</ul>
+<h3 id="use-ai-as-a-study-partner">18.1 Use AI as a Study Partner</h3>
+<p><strong>What you will learn:</strong> Learn rather than outsource the learning.</p>
+<p><strong>Before you begin:</strong> Choose a topic you are studying.</p>
+<h4 id="exactly-how-to-do-it-5">Exactly how to do it</h4>
+<ol><li>Ask AI to explain the concept.</li><li>Close the answer.</li><li>Explain the concept in your own words.</li><li>Ask AI to quiz you.</li><li>Answer without copying.</li><li>Verify any disputed facts using course materials.</li></ol>
+<p><strong>What should happen:</strong> AI supports recall and understanding rather than replacing your work.</p>
+<p><strong>If that does not happen:</strong> If you cannot explain the answer independently, continue studying before submitting anything.</p>
+<p><strong>Practice:</strong> Complete one five-question quiz.</p>
+<h2 id="part-19---workplace-and-professional-use">Part 19 - Workplace and Professional Use</h2>
+<ul>
+<li><p>Use only approved AI tools for company/client information.</p></li>
+<li><p>Do not paste confidential documents into personal AI accounts.</p></li>
+<li><p>Review generated emails, reports, code, formulas, and analyses before sending or deploying them.</p></li>
+<li><p>Verify numbers, names, dates, citations, and commitments.</p></li>
+<li><p>Disclose AI use when policy, client contract, regulation, or professional standards require it.</p></li>
+<li><p>Do not let AI send external communications or execute actions beyond your authority.</p></li>
+</ul>
+<p><strong>Accountability:</strong> The person or organization using AI remains responsible for professional output, even when the AI produced the first draft.</p>
+<h2 id="part-20---high-stakes-decisions">Part 20 - High-Stakes Decisions</h2>
+<p>High-stakes use means an error can significantly affect health, safety, legal rights, finances, employment, education, housing, insurance, public benefits, or another person's opportunities.</p>
+<ul>
+<li><p>Use AI to organize questions or explain terms, not to replace qualified decision-makers.</p></li>
+<li><p>Verify current law, policy, medication, diagnosis, financial data, or safety information independently.</p></li>
+<li><p>Do not make adverse decisions about a person solely from an AI-generated profile or score.</p></li>
+<li><p>Provide human review for consequential decisions.</p></li>
+<li><p>Use documented standards and evidence rather than AI confidence.</p></li>
+</ul>
+<p><strong>Rule:</strong> The higher the consequence, the less appropriate it is to rely on unsupervised AI output.</p>
+<h2 id="part-21---accessibility-and-assistive-technology">Part 21 - Accessibility and Assistive Technology</h2>
+<p>AI can improve access by converting information into alternative forms, but accessibility output still requires verification.</p>
+<ul>
+<li><p>Ask AI to describe complex images, charts, or layouts, then verify important details when possible.</p></li>
+<li><p>Use AI to convert visual instructions into ordered keyboard/screen-reader steps.</p></li>
+<li><p>Ask for plain-language or structured versions of inaccessible text.</p></li>
+<li><p>Use AI to generate alt-text drafts, but confirm the description reflects the actual image and purpose.</p></li>
+<li><p>Do not assume AI-generated descriptions identify people, objects, colors, medication labels, signs, or hazards correctly.</p></li>
+<li><p>Screen-reader users should ask for headings, numbered procedures, descriptive link text, and tables only when tables improve navigation.</p></li>
+</ul>
+<h3 id="turn-a-visual-procedure-into-an-accessible-one">21.1 Turn a Visual Procedure into an Accessible One</h3>
+<p><strong>What you will learn:</strong> Request exact interaction details.</p>
+<p><strong>Before you begin:</strong> Use a harmless sample procedure.</p>
+<h4 id="exactly-how-to-do-it-6">Exactly how to do it</h4>
+<ol><li>Tell the AI which device, operating system, app version, and screen reader you use.</li><li>Ask for exact keys or gestures.</li><li>Ask it to identify where each control is located.</li><li>Ask what feedback you should hear or feel.</li><li>Ask what to do if the expected result does not happen.</li><li>Verify current commands in official documentation before relying on them.</li></ol>
+<p><strong>What should happen:</strong> The output becomes more actionable and testable.</p>
+<p><strong>If that does not happen:</strong> If the AI only says 'navigate to' or 'click' without explaining how, ask for exact keyboard/screen-reader steps.</p>
+<p><strong>Practice:</strong> Convert one visual-only instruction set.</p>
+<h2 id="part-22---images-audio-video-and-deepfakes">Part 22 - Images, Audio, Video, and Deepfakes</h2>
+<ul>
+<li><p>Generative AI can create realistic synthetic images, voices, and video.</p></li>
+<li><p>An image, voice recording, screenshot, or video is not automatically proof that an event happened.</p></li>
+<li><p>Verify important media through source provenance, independent reporting, direct contact, or original records.</p></li>
+<li><p>Voice cloning can imitate family members, executives, or public figures.</p></li>
+<li><p>Do not send money or credentials based only on an urgent voice/video request.</p></li>
+</ul>
+<p><strong>Responsible creation:</strong> Label synthetic or materially AI-altered media when required by law, policy, platform rules, or when omission would mislead a reasonable audience.</p>
+<h2 id="part-23---ai-agents-and-automated-actions">Part 23 - AI Agents and Automated Actions</h2>
+<p>An AI agent can use tools or connected services to perform actions, such as searching, sending messages, changing files, scheduling events, purchasing items, or running code.</p>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Action level</th>
+<th>Human-control expectation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low-risk action</td>
+<td>Drafting, searching, organizing, suggesting</td>
+</tr>
+<tr class="even">
+<td>Moderate-risk action</td>
+<td>Editing shared files, scheduling, sending routine messages</td>
+</tr>
+<tr class="odd">
+<td>High-risk action</td>
+<td>Payments, deletion, publishing, security changes, legal/medical decisions</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><p>Require confirmation before irreversible or external actions.</p></li>
+<li><p>Use least-privilege access.</p></li>
+<li><p>Review recipients, amounts, files, destinations, and final content before execution.</p></li>
+<li><p>Keep logs/history when appropriate.</p></li>
+<li><p>Do not let an agent interpret untrusted webpage instructions as permission to take unrelated actions.</p></li>
+</ul>
+<h2 id="part-24---responsible-human-oversight">Part 24 - Responsible Human Oversight</h2>
+<p>Human oversight means a person remains able to understand the task, review important outputs, stop the system, correct errors, and accept responsibility for the final decision.</p>
+<ul>
+<li><p>Define what the AI may and may not do.</p></li>
+<li><p>Define which decisions require human approval.</p></li>
+<li><p>Make uncertainty visible.</p></li>
+<li><p>Provide a way to appeal or correct consequential decisions.</p></li>
+<li><p>Monitor for repeated errors or bias.</p></li>
+<li><p>Stop using the system when the risk cannot be controlled.</p></li>
+</ul>
+<p><strong>UNESCO principle:</strong> Human oversight and determination are central to responsible AI because responsibility should not be displaced onto the machine.</p>
+<h2 id="part-25---a-practical-responsible-use-framework">Part 25 - A Practical Responsible-Use Framework</h2>
+<h3 id="the-check-framework">25.1 The CHECK Framework</h3>
+<div class="table-scroll"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C - Consequence</td>
+<td>What happens if this answer is wrong?</td>
+</tr>
+<tr class="even">
+<td>H - Hidden data</td>
+<td>Am I sharing information that should remain private?</td>
+</tr>
+<tr class="odd">
+<td>E - Evidence</td>
+<td>What independent evidence supports the important claims?</td>
+</tr>
+<tr class="even">
+<td>C - Control</td>
+<td>Is a human still controlling important decisions/actions?</td>
+</tr>
+<tr class="odd">
+<td>K - Known policy</td>
+<td>What school, workplace, legal, or platform rules apply?</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="use-check-before-important-ai-use">25.2 Use CHECK Before Important AI Use</h3>
+<p><strong>What you will learn:</strong> Turn responsible use into a repeatable habit.</p>
+<p><strong>Before you begin:</strong> You are about to use AI for something more important than casual brainstorming.</p>
+<h4 id="exactly-how-to-do-it-7">Exactly how to do it</h4>
+<ol><li>Consequence: classify the cost of error as low, moderate, or high.</li><li>Hidden data: remove confidential/personal information that is not needed.</li><li>Evidence: plan how you will verify factual claims.</li><li>Control: identify which steps require human approval.</li><li>Known policy: confirm the rules that govern the task.</li><li>Use AI only after all five questions have acceptable answers.</li></ol>
+<p><strong>What should happen:</strong> You make a deliberate decision about whether and how to use AI.</p>
+<p><strong>If that does not happen:</strong> If one CHECK item cannot be satisfied, reduce the AI's role or do not use AI for that task.</p>
+<p><strong>Practice:</strong> Apply CHECK to a school task, workplace task, and personal task.</p>
+<h2 id="part-26---troubleshooting-poor-ai-results">Part 26 - Troubleshooting Poor AI Results</h2>
+<h3 id="the-answer-is-too-vague">26.1 The Answer Is Too Vague</h3>
+<p><strong>What you will learn:</strong> Add missing task structure.</p>
+<p><strong>Before you begin:</strong> The AI gave general advice.</p>
+<h4 id="exactly-how-to-do-it-8">Exactly how to do it</h4>
+<ol><li>Restate the specific goal.</li><li>Add the audience and context.</li><li>Ask for exact steps.</li><li>Ask for examples.</li><li>Ask what assumptions it made.</li></ol>
+<p><strong>What should happen:</strong> The next answer becomes more concrete.</p>
+<p><strong>If that does not happen:</strong> If the task itself is ambiguous, decide what you actually need before prompting again.</p>
+<p><strong>Practice:</strong> Improve one vague prompt.</p>
+<h3 id="the-ai-keeps-making-up-facts">26.2 The AI Keeps Making Up Facts</h3>
+<p><strong>What you will learn:</strong> Change the task from generation to verification.</p>
+<p><strong>Before you begin:</strong> The answer contains suspicious details.</p>
+<h4 id="exactly-how-to-do-it-9">Exactly how to do it</h4>
+<ol><li>Ask the AI to list only claims it can support.</li><li>Ask for current primary sources.</li><li>Open the sources yourself.</li><li>Remove unsupported claims.</li><li>For high-stakes material, stop and use authoritative human/professional sources.</li></ol>
+<p><strong>What should happen:</strong> Unsupported details are identified and removed.</p>
+<p><strong>If that does not happen:</strong> Do not keep asking the same model until it gives the answer you hoped for.</p>
+<p><strong>Practice:</strong> Verify rather than negotiate with the model.</p>
+<h3 id="the-ai-forgot-earlier-instructions">26.3 The AI Forgot Earlier Instructions</h3>
+<p><strong>What you will learn:</strong> Refresh the context.</p>
+<p><strong>Before you begin:</strong> The conversation is long.</p>
+<h4 id="exactly-how-to-do-it-10">Exactly how to do it</h4>
+<ol><li>Summarize the key requirements in a short message.</li><li>Restate nonnegotiable constraints.</li><li>Paste only the relevant current material.</li><li>If necessary, start a new conversation with a concise brief.</li></ol>
+<p><strong>What should happen:</strong> The model has a clean, current instruction set.</p>
+<p><strong>If that does not happen:</strong> If conflicting instructions remain in the conversation, a new conversation may be clearer.</p>
+<p><strong>Practice:</strong> Create a five-line project brief.</p>
+<h3 id="the-ai-refuses-or-cannot-do-the-task">26.4 The AI Refuses or Cannot Do the Task</h3>
+<p><strong>What you will learn:</strong> Identify whether the limitation is safety, capability, access, or missing information.</p>
+<p><strong>Before you begin:</strong> The system did not complete the request.</p>
+<h4 id="exactly-how-to-do-it-11">Exactly how to do it</h4>
+<ol><li>Read the explanation carefully.</li><li>Check whether the task needs current web access, a file, a connected service, or another tool.</li><li>Provide missing non-sensitive information when appropriate.</li><li>If the request is restricted for safety, reformulate the goal into a legitimate safer task rather than trying to bypass the restriction.</li></ol>
+<p><strong>What should happen:</strong> You understand whether the limitation can be resolved.</p>
+<p><strong>If that does not happen:</strong> Do not attempt to defeat safeguards when the underlying task is unsafe or unauthorized.</p>
+<p><strong>Practice:</strong> Classify three example limitations.</p>
+<h3 id="the-output-is-inaccessible">26.5 The Output Is Inaccessible</h3>
+<p><strong>What you will learn:</strong> Ask for an accessible representation.</p>
+<p><strong>Before you begin:</strong> The answer is visually dense or structurally confusing.</p>
+<h4 id="exactly-how-to-do-it-12">Exactly how to do it</h4>
+<ol><li>Ask for clear headings.</li><li>Ask for numbered steps.</li><li>Ask to remove decorative symbols/emojis.</li><li>Ask for descriptive link text.</li><li>Ask to convert a complex table into a list if the table is not helping.</li><li>Ask for keyboard/screen-reader instructions instead of visual directions.</li></ol>
+<p><strong>What should happen:</strong> The same information becomes easier to navigate with assistive technology.</p>
+<p><strong>If that does not happen:</strong> If important information exists only in an image, request a text description and verify critical details.</p>
+<p><strong>Practice:</strong> Reformat one dense answer.</p>
+<h2 id="part-27---practice-course">Part 27 - Practice Course</h2>
+<h3 id="level-1---concepts">Level 1 - Concepts</h3>
+<p>☐ Define AI.</p>
+<p>☐ Explain ML.</p>
+<p>☐ Explain generative AI.</p>
+<p>☐ Explain LLM.</p>
+<p>☐ Explain token.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-2---capabilities">Level 2 - Capabilities</h3>
+<p>☐ List five good AI uses.</p>
+<p>☐ List five poor/high-risk uses.</p>
+<p>☐ Explain why fluent text is not proof.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-3---prompting">Level 3 - Prompting</h3>
+<p>☐ Write goal/context/constraints prompt.</p>
+<p>☐ Request a checklist.</p>
+<p>☐ Ask for assumptions.</p>
+<p>☐ Revise a weak prompt.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-4---verification">Level 4 - Verification</h3>
+<p>☐ Verify three claims.</p>
+<p>☐ Check one citation.</p>
+<p>☐ Compare two sources.</p>
+<p>☐ Identify an unsupported claim.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-5---privacy">Level 5 - Privacy</h3>
+<p>☐ Sanitize a fictional case.</p>
+<p>☐ Identify information that should not be pasted.</p>
+<p>☐ Explain approved enterprise tools.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-6---bias-and-fairness">Level 6 - Bias and Fairness</h3>
+<p>☐ Identify possible bias.</p>
+<p>☐ Rewrite a biased prompt.</p>
+<p>☐ Explain human review.</p>
+<p>☐ Test wording variation.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-7---copyright-and-schoolwork">Level 7 - Copyright and School/Work</h3>
+<p>☐ Explain attribution risk.</p>
+<p>☐ Check an AI-use policy.</p>
+<p>☐ Identify when disclosure is needed.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-8---accessibility">Level 8 - Accessibility</h3>
+<p>☐ Request alt-text draft.</p>
+<p>☐ Convert visual steps to keyboard steps.</p>
+<p>☐ Ask for screen-reader-friendly structure.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-9---deepfakes-and-security">Level 9 - Deepfakes and Security</h3>
+<p>☐ Identify a voice-cloning scam risk.</p>
+<p>☐ Explain prompt injection.</p>
+<p>☐ Explain least privilege.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-10---responsible-use">Level 10 - Responsible Use</h3>
+<p>☐ Apply CHECK.</p>
+<p>☐ Classify consequence level.</p>
+<p>☐ Plan verification.</p>
+<p>☐ Identify required human approval.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-11---troubleshooting">Level 11 - Troubleshooting</h3>
+<p>☐ Fix vague answer.</p>
+<p>☐ Handle hallucination.</p>
+<p>☐ Refresh lost context.</p>
+<p>☐ Reformat inaccessible output.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h3 id="level-12---independent-project">Level 12 - Independent Project</h3>
+<p>☐ Choose a low/moderate-risk task.</p>
+<p>☐ Plan privacy.</p>
+<p>☐ Prompt AI.</p>
+<p>☐ Verify result.</p>
+<p>☐ Edit final output.</p>
+<p>☐ Document AI use if required.</p>
+<p><strong>Ready to advance:</strong> You can complete each checked item without another person telling you what to ask or how to verify the result.</p>
+<h2 id="part-28---quick-reference-checklists">Part 28 - Quick Reference Checklists</h2>
+<h3 id="before-you-use-ai">Before You Use AI</h3>
+<p>☐ Is this task allowed by school/work policy?</p>
+<p>☐ Could the input contain confidential or personal information?</p>
+<p>☐ What happens if the output is wrong?</p>
+<p>☐ Can I independently verify the important claims?</p>
+<p>☐ Will a human remain responsible for the final decision?</p>
+<h3 id="before-you-trust-an-ai-answer">Before You Trust an AI Answer</h3>
+<p>☐ Did I separate facts from suggestions?</p>
+<p>☐ Did I verify important facts with current trustworthy sources?</p>
+<p>☐ Did I open and read any cited source?</p>
+<p>☐ Did I check names, dates, numbers, links, and quotations?</p>
+<p>☐ Does the answer acknowledge uncertainty where appropriate?</p>
+<h3 id="before-you-submit-send-publish-or-act">Before You Submit, Send, Publish, or Act</h3>
+<p>☐ Did I review the entire output myself?</p>
+<p>☐ Did I remove hallucinations or unsupported claims?</p>
+<p>☐ Did I protect privacy/confidential information?</p>
+<p>☐ Did I follow attribution/disclosure rules?</p>
+<p>☐ Did I get required human/professional approval?</p>
+<p>☐ Would I be willing to take responsibility for this final result?</p>
+<h2 id="part-29---official-resources">Part 29 - Official Resources</h2>
+<p><a href="https://www.nist.gov/itl/ai-risk-management-framework"><u>NIST AI Risk Management Framework</u></a></p>
+<p><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence"><u>NIST Generative AI Profile (AI 600-1)</u></a></p>
+<p><a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"><u>UNESCO Recommendation on the Ethics of Artificial Intelligence</u></a></p>
+<p><a href="https://www.copyright.gov/ai/"><u>U.S. Copyright Office - Copyright and Artificial Intelligence</u></a></p>
+<p><a href="https://consumer.ftc.gov/consumer-alerts/2023/06/scammers-use-ai-enhance-their-family-emergency-schemes"><u>FTC Consumer Advice - Artificial Intelligence</u></a></p>
+<p><a href="https://www.cisa.gov/secure-our-world"><u>CISA Secure Our World</u></a></p>
+<h2 id="final-independence-checklist">Final Independence Checklist</h2>
+<p>☐ I can explain AI, machine learning, deep learning, generative AI, LLMs, and tokens.</p>
+<p>☐ I understand that generative AI can produce confident false information.</p>
+<p>☐ I can write a structured prompt.</p>
+<p>☐ I can improve a result with follow-up questions.</p>
+<p>☐ I can verify claims and citations independently.</p>
+<p>☐ I know when current web/source verification is necessary.</p>
+<p>☐ I can minimize sensitive information before using AI.</p>
+<p>☐ I understand prompt-injection and permission risks.</p>
+<p>☐ I understand bias, fairness, and human-review requirements.</p>
+<p>☐ I understand basic copyright, attribution, and disclosure risks.</p>
+<p>☐ I can follow school/work AI policies.</p>
+<p>☐ I know when AI should not replace professional or high-stakes judgment.</p>
+<p>☐ I can use AI in an accessibility-support role while verifying important details.</p>
+<p>☐ I understand deepfake and voice-cloning risks.</p>
+<p>☐ I understand that AI agents require stronger controls for real-world actions.</p>
+<p>☐ I can apply the CHECK responsible-use framework.</p>
+<p>☐ I can troubleshoot vague, incorrect, forgetful, or inaccessible AI output.</p>
+<p>☐ I can decide when not to use AI.</p>
+<p><strong>Most important habit:</strong> Use AI to extend your capability, not to surrender your judgment. For every important task, protect the data, verify the evidence, keep meaningful human control, and take responsibility for the final action.</p>
+
+<h2 id="website-practice">Website practice and lessons</h2>
+<p>The following procedures preserve the Accessible Learning Center's original guided practice and connect this full manual to the ten-lesson course.</p>
 <section id="complete-procedures" aria-labelledby="complete-procedures-heading">
 <h2 id="complete-procedures-heading">Basic and advanced step-by-step procedures</h2>
 <p>These procedures make the manual usable on its own. The separate lessons provide assignments and progress tracking when you want a course experience.</p>
@@ -124,4 +814,8 @@
 <p><strong>Practice:</strong> Complete a public-information workplace task from planning through prompting, verification, revision, and disclosure.</p>
 </section>
 </section>
-<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">AI Fundamentals and Responsible Use lessons</h2><ol class="course-lesson-list"><li><a href="ai-fundamentals-lesson-1.html">Lesson 1: What Generative AI Can and Cannot Do</a></li><li><a href="ai-fundamentals-lesson-2.html">Lesson 2: Write a Clear Prompt with Context and Constraints</a></li><li><a href="ai-fundamentals-lesson-3.html">Lesson 3: Continue a Conversation and Refine a Result</a></li><li><a href="ai-fundamentals-lesson-4.html">Lesson 4: Verify Facts, Dates, Links, and Calculations</a></li><li><a href="ai-fundamentals-lesson-5.html">Lesson 5: Protect Privacy and Follow Workplace Policy</a></li><li><a href="ai-fundamentals-lesson-6.html">Lesson 6: Recognize Bias, Missing Context, and Unequal Impact</a></li><li><a href="ai-fundamentals-lesson-7.html">Lesson 7: Summarize and Organize Information Responsibly</a></li><li><a href="ai-fundamentals-lesson-8.html">Lesson 8: Draft Workplace Writing without Losing Your Voice</a></li><li><a href="ai-fundamentals-lesson-9.html">Lesson 9: Compare AI Tools and Document Your Process</a></li><li><a href="ai-fundamentals-lesson-10.html">Lesson 10: Final Responsible AI Workplace Project</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from AI Fundamentals manual"><a href="ai-fundamentals-lesson-1.html">Start AI Fundamentals Lesson 1</a><a href="lessons.html#ai-fundamentals-lessons">All AI Fundamentals lessons</a><a href="student-progress.html">My progress</a></nav></main></body></html>
+
+<section id="lessons" aria-labelledby="lessons-heading"><h2 id="lessons-heading">AI Fundamentals and Responsible Use lessons</h2><ol class="course-lesson-list"><li><a href="ai-fundamentals-lesson-1.html">Lesson 1: What Generative AI Can and Cannot Do</a></li><li><a href="ai-fundamentals-lesson-2.html">Lesson 2: Write a Clear Prompt with Context and Constraints</a></li><li><a href="ai-fundamentals-lesson-3.html">Lesson 3: Continue a Conversation and Refine a Result</a></li><li><a href="ai-fundamentals-lesson-4.html">Lesson 4: Verify Facts, Dates, Links, and Calculations</a></li><li><a href="ai-fundamentals-lesson-5.html">Lesson 5: Protect Privacy and Follow Workplace Policy</a></li><li><a href="ai-fundamentals-lesson-6.html">Lesson 6: Recognize Bias, Missing Context, and Unequal Impact</a></li><li><a href="ai-fundamentals-lesson-7.html">Lesson 7: Summarize and Organize Information Responsibly</a></li><li><a href="ai-fundamentals-lesson-8.html">Lesson 8: Draft Workplace Writing without Losing Your Voice</a></li><li><a href="ai-fundamentals-lesson-9.html">Lesson 9: Compare AI Tools and Document Your Process</a></li><li><a href="ai-fundamentals-lesson-10.html">Lesson 10: Final Responsible AI Workplace Project</a></li></ol></section><nav class="lesson-nav" aria-label="Continue from AI Fundamentals manual"><a href="ai-fundamentals-lesson-1.html">Start AI Fundamentals Lesson 1</a><a href="lessons.html#ai-fundamentals-lessons">All AI Fundamentals lessons</a><a href="student-progress.html">My progress</a></nav>
+  </main>
+</body>
+</html>

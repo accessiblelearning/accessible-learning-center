@@ -341,6 +341,11 @@ for (let lesson = 1; lesson <= 10; lesson += 1) {
 }
 const screenReaderManual = readFileSync(resolve(root, "jaws-manual.html"), "utf8");
 check(screenReaderManual.includes("Screen Readers: JAWS, Narrator, and NVDA"), "Unified Screen Readers manual title is missing.");
+const aiManual = readFileSync(resolve(root, "ai-fundamentals-manual.html"), "utf8");
+for (const requiredTopic of ["Large Language Models and Tokens", "Hallucinations and Confident Errors", "Security and Prompt Injection", "Bias, Fairness, and Representation", "Accessibility and Assistive Technology", "Images, Audio, Video, and Deepfakes", "AI Agents and Automated Actions", "The CHECK Framework", "Troubleshooting Poor AI Results", "Final Independence Checklist"]) {
+  check(aiManual.includes(requiredTopic), "AI Fundamentals manual is missing: " + requiredTopic + ".");
+}
+check((aiManual.match(/<h2 id="part-/g) || []).length === 29, "AI Fundamentals manual must contain all 29 full manual parts.");
 for (const action of ["decrease", "increase", "reset-text", "dark", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }
