@@ -216,6 +216,10 @@ for (const file of ["job-search-manual.html", "calendar-manual.html", "docs-manu
   check(detailedManual.includes("Keyboard command"), file + " is missing keyboard-command guidance.");
   check(detailedManual.includes("If that does not happen"), file + " is missing recovery guidance.");
 }
+const ereaderManual = readFileSync(resolve(root, "ereader-manual.html"), "utf8");
+check(ereaderManual.includes("HumanWare model: Basic and advanced how-tos"), "NLS eReader manual is missing detailed HumanWare instructions.");
+check(ereaderManual.includes("Zoomax model: Basic and advanced how-tos"), "NLS eReader manual is missing detailed Zoomax instructions.");
+check(ereaderManual.includes("S1 opens the Main Menu"), "NLS eReader manual is missing Zoomax model-identification guidance.");
 for (const file of htmlFiles.filter(file => file.endsWith("-manual.html"))) {
   check(!readFileSync(resolve(root, file), "utf8").includes("private assignment uploader"), file + " still directs learners to the paused uploader.");
 }
