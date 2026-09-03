@@ -248,6 +248,13 @@ check(ereaderManual.includes("S1 opens the Main Menu"), "NLS eReader manual is m
 for (const file of htmlFiles.filter(file => file.endsWith("-manual.html"))) {
   check(!readFileSync(resolve(root, file), "utf8").includes("private assignment uploader"), file + " still directs learners to the paused uploader.");
 }
+const instructionalManualFiles = htmlFiles.filter(file => file.endsWith("-manual.html") && file !== "additional-skills-manual.html");
+for (const file of instructionalManualFiles) {
+  const manual = readFileSync(resolve(root, file), "utf8");
+  for (const requiredPart of ["What you will learn", "Before you begin", "Exactly how to do it", "What should happen", "If that does not happen", "Practice"]) {
+    check(manual.includes(requiredPart), file + " is missing the full manual component: " + requiredPart + ".");
+  }
+}
 const additionalSkills = readFileSync(resolve(root, "additional-skills-manual.html"), "utf8");
 check(additionalSkills.includes("Independent Skills Manuals"), "Independent skills directory title is missing.");
 check(!additionalSkills.includes("curriculum-audit") && !additionalSkills.includes("topic gaps identified"), "Independent skills manual still contains source-comparison framing.");
@@ -345,4 +352,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("Validated " + htmlFiles.length + " accessible pages, 33 manuals, 250 lessons, 25 final quizzes, command practice, local certificates, searchable help, and paused private uploads.");
+console.log("Validated " + htmlFiles.length + " accessible pages, " + instructionalManualFiles.length + " instructional manuals, 250 lessons, 25 final quizzes, command practice, local certificates, searchable help, and paused private uploads.");

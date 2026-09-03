@@ -955,6 +955,24 @@ html[data-contrast="high"] td {
   border-top: 2px solid currentColor;
 }
 
+.manual-contents {
+  margin-block: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #eef8ff;
+  border: 2px solid var(--blue-700);
+  border-radius: .7rem;
+}
+
+.manual-procedure {
+  margin-block: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-inline-start: .4rem solid var(--blue-700);
+}
+
+.procedure-level {
+  font-weight: 800;
+}
+
 html[data-theme="dark"]:not([data-contrast="high"]) .manual-tools {
   color: #fff;
   background: #000;
@@ -964,6 +982,13 @@ html[data-theme="dark"]:not([data-contrast="high"]) .manual-tools {
 html[data-theme="dark"]:not([data-contrast="high"]) .manual-tools a {
   color: #fff;
   background: #000;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .manual-contents,
+html[data-theme="dark"]:not([data-contrast="high"]) .manual-procedure {
+  color: #fff;
+  background: #000;
+  border-color: #8dd1ff;
 }
 
 @media (max-width: 32rem) {
