@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Test the Accessible Learning Center anonymous Student ID connection and progress service.">
   <title>Test Student ID</title>
   <link rel="stylesheet" href="styles.css?v=resource-search-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
 </head>
 <body>
 
+  <div role="main">
   <h1>Test Student ID</h1>
 
   <label for="studentId">Student ID</label>
@@ -16,7 +18,8 @@
 
   <button id="createStudent">Create Test Student</button>
 
-  <p id="result"></p>
+  <p id="result" role="status" aria-live="polite"></p>
+  </div>
 
   <script>
     const API_URL = "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";

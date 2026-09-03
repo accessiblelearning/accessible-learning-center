@@ -143,6 +143,7 @@ for (const file of htmlFiles) {
   check(!html.includes('href="#"'), file + " contains a dead # link.");
   check(/<html\s+lang="en"/i.test(html), file + ' is missing lang="en".');
   check(/<meta\s+name="viewport"/i.test(html), file + " is missing a viewport setting.");
+  check(/<meta\s+name="description"\s+content="[^"]+"/i.test(html), file + " is missing a page description.");
   check((html.match(/<h1(?:\s|>)/gi) || []).length === 1, file + " must contain exactly one H1.");
   check(!/tabindex="[1-9][0-9]*"/i.test(html), file + " contains a positive tabindex.");
 
@@ -162,9 +163,19 @@ for (const file of htmlFiles) {
 
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const reference = match[1];
-    if (/^(?:https?:|#|mailto:|data:)/.test(reference)) continue;
+    if (reference.startsWith("#")) {
+      check(idSet.has(decodeURIComponent(reference.slice(1))), file + " references missing fragment " + reference + ".");
+      continue;
+    }
+    if (/^(?:https?:|mailto:|data:)/.test(reference)) continue;
     const clean = reference.split("?")[0].split("#")[0];
-    check(existsSync(resolve(root, dirname(file), clean)), file + " references missing file " + clean + ".");
+    const targetPath = resolve(root, dirname(file), clean);
+    check(existsSync(targetPath), file + " references missing file " + clean + ".");
+    const fragment = reference.includes("#") ? reference.split("#", 2)[1] : "";
+    if (fragment && clean.endsWith(".html") && existsSync(targetPath)) {
+      const targetHtml = readFileSync(targetPath, "utf8");
+      check(targetHtml.includes('id="' + decodeURIComponent(fragment) + '"'), file + " references missing fragment " + reference + ".");
+    }
   }
 }
 
