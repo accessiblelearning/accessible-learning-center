@@ -366,6 +366,11 @@ for (const requiredTopic of ["Chat, Work, and Codex", "Prompting Fundamentals", 
   check(chatgptManual.includes(requiredTopic), "ChatGPT manual is missing: " + requiredTopic + ".");
 }
 check((chatgptManual.match(/<h2 id="part-/g) || []).length === 37, "ChatGPT manual must contain all 37 full manual parts.");
+const aiAccessManual = readFileSync(resolve(root, "ai-access-manual.html"), "utf8");
+for (const requiredTopic of ["AI-Assisted Access: The Big Picture", "Create a Notebook and Add Sources", "Chat with Sources and Use Citations", "Audio and Video Overviews", "Mind Maps and Accessible Alternatives", "Gemini Notebook with Screen Readers and Braille", "Call a Sighted Volunteer", "Use Be My AI on Mobile", "Be My AI on Windows Desktop", "Choosing AI, OCR, or a Human", "Better Image and Screen Descriptions", "Documents, Charts, Forms, and Tables", "High-Stakes Limits and Human Escalation", "Deepfakes, Misidentification, and False Confidence", "Screen Reader and Braille Privacy", "Troubleshooting", "Final Independence Checklist"]) {
+  check(aiAccessManual.includes(requiredTopic), "AI-Assisted Access manual is missing: " + requiredTopic + ".");
+}
+check((aiAccessManual.match(/<h2 id="part-/g) || []).length === 30, "AI-Assisted Access manual must contain all 30 full manual parts.");
 for (const action of ["decrease", "increase", "reset-text", "dark", "contrast", "motion"]) {
   check(accessibilityScript.includes('data-action="' + action + '"'), "Accessibility menu is missing " + action + ".");
 }
