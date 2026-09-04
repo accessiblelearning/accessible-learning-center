@@ -104,7 +104,6 @@
     skipLink.className = "skip-link";
     skipLink.href = "#" + (skipTarget ? skipTarget.id : "main-content");
     skipLink.textContent = "Skip to main content";
-    document.body.prepend(skipLink);
 
     const panel = document.createElement("section");
     panel.className = "accessibility-panel";
@@ -159,8 +158,8 @@
       }
     });
 
-    document.body.insertBefore(nav, document.body.firstChild);
-    document.body.insertBefore(panel, document.body.firstChild);
+    // Keep the skip link first so it is the first keyboard stop on every page.
+    document.body.prepend(skipLink, panel, nav);
 
     const status = panel.querySelector(".accessibility-status");
     const darkButton = panel.querySelector('[data-action="dark"]');

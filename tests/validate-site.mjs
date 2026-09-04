@@ -332,6 +332,7 @@ check(worker.includes("Assignment uploads are temporarily unavailable."), "Submi
 const progressWorker = readFileSync(resolve(root, "worker.js"), "utf8");
 check(progressWorker.includes('["in_progress", "completed", "submitted"]'), "Progress Worker does not validate supported statuses.");
 check(accessibilityScript.includes("Website accessibility settings"), "Accessibility menu label is missing.");
+check(accessibilityScript.includes("document.body.prepend(skipLink, panel, nav)"), "Skip to main content must be inserted before all shared controls and navigation.");
 check(accessibilityScript.includes("darkMode"), "Saved dark-mode preference is missing.");
 check(accessibilityScript.includes('dataset.theme'), "Dark-mode theme state is missing.");
 check(accessibilityScript.includes('details class="accessibility-menu"'), "Accessibility controls are not in a compact details menu.");
