@@ -5,6 +5,7 @@ An accessible GitHub Pages learning website for blind and low-vision students.
 ## Current features
 
 - Anonymous Student IDs stored in the learner's browser
+- A guided Start Here center for new learners, task-specific help, and returning learners
 - Word, Excel, PowerPoint, JAWS, Windows 11, and Google Chrome manuals with ten guided lessons per course
 - D1-backed lesson-completion tracking using anonymous Student IDs
 - Private assignment uploads to Cloudflare R2, currently paused

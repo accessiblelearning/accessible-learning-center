@@ -137,6 +137,7 @@
     nav.innerHTML = `
       <div class="site-nav__inner">
         <a href="index.html">Home</a>
+        <a href="start-here.html">Start here</a>
         <a href="manuals.html">Manuals</a>
         <a href="lessons.html">Lessons</a>
         <a href="quizzes.html">Quizzes</a>
