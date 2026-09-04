@@ -75,7 +75,7 @@
 
     if (navigator.sendBeacon && navigator.sendBeacon(
         analyticsEndpoint,
-        new Blob([payload], { type: "application/json" })
+        new Blob([payload], { type: "text/plain;charset=UTF-8" })
       )) {
       return;
     }
