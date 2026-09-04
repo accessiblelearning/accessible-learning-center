@@ -6,6 +6,13 @@
   const minScale = 90;
   const maxScale = 150;
   const scaleStep = 10;
+  const analyticsEndpoint =
+    "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev/analytics/collect";
+  const analyticsHosts = new Set([
+    "accessiblelearning.github.io",
+    "accessiblelearningcenter.org",
+    "www.accessiblelearningcenter.org"
+  ]);
   let preferences = {
     textScale: 100,
     darkMode: false,
@@ -49,7 +56,42 @@
 
   applyPreferences();
 
+  function recordAnonymousPageView() {
+    const currentPage = location.pathname.split("/").pop() || "index.html";
+
+    if (
+      !analyticsHosts.has(location.hostname) ||
+      currentPage === "site-traffic.html" ||
+      navigator.doNotTrack === "1"
+    ) {
+      return;
+    }
+
+    const payload = JSON.stringify({
+      path: location.pathname,
+      title: document.title,
+      referrer: document.referrer
+    });
+
+    if (navigator.sendBeacon && navigator.sendBeacon(
+        analyticsEndpoint,
+        new Blob([payload], { type: "application/json" })
+      )) {
+      return;
+    }
+
+    fetch(analyticsEndpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: payload,
+      keepalive: true
+    }).catch(() => {
+      // Analytics must never interrupt a learner's page.
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
+    recordAnonymousPageView();
     const main = document.querySelector("main");
     const firstHeading = document.querySelector("h1");
     const skipTarget = main || firstHeading;

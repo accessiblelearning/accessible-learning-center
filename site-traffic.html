@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Aggregate website traffic for Accessible Learning Center.">
+  <title>Site Traffic - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=site-traffic-1">
+  <script src="accessibility.js?v=site-traffic-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Website administration</p>
+    <h1>Accessible Learning Center Site Traffic</h1>
+    <p>Aggregate, privacy-friendly activity from the public learning website.</p>
+  </header>
+
+  <main id="main-content">
+    <section aria-labelledby="overview-heading">
+      <h2 id="overview-heading">Last 14 days</h2>
+      <p id="trafficStatus" role="status" aria-live="polite">Loading website traffic…</p>
+      <dl class="traffic-summary" id="trafficSummary" hidden>
+        <div>
+          <dt>Total page views</dt>
+          <dd id="totalViews">0</dd>
+        </div>
+        <div>
+          <dt>Approximate unique visitors</dt>
+          <dd id="uniqueVisitors">0</dd>
+        </div>
+      </dl>
+      <p><button id="refreshTraffic" type="button">Refresh traffic report</button></p>
+      <p id="trackingStarted"></p>
+      <p class="tip"><strong>Privacy note:</strong> This report uses no cookies and stores no raw IP addresses, names, Student IDs, form entries, or lesson work. Unique visitors are approximate because browsers and networks can change.</p>
+    </section>
+
+    <section aria-labelledby="popular-heading">
+      <h2 id="popular-heading">Popular pages</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Popular pages table">
+        <table>
+          <thead><tr><th scope="col">Page</th><th scope="col">Views</th><th scope="col">Unique visitors</th></tr></thead>
+          <tbody id="popularPages"><tr><td colspan="3">No visits recorded yet.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="referrers-heading">
+      <h2 id="referrers-heading">How visitors arrived</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Referring sites table">
+        <table>
+          <thead><tr><th scope="col">Source</th><th scope="col">Views</th></tr></thead>
+          <tbody id="referrers"><tr><td colspan="2">No referring sites recorded yet.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="daily-heading">
+      <h2 id="daily-heading">Daily activity</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Daily website activity table">
+        <table>
+          <thead><tr><th scope="col">Date</th><th scope="col">Views</th><th scope="col">Unique visitors</th></tr></thead>
+          <tbody id="dailyTraffic"><tr><td colspan="3">No daily activity recorded yet.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>&copy; 2026 Accessible Learning Center</p></footer>
+
+  <script>
+    (() => {
+      "use strict";
+      const endpoint = "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev/analytics/summary?days=14";
+      const status = document.getElementById("trafficStatus");
+      const summary = document.getElementById("trafficSummary");
+      const number = new Intl.NumberFormat();
+
+      function replaceRows(body, rows, cells, emptyText) {
+        body.textContent = "";
+        if (!rows.length) {
+          const row = body.insertRow();
+          const cell = row.insertCell();
+          cell.colSpan = cells;
+          cell.textContent = emptyText;
+          return;
+        }
+        rows.forEach((item) => {
+          const row = body.insertRow();
+          item.forEach((value) => {
+            const cell = row.insertCell();
+            cell.textContent = value;
+          });
+        });
+      }
+
+      async function loadTraffic() {
+        status.textContent = "Loading website traffic…";
+        try {
+          const response = await fetch(endpoint, { headers: { "Accept": "application/json" } });
+          if (!response.ok) throw new Error("Traffic request failed");
+          const data = await response.json();
+          document.getElementById("totalViews").textContent = number.format(data.totals.views || 0);
+          document.getElementById("uniqueVisitors").textContent = number.format(data.totals.unique_visitors || 0);
+          summary.hidden = false;
+
+          replaceRows(
+            document.getElementById("popularPages"),
+            data.popular_pages.map((page) => [page.page_title, number.format(page.views), number.format(page.unique_visitors)]),
+            3,
+            "No visits recorded yet."
+          );
+          replaceRows(
+            document.getElementById("referrers"),
+            data.referrers.map((source) => [source.referrer_host, number.format(source.views)]),
+            2,
+            "No referring sites recorded yet."
+          );
+          replaceRows(
+            document.getElementById("dailyTraffic"),
+            data.daily.map((day) => [day.date, number.format(day.views), number.format(day.unique_visitors)]),
+            3,
+            "No daily activity recorded yet."
+          );
+
+          document.getElementById("trackingStarted").textContent = data.tracking_started
+            ? "Tracking began " + new Date(data.tracking_started.replace(" ", "T") + "Z").toLocaleString() + "."
+            : "Tracking is active. The first visit has not been recorded yet.";
+          status.textContent = "Traffic report updated.";
+        } catch (error) {
+          status.textContent = "The traffic report is not available yet. Please try again after the website update finishes publishing.";
+        }
+      }
+
+      document.getElementById("refreshTraffic").addEventListener("click", loadTraffic);
+      loadTraffic();
+    })();
+  </script>
+</body>
+</html>

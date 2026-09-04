@@ -26,6 +26,18 @@ Students should use anonymous IDs rather than names or other personal informatio
 
 No paid service is required by the current implementation.
 
+## Privacy-friendly site analytics
+
+The shared accessibility script records page views only on the production
+website. The existing Cloudflare Worker stores aggregate page, date, and
+referring-domain information in D1. It does not use cookies, store raw IP
+addresses, or collect Student IDs, names, form entries, or lesson work. A
+private-navigation page named `site-traffic.html` displays 14-day totals,
+popular pages, referrers, and daily activity; it is intentionally omitted from
+the public site navigation and does not count its own views. Browser Do Not
+Track is respected. Analytics data begins when this version is deployed and
+does not reconstruct earlier visits.
+
 
 ## Reliability and accessibility
 
