@@ -7,7 +7,7 @@
   <title>LibreOffice Impress Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What is Impress's native presentation format?</legend>
@@ -34,9 +34,9 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What supports predictable slide structure?</legend>
-          <label><input type="radio" name="question-1" value="0"> Built-in layouts and unique titles</label>
-          <label><input type="radio" name="question-1" value="1"> Random text boxes</label>
-          <label><input type="radio" name="question-1" value="2"> Color alone</label>
+          <label><input type="radio" name="question-1" value="0"> Random text boxes</label>
+          <label><input type="radio" name="question-1" value="1"> Color alone</label>
+          <label><input type="radio" name="question-1" value="2"> Built-in layouts and unique titles</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. Where should detailed speaking information go?</legend>
@@ -46,15 +46,15 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What should accompany a chart?</legend>
-          <label><input type="radio" name="question-3" value="0"> An equivalent text explanation</label>
-          <label><input type="radio" name="question-3" value="1"> Only a color legend</label>
+          <label><input type="radio" name="question-3" value="0"> Only a color legend</label>
+          <label><input type="radio" name="question-3" value="1"> An equivalent text explanation</label>
           <label><input type="radio" name="question-3" value="2"> An animation</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What should be checked in a PPTX copy?</legend>
-          <label><input type="radio" name="question-4" value="0"> Titles, object order, notes, images, and layout</label>
-          <label><input type="radio" name="question-4" value="1"> Only file size</label>
-          <label><input type="radio" name="question-4" value="2"> Only transitions</label>
+          <label><input type="radio" name="question-4" value="0"> Only file size</label>
+          <label><input type="radio" name="question-4" value="1"> Only transitions</label>
+          <label><input type="radio" name="question-4" value="2"> Titles, object order, notes, images, and layout</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"LibreOffice Impress","displayName":"LibreOffice Impress","slug":"libreoffice-impress","passPercent":80,"questions":[{"answer":0,"explanation":"Impress uses ODP.","options":["ODP","ODT","ODS"],"question":"What is Impress's native presentation format?"},{"answer":0,"explanation":"Layouts and titles support navigation.","options":["Built-in layouts and unique titles","Random text boxes","Color alone"],"question":"What supports predictable slide structure?"},{"answer":0,"explanation":"Notes preserve detail without overcrowding slides.","options":["Speaker notes","Only the filename","A decorative image"],"question":"Where should detailed speaking information go?"},{"answer":0,"explanation":"Text communicates the chart's meaning accessibly.","options":["An equivalent text explanation","Only a color legend","An animation"],"question":"What should accompany a chart?"},{"answer":0,"explanation":"Conversion can affect content and structure.","options":["Titles, object order, notes, images, and layout","Only file size","Only transitions"],"question":"What should be checked in a PPTX copy?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"LibreOffice Impress","displayName":"LibreOffice Impress","slug":"libreoffice-impress","passPercent":80,"questions":[{"answer":0,"explanation":"Impress uses ODP.","options":["ODP","ODT","ODS"],"question":"What is Impress's native presentation format?"},{"answer":2,"explanation":"Layouts and titles support navigation.","options":["Random text boxes","Color alone","Built-in layouts and unique titles"],"question":"What supports predictable slide structure?"},{"answer":0,"explanation":"Notes preserve detail without overcrowding slides.","options":["Speaker notes","Only the filename","A decorative image"],"question":"Where should detailed speaking information go?"},{"answer":1,"explanation":"Text communicates the chart's meaning accessibly.","options":["Only a color legend","An equivalent text explanation","An animation"],"question":"What should accompany a chart?"},{"answer":2,"explanation":"Conversion can affect content and structure.","options":["Only file size","Only transitions","Titles, object order, notes, images, and layout"],"question":"What should be checked in a PPTX copy?"}]}</script>
 </body>
 </html>

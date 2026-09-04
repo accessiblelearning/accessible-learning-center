@@ -7,7 +7,7 @@
   <title>Google Gemini Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. How should a Gemini response be used?</legend>
@@ -34,20 +34,20 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. Which prompt is safest?</legend>
-          <label><input type="radio" name="question-1" value="0"> A fictional workplace scenario with clear limits</label>
-          <label><input type="radio" name="question-1" value="1"> A real client's full record</label>
+          <label><input type="radio" name="question-1" value="0"> A real client's full record</label>
+          <label><input type="radio" name="question-1" value="1"> A fictional workplace scenario with clear limits</label>
           <label><input type="radio" name="question-1" value="2"> An account password</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What should you do with linked sources?</legend>
-          <label><input type="radio" name="question-2" value="0"> Open and compare them with the response</label>
-          <label><input type="radio" name="question-2" value="1"> Trust the link title only</label>
-          <label><input type="radio" name="question-2" value="2"> Ignore the original page</label>
+          <label><input type="radio" name="question-2" value="0"> Trust the link title only</label>
+          <label><input type="radio" name="question-2" value="1"> Ignore the original page</label>
+          <label><input type="radio" name="question-2" value="2"> Open and compare them with the response</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What improves screen-reader navigation of an answer?</legend>
-          <label><input type="radio" name="question-3" value="0"> Headings, lists, and short paragraphs</label>
-          <label><input type="radio" name="question-3" value="1"> Color alone</label>
+          <label><input type="radio" name="question-3" value="0"> Color alone</label>
+          <label><input type="radio" name="question-3" value="1"> Headings, lists, and short paragraphs</label>
           <label><input type="radio" name="question-3" value="2"> Unlabeled images</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Gemini","displayName":"Google Gemini","slug":"gemini","passPercent":80,"questions":[{"answer":0,"explanation":"Generated answers can contain errors.","options":["As a draft requiring human verification","As guaranteed truth","As private storage"],"question":"How should a Gemini response be used?"},{"answer":0,"explanation":"Practice should use public or fictional information.","options":["A fictional workplace scenario with clear limits","A real client's full record","An account password"],"question":"Which prompt is safest?"},{"answer":0,"explanation":"Original sources support verification.","options":["Open and compare them with the response","Trust the link title only","Ignore the original page"],"question":"What should you do with linked sources?"},{"answer":0,"explanation":"Structured text is easier to review.","options":["Headings, lists, and short paragraphs","Color alone","Unlabeled images"],"question":"What improves screen-reader navigation of an answer?"},{"answer":0,"explanation":"Work output requires policy compliance and human editing.","options":["Check policy, facts, tone, and accessibility","Paste it unchanged","Remove all human review"],"question":"What must happen before using Gemini output at work?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Gemini","displayName":"Google Gemini","slug":"gemini","passPercent":80,"questions":[{"answer":0,"explanation":"Generated answers can contain errors.","options":["As a draft requiring human verification","As guaranteed truth","As private storage"],"question":"How should a Gemini response be used?"},{"answer":1,"explanation":"Practice should use public or fictional information.","options":["A real client's full record","A fictional workplace scenario with clear limits","An account password"],"question":"Which prompt is safest?"},{"answer":2,"explanation":"Original sources support verification.","options":["Trust the link title only","Ignore the original page","Open and compare them with the response"],"question":"What should you do with linked sources?"},{"answer":1,"explanation":"Structured text is easier to review.","options":["Color alone","Headings, lists, and short paragraphs","Unlabeled images"],"question":"What improves screen-reader navigation of an answer?"},{"answer":0,"explanation":"Work output requires policy compliance and human editing.","options":["Check policy, facts, tone, and accessibility","Paste it unchanged","Remove all human review"],"question":"What must happen before using Gemini output at work?"}]}</script>
 </body>
 </html>

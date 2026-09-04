@@ -7,7 +7,7 @@
   <title>Google Sheets Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,19 +24,19 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. How does a Google Sheets formula begin?</legend>
-          <label><input type="radio" name="question-0" value="0"> With an equals sign</label>
-          <label><input type="radio" name="question-0" value="1"> With a quotation mark</label>
+          <label><input type="radio" name="question-0" value="0"> With a quotation mark</label>
+          <label><input type="radio" name="question-0" value="1"> With an equals sign</label>
           <label><input type="radio" name="question-0" value="2"> With a slash</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What should be confirmed before sharing a sheet?</legend>
-          <label><input type="radio" name="question-1" value="0"> The active account and permission level</label>
-          <label><input type="radio" name="question-1" value="1"> Only cell color</label>
-          <label><input type="radio" name="question-1" value="2"> Only row height</label>
+          <label><input type="radio" name="question-1" value="0"> Only cell color</label>
+          <label><input type="radio" name="question-1" value="1"> Only row height</label>
+          <label><input type="radio" name="question-1" value="2"> The active account and permission level</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What can CSV preserve well?</legend>
@@ -46,8 +46,8 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What should accompany a chart?</legend>
-          <label><input type="radio" name="question-3" value="0"> A text summary of important values and trends</label>
-          <label><input type="radio" name="question-3" value="1"> Only color</label>
+          <label><input type="radio" name="question-3" value="0"> Only color</label>
+          <label><input type="radio" name="question-3" value="1"> A text summary of important values and trends</label>
           <label><input type="radio" name="question-3" value="2"> An empty title</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Sheets","displayName":"Google Sheets","slug":"sheets","passPercent":80,"questions":[{"answer":0,"explanation":"Formulas begin with =.","options":["With an equals sign","With a quotation mark","With a slash"],"question":"How does a Google Sheets formula begin?"},{"answer":0,"explanation":"Permissions control data access.","options":["The active account and permission level","Only cell color","Only row height"],"question":"What should be confirmed before sharing a sheet?"},{"answer":0,"explanation":"CSV is designed for plain table data.","options":["Plain tabular values","Multiple sheets and charts","All formulas and formatting"],"question":"What can CSV preserve well?"},{"answer":0,"explanation":"A summary provides an accessible equivalent.","options":["A text summary of important values and trends","Only color","An empty title"],"question":"What should accompany a chart?"},{"answer":0,"explanation":"Descriptive names support navigation and interpretation.","options":["They make structure understandable","They replace data","They prevent saving"],"question":"Why use clear sheet and column names?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Sheets","displayName":"Google Sheets","slug":"sheets","passPercent":80,"questions":[{"answer":1,"explanation":"Formulas begin with =.","options":["With a quotation mark","With an equals sign","With a slash"],"question":"How does a Google Sheets formula begin?"},{"answer":2,"explanation":"Permissions control data access.","options":["Only cell color","Only row height","The active account and permission level"],"question":"What should be confirmed before sharing a sheet?"},{"answer":0,"explanation":"CSV is designed for plain table data.","options":["Plain tabular values","Multiple sheets and charts","All formulas and formatting"],"question":"What can CSV preserve well?"},{"answer":1,"explanation":"A summary provides an accessible equivalent.","options":["Only color","A text summary of important values and trends","An empty title"],"question":"What should accompany a chart?"},{"answer":0,"explanation":"Descriptive names support navigation and interpretation.","options":["They make structure understandable","They replace data","They prevent saving"],"question":"Why use clear sheet and column names?"}]}</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <title>Google Chrome Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,19 +24,19 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. Which shortcut focuses the Chrome address bar?</legend>
-          <label><input type="radio" name="question-0" value="0"> Ctrl+L</label>
-          <label><input type="radio" name="question-0" value="1"> Ctrl+P</label>
+          <label><input type="radio" name="question-0" value="0"> Ctrl+P</label>
+          <label><input type="radio" name="question-0" value="1"> Ctrl+L</label>
           <label><input type="radio" name="question-0" value="2"> Alt+F4</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. Which shortcut opens a new tab?</legend>
-          <label><input type="radio" name="question-1" value="0"> Ctrl+T</label>
-          <label><input type="radio" name="question-1" value="1"> Ctrl+Numpad Plus</label>
-          <label><input type="radio" name="question-1" value="2"> Windows+T</label>
+          <label><input type="radio" name="question-1" value="0"> Ctrl+Numpad Plus</label>
+          <label><input type="radio" name="question-1" value="1"> Windows+T</label>
+          <label><input type="radio" name="question-1" value="2"> Ctrl+T</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What should be checked before opening a download?</legend>
@@ -46,9 +46,9 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What does browser zoom change?</legend>
-          <label><input type="radio" name="question-3" value="0"> The webpage's displayed size</label>
-          <label><input type="radio" name="question-3" value="1"> The file extension</label>
-          <label><input type="radio" name="question-3" value="2"> The Student ID</label>
+          <label><input type="radio" name="question-3" value="0"> The file extension</label>
+          <label><input type="radio" name="question-3" value="1"> The Student ID</label>
+          <label><input type="radio" name="question-3" value="2"> The webpage's displayed size</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What should you do with a deceptive-site warning?</legend>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Chrome","displayName":"Google Chrome","slug":"chrome","passPercent":80,"questions":[{"answer":0,"explanation":"Ctrl+L focuses the address bar.","options":["Ctrl+L","Ctrl+P","Alt+F4"],"question":"Which shortcut focuses the Chrome address bar?"},{"answer":0,"explanation":"Ctrl+T opens a new tab.","options":["Ctrl+T","Ctrl+Numpad Plus","Windows+T"],"question":"Which shortcut opens a new tab?"},{"answer":0,"explanation":"File verification reduces security and navigation errors.","options":["Source, filename, extension, and location","Only its color","Nothing"],"question":"What should be checked before opening a download?"},{"answer":0,"explanation":"Browser zoom enlarges or reduces webpage content.","options":["The webpage's displayed size","The file extension","The Student ID"],"question":"What does browser zoom change?"},{"answer":0,"explanation":"Security warnings should not be bypassed without verification.","options":["Stop and verify the site","Bypass it automatically","Enter a password"],"question":"What should you do with a deceptive-site warning?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Chrome","displayName":"Google Chrome","slug":"chrome","passPercent":80,"questions":[{"answer":1,"explanation":"Ctrl+L focuses the address bar.","options":["Ctrl+P","Ctrl+L","Alt+F4"],"question":"Which shortcut focuses the Chrome address bar?"},{"answer":2,"explanation":"Ctrl+T opens a new tab.","options":["Ctrl+Numpad Plus","Windows+T","Ctrl+T"],"question":"Which shortcut opens a new tab?"},{"answer":0,"explanation":"File verification reduces security and navigation errors.","options":["Source, filename, extension, and location","Only its color","Nothing"],"question":"What should be checked before opening a download?"},{"answer":2,"explanation":"Browser zoom enlarges or reduces webpage content.","options":["The file extension","The Student ID","The webpage's displayed size"],"question":"What does browser zoom change?"},{"answer":0,"explanation":"Security warnings should not be bypassed without verification.","options":["Stop and verify the site","Bypass it automatically","Enter a password"],"question":"What should you do with a deceptive-site warning?"}]}</script>
 </body>
 </html>

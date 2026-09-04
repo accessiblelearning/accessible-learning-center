@@ -209,7 +209,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 339, "Expected 339 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 341, "Expected 341 HTML pages, found " + htmlFiles.length + ".");
 const manualsHtml = readFileSync(resolve(root, "manuals.html"), "utf8");
 check(manualsHtml.includes("Manuals are grouped by subject"), "Manuals page is not grouped by subject.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
@@ -339,6 +339,23 @@ check(accessibilityScript.includes("Last accessibility and structure review:"), 
 check(accessibilityScript.includes('href="quizzes.html">Quizzes</a>'), "Primary navigation is missing Quizzes.");
 check(existsSync(resolve(root, "quizzes.html")), "Quizzes page is missing.");
 check((readFileSync(resolve(root, "quizzes.html"), "utf8").match(/-quiz\.html/g) || []).length === 25, "Quizzes page must link all 25 final quizzes.");
+const quizFiles = htmlFiles.filter(file => file.endsWith("-quiz.html"));
+const answerPositionTotals = [0, 0, 0];
+for (const file of quizFiles) {
+  const quizHtml = readFileSync(resolve(root, file), "utf8");
+  const quizDataMatch = quizHtml.match(/<script id="quizData" type="application\/json">([\s\S]*?)<\/script>/);
+  check(Boolean(quizDataMatch), file + " is missing quiz data.");
+  if (!quizDataMatch) continue;
+  const quizData = JSON.parse(quizDataMatch[1]);
+  check(quizData.questions.length === 5, file + " must contain five questions.");
+  const answerPositions = quizData.questions.map(question => question.answer);
+  check(new Set(answerPositions).size === 3, file + " must use all three correct-answer positions.");
+  check(answerPositions.every(position => Number.isInteger(position) && position >= 0 && position <= 2), file + " contains an invalid answer position.");
+  for (const position of answerPositions) answerPositionTotals[position] += 1;
+  check(quizHtml.includes("Question and answer order changes each time."), file + " is missing the randomized-order instruction.");
+}
+check(Math.max(...answerPositionTotals) - Math.min(...answerPositionTotals) <= 1, "Correct-answer positions are not balanced across all quizzes.");
+check(readFileSync(resolve(root, "quiz.js"), "utf8").includes("randomizeQuiz"), "Quiz question and answer randomization is missing.");
 check(existsSync(resolve(root, "course-catalog.js")), "Course catalog filtering behavior is missing.");
 check(readFileSync(resolve(root, "lessons.html"), "utf8").includes('id="courseFilter"'), "Lessons course filter is missing.");
 check(readFileSync(resolve(root, "student-progress.html"), "utf8").includes('id="startedCoursesOnly"'), "Started-courses progress filter is missing.");

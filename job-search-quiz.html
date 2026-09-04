@@ -7,7 +7,7 @@
   <title>Accessible Job Search Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What should a résumé use for section structure?</legend>
@@ -34,21 +34,21 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What is a warning sign in a job posting?</legend>
-          <label><input type="radio" name="question-1" value="0"> Requests for money or sensitive information before legitimate hiring</label>
-          <label><input type="radio" name="question-1" value="1"> A clear job description</label>
-          <label><input type="radio" name="question-1" value="2"> A company careers page</label>
+          <label><input type="radio" name="question-1" value="0"> A clear job description</label>
+          <label><input type="radio" name="question-1" value="1"> A company careers page</label>
+          <label><input type="radio" name="question-1" value="2"> Requests for money or sensitive information before legitimate hiring</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What should a cover letter do?</legend>
-          <label><input type="radio" name="question-2" value="0"> Connect relevant skills to the specific job</label>
-          <label><input type="radio" name="question-2" value="1"> Repeat every résumé line</label>
+          <label><input type="radio" name="question-2" value="0"> Repeat every résumé line</label>
+          <label><input type="radio" name="question-2" value="1"> Connect relevant skills to the specific job</label>
           <label><input type="radio" name="question-2" value="2"> Include private account numbers</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. When may accommodations be discussed?</legend>
-          <label><input type="radio" name="question-3" value="0"> When the applicant chooses, based on their needs and the process</label>
-          <label><input type="radio" name="question-3" value="1"> Only after sharing medical records publicly</label>
-          <label><input type="radio" name="question-3" value="2"> Never</label>
+          <label><input type="radio" name="question-3" value="0"> Only after sharing medical records publicly</label>
+          <label><input type="radio" name="question-3" value="1"> Never</label>
+          <label><input type="radio" name="question-3" value="2"> When the applicant chooses, based on their needs and the process</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What should be checked before submitting an application?</legend>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Accessible Job Search","displayName":"Accessible Job Search","slug":"job-search","passPercent":80,"questions":[{"answer":0,"explanation":"Headings improve readability and navigation.","options":["Clear headings","Text boxes in random order","Color alone"],"question":"What should a résumé use for section structure?"},{"answer":0,"explanation":"Payment and premature data requests can indicate scams.","options":["Requests for money or sensitive information before legitimate hiring","A clear job description","A company careers page"],"question":"What is a warning sign in a job posting?"},{"answer":0,"explanation":"A targeted letter explains fit.","options":["Connect relevant skills to the specific job","Repeat every résumé line","Include private account numbers"],"question":"What should a cover letter do?"},{"answer":0,"explanation":"The applicant decides when to request needed accommodations.","options":["When the applicant chooses, based on their needs and the process","Only after sharing medical records publicly","Never"],"question":"When may accommodations be discussed?"},{"answer":0,"explanation":"A final review prevents common submission errors.","options":["Required fields, attachments, contact details, and confirmation","Only page color","Only browser zoom"],"question":"What should be checked before submitting an application?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Accessible Job Search","displayName":"Accessible Job Search","slug":"job-search","passPercent":80,"questions":[{"answer":0,"explanation":"Headings improve readability and navigation.","options":["Clear headings","Text boxes in random order","Color alone"],"question":"What should a résumé use for section structure?"},{"answer":2,"explanation":"Payment and premature data requests can indicate scams.","options":["A clear job description","A company careers page","Requests for money or sensitive information before legitimate hiring"],"question":"What is a warning sign in a job posting?"},{"answer":1,"explanation":"A targeted letter explains fit.","options":["Repeat every résumé line","Connect relevant skills to the specific job","Include private account numbers"],"question":"What should a cover letter do?"},{"answer":2,"explanation":"The applicant decides when to request needed accommodations.","options":["Only after sharing medical records publicly","Never","When the applicant chooses, based on their needs and the process"],"question":"When may accommodations be discussed?"},{"answer":0,"explanation":"A final review prevents common submission errors.","options":["Required fields, attachments, contact details, and confirmation","Only page color","Only browser zoom"],"question":"What should be checked before submitting an application?"}]}</script>
 </body>
 </html>

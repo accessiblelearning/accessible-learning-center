@@ -7,7 +7,7 @@
   <title>Cybersecurity for Screen Reader Users Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What is the safest response to an unexpected urgent link?</legend>
@@ -34,14 +34,14 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What makes a password stronger?</legend>
-          <label><input type="radio" name="question-1" value="0"> A long unique password stored in an approved manager</label>
-          <label><input type="radio" name="question-1" value="1"> Reusing one short password</label>
-          <label><input type="radio" name="question-1" value="2"> Including your name</label>
+          <label><input type="radio" name="question-1" value="0"> Reusing one short password</label>
+          <label><input type="radio" name="question-1" value="1"> Including your name</label>
+          <label><input type="radio" name="question-1" value="2"> A long unique password stored in an approved manager</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What does multifactor authentication add?</legend>
-          <label><input type="radio" name="question-2" value="0"> Another verification factor</label>
-          <label><input type="radio" name="question-2" value="1"> A public password</label>
+          <label><input type="radio" name="question-2" value="0"> A public password</label>
+          <label><input type="radio" name="question-2" value="1"> Another verification factor</label>
           <label><input type="radio" name="question-2" value="2"> Automatic file deletion</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -52,8 +52,8 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What should happen after a suspected incident?</legend>
-          <label><input type="radio" name="question-4" value="0"> Report it through the approved process</label>
-          <label><input type="radio" name="question-4" value="1"> Hide it</label>
+          <label><input type="radio" name="question-4" value="0"> Hide it</label>
+          <label><input type="radio" name="question-4" value="1"> Report it through the approved process</label>
           <label><input type="radio" name="question-4" value="2"> Delete all evidence</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Cybersecurity for Screen Reader Users","displayName":"Cybersecurity for Screen Reader Users","slug":"cybersecurity","passPercent":80,"questions":[{"answer":0,"explanation":"Urgency is a common phishing tactic.","options":["Pause and verify through a trusted channel","Open it immediately","Forward it to everyone"],"question":"What is the safest response to an unexpected urgent link?"},{"answer":0,"explanation":"Unique long passwords reduce reuse risk.","options":["A long unique password stored in an approved manager","Reusing one short password","Including your name"],"question":"What makes a password stronger?"},{"answer":0,"explanation":"MFA adds protection beyond the password.","options":["Another verification factor","A public password","Automatic file deletion"],"question":"What does multifactor authentication add?"},{"answer":0,"explanation":"Updates frequently include security fixes.","options":["They often repair security weaknesses","They reveal passwords","They disable backups"],"question":"Why install updates?"},{"answer":0,"explanation":"Prompt reporting supports containment and recovery.","options":["Report it through the approved process","Hide it","Delete all evidence"],"question":"What should happen after a suspected incident?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Cybersecurity for Screen Reader Users","displayName":"Cybersecurity for Screen Reader Users","slug":"cybersecurity","passPercent":80,"questions":[{"answer":0,"explanation":"Urgency is a common phishing tactic.","options":["Pause and verify through a trusted channel","Open it immediately","Forward it to everyone"],"question":"What is the safest response to an unexpected urgent link?"},{"answer":2,"explanation":"Unique long passwords reduce reuse risk.","options":["Reusing one short password","Including your name","A long unique password stored in an approved manager"],"question":"What makes a password stronger?"},{"answer":1,"explanation":"MFA adds protection beyond the password.","options":["A public password","Another verification factor","Automatic file deletion"],"question":"What does multifactor authentication add?"},{"answer":0,"explanation":"Updates frequently include security fixes.","options":["They often repair security weaknesses","They reveal passwords","They disable backups"],"question":"Why install updates?"},{"answer":1,"explanation":"Prompt reporting supports containment and recovery.","options":["Hide it","Report it through the approved process","Delete all evidence"],"question":"What should happen after a suspected incident?"}]}</script>
 </body>
 </html>

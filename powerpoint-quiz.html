@@ -7,7 +7,7 @@
   <title>Microsoft PowerPoint Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What should every slide have?</legend>
@@ -34,9 +34,9 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. Which slide structure is preferred?</legend>
-          <label><input type="radio" name="question-1" value="0"> Built-in layouts</label>
-          <label><input type="radio" name="question-1" value="1"> Manually positioned text boxes only</label>
-          <label><input type="radio" name="question-1" value="2"> Blank slides for everything</label>
+          <label><input type="radio" name="question-1" value="0"> Manually positioned text boxes only</label>
+          <label><input type="radio" name="question-1" value="1"> Blank slides for everything</label>
+          <label><input type="radio" name="question-1" value="2"> Built-in layouts</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. Where can detailed speaking information go?</legend>
@@ -46,14 +46,14 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What must meaningful images include?</legend>
-          <label><input type="radio" name="question-3" value="0"> Verified alternative text</label>
-          <label><input type="radio" name="question-3" value="1"> A transition sound</label>
-          <label><input type="radio" name="question-3" value="2"> A hidden password</label>
+          <label><input type="radio" name="question-3" value="0"> A transition sound</label>
+          <label><input type="radio" name="question-3" value="1"> A hidden password</label>
+          <label><input type="radio" name="question-3" value="2"> Verified alternative text</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What should be checked before sharing a presentation?</legend>
-          <label><input type="radio" name="question-4" value="0"> Reading order, contrast, titles, and links</label>
-          <label><input type="radio" name="question-4" value="1"> Only animations</label>
+          <label><input type="radio" name="question-4" value="0"> Only animations</label>
+          <label><input type="radio" name="question-4" value="1"> Reading order, contrast, titles, and links</label>
           <label><input type="radio" name="question-4" value="2"> Only file size</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Microsoft PowerPoint","displayName":"Microsoft PowerPoint","slug":"powerpoint","passPercent":80,"questions":[{"answer":0,"explanation":"Unique titles support navigation and understanding.","options":["A unique descriptive title","Only a slide number","A decorative border"],"question":"What should every slide have?"},{"answer":0,"explanation":"Built-in layouts provide more predictable structure.","options":["Built-in layouts","Manually positioned text boxes only","Blank slides for everything"],"question":"Which slide structure is preferred?"},{"answer":0,"explanation":"Speaker notes keep slides concise while preserving detail.","options":["Speaker notes","The filename only","Image color"],"question":"Where can detailed speaking information go?"},{"answer":0,"explanation":"Alternative text communicates visual content.","options":["Verified alternative text","A transition sound","A hidden password"],"question":"What must meaningful images include?"},{"answer":0,"explanation":"These checks address key accessibility needs.","options":["Reading order, contrast, titles, and links","Only animations","Only file size"],"question":"What should be checked before sharing a presentation?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Microsoft PowerPoint","displayName":"Microsoft PowerPoint","slug":"powerpoint","passPercent":80,"questions":[{"answer":0,"explanation":"Unique titles support navigation and understanding.","options":["A unique descriptive title","Only a slide number","A decorative border"],"question":"What should every slide have?"},{"answer":2,"explanation":"Built-in layouts provide more predictable structure.","options":["Manually positioned text boxes only","Blank slides for everything","Built-in layouts"],"question":"Which slide structure is preferred?"},{"answer":0,"explanation":"Speaker notes keep slides concise while preserving detail.","options":["Speaker notes","The filename only","Image color"],"question":"Where can detailed speaking information go?"},{"answer":2,"explanation":"Alternative text communicates visual content.","options":["A transition sound","A hidden password","Verified alternative text"],"question":"What must meaningful images include?"},{"answer":1,"explanation":"These checks address key accessibility needs.","options":["Only animations","Reading order, contrast, titles, and links","Only file size"],"question":"What should be checked before sharing a presentation?"}]}</script>
 </body>
 </html>

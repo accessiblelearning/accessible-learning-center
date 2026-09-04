@@ -7,7 +7,7 @@
   <title>Windows 11 Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,13 +24,13 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. Which Windows shortcut opens File Explorer?</legend>
-          <label><input type="radio" name="question-0" value="0"> Windows+E</label>
-          <label><input type="radio" name="question-0" value="1"> Ctrl+E</label>
-          <label><input type="radio" name="question-0" value="2"> Alt+E</label>
+          <label><input type="radio" name="question-0" value="0"> Ctrl+E</label>
+          <label><input type="radio" name="question-0" value="1"> Alt+E</label>
+          <label><input type="radio" name="question-0" value="2"> Windows+E</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What is the safest first step before moving or deleting a file?</legend>
@@ -40,20 +40,20 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. Which shortcut switches among open applications?</legend>
-          <label><input type="radio" name="question-2" value="0"> Alt+Tab</label>
-          <label><input type="radio" name="question-2" value="1"> Ctrl+Tab</label>
+          <label><input type="radio" name="question-2" value="0"> Ctrl+Tab</label>
+          <label><input type="radio" name="question-2" value="1"> Alt+Tab</label>
           <label><input type="radio" name="question-2" value="2"> Windows+R</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. Where should related work files be kept?</legend>
-          <label><input type="radio" name="question-3" value="0"> In clearly named folders</label>
-          <label><input type="radio" name="question-3" value="1"> Only in Downloads</label>
-          <label><input type="radio" name="question-3" value="2"> In the Recycle Bin</label>
+          <label><input type="radio" name="question-3" value="0"> Only in Downloads</label>
+          <label><input type="radio" name="question-3" value="1"> In the Recycle Bin</label>
+          <label><input type="radio" name="question-3" value="2"> In clearly named folders</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What should you do before installing a download?</legend>
-          <label><input type="radio" name="question-4" value="0"> Verify the source, filename, and extension</label>
-          <label><input type="radio" name="question-4" value="1"> Disable security warnings</label>
+          <label><input type="radio" name="question-4" value="0"> Disable security warnings</label>
+          <label><input type="radio" name="question-4" value="1"> Verify the source, filename, and extension</label>
           <label><input type="radio" name="question-4" value="2"> Open every attachment</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Windows 11","displayName":"Windows 11","slug":"windows","passPercent":80,"questions":[{"answer":0,"explanation":"Windows+E opens File Explorer.","options":["Windows+E","Ctrl+E","Alt+E"],"question":"Which Windows shortcut opens File Explorer?"},{"answer":0,"explanation":"Confirming the item and location helps prevent mistakes.","options":["Confirm its name and location","Rename every file","Empty the Recycle Bin"],"question":"What is the safest first step before moving or deleting a file?"},{"answer":0,"explanation":"Alt+Tab switches among open applications.","options":["Alt+Tab","Ctrl+Tab","Windows+R"],"question":"Which shortcut switches among open applications?"},{"answer":0,"explanation":"Clear folders and filenames make work easier to find.","options":["In clearly named folders","Only in Downloads","In the Recycle Bin"],"question":"Where should related work files be kept?"},{"answer":0,"explanation":"Verify downloads before opening or installing them.","options":["Verify the source, filename, and extension","Disable security warnings","Open every attachment"],"question":"What should you do before installing a download?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Windows 11","displayName":"Windows 11","slug":"windows","passPercent":80,"questions":[{"answer":2,"explanation":"Windows+E opens File Explorer.","options":["Ctrl+E","Alt+E","Windows+E"],"question":"Which Windows shortcut opens File Explorer?"},{"answer":0,"explanation":"Confirming the item and location helps prevent mistakes.","options":["Confirm its name and location","Rename every file","Empty the Recycle Bin"],"question":"What is the safest first step before moving or deleting a file?"},{"answer":1,"explanation":"Alt+Tab switches among open applications.","options":["Ctrl+Tab","Alt+Tab","Windows+R"],"question":"Which shortcut switches among open applications?"},{"answer":2,"explanation":"Clear folders and filenames make work easier to find.","options":["Only in Downloads","In the Recycle Bin","In clearly named folders"],"question":"Where should related work files be kept?"},{"answer":1,"explanation":"Verify downloads before opening or installing them.","options":["Disable security warnings","Verify the source, filename, and extension","Open every attachment"],"question":"What should you do before installing a download?"}]}</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <title>BrailleBlaster Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. Which file type preserves a BrailleBlaster project for editing?</legend>
@@ -34,27 +34,27 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. Why apply real document styles?</legend>
-          <label><input type="radio" name="question-1" value="0"> They control consistent Braille structure and formatting</label>
-          <label><input type="radio" name="question-1" value="1"> They only change color</label>
+          <label><input type="radio" name="question-1" value="0"> They only change color</label>
+          <label><input type="radio" name="question-1" value="1"> They control consistent Braille structure and formatting</label>
           <label><input type="radio" name="question-1" value="2"> They disable translation</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What should be done before exporting BRF?</legend>
-          <label><input type="radio" name="question-2" value="0"> Proofread both source and Braille views</label>
-          <label><input type="radio" name="question-2" value="1"> Delete headings</label>
-          <label><input type="radio" name="question-2" value="2"> Ignore page breaks</label>
+          <label><input type="radio" name="question-2" value="0"> Delete headings</label>
+          <label><input type="radio" name="question-2" value="1"> Ignore page breaks</label>
+          <label><input type="radio" name="question-2" value="2"> Proofread both source and Braille views</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What is a transcriber's note for?</legend>
-          <label><input type="radio" name="question-3" value="0"> Clarifying necessary information not represented directly</label>
-          <label><input type="radio" name="question-3" value="1"> Adding private comments</label>
+          <label><input type="radio" name="question-3" value="0"> Adding private comments</label>
+          <label><input type="radio" name="question-3" value="1"> Clarifying necessary information not represented directly</label>
           <label><input type="radio" name="question-3" value="2"> Replacing all source text</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. Why validate page numbers and running heads?</legend>
-          <label><input type="radio" name="question-4" value="0"> They affect navigation and final Braille format</label>
-          <label><input type="radio" name="question-4" value="1"> They change audio volume</label>
-          <label><input type="radio" name="question-4" value="2"> They enable Bluetooth</label>
+          <label><input type="radio" name="question-4" value="0"> They change audio volume</label>
+          <label><input type="radio" name="question-4" value="1"> They enable Bluetooth</label>
+          <label><input type="radio" name="question-4" value="2"> They affect navigation and final Braille format</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"BrailleBlaster","displayName":"BrailleBlaster","slug":"brailleblaster","passPercent":80,"questions":[{"answer":0,"explanation":"BBZ is the BrailleBlaster project format.","options":["BBZ","JPG","MP3"],"question":"Which file type preserves a BrailleBlaster project for editing?"},{"answer":0,"explanation":"Styles support structured transcription.","options":["They control consistent Braille structure and formatting","They only change color","They disable translation"],"question":"Why apply real document styles?"},{"answer":0,"explanation":"Parallel proofreading catches structural and translation issues.","options":["Proofread both source and Braille views","Delete headings","Ignore page breaks"],"question":"What should be done before exporting BRF?"},{"answer":0,"explanation":"Transcriber's notes provide required clarification.","options":["Clarifying necessary information not represented directly","Adding private comments","Replacing all source text"],"question":"What is a transcriber's note for?"},{"answer":0,"explanation":"Page structure is essential in a finished transcription.","options":["They affect navigation and final Braille format","They change audio volume","They enable Bluetooth"],"question":"Why validate page numbers and running heads?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"BrailleBlaster","displayName":"BrailleBlaster","slug":"brailleblaster","passPercent":80,"questions":[{"answer":0,"explanation":"BBZ is the BrailleBlaster project format.","options":["BBZ","JPG","MP3"],"question":"Which file type preserves a BrailleBlaster project for editing?"},{"answer":1,"explanation":"Styles support structured transcription.","options":["They only change color","They control consistent Braille structure and formatting","They disable translation"],"question":"Why apply real document styles?"},{"answer":2,"explanation":"Parallel proofreading catches structural and translation issues.","options":["Delete headings","Ignore page breaks","Proofread both source and Braille views"],"question":"What should be done before exporting BRF?"},{"answer":1,"explanation":"Transcriber's notes provide required clarification.","options":["Adding private comments","Clarifying necessary information not represented directly","Replacing all source text"],"question":"What is a transcriber's note for?"},{"answer":2,"explanation":"Page structure is essential in a finished transcription.","options":["They change audio volume","They enable Bluetooth","They affect navigation and final Braille format"],"question":"Why validate page numbers and running heads?"}]}</script>
 </body>
 </html>

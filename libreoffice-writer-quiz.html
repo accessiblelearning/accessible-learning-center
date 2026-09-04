@@ -7,7 +7,7 @@
   <title>LibreOffice Writer Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,24 +24,24 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What is Writer's native editable format?</legend>
-          <label><input type="radio" name="question-0" value="0"> ODT</label>
-          <label><input type="radio" name="question-0" value="1"> ODS</label>
+          <label><input type="radio" name="question-0" value="0"> ODS</label>
+          <label><input type="radio" name="question-0" value="1"> ODT</label>
           <label><input type="radio" name="question-0" value="2"> ODP</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. Which feature provides document structure?</legend>
-          <label><input type="radio" name="question-1" value="0"> Heading styles</label>
-          <label><input type="radio" name="question-1" value="1"> Bold text alone</label>
-          <label><input type="radio" name="question-1" value="2"> Blank lines</label>
+          <label><input type="radio" name="question-1" value="0"> Bold text alone</label>
+          <label><input type="radio" name="question-1" value="1"> Blank lines</label>
+          <label><input type="radio" name="question-1" value="2"> Heading styles</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What should be done before saving DOCX?</legend>
-          <label><input type="radio" name="question-2" value="0"> Keep the ODT original and review a separate DOCX copy</label>
-          <label><input type="radio" name="question-2" value="1"> Delete the ODT file</label>
+          <label><input type="radio" name="question-2" value="0"> Delete the ODT file</label>
+          <label><input type="radio" name="question-2" value="1"> Keep the ODT original and review a separate DOCX copy</label>
           <label><input type="radio" name="question-2" value="2"> Remove all headings</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -52,9 +52,9 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What PDF export option supports accessibility structure?</legend>
-          <label><input type="radio" name="question-4" value="0"> PDF/UA when appropriate and correctly prepared</label>
-          <label><input type="radio" name="question-4" value="1"> Image-only PDF</label>
-          <label><input type="radio" name="question-4" value="2"> Password alone</label>
+          <label><input type="radio" name="question-4" value="0"> Image-only PDF</label>
+          <label><input type="radio" name="question-4" value="1"> Password alone</label>
+          <label><input type="radio" name="question-4" value="2"> PDF/UA when appropriate and correctly prepared</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"LibreOffice Writer","displayName":"LibreOffice Writer","slug":"libreoffice-writer","passPercent":80,"questions":[{"answer":0,"explanation":"Writer uses ODT.","options":["ODT","ODS","ODP"],"question":"What is Writer's native editable format?"},{"answer":0,"explanation":"Heading styles create semantic structure.","options":["Heading styles","Bold text alone","Blank lines"],"question":"Which feature provides document structure?"},{"answer":0,"explanation":"A native original protects editing features.","options":["Keep the ODT original and review a separate DOCX copy","Delete the ODT file","Remove all headings"],"question":"What should be done before saving DOCX?"},{"answer":0,"explanation":"Writer includes an Accessibility Check.","options":["Accessibility Check","Slide Sorter","Formula Bar"],"question":"Which tool checks many common accessibility issues?"},{"answer":0,"explanation":"PDF/UA export can preserve accessible structure when the source is prepared.","options":["PDF/UA when appropriate and correctly prepared","Image-only PDF","Password alone"],"question":"What PDF export option supports accessibility structure?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"LibreOffice Writer","displayName":"LibreOffice Writer","slug":"libreoffice-writer","passPercent":80,"questions":[{"answer":1,"explanation":"Writer uses ODT.","options":["ODS","ODT","ODP"],"question":"What is Writer's native editable format?"},{"answer":2,"explanation":"Heading styles create semantic structure.","options":["Bold text alone","Blank lines","Heading styles"],"question":"Which feature provides document structure?"},{"answer":1,"explanation":"A native original protects editing features.","options":["Delete the ODT file","Keep the ODT original and review a separate DOCX copy","Remove all headings"],"question":"What should be done before saving DOCX?"},{"answer":0,"explanation":"Writer includes an Accessibility Check.","options":["Accessibility Check","Slide Sorter","Formula Bar"],"question":"Which tool checks many common accessibility issues?"},{"answer":2,"explanation":"PDF/UA export can preserve accessible structure when the source is prepared.","options":["Image-only PDF","Password alone","PDF/UA when appropriate and correctly prepared"],"question":"What PDF export option supports accessibility structure?"}]}</script>
 </body>
 </html>

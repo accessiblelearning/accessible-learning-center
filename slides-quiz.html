@@ -7,7 +7,7 @@
   <title>Google Slides Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,18 +24,18 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What should each Google Slides slide have?</legend>
-          <label><input type="radio" name="question-0" value="0"> A unique descriptive title</label>
-          <label><input type="radio" name="question-0" value="1"> Only a number</label>
-          <label><input type="radio" name="question-0" value="2"> A decorative border</label>
+          <label><input type="radio" name="question-0" value="0"> Only a number</label>
+          <label><input type="radio" name="question-0" value="1"> A decorative border</label>
+          <label><input type="radio" name="question-0" value="2"> A unique descriptive title</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What should be checked before sharing?</legend>
-          <label><input type="radio" name="question-1" value="0"> Account, audience, and permission level</label>
-          <label><input type="radio" name="question-1" value="1"> Only theme color</label>
+          <label><input type="radio" name="question-1" value="0"> Only theme color</label>
+          <label><input type="radio" name="question-1" value="1"> Account, audience, and permission level</label>
           <label><input type="radio" name="question-1" value="2"> Only animation speed</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -46,9 +46,9 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. Where can detailed presentation information go?</legend>
-          <label><input type="radio" name="question-3" value="0"> Speaker notes</label>
-          <label><input type="radio" name="question-3" value="1"> Only image filenames</label>
-          <label><input type="radio" name="question-3" value="2"> The browser history</label>
+          <label><input type="radio" name="question-3" value="0"> Only image filenames</label>
+          <label><input type="radio" name="question-3" value="1"> The browser history</label>
+          <label><input type="radio" name="question-3" value="2"> Speaker notes</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What should be reviewed after downloading PPTX or PDF?</legend>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Slides","displayName":"Google Slides","slug":"slides","passPercent":80,"questions":[{"answer":0,"explanation":"Unique titles support navigation.","options":["A unique descriptive title","Only a number","A decorative border"],"question":"What should each Google Slides slide have?"},{"answer":0,"explanation":"Sharing settings protect the presentation.","options":["Account, audience, and permission level","Only theme color","Only animation speed"],"question":"What should be checked before sharing?"},{"answer":0,"explanation":"Built-in layouts provide more predictable order.","options":["Built-in slide layouts","Blank slides with random text boxes","Color alone"],"question":"What supports accessible structure?"},{"answer":0,"explanation":"Notes hold detail for the presenter.","options":["Speaker notes","Only image filenames","The browser history"],"question":"Where can detailed presentation information go?"},{"answer":0,"explanation":"Export can change structure or content.","options":["Titles, order, notes, links, images, and layout","Only the extension","Only file size"],"question":"What should be reviewed after downloading PPTX or PDF?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Slides","displayName":"Google Slides","slug":"slides","passPercent":80,"questions":[{"answer":2,"explanation":"Unique titles support navigation.","options":["Only a number","A decorative border","A unique descriptive title"],"question":"What should each Google Slides slide have?"},{"answer":1,"explanation":"Sharing settings protect the presentation.","options":["Only theme color","Account, audience, and permission level","Only animation speed"],"question":"What should be checked before sharing?"},{"answer":0,"explanation":"Built-in layouts provide more predictable order.","options":["Built-in slide layouts","Blank slides with random text boxes","Color alone"],"question":"What supports accessible structure?"},{"answer":2,"explanation":"Notes hold detail for the presenter.","options":["Only image filenames","The browser history","Speaker notes"],"question":"Where can detailed presentation information go?"},{"answer":0,"explanation":"Export can change structure or content.","options":["Titles, order, notes, links, images, and layout","Only the extension","Only file size"],"question":"What should be reviewed after downloading PPTX or PDF?"}]}</script>
 </body>
 </html>

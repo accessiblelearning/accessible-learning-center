@@ -10,7 +10,46 @@
   const certificate = document.getElementById("certificateSection");
   const nameInput = document.getElementById("certificateName");
   const printButton = document.getElementById("printCertificate");
+  const gradeButton = form.querySelector('button[type="submit"]');
   let latestScore = 0;
+  let questionOrder = data.questions.map((question, index) => index);
+
+  function shuffle(items) {
+    const result = [...items];
+    for (let index = result.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [result[index], result[randomIndex]] = [result[randomIndex], result[index]];
+    }
+    return result;
+  }
+
+  function randomizeQuiz() {
+    const fieldsets = [...form.querySelectorAll(".quiz-question")];
+    questionOrder = shuffle(data.questions.map((question, index) => index));
+
+    // Five questions use every answer position, with two positions used twice.
+    // Shuffling this balanced set prevents a recognizable correct-answer pattern.
+    const correctPositions = shuffle([0, 0, 1, 1, 2]);
+
+    questionOrder.forEach((questionIndex, visibleIndex) => {
+      const fieldset = fieldsets[questionIndex];
+      const legend = fieldset.querySelector("legend");
+      const labels = [...fieldset.querySelectorAll("label")];
+      const correctValue = String(data.questions[questionIndex].answer);
+      const correctLabel = labels.find(label =>
+        label.querySelector("input")?.value === correctValue
+      );
+      const incorrectLabels = shuffle(labels.filter(label => label !== correctLabel));
+      incorrectLabels.splice(correctPositions[visibleIndex], 0, correctLabel);
+
+      legend.textContent = legend.textContent.replace(/^\d+\.\s*/, (visibleIndex + 1) + ". ");
+      fieldset.dataset.visibleQuestion = String(visibleIndex + 1);
+      incorrectLabels.forEach(label => fieldset.appendChild(label));
+      form.insertBefore(fieldset, gradeButton);
+    });
+  }
+
+  randomizeQuiz();
 
   function resultStorageKey() {
     const studentId = localStorage.getItem("accessibleLearningStudentId");
@@ -40,10 +79,12 @@
       const selected = form.querySelector('input[name="question-' + index + '"]:checked');
       return selected ? Number(selected.value) : null;
     });
-    const firstMissing = answers.findIndex(answer => answer === null);
-    if (firstMissing >= 0) {
-      status.textContent = "Answer every question before grading. Question " + (firstMissing + 1) + " is not answered.";
-      form.querySelector('input[name="question-' + firstMissing + '"]')?.focus();
+    const firstMissing = questionOrder.find(questionIndex => answers[questionIndex] === null);
+    if (firstMissing !== undefined) {
+      const missingFieldset = form.querySelector('input[name="question-' + firstMissing + '"]')?.closest("fieldset");
+      const visibleQuestion = missingFieldset?.dataset.visibleQuestion || String(questionOrder.indexOf(firstMissing) + 1);
+      status.textContent = "Answer every question before grading. Question " + visibleQuestion + " is not answered.";
+      missingFieldset?.querySelector("input")?.focus();
       return;
     }
 
@@ -67,7 +108,8 @@
     const reviewHeading = document.createElement("h3");
     reviewHeading.textContent = "Answer review";
     const list = document.createElement("ol");
-    data.questions.forEach((question, index) => {
+    questionOrder.forEach(index => {
+      const question = data.questions[index];
       const item = document.createElement("li");
       const result = document.createElement("p");
       const explanation = document.createElement("p");

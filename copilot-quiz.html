@@ -7,7 +7,7 @@
   <title>Microsoft Copilot Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What should a Copilot workplace prompt include?</legend>
@@ -34,26 +34,26 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What should you do with Copilot source links?</legend>
-          <label><input type="radio" name="question-1" value="0"> Open and verify them</label>
-          <label><input type="radio" name="question-1" value="1"> Assume every claim is supported</label>
-          <label><input type="radio" name="question-1" value="2"> Remove all sources</label>
+          <label><input type="radio" name="question-1" value="0"> Assume every claim is supported</label>
+          <label><input type="radio" name="question-1" value="1"> Remove all sources</label>
+          <label><input type="radio" name="question-1" value="2"> Open and verify them</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. Which data belongs in an unapproved personal Copilot account?</legend>
-          <label><input type="radio" name="question-2" value="0"> Only public or fictional practice data</label>
-          <label><input type="radio" name="question-2" value="1"> Confidential employee records</label>
+          <label><input type="radio" name="question-2" value="0"> Confidential employee records</label>
+          <label><input type="radio" name="question-2" value="1"> Only public or fictional practice data</label>
           <label><input type="radio" name="question-2" value="2"> Private medical records</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What is the purpose of a follow-up prompt?</legend>
-          <label><input type="radio" name="question-3" value="0"> To refine, correct, or clarify the response</label>
-          <label><input type="radio" name="question-3" value="1"> To bypass policy</label>
-          <label><input type="radio" name="question-3" value="2"> To hide uncertainty</label>
+          <label><input type="radio" name="question-3" value="0"> To bypass policy</label>
+          <label><input type="radio" name="question-3" value="1"> To hide uncertainty</label>
+          <label><input type="radio" name="question-3" value="2"> To refine, correct, or clarify the response</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. Who approves the final Microsoft 365 work product?</legend>
-          <label><input type="radio" name="question-4" value="0"> A responsible person</label>
-          <label><input type="radio" name="question-4" value="1"> Copilot automatically</label>
+          <label><input type="radio" name="question-4" value="0"> Copilot automatically</label>
+          <label><input type="radio" name="question-4" value="1"> A responsible person</label>
           <label><input type="radio" name="question-4" value="2"> The browser</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Microsoft Copilot","displayName":"Microsoft Copilot","slug":"copilot","passPercent":80,"questions":[{"answer":0,"explanation":"Specific nonprivate context improves results.","options":["A clear task, audience, context, and format","A client password","Only the word help"],"question":"What should a Copilot workplace prompt include?"},{"answer":0,"explanation":"Source links must be checked against original material.","options":["Open and verify them","Assume every claim is supported","Remove all sources"],"question":"What should you do with Copilot source links?"},{"answer":0,"explanation":"Unapproved tools must not receive protected workplace data.","options":["Only public or fictional practice data","Confidential employee records","Private medical records"],"question":"Which data belongs in an unapproved personal Copilot account?"},{"answer":0,"explanation":"Follow-ups improve the draft while preserving human oversight.","options":["To refine, correct, or clarify the response","To bypass policy","To hide uncertainty"],"question":"What is the purpose of a follow-up prompt?"},{"answer":0,"explanation":"A human remains responsible for final decisions.","options":["A responsible person","Copilot automatically","The browser"],"question":"Who approves the final Microsoft 365 work product?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Microsoft Copilot","displayName":"Microsoft Copilot","slug":"copilot","passPercent":80,"questions":[{"answer":0,"explanation":"Specific nonprivate context improves results.","options":["A clear task, audience, context, and format","A client password","Only the word help"],"question":"What should a Copilot workplace prompt include?"},{"answer":2,"explanation":"Source links must be checked against original material.","options":["Assume every claim is supported","Remove all sources","Open and verify them"],"question":"What should you do with Copilot source links?"},{"answer":1,"explanation":"Unapproved tools must not receive protected workplace data.","options":["Confidential employee records","Only public or fictional practice data","Private medical records"],"question":"Which data belongs in an unapproved personal Copilot account?"},{"answer":2,"explanation":"Follow-ups improve the draft while preserving human oversight.","options":["To bypass policy","To hide uncertainty","To refine, correct, or clarify the response"],"question":"What is the purpose of a follow-up prompt?"},{"answer":1,"explanation":"A human remains responsible for final decisions.","options":["Copilot automatically","A responsible person","The browser"],"question":"Who approves the final Microsoft 365 work product?"}]}</script>
 </body>
 </html>

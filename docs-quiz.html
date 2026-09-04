@@ -7,7 +7,7 @@
   <title>Google Docs Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,12 +24,12 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. Which structure supports document navigation in Google Docs?</legend>
-          <label><input type="radio" name="question-0" value="0"> Heading styles</label>
-          <label><input type="radio" name="question-0" value="1"> Font size alone</label>
+          <label><input type="radio" name="question-0" value="0"> Font size alone</label>
+          <label><input type="radio" name="question-0" value="1"> Heading styles</label>
           <label><input type="radio" name="question-0" value="2"> Repeated spaces</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -40,21 +40,21 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. Which mode records proposed edits without immediately replacing text?</legend>
-          <label><input type="radio" name="question-2" value="0"> Suggesting mode</label>
-          <label><input type="radio" name="question-2" value="1"> Full screen</label>
-          <label><input type="radio" name="question-2" value="2"> Offline mode</label>
+          <label><input type="radio" name="question-2" value="0"> Full screen</label>
+          <label><input type="radio" name="question-2" value="1"> Offline mode</label>
+          <label><input type="radio" name="question-2" value="2"> Suggesting mode</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What should meaningful images have?</legend>
-          <label><input type="radio" name="question-3" value="0"> Alternative text</label>
-          <label><input type="radio" name="question-3" value="1"> Only a caption color</label>
+          <label><input type="radio" name="question-3" value="0"> Only a caption color</label>
+          <label><input type="radio" name="question-3" value="1"> Alternative text</label>
           <label><input type="radio" name="question-3" value="2"> No description</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. Why download a DOCX copy?</legend>
-          <label><input type="radio" name="question-4" value="0"> To exchange and compatibility-test the document</label>
-          <label><input type="radio" name="question-4" value="1"> To delete the Google file</label>
-          <label><input type="radio" name="question-4" value="2"> To remove headings</label>
+          <label><input type="radio" name="question-4" value="0"> To delete the Google file</label>
+          <label><input type="radio" name="question-4" value="1"> To remove headings</label>
+          <label><input type="radio" name="question-4" value="2"> To exchange and compatibility-test the document</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Docs","displayName":"Google Docs","slug":"docs","passPercent":80,"questions":[{"answer":0,"explanation":"Heading styles create semantic structure.","options":["Heading styles","Font size alone","Repeated spaces"],"question":"Which structure supports document navigation in Google Docs?"},{"answer":0,"explanation":"Sharing permissions determine who can access the file.","options":["The active account and permission level","Only the page color","Only the word count"],"question":"What should be checked before sharing a document?"},{"answer":0,"explanation":"Suggesting mode supports review and collaboration.","options":["Suggesting mode","Full screen","Offline mode"],"question":"Which mode records proposed edits without immediately replacing text?"},{"answer":0,"explanation":"Alternative text conveys image purpose.","options":["Alternative text","Only a caption color","No description"],"question":"What should meaningful images have?"},{"answer":0,"explanation":"A separate copy supports Microsoft-compatible exchange.","options":["To exchange and compatibility-test the document","To delete the Google file","To remove headings"],"question":"Why download a DOCX copy?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Docs","displayName":"Google Docs","slug":"docs","passPercent":80,"questions":[{"answer":1,"explanation":"Heading styles create semantic structure.","options":["Font size alone","Heading styles","Repeated spaces"],"question":"Which structure supports document navigation in Google Docs?"},{"answer":0,"explanation":"Sharing permissions determine who can access the file.","options":["The active account and permission level","Only the page color","Only the word count"],"question":"What should be checked before sharing a document?"},{"answer":2,"explanation":"Suggesting mode supports review and collaboration.","options":["Full screen","Offline mode","Suggesting mode"],"question":"Which mode records proposed edits without immediately replacing text?"},{"answer":1,"explanation":"Alternative text conveys image purpose.","options":["Only a caption color","Alternative text","No description"],"question":"What should meaningful images have?"},{"answer":2,"explanation":"A separate copy supports Microsoft-compatible exchange.","options":["To delete the Google file","To remove headings","To exchange and compatibility-test the document"],"question":"Why download a DOCX copy?"}]}</script>
 </body>
 </html>

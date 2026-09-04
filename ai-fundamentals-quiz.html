@@ -7,7 +7,7 @@
   <title>AI Fundamentals and Responsible Use Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,13 +24,13 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What is the safest way to treat an AI-generated answer?</legend>
-          <label><input type="radio" name="question-0" value="0"> As a draft that requires verification</label>
-          <label><input type="radio" name="question-0" value="1"> As an authoritative final answer</label>
-          <label><input type="radio" name="question-0" value="2"> As private by default</label>
+          <label><input type="radio" name="question-0" value="0"> As an authoritative final answer</label>
+          <label><input type="radio" name="question-0" value="1"> As private by default</label>
+          <label><input type="radio" name="question-0" value="2"> As a draft that requires verification</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. Which information should not be entered into a public AI tool?</legend>
@@ -40,8 +40,8 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What makes a prompt clearer?</legend>
-          <label><input type="radio" name="question-2" value="0"> Task, context, constraints, and format</label>
-          <label><input type="radio" name="question-2" value="1"> Only one vague word</label>
+          <label><input type="radio" name="question-2" value="0"> Only one vague word</label>
+          <label><input type="radio" name="question-2" value="1"> Task, context, constraints, and format</label>
           <label><input type="radio" name="question-2" value="2"> Private personal details</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -52,8 +52,8 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. Who is responsible for the final work?</legend>
-          <label><input type="radio" name="question-4" value="0"> The person using the AI</label>
-          <label><input type="radio" name="question-4" value="1"> The AI tool alone</label>
+          <label><input type="radio" name="question-4" value="0"> The AI tool alone</label>
+          <label><input type="radio" name="question-4" value="1"> The person using the AI</label>
           <label><input type="radio" name="question-4" value="2"> The web browser</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"AI Fundamentals","displayName":"AI Fundamentals and Responsible Use","slug":"ai-fundamentals","passPercent":80,"questions":[{"answer":0,"explanation":"AI can produce confident but incorrect information.","options":["As a draft that requires verification","As an authoritative final answer","As private by default"],"question":"What is the safest way to treat an AI-generated answer?"},{"answer":0,"explanation":"Private and confidential information must be protected.","options":["Client records and passwords","Public weather information","A fictional practice name"],"question":"Which information should not be entered into a public AI tool?"},{"answer":0,"explanation":"Clear instructions improve the chance of a useful result.","options":["Task, context, constraints, and format","Only one vague word","Private personal details"],"question":"What makes a prompt clearer?"},{"answer":0,"explanation":"Important factual claims should be checked against authoritative sources.","options":["Names, dates, quotations, calculations, and policies","Only headings","Only spelling"],"question":"Which claims require especially careful checking?"},{"answer":0,"explanation":"Human review and judgment remain necessary.","options":["The person using the AI","The AI tool alone","The web browser"],"question":"Who is responsible for the final work?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"AI Fundamentals","displayName":"AI Fundamentals and Responsible Use","slug":"ai-fundamentals","passPercent":80,"questions":[{"answer":2,"explanation":"AI can produce confident but incorrect information.","options":["As an authoritative final answer","As private by default","As a draft that requires verification"],"question":"What is the safest way to treat an AI-generated answer?"},{"answer":0,"explanation":"Private and confidential information must be protected.","options":["Client records and passwords","Public weather information","A fictional practice name"],"question":"Which information should not be entered into a public AI tool?"},{"answer":1,"explanation":"Clear instructions improve the chance of a useful result.","options":["Only one vague word","Task, context, constraints, and format","Private personal details"],"question":"What makes a prompt clearer?"},{"answer":0,"explanation":"Important factual claims should be checked against authoritative sources.","options":["Names, dates, quotations, calculations, and policies","Only headings","Only spelling"],"question":"Which claims require especially careful checking?"},{"answer":1,"explanation":"Human review and judgment remain necessary.","options":["The AI tool alone","The person using the AI","The web browser"],"question":"Who is responsible for the final work?"}]}</script>
 </body>
 </html>

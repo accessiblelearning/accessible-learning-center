@@ -7,7 +7,7 @@
   <title>Focus 40 Blue Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What is a cursor-routing button used for?</legend>
@@ -34,14 +34,14 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What should be confirmed before updating a Focus display?</legend>
-          <label><input type="radio" name="question-1" value="0"> Power, connection, instructions, and current work</label>
-          <label><input type="radio" name="question-1" value="1"> Only case color</label>
-          <label><input type="radio" name="question-1" value="2"> Nothing</label>
+          <label><input type="radio" name="question-1" value="0"> Only case color</label>
+          <label><input type="radio" name="question-1" value="1"> Nothing</label>
+          <label><input type="radio" name="question-1" value="2"> Power, connection, instructions, and current work</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What does panning do?</legend>
-          <label><input type="radio" name="question-2" value="0"> Moves to the previous or next portion of Braille text</label>
-          <label><input type="radio" name="question-2" value="1"> Changes the filename</label>
+          <label><input type="radio" name="question-2" value="0"> Changes the filename</label>
+          <label><input type="radio" name="question-2" value="1"> Moves to the previous or next portion of Braille text</label>
           <label><input type="radio" name="question-2" value="2"> Starts a slideshow</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -52,9 +52,9 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What should be done before cleaning the display?</legend>
-          <label><input type="radio" name="question-4" value="0"> Follow official guidance and disconnect power as instructed</label>
-          <label><input type="radio" name="question-4" value="1"> Pour liquid on the cells</label>
-          <label><input type="radio" name="question-4" value="2"> Use sharp tools</label>
+          <label><input type="radio" name="question-4" value="0"> Pour liquid on the cells</label>
+          <label><input type="radio" name="question-4" value="1"> Use sharp tools</label>
+          <label><input type="radio" name="question-4" value="2"> Follow official guidance and disconnect power as instructed</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Focus 40 Blue","displayName":"Focus 40 Blue","slug":"focus","passPercent":80,"questions":[{"answer":0,"explanation":"Routing buttons connect a Braille position with the cursor.","options":["Move the active cursor to the corresponding Braille cell","Turn off Bluetooth","Delete a book"],"question":"What is a cursor-routing button used for?"},{"answer":0,"explanation":"Safe updates require preparation.","options":["Power, connection, instructions, and current work","Only case color","Nothing"],"question":"What should be confirmed before updating a Focus display?"},{"answer":0,"explanation":"Panning moves through text beyond the displayed cells.","options":["Moves to the previous or next portion of Braille text","Changes the filename","Starts a slideshow"],"question":"What does panning do?"},{"answer":0,"explanation":"Profiles help manage multiple connections.","options":["They preserve settings for different devices","They erase Braille","They publish files"],"question":"Why use connection profiles carefully?"},{"answer":0,"explanation":"Official cleaning guidance protects the device.","options":["Follow official guidance and disconnect power as instructed","Pour liquid on the cells","Use sharp tools"],"question":"What should be done before cleaning the display?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Focus 40 Blue","displayName":"Focus 40 Blue","slug":"focus","passPercent":80,"questions":[{"answer":0,"explanation":"Routing buttons connect a Braille position with the cursor.","options":["Move the active cursor to the corresponding Braille cell","Turn off Bluetooth","Delete a book"],"question":"What is a cursor-routing button used for?"},{"answer":2,"explanation":"Safe updates require preparation.","options":["Only case color","Nothing","Power, connection, instructions, and current work"],"question":"What should be confirmed before updating a Focus display?"},{"answer":1,"explanation":"Panning moves through text beyond the displayed cells.","options":["Changes the filename","Moves to the previous or next portion of Braille text","Starts a slideshow"],"question":"What does panning do?"},{"answer":0,"explanation":"Profiles help manage multiple connections.","options":["They preserve settings for different devices","They erase Braille","They publish files"],"question":"Why use connection profiles carefully?"},{"answer":2,"explanation":"Official cleaning guidance protects the device.","options":["Pour liquid on the cells","Use sharp tools","Follow official guidance and disconnect power as instructed"],"question":"What should be done before cleaning the display?"}]}</script>
 </body>
 </html>

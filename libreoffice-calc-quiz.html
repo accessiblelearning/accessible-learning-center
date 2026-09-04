@@ -7,7 +7,7 @@
   <title>LibreOffice Calc Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What is Calc's native workbook format?</legend>
@@ -34,8 +34,8 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. How does a formula begin?</legend>
-          <label><input type="radio" name="question-1" value="0"> With an equals sign</label>
-          <label><input type="radio" name="question-1" value="1"> With a semicolon only</label>
+          <label><input type="radio" name="question-1" value="0"> With a semicolon only</label>
+          <label><input type="radio" name="question-1" value="1"> With an equals sign</label>
           <label><input type="radio" name="question-1" value="2"> With a space</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -46,14 +46,14 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What should be checked after saving XLSX?</legend>
-          <label><input type="radio" name="question-3" value="0"> Formulas, formats, sheet names, and accessibility</label>
-          <label><input type="radio" name="question-3" value="1"> Only filename length</label>
-          <label><input type="radio" name="question-3" value="2"> Only chart color</label>
+          <label><input type="radio" name="question-3" value="0"> Only filename length</label>
+          <label><input type="radio" name="question-3" value="1"> Only chart color</label>
+          <label><input type="radio" name="question-3" value="2"> Formulas, formats, sheet names, and accessibility</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. Why use clear row and column headers?</legend>
-          <label><input type="radio" name="question-4" value="0"> They describe data relationships</label>
-          <label><input type="radio" name="question-4" value="1"> They replace formulas</label>
+          <label><input type="radio" name="question-4" value="0"> They replace formulas</label>
+          <label><input type="radio" name="question-4" value="1"> They describe data relationships</label>
           <label><input type="radio" name="question-4" value="2"> They hide empty cells</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"LibreOffice Calc","displayName":"LibreOffice Calc","slug":"libreoffice-calc","passPercent":80,"questions":[{"answer":0,"explanation":"Calc uses ODS.","options":["ODS","ODT","ODP"],"question":"What is Calc's native workbook format?"},{"answer":0,"explanation":"Spreadsheet formulas begin with =.","options":["With an equals sign","With a semicolon only","With a space"],"question":"How does a formula begin?"},{"answer":0,"explanation":"CSV mainly preserves plain tabular values.","options":["Most formatting, formulas, and multiple sheets","Plain cell values","Comma-separated data"],"question":"What is lost in CSV?"},{"answer":0,"explanation":"Compatibility review identifies conversion changes.","options":["Formulas, formats, sheet names, and accessibility","Only filename length","Only chart color"],"question":"What should be checked after saving XLSX?"},{"answer":0,"explanation":"Headers make data understandable.","options":["They describe data relationships","They replace formulas","They hide empty cells"],"question":"Why use clear row and column headers?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"LibreOffice Calc","displayName":"LibreOffice Calc","slug":"libreoffice-calc","passPercent":80,"questions":[{"answer":0,"explanation":"Calc uses ODS.","options":["ODS","ODT","ODP"],"question":"What is Calc's native workbook format?"},{"answer":1,"explanation":"Spreadsheet formulas begin with =.","options":["With a semicolon only","With an equals sign","With a space"],"question":"How does a formula begin?"},{"answer":0,"explanation":"CSV mainly preserves plain tabular values.","options":["Most formatting, formulas, and multiple sheets","Plain cell values","Comma-separated data"],"question":"What is lost in CSV?"},{"answer":2,"explanation":"Compatibility review identifies conversion changes.","options":["Only filename length","Only chart color","Formulas, formats, sheet names, and accessibility"],"question":"What should be checked after saving XLSX?"},{"answer":1,"explanation":"Headers make data understandable.","options":["They replace formulas","They describe data relationships","They hide empty cells"],"question":"Why use clear row and column headers?"}]}</script>
 </body>
 </html>

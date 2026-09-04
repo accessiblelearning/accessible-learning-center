@@ -7,7 +7,7 @@
   <title>Adobe Acrobat and Accessible PDFs Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,31 +24,31 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What does OCR do for a scanned PDF?</legend>
-          <label><input type="radio" name="question-0" value="0"> Converts image text into machine-readable text</label>
-          <label><input type="radio" name="question-0" value="1"> Adds a password</label>
+          <label><input type="radio" name="question-0" value="0"> Adds a password</label>
+          <label><input type="radio" name="question-0" value="1"> Converts image text into machine-readable text</label>
           <label><input type="radio" name="question-0" value="2"> Deletes pages</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What controls a PDF's semantic structure?</legend>
-          <label><input type="radio" name="question-1" value="0"> Tags</label>
-          <label><input type="radio" name="question-1" value="1"> Zoom level</label>
-          <label><input type="radio" name="question-1" value="2"> Filename color</label>
+          <label><input type="radio" name="question-1" value="0"> Zoom level</label>
+          <label><input type="radio" name="question-1" value="1"> Filename color</label>
+          <label><input type="radio" name="question-1" value="2"> Tags</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What should be checked in a PDF form?</legend>
-          <label><input type="radio" name="question-2" value="0"> Labels, tab order, instructions, and errors</label>
-          <label><input type="radio" name="question-2" value="1"> Only background color</label>
+          <label><input type="radio" name="question-2" value="0"> Only background color</label>
+          <label><input type="radio" name="question-2" value="1"> Labels, tab order, instructions, and errors</label>
           <label><input type="radio" name="question-2" value="2"> Only file size</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. Why inspect reading order?</legend>
-          <label><input type="radio" name="question-3" value="0"> Visual position may not match assistive-technology order</label>
-          <label><input type="radio" name="question-3" value="1"> It changes the password</label>
-          <label><input type="radio" name="question-3" value="2"> It reduces storage</label>
+          <label><input type="radio" name="question-3" value="0"> It changes the password</label>
+          <label><input type="radio" name="question-3" value="1"> It reduces storage</label>
+          <label><input type="radio" name="question-3" value="2"> Visual position may not match assistive-technology order</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. Is passing an automated checker enough?</legend>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Adobe Acrobat and Accessible PDFs","displayName":"Adobe Acrobat and Accessible PDFs","slug":"pdf","passPercent":80,"questions":[{"answer":0,"explanation":"OCR recognizes text in page images.","options":["Converts image text into machine-readable text","Adds a password","Deletes pages"],"question":"What does OCR do for a scanned PDF?"},{"answer":0,"explanation":"Tags describe headings, lists, tables, and reading order.","options":["Tags","Zoom level","Filename color"],"question":"What controls a PDF's semantic structure?"},{"answer":0,"explanation":"Accessible forms need clear fields and keyboard order.","options":["Labels, tab order, instructions, and errors","Only background color","Only file size"],"question":"What should be checked in a PDF form?"},{"answer":0,"explanation":"Reading order determines how content is presented.","options":["Visual position may not match assistive-technology order","It changes the password","It reduces storage"],"question":"Why inspect reading order?"},{"answer":0,"explanation":"Automated tools cannot detect every problem.","options":["No, also test keyboard and screen-reader use","Yes, always","Only for scanned files"],"question":"Is passing an automated checker enough?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Adobe Acrobat and Accessible PDFs","displayName":"Adobe Acrobat and Accessible PDFs","slug":"pdf","passPercent":80,"questions":[{"answer":1,"explanation":"OCR recognizes text in page images.","options":["Adds a password","Converts image text into machine-readable text","Deletes pages"],"question":"What does OCR do for a scanned PDF?"},{"answer":2,"explanation":"Tags describe headings, lists, tables, and reading order.","options":["Zoom level","Filename color","Tags"],"question":"What controls a PDF's semantic structure?"},{"answer":1,"explanation":"Accessible forms need clear fields and keyboard order.","options":["Only background color","Labels, tab order, instructions, and errors","Only file size"],"question":"What should be checked in a PDF form?"},{"answer":2,"explanation":"Reading order determines how content is presented.","options":["It changes the password","It reduces storage","Visual position may not match assistive-technology order"],"question":"Why inspect reading order?"},{"answer":0,"explanation":"Automated tools cannot detect every problem.","options":["No, also test keyboard and screen-reader use","Yes, always","Only for scanned files"],"question":"Is passing an automated checker enough?"}]}</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <title>Google Calendar Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,12 +24,12 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What information belongs in a complete calendar event?</legend>
-          <label><input type="radio" name="question-0" value="0"> Date, time, time zone, location or link, and description</label>
-          <label><input type="radio" name="question-0" value="1"> Only a color</label>
+          <label><input type="radio" name="question-0" value="0"> Only a color</label>
+          <label><input type="radio" name="question-0" value="1"> Date, time, time zone, location or link, and description</label>
           <label><input type="radio" name="question-0" value="2"> Only a guest name</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -40,9 +40,9 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. When is a recurring event useful?</legend>
-          <label><input type="radio" name="question-2" value="0"> For an event that repeats on a schedule</label>
-          <label><input type="radio" name="question-2" value="1"> For a one-time password</label>
-          <label><input type="radio" name="question-2" value="2"> For deleting a calendar</label>
+          <label><input type="radio" name="question-2" value="0"> For a one-time password</label>
+          <label><input type="radio" name="question-2" value="1"> For deleting a calendar</label>
+          <label><input type="radio" name="question-2" value="2"> For an event that repeats on a schedule</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. What should be considered when sharing a calendar?</legend>
@@ -52,9 +52,9 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. Why confirm the time zone?</legend>
-          <label><input type="radio" name="question-4" value="0"> To prevent scheduling at the wrong local time</label>
-          <label><input type="radio" name="question-4" value="1"> To change the filename</label>
-          <label><input type="radio" name="question-4" value="2"> To enable spell check</label>
+          <label><input type="radio" name="question-4" value="0"> To change the filename</label>
+          <label><input type="radio" name="question-4" value="1"> To enable spell check</label>
+          <label><input type="radio" name="question-4" value="2"> To prevent scheduling at the wrong local time</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Calendar","displayName":"Google Calendar","slug":"calendar","passPercent":80,"questions":[{"answer":0,"explanation":"Complete details help everyone understand the event.","options":["Date, time, time zone, location or link, and description","Only a color","Only a guest name"],"question":"What information belongs in a complete calendar event?"},{"answer":0,"explanation":"Reviewing prevents incorrect invitations.","options":["Event details and guest list","Browser history","Font size only"],"question":"What should be checked before inviting guests?"},{"answer":0,"explanation":"Recurrence automates repeating events.","options":["For an event that repeats on a schedule","For a one-time password","For deleting a calendar"],"question":"When is a recurring event useful?"},{"answer":0,"explanation":"Sharing can expose event information.","options":["Privacy and permission level","Only calendar color","Only event length"],"question":"What should be considered when sharing a calendar?"},{"answer":0,"explanation":"Time-zone errors can shift event times.","options":["To prevent scheduling at the wrong local time","To change the filename","To enable spell check"],"question":"Why confirm the time zone?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Calendar","displayName":"Google Calendar","slug":"calendar","passPercent":80,"questions":[{"answer":1,"explanation":"Complete details help everyone understand the event.","options":["Only a color","Date, time, time zone, location or link, and description","Only a guest name"],"question":"What information belongs in a complete calendar event?"},{"answer":0,"explanation":"Reviewing prevents incorrect invitations.","options":["Event details and guest list","Browser history","Font size only"],"question":"What should be checked before inviting guests?"},{"answer":2,"explanation":"Recurrence automates repeating events.","options":["For a one-time password","For deleting a calendar","For an event that repeats on a schedule"],"question":"When is a recurring event useful?"},{"answer":0,"explanation":"Sharing can expose event information.","options":["Privacy and permission level","Only calendar color","Only event length"],"question":"What should be considered when sharing a calendar?"},{"answer":2,"explanation":"Time-zone errors can shift event times.","options":["To change the filename","To enable spell check","To prevent scheduling at the wrong local time"],"question":"Why confirm the time zone?"}]}</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <title>Microsoft Excel Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. How does an Excel formula normally begin?</legend>
@@ -34,15 +34,15 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What identifies a cell?</legend>
-          <label><input type="radio" name="question-1" value="0"> Column letter and row number</label>
-          <label><input type="radio" name="question-1" value="1"> Filename and date</label>
+          <label><input type="radio" name="question-1" value="0"> Filename and date</label>
+          <label><input type="radio" name="question-1" value="1"> Column letter and row number</label>
           <label><input type="radio" name="question-1" value="2"> Font and color</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>3. What should be done before sorting a table?</legend>
-          <label><input type="radio" name="question-2" value="0"> Confirm the entire related data range</label>
-          <label><input type="radio" name="question-2" value="1"> Select one unrelated cell only</label>
-          <label><input type="radio" name="question-2" value="2"> Delete the headers</label>
+          <label><input type="radio" name="question-2" value="0"> Select one unrelated cell only</label>
+          <label><input type="radio" name="question-2" value="1"> Delete the headers</label>
+          <label><input type="radio" name="question-2" value="2"> Confirm the entire related data range</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. Why are clear column headers important?</legend>
@@ -52,8 +52,8 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What should accompany an important chart?</legend>
-          <label><input type="radio" name="question-4" value="0"> A text summary of the key data</label>
-          <label><input type="radio" name="question-4" value="1"> Color alone</label>
+          <label><input type="radio" name="question-4" value="0"> Color alone</label>
+          <label><input type="radio" name="question-4" value="1"> A text summary of the key data</label>
           <label><input type="radio" name="question-4" value="2"> An empty title</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Microsoft Excel","displayName":"Microsoft Excel","slug":"excel","passPercent":80,"questions":[{"answer":0,"explanation":"Excel formulas begin with =.","options":["With an equals sign","With a quotation mark","With a space"],"question":"How does an Excel formula normally begin?"},{"answer":0,"explanation":"A cell reference combines column and row, such as B4.","options":["Column letter and row number","Filename and date","Font and color"],"question":"What identifies a cell?"},{"answer":0,"explanation":"Keeping related rows together prevents data corruption.","options":["Confirm the entire related data range","Select one unrelated cell only","Delete the headers"],"question":"What should be done before sorting a table?"},{"answer":0,"explanation":"Headers make spreadsheet structure understandable.","options":["They describe each field","They make formulas unnecessary","They hide data"],"question":"Why are clear column headers important?"},{"answer":0,"explanation":"A text equivalent makes chart meaning accessible.","options":["A text summary of the key data","Color alone","An empty title"],"question":"What should accompany an important chart?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Microsoft Excel","displayName":"Microsoft Excel","slug":"excel","passPercent":80,"questions":[{"answer":0,"explanation":"Excel formulas begin with =.","options":["With an equals sign","With a quotation mark","With a space"],"question":"How does an Excel formula normally begin?"},{"answer":1,"explanation":"A cell reference combines column and row, such as B4.","options":["Filename and date","Column letter and row number","Font and color"],"question":"What identifies a cell?"},{"answer":2,"explanation":"Keeping related rows together prevents data corruption.","options":["Select one unrelated cell only","Delete the headers","Confirm the entire related data range"],"question":"What should be done before sorting a table?"},{"answer":0,"explanation":"Headers make spreadsheet structure understandable.","options":["They describe each field","They make formulas unnecessary","They hide data"],"question":"Why are clear column headers important?"},{"answer":1,"explanation":"A text equivalent makes chart meaning accessible.","options":["Color alone","A text summary of the key data","An empty title"],"question":"What should accompany an important chart?"}]}</script>
 </body>
 </html>

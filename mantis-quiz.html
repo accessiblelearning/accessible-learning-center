@@ -7,7 +7,7 @@
   <title>Mantis Q40 Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. What distinguishes the Mantis Q40?</legend>
@@ -34,8 +34,8 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What is Terminal Mode used for?</legend>
-          <label><input type="radio" name="question-1" value="0"> Connecting to a computer or mobile device as a Braille display</label>
-          <label><input type="radio" name="question-1" value="1"> Printing ink pages</label>
+          <label><input type="radio" name="question-1" value="0"> Printing ink pages</label>
+          <label><input type="radio" name="question-1" value="1"> Connecting to a computer or mobile device as a Braille display</label>
           <label><input type="radio" name="question-1" value="2"> Deleting firmware</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -46,15 +46,15 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. Why use cursor routing?</legend>
-          <label><input type="radio" name="question-3" value="0"> To move directly to a text position</label>
-          <label><input type="radio" name="question-3" value="1"> To change Wi-Fi password</label>
+          <label><input type="radio" name="question-3" value="0"> To change Wi-Fi password</label>
+          <label><input type="radio" name="question-3" value="1"> To move directly to a text position</label>
           <label><input type="radio" name="question-3" value="2"> To start charging</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>5. What is the safest update source?</legend>
-          <label><input type="radio" name="question-4" value="0"> Official APH or device documentation</label>
-          <label><input type="radio" name="question-4" value="1"> An unknown attachment</label>
-          <label><input type="radio" name="question-4" value="2"> A social-media comment</label>
+          <label><input type="radio" name="question-4" value="0"> An unknown attachment</label>
+          <label><input type="radio" name="question-4" value="1"> A social-media comment</label>
+          <label><input type="radio" name="question-4" value="2"> Official APH or device documentation</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Mantis Q40","displayName":"Mantis Q40","slug":"mantis","passPercent":80,"questions":[{"answer":0,"explanation":"The Mantis combines QWERTY input and Braille output.","options":["A QWERTY keyboard with a refreshable Braille display","A touchscreen only","A printer with no display"],"question":"What distinguishes the Mantis Q40?"},{"answer":0,"explanation":"Terminal Mode provides connected-device access.","options":["Connecting to a computer or mobile device as a Braille display","Printing ink pages","Deleting firmware"],"question":"What is Terminal Mode used for?"},{"answer":0,"explanation":"Safe transfer prevents corruption.","options":["Confirm the storage mode, filenames, and safe-eject process","Unplug during writing","Rename every folder"],"question":"What should happen before transferring files by USB?"},{"answer":0,"explanation":"Routing connects a Braille cell to the editing cursor.","options":["To move directly to a text position","To change Wi-Fi password","To start charging"],"question":"Why use cursor routing?"},{"answer":0,"explanation":"Use official update instructions and files.","options":["Official APH or device documentation","An unknown attachment","A social-media comment"],"question":"What is the safest update source?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Mantis Q40","displayName":"Mantis Q40","slug":"mantis","passPercent":80,"questions":[{"answer":0,"explanation":"The Mantis combines QWERTY input and Braille output.","options":["A QWERTY keyboard with a refreshable Braille display","A touchscreen only","A printer with no display"],"question":"What distinguishes the Mantis Q40?"},{"answer":1,"explanation":"Terminal Mode provides connected-device access.","options":["Printing ink pages","Connecting to a computer or mobile device as a Braille display","Deleting firmware"],"question":"What is Terminal Mode used for?"},{"answer":0,"explanation":"Safe transfer prevents corruption.","options":["Confirm the storage mode, filenames, and safe-eject process","Unplug during writing","Rename every folder"],"question":"What should happen before transferring files by USB?"},{"answer":1,"explanation":"Routing connects a Braille cell to the editing cursor.","options":["To change Wi-Fi password","To move directly to a text position","To start charging"],"question":"Why use cursor routing?"},{"answer":2,"explanation":"Use official update instructions and files.","options":["An unknown attachment","A social-media comment","Official APH or device documentation"],"question":"What is the safest update source?"}]}</script>
 </body>
 </html>

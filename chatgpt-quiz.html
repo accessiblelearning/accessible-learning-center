@@ -7,7 +7,7 @@
   <title>ChatGPT Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=quiz-certificates-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-certificates-1" defer></script>
+  <script src="quiz.js?v=quiz-randomized-1" defer></script>
 </head>
 <body>
   <header>
@@ -24,18 +24,18 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose one answer for every question. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
           <legend>1. Where is a new request normally entered in ChatGPT?</legend>
-          <label><input type="radio" name="question-0" value="0"> The prompt or message field</label>
-          <label><input type="radio" name="question-0" value="1"> The browser address bar</label>
-          <label><input type="radio" name="question-0" value="2"> The page title</label>
+          <label><input type="radio" name="question-0" value="0"> The browser address bar</label>
+          <label><input type="radio" name="question-0" value="1"> The page title</label>
+          <label><input type="radio" name="question-0" value="2"> The prompt or message field</label>
         </fieldset>
         <fieldset class="quiz-question">
           <legend>2. What is a useful follow-up prompt?</legend>
-          <label><input type="radio" name="question-1" value="0"> Explain step two and identify uncertainty</label>
-          <label><input type="radio" name="question-1" value="1"> Ignore all errors</label>
+          <label><input type="radio" name="question-1" value="0"> Ignore all errors</label>
+          <label><input type="radio" name="question-1" value="1"> Explain step two and identify uncertainty</label>
           <label><input type="radio" name="question-1" value="2"> Save my password</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -46,8 +46,8 @@
         </fieldset>
         <fieldset class="quiz-question">
           <legend>4. Which output is usually easiest to navigate with a screen reader?</legend>
-          <label><input type="radio" name="question-3" value="0"> Descriptive headings and numbered steps</label>
-          <label><input type="radio" name="question-3" value="1"> Meaning shown only by color</label>
+          <label><input type="radio" name="question-3" value="0"> Meaning shown only by color</label>
+          <label><input type="radio" name="question-3" value="1"> Descriptive headings and numbered steps</label>
           <label><input type="radio" name="question-3" value="2"> A picture with no description</label>
         </fieldset>
         <fieldset class="quiz-question">
@@ -85,6 +85,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"ChatGPT","displayName":"ChatGPT","slug":"chatgpt","passPercent":80,"questions":[{"answer":0,"explanation":"Requests are entered in the message field.","options":["The prompt or message field","The browser address bar","The page title"],"question":"Where is a new request normally entered in ChatGPT?"},{"answer":0,"explanation":"Specific follow-ups improve clarity and verification.","options":["Explain step two and identify uncertainty","Ignore all errors","Save my password"],"question":"What is a useful follow-up prompt?"},{"answer":0,"explanation":"AI-generated citations can be incomplete or incorrect.","options":["Open and verify the original source","Assume it exists","Copy it without checking"],"question":"What should you do with a citation provided by ChatGPT?"},{"answer":0,"explanation":"Semantic structure supports navigation.","options":["Descriptive headings and numbered steps","Meaning shown only by color","A picture with no description"],"question":"Which output is usually easiest to navigate with a screen reader?"},{"answer":0,"explanation":"Workplace policy and data permissions control uploads.","options":["Only when policy and permissions allow it","Whenever the account is free","Whenever the filename is short"],"question":"When may a workplace document be uploaded?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"ChatGPT","displayName":"ChatGPT","slug":"chatgpt","passPercent":80,"questions":[{"answer":2,"explanation":"Requests are entered in the message field.","options":["The browser address bar","The page title","The prompt or message field"],"question":"Where is a new request normally entered in ChatGPT?"},{"answer":1,"explanation":"Specific follow-ups improve clarity and verification.","options":["Ignore all errors","Explain step two and identify uncertainty","Save my password"],"question":"What is a useful follow-up prompt?"},{"answer":0,"explanation":"AI-generated citations can be incomplete or incorrect.","options":["Open and verify the original source","Assume it exists","Copy it without checking"],"question":"What should you do with a citation provided by ChatGPT?"},{"answer":1,"explanation":"Semantic structure supports navigation.","options":["Meaning shown only by color","Descriptive headings and numbered steps","A picture with no description"],"question":"Which output is usually easiest to navigate with a screen reader?"},{"answer":0,"explanation":"Workplace policy and data permissions control uploads.","options":["Only when policy and permissions allow it","Whenever the account is free","Whenever the filename is short"],"question":"When may a workplace document be uploaded?"}]}</script>
 </body>
 </html>
