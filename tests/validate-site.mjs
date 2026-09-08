@@ -211,7 +211,14 @@ for (const course of courses) {
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
 check(htmlFiles.length === 341, "Expected 341 HTML pages, found " + htmlFiles.length + ".");
 const manualsHtml = readFileSync(resolve(root, "manuals.html"), "utf8");
-check(manualsHtml.includes("Manuals are grouped by subject"), "Manuals page is not grouped by subject.");
+check(manualsHtml.includes('id="manualSearch"'), "Manuals page is missing its title filter.");
+check(manualsHtml.includes('id="manualType"'), "Manuals page is missing its resource-type filter.");
+check(manualsHtml.includes("Full course · 10 lessons + final quiz"), "Manuals page is missing full-course labels.");
+check(manualsHtml.includes("Standalone manual"), "Manuals page is missing standalone-manual labels.");
+check(manualsHtml.includes("Instructor resource"), "Manuals page is missing instructor-resource labels.");
+const catalogManualLinks = [...manualsHtml.matchAll(/<a href="([^"]+-manual\.html)">/g)].map(match => match[1]);
+check(catalogManualLinks.length === 53, "Expected 53 manuals in the catalog, found " + catalogManualLinks.length + ".");
+check(new Set(catalogManualLinks).size === catalogManualLinks.length, "The Manuals catalog contains duplicate manual entries.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 const assignmentScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
 const searchIndex = JSON.parse(readFileSync(resolve(root, "search-index.json"), "utf8"));
@@ -280,9 +287,7 @@ for (const file of independentManualFiles) {
   check(manual.includes("If that does not happen"), file + " is missing recovery guidance.");
   check(additionalSkills.includes(file), "Independent skills directory is missing " + file + ".");
 }
-check(manualsHtml.indexOf("Microsoft applications") < manualsHtml.indexOf("outlook-manual.html"), "Outlook is not grouped with Microsoft applications.");
-check(manualsHtml.indexOf("Google applications") < manualsHtml.indexOf("google-services-manual.html"), "Google services are not grouped with Google applications.");
-check(/Cloud storage and online communication[\s\S]*onedrive-manual\.html[\s\S]*google-drive-manual\.html/.test(manualsHtml), "Cloud storage is not in its category.");
+check(existsSync(resolve(root, "manuals-filter.js")), "Manual catalog filtering behavior is missing.");
 const troubleshootingLab = readFileSync(resolve(root, "troubleshooting-lab.js"), "utf8");
 check((troubleshootingLab.match(/category: "/g) || []).length === 8, "Mission Control must include eight command-based missions.");
 for (const perspective of ["JAWS", "NVDA", "Narrator"]) {

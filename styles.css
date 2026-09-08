@@ -364,6 +364,19 @@ main > nav h2:first-child {
   list-style: none;
 }
 
+.manual-catalog .manual-kind {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted-text, #334e68);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+body.high-contrast .manual-catalog .manual-kind,
+body.dark-mode .manual-catalog .manual-kind {
+  color: inherit;
+}
+
 .card-list li {
   margin: 0;
 }
