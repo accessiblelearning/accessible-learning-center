@@ -372,6 +372,17 @@ main > nav h2:first-child {
   font-weight: 600;
 }
 
+/* Keep each catalog card and its description in separate grid rows.
+   This prevents the 100%-height link from covering the description. */
+.manual-catalog li {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.manual-catalog a {
+  min-height: 0;
+}
+
 body.high-contrast .manual-catalog .manual-kind,
 body.dark-mode .manual-catalog .manual-kind {
   color: inherit;
