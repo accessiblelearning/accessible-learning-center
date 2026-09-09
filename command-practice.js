@@ -119,6 +119,8 @@
   ];
 
   const category = document.getElementById("commandCategory");
+  const practiceStyle = document.getElementById("practiceStyle");
+  const sessionLength = document.getElementById("sessionLength");
   const level = document.getElementById("explanationLevel");
   const spoken = document.getElementById("spokenInstructions");
   const sounds = document.getElementById("soundFeedback");
@@ -144,6 +146,32 @@
   let audioContext = null;
   let insertHeld = false;
   let missedCommands = new Map();
+
+  const practiceContexts = {
+    "General editing": "You are editing information in a workplace document.",
+    "Microsoft Word and documents": "You are working in a document with the text cursor active.",
+    "Web and screen-reader navigation": "You are reading a webpage with browse or scan mode active.",
+    "Microsoft Excel and spreadsheets": "You are working in a spreadsheet with one cell active.",
+    "Presentations": "You are editing a presentation with a slide or object selected.",
+    "Windows and File Explorer": "You are in File Explorer with an item or folder selected.",
+    "JAWS commands": "JAWS is running and you need information or navigation help.",
+    "NVDA commands": "NVDA is running and you need information or navigation help.",
+    "Narrator commands": "Narrator is running and you need information or navigation help.",
+    "Braille display keyboard practice": "You are navigating with a braille display or its keyboard."
+  };
+
+  const reviewLinks = {
+    "General editing": ["word-lesson-2.html", "Review Microsoft Word Lesson 2"],
+    "Microsoft Word and documents": ["word-lesson-2.html", "Review Microsoft Word Lesson 2"],
+    "Web and screen-reader navigation": ["jaws-lesson-5.html", "Review Screen Readers Lesson 5"],
+    "Microsoft Excel and spreadsheets": ["excel-lesson-2.html", "Review Microsoft Excel Lesson 2"],
+    "Presentations": ["powerpoint-lesson-2.html", "Review Microsoft PowerPoint Lesson 2"],
+    "Windows and File Explorer": ["windows-lesson-4.html", "Review Windows Lesson 4"],
+    "JAWS commands": ["jaws-lesson-2.html", "Review Screen Readers Lesson 2"],
+    "NVDA commands": ["jaws-lesson-2.html", "Review Screen Readers Lesson 2"],
+    "Narrator commands": ["jaws-lesson-2.html", "Review Screen Readers Lesson 2"],
+    "Braille display keyboard practice": ["focus-lesson-2.html", "Review Focus 40 Blue Lesson 2"]
+  };
 
   Object.keys(categories).forEach(name => {
     const option = document.createElement("option");
@@ -201,15 +229,23 @@
 
   function describe() {
     if (!command) return "";
+    const context = practiceContexts[category.value] || "You are working in a supported application.";
+    const goal = command[1].replace(/\.$/, "");
+    if (practiceStyle.value === "guided") {
+      return "Guided task. " + context + " Your goal is to " + lowerFirst(goal) +
+        ". Use " + spokenKeys(command[0]) + ". " + commandExplanation();
+    }
     return "Press " + spokenKeys(command[0]) + ". " + commandExplanation();
   }
 
   function showCommand() {
     command = order[position];
     const heading = document.createElement("h3");
-    heading.textContent = "Press " + spokenKeys(command[0]);
+    heading.textContent = practiceStyle.value === "guided"
+        ? "Guided task " + (position + 1) + " of " + order.length
+        : "Press " + spokenKeys(command[0]);
     const explanation = document.createElement("p");
-    explanation.textContent = commandExplanation();
+    explanation.textContent = describe();
     prompt.replaceChildren(heading, explanation);
     status.textContent = "Waiting for " + spokenKeys(command[0]) + ".";
     detected.textContent = "None yet";
@@ -258,6 +294,7 @@
     attempts = 0;
     position = 0;
     order = [...categories[category.value]];
+    if (sessionLength.value !== "all") order = order.slice(0, Number(sessionLength.value));
     missedCommands.clear();
     practiceMissed.disabled = true;
     if (random.checked) order.sort(() => Math.random() - 0.5);
@@ -283,7 +320,17 @@
       repeat.disabled = true;
       next.disabled = true;
       const missedCount = missedCommands.size;
-      prompt.innerHTML = "<h3>Practice complete</h3><p>You practiced " + correctCount + " commands correctly in " + attempts + " attempts.</p>";
+      const heading = document.createElement("h3");
+      heading.textContent = "Practice complete";
+      const result = document.createElement("p");
+      result.textContent = "You completed " + correctCount + " tasks correctly in " + attempts + " attempts.";
+      const review = document.createElement("p");
+      const reviewLink = document.createElement("a");
+      const suggestedReview = reviewLinks[category.value];
+      reviewLink.href = suggestedReview[0];
+      reviewLink.textContent = suggestedReview[1];
+      review.append("Suggested next step: ", reviewLink, ".");
+      prompt.replaceChildren(heading, result, review);
       status.textContent = missedCount
         ? missedCount + " command" + (missedCount === 1 ? " is" : "s are") + " ready to practice again."
         : "Practice complete. No missed commands remain.";
@@ -327,6 +374,10 @@
     if (active) showCommand();
   });
 
+  practiceStyle.addEventListener("change", () => {
+    if (active) showCommand();
+  });
+
   capture.addEventListener("keydown", event => {
     if (!active) return;
     event.preventDefault();
@@ -367,7 +418,7 @@
       missedCommands.set(command[0], command);
       tone(false);
       status.textContent = "Not quite. You pressed " + displaySignature(pressed) + ". Try " + spokenKeys(command[0]) + ".";
-      speak("Not quite. You pressed " + displaySignature(pressed) + ". Try " + spokenKeys(command[0]) + ".");
+      speak(status.textContent);
       capture.focus();
     }
     updateScore();

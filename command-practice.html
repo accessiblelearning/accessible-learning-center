@@ -7,7 +7,7 @@
   <title>Keyboard Command Practice Lab - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=command-practice-3">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="command-practice.js?v=command-practice-3" defer></script>
+  <script src="command-practice.js?v=practice-levels-1" defer></script>
 </head>
 <body>
   <header>
@@ -27,6 +27,8 @@
       <h2 id="setup-heading">Choose your practice</h2>
       <div class="practice-settings">
         <p><label for="commandCategory">Command category</label><select id="commandCategory"></select></p>
+        <p><label for="practiceStyle">Practice style</label><select id="practiceStyle"><option value="quick">Quick Command Practice</option><option value="guided">Guided Skill Practice</option></select></p>
+        <p><label for="sessionLength">Session length</label><select id="sessionLength"><option value="5">Five connected tasks</option><option value="all">Complete topic</option></select></p>
         <p><label for="explanationLevel">Explanation level</label><select id="explanationLevel"><option value="brief">General explanation</option><option value="detailed">More detailed explanation</option></select></p>
         <p><label><input id="spokenInstructions" type="checkbox" checked> Speak instructions and feedback out loud</label></p>
         <p><label><input id="soundFeedback" type="checkbox" checked> Play success and correction sounds</label></p>

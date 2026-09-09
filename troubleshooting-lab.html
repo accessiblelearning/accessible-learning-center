@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css?v=mission-control-organized-1">
   <script src="accessibility.js?v=mission-control-1" defer></script>
   <script src="troubleshooting-lab.js?v=mission-control-organized-1" defer></script>
-  <script src="command-practice.js?v=mission-control-organized-1" defer></script>
+  <script src="command-practice.js?v=practice-levels-1" defer></script>
 </head>
 <body>
   <header>
@@ -22,7 +22,7 @@
       <p>Choose one activity. Mission Control will show only the controls you need.</p>
       <div class="mission-mode-actions">
         <button id="showCommandPractice" type="button" aria-pressed="false"><strong>Command Practice</strong><span>Hear what a command does, press it, and receive immediate feedback.</span></button>
-        <button id="showTopicMissions" type="button" aria-pressed="false"><strong>Topic Missions</strong><span>Hear a realistic problem and decide which commands will solve it.</span></button>
+        <button id="showTopicMissions" type="button" aria-pressed="false"><strong>Topic Missions</strong><span>Command challenge: hear a realistic problem and decide which commands will solve it.</span></button>
       </div>
       <p id="missionModeStatus" role="status" aria-live="polite">Choose Command Practice or Topic Missions to begin.</p>
     </section>
@@ -39,6 +39,8 @@
         </details>
         <div class="practice-settings">
           <p><label for="commandCategory">Command topic</label><select id="commandCategory"></select></p>
+          <p><label for="practiceStyle">Practice style</label><select id="practiceStyle"><option value="quick">Quick Command Practice</option><option value="guided">Guided Skill Practice</option></select></p>
+          <p><label for="sessionLength">Session length</label><select id="sessionLength"><option value="5">Five connected tasks</option><option value="all">Complete topic</option></select></p>
           <p><label for="explanationLevel">Explanation level</label><select id="explanationLevel"><option value="brief">General explanation</option><option value="detailed">More detailed explanation</option></select></p>
           <p><label><input id="spokenInstructions" type="checkbox" checked> Speak instructions and feedback out loud</label></p>
           <p><label><input id="soundFeedback" type="checkbox" checked> Play success and correction sounds</label></p>
