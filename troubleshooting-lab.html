@@ -3,142 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hear realistic screen-reader problems and solve them by pressing keyboard commands in a safe simulator.">
-  <title>Screen Reader Mission Control Sim - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-control-organized-1">
+  <meta name="description" content="Choose command practice or realistic screen-reader topic missions in the Accessible Learning Center Command Center.">
+  <title>Assistive Technology Command Center - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=command-center-pages-1">
   <script src="accessibility.js?v=mission-control-1" defer></script>
-  <script src="troubleshooting-lab.js?v=mission-control-organized-1" defer></script>
-  <script src="command-practice.js?v=practice-keys-1" defer></script>
 </head>
 <body>
   <header>
-    <p class="eyebrow">Realistic command-based training</p>
-    <h1>Screen Reader Mission Control Sim</h1>
-    <p>Hear the problem, inspect the simulated computer, and press keyboard commands to recover—like a flight simulator for assistive technology.</p>
+    <p class="eyebrow">Keyboard and assistive technology training</p>
+    <h1>Assistive Technology Command Center</h1>
+    <p>Choose the kind of practice you want. Your activity will open on its own page with only the controls you need.</p>
   </header>
   <main id="main-content">
     <section class="mission-mode-picker" aria-labelledby="mode-heading">
       <h2 id="mode-heading">Choose your training mode</h2>
-      <p>Choose one activity. Mission Control will show only the controls you need.</p>
       <div class="mission-mode-actions">
-        <button id="showCommandPractice" type="button" aria-pressed="false"><strong>Command Practice</strong><span>Hear what a command does, press it, and receive immediate feedback.</span></button>
-        <button id="showTopicMissions" type="button" aria-pressed="false"><strong>Topic Missions</strong><span>Command challenge: hear a realistic problem and decide which commands will solve it.</span></button>
-      </div>
-      <p id="missionModeStatus" role="status" aria-live="polite">Choose Command Practice or Topic Missions to begin.</p>
-    </section>
-
-    <div id="commandPracticeMode" class="mission-mode" hidden>
-      <section aria-labelledby="command-setup-heading">
-        <h2 id="command-setup-heading">Choose your command practice</h2>
-        <details class="mission-support">
-          <summary>Read command-practice safety information</summary>
-          <div>
-            <p>While the blue practice area has focus, Mission Control blocks the included practice commands from reaching the webpage. It cannot block operating-system or protected browser commands everywhere.</p>
-            <p><strong>Commands such as Alt+Tab, Windows+E, Windows+D, Ctrl+Alt+Delete, Ctrl+W, and F5 are learn-only.</strong> Do not physically practice those commands here because they could switch, close, reload, or otherwise affect your computer. A running screen reader may also intercept its own commands before this page receives them.</p>
-          </div>
-        </details>
-        <div class="practice-settings">
-          <p><label for="commandCategory">Command topic</label><select id="commandCategory"></select></p>
-          <p><label for="practiceStyle">Practice style</label><select id="practiceStyle"><option value="quick">Quick Command Practice</option><option value="guided">Guided Skill Practice</option></select></p>
-          <p><label for="sessionLength">Session length</label><select id="sessionLength"><option value="5">Five connected tasks</option><option value="all">Complete topic</option></select></p>
-          <p><label for="explanationLevel">Explanation level</label><select id="explanationLevel"><option value="brief">General explanation</option><option value="detailed">More detailed explanation</option></select></p>
-          <p><label><input id="spokenInstructions" type="checkbox" checked> Speak instructions and feedback out loud</label></p>
-          <p><label><input id="soundFeedback" type="checkbox" checked> Play success and correction sounds</label></p>
-          <p><label><input id="randomOrder" type="checkbox"> Practice in random order</label></p>
-        </div>
-        <div class="practice-actions">
-          <button id="startPractice" type="button">Start command practice</button>
-          <button id="repeatCommand" type="button" disabled>Repeat command (Control)</button>
-          <button id="nextCommand" type="button" disabled>Next command (Enter)</button>
-          <button id="practiceMissed" type="button" disabled>Practice missed commands</button>
-          <button id="stopPractice" type="button" disabled>Stop practice (Escape)</button>
-        </div>
-      </section>
-
-      <section aria-labelledby="practice-heading">
-        <h2 id="practice-heading">Command practice area</h2>
-        <div id="commandPrompt" class="command-prompt">
-          <p>Select a topic and choose Start command practice.</p>
-        </div>
-        <div id="keyCapture" class="key-capture" tabindex="0" role="application" aria-describedby="captureInstructions" aria-label="Keyboard command capture area">
-          <p id="captureInstructions">After starting, focus remains here. Press the requested key combination. Press Control by itself to repeat the instruction, Enter after a correct answer to continue, or Escape to stop.</p>
-          <p><strong>Keys detected:</strong> <span id="detectedKeys">None yet</span></p>
-        </div>
-        <div id="practiceStatus" class="practice-status" role="status" aria-live="assertive"></div>
-        <p id="practiceScore">Correct commands: 0. Attempts: 0.</p>
-      </section>
-
-      <details class="mission-support">
-        <summary>Study learn-only system, browser, and device commands</summary>
-        <div>
-          <p>Use the Hear explanation buttons to study these commands. Do not press the actual combination in this webpage.</p>
-          <div id="learnOnlyCommands" class="learn-only-list"></div>
-        </div>
-      </details>
-    </div>
-
-    <div id="topicMissionsMode" class="mission-mode" hidden>
-    <section class="simulator-setup" aria-labelledby="setup-heading">
-      <h2 id="setup-heading">Prepare your mission</h2>
-      <p><label for="atPerspective">Screen reader</label><br>
-        <select id="atPerspective">
-          <option value="jaws">JAWS</option>
-          <option value="nvda">NVDA</option>
-          <option value="narrator">Narrator</option>
-        </select>
-      </p>
-      <p><label for="missionSelect">Mission</label><br>
-        <select id="missionSelect"></select>
-      </p>
-      <p class="tip"><strong>No multiple choice:</strong> Listen, decide what to inspect, and press the command you believe should come next. Commands are contained in the simulator whenever the browser permits, but operating-system shortcuts cannot always be blocked.</p>
-      <button id="startMission" type="button">Start selected mission</button>
-    </section>
-
-    <section class="simulator" aria-labelledby="missionTitle">
-      <div class="simulator-progress">
-        <p id="missionCount">Mission not started</p>
-        <progress id="missionProgress" max="8" value="0">0 of 8 missions completed</progress>
-      </div>
-      <p id="missionCategory" class="eyebrow"></p>
-      <h2 id="missionTitle" tabindex="-1">Mission Control is standing by</h2>
-      <p id="missionProblem" class="scenario-problem">Choose a mission and start when you are ready.</p>
-
-      <section class="screen-reader-transcript" aria-labelledby="transcriptHeading">
-        <h3 id="transcriptHeading">Simulated screen-reader output</h3>
-        <p id="transcript" aria-live="polite">Standing by.</p>
-        <button id="speakTranscript" type="button">Repeat the latest announcement</button>
-        <button id="repeatProblem" type="button">Repeat the mission problem</button>
-      </section>
-
-      <div id="missionControlStation" class="mission-control-station" tabindex="0" role="application" aria-labelledby="missionControlHeading" aria-describedby="missionControlInstructions">
-        <h3 id="missionControlHeading">Mission Control</h3>
-        <p id="missionControlInstructions">Move focus to Mission Control, then press keyboard commands. Press F1 for a strategy hint. Press F2 to hear the problem again.</p>
-        <p><strong>Last command:</strong> <span id="lastCommand">None</span></p>
-      </div>
-
-      <section aria-labelledby="logHeading">
-        <h3 id="logHeading">Mission log</h3>
-        <ol id="missionLog" class="mission-log" aria-live="polite"></ol>
-      </section>
-      <div id="scenarioFeedback" class="scenario-feedback" role="status" aria-live="polite"></div>
-      <div class="simulator-actions">
-        <button id="nextMission" type="button" hidden>Next mission</button>
-        <button id="restartMission" type="button">Restart current mission</button>
+        <a href="command-practice.html"><strong>Command Practice</strong><span>Hear what a command does, press it, and receive immediate feedback.</span></a>
+        <a href="topic-missions.html"><strong>Topic Missions</strong><span>Hear a realistic problem and decide which commands will solve it.</span></a>
       </div>
     </section>
-
-    <details class="mission-support">
-      <summary>View mission topics and completion summary</summary>
-      <div>
-        <h2>Mission topics</h2>
-        <ul class="mission-topic-list">
-          <li>Workplace</li><li>Email and calendar</li><li>Cloud storage</li><li>Microsoft applications</li><li>Google applications</li><li>Online meetings</li><li>AI and visual assistance</li><li>Files and folders</li><li>Screen-reader recovery</li><li>Privacy and cybersecurity</li><li>Job search and employment</li><li>Braille technology</li><li>Everyday independence</li>
-        </ul>
-        <p id="completionSummary">No missions completed on this device yet.</p>
-        <p><a href="student-progress.html">Open My Progress</a></p>
-      </div>
-    </details>
-    </div>
+    <nav class="lesson-nav" aria-label="Command Center links">
+      <a href="start-here.html">Return to Start Here</a>
+      <a href="student-progress.html">Open My Progress</a>
+    </nav>
   </main>
 </body>
 </html>
