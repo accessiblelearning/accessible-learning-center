@@ -3,71 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Practice keyboard and screen-reader command key combinations with spoken instructions and sound feedback in a browser-based learning lab.">
-  <title>Keyboard Command Practice Lab - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=command-practice-3">
+  <meta name="description" content="Choose settings for a focused keyboard and screen-reader command practice session.">
+  <title>Choose Command Practice Settings - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=focused-command-practice-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="command-practice.js?v=practice-keys-1" defer></script>
+  <script src="command-practice-setup.js?v=focused-command-practice-1" defer></script>
 </head>
 <body>
   <header>
-    <p class="eyebrow">Safe keyboard skills practice</p>
-    <h1>Keyboard Command Practice Lab</h1>
-    <p>Hear a command, learn what it does, press the keys, and receive immediate spoken, text, and sound feedback.</p>
+    <p class="eyebrow">Command Practice</p>
+    <h1>Choose Your Practice Settings</h1>
+    <p>Set up your session, then enter a separate distraction-free practice page.</p>
   </header>
   <main id="main-content">
     <p><a class="button-link" href="troubleshooting-lab.html">Return to the Command Center</a></p>
-    <section class="practice-safety" aria-labelledby="safety-heading">
-      <h2 id="safety-heading">What this practice lab can safely block</h2>
-      <p>While the blue practice area has focus, this page blocks the included practice commands from reaching the webpage. It cannot block operating-system or protected browser commands everywhere.</p>
-      <p><strong>Commands such as Alt+Tab, Windows+E, Windows+D, Ctrl+Alt+Delete, Ctrl+W, and F5 are learn-only on this page.</strong> Do not physically practice those commands here because they could switch, close, reload, or otherwise affect your computer. A running screen reader may also intercept its own modifier commands before this page receives them; use the screen reader's keyboard or input help when that happens.</p>
-    </section>
+
+    <details class="mission-support">
+      <summary>Read command-practice safety information</summary>
+      <div>
+        <p>The focused practice page blocks the included practice commands from reaching the webpage whenever the blue practice area has focus. It cannot block operating-system or protected browser commands everywhere.</p>
+        <p><strong>Commands such as Alt+Tab, Windows+E, Windows+D, Ctrl+Alt+Delete, Ctrl+W, and F5 are not included for physical practice.</strong> A running screen reader may also intercept its own commands before the page receives them.</p>
+      </div>
+    </details>
 
     <section aria-labelledby="setup-heading">
       <h2 id="setup-heading">Choose your practice</h2>
-      <div class="practice-settings">
-        <p><label for="commandCategory">Command category</label><select id="commandCategory"></select></p>
-        <p><label for="practiceStyle">Practice style</label><select id="practiceStyle"><option value="quick">Quick Command Practice</option><option value="guided">Guided Skill Practice</option></select></p>
-        <p><label for="sessionLength">Session length</label><select id="sessionLength"><option value="5">Five connected tasks</option><option value="all">Complete topic</option></select></p>
-        <p><label for="explanationLevel">Explanation level</label><select id="explanationLevel"><option value="brief">General explanation</option><option value="detailed">More detailed explanation</option></select></p>
-        <p><label><input id="spokenInstructions" type="checkbox" checked> Speak instructions and feedback out loud</label></p>
-        <p><label><input id="soundFeedback" type="checkbox" checked> Play success and correction sounds</label></p>
-        <p><label><input id="randomOrder" type="checkbox"> Practice in random order</label></p>
-      </div>
-      <div class="practice-actions">
-        <button id="startPractice" type="button">Start command practice</button>
-        <button id="repeatCommand" type="button" disabled>Repeat command (Control)</button>
-        <button id="nextCommand" type="button" disabled>Next command (Enter)</button>
-        <button id="practiceMissed" type="button" disabled>Practice missed commands</button>
-        <button id="stopPractice" type="button" disabled>Stop practice (Escape)</button>
-      </div>
+      <form id="commandPracticeSetup">
+        <div class="practice-settings">
+          <p><label for="commandCategory">Command category</label><select id="commandCategory"></select></p>
+          <p><label for="practiceStyle">Practice style</label><select id="practiceStyle"><option value="quick">Quick Command Practice</option><option value="guided">Guided Skill Practice</option></select></p>
+          <p><label for="sessionLength">Session length</label><select id="sessionLength"><option value="5">Five connected tasks</option><option value="all">Complete topic</option></select></p>
+          <p><label for="explanationLevel">Explanation level</label><select id="explanationLevel"><option value="brief">General explanation</option><option value="detailed">More detailed explanation</option></select></p>
+          <p><label><input id="spokenInstructions" type="checkbox" checked> Speak instructions and feedback out loud</label></p>
+          <p><label><input id="soundFeedback" type="checkbox" checked> Play success and correction sounds</label></p>
+          <p><label><input id="randomOrder" type="checkbox"> Practice in random order</label></p>
+        </div>
+        <div class="practice-actions">
+          <button id="startPractice" type="submit">Start command practice</button>
+        </div>
+      </form>
     </section>
-
-    <section aria-labelledby="practice-heading">
-      <h2 id="practice-heading">Practice area</h2>
-      <div id="commandPrompt" class="command-prompt">
-        <p>Select a category and choose Start command practice.</p>
-      </div>
-      <div id="keyCapture" class="key-capture" tabindex="0" role="application" aria-describedby="captureInstructions" aria-label="Keyboard command capture area">
-        <p id="captureInstructions">After starting, focus remains here. Press the requested key combination. Press Control by itself to repeat the instruction, Enter after a correct answer to continue, or Escape to stop.</p>
-        <p><strong>Keys detected:</strong> <span id="detectedKeys">None yet</span></p>
-      </div>
-      <div id="practiceStatus" class="practice-status" role="status" aria-live="assertive"></div>
-      <p id="practiceScore">Correct commands: 0. Attempts: 0.</p>
-    </section>
-
-    <section aria-labelledby="learn-only-heading">
-      <h2 id="learn-only-heading">Learn-only system, browser, and device commands</h2>
-      <p>Use the Hear explanation buttons to study these commands. Do not press the actual combination in this webpage.</p>
-      <div id="learnOnlyCommands" class="learn-only-list"></div>
-    </section>
-
-    <nav class="lesson-nav" aria-label="Command practice links">
-      <a href="jaws-manual.html">Screen Readers manual</a>
-      <a href="windows-screen-reader-manual.html">Windows and File Explorer manual</a>
-      <a href="resources.html">Help and Resource Search</a>
-      <a href="lessons.html">All lessons</a>
-    </nav>
   </main>
 </body>
 </html>

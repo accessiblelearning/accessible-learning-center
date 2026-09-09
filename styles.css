@@ -1296,6 +1296,24 @@ html[data-theme="dark"]:not([data-contrast="high"]) main > section[id$="-lessons
   margin-block: 1rem;
 }
 
+.practice-session-page > header {
+  padding-block: 1.25rem;
+}
+
+.practice-session-page > main {
+  width: min(100% - 1rem, 56rem);
+}
+
+.practice-session-shell {
+  margin-inline: auto;
+}
+
+.practice-session-shortcuts {
+  padding: .8rem 1rem;
+  background: var(--surface-soft);
+  border-left: .35rem solid var(--blue-600);
+}
+
 .mission-support {
   max-width: 56rem;
   margin: 1rem auto;

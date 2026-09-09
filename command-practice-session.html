@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
+  <title>Command Practice Session - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=focused-command-practice-1">
+  <script src="command-practice-session.js?v=focused-command-practice-1" defer></script>
+  <script src="command-practice.js?v=focused-command-practice-1" defer></script>
+</head>
+<body class="practice-session-page" data-practice-session="true">
+  <header>
+    <p class="eyebrow">Focused keyboard training</p>
+    <h1>Command Practice</h1>
+  </header>
+  <main id="main-content">
+    <section class="practice-session-shell" aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Current command</h2>
+      <p class="practice-session-shortcuts"><strong>Control</strong> repeats the instruction. <strong>Enter</strong> continues after a correct answer. <strong>Escape</strong> exits practice.</p>
+      <div id="commandPrompt" class="command-prompt">
+        <p>Preparing your command practice.</p>
+      </div>
+      <div id="keyCapture" class="key-capture" tabindex="0" role="application" aria-describedby="captureInstructions" aria-label="Keyboard command capture area">
+        <p id="captureInstructions">Press the requested key combination. Press Control by itself to repeat, Enter after a correct answer to continue, or Escape to exit.</p>
+        <p><strong>Keys detected:</strong> <span id="detectedKeys">None yet</span></p>
+      </div>
+      <div id="practiceStatus" class="practice-status" role="status" aria-live="assertive"></div>
+      <p id="practiceScore">Correct commands: 0. Attempts: 0.</p>
+      <div id="sessionCompletionActions" class="practice-actions" hidden>
+        <button id="practiceMissed" type="button" disabled>Practice missed commands</button>
+        <a id="practiceExit" class="button-link" href="command-practice.html">Choose different practice settings</a>
+      </div>
+    </section>
+
+    <div hidden aria-hidden="true">
+      <select id="commandCategory"></select>
+      <select id="practiceStyle"><option value="quick">Quick</option><option value="guided">Guided</option></select>
+      <select id="sessionLength"><option value="5">Five</option><option value="all">All</option></select>
+      <select id="explanationLevel"><option value="brief">Brief</option><option value="detailed">Detailed</option></select>
+      <input id="spokenInstructions" type="checkbox" checked>
+      <input id="soundFeedback" type="checkbox" checked>
+      <input id="randomOrder" type="checkbox">
+      <button id="startPractice" type="button">Start</button>
+      <button id="repeatCommand" type="button" disabled>Repeat</button>
+      <button id="nextCommand" type="button" disabled>Next</button>
+      <button id="stopPractice" type="button" disabled>Stop</button>
+      <div id="learnOnlyCommands"></div>
+    </div>
+  </main>
+</body>
+</html>

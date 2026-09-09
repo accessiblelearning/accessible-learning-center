@@ -136,6 +136,9 @@
   const status = document.getElementById("practiceStatus");
   const score = document.getElementById("practiceScore");
   const learnOnlyList = document.getElementById("learnOnlyCommands");
+  const completionActions = document.getElementById("sessionCompletionActions");
+  const practiceExit = document.getElementById("practiceExit");
+  const focusedSession = document.body.dataset.practiceSession === "true";
 
   let active = false;
   let command = null;
@@ -300,6 +303,7 @@
     if (sessionLength.value !== "all") order = order.slice(0, Number(sessionLength.value));
     missedCommands.clear();
     practiceMissed.disabled = true;
+    if (completionActions) completionActions.hidden = true;
     if (random.checked) order.sort(() => Math.random() - 0.5);
     start.disabled = true;
     stop.disabled = false;
@@ -338,8 +342,9 @@
         ? missedCount + " command" + (missedCount === 1 ? " is" : "s are") + " ready to practice again."
         : "Practice complete. No missed commands remain.";
       practiceMissed.disabled = missedCount === 0;
+      if (completionActions) completionActions.hidden = false;
       speak("Practice complete. You practiced " + correctCount + " commands correctly in " + attempts + " attempts. " + status.textContent);
-      (missedCount ? practiceMissed : start).focus();
+      (missedCount ? practiceMissed : (practiceExit || start)).focus();
       return;
     }
     showCommand();
@@ -357,6 +362,7 @@
     stop.disabled = false;
     repeat.disabled = false;
     practiceMissed.disabled = true;
+    if (completionActions) completionActions.hidden = true;
     updateScore();
     showCommand();
   });
@@ -365,6 +371,10 @@
     active = false;
     controlTapPending = false;
     if ("speechSynthesis" in window) speechSynthesis.cancel();
+    if (focusedSession) {
+      window.location.href = "command-practice.html";
+      return;
+    }
     start.disabled = false;
     stop.disabled = true;
     repeat.disabled = true;
