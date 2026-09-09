@@ -7,7 +7,7 @@
   <title>Keyboard Command Practice Lab - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=command-practice-3">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="command-practice.js?v=practice-levels-1" defer></script>
+  <script src="command-practice.js?v=practice-keys-1" defer></script>
 </head>
 <body>
   <header>
@@ -36,10 +36,10 @@
       </div>
       <div class="practice-actions">
         <button id="startPractice" type="button">Start command practice</button>
-        <button id="repeatCommand" type="button" disabled>Repeat command</button>
-        <button id="nextCommand" type="button" disabled>Next command</button>
+        <button id="repeatCommand" type="button" disabled>Repeat command (Control)</button>
+        <button id="nextCommand" type="button" disabled>Next command (Enter)</button>
         <button id="practiceMissed" type="button" disabled>Practice missed commands</button>
-        <button id="stopPractice" type="button" disabled>Stop practice</button>
+        <button id="stopPractice" type="button" disabled>Stop practice (Escape)</button>
       </div>
     </section>
 
@@ -49,7 +49,7 @@
         <p>Select a category and choose Start command practice.</p>
       </div>
       <div id="keyCapture" class="key-capture" tabindex="0" role="application" aria-describedby="captureInstructions" aria-label="Keyboard command capture area">
-        <p id="captureInstructions">After starting, focus remains here. Press the requested key combination. Press Escape by itself to pause the practice.</p>
+        <p id="captureInstructions">After starting, focus remains here. Press the requested key combination. Press Control by itself to repeat the instruction, Enter after a correct answer to continue, or Escape to stop.</p>
         <p><strong>Keys detected:</strong> <span id="detectedKeys">None yet</span></p>
       </div>
       <div id="practiceStatus" class="practice-status" role="status" aria-live="assertive"></div>

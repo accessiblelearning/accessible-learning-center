@@ -145,6 +145,7 @@
   let attempts = 0;
   let audioContext = null;
   let insertHeld = false;
+  let controlTapPending = false;
   let missedCommands = new Map();
 
   const practiceContexts = {
@@ -240,6 +241,7 @@
 
   function showCommand() {
     command = order[position];
+    controlTapPending = false;
     const heading = document.createElement("h3");
     heading.textContent = practiceStyle.value === "guided"
         ? "Guided task " + (position + 1) + " of " + order.length
@@ -290,6 +292,7 @@
 
   start.addEventListener("click", () => {
     active = true;
+    controlTapPending = false;
     correctCount = 0;
     attempts = 0;
     position = 0;
@@ -360,6 +363,7 @@
 
   stop.addEventListener("click", () => {
     active = false;
+    controlTapPending = false;
     if ("speechSynthesis" in window) speechSynthesis.cancel();
     start.disabled = false;
     stop.disabled = true;
@@ -387,12 +391,22 @@
       stop.click();
       return;
     }
+    if (event.key === "Enter" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && !next.disabled) {
+      next.click();
+      return;
+    }
+    if (event.key === "Control") {
+      controlTapPending = true;
+      detected.textContent = "Control";
+      return;
+    }
+    if (event.ctrlKey) controlTapPending = false;
     if (event.key === "Insert") {
       insertHeld = true;
       detected.textContent = "Insert";
       return;
     }
-    if (["Control", "Alt", "Shift", "Meta"].includes(event.key)) {
+    if (["Alt", "Shift", "Meta"].includes(event.key)) {
       detected.textContent = displaySignature(keyName(event));
       return;
     }
@@ -410,10 +424,10 @@
     if (pressed === expected) {
       correctCount += 1;
       tone(true);
-      status.textContent = "Correct. You pressed " + displaySignature(pressed) + ".";
-      speak("Correct. You pressed " + displaySignature(pressed) + ". " + briefExplanation(command[1]));
+      status.textContent = "Correct. You pressed " + displaySignature(pressed) + ". Press Enter for the next task.";
+      speak("Correct. You pressed " + displaySignature(pressed) + ". " + briefExplanation(command[1]) + " Press Enter for the next task.");
       next.disabled = false;
-      next.focus();
+      capture.focus();
     } else {
       missedCommands.set(command[0], command);
       tone(false);
@@ -428,6 +442,17 @@
     if (event.key === "Insert") {
       event.preventDefault();
       insertHeld = false;
+    }
+    if (event.key === "Control" && controlTapPending) {
+      event.preventDefault();
+      event.stopPropagation();
+      controlTapPending = false;
+      detected.textContent = "Control";
+      status.textContent = spoken.checked
+        ? "Repeating the current command aloud."
+        : "Spoken instructions are turned off. Turn them on to hear the command.";
+      speak(describe());
+      capture.focus();
     }
   }, true);
 
