@@ -109,6 +109,7 @@
   const topicMissionsMode = document.getElementById("topicMissionsMode");
   const commandPracticeButton = document.getElementById("showCommandPractice");
   const topicMissionsButton = document.getElementById("showTopicMissions");
+  const modeStatus = document.getElementById("missionModeStatus");
 
   function showMode(mode) {
     const showPractice = mode === "practice";
@@ -123,6 +124,10 @@
     topicMissionsMode.hidden = showPractice;
     commandPracticeButton.setAttribute("aria-pressed", String(showPractice));
     topicMissionsButton.setAttribute("aria-pressed", String(!showPractice));
+    modeStatus.textContent = showPractice
+      ? "Command Practice selected."
+      : "Topic Missions selected.";
+    history.replaceState(null, "", showPractice ? "#command-practice" : "#topic-missions");
     const heading = (showPractice ? commandPracticeMode : topicMissionsMode).querySelector("h2");
     heading?.setAttribute("tabindex", "-1");
     heading?.focus();
@@ -131,6 +136,7 @@
   commandPracticeButton.addEventListener("click", () => showMode("practice"));
   topicMissionsButton.addEventListener("click", () => showMode("missions"));
   if (location.hash === "#command-practice") showMode("practice");
+  if (location.hash === "#topic-missions") showMode("missions");
 
   try { completed = new Set(JSON.parse(localStorage.getItem("missionControlCompleted") || "[]")); } catch (error) { completed = new Set(); }
 
