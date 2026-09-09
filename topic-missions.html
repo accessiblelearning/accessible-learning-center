@@ -7,7 +7,7 @@
   <title>Screen Reader Topic Missions - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=command-center-pages-1">
   <script src="accessibility.js?v=mission-control-1" defer></script>
-  <script src="troubleshooting-lab.js?v=topic-missions-page-1" defer></script>
+  <script src="troubleshooting-lab.js?v=mission-speech-choice-1" defer></script>
 </head>
 <body>
   <header>
@@ -30,6 +30,8 @@
       <p><label for="missionSelect">Mission</label><br>
         <select id="missionSelect"></select>
       </p>
+      <p><label><input id="simulatedVoice" type="checkbox" aria-describedby="simulatedVoiceHelp"> Play the extra Mission Control voice aloud</label></p>
+      <p id="simulatedVoiceHelp">Leave this off while using JAWS, NVDA, or Narrator. Your screen reader will announce each simulator update once without an overlapping computer voice.</p>
       <p class="tip"><strong>No multiple choice:</strong> Listen, decide what to inspect, and press the command you believe should come next. Commands are contained in the simulator whenever the browser permits, but operating-system shortcuts cannot always be blocked.</p>
       <button id="startMission" type="button">Start selected mission</button>
     </section>
@@ -46,8 +48,10 @@
       <section class="screen-reader-transcript" aria-labelledby="transcriptHeading">
         <h3 id="transcriptHeading">Simulated screen-reader output</h3>
         <p id="transcript" aria-live="polite">Standing by.</p>
-        <button id="speakTranscript" type="button">Repeat the latest announcement</button>
-        <button id="repeatProblem" type="button">Repeat the mission problem</button>
+        <div id="simulatedVoiceActions" hidden>
+          <button id="speakTranscript" type="button">Repeat the latest announcement with the Mission Control voice</button>
+          <button id="repeatProblem" type="button">Repeat the mission problem with the Mission Control voice</button>
+        </div>
       </section>
 
       <div id="missionControlStation" class="mission-control-station" tabindex="0" role="application" aria-labelledby="missionControlHeading" aria-describedby="missionControlInstructions">
@@ -58,9 +62,9 @@
 
       <section aria-labelledby="logHeading">
         <h3 id="logHeading">Mission log</h3>
-        <ol id="missionLog" class="mission-log" aria-live="polite"></ol>
+        <ol id="missionLog" class="mission-log"></ol>
       </section>
-      <div id="scenarioFeedback" class="scenario-feedback" role="status" aria-live="polite"></div>
+      <div id="scenarioFeedback" class="scenario-feedback"></div>
       <div class="simulator-actions">
         <button id="nextMission" type="button" hidden>Next mission</button>
         <button id="restartMission" type="button">Restart current mission</button>

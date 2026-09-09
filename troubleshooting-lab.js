@@ -100,6 +100,8 @@
   const progress = document.getElementById("missionProgress");
   const count = document.getElementById("missionCount");
   const summary = document.getElementById("completionSummary");
+  const simulatedVoice = document.getElementById("simulatedVoice");
+  const simulatedVoiceActions = document.getElementById("simulatedVoiceActions");
   let current = 0;
   let step = 0;
   let active = false;
@@ -112,7 +114,7 @@
   }
 
   function speak(text) {
-    if (!("speechSynthesis" in window)) return;
+    if (!simulatedVoice.checked || !("speechSynthesis" in window)) return;
     speechSynthesis.cancel();
     speechSynthesis.speak(new SpeechSynthesisUtterance(text));
   }
@@ -156,7 +158,7 @@
     if (["F1", "F2"].includes(event.key)) {
       event.preventDefault();
       if (event.key === "F1") announce("Strategy hint: " + missions[current].hint);
-      else speak(problem.textContent);
+      else announce("Mission problem. " + problem.textContent);
       return;
     }
     if (normalizedKey(event) === "MODIFIER") {
@@ -186,18 +188,18 @@
     if (command === expected.command) {
       item.textContent = displayedCommand(command) + ": " + expected.success;
       log.append(item);
-      announce(expected.success);
       feedback.className = "scenario-feedback is-correct";
       feedback.textContent = expected.why;
       step += 1;
-      if (step === mission.steps.length) finishMission();
+      if (step === mission.steps.length) finishMission(expected.success + " " + expected.why);
+      else announce(expected.success + " " + expected.why);
     } else {
       const response = wrongResponse(command, expected.command);
       item.textContent = displayedCommand(command) + ": " + response;
       log.append(item);
-      announce(response);
       feedback.className = "scenario-feedback is-incorrect";
       feedback.textContent = "That changed or inspected something, but the problem is not solved. Use the new announcement as evidence and keep working.";
+      announce(response + " " + feedback.textContent);
     }
   }
 
@@ -212,14 +214,14 @@
     return "Command received. No useful change occurred in the current state.";
   }
 
-  function finishMission() {
+  function finishMission(finalStepFeedback) {
     active = false;
     completed.add(current);
     save();
     updateProgress();
     feedback.className = "scenario-feedback is-correct";
     feedback.innerHTML = "<h3>Mission complete</h3><p>You solved the problem through keyboard commands and confirmed system feedback.</p>";
-    announce("Mission complete. " + missions[current].title);
+    announce(finalStepFeedback + " Mission complete. " + missions[current].title);
     nextButton.hidden = false;
     nextButton.focus();
   }
@@ -239,9 +241,8 @@
     lastCommand.textContent = "None";
     nextButton.hidden = true;
     updateProgress();
+    announce("Mission briefing. " + mission.title + ". " + mission.problem + " Move to Mission Control and begin.");
     title.focus();
-    speak("Mission briefing. " + mission.title + ". " + mission.problem + " Move to Mission Control and begin.");
-    window.setTimeout(() => missionControl.focus(), 100);
   }
 
   missions.forEach((mission, index) => {
@@ -254,6 +255,17 @@
   document.getElementById("restartMission").addEventListener("click", startMission);
   document.getElementById("speakTranscript").addEventListener("click", () => speak(transcript.textContent));
   document.getElementById("repeatProblem").addEventListener("click", () => speak("Mission problem. " + problem.textContent));
+  simulatedVoice.addEventListener("change", () => {
+    simulatedVoiceActions.hidden = !simulatedVoice.checked;
+    try { localStorage.setItem("missionControlSimulatedVoice", simulatedVoice.checked ? "on" : "off"); } catch (error) {}
+    if (simulatedVoice.checked) {
+      transcript.textContent = "Mission Control reports: “Extra simulator voice on.”";
+      speak("Extra simulator voice on.");
+    } else {
+      if ("speechSynthesis" in window) speechSynthesis.cancel();
+      transcript.textContent = "Mission Control reports: “Using your screen reader only.”";
+    }
+  });
   nextButton.addEventListener("click", () => {
     missionSelect.value = String((current + 1) % missions.length);
     startMission();
@@ -261,5 +273,7 @@
   perspective.addEventListener("change", () => {
     if (active) announce("Screen-reader perspective changed to " + screenReaders[perspective.value].name + ".");
   });
+  try { simulatedVoice.checked = localStorage.getItem("missionControlSimulatedVoice") === "on"; } catch (error) { simulatedVoice.checked = false; }
+  simulatedVoiceActions.hidden = !simulatedVoice.checked;
   updateProgress();
 })();
