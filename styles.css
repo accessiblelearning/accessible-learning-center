@@ -1277,6 +1277,30 @@ html[data-theme="dark"]:not([data-contrast="high"]) main > section[id$="-lessons
   background: var(--blue-950);
 }
 
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-mode-actions a {
+  color: #ffffff;
+  background: #073d78;
+  border-color: #8dd1ff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-mode-actions a:hover,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-mode-actions a:focus-visible {
+  color: #ffffff;
+  background: #0d5ca8;
+}
+
+html[data-contrast="high"] .mission-mode-actions a {
+  color: #ffffff;
+  background: #000000;
+  border-color: #000000;
+}
+
+html[data-contrast="high"] .mission-mode-actions a:hover,
+html[data-contrast="high"] .mission-mode-actions a:focus-visible {
+  color: #000000;
+  background: #ffde00;
+}
+
 .mission-mode-actions a strong,
 .mission-mode-actions a span {
   display: block;
