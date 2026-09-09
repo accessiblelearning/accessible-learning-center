@@ -2,6 +2,7 @@
   "use strict";
   const search = document.getElementById("manualSearch");
   const type = document.getElementById("manualType");
+  const topic = document.getElementById("manualTopic");
   const clear = document.getElementById("clearManualFilters");
   const status = document.getElementById("manualFilterStatus");
   const items = [...document.querySelectorAll("[data-manual-item]")];
@@ -10,11 +11,14 @@
   function update() {
     const query = search.value.trim().toLowerCase();
     const selectedType = type.value;
+    const selectedTopic = topic.value;
     let visible = 0;
     for (const item of items) {
       const matchesText = !query || item.dataset.search.includes(query);
       const matchesType = selectedType === "all" || item.dataset.type === selectedType;
-      item.hidden = !(matchesText && matchesType);
+      const topics = (item.dataset.topics || "").split(/\s+/);
+      const matchesTopic = selectedTopic === "all" || topics.includes(selectedTopic);
+      item.hidden = !(matchesText && matchesType && matchesTopic);
       if (!item.hidden) visible += 1;
     }
     for (const group of groups) {
@@ -25,9 +29,11 @@
 
   search.addEventListener("input", update);
   type.addEventListener("change", update);
+  topic.addEventListener("change", update);
   clear.addEventListener("click", () => {
     search.value = "";
     type.value = "all";
+    topic.value = "all";
     update();
     search.focus();
   });
