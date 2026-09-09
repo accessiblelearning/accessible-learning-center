@@ -1247,6 +1247,29 @@ html[data-theme="dark"]:not([data-contrast="high"]) main > section[id$="-lessons
   margin-inline: auto;
 }
 
+.mission-mode-picker {
+  max-width: 56rem;
+  margin-inline: auto;
+  border-left: .45rem solid var(--blue-600);
+}
+
+.mission-mode-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+}
+
+.mission-mode-actions button[aria-pressed="true"] {
+  color: #ffffff;
+  background: var(--blue-700);
+  border-color: var(--blue-950);
+  box-shadow: inset 0 0 0 2px #ffffff;
+}
+
+.mission-mode {
+  margin-block: 1rem;
+}
+
 .simulator {
   border: 0.2rem solid var(--border-color, #27638f);
 }
@@ -1335,6 +1358,10 @@ html[data-theme="dark"] .mission-log li {
 }
 
 @media (max-width: 32rem) {
+  .mission-mode-actions {
+    grid-template-columns: 1fr;
+  }
+
   .catalog-actions {
     display: grid;
   }

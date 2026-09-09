@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Hear realistic screen-reader problems and solve them by pressing keyboard commands in a safe simulator.">
   <title>Screen Reader Mission Control Sim - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-control-1">
+  <link rel="stylesheet" href="styles.css?v=mission-control-modes-1">
   <script src="accessibility.js?v=mission-control-1" defer></script>
-  <script src="troubleshooting-lab.js?v=mission-control-1" defer></script>
+  <script src="troubleshooting-lab.js?v=mission-control-modes-1" defer></script>
+  <script src="command-practice.js?v=mission-control-modes-1" defer></script>
 </head>
 <body>
   <header>
@@ -16,6 +17,61 @@
     <p>Hear the problem, inspect the simulated computer, and press keyboard commands to recover—like a flight simulator for assistive technology.</p>
   </header>
   <main id="main-content">
+    <section class="mission-mode-picker" aria-labelledby="mode-heading">
+      <h2 id="mode-heading">Choose your training mode</h2>
+      <p>Practice individual commands with coaching, or solve a realistic problem without multiple-choice answers.</p>
+      <div class="mission-mode-actions">
+        <button id="showCommandPractice" type="button" aria-pressed="false">Command Practice</button>
+        <button id="showTopicMissions" type="button" aria-pressed="true">Topic Missions</button>
+      </div>
+    </section>
+
+    <div id="commandPracticeMode" class="mission-mode" hidden>
+      <section class="practice-safety" aria-labelledby="mission-safety-heading">
+        <h2 id="mission-safety-heading">Command Practice safety</h2>
+        <p>While the blue practice area has focus, Mission Control blocks the included practice commands from reaching the webpage. It cannot block operating-system or protected browser commands everywhere.</p>
+        <p><strong>Commands such as Alt+Tab, Windows+E, Windows+D, Ctrl+Alt+Delete, Ctrl+W, and F5 are learn-only.</strong> Do not physically practice those commands here because they could switch, close, reload, or otherwise affect your computer. A running screen reader may also intercept its own commands before this page receives them.</p>
+      </section>
+
+      <section aria-labelledby="command-setup-heading">
+        <h2 id="command-setup-heading">Choose your command practice</h2>
+        <div class="practice-settings">
+          <p><label for="commandCategory">Command topic</label><select id="commandCategory"></select></p>
+          <p><label for="explanationLevel">Explanation level</label><select id="explanationLevel"><option value="brief">General explanation</option><option value="detailed">More detailed explanation</option></select></p>
+          <p><label><input id="spokenInstructions" type="checkbox" checked> Speak instructions and feedback out loud</label></p>
+          <p><label><input id="soundFeedback" type="checkbox" checked> Play success and correction sounds</label></p>
+          <p><label><input id="randomOrder" type="checkbox"> Practice in random order</label></p>
+        </div>
+        <div class="practice-actions">
+          <button id="startPractice" type="button">Start command practice</button>
+          <button id="repeatCommand" type="button" disabled>Repeat command</button>
+          <button id="nextCommand" type="button" disabled>Next command</button>
+          <button id="practiceMissed" type="button" disabled>Practice missed commands</button>
+          <button id="stopPractice" type="button" disabled>Stop practice</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="practice-heading">
+        <h2 id="practice-heading">Command practice area</h2>
+        <div id="commandPrompt" class="command-prompt">
+          <p>Select a topic and choose Start command practice.</p>
+        </div>
+        <div id="keyCapture" class="key-capture" tabindex="0" role="application" aria-describedby="captureInstructions" aria-label="Keyboard command capture area">
+          <p id="captureInstructions">After starting, focus remains here. Press the requested key combination. Press Escape by itself to stop the practice.</p>
+          <p><strong>Keys detected:</strong> <span id="detectedKeys">None yet</span></p>
+        </div>
+        <div id="practiceStatus" class="practice-status" role="status" aria-live="assertive"></div>
+        <p id="practiceScore">Correct commands: 0. Attempts: 0.</p>
+      </section>
+
+      <section aria-labelledby="learn-only-heading">
+        <h2 id="learn-only-heading">Learn-only system, browser, and device commands</h2>
+        <p>Use the Hear explanation buttons to study these commands. Do not press the actual combination in this webpage.</p>
+        <div id="learnOnlyCommands" class="learn-only-list"></div>
+      </section>
+    </div>
+
+    <div id="topicMissionsMode" class="mission-mode">
     <section class="simulator-setup" aria-labelledby="setup-heading">
       <h2 id="setup-heading">Prepare your mission</h2>
       <p><label for="atPerspective">Screen reader</label><br>
@@ -73,6 +129,7 @@
       <p id="completionSummary">No missions completed on this device yet.</p>
       <p><a href="student-progress.html">Open My Progress</a></p>
     </section>
+    </div>
   </main>
 </body>
 </html>

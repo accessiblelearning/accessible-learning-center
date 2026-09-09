@@ -105,6 +105,33 @@
   let active = false;
   let completed = new Set();
 
+  const commandPracticeMode = document.getElementById("commandPracticeMode");
+  const topicMissionsMode = document.getElementById("topicMissionsMode");
+  const commandPracticeButton = document.getElementById("showCommandPractice");
+  const topicMissionsButton = document.getElementById("showTopicMissions");
+
+  function showMode(mode) {
+    const showPractice = mode === "practice";
+    if (!showPractice) {
+      const stopPractice = document.getElementById("stopPractice");
+      if (stopPractice && !stopPractice.disabled) stopPractice.click();
+    } else if (active) {
+      active = false;
+      if ("speechSynthesis" in window) speechSynthesis.cancel();
+    }
+    commandPracticeMode.hidden = !showPractice;
+    topicMissionsMode.hidden = showPractice;
+    commandPracticeButton.setAttribute("aria-pressed", String(showPractice));
+    topicMissionsButton.setAttribute("aria-pressed", String(!showPractice));
+    const heading = (showPractice ? commandPracticeMode : topicMissionsMode).querySelector("h2");
+    heading?.setAttribute("tabindex", "-1");
+    heading?.focus();
+  }
+
+  commandPracticeButton.addEventListener("click", () => showMode("practice"));
+  topicMissionsButton.addEventListener("click", () => showMode("missions"));
+  if (location.hash === "#command-practice") showMode("practice");
+
   try { completed = new Set(JSON.parse(localStorage.getItem("missionControlCompleted") || "[]")); } catch (error) { completed = new Set(); }
 
   function save() {
