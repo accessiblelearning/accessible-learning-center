@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Accessible keyboard-first lessons for office tools, web tools, braille technology, cybersecurity, PDFs, and employment.">
   <title>Lessons - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=course-navigation-1">
+  <link rel="stylesheet" href="styles.css?v=lesson-filters-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="course-catalog.js?v=course-navigation-2" defer></script>
+  <script src="course-catalog.js?v=lesson-filters-1" defer></script>
 </head>
 <body>
   <header>
@@ -19,6 +19,8 @@
     <section class="catalog-tools" aria-labelledby="catalog-tools-heading">
       <h2 id="catalog-tools-heading">Find a course</h2>
       <p><label for="courseFilter">Search course names and lesson topics</label><br><input id="courseFilter" type="search" autocomplete="off"></p>
+      <p><label for="courseTopicFilter">Topic</label><br><select id="courseTopicFilter"><option value="all">All topics</option><option value="windows">Windows</option><option value="microsoft">Microsoft Office</option><option value="google">Google</option><option value="ai">AI</option><option value="screen-readers">Screen readers</option><option value="braille">Braille devices</option><option value="employment">Employment</option><option value="other">Other</option></select></p>
+      <p><label><input id="startedCoursesOnly" type="checkbox"> Show only courses I started</label></p>
       <div class="catalog-actions">
         <button id="expandCourses" type="button">Expand matching courses</button>
         <button id="collapseCourses" type="button">Collapse all courses</button>

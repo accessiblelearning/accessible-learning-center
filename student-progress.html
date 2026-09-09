@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Review lesson completion and final quiz progress across all Accessible Learning Center courses.">
   <title>Student Progress - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=course-navigation-1">
+  <link rel="stylesheet" href="styles.css?v=lesson-filters-1">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
 </head>
 <body>
@@ -23,6 +23,7 @@
     <section class="catalog-tools" aria-labelledby="progress-filter-heading">
       <h2 id="progress-filter-heading">Filter course progress</h2>
       <p><label for="progressCourseFilter">Search courses</label><br><input id="progressCourseFilter" type="search" autocomplete="off"></p>
+      <p><label for="progressTopicFilter">Topic</label><br><select id="progressTopicFilter"><option value="all">All topics</option><option value="windows">Windows</option><option value="microsoft">Microsoft Office</option><option value="google">Google</option><option value="ai">AI</option><option value="screen-readers">Screen readers</option><option value="braille">Braille devices</option><option value="employment">Employment</option><option value="other">Other</option></select></p>
       <p><label><input id="startedCoursesOnly" type="checkbox"> Show only courses I started</label></p>
       <div class="catalog-actions">
         <button id="expandProgress" type="button">Expand matching courses</button>
@@ -51,8 +52,20 @@
     const continueLearning = document.getElementById("continueLearning");
     const courseProgressSections = document.getElementById("courseProgressSections");
     const progressCourseFilter = document.getElementById("progressCourseFilter");
+    const progressTopicFilter = document.getElementById("progressTopicFilter");
     const startedCoursesOnly = document.getElementById("startedCoursesOnly");
     const progressFilterStatus = document.getElementById("progressFilterStatus");
+    const courseTopics = {
+      jaws: "windows screen-readers", windows: "windows screen-readers",
+      "ai-fundamentals": "ai", chatgpt: "ai", word: "microsoft",
+      excel: "microsoft", powerpoint: "microsoft", copilot: "microsoft ai",
+      chrome: "google screen-readers", docs: "google", calendar: "google",
+      gemini: "google ai", pdf: "other", cybersecurity: "other",
+      "job-search": "employment", focus: "braille", mantis: "braille",
+      ereader: "braille", brailleblaster: "braille", "free-office": "other",
+      "libreoffice-writer": "other", "libreoffice-calc": "other",
+      "libreoffice-impress": "other", sheets: "google", slides: "google"
+    };
 
     const courses = [
       {
@@ -565,6 +578,7 @@
 
       details.append(detailsSummary, list, quizParagraph);
       section.dataset.searchText = (course.displayName || course.name).toLowerCase();
+      section.dataset.topics = courseTopics[course.slug] || "other";
       section.dataset.started = String(completedCount > 0 || Boolean(quizResult));
       section.append(heading, summary, meter, details);
       return { section, completedCount, firstIncomplete };
@@ -572,11 +586,13 @@
 
     function filterProgress() {
       const query = progressCourseFilter.value.trim().toLowerCase();
+      const selectedTopic = progressTopicFilter.value;
       let visibleCount = 0;
       courseProgressSections.querySelectorAll(".course-progress").forEach(section => {
         const matchesText = !query || section.dataset.searchText.includes(query);
+        const matchesTopic = selectedTopic === "all" || section.dataset.topics.split(/\s+/).includes(selectedTopic);
         const matchesStarted = !startedCoursesOnly.checked || section.dataset.started === "true";
-        section.hidden = !(matchesText && matchesStarted);
+        section.hidden = !(matchesText && matchesTopic && matchesStarted);
         if (!section.hidden) {
           visibleCount += 1;
           if (query) section.querySelector("details").open = true;
@@ -586,6 +602,7 @@
     }
 
     progressCourseFilter.addEventListener("input", filterProgress);
+    progressTopicFilter.addEventListener("change", filterProgress);
     startedCoursesOnly.addEventListener("change", filterProgress);
     document.getElementById("expandProgress").addEventListener("click", () => {
       courseProgressSections.querySelectorAll(".course-progress:not([hidden]) details").forEach(details => { details.open = true; });
