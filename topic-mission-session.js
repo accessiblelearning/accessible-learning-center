@@ -1,0 +1,22 @@
+(() => {
+  "use strict";
+
+  const params = new URLSearchParams(window.location.search);
+  const reader = params.get("reader");
+  const mission = Number(params.get("mission"));
+  const validReader = ["jaws", "nvda", "narrator"].includes(reader);
+  const validMission = Number.isInteger(mission) && mission >= 0 && mission < 8;
+
+  if (!validReader || !validMission) {
+    window.location.replace("topic-missions.html");
+    return;
+  }
+
+  document.getElementById("atPerspective").value = reader;
+  document.getElementById("simulatedVoice").checked = params.get("voice") === "1";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("missionSelect").value = String(mission);
+    document.getElementById("startMission").click();
+  });
+})();

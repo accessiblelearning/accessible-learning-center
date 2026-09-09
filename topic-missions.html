@@ -3,85 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hear realistic screen-reader problems and solve them by pressing keyboard commands in a safe simulator.">
-  <title>Screen Reader Topic Missions - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=command-center-pages-1">
-  <script src="accessibility.js?v=mission-control-1" defer></script>
-  <script src="troubleshooting-lab.js?v=mission-speech-choice-1" defer></script>
+  <meta name="description" content="Choose a screen-reader Mission Control scenario using a simple keyboard-guided list.">
+  <title>Choose a Topic Mission - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=mission-keyboard-menu-1">
+  <script src="accessibility.js?v=minimal-pages-1" defer></script>
+  <script src="topic-missions-setup.js?v=mission-keyboard-menu-1" defer></script>
 </head>
-<body>
+<body class="mission-setup-page" data-minimal-page="true">
   <header>
-    <p class="eyebrow">Realistic command-based training</p>
-    <h1>Screen Reader Topic Missions</h1>
-    <p>Hear the problem, inspect the simulated computer, and press keyboard commands to recover.</p>
+    <p class="eyebrow">Mission Control setup</p>
+    <h1>Choose Your Topic Mission</h1>
+    <p>Use one simple list to choose how Mission Control should work.</p>
   </header>
   <main id="main-content">
-    <p><a class="button-link" href="troubleshooting-lab.html">Return to the Command Center</a></p>
+    <section class="mission-keyboard-setup" aria-labelledby="setup-heading">
+      <h2 id="setup-heading">Mission settings</h2>
+      <p id="missionSetupInstructions"><strong>Use Down Arrow and Up Arrow</strong> to move through the list. Press <strong>Enter</strong> to select an option. Continue to the bottom and press Enter on Start Mission.</p>
 
-    <section class="simulator-setup" aria-labelledby="setup-heading">
-      <h2 id="setup-heading">Prepare your mission</h2>
-      <p><label for="atPerspective">Screen reader</label><br>
-        <select id="atPerspective">
-          <option value="jaws">JAWS</option>
-          <option value="nvda">NVDA</option>
-          <option value="narrator">Narrator</option>
-        </select>
-      </p>
-      <p><label for="missionSelect">Mission</label><br>
-        <select id="missionSelect"></select>
-      </p>
-      <p><label><input id="simulatedVoice" type="checkbox" aria-describedby="simulatedVoiceHelp"> Play the extra Mission Control voice aloud</label></p>
-      <p id="simulatedVoiceHelp">Leave this off while using JAWS, NVDA, or Narrator. Your screen reader will announce each simulator update once without an overlapping computer voice.</p>
-      <p class="tip"><strong>No multiple choice:</strong> Listen, decide what to inspect, and press the command you believe should come next. Commands are contained in the simulator whenever the browser permits, but operating-system shortcuts cannot always be blocked.</p>
-      <button id="startMission" type="button">Start selected mission</button>
+      <div id="missionSettingsMenu" class="mission-settings-menu" role="application" aria-label="Mission settings keyboard menu" aria-describedby="missionSetupInstructions">
+        <section class="mission-settings-group" aria-labelledby="speech-heading">
+          <h3 id="speech-heading">1. Choose speech</h3>
+          <div role="radiogroup" aria-labelledby="speech-heading">
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="true" data-group="speech" data-value="own">Use my own screen reader</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="speech" data-value="voice">Use the Mission Control voice</button>
+          </div>
+        </section>
+
+        <section class="mission-settings-group" aria-labelledby="reader-heading">
+          <h3 id="reader-heading">2. Choose the screen reader for the mission</h3>
+          <div role="radiogroup" aria-labelledby="reader-heading">
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="true" data-group="reader" data-value="jaws">JAWS</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="reader" data-value="nvda">NVDA</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="reader" data-value="narrator">Narrator</button>
+          </div>
+        </section>
+
+        <section class="mission-settings-group" aria-labelledby="mission-heading">
+          <h3 id="mission-heading">3. Choose a mission</h3>
+          <div role="radiogroup" aria-labelledby="mission-heading">
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="true" data-group="mission" data-value="0">Screen-reader recovery: The unexpected window</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="1">Google applications: Letters navigate instead of typing</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="2">Email and calendar: Protect the unsent Outlook message</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="3">Microsoft applications: The risky Word edit</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="4">Cloud storage: Move without losing the original</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="5">Online meetings: The live microphone</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="6">Privacy and cybersecurity: The suspicious pop-up</button>
+            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="7">Files and folders: Rename the correct file</button>
+          </div>
+        </section>
+
+        <button id="startMissionSetup" class="mission-start-option" type="button">4. Start selected mission</button>
+      </div>
+      <p id="missionSetupStatus">Selected: Use my own screen reader, JAWS, and The unexpected window.</p>
     </section>
-
-    <section class="simulator" aria-labelledby="missionTitle">
-      <div class="simulator-progress">
-        <p id="missionCount">Mission not started</p>
-        <progress id="missionProgress" max="8" value="0">0 of 8 missions completed</progress>
-      </div>
-      <p id="missionCategory" class="eyebrow"></p>
-      <h2 id="missionTitle" tabindex="-1">Mission Control is standing by</h2>
-      <p id="missionProblem" class="scenario-problem">Choose a mission and start when you are ready.</p>
-
-      <section class="screen-reader-transcript" aria-labelledby="transcriptHeading">
-        <h3 id="transcriptHeading">Simulated screen-reader output</h3>
-        <p id="transcript" aria-live="polite">Standing by.</p>
-        <div id="simulatedVoiceActions" hidden>
-          <button id="speakTranscript" type="button">Repeat the latest announcement with the Mission Control voice</button>
-          <button id="repeatProblem" type="button">Repeat the mission problem with the Mission Control voice</button>
-        </div>
-      </section>
-
-      <div id="missionControlStation" class="mission-control-station" tabindex="0" role="application" aria-labelledby="missionControlHeading" aria-describedby="missionControlInstructions">
-        <h3 id="missionControlHeading">Mission Control</h3>
-        <p id="missionControlInstructions">Move focus to Mission Control, then press keyboard commands. Press F1 for a strategy hint. Press F2 to hear the problem again.</p>
-        <p><strong>Last command:</strong> <span id="lastCommand">None</span></p>
-      </div>
-
-      <section aria-labelledby="logHeading">
-        <h3 id="logHeading">Mission log</h3>
-        <ol id="missionLog" class="mission-log"></ol>
-      </section>
-      <div id="scenarioFeedback" class="scenario-feedback"></div>
-      <div class="simulator-actions">
-        <button id="nextMission" type="button" hidden>Next mission</button>
-        <button id="restartMission" type="button">Restart current mission</button>
-      </div>
-    </section>
-
-    <details class="mission-support">
-      <summary>View mission topics and completion summary</summary>
-      <div>
-        <h2>Mission topics</h2>
-        <ul class="mission-topic-list">
-          <li>Workplace</li><li>Email and calendar</li><li>Cloud storage</li><li>Microsoft applications</li><li>Google applications</li><li>Online meetings</li><li>AI and visual assistance</li><li>Files and folders</li><li>Screen-reader recovery</li><li>Privacy and cybersecurity</li><li>Job search and employment</li><li>Braille technology</li><li>Everyday independence</li>
-        </ul>
-        <p id="completionSummary">No missions completed on this device yet.</p>
-        <p><a href="student-progress.html">Open My Progress</a></p>
-      </div>
-    </details>
+    <p><a href="troubleshooting-lab.html">Return to the Command Center</a></p>
   </main>
 </body>
 </html>

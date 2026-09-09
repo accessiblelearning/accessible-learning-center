@@ -105,6 +105,11 @@
     skipLink.href = "#" + (skipTarget ? skipTarget.id : "main-content");
     skipLink.textContent = "Skip to main content";
 
+    if (document.body.dataset.minimalPage === "true") {
+      document.body.prepend(skipLink);
+      return;
+    }
+
     const panel = document.createElement("section");
     panel.className = "accessibility-panel";
     panel.setAttribute("aria-label", "Website accessibility settings");

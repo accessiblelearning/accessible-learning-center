@@ -1338,6 +1338,79 @@ html[data-contrast="high"] .mission-mode-actions a:focus-visible {
   border-left: .35rem solid var(--blue-600);
 }
 
+.mission-setup-page > header,
+.mission-session-page > header {
+  padding-block: 1.25rem;
+}
+
+.mission-setup-page > main,
+.mission-session-page > main {
+  width: min(100% - 1rem, 56rem);
+}
+
+.mission-keyboard-setup {
+  margin-inline: auto;
+}
+
+.mission-settings-menu {
+  display: grid;
+  gap: 1rem;
+}
+
+.mission-settings-group {
+  padding: 1rem;
+  border: 2px solid var(--border);
+  border-radius: .7rem;
+}
+
+.mission-settings-group h3 {
+  margin-top: 0;
+}
+
+.mission-settings-group [role="radiogroup"] {
+  display: grid;
+  gap: .55rem;
+}
+
+.mission-setting-option,
+.mission-start-option {
+  width: 100%;
+  min-height: 3.5rem;
+  padding: .8rem 1rem;
+  text-align: left;
+}
+
+.mission-setting-option[aria-checked="true"] {
+  color: #ffffff;
+  background: #1558b0;
+  border-left-width: .65rem;
+}
+
+.mission-setting-option:focus-visible,
+.mission-start-option:focus-visible {
+  outline: 5px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.mission-start-option {
+  color: #ffffff;
+  background: #0b6b3a;
+  border-color: #064b29;
+  font-size: 1.1rem;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-settings-group {
+  color: #ffffff;
+  background: #000000;
+  border-color: #8dd1ff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-setting-option[aria-checked="true"] {
+  color: #ffffff;
+  background: #073d78;
+  border-color: #8dd1ff;
+}
+
 .mission-support {
   max-width: 56rem;
   margin: 1rem auto;

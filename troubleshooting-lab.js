@@ -102,6 +102,7 @@
   const summary = document.getElementById("completionSummary");
   const simulatedVoice = document.getElementById("simulatedVoice");
   const simulatedVoiceActions = document.getElementById("simulatedVoiceActions");
+  const focusedMissionSession = document.body.dataset.missionSession === "true";
   let current = 0;
   let step = 0;
   let active = false;
@@ -273,7 +274,9 @@
   perspective.addEventListener("change", () => {
     if (active) announce("Screen-reader perspective changed to " + screenReaders[perspective.value].name + ".");
   });
-  try { simulatedVoice.checked = localStorage.getItem("missionControlSimulatedVoice") === "on"; } catch (error) { simulatedVoice.checked = false; }
+  if (!focusedMissionSession) {
+    try { simulatedVoice.checked = localStorage.getItem("missionControlSimulatedVoice") === "on"; } catch (error) { simulatedVoice.checked = false; }
+  }
   simulatedVoiceActions.hidden = !simulatedVoice.checked;
   updateProgress();
 })();

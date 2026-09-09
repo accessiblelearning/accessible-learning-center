@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A focused screen-reader Mission Control simulation.">
+  <title>Topic Mission - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=mission-keyboard-menu-1">
+  <script src="accessibility.js?v=minimal-pages-1" defer></script>
+  <script src="topic-mission-session.js?v=mission-keyboard-menu-1" defer></script>
+  <script src="troubleshooting-lab.js?v=mission-keyboard-menu-1" defer></script>
+</head>
+<body class="mission-session-page" data-minimal-page="true" data-mission-session="true">
+  <header>
+    <p class="eyebrow">Mission Control</p>
+    <h1>Topic Mission</h1>
+  </header>
+  <main id="main-content">
+    <section class="simulator" aria-labelledby="missionTitle">
+      <div class="simulator-progress">
+        <p id="missionCount">Preparing mission</p>
+        <progress id="missionProgress" max="8" value="0">0 of 8 missions completed</progress>
+      </div>
+      <p id="missionCategory" class="eyebrow"></p>
+      <h2 id="missionTitle" tabindex="-1">Preparing your topic mission</h2>
+      <p id="missionProblem" class="scenario-problem">Your mission briefing will appear here.</p>
+
+      <section class="screen-reader-transcript" aria-labelledby="transcriptHeading">
+        <h3 id="transcriptHeading">Mission Control output</h3>
+        <p id="transcript" aria-live="polite">Preparing the simulator.</p>
+        <div id="simulatedVoiceActions" hidden>
+          <button id="speakTranscript" type="button">Repeat the latest announcement</button>
+          <button id="repeatProblem" type="button">Repeat the mission problem</button>
+        </div>
+      </section>
+
+      <div id="missionControlStation" class="mission-control-station" tabindex="0" role="application" aria-labelledby="missionControlHeading" aria-describedby="missionControlInstructions">
+        <h3 id="missionControlHeading">Mission Control</h3>
+        <p id="missionControlInstructions">Move focus here and press keyboard commands. Press F1 for a strategy hint. Press F2 to hear the problem again.</p>
+        <p><strong>Last command:</strong> <span id="lastCommand">None</span></p>
+      </div>
+
+      <section aria-labelledby="logHeading">
+        <h3 id="logHeading">Mission log</h3>
+        <ol id="missionLog" class="mission-log"></ol>
+      </section>
+      <div id="scenarioFeedback" class="scenario-feedback"></div>
+      <div class="simulator-actions">
+        <button id="nextMission" type="button" hidden>Next mission</button>
+        <button id="restartMission" type="button">Restart current mission</button>
+      </div>
+      <p><a href="topic-missions.html">Choose different mission settings</a></p>
+    </section>
+
+    <div hidden aria-hidden="true">
+      <select id="atPerspective"><option value="jaws">JAWS</option><option value="nvda">NVDA</option><option value="narrator">Narrator</option></select>
+      <select id="missionSelect"></select>
+      <input id="simulatedVoice" type="checkbox">
+      <button id="startMission" type="button">Start mission</button>
+      <p id="completionSummary"></p>
+    </div>
+  </main>
+</body>
+</html>
