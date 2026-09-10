@@ -150,6 +150,10 @@
   let insertHeld = false;
   let controlTapPending = false;
   let missedCommands = new Map();
+  let awaitingAdvance = false;
+  let autoAdvanceTimer = 0;
+
+  const AUTO_ADVANCE_DELAY = 2400;
 
   const practiceContexts = {
     "General editing": "You are editing information in a workplace document.",
@@ -184,11 +188,31 @@
     category.appendChild(option);
   });
 
-  function speak(text) {
-    if (!spoken.checked || !("speechSynthesis" in window)) return;
+  function clearAutoAdvance() {
+    window.clearTimeout(autoAdvanceTimer);
+    autoAdvanceTimer = 0;
+  }
+
+  function speak(text, afterSpeech) {
+    if (!spoken.checked || !("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+      if (afterSpeech) autoAdvanceTimer = window.setTimeout(afterSpeech, AUTO_ADVANCE_DELAY);
+      return;
+    }
     speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 0.95;
+    if (afterSpeech) {
+      let finished = false;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        clearAutoAdvance();
+        afterSpeech();
+      };
+      utterance.addEventListener("end", finish, { once: true });
+      utterance.addEventListener("error", finish, { once: true });
+      autoAdvanceTimer = window.setTimeout(finish, Math.max(4000, text.length * 75));
+    }
     speechSynthesis.speak(utterance);
   }
 
@@ -243,6 +267,8 @@
   }
 
   function showCommand() {
+    clearAutoAdvance();
+    awaitingAdvance = false;
     command = order[position];
     controlTapPending = false;
     const heading = document.createElement("h3");
@@ -256,6 +282,7 @@
       ? "Waiting for " + spokenKeys(command[0]) + "."
       : describe() + " Waiting for your command.";
     detected.textContent = "None yet";
+    capture.classList.remove("is-correct", "is-incorrect");
     next.disabled = true;
     speak(describe());
     capture.focus();
@@ -330,6 +357,8 @@
 
   next.addEventListener("click", () => {
     if (!active) return;
+    clearAutoAdvance();
+    awaitingAdvance = false;
     position += 1;
     if (position >= order.length) {
       active = false;
@@ -384,6 +413,8 @@
 
   stop.addEventListener("click", () => {
     active = false;
+    awaitingAdvance = false;
+    clearAutoAdvance();
     controlTapPending = false;
     if ("speechSynthesis" in window) speechSynthesis.cancel();
     if (focusedSession) {
@@ -416,6 +447,7 @@
       stop.click();
       return;
     }
+    if (awaitingAdvance) return;
     if (event.key === "Enter" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && !next.disabled) {
       next.click();
       return;
@@ -448,13 +480,23 @@
 
     if (pressed === expected) {
       correctCount += 1;
+      awaitingAdvance = true;
+      capture.classList.remove("is-incorrect");
+      capture.classList.add("is-correct");
       tone(true);
-      status.textContent = "Correct. You pressed " + displaySignature(pressed) + ". Press Enter for the next task.";
-      speak("Correct. You pressed " + displaySignature(pressed) + ". " + briefExplanation(command[1]) + " Press Enter for the next task.");
+      status.textContent = "Correct. You pressed " + displaySignature(pressed) + ". Moving to the next task.";
       next.disabled = false;
+      speak(
+        "Correct. You pressed " + displaySignature(pressed) + ". " + briefExplanation(command[1]),
+        () => {
+          if (active && awaitingAdvance) next.click();
+        }
+      );
       capture.focus();
     } else {
       missedCommands.set(command[0], command);
+      capture.classList.remove("is-correct");
+      capture.classList.add("is-incorrect");
       tone(false);
       status.textContent = "Not quite. You pressed " + displaySignature(pressed) + ". Try " + spokenKeys(command[0]) + ".";
       speak(status.textContent);

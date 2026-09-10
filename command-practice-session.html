@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=training-stage-2">
+  <link rel="stylesheet" href="styles.css?v=command-feedback-1">
   <script src="accessibility.js?v=minimal-pages-1" defer></script>
   <script src="command-practice-session.js?v=focused-command-practice-1" defer></script>
-  <script src="command-practice.js?v=training-stage-2" defer></script>
+  <script src="command-practice.js?v=command-feedback-1" defer></script>
 </head>
 <body class="practice-session-page" data-practice-session="true" data-minimal-page="true">
   <header class="training-header"><h1>Command Practice</h1></header>
@@ -22,11 +22,11 @@
         <p>Preparing your command practice.</p>
       </div>
       <div id="keyCapture" class="key-capture training-stage__input" tabindex="0" role="application" aria-describedby="captureInstructions" aria-label="Keyboard command practice area">
-        <p id="captureInstructions" class="visually-hidden">Press the requested key combination. Press Control by itself to repeat, Enter after a correct answer to continue, or Escape to exit.</p>
+        <p id="captureInstructions" class="visually-hidden">Press the requested key combination. A correct command advances automatically. Press Control by itself to repeat or Escape to exit.</p>
         <p class="training-stage__detected"><span class="training-stage__input-label">Keys pressed</span><strong id="detectedKeys">None yet</strong></p>
       </div>
       <div id="practiceStatus" class="practice-status training-stage__feedback" role="status" aria-live="assertive"></div>
-      <p class="practice-session-shortcuts training-stage__shortcuts"><strong>Control</strong> repeat <span aria-hidden="true">·</span> <strong>Enter</strong> next <span aria-hidden="true">·</span> <strong>Escape</strong> close</p>
+      <p class="practice-session-shortcuts training-stage__shortcuts"><strong>Control</strong> repeat <span aria-hidden="true">·</span> Correct commands advance automatically <span aria-hidden="true">·</span> <strong>Escape</strong> close</p>
       <div id="sessionCompletionActions" class="practice-actions" hidden>
         <button id="practiceMissed" type="button" disabled>Practice missed commands</button>
         <button id="practiceExit" type="button">Choose different practice settings</button>

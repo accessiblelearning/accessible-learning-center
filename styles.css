@@ -2060,3 +2060,32 @@ html[data-contrast="high"] .practice-session-page .training-stage .practice-acti
     width: 100%;
   }
 }
+
+.practice-session-page .training-stage .training-stage__input.is-correct {
+  color: #ffffff;
+  background: #086b38;
+  border-color: #72eba6;
+  box-shadow: inset 0 0 0 2px #ffffff, 0 0 0 3px #086b38;
+}
+
+.practice-session-page .training-stage .training-stage__input.is-incorrect {
+  color: #ffffff;
+  background: #8f211c;
+  border-color: #ffaaa4;
+  box-shadow: inset 0 0 0 2px #ffffff, 0 0 0 3px #8f211c;
+}
+
+.practice-session-page .training-stage .training-stage__input.is-correct strong,
+.practice-session-page .training-stage .training-stage__input.is-incorrect strong {
+  color: #ffffff;
+}
+
+html[data-contrast="high"] .practice-session-page .training-stage .training-stage__input.is-correct {
+  background: #086b38;
+  border-color: #ffffff;
+}
+
+html[data-contrast="high"] .practice-session-page .training-stage .training-stage__input.is-incorrect {
+  background: #8f211c;
+  border-color: #ffffff;
+}
