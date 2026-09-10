@@ -30,13 +30,12 @@
     },
     {
       category: "Email and calendar", title: "Protect the unsent Outlook message",
-      problem: "An Outlook message contains important unsent work. A dialog appeared, and you need to protect the draft before leaving the message.",
+      problem: "An Outlook message contains important unsent work. You need to protect the draft before leaving the message.",
       steps: [
-        { command: "ESCAPE", success: "Dialog closed. Message body, edit.", why: "You dismissed the interruption and returned to the draft." },
         { command: "CTRL+S", success: "Draft saved.", why: "You saved the message before attempting to leave it." },
         { command: "ALT+F4", success: "Inbox — Outlook. Draft retained.", why: "You closed the protected message and returned to the Inbox." }
       ],
-      hint: "First dismiss the temporary dialog with a reversible command."
+      hint: "Protect the draft before trying to leave the message."
     },
     {
       category: "Microsoft applications", title: "The risky Word edit",
@@ -154,31 +153,68 @@
   }
 
   let modifierHeld = false;
+  let altModifierArmed = false;
+  let controlModifierArmed = false;
+  document.addEventListener("keydown", event => {
+    if (!focusedMissionSession || event.key !== "Escape" || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
+    event.preventDefault();
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    window.location.href = "topic-missions.html";
+  }, true);
   missionControl.addEventListener("keydown", event => {
     if (!active) return;
-    if (["F1", "F2"].includes(event.key)) {
+    const expectedCommand = missions[current].steps[step].command;
+    if (event.key === "F1" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && expectedCommand !== "F1") {
       event.preventDefault();
-      if (event.key === "F1") announce("Strategy hint: " + missions[current].hint);
-      else announce("Mission problem. " + problem.textContent);
+      announce("Strategy hint: " + missions[current].hint);
+      return;
+    }
+    if (event.key.toLowerCase() === "p" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && expectedCommand !== "P") {
+      event.preventDefault();
+      announce("Mission problem. " + problem.textContent);
+      return;
+    }
+    if (event.key === "Alt" && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
+      event.preventDefault();
+      altModifierArmed = true;
+      modifierHeld = false;
+      controlModifierArmed = false;
+      lastCommand.textContent = "Alt ready; press the remaining key";
+      return;
+    }
+    if (event.key === "Control" && !event.altKey && !event.shiftKey && !event.metaKey) {
+      event.preventDefault();
+      controlModifierArmed = true;
+      modifierHeld = false;
+      altModifierArmed = false;
+      lastCommand.textContent = "Control ready; press the remaining key";
       return;
     }
     if (normalizedKey(event) === "MODIFIER") {
       modifierHeld = true;
+      altModifierArmed = false;
+      controlModifierArmed = false;
       event.preventDefault();
+      lastCommand.textContent = screenReaders[perspective.value].name + " key ready; press the remaining key";
       return;
     }
     let command = normalizedKey(event);
     if (modifierHeld && !event.ctrlKey && !event.altKey) {
       const key = event.key.toUpperCase() === " " ? "SPACE" : event.key.toUpperCase();
       command = key === "T" ? "TITLE" : key === "TAB" ? "FOCUS" : key === "Z" || key === "SPACE" ? "MODE" : "SCREENREADER+" + key;
+    } else if (altModifierArmed && !event.altKey && !event.ctrlKey && !event.metaKey) {
+      const key = event.key.toUpperCase() === " " ? "SPACE" : event.key.toUpperCase();
+      command = "ALT+" + key;
+    } else if (controlModifierArmed && !event.ctrlKey && !event.altKey && !event.metaKey) {
+      const key = event.key.toUpperCase() === " " ? "SPACE" : event.key.toUpperCase();
+      command = "CTRL+" + key;
     }
     modifierHeld = false;
+    altModifierArmed = false;
+    controlModifierArmed = false;
     if (!command || command.endsWith("+")) return;
     event.preventDefault();
     processCommand(command);
-  });
-  missionControl.addEventListener("keyup", event => {
-    if (event.key === "Insert" || event.key === "CapsLock") modifierHeld = false;
   });
 
   function processCommand(command) {
@@ -207,7 +243,6 @@
   function wrongResponse(command, expected) {
     if (command === "ENTER") return "Focused control activated. The original problem remains.";
     if (command === "TAB" || command === "SHIFT+TAB") return "Focus moved to another control. The original problem remains.";
-    if (command === "ESCAPE") return "No open menu or dialog responded to Escape.";
     if (command === "ALT+F4") return expected === "CTRL+S" ? "Close requested. Warning: unsaved changes." : "The active window did not close in this simulated state.";
     if (command === "CTRL+S") return "Save command received, but the current simulated control cannot be saved.";
     if (command === "TITLE") return "Window title announced. More action is still required.";
@@ -240,6 +275,9 @@
     feedback.textContent = "";
     feedback.className = "scenario-feedback";
     lastCommand.textContent = "None";
+    modifierHeld = false;
+    altModifierArmed = false;
+    controlModifierArmed = false;
     nextButton.hidden = true;
     updateProgress();
     announce("Mission briefing. " + mission.title + ". " + mission.problem + " Move to Mission Control and begin.");
@@ -255,7 +293,7 @@
   document.getElementById("startMission").addEventListener("click", startMission);
   document.getElementById("restartMission").addEventListener("click", startMission);
   document.getElementById("speakTranscript").addEventListener("click", () => speak(transcript.textContent));
-  document.getElementById("repeatProblem").addEventListener("click", () => speak("Mission problem. " + problem.textContent));
+  document.getElementById("repeatProblem").addEventListener("click", () => announce("Mission problem. " + problem.textContent));
   simulatedVoice.addEventListener("change", () => {
     simulatedVoiceActions.hidden = !simulatedVoice.checked;
     try { localStorage.setItem("missionControlSimulatedVoice", simulatedVoice.checked ? "on" : "off"); } catch (error) {}

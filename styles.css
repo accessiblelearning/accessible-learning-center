@@ -1521,6 +1521,80 @@ html[data-theme="dark"] .scenario-feedback.is-incorrect { color: #ffc0a8; }
   color: #ffffff;
 }
 
+.mission-session-page .focused-mission {
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid var(--border);
+}
+
+.mission-briefing,
+.mission-response,
+.mission-log-panel,
+.mission-session-page .simulator-actions,
+.mission-session-page .focused-mission > p {
+  margin: 0;
+  padding: 1rem;
+}
+
+.mission-briefing {
+  border-left: .45rem solid var(--blue-600);
+}
+
+.mission-briefing progress {
+  width: 100%;
+}
+
+.mission-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .35rem 1rem;
+  margin-top: 0;
+  font-weight: 800;
+}
+
+.mission-session-page .mission-control-station {
+  margin: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+
+.mission-response {
+  background: #eef8ff;
+}
+
+.mission-response h3 {
+  margin-top: 0;
+}
+
+.mission-response .scenario-feedback:not(:empty) {
+  margin-bottom: 0;
+}
+
+.mission-log-panel {
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+}
+
+.mission-log-panel > summary {
+  font-weight: 850;
+  cursor: pointer;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-session-page .focused-mission,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-briefing,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-log-panel {
+  color: #ffffff;
+  background: #000000;
+  border-color: #8dd1ff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-response {
+  color: #ffffff;
+  background: #071d2c;
+}
+
 .mission-log {
   padding-left: 1.75rem;
 }
