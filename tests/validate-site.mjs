@@ -209,7 +209,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 341, "Expected 341 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 342, "Expected 342 HTML pages, found " + htmlFiles.length + ".");
 const manualsHtml = readFileSync(resolve(root, "manuals.html"), "utf8");
 check(manualsHtml.includes('id="manualSearch"'), "Manuals page is missing its title filter.");
 check(manualsHtml.includes('id="manualType"'), "Manuals page is missing its resource-type filter.");
