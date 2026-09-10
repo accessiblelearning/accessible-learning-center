@@ -5,7 +5,6 @@
   const storageKey = "accessibleLearningPreferences";
   const minScale = 90;
   const maxScale = 150;
-  const scaleStep = 10;
   const analyticsEndpoint =
     "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev/analytics/collect";
   const analyticsHosts = new Set([
@@ -17,7 +16,8 @@
     textScale: 100,
     darkMode: false,
     highContrast: false,
-    reduceMotion: false
+    reduceMotion: false,
+    trainingSpeech: "own"
   };
 
   try {
@@ -27,7 +27,8 @@
         textScale: Number(stored.textScale) || 100,
         darkMode: Boolean(stored.darkMode),
         highContrast: Boolean(stored.highContrast),
-        reduceMotion: Boolean(stored.reduceMotion)
+        reduceMotion: Boolean(stored.reduceMotion),
+        trainingSpeech: stored.trainingSpeech === "voice" ? "voice" : "own"
       };
     }
   } catch (error) {
@@ -122,9 +123,10 @@
               Optional page controls that complement your browser, screen reader, and device settings.
             </p>
             <div class="accessibility-controls">
-              <button type="button" data-action="decrease">Decrease text size</button>
-              <button type="button" data-action="increase">Increase text size</button>
-              <button type="button" data-action="reset-text">Reset text size</button>
+              <button type="button" data-action="text-small" aria-pressed="false">Small print</button>
+              <button type="button" data-action="text-medium" aria-pressed="false">Medium print</button>
+              <button type="button" data-action="text-large" aria-pressed="false">Large print</button>
+              <button type="button" data-action="training-speech" aria-pressed="false">Training speech: My screen reader</button>
               <button type="button" data-action="dark" aria-pressed="false">Dark mode</button>
               <button type="button" data-action="contrast" aria-pressed="false">High contrast</button>
               <button type="button" data-action="motion" aria-pressed="false">Reduce motion</button>
@@ -170,6 +172,8 @@
     const darkButton = panel.querySelector('[data-action="dark"]');
     const contrastButton = panel.querySelector('[data-action="contrast"]');
     const motionButton = panel.querySelector('[data-action="motion"]');
+    const speechButton = panel.querySelector('[data-action="training-speech"]');
+    const textButtons = [...panel.querySelectorAll('[data-action^="text-"]')];
 
     function updateButtons() {
       darkButton.setAttribute(
@@ -184,6 +188,22 @@
         "aria-pressed",
         String(preferences.reduceMotion)
       );
+      speechButton.setAttribute(
+        "aria-pressed",
+        String(preferences.trainingSpeech === "voice")
+      );
+      speechButton.textContent = preferences.trainingSpeech === "voice"
+        ? "Training speech: Site voice"
+        : "Training speech: My screen reader";
+      const selectedTextSize = preferences.textScale >= 138
+        ? "large"
+        : preferences.textScale >= 113 ? "medium" : "small";
+      textButtons.forEach(button => {
+        button.setAttribute(
+          "aria-pressed",
+          String(button.dataset.action === "text-" + selectedTextSize)
+        );
+      });
     }
 
     function announce(text) {
@@ -191,6 +211,18 @@
       window.setTimeout(() => {
         status.textContent = text;
       }, 20);
+    }
+
+    function speakTraining(text) {
+      if (
+        preferences.trainingSpeech !== "voice" ||
+        !("speechSynthesis" in window) ||
+        !("SpeechSynthesisUtterance" in window)
+      ) return;
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.95;
+      speechSynthesis.speak(utterance);
     }
 
     updateButtons();
@@ -201,15 +233,25 @@
 
       const action = button.dataset.action;
 
-      if (action === "decrease") {
-        preferences.textScale -= scaleStep;
-        announce("Text size " + Math.max(minScale, preferences.textScale) + " percent.");
-      } else if (action === "increase") {
-        preferences.textScale += scaleStep;
-        announce("Text size " + Math.min(maxScale, preferences.textScale) + " percent.");
-      } else if (action === "reset-text") {
+      if (action === "text-small") {
         preferences.textScale = 100;
-        announce("Text size reset to 100 percent.");
+        announce("Small print selected.");
+      } else if (action === "text-medium") {
+        preferences.textScale = 125;
+        announce("Medium print selected.");
+      } else if (action === "text-large") {
+        preferences.textScale = 150;
+        announce("Large print selected.");
+      } else if (action === "training-speech") {
+        preferences.trainingSpeech = preferences.trainingSpeech === "voice" ? "own" : "voice";
+        if (preferences.trainingSpeech === "own" && "speechSynthesis" in window) {
+          speechSynthesis.cancel();
+        }
+        announce(
+          preferences.trainingSpeech === "voice"
+            ? "Site voice selected for Command Practice and Topic Missions."
+            : "My screen reader selected. The website voice is off during training."
+        );
       } else if (action === "dark") {
         preferences.darkMode = !preferences.darkMode;
         announce(
@@ -236,6 +278,12 @@
       applyPreferences();
       updateButtons();
       savePreferences();
+      if (action === "training-speech" && preferences.trainingSpeech === "voice") {
+        speakTraining("Site voice selected for Command Practice and Topic Missions.");
+      }
+      window.dispatchEvent(new CustomEvent("trainingpreferenceschange", {
+        detail: { ...preferences }
+      }));
     });
 
     document.addEventListener("click", (event) => {

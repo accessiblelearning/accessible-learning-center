@@ -13,7 +13,13 @@
     return;
   }
 
-  const useMissionVoice = params.get("voice") === "1" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  let savedSpeech = "own";
+  try {
+    const preferences = JSON.parse(localStorage.getItem("accessibleLearningPreferences") || "{}");
+    savedSpeech = preferences.trainingSpeech === "voice" ? "voice" : "own";
+  } catch (error) {}
+  const voiceRequested = params.has("voice") ? params.get("voice") === "1" : savedSpeech === "voice";
+  const useMissionVoice = voiceRequested && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
   document.getElementById("atPerspective").value = reader;
   document.getElementById("simulatedVoice").checked = useMissionVoice;
   document.getElementById("transcript").setAttribute("aria-live", useMissionVoice ? "off" : "polite");

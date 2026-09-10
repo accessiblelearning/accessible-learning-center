@@ -1,14 +1,26 @@
 (() => {
   "use strict";
 
+  const siteVoiceSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  const preferenceStorageKey = "accessibleLearningPreferences";
+
   const settings = {
     speech: {
       index: 0,
       options: [
         { value: "0", label: "Use my own screen reader" },
-        { value: "1", label: "Use the Command Practice voice" }
+        ...(siteVoiceSupported ? [{ value: "1", label: "Use site voice" }] : [])
       ],
       valueElement: document.getElementById("commandSpeechValue")
+    },
+    print: {
+      index: 0,
+      options: [
+        { value: "100", label: "Small print" },
+        { value: "125", label: "Medium print" },
+        { value: "150", label: "Large print" }
+      ],
+      valueElement: document.getElementById("commandPrintValue")
     },
     category: {
       index: 0,
@@ -72,6 +84,7 @@
   const status = document.getElementById("commandSetupStatus");
   const start = document.getElementById("startCommandSetup");
   const items = [...menu.querySelectorAll("button")];
+  let openingAnnouncement = true;
 
   function current(setting) {
     return settings[setting].options[settings[setting].index];
@@ -81,12 +94,47 @@
     return current("speech").value === "1";
   }
 
+  function readPreferences() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(preferenceStorageKey) || "{}");
+      return saved && typeof saved === "object" ? saved : {};
+    } catch (error) {
+      return {};
+    }
+  }
+
+  function saveTrainingPreferences() {
+    try {
+      const preferences = readPreferences();
+      preferences.trainingSpeech = voiceEnabled() ? "voice" : "own";
+      preferences.textScale = Number(current("print").value);
+      localStorage.setItem(preferenceStorageKey, JSON.stringify(preferences));
+    } catch (error) {}
+  }
+
+  function applyPrintSize() {
+    document.documentElement.style.fontSize = current("print").value + "%";
+  }
+
+  function restoreTrainingPreferences() {
+    const preferences = readPreferences();
+    const speechValue = preferences.trainingSpeech === "voice" && siteVoiceSupported ? "1" : "0";
+    const savedScale = Number(preferences.textScale) || 100;
+    const printValue = savedScale >= 138 ? "150" : savedScale >= 113 ? "125" : "100";
+    settings.speech.index = Math.max(0, settings.speech.options.findIndex(option => option.value === speechValue));
+    settings.print.index = settings.print.options.findIndex(option => option.value === printValue);
+    Object.keys(settings).forEach(setting => {
+      settings[setting].valueElement.textContent = current(setting).label;
+    });
+    applyPrintSize();
+  }
+
   function stopVoice() {
     if ("speechSynthesis" in window) speechSynthesis.cancel();
   }
 
   function speak(text) {
-    if (!voiceEnabled() || !("speechSynthesis" in window)) return;
+    if (!voiceEnabled() || !siteVoiceSupported) return;
     stopVoice();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 0.95;
@@ -100,13 +148,15 @@
   }
 
   function updateStatus() {
-    status.textContent = "Selected: " + current("speech").label + ", " + current("category").label + ", " + current("style").label + ", " + current("length").label + ", " + current("level").label + ", sound " + current("sounds").label.toLowerCase() + ", and " + current("order").label + ".";
+    status.textContent = "Selected: " + current("speech").label + ", " + current("print").label + ", " + current("category").label + ", " + current("style").label + ", " + current("length").label + ", " + current("level").label + ", sound " + current("sounds").label.toLowerCase() + ", and " + current("order").label + ".";
   }
 
   function changeSetting(setting) {
     const data = settings[setting];
     data.index = (data.index + 1) % data.options.length;
     data.valueElement.textContent = current(setting).label;
+    if (setting === "print") applyPrintSize();
+    saveTrainingPreferences();
     updateStatus();
 
     if (setting === "speech" && !voiceEnabled()) {
@@ -120,7 +170,7 @@
     item.tabIndex = item === items[0] ? 0 : -1;
     item.addEventListener("focus", () => {
       items.forEach(option => { option.tabIndex = option === item ? 0 : -1; });
-      speak(itemAnnouncement(item));
+      if (!openingAnnouncement) speak(itemAnnouncement(item));
     });
   });
 
@@ -128,6 +178,7 @@
     const button = event.target.closest("button");
     if (!button) return;
     if (button === start) {
+      saveTrainingPreferences();
       const params = new URLSearchParams({
         category: current("category").value,
         style: current("style").value,
@@ -155,5 +206,15 @@
     items[nextIndex].focus();
   });
 
-  window.addEventListener("DOMContentLoaded", () => items[0].focus());
+  restoreTrainingPreferences();
+  updateStatus();
+  if (!siteVoiceSupported) {
+    const speechHint = document.querySelector('[data-setting="speech"] .mission-setting-hint');
+    if (speechHint) speechHint.textContent = "Site voice unavailable in this browser";
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    items[0].focus();
+    openingAnnouncement = false;
+    speak("Command Practice setup. Use Down Arrow and Up Arrow to move. Press Enter to change a setting or start. " + itemAnnouncement(items[0]));
+  });
 })();
