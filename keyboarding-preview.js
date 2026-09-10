@@ -73,20 +73,22 @@
     ["Final keyboarding check", "Bring every beginning keyboarding skill together.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'\":;" ]
   ];
 
-  const panels = ["unlockPanel", "setupPanel", "practicePanel", "resultsPanel"].map(id => document.getElementById(id));
+  const panels = ["unlockPanel", "setupPanel", "practiceMenuPanel", "settingsPanel", "statsPanel", "practicePanel", "resultsPanel"].map(id => document.getElementById(id));
   const lessonSetting = document.getElementById("lessonSetting");
   const modeSetting = document.getElementById("modeSetting");
   const handSetting = document.getElementById("handSetting");
   const setupMenu = document.getElementById("setupMenu");
-  const menuButtons = Array.from(setupMenu.querySelectorAll(".kb-menu-option"));
   const targetPrompt = document.getElementById("targetPrompt");
+  const freeTypeInput = document.getElementById("freeTypeInput");
+  const finishFreeType = document.getElementById("finishFreeType");
   const typedText = document.getElementById("typedText");
   const practiceStatus = document.getElementById("practiceStatus");
   const lessonProgress = document.getElementById("lessonProgress");
   const progressText = document.getElementById("progressText");
   const previewToolbar = document.getElementById("previewToolbar");
+  const voiceToggle = document.getElementById("voiceToggle");
   const websiteControlsToggle = document.getElementById("websiteControlsToggle");
-  let useSiteVoice = false;
+  let useSiteVoice = true;
   let useSounds = true;
   let rememberProgress = false;
   let audioContext = null;
@@ -101,9 +103,8 @@
       heading.setAttribute("tabindex", "-1");
       heading.focus();
     }
-    if (panelId === "setupPanel") {
-      window.setTimeout(() => menuButtons[0]?.focus(), 0);
-    }
+    const firstChoice = selected.querySelector(".kb-arrow-menu .kb-menu-option");
+    if (firstChoice) window.setTimeout(() => firstChoice.focus(), 0);
   }
 
   function setWebsiteControlsMinimized(minimized) {
@@ -118,6 +119,18 @@
     const utterance = new SpeechSynthesisUtterance(message);
     utterance.rate = 0.9;
     window.speechSynthesis.speak(utterance);
+  }
+
+  function setVoice(enabled, announce) {
+    useSiteVoice = enabled;
+    document.querySelector('input[name="voice"][value="site"]').checked = enabled;
+    document.querySelector('input[name="voice"][value="screen-reader"]').checked = !enabled;
+    voiceToggle.setAttribute("aria-pressed", String(enabled));
+    voiceToggle.textContent = enabled ? "Voice: On" : "Voice: Off";
+    const menuVoice = document.getElementById("menuVoiceValue");
+    if (menuVoice) menuVoice.textContent = enabled ? "Site voice" : "My screen reader";
+    if (!enabled && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    if (enabled && announce) speak("Site voice on.");
   }
 
   function tone(frequency, duration) {
@@ -185,13 +198,8 @@
     if (mode === "guided") return repeatedFocus(lesson.focus, lesson.number < 11 ? 12 : 18);
     if (mode === "words") return selectedWords.slice(0, 8).join(" ");
     if (mode === "sentences") return sentences[lesson.number % Math.max(sentences.length, 1)] || selectedWords.slice(0, 8).join(" ");
-    if (mode === "accuracy") return selectedWords.slice(0, 10).join(" ");
-    if (mode === "timed") return Array.from({ length: 5 }, () => selectedWords.join(" ")).join(" ");
-    if (mode === "review") {
-      const difficult = getProgress().difficult || {};
-      const keys = Object.keys(difficult).filter(key => lesson.allowed.includes(key) && belongsToHand(key, hand)).sort((a, b) => difficult[b] - difficult[a]).slice(0, 8).join("");
-      return repeatedFocus(keys || lesson.focus, 18);
-    }
+    if (mode.startsWith("speed-")) return Array.from({ length: 200 }, () => selectedWords.join(" ")).join(" ");
+    if (mode === "free") return "";
     return selectedWords.join(" ");
   }
 
@@ -200,10 +208,11 @@
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
       return {
         completed: saved && Array.isArray(saved.completed) ? saved.completed : [],
-        difficult: saved && saved.difficult && typeof saved.difficult === "object" ? saved.difficult : {}
+        difficult: saved && saved.difficult && typeof saved.difficult === "object" ? saved.difficult : {},
+        sessions: saved && Array.isArray(saved.sessions) ? saved.sessions : []
       };
     }
-    catch (error) { return { completed: [], difficult: {} }; }
+    catch (error) { return { completed: [], difficult: {}, sessions: [] }; }
   }
 
   function saveProgress() {
@@ -211,10 +220,19 @@
     try {
       const progress = getProgress();
       const completion = "en:" + session.hand + ":" + session.lesson.number;
-      if (!progress.completed.includes(completion)) progress.completed.push(completion);
+      if (session.mode === "guided" && !progress.completed.includes(completion)) progress.completed.push(completion);
       Object.keys(session.mistakesByKey).forEach(key => {
         progress.difficult[key] = (progress.difficult[key] || 0) + session.mistakesByKey[key];
       });
+      progress.sessions.push({
+        mode: session.mode,
+        lesson: session.lesson.number,
+        accuracy: session.finalAccuracy,
+        wpm: session.finalWpm,
+        seconds: session.elapsedSeconds,
+        completedAt: Date.now()
+      });
+      progress.sessions = progress.sessions.slice(-100);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
       return true;
     } catch (error) { return false; }
@@ -245,14 +263,14 @@
   }
 
   function updateSetupMenu() {
-    const voice = document.querySelector('input[name="voice"]:checked').value;
     document.getElementById("menuLessonValue").textContent = selectedText(lessonSetting);
-    document.getElementById("menuModeValue").textContent = selectedText(modeSetting);
+    document.getElementById("settingLessonValue").textContent = selectedText(lessonSetting);
     document.getElementById("menuHandValue").textContent = selectedText(handSetting);
-    document.getElementById("menuVoiceValue").textContent = voice === "site" ? "Site voice" : "My screen reader";
+    document.getElementById("menuVoiceValue").textContent = useSiteVoice ? "Site voice" : "My screen reader";
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
     document.getElementById("menuSizeValue").textContent = selectedText(document.getElementById("textSizeSetting"));
     document.getElementById("menuSaveValue").textContent = document.getElementById("saveSetting").checked ? "On" : "Off";
+    document.getElementById("menuLanguageValue").textContent = selectedText(document.getElementById("languageSetting"));
   }
 
   function cycleSelect(select, direction) {
@@ -261,34 +279,44 @@
   }
 
   function startFromMenu() {
-    useSiteVoice = document.querySelector('input[name="voice"]:checked').value === "site";
     useSounds = document.getElementById("soundSetting").checked;
     rememberProgress = document.getElementById("saveSetting").checked;
     document.documentElement.style.setProperty("--kb-scale", document.getElementById("textSizeSetting").value);
     startPractice();
   }
 
-  function activateMenuSetting(button, direction) {
-    const setting = button.dataset.menuSetting;
-    if (setting === "start") {
-      startFromMenu();
-      return;
-    }
+  function activateSetting(button, direction) {
+    const setting = button.dataset.setting;
+    if (setting === "back") return show("setupPanel");
     if (setting === "lesson") cycleSelect(lessonSetting, direction);
-    if (setting === "mode") cycleSelect(modeSetting, direction);
     if (setting === "hand") cycleSelect(handSetting, direction);
     if (setting === "size") cycleSelect(document.getElementById("textSizeSetting"), direction);
+    if (setting === "language") cycleSelect(document.getElementById("languageSetting"), direction);
     if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
     if (setting === "save") document.getElementById("saveSetting").checked = !document.getElementById("saveSetting").checked;
-    if (setting === "voice") {
-      const current = document.querySelector('input[name="voice"]:checked').value;
-      document.querySelector('input[name="voice"][value="' + (current === "site" ? "screen-reader" : "site") + '"]').checked = true;
-      useSiteVoice = document.querySelector('input[name="voice"]:checked').value === "site";
-    }
+    if (setting === "voice") setVoice(!useSiteVoice, false);
     if (setting === "lesson" || setting === "hand") updateLessonSummary();
     else updateSetupMenu();
     if (setting === "size") document.documentElement.style.setProperty("--kb-scale", document.getElementById("textSizeSetting").value);
     speak(button.textContent.trim());
+  }
+
+  function updateStats() {
+    const progress = getProgress();
+    const sessions = progress.sessions;
+    const prefix = "en:" + handSetting.value + ":";
+    const completedLessons = new Set(progress.completed.filter(item => item.startsWith(prefix)).map(item => item.slice(prefix.length)));
+    document.getElementById("statsLessons").textContent = completedLessons.size + " of 50";
+    document.getElementById("statsSessions").textContent = String(sessions.length);
+    document.getElementById("statsAccuracy").textContent = sessions.length ? Math.max(...sessions.map(item => Number(item.accuracy) || 0)) + "%" : "No sessions";
+    document.getElementById("statsSpeed").textContent = sessions.length ? Math.max(...sessions.map(item => Number(item.wpm) || 0)) + " WPM" : "No sessions";
+    const minutes = Math.round(sessions.reduce((total, item) => total + (Number(item.seconds) || 0), 0) / 60);
+    document.getElementById("statsTime").textContent = minutes + (minutes === 1 ? " minute" : " minutes");
+    const difficult = Object.keys(progress.difficult).sort((a, b) => progress.difficult[b] - progress.difficult[a]).slice(0, 5);
+    document.getElementById("statsDifficult").textContent = difficult.length ? difficult.map(speakable).join(", ") : "None";
+    document.getElementById("statsNote").textContent = sessions.length
+      ? "These stats are saved only on this browser."
+      : "Turn on Save progress in Settings to build your stats on this browser.";
   }
 
   function renderCurriculum() {
@@ -316,11 +344,20 @@
       option.textContent = "Lesson " + (index + 1) + ": " + lesson[0];
       lessonSetting.appendChild(option);
     });
+    const progress = getProgress();
+    const prefix = "en:" + handSetting.value + ":";
+    const nextLesson = lessonData.findIndex((item, index) => !progress.completed.includes(prefix + (index + 1)));
+    lessonSetting.value = String(nextLesson < 0 ? lessonData.length - 1 : nextLesson);
     updateLessonSummary();
   }
 
   function currentInstruction() {
     if (!session) return "";
+    if (session.mode === "free") return "Type anything you would like. Select Finish Free Typing when you are done. Control repeats this instruction.";
+    if (session.durationSeconds) {
+      const minutes = session.durationSeconds / 60;
+      return "Speed test for " + minutes + (minutes === 1 ? " minute" : " minutes") + ". Begin typing. Next character: " + speakable(session.prompt[session.position]) + ".";
+    }
     const remaining = session.prompt.slice(session.position);
     if (session.mode === "guided" && remaining.length <= 80) {
       return session.lesson.description + " Type this sequence: " + speakableSequence(remaining) + ".";
@@ -332,18 +369,36 @@
   function renderPractice() {
     if (!session) return;
     const total = session.prompt.length;
-    document.getElementById("practiceHeading").textContent = "Lesson " + session.lesson.number + ": " + session.lesson.title;
-    document.getElementById("practiceInstruction").textContent = session.lesson.description;
+    const modeNames = {
+      guided: "Lesson " + session.lesson.number + ": " + session.lesson.title,
+      words: "Practice Words",
+      sentences: "Practice Sentences",
+      "speed-60": "One-Minute Speed Test",
+      "speed-180": "Three-Minute Speed Test",
+      "speed-360": "Six-Minute Speed Test",
+      free: "Free Typing"
+    };
+    document.getElementById("practiceHeading").textContent = modeNames[session.mode];
+    document.getElementById("practiceInstruction").textContent = session.mode === "guided" ? session.lesson.description : currentInstruction();
+    const isFree = session.mode === "free";
+    targetPrompt.hidden = isFree;
+    freeTypeInput.hidden = !isFree;
+    finishFreeType.hidden = !isFree;
+    lessonProgress.hidden = isFree;
+    typedText.hidden = isFree;
     targetPrompt.className = "kb-prompt" + (session.prompt.length > 40 ? " kb-prompt--long" : "");
-    targetPrompt.textContent = session.prompt;
+    targetPrompt.textContent = session.durationSeconds ? session.prompt.slice(session.position, session.position + 700) : session.prompt;
     targetPrompt.setAttribute("aria-label", "Typing area. " + currentInstruction());
     typedText.textContent = session.prompt.slice(0, session.position) || "Not started";
-    lessonProgress.max = total;
+    lessonProgress.max = session.durationSeconds || total || 1;
     lessonProgress.value = session.position;
-    lessonProgress.textContent = Math.round((session.position / total) * 100) + " percent";
-    progressText.textContent = session.mode === "timed" ? session.secondsLeft + " seconds remaining" : "Character " + (session.position + 1) + " of " + total;
+    lessonProgress.textContent = total ? Math.round((session.position / total) * 100) + " percent" : "0 percent";
+    progressText.textContent = session.durationSeconds ? session.secondsLeft + " seconds remaining" : isFree ? "Type at your own pace." : "Character " + (session.position + 1) + " of " + total;
     practiceStatus.textContent = "Begin typing.";
-    targetPrompt.focus();
+    if (isFree) {
+      freeTypeInput.value = "";
+      freeTypeInput.focus();
+    } else targetPrompt.focus();
   }
 
   function startPractice() {
@@ -352,18 +407,21 @@
     const lesson = lessonFor(Number(lessonSetting.value), hand);
     const mode = modeSetting.value;
     const prompt = buildPrompt(lesson, mode, hand);
+    const durationSeconds = mode.startsWith("speed-") ? Number(mode.split("-")[1]) : 0;
     session = {
       lesson, hand, mode, prompt, position: 0, correct: 0, mistakes: 0,
-      mistakesByKey: {}, startedAt: Date.now(), secondsLeft: 30, finished: false, accepting: true
+      mistakesByKey: {}, startedAt: Date.now(), durationSeconds,
+      secondsLeft: durationSeconds, finished: false, accepting: true
     };
     show("practicePanel");
     renderPractice();
     speak(currentInstruction());
-    if (mode === "timed") {
+    if (durationSeconds) {
       timerId = window.setInterval(() => {
         if (!session || session.finished) return;
         session.secondsLeft -= 1;
         progressText.textContent = session.secondsLeft + " seconds remaining";
+        lessonProgress.value = session.durationSeconds - session.secondsLeft;
         if (session.secondsLeft <= 0) finishPractice();
       }, 1000);
     }
@@ -375,19 +433,26 @@
     session.accepting = false;
     if (timerId) window.clearInterval(timerId);
     timerId = null;
+    if (session.mode === "free") session.correct = freeTypeInput.value.length;
     const attempts = session.correct + session.mistakes;
     const accuracy = attempts ? Math.round((session.correct / attempts) * 100) : 0;
     const minutes = Math.max((Date.now() - session.startedAt) / 60000, 1 / 60);
     const wpm = Math.round((session.correct / 5) / minutes);
+    session.finalAccuracy = accuracy;
+    session.finalWpm = wpm;
+    session.elapsedSeconds = Math.max(1, Math.round((Date.now() - session.startedAt) / 1000));
     const difficult = Object.keys(session.mistakesByKey).sort((a, b) => session.mistakesByKey[b] - session.mistakesByKey[a]).slice(0, 5);
     const saved = saveProgress();
-    document.getElementById("resultsSummary").textContent = "You completed Lesson " + session.lesson.number + " with " + session.correct + " correct characters in " + attempts + " attempts.";
+    const activity = document.getElementById("practiceHeading").textContent;
+    document.getElementById("resultsSummary").textContent = "You completed " + activity + " with " + session.correct + " correct characters in " + attempts + " attempts.";
     document.getElementById("accuracyResult").textContent = accuracy + "%";
     document.getElementById("speedResult").textContent = String(wpm);
     document.getElementById("difficultResult").textContent = difficult.length ? difficult.map(speakable).join(", ") : "None";
-    document.getElementById("saveResult").textContent = saved ? "This lesson was marked complete on this browser." : "This session was not saved.";
+    document.getElementById("saveResult").textContent = saved
+      ? (session.mode === "guided" ? "This lesson and its results were saved on this browser." : "These results were saved on this browser.")
+      : "This session was not saved.";
     const nextButton = document.getElementById("nextLesson");
-    nextButton.hidden = session.lesson.number >= lessonData.length;
+    nextButton.hidden = session.mode !== "guided" || session.lesson.number >= lessonData.length;
     nextButton.textContent = session.lesson.number >= lessonData.length ? "All Lessons Complete" : "Start Lesson " + (session.lesson.number + 1);
     renderCurriculum();
     show("resultsPanel");
@@ -399,6 +464,7 @@
     timerId = null;
     session = null;
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    updateLessonSummary();
     show("setupPanel");
   }
 
@@ -411,6 +477,7 @@
     }
     sessionStorage.setItem("alcKeyboardingPreview", "open");
     previewToolbar.hidden = false;
+    setVoice(true, false);
     setWebsiteControlsMinimized(true);
     show("setupPanel");
   });
@@ -420,27 +487,49 @@
     startFromMenu();
   });
 
-  setupMenu.addEventListener("keydown", event => {
-    const currentIndex = Math.max(0, menuButtons.indexOf(document.activeElement));
-    let nextIndex = currentIndex;
-    if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % menuButtons.length;
-    else if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + menuButtons.length) % menuButtons.length;
-    else if (event.key === "Home") nextIndex = 0;
-    else if (event.key === "End") nextIndex = menuButtons.length - 1;
-    else return;
-    event.preventDefault();
-    menuButtons[nextIndex].focus();
+  document.querySelectorAll(".kb-arrow-menu").forEach(menu => {
+    const buttons = Array.from(menu.querySelectorAll(".kb-menu-option"));
+    menu.addEventListener("keydown", event => {
+      const currentIndex = Math.max(0, buttons.indexOf(document.activeElement));
+      let nextIndex = currentIndex;
+      if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % buttons.length;
+      else if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      else if (event.key === "Home") nextIndex = 0;
+      else if (event.key === "End") nextIndex = buttons.length - 1;
+      else return;
+      event.preventDefault();
+      buttons[nextIndex].focus();
+    });
+    buttons.forEach(button => button.addEventListener("focus", () => speak(button.textContent.trim())));
   });
 
-  menuButtons.forEach(button => {
-    button.addEventListener("focus", () => {
-      speak(button.textContent.trim());
-    });
-    button.addEventListener("click", event => activateMenuSetting(button, event.shiftKey ? -1 : 1));
-  });
+  setupMenu.querySelectorAll("[data-main-action]").forEach(button => button.addEventListener("click", () => {
+    const action = button.dataset.mainAction;
+    if (action === "lesson") {
+      modeSetting.value = "guided";
+      startFromMenu();
+    }
+    if (action === "practice") show("practiceMenuPanel");
+    if (action === "stats") {
+      updateStats();
+      show("statsPanel");
+      speak(document.getElementById("statsPanel").innerText);
+    }
+    if (action === "settings") show("settingsPanel");
+  }));
+
+  document.querySelectorAll("[data-practice-mode]").forEach(button => button.addEventListener("click", () => {
+    if (button.dataset.practiceMode === "back") return show("setupPanel");
+    modeSetting.value = button.dataset.practiceMode;
+    startFromMenu();
+  }));
+
+  document.querySelectorAll("[data-setting]").forEach(button => button.addEventListener("click", event => {
+    activateSetting(button, event.shiftKey ? -1 : 1);
+  }));
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && (!document.getElementById("practicePanel").hidden || !document.getElementById("resultsPanel").hidden)) {
+    if (event.key === "Escape" && document.getElementById("unlockPanel").hidden && document.getElementById("setupPanel").hidden) {
       event.preventDefault();
       openMenu();
       return;
@@ -452,6 +541,7 @@
       speak(currentInstruction());
       return;
     }
+    if (session.mode === "free") return;
     if (!session.accepting || event.repeat || event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) return;
     event.preventDefault();
     const expected = session.prompt[session.position];
@@ -461,9 +551,10 @@
       targetPrompt.classList.remove("incorrect");
       targetPrompt.classList.add("correct");
       tone(660, 0.08);
-      typedText.textContent = session.prompt.slice(0, session.position);
-      lessonProgress.value = session.position;
-      progressText.textContent = session.mode === "timed" ? session.secondsLeft + " seconds remaining" : "Character " + Math.min(session.position + 1, session.prompt.length) + " of " + session.prompt.length;
+      typedText.textContent = session.prompt.slice(Math.max(0, session.position - 120), session.position);
+      if (session.durationSeconds) targetPrompt.textContent = session.prompt.slice(session.position, session.position + 700);
+      else lessonProgress.value = session.position;
+      progressText.textContent = session.durationSeconds ? session.secondsLeft + " seconds remaining" : "Character " + Math.min(session.position + 1, session.prompt.length) + " of " + session.prompt.length;
       if (session.position >= session.prompt.length) {
         session.accepting = false;
         window.setTimeout(finishPractice, 220);
@@ -493,6 +584,14 @@
     startPractice();
   });
   websiteControlsToggle.addEventListener("click", () => setWebsiteControlsMinimized(!document.body.classList.contains("kb-controls-minimized")));
+  voiceToggle.addEventListener("click", () => setVoice(!useSiteVoice, true));
+  document.querySelectorAll('input[name="voice"]').forEach(input => input.addEventListener("change", () => setVoice(input.value === "site", false)));
+  document.getElementById("statsBack").addEventListener("click", () => show("setupPanel"));
+  finishFreeType.addEventListener("click", finishPractice);
+  freeTypeInput.addEventListener("input", () => {
+    if (!session || session.mode !== "free") return;
+    progressText.textContent = freeTypeInput.value.length + (freeTypeInput.value.length === 1 ? " character typed" : " characters typed");
+  });
   document.getElementById("lockPreview").addEventListener("click", () => {
     sessionStorage.removeItem("alcKeyboardingPreview");
     document.getElementById("previewCode").value = "";
@@ -502,6 +601,7 @@
   });
 
   populateLessons();
+  setVoice(true, false);
   if (sessionStorage.getItem("alcKeyboardingPreview") === "open") {
     previewToolbar.hidden = false;
     setWebsiteControlsMinimized(true);

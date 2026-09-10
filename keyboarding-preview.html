@@ -54,16 +54,22 @@
     .kb-typed { min-height: 2rem; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-weight: 700; }
     .kb-status { min-height: 2.5rem; font-weight: 700; }
     .kb-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
-    .kb-toolbar { display: flex; justify-content: flex-end; margin-bottom: .75rem; }
+    .kb-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; margin-bottom: .75rem; }
     .kb-toolbar button { min-height: 2.75rem; border: 2px solid #356da8; border-radius: .55rem; padding: .55rem .85rem; background: #fff; color: #102044; font: inherit; font-weight: 700; cursor: pointer; }
+    #voiceToggle { margin-left: auto; order: 2; }
     .kb-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 1rem 0; }
     .kb-result { padding: 1rem; border: 2px solid #8db8e8; border-radius: .65rem; }
     .kb-result strong { display: block; font-size: 1.65em; }
+    .kb-back { background: #294c78; }
+    .kb-free-type { width: 100%; min-height: 14rem; box-sizing: border-box; margin: 1.5rem 0; padding: 1rem; border: .3rem solid #51d5ff; border-radius: 1rem; background: #f7fbff; color: #071a35; font: inherit; font-size: clamp(1.5rem, 4vw, 3rem); line-height: 1.4; resize: vertical; }
+    .kb-free-type:focus { outline: .25rem solid #f3a712; outline-offset: .15rem; }
+    .kb-stats-note { max-width: 44rem; margin: 1rem auto; }
     body.kb-controls-minimized .accessibility-panel, body.kb-controls-minimized .site-nav { display: none !important; }
     [hidden] { display: none !important; }
     body.dark-mode .kb-panel { background: #07152e; color: #fff; border-color: #73b5ff; }
     body.dark-mode .kb-choice, body.dark-mode .kb-result { border-color: #73b5ff; }
     body.dark-mode .kb-prompt, body.dark-mode .kb-field select, body.dark-mode .kb-form input { background: #071a35; color: #fff; border-color: #73b5ff; }
+    body.dark-mode .kb-free-type { background: #071a35; color: #fff; border-color: #73b5ff; }
     body.dark-mode .kb-prompt.correct { background: #123f27; color: #eaffef; border-color: #54d47c; }
     body.dark-mode .kb-prompt.incorrect { background: #571b24; color: #fff; border-color: #ff7a88; }
     body.dark-mode .kb-complete { color: #8ef2ad; }
@@ -71,12 +77,14 @@
     html[data-contrast="high"] .kb-panel { background: #fff; color: #000; border-color: #000; }
     html[data-contrast="high"] .kb-panel h1, html[data-contrast="high"] .kb-panel h2 { color: #000 !important; }
     html[data-contrast="high"] .kb-menu-help { background: #fff; color: #000; border-color: #000; }
+    html[data-contrast="high"] .kb-free-type { background: #fff; color: #000; border-color: #000; }
     @media (max-width: 42rem) { .kb-grid, .kb-results { grid-template-columns: 1fr; } .kb-shell { padding: .5rem; } .kb-panel { border-radius: .75rem; min-height: calc(100vh - 4rem); } .kb-menu-option { grid-template-columns: 1fr; gap: .25rem; min-height: 5.5rem; text-align: center; } }
   </style>
 </head>
 <body>
   <main class="kb-shell" id="mainContent">
     <div class="kb-toolbar" id="previewToolbar" hidden>
+      <button id="voiceToggle" type="button" aria-pressed="true">Voice: On</button>
       <button id="websiteControlsToggle" type="button" aria-expanded="false">Show Website Controls</button>
     </div>
 
@@ -93,18 +101,14 @@
 
     <section class="kb-panel" id="setupPanel" aria-labelledby="setupHeading" hidden>
       <h2 id="setupHeading">Keyboarding Center</h2>
-      <p class="kb-summary" id="lessonSummary">Choose a lesson and practice settings.</p>
-      <div class="kb-menu" id="setupMenu" aria-label="Keyboarding settings">
-        <button class="kb-menu-option" type="button" data-menu-setting="lesson"><span class="kb-menu-label">Lesson</span><span class="kb-menu-value" id="menuLessonValue"></span></button>
-        <button class="kb-menu-option" type="button" data-menu-setting="mode"><span class="kb-menu-label">Practice</span><span class="kb-menu-value" id="menuModeValue"></span></button>
-        <button class="kb-menu-option" type="button" data-menu-setting="hand"><span class="kb-menu-label">Learning path</span><span class="kb-menu-value" id="menuHandValue"></span></button>
-        <button class="kb-menu-option" type="button" data-menu-setting="voice"><span class="kb-menu-label">Instruction voice</span><span class="kb-menu-value" id="menuVoiceValue"></span></button>
-        <button class="kb-menu-option" type="button" data-menu-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue"></span></button>
-        <button class="kb-menu-option" type="button" data-menu-setting="size"><span class="kb-menu-label">Print size</span><span class="kb-menu-value" id="menuSizeValue"></span></button>
-        <button class="kb-menu-option" type="button" data-menu-setting="save"><span class="kb-menu-label">Save on this browser</span><span class="kb-menu-value" id="menuSaveValue"></span></button>
-        <button class="kb-menu-option kb-menu-option--start" type="button" data-menu-setting="start"><span class="kb-menu-value">Start Practice</span></button>
+      <p class="kb-summary" id="lessonSummary">Choose what you want to do.</p>
+      <div class="kb-menu kb-arrow-menu" id="setupMenu" aria-label="Keyboarding Center menu">
+        <button class="kb-menu-option" type="button" data-main-action="lesson"><span class="kb-menu-label">Current lesson</span><span class="kb-menu-value" id="menuLessonValue"></span></button>
+        <button class="kb-menu-option" type="button" data-main-action="practice"><span class="kb-menu-label">Practice</span><span class="kb-menu-value">Words, sentences, speed tests, or free typing</span></button>
+        <button class="kb-menu-option" type="button" data-main-action="stats"><span class="kb-menu-label">Stats</span><span class="kb-menu-value">Check my progress</span></button>
+        <button class="kb-menu-option" type="button" data-main-action="settings"><span class="kb-menu-label">Settings</span><span class="kb-menu-value">Change keyboarding options</span></button>
       </div>
-      <p class="kb-menu-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> change or select. <strong>Shift plus Enter:</strong> previous choice.</p>
+      <p class="kb-menu-help"><strong>Up or Down:</strong> move through the list. <strong>Enter:</strong> open the choice. <strong>Voice:</strong> use the button in the upper-right.</p>
       <form class="kb-form" id="setupForm" hidden>
         <div class="kb-grid">
           <div class="kb-field">
@@ -117,9 +121,10 @@
               <option value="guided">Guided lesson</option>
               <option value="words">Practice words</option>
               <option value="sentences">Practice sentences</option>
-              <option value="timed">30-second typing</option>
-              <option value="accuracy">Accuracy practice</option>
-              <option value="review">Review difficult keys</option>
+              <option value="speed-60">One-minute speed test</option>
+              <option value="speed-180">Three-minute speed test</option>
+              <option value="speed-360">Six-minute speed test</option>
+              <option value="free">Free typing</option>
             </select>
           </div>
           <div class="kb-field">
@@ -148,20 +153,63 @@
         </div>
         <fieldset class="kb-choice">
           <legend>Instruction voice</legend>
-          <label><input type="radio" name="voice" value="screen-reader" checked> Use my own screen reader</label>
-          <label><input type="radio" name="voice" value="site"> Use site voice</label>
+          <label><input type="radio" name="voice" value="screen-reader"> Use my own screen reader</label>
+          <label><input type="radio" name="voice" value="site" checked> Use site voice</label>
         </fieldset>
         <fieldset class="kb-choice">
           <legend>Practice options</legend>
           <label><input id="soundSetting" type="checkbox" checked> Play correct and incorrect sounds</label>
           <label><input id="saveSetting" type="checkbox"> Remember completed lessons on this browser</label>
         </fieldset>
-        <button class="kb-primary" type="submit">Start Keyboarding Practice</button>
       </form>
+    </section>
+
+    <section class="kb-panel" id="practiceMenuPanel" aria-labelledby="practiceMenuHeading" hidden>
+      <h2 id="practiceMenuHeading">Practice</h2>
+      <p class="kb-summary">Choose a practice activity.</p>
+      <div class="kb-menu kb-arrow-menu" id="practiceMenu" aria-label="Practice choices">
+        <button class="kb-menu-option" type="button" data-practice-mode="words"><span class="kb-menu-value">Practice words</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="sentences"><span class="kb-menu-value">Practice sentences</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="speed-60"><span class="kb-menu-value">One-minute speed test</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="speed-180"><span class="kb-menu-value">Three-minute speed test</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="speed-360"><span class="kb-menu-value">Six-minute speed test</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="free"><span class="kb-menu-value">Free typing</span></button>
+        <button class="kb-menu-option kb-back" type="button" data-practice-mode="back"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
+      </div>
+      <p class="kb-menu-help"><strong>Up or Down:</strong> move through practice choices. <strong>Enter:</strong> start. <strong>Escape:</strong> go back.</p>
+    </section>
+
+    <section class="kb-panel" id="settingsPanel" aria-labelledby="settingsHeading" hidden>
+      <h2 id="settingsHeading">Settings</h2>
+      <div class="kb-menu kb-arrow-menu" id="settingsMenu" aria-label="Keyboarding settings">
+        <button class="kb-menu-option" type="button" data-setting="lesson"><span class="kb-menu-label">Current lesson</span><span class="kb-menu-value" id="settingLessonValue"></span></button>
+        <button class="kb-menu-option" type="button" data-setting="hand"><span class="kb-menu-label">Learning path</span><span class="kb-menu-value" id="menuHandValue"></span></button>
+        <button class="kb-menu-option" type="button" data-setting="voice"><span class="kb-menu-label">Instruction voice</span><span class="kb-menu-value" id="menuVoiceValue">Site voice</span></button>
+        <button class="kb-menu-option" type="button" data-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue">On</span></button>
+        <button class="kb-menu-option" type="button" data-setting="size"><span class="kb-menu-label">Print size</span><span class="kb-menu-value" id="menuSizeValue"></span></button>
+        <button class="kb-menu-option" type="button" data-setting="save"><span class="kb-menu-label">Save progress on this browser</span><span class="kb-menu-value" id="menuSaveValue">Off</span></button>
+        <button class="kb-menu-option" type="button" data-setting="language"><span class="kb-menu-label">Lesson language</span><span class="kb-menu-value" id="menuLanguageValue">English</span></button>
+        <button class="kb-menu-option kb-back" type="button" data-setting="back"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
+      </div>
+      <p class="kb-menu-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> change. <strong>Shift plus Enter:</strong> previous choice. <strong>Escape:</strong> go back.</p>
       <details class="kb-curriculum">
         <summary>View all 50 lessons</summary>
         <ol id="curriculumList"></ol>
       </details>
+    </section>
+
+    <section class="kb-panel kb-stage" id="statsPanel" aria-labelledby="statsHeading" hidden>
+      <h2 id="statsHeading">My Stats</h2>
+      <div class="kb-results">
+        <div class="kb-result"><span>Lessons completed</span><strong id="statsLessons">0 of 50</strong></div>
+        <div class="kb-result"><span>Practice sessions</span><strong id="statsSessions">0</strong></div>
+        <div class="kb-result"><span>Best accuracy</span><strong id="statsAccuracy">No sessions</strong></div>
+        <div class="kb-result"><span>Best speed</span><strong id="statsSpeed">No sessions</strong></div>
+        <div class="kb-result"><span>Practice time</span><strong id="statsTime">0 minutes</strong></div>
+        <div class="kb-result"><span>Difficult keys</span><strong id="statsDifficult">None</strong></div>
+      </div>
+      <p class="kb-stats-note" id="statsNote">Turn on Save progress in Settings to build your stats on this browser.</p>
+      <div class="kb-actions"><button class="kb-action" id="statsBack" type="button">Back to Keyboarding Center</button></div>
     </section>
 
     <section class="kb-panel kb-stage" id="practicePanel" aria-labelledby="practiceHeading" hidden>
@@ -170,9 +218,11 @@
       <progress class="kb-progress" id="lessonProgress" max="1" value="0">0 percent</progress>
       <p id="progressText"></p>
       <div class="kb-prompt" id="targetPrompt" role="application" tabindex="0" aria-describedby="practiceInstruction practiceStatus"></div>
+      <textarea class="kb-free-type" id="freeTypeInput" aria-label="Free typing area" hidden></textarea>
       <p class="kb-typed" id="typedText" aria-label="Text typed correctly"></p>
       <p class="kb-status" id="practiceStatus" role="status" aria-live="polite"></p>
       <p class="kb-help"><strong>Controls:</strong> Type the prompt. Control repeats the instruction. Escape closes practice.</p>
+      <div class="kb-actions"><button class="kb-action" id="finishFreeType" type="button" hidden>Finish Free Typing</button></div>
     </section>
 
     <section class="kb-panel kb-stage" id="resultsPanel" aria-labelledby="resultsHeading" hidden>
