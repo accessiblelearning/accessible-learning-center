@@ -209,7 +209,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 342, "Expected 342 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 345, "Expected 345 HTML pages, found " + htmlFiles.length + ".");
 const manualsHtml = readFileSync(resolve(root, "manuals.html"), "utf8");
 check(manualsHtml.includes('id="manualSearch"'), "Manuals page is missing its title filter.");
 check(manualsHtml.includes('id="manualType"'), "Manuals page is missing its resource-type filter.");
@@ -314,7 +314,7 @@ for (const categoryName of ["Windows and File Explorer", "Microsoft Word and doc
 check(commandPractice.includes('return "Press " + spokenKeys(command[0]) + ". " + commandExplanation();'), "Spoken command and explanation are not clearly separated.");
 check(commandPractice.includes('return "This command lets you "'), "General command explanations are missing clear wording.");
 check(commandPractice.includes('return "Here is what this command does. "'), "Detailed command explanations are missing clear wording.");
-check(readFileSync(resolve(root, "command-practice.html"), "utf8").includes("cannot block operating-system"), "System-shortcut safety warning is missing.");
+check(readFileSync(resolve(root, "command-practice.html"), "utf8").includes("System and browser commands"), "System-shortcut safety warning is missing.");
 const quizScript = readFileSync(resolve(root, "quiz.js"), "utf8");
 check(quizScript.includes("data.passPercent"), "Quiz passing-score behavior is missing.");
 check(quizScript.includes("print-certificate"), "Printable certificate behavior is missing.");
