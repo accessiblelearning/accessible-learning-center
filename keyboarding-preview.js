@@ -179,12 +179,15 @@
     return Array.from(text).every(character => character === " " || allowed.includes(character));
   }
 
-  function repeatedFocus(focus, length) {
+  function repeatedFocus(focus, length, rowLength) {
     let characters = Array.from(focus.replace(/ /g, ""));
     if (!characters.length) characters = ["f", "j"];
     const output = [];
-    for (let i = 0; i < length; i += 1) output.push(characters[i % characters.length]);
-    return output.join(" ");
+    for (let i = 0; i < length; i += 1) {
+      if (i > 0 && i % rowLength === 0) output.push(" ");
+      output.push(characters[i % characters.length]);
+    }
+    return output.join("");
   }
 
   function buildPrompt(lesson, mode, hand) {
@@ -195,7 +198,11 @@
     const start = (lesson.number * 3) % words.length;
     const selectedWords = Array.from({ length: 12 }, (_, index) => words[(start + index) % words.length]);
     const sentences = SENTENCE_BANK.filter(sentence => fits(sentence.toLowerCase(), lowerAllowed) && (hand === "both" || Array.from(sentence.toLowerCase()).every(character => !/[a-z]/.test(character) || belongsToHand(character, hand))));
-    if (mode === "guided") return repeatedFocus(lesson.focus, lesson.number < 11 ? 12 : 18);
+    if (mode === "guided") {
+      if (lesson.number <= 2) return repeatedFocus(lesson.focus, 8, 4);
+      if (lesson.number < 11) return repeatedFocus(lesson.focus, 12, 6);
+      return repeatedFocus(lesson.focus, 18, 6);
+    }
     if (mode === "words") return selectedWords.slice(0, 8).join(" ");
     if (mode === "sentences") return sentences[lesson.number % Math.max(sentences.length, 1)] || selectedWords.slice(0, 8).join(" ");
     if (mode.startsWith("speed-")) return Array.from({ length: 200 }, () => selectedWords.join(" ")).join(" ");
@@ -366,6 +373,25 @@
     return session.lesson.description + (nextCharacter === undefined ? "" : " Next character: " + speakable(nextCharacter) + ".");
   }
 
+  function renderTrackedPrompt() {
+    if (!session || session.mode === "free") return;
+    const start = session.durationSeconds ? Math.max(0, session.position - 20) : 0;
+    const end = session.durationSeconds ? Math.min(session.prompt.length, start + 700) : session.prompt.length;
+    const line = document.createElement("span");
+    line.className = "kb-prompt-line";
+    for (let index = start; index < end; index += 1) {
+      const character = session.prompt[index];
+      const marker = document.createElement("span");
+      marker.className = "kb-char";
+      if (character === " ") marker.classList.add("kb-char-space");
+      if (index < session.position) marker.classList.add("kb-char-complete");
+      if (index === session.position) marker.classList.add("kb-char-current");
+      marker.textContent = character === " " ? "\u00a0" : character;
+      line.appendChild(marker);
+    }
+    targetPrompt.replaceChildren(line);
+  }
+
   function renderPractice() {
     if (!session) return;
     const total = session.prompt.length;
@@ -387,7 +413,7 @@
     lessonProgress.hidden = isFree;
     typedText.hidden = isFree;
     targetPrompt.className = "kb-prompt" + (session.prompt.length > 40 ? " kb-prompt--long" : "");
-    targetPrompt.textContent = session.durationSeconds ? session.prompt.slice(session.position, session.position + 700) : session.prompt;
+    renderTrackedPrompt();
     targetPrompt.setAttribute("aria-label", "Typing area. " + currentInstruction());
     typedText.textContent = session.prompt.slice(0, session.position) || "Not started";
     lessonProgress.max = session.durationSeconds || total || 1;
@@ -552,8 +578,8 @@
       targetPrompt.classList.add("correct");
       tone(660, 0.08);
       typedText.textContent = session.prompt.slice(Math.max(0, session.position - 120), session.position);
-      if (session.durationSeconds) targetPrompt.textContent = session.prompt.slice(session.position, session.position + 700);
-      else lessonProgress.value = session.position;
+      renderTrackedPrompt();
+      if (!session.durationSeconds) lessonProgress.value = session.position;
       progressText.textContent = session.durationSeconds ? session.secondsLeft + " seconds remaining" : "Character " + Math.min(session.position + 1, session.prompt.length) + " of " + session.prompt.length;
       if (session.position >= session.prompt.length) {
         session.accepting = false;
