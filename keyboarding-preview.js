@@ -77,6 +77,8 @@
   const lessonSetting = document.getElementById("lessonSetting");
   const modeSetting = document.getElementById("modeSetting");
   const handSetting = document.getElementById("handSetting");
+  const setupMenu = document.getElementById("setupMenu");
+  const menuButtons = Array.from(setupMenu.querySelectorAll(".kb-menu-option"));
   const targetPrompt = document.getElementById("targetPrompt");
   const typedText = document.getElementById("typedText");
   const practiceStatus = document.getElementById("practiceStatus");
@@ -98,6 +100,9 @@
     if (heading) {
       heading.setAttribute("tabindex", "-1");
       heading.focus();
+    }
+    if (panelId === "setupPanel") {
+      window.setTimeout(() => menuButtons[0]?.focus(), 0);
     }
   }
 
@@ -232,6 +237,58 @@
     const lesson = lessonFor(Number(lessonSetting.value || 0), handSetting.value);
     document.getElementById("lessonSummary").textContent = "Lesson " + lesson.number + ": " + lesson.title + ". " + lesson.description;
     renderCurriculum();
+    updateSetupMenu();
+  }
+
+  function selectedText(select) {
+    return select.options[select.selectedIndex]?.textContent || "";
+  }
+
+  function updateSetupMenu() {
+    const voice = document.querySelector('input[name="voice"]:checked').value;
+    document.getElementById("menuLessonValue").textContent = selectedText(lessonSetting);
+    document.getElementById("menuModeValue").textContent = selectedText(modeSetting);
+    document.getElementById("menuHandValue").textContent = selectedText(handSetting);
+    document.getElementById("menuVoiceValue").textContent = voice === "site" ? "Site voice" : "My screen reader";
+    document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
+    document.getElementById("menuSizeValue").textContent = selectedText(document.getElementById("textSizeSetting"));
+    document.getElementById("menuSaveValue").textContent = document.getElementById("saveSetting").checked ? "On" : "Off";
+  }
+
+  function cycleSelect(select, direction) {
+    const count = select.options.length;
+    select.selectedIndex = (select.selectedIndex + direction + count) % count;
+  }
+
+  function startFromMenu() {
+    useSiteVoice = document.querySelector('input[name="voice"]:checked').value === "site";
+    useSounds = document.getElementById("soundSetting").checked;
+    rememberProgress = document.getElementById("saveSetting").checked;
+    document.documentElement.style.setProperty("--kb-scale", document.getElementById("textSizeSetting").value);
+    startPractice();
+  }
+
+  function activateMenuSetting(button, direction) {
+    const setting = button.dataset.menuSetting;
+    if (setting === "start") {
+      startFromMenu();
+      return;
+    }
+    if (setting === "lesson") cycleSelect(lessonSetting, direction);
+    if (setting === "mode") cycleSelect(modeSetting, direction);
+    if (setting === "hand") cycleSelect(handSetting, direction);
+    if (setting === "size") cycleSelect(document.getElementById("textSizeSetting"), direction);
+    if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
+    if (setting === "save") document.getElementById("saveSetting").checked = !document.getElementById("saveSetting").checked;
+    if (setting === "voice") {
+      const current = document.querySelector('input[name="voice"]:checked').value;
+      document.querySelector('input[name="voice"][value="' + (current === "site" ? "screen-reader" : "site") + '"]').checked = true;
+      useSiteVoice = document.querySelector('input[name="voice"]:checked').value === "site";
+    }
+    if (setting === "lesson" || setting === "hand") updateLessonSummary();
+    else updateSetupMenu();
+    if (setting === "size") document.documentElement.style.setProperty("--kb-scale", document.getElementById("textSizeSetting").value);
+    speak(button.textContent.trim());
   }
 
   function renderCurriculum() {
@@ -277,7 +334,7 @@
     const total = session.prompt.length;
     document.getElementById("practiceHeading").textContent = "Lesson " + session.lesson.number + ": " + session.lesson.title;
     document.getElementById("practiceInstruction").textContent = session.lesson.description;
-    targetPrompt.className = "kb-prompt";
+    targetPrompt.className = "kb-prompt" + (session.prompt.length > 40 ? " kb-prompt--long" : "");
     targetPrompt.textContent = session.prompt;
     targetPrompt.setAttribute("aria-label", "Typing area. " + currentInstruction());
     typedText.textContent = session.prompt.slice(0, session.position) || "Not started";
@@ -360,11 +417,26 @@
 
   document.getElementById("setupForm").addEventListener("submit", event => {
     event.preventDefault();
-    useSiteVoice = document.querySelector('input[name="voice"]:checked').value === "site";
-    useSounds = document.getElementById("soundSetting").checked;
-    rememberProgress = document.getElementById("saveSetting").checked;
-    document.documentElement.style.setProperty("--kb-scale", document.getElementById("textSizeSetting").value);
-    startPractice();
+    startFromMenu();
+  });
+
+  setupMenu.addEventListener("keydown", event => {
+    const currentIndex = Math.max(0, menuButtons.indexOf(document.activeElement));
+    let nextIndex = currentIndex;
+    if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % menuButtons.length;
+    else if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + menuButtons.length) % menuButtons.length;
+    else if (event.key === "Home") nextIndex = 0;
+    else if (event.key === "End") nextIndex = menuButtons.length - 1;
+    else return;
+    event.preventDefault();
+    menuButtons[nextIndex].focus();
+  });
+
+  menuButtons.forEach(button => {
+    button.addEventListener("focus", () => {
+      speak(button.textContent.trim());
+    });
+    button.addEventListener("click", event => activateMenuSetting(button, event.shiftKey ? -1 : 1));
   });
 
   document.addEventListener("keydown", event => {

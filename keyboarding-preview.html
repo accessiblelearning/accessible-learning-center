@@ -11,9 +11,11 @@
   <script src="keyboarding-preview.js?v=keyboarding-preview-2" defer></script>
   <style>
     :root { --kb-scale: 1; }
-    .kb-shell { max-width: 58rem; margin: 0 auto; padding: 1rem; font-size: calc(1rem * var(--kb-scale)); }
-    .kb-panel { background: var(--card-bg, #f4f8ff); color: var(--text-color, #102044); border: 2px solid #78aeea; border-radius: 1rem; padding: clamp(1.25rem, 4vw, 2.25rem); box-shadow: 0 .6rem 1.5rem rgba(15, 53, 105, .12); }
+    body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
+    .kb-shell { max-width: 72rem; min-height: 100vh; margin: 0 auto; padding: clamp(.75rem, 2vw, 1.5rem); box-sizing: border-box; font-size: calc(1.2rem * var(--kb-scale)); }
+    .kb-panel { min-height: calc(100vh - 7rem); box-sizing: border-box; background: #0b2147; color: #fff; border: 3px solid #65aef5; border-radius: 1rem; padding: clamp(1.25rem, 4vw, 3rem); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
     .kb-panel h1, .kb-panel h2 { margin-top: 0; line-height: 1.15; }
+    .kb-panel h1, .kb-panel h2 { text-align: center; font-size: clamp(2.25rem, 7vw, 4.75rem); }
     .kb-form { display: grid; gap: 1rem; }
     .kb-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
     .kb-field { display: grid; gap: .4rem; }
@@ -21,13 +23,23 @@
     .kb-field select, .kb-form input, .kb-form button, .kb-action { min-height: 3.25rem; font: inherit; }
     .kb-field select, .kb-form input { width: 100%; box-sizing: border-box; padding: .7rem; border: 2px solid #356da8; border-radius: .55rem; background: #fff; color: #102044; }
     .kb-primary, .kb-action { border: 2px solid #0b4281; border-radius: .65rem; padding: .75rem 1rem; background: #075fc1; color: #fff; font-weight: 700; cursor: pointer; }
+    .kb-action { min-height: 4.75rem; font-size: 1.15em; }
     .kb-primary:hover, .kb-action:hover { background: #044b9b; }
     .kb-primary:focus-visible, .kb-action:focus-visible, .kb-toolbar button:focus-visible, .kb-field select:focus-visible, .kb-form input:focus-visible { outline: .2rem solid #f3a712; outline-offset: .15rem; }
     .kb-choice { display: grid; gap: .65rem; margin: 0; padding: .9rem; border: 2px solid #8db8e8; border-radius: .65rem; }
     .kb-choice label { display: flex; align-items: center; gap: .65rem; }
     .kb-choice input { width: 1.35rem; height: 1.35rem; flex: 0 0 auto; }
     .kb-note, .kb-help { padding: .85rem; background: rgba(116, 174, 234, .18); border-radius: .5rem; }
-    .kb-summary { border-left: .35rem solid #1672cf; padding-left: .85rem; }
+    .kb-summary { max-width: 48rem; margin: 0 auto 1.25rem; text-align: center; font-size: 1.2em; }
+    .kb-menu { display: grid; gap: .85rem; max-width: 58rem; margin: 1.5rem auto; }
+    .kb-menu-option { width: 100%; min-height: 6.5rem; display: grid; grid-template-columns: minmax(9rem, .8fr) minmax(0, 1.5fr); align-items: center; gap: 1rem; padding: 1rem 1.5rem; border: 3px solid #65aef5; border-radius: .85rem; background: #12396f; color: #fff; font: inherit; text-align: left; cursor: pointer; }
+    .kb-menu-option .kb-menu-label { font-weight: 700; font-size: 1.05em; }
+    .kb-menu-option .kb-menu-value { font-weight: 900; font-size: clamp(1.45rem, 4vw, 2.7rem); line-height: 1.15; }
+    .kb-menu-option:hover { background: #185095; }
+    .kb-menu-option:focus { outline: none; background: #f7fbff; color: #071a35; border-color: #51d5ff; box-shadow: 0 0 0 .25rem #087fd8; }
+    .kb-menu-option--start { grid-template-columns: 1fr; text-align: center; background: #0872ce; }
+    .kb-menu-option--start .kb-menu-value { font-size: clamp(1.8rem, 5vw, 3.25rem); }
+    .kb-menu-help { position: sticky; bottom: 0; max-width: 58rem; margin: 1rem auto 0; padding: .85rem 1rem; border-top: 2px solid #65aef5; background: #06142d; text-align: center; font-weight: 800; }
     .kb-curriculum { margin-top: 1.25rem; border-top: 2px solid #b5d1ef; padding-top: 1rem; }
     .kb-curriculum summary { font-weight: 800; cursor: pointer; }
     .kb-curriculum ol { display: grid; gap: .55rem; padding-left: 2rem; }
@@ -35,7 +47,8 @@
     .kb-complete { color: #0b6b31; font-weight: 700; }
     .kb-stage { text-align: center; }
     .kb-progress { width: 100%; height: 1.35rem; }
-    .kb-prompt { display: grid; place-items: center; min-height: 9rem; margin: 1.25rem 0; padding: 1rem; border: .25rem solid #77ace7; border-radius: 1rem; background: #fff; color: #102044; font-size: clamp(1.8rem, 7vw, 4rem); font-weight: 800; line-height: 1.35; overflow-wrap: anywhere; }
+    .kb-prompt { display: grid; place-items: center; min-height: 13rem; margin: 2rem 0; padding: 1.25rem; border: .3rem solid #51d5ff; border-radius: 1rem; background: #f7fbff; color: #071a35; font-size: clamp(2.5rem, 9vw, 6.5rem); font-weight: 900; line-height: 1.35; overflow-wrap: anywhere; }
+    .kb-prompt--long { font-size: clamp(1.5rem, 4vw, 3rem); }
     .kb-prompt.correct { background: #d9f7df; border-color: #16813a; color: #0a5224; }
     .kb-prompt.incorrect { background: #ffe0e0; border-color: #b51f2e; color: #7b101d; }
     .kb-typed { min-height: 2rem; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-weight: 700; }
@@ -48,13 +61,13 @@
     .kb-result strong { display: block; font-size: 1.65em; }
     body.kb-controls-minimized .accessibility-panel, body.kb-controls-minimized .site-nav { display: none !important; }
     [hidden] { display: none !important; }
-    body.dark-mode .kb-panel { background: #10264a; color: #fff; border-color: #73b5ff; }
+    body.dark-mode .kb-panel { background: #07152e; color: #fff; border-color: #73b5ff; }
     body.dark-mode .kb-choice, body.dark-mode .kb-result { border-color: #73b5ff; }
     body.dark-mode .kb-prompt, body.dark-mode .kb-field select, body.dark-mode .kb-form input { background: #071a35; color: #fff; border-color: #73b5ff; }
     body.dark-mode .kb-prompt.correct { background: #123f27; color: #eaffef; border-color: #54d47c; }
     body.dark-mode .kb-prompt.incorrect { background: #571b24; color: #fff; border-color: #ff7a88; }
     body.dark-mode .kb-complete { color: #8ef2ad; }
-    @media (max-width: 42rem) { .kb-grid, .kb-results { grid-template-columns: 1fr; } .kb-shell { padding: .5rem; } .kb-panel { border-radius: .75rem; } }
+    @media (max-width: 42rem) { .kb-grid, .kb-results { grid-template-columns: 1fr; } .kb-shell { padding: .5rem; } .kb-panel { border-radius: .75rem; min-height: calc(100vh - 4rem); } .kb-menu-option { grid-template-columns: 1fr; gap: .25rem; min-height: 5.5rem; text-align: center; } }
   </style>
 </head>
 <body>
@@ -75,9 +88,20 @@
     </section>
 
     <section class="kb-panel" id="setupPanel" aria-labelledby="setupHeading" hidden>
-      <h2 id="setupHeading">Keyboarding Center Menu</h2>
+      <h2 id="setupHeading">Keyboarding Center</h2>
       <p class="kb-summary" id="lessonSummary">Choose a lesson and practice settings.</p>
-      <form class="kb-form" id="setupForm">
+      <div class="kb-menu" id="setupMenu" aria-label="Keyboarding settings">
+        <button class="kb-menu-option" type="button" data-menu-setting="lesson"><span class="kb-menu-label">Lesson</span><span class="kb-menu-value" id="menuLessonValue"></span></button>
+        <button class="kb-menu-option" type="button" data-menu-setting="mode"><span class="kb-menu-label">Practice</span><span class="kb-menu-value" id="menuModeValue"></span></button>
+        <button class="kb-menu-option" type="button" data-menu-setting="hand"><span class="kb-menu-label">Learning path</span><span class="kb-menu-value" id="menuHandValue"></span></button>
+        <button class="kb-menu-option" type="button" data-menu-setting="voice"><span class="kb-menu-label">Instruction voice</span><span class="kb-menu-value" id="menuVoiceValue"></span></button>
+        <button class="kb-menu-option" type="button" data-menu-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue"></span></button>
+        <button class="kb-menu-option" type="button" data-menu-setting="size"><span class="kb-menu-label">Print size</span><span class="kb-menu-value" id="menuSizeValue"></span></button>
+        <button class="kb-menu-option" type="button" data-menu-setting="save"><span class="kb-menu-label">Save on this browser</span><span class="kb-menu-value" id="menuSaveValue"></span></button>
+        <button class="kb-menu-option kb-menu-option--start" type="button" data-menu-setting="start"><span class="kb-menu-value">Start Practice</span></button>
+      </div>
+      <p class="kb-menu-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> change or select. <strong>Shift plus Enter:</strong> previous choice.</p>
+      <form class="kb-form" id="setupForm" hidden>
         <div class="kb-grid">
           <div class="kb-field">
             <label for="lessonSetting">Lesson</label>
@@ -130,7 +154,6 @@
         </fieldset>
         <button class="kb-primary" type="submit">Start Keyboarding Practice</button>
       </form>
-      <p class="kb-note">Progress saving is optional and stays only on this browser. No name, account, or personal information is required.</p>
       <details class="kb-curriculum">
         <summary>View all 50 lessons</summary>
         <ol id="curriculumList"></ol>
