@@ -23,8 +23,7 @@
       problem: "On a web form, pressing H moves to a heading instead of typing. Locate the edit field and enter interaction mode without using the mouse.",
       steps: [
         { command: "E", success: "Email address, edit box.", why: "Browse-mode edit-field navigation located the intended field." },
-        { command: "ENTER", success: "Forms mode on. Email address, edit.", why: "Enter placed the screen reader in the field’s interaction mode." },
-        { command: "TAB", success: "Continue, button.", why: "You completed the focus recovery and moved to the next control." }
+        { command: "ENTER", success: "Forms mode on. Email address, edit.", why: "Enter placed the screen reader in the field’s interaction mode." }
       ],
       hint: "Use a screen-reader navigation key to find the next edit field before changing modes."
     },
@@ -75,10 +74,9 @@
     },
     {
       category: "Files and folders", title: "Rename the correct file",
-      problem: "Resume Final Copy.docx is selected in File Explorer. Give it the clearer name Professional Resume.docx without opening it.",
+      problem: "Resume Final Copy.docx is selected in File Explorer. Start renaming it without opening it, then confirm the supplied name Professional Resume.docx.",
       steps: [
-        { command: "F2", success: "Resume Final Copy, filename edit.", why: "F2 opened rename mode for the selected file." },
-        { command: "CTRL+A", success: "Filename selected. The .docx extension remains protected.", why: "You selected the editable filename before replacing it." },
+        { command: "F2", success: "Resume Final Copy, filename edit. The name is selected and the .docx extension remains protected.", why: "F2 opened rename mode without opening the file." },
         { command: "ENTER", success: "Renamed: Professional Resume.docx.", why: "The simulator supplied the practice name and Enter confirmed it." }
       ],
       hint: "Use File Explorer’s rename command on the selected file."
@@ -117,8 +115,12 @@
 
   function speak(text) {
     if (!simulatedVoice.checked || !("speechSynthesis" in window)) return;
-    speechSynthesis.cancel();
+    stopVoice();
     speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+  }
+
+  function stopVoice() {
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
   }
 
   function announce(text, state = "") {
@@ -136,6 +138,13 @@
   function displayedCommand(command) {
     const sr = screenReaders[perspective.value];
     return command === "TITLE" ? sr.title : command === "FOCUS" ? sr.focus : command === "MODE" ? sr.mode : command;
+  }
+
+  function finalKeyFor(command) {
+    if (command === "TITLE") return "T";
+    if (command === "FOCUS") return "TAB";
+    if (command === "MODE") return perspective.value === "jaws" ? "Z" : "SPACE";
+    return command.includes("+") ? command.split("+").pop() : "";
   }
 
   function normalizedKey(event) {
@@ -159,7 +168,7 @@
   document.addEventListener("keydown", event => {
     if (!focusedMissionSession || event.key !== "Escape" || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
     event.preventDefault();
-    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    stopVoice();
     window.location.href = "topic-missions.html";
   }, true);
   missionControl.addEventListener("keydown", event => {
@@ -206,6 +215,7 @@
     altModifierArmed = false;
     controlModifierArmed = false;
     if (!command || command.endsWith("+")) return;
+    if (!command.includes("+") && command === finalKeyFor(expectedCommand)) command = expectedCommand;
     event.preventDefault();
     processCommand(command);
   });
@@ -219,6 +229,13 @@
 
   function processCommand(command) {
     const mission = missions[current];
+    try {
+      sessionStorage.setItem("missionControlSettings", JSON.stringify({
+        speech: simulatedVoice.checked ? "voice" : "own",
+        reader: perspective.value,
+        mission: String(current)
+      }));
+    } catch (error) {}
     const expected = mission.steps[step];
     lastCommand.textContent = displayedCommand(command);
     const item = document.createElement("li");
@@ -272,8 +289,15 @@
     controlModifierArmed = false;
     nextButton.hidden = true;
     updateProgress();
-    announce("Mission briefing. " + mission.title + ". " + mission.problem + " Move to Mission Control and begin.");
-    title.focus();
+    const briefing = "Mission briefing. " + mission.title + ". " + mission.problem;
+    transcript.setAttribute("aria-live", "off");
+    transcript.textContent = screenReaders[perspective.value].name + " reports: “" + briefing + "”";
+    transcript.className = "scenario-feedback";
+    speak(transcript.textContent);
+    missionControl.focus();
+    if (!simulatedVoice.checked) {
+      window.setTimeout(() => transcript.setAttribute("aria-live", "polite"), 100);
+    }
   }
 
   missions.forEach((mission, index) => {
@@ -283,7 +307,10 @@
     missionSelect.append(option);
   });
   document.getElementById("startMission").addEventListener("click", startMission);
-  document.getElementById("restartMission").addEventListener("click", startMission);
+  document.getElementById("restartMission").addEventListener("click", () => {
+    document.querySelector(".mission-log-panel").open = false;
+    startMission();
+  });
   nextButton.addEventListener("click", () => {
     missionSelect.value = String((current + 1) % missions.length);
     startMission();
@@ -291,5 +318,6 @@
   perspective.addEventListener("change", () => {
     if (active) announce("Screen-reader perspective changed to " + screenReaders[perspective.value].name + ".");
   });
+  window.addEventListener("pagehide", stopVoice);
   updateProgress();
 })();

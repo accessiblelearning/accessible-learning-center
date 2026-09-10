@@ -30,6 +30,7 @@
   const status = document.getElementById("missionSetupStatus");
   const start = document.getElementById("startMissionSetup");
   const items = [...menu.querySelectorAll("button")];
+  const storageKey = "missionControlSettings";
 
   function current(setting) {
     return settings[setting].options[settings[setting].index];
@@ -61,12 +62,36 @@
     status.textContent = "Selected: " + current("speech").label + ", " + current("reader").label + ", and " + current("mission").label + ".";
   }
 
+  function saveSettings() {
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify({
+        speech: current("speech").value,
+        reader: current("reader").value,
+        mission: current("mission").value
+      }));
+    } catch (error) {}
+  }
+
+  function restoreSettings() {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(storageKey) || "{}");
+      Object.keys(settings).forEach(setting => {
+        const savedIndex = settings[setting].options.findIndex(option => option.value === saved[setting]);
+        if (savedIndex >= 0) settings[setting].index = savedIndex;
+        settings[setting].valueElement.textContent = current(setting).label;
+      });
+    } catch (error) {}
+    status.setAttribute("aria-live", voiceEnabled() ? "off" : "polite");
+    updateStatus();
+  }
+
   function changeSetting(setting) {
     const data = settings[setting];
     data.index = (data.index + 1) % data.options.length;
     data.valueElement.textContent = current(setting).label;
     status.setAttribute("aria-live", voiceEnabled() ? "off" : "polite");
     updateStatus();
+    saveSettings();
 
     if (setting === "speech" && !voiceEnabled()) {
       stopVoice();
@@ -87,6 +112,7 @@
     const button = event.target.closest("button");
     if (!button) return;
     if (button === start) {
+      saveSettings();
       const params = new URLSearchParams({
         reader: current("reader").value,
         mission: current("mission").value,
@@ -117,5 +143,7 @@
     window.location.href = "troubleshooting-lab.html";
   }, true);
 
+  restoreSettings();
+  window.addEventListener("pagehide", stopVoice);
   window.addEventListener("DOMContentLoaded", () => items[0].focus());
 })();

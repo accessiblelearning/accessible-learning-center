@@ -3,9 +3,10 @@
 
   const params = new URLSearchParams(window.location.search);
   const reader = params.get("reader");
-  const mission = Number(params.get("mission"));
+  const missionParam = params.get("mission");
+  const mission = Number(missionParam);
   const validReader = ["jaws", "nvda", "narrator"].includes(reader);
-  const validMission = Number.isInteger(mission) && mission >= 0 && mission < 8;
+  const validMission = missionParam !== null && Number.isInteger(mission) && mission >= 0 && mission < 8;
 
   if (!validReader || !validMission) {
     window.location.replace("topic-missions.html");
