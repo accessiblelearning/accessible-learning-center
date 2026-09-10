@@ -169,11 +169,6 @@
       announce("Strategy hint: " + missions[current].hint);
       return;
     }
-    if (event.key.toLowerCase() === "p" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && expectedCommand !== "P") {
-      event.preventDefault();
-      announce("Mission problem. " + problem.textContent);
-      return;
-    }
     if (event.key === "Alt" && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
       event.preventDefault();
       altModifierArmed = true;
@@ -215,6 +210,13 @@
     if (!command || command.endsWith("+")) return;
     event.preventDefault();
     processCommand(command);
+  });
+  missionControl.addEventListener("keyup", event => {
+    if (!active || event.key !== "Control" || !controlModifierArmed) return;
+    event.preventDefault();
+    controlModifierArmed = false;
+    lastCommand.textContent = "Control: repeated mission problem";
+    announce("Mission problem. " + problem.textContent);
   });
 
   function processCommand(command) {
