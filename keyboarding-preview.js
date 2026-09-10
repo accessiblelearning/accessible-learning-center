@@ -216,7 +216,16 @@
   }
 
   function speakable(text) {
-    return text.replace(/ /g, " space ").replace(/;/g, " semicolon ").replace(/,/g, " comma ").replace(/\./g, " period ").replace(/\?/g, " question mark ").replace(/!/g, " exclamation point ");
+    const names = {
+      " ": "space", ";": "semicolon", ",": "comma", ".": "period",
+      "?": "question mark", "!": "exclamation point", "/": "slash",
+      "'": "apostrophe", '"': "quotation mark", ":": "colon"
+    };
+    return names[text] || text;
+  }
+
+  function speakableSequence(text) {
+    return Array.from(text).map(speakable).join(", ");
   }
 
   function updateLessonSummary() {
@@ -255,6 +264,10 @@
 
   function currentInstruction() {
     if (!session) return "";
+    const remaining = session.prompt.slice(session.position);
+    if (session.mode === "guided" && remaining.length <= 80) {
+      return session.lesson.description + " Type this sequence: " + speakableSequence(remaining) + ".";
+    }
     const nextCharacter = session.prompt[session.position];
     return session.lesson.description + (nextCharacter === undefined ? "" : " Next character: " + speakable(nextCharacter) + ".");
   }
