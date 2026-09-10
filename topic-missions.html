@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Choose a screen-reader Mission Control scenario using a simple keyboard-guided list.">
   <title>Choose a Topic Mission - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=training-accessibility-1">
-  <script src="accessibility.js?v=training-accessibility-1" defer></script>
-  <script src="topic-missions-setup.js?v=training-accessibility-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=mission-voice-1">
+  <script src="accessibility.js?v=text-controls-restored-1" defer></script>
+  <script src="topic-missions-setup.js?v=mission-voice-1" defer></script>
 </head>
 <body class="mission-setup-page" data-minimal-page="true">
   <header>
@@ -23,24 +23,19 @@
           <strong id="speechSettingValue" class="mission-setting-value">Use my own screen reader</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
-        <button id="printSetting" class="mission-setting-toggle" type="button" data-setting="print">
-          <span class="mission-setting-label">2. Print size</span>
-          <strong id="printSettingValue" class="mission-setting-value">Small print</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
         <button id="readerSetting" class="mission-setting-toggle" type="button" data-setting="reader">
-          <span class="mission-setting-label">3. Screen reader</span>
+          <span class="mission-setting-label">2. Screen reader</span>
           <strong id="readerSettingValue" class="mission-setting-value">JAWS</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
         <button id="missionSetting" class="mission-setting-toggle" type="button" data-setting="mission">
-          <span class="mission-setting-label">4. Mission</span>
+          <span class="mission-setting-label">3. Mission</span>
           <strong id="missionSettingValue" class="mission-setting-value">Screen-reader recovery: The unexpected window</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
-        <button id="startMissionSetup" class="mission-start-option" type="button">5. Start selected mission</button>
+        <button id="startMissionSetup" class="mission-start-option" type="button">4. Start selected mission</button>
       </div>
-      <p id="missionSetupStatus" class="visually-hidden" aria-live="polite">Selected: Use my own screen reader, small print, JAWS, and The unexpected window.</p>
+      <p id="missionSetupStatus" class="visually-hidden" aria-live="polite">Selected: Use my own screen reader, JAWS, and The unexpected window.</p>
     </div>
     <p><a href="troubleshooting-lab.html">Return to the Command Center</a></p>
   </main>

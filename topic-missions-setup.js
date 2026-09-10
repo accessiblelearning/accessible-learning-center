@@ -24,15 +24,6 @@
 
   const settings = {
     speech: { options: speechOptions, index: 0, valueElement: document.getElementById("speechSettingValue") },
-    print: {
-      options: [
-        { value: "100", label: "Small print" },
-        { value: "125", label: "Medium print" },
-        { value: "150", label: "Large print" }
-      ],
-      index: 0,
-      valueElement: document.getElementById("printSettingValue")
-    },
     reader: { options: readerOptions, index: 0, valueElement: document.getElementById("readerSettingValue") },
     mission: { options: missionOptions, index: 0, valueElement: document.getElementById("missionSettingValue") }
   };
@@ -71,13 +62,8 @@
     try {
       const preferences = readPreferences();
       preferences.trainingSpeech = voiceEnabled() ? "voice" : "own";
-      preferences.textScale = Number(current("print").value);
       localStorage.setItem(preferenceStorageKey, JSON.stringify(preferences));
     } catch (error) {}
-  }
-
-  function applyPrintSize() {
-    document.documentElement.style.fontSize = current("print").value + "%";
   }
 
   function stopVoice() {
@@ -100,14 +86,13 @@
   }
 
   function updateStatus() {
-    status.textContent = "Selected: " + current("speech").label + ", " + current("print").label + ", " + current("reader").label + ", and " + current("mission").label + ".";
+    status.textContent = "Selected: " + current("speech").label + ", " + current("reader").label + ", and " + current("mission").label + ".";
   }
 
   function saveSettings() {
     try {
       sessionStorage.setItem(storageKey, JSON.stringify({
         speech: current("speech").value,
-        print: current("print").value,
         reader: current("reader").value,
         mission: current("mission").value
       }));
@@ -127,13 +112,9 @@
     const preferredSpeech = preferences.trainingSpeech === "voice" && missionVoiceSupported ? "voice" : "own";
     const speechIndex = settings.speech.options.findIndex(option => option.value === preferredSpeech);
     if (speechIndex >= 0) settings.speech.index = speechIndex;
-    const savedScale = Number(preferences.textScale) || Number(current("print").value);
-    const preferredPrint = savedScale >= 138 ? "150" : savedScale >= 113 ? "125" : "100";
-    settings.print.index = settings.print.options.findIndex(option => option.value === preferredPrint);
     Object.keys(settings).forEach(setting => {
       settings[setting].valueElement.textContent = current(setting).label;
     });
-    applyPrintSize();
     status.setAttribute("aria-live", voiceEnabled() ? "off" : "polite");
     updateStatus();
   }
@@ -147,7 +128,6 @@
     }
     data.index = (data.index + 1) % data.options.length;
     data.valueElement.textContent = current(setting).label;
-    if (setting === "print") applyPrintSize();
     status.setAttribute("aria-live", voiceEnabled() ? "off" : "polite");
     updateStatus();
     saveSettings();

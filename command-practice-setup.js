@@ -13,15 +13,6 @@
       ],
       valueElement: document.getElementById("commandSpeechValue")
     },
-    print: {
-      index: 0,
-      options: [
-        { value: "100", label: "Small print" },
-        { value: "125", label: "Medium print" },
-        { value: "150", label: "Large print" }
-      ],
-      valueElement: document.getElementById("commandPrintValue")
-    },
     category: {
       index: 0,
       options: [
@@ -107,26 +98,17 @@
     try {
       const preferences = readPreferences();
       preferences.trainingSpeech = voiceEnabled() ? "voice" : "own";
-      preferences.textScale = Number(current("print").value);
       localStorage.setItem(preferenceStorageKey, JSON.stringify(preferences));
     } catch (error) {}
-  }
-
-  function applyPrintSize() {
-    document.documentElement.style.fontSize = current("print").value + "%";
   }
 
   function restoreTrainingPreferences() {
     const preferences = readPreferences();
     const speechValue = preferences.trainingSpeech === "voice" && siteVoiceSupported ? "1" : "0";
-    const savedScale = Number(preferences.textScale) || 100;
-    const printValue = savedScale >= 138 ? "150" : savedScale >= 113 ? "125" : "100";
     settings.speech.index = Math.max(0, settings.speech.options.findIndex(option => option.value === speechValue));
-    settings.print.index = settings.print.options.findIndex(option => option.value === printValue);
     Object.keys(settings).forEach(setting => {
       settings[setting].valueElement.textContent = current(setting).label;
     });
-    applyPrintSize();
   }
 
   function stopVoice() {
@@ -148,14 +130,13 @@
   }
 
   function updateStatus() {
-    status.textContent = "Selected: " + current("speech").label + ", " + current("print").label + ", " + current("category").label + ", " + current("style").label + ", " + current("length").label + ", " + current("level").label + ", sound " + current("sounds").label.toLowerCase() + ", and " + current("order").label + ".";
+    status.textContent = "Selected: " + current("speech").label + ", " + current("category").label + ", " + current("style").label + ", " + current("length").label + ", " + current("level").label + ", sound " + current("sounds").label.toLowerCase() + ", and " + current("order").label + ".";
   }
 
   function changeSetting(setting) {
     const data = settings[setting];
     data.index = (data.index + 1) % data.options.length;
     data.valueElement.textContent = current(setting).label;
-    if (setting === "print") applyPrintSize();
     saveTrainingPreferences();
     updateStatus();
 
