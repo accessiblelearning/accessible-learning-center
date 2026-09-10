@@ -67,8 +67,7 @@
       category: "Privacy and cybersecurity", title: "The suspicious pop-up",
       problem: "A pop-up says your computer is infected and tells you to press Enter to call support. Close only the suspicious window without activating its button.",
       steps: [
-        { command: "ALT+F4", success: "Suspicious pop-up closed. Browser remains open.", why: "You closed the active pop-up without activating its fraudulent control." },
-        { command: "CTRL+L", success: "Address bar, edit. Current site address selected.", why: "You moved to a known browser control so you can leave the suspicious page safely." }
+        { command: "ALT+F4", success: "Suspicious pop-up closed. Browser remains open.", why: "You closed the active pop-up without activating its fraudulent control." }
       ],
       hint: "Do not press Enter. Use the command that closes the active window."
     },
@@ -188,7 +187,8 @@
       altModifierArmed = true;
       modifierHeld = false;
       controlModifierArmed = false;
-      lastCommand.textContent = "Alt ready; press the remaining key";
+      lastCommand.textContent = "Alt ready; release it, then press the remaining key";
+      announce("Protected Alt command ready. Release Alt, then press the remaining key by itself.");
       return;
     }
     if (event.key === "Control" && !event.altKey && !event.shiftKey && !event.metaKey) {

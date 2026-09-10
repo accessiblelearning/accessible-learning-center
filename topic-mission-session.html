@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css?v=mission-voice-1">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
   <script src="topic-mission-session.js?v=training-accessibility-1" defer></script>
-  <script src="troubleshooting-lab.js?v=training-stage-1" defer></script>
+  <script src="troubleshooting-lab.js?v=mission-bug-audit-1" defer></script>
 </head>
 <body class="mission-session-page" data-minimal-page="true" data-mission-session="true">
   <header class="training-header"><h1>Mission Control</h1></header>
@@ -23,7 +23,7 @@
 
       <div id="missionControlStation" class="mission-control-station training-stage__input" tabindex="0" role="application" aria-labelledby="missionControlHeading" aria-describedby="missionProblem missionControlInstructions">
         <h3 id="missionControlHeading" class="visually-hidden">Command area</h3>
-        <p id="missionControlInstructions" class="visually-hidden">Press the command that solves the problem. F1 gives a hint. Control repeats the problem. Escape closes Mission Control. If your screen reader, browser, or computer takes a command, press its last key once to confirm it here.</p>
+        <p id="missionControlInstructions" class="visually-hidden">Press the command that solves the problem. For a command containing Alt, press and release Alt, then press the remaining key by itself. F1 gives a hint. Control repeats the problem. Escape closes Mission Control. If your screen reader takes a command, press its last key once to confirm it here.</p>
         <p class="training-stage__detected"><span class="training-stage__input-label">Last command</span><strong id="lastCommand">None yet</strong></p>
       </div>
 
@@ -32,7 +32,7 @@
         <p id="transcript" class="scenario-feedback" aria-live="polite">Preparing the simulator.</p>
       </section>
 
-      <p class="practice-session-shortcuts training-stage__shortcuts"><strong>Control</strong> repeat <span aria-hidden="true">·</span> <strong>F1</strong> hint <span aria-hidden="true">·</span> <strong>Escape</strong> close</p>
+      <p class="practice-session-shortcuts training-stage__shortcuts"><strong>Control</strong> repeat <span aria-hidden="true">·</span> <strong>F1</strong> hint <span aria-hidden="true">·</span> Protected Alt: release, then final key <span aria-hidden="true">·</span> <strong>Escape</strong> close</p>
 
       <details class="mission-log-panel">
         <summary>Mission options</summary>

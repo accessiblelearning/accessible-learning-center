@@ -135,9 +135,16 @@
 
   function changeSetting(setting) {
     const data = settings[setting];
+    if (setting === "speech" && data.options.length === 1) {
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "polite");
+      status.textContent = "Site voice is unavailable in this browser. Use your own screen reader.";
+      return;
+    }
     data.index = (data.index + 1) % data.options.length;
     data.valueElement.textContent = current(setting).label;
     saveTrainingPreferences();
+    status.setAttribute("aria-live", voiceEnabled() ? "off" : "polite");
     updateStatus();
 
     if (setting === "speech" && !voiceEnabled()) {
@@ -187,7 +194,16 @@
     items[nextIndex].focus();
   });
 
+  document.addEventListener("keydown", event => {
+    if (!["Escape", "Esc"].includes(event.key) || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
+    event.preventDefault();
+    stopVoice();
+    window.location.replace("troubleshooting-lab.html");
+  }, true);
+
   restoreTrainingPreferences();
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", voiceEnabled() ? "off" : "polite");
   updateStatus();
   if (!siteVoiceSupported) {
     const speechHint = document.querySelector('[data-setting="speech"] .mission-setting-hint');
@@ -198,4 +214,5 @@
     openingAnnouncement = false;
     speak("Command Practice setup. Use Down Arrow and Up Arrow to move. Press Enter to change a setting or start. " + itemAnnouncement(items[0]));
   });
+  window.addEventListener("pagehide", stopVoice);
 })();
