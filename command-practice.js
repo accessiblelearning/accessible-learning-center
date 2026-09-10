@@ -149,11 +149,20 @@
   let audioContext = null;
   let insertHeld = false;
   let controlTapPending = false;
+  let protectedModifierArmed = "";
   let missedCommands = new Map();
   let awaitingAdvance = false;
   let autoAdvanceTimer = 0;
 
   const AUTO_ADVANCE_DELAY = 2400;
+
+  const protectedSequences = {
+    "control+page down": { modifier: "control", finalKey: "page down" },
+    "control+page up": { modifier: "control", finalKey: "page up" },
+    "alt+left arrow": { modifier: "alt", finalKey: "left arrow" },
+    "alt+right arrow": { modifier: "alt", finalKey: "right arrow" },
+    "alt+up arrow": { modifier: "alt", finalKey: "up arrow" }
+  };
 
   const practiceContexts = {
     "General editing": "You are editing information in a workplace document.",
@@ -259,6 +268,16 @@
     if (!command) return "";
     const context = practiceContexts[category.value] || "You are working in a supported application.";
     const goal = command[1].replace(/\.$/, "");
+    const protectedSequence = protectedSequences[normalizeExpected(command[0])];
+    if (protectedSequence) {
+      const modifier = displaySignature(protectedSequence.modifier);
+      const finalKey = displaySignature(protectedSequence.finalKey);
+      const safeSteps = "Protected practice. Press and release " + modifier + ". Then press " + finalKey + " by itself. The simulator will count that as " + spokenKeys(command[0]) + " without letting the browser take over.";
+      if (practiceStyle.value === "guided") {
+        return "Guided task. " + context + " Your goal is to " + lowerFirst(goal) + ". " + safeSteps + " " + commandExplanation();
+      }
+      return safeSteps + " " + commandExplanation();
+    }
     if (practiceStyle.value === "guided") {
       return "Guided task. " + context + " Your goal is to " + lowerFirst(goal) +
         ". Use " + spokenKeys(command[0]) + ". " + commandExplanation();
@@ -271,8 +290,12 @@
     awaitingAdvance = false;
     command = order[position];
     controlTapPending = false;
+    protectedModifierArmed = "";
     const heading = document.createElement("h3");
-    heading.textContent = practiceStyle.value === "guided"
+    const protectedSequence = protectedSequences[normalizeExpected(command[0])];
+    heading.textContent = protectedSequence
+        ? "Protected practice: " + spokenKeys(command[0])
+        : practiceStyle.value === "guided"
         ? "Guided task " + (position + 1) + " of " + order.length
         : "Press " + spokenKeys(command[0]);
     const explanation = document.createElement("p");
@@ -327,6 +350,7 @@
   start.addEventListener("click", () => {
     active = true;
     controlTapPending = false;
+    protectedModifierArmed = "";
     correctCount = 0;
     attempts = 0;
     position = 0;
@@ -416,6 +440,7 @@
     awaitingAdvance = false;
     clearAutoAdvance();
     controlTapPending = false;
+    protectedModifierArmed = "";
     if ("speechSynthesis" in window) speechSynthesis.cancel();
     if (focusedSession) {
       window.location.href = "command-practice.html";
@@ -448,6 +473,21 @@
       return;
     }
     if (awaitingAdvance) return;
+    const expected = normalizeExpected(command[0]);
+    const protectedSequence = protectedSequences[expected];
+    const pressedKey = keyName(event);
+    const isProtectedModifier = protectedSequence &&
+      pressedKey === protectedSequence.modifier &&
+      !event.shiftKey && !event.metaKey &&
+      (protectedSequence.modifier === "control" ? !event.altKey : !event.ctrlKey);
+    if (isProtectedModifier) {
+      protectedModifierArmed = protectedSequence.modifier;
+      controlTapPending = false;
+      detected.textContent = displaySignature(protectedSequence.modifier) + " ready";
+      status.textContent = displaySignature(protectedSequence.modifier) + " ready. Release it, then press " + displaySignature(protectedSequence.finalKey) + " by itself.";
+      speak(status.textContent);
+      return;
+    }
     if (event.key === "Enter" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && !next.disabled) {
       next.click();
       return;
@@ -468,17 +508,26 @@
       return;
     }
 
-    const pressed = signature(event);
+    let pressed = signature(event);
+    if (
+      protectedSequence &&
+      protectedModifierArmed === protectedSequence.modifier &&
+      !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey &&
+      pressedKey === protectedSequence.finalKey
+    ) {
+      pressed = expected;
+    }
+    protectedModifierArmed = "";
     attempts += 1;
     detected.textContent = displaySignature(pressed);
-    const expected = normalizeExpected(command[0])
+    const normalizedExpected = expected
       .replace("ctrl", "control")
       .replace("arrow", "arrow")
       .replace("grave", "grave")
       .replace("greater than", "greater than")
       .replace("less than", "less than");
 
-    if (pressed === expected) {
+    if (pressed === normalizedExpected) {
       correctCount += 1;
       awaitingAdvance = true;
       capture.classList.remove("is-incorrect");
@@ -520,6 +569,14 @@
         : describe();
       speak(describe());
       capture.focus();
+    }
+    if (event.key === "Alt" && protectedModifierArmed === "alt") {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if (event.key === "Control" && protectedModifierArmed === "control") {
+      event.preventDefault();
+      event.stopPropagation();
     }
   }, true);
 
