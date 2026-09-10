@@ -378,6 +378,10 @@
     showCommand();
   });
 
+  practiceExit?.addEventListener("click", () => {
+    window.location.href = "command-practice.html";
+  });
+
   stop.addEventListener("click", () => {
     active = false;
     controlTapPending = false;
