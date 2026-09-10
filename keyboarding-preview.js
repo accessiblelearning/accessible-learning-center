@@ -7,6 +7,8 @@
   const setupPanel = document.getElementById("setupPanel");
   const practicePanel = document.getElementById("practicePanel");
   const resultsPanel = document.getElementById("resultsPanel");
+  const previewToolbar = document.getElementById("previewToolbar");
+  const websiteControlsToggle = document.getElementById("websiteControlsToggle");
   const targetKey = document.getElementById("targetKey");
   const practiceStatus = document.getElementById("practiceStatus");
   const lessonProgress = document.getElementById("lessonProgress");
@@ -27,6 +29,18 @@
       heading.setAttribute("tabindex", "-1");
       heading.focus();
     }
+  }
+
+  function setWebsiteControlsMinimized(minimized) {
+    document.body.classList.toggle("kb-controls-minimized", minimized);
+    websiteControlsToggle.setAttribute("aria-expanded", String(!minimized));
+    websiteControlsToggle.textContent = minimized ? "Show Website Controls" : "Minimize Website Controls";
+  }
+
+  function openKeyboardingMenu() {
+    acceptingKey = false;
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    show(setupPanel);
   }
 
   function speak(message) {
@@ -99,6 +113,7 @@
       return;
     }
     sessionStorage.setItem("alcKeyboardingPreview", "open");
+    previewToolbar.hidden = false;
     show(setupPanel);
   });
 
@@ -110,15 +125,13 @@
   });
 
   document.addEventListener("keydown", function (event) {
-    if (practicePanel.hidden) return;
-
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && (!practicePanel.hidden || !resultsPanel.hidden)) {
       event.preventDefault();
-      acceptingKey = false;
-      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-      show(setupPanel);
+      openKeyboardingMenu();
       return;
     }
+
+    if (practicePanel.hidden) return;
 
     if (event.key === "Control") {
       event.preventDefault();
@@ -155,12 +168,20 @@
   });
 
   document.getElementById("practiceAgain").addEventListener("click", startPractice);
-  document.getElementById("changeSettings").addEventListener("click", function () { show(setupPanel); });
+  document.getElementById("changeSettings").addEventListener("click", openKeyboardingMenu);
+  websiteControlsToggle.addEventListener("click", function () {
+    setWebsiteControlsMinimized(!document.body.classList.contains("kb-controls-minimized"));
+  });
   document.getElementById("lockPreview").addEventListener("click", function () {
     sessionStorage.removeItem("alcKeyboardingPreview");
     document.getElementById("previewCode").value = "";
+    previewToolbar.hidden = true;
+    setWebsiteControlsMinimized(false);
     show(unlockPanel);
   });
 
-  if (sessionStorage.getItem("alcKeyboardingPreview") === "open") show(setupPanel);
+  if (sessionStorage.getItem("alcKeyboardingPreview") === "open") {
+    previewToolbar.hidden = false;
+    show(setupPanel);
+  }
 })();

@@ -29,6 +29,10 @@
     .kb-status { min-height: 2.5rem; font-weight: 700; }
     .kb-help { padding: .85rem; background: rgba(116, 174, 234, .18); border-radius: .5rem; }
     .kb-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+    .kb-toolbar { display: flex; justify-content: flex-end; margin-bottom: .75rem; }
+    .kb-toolbar button { min-height: 2.75rem; border: 2px solid #356da8; border-radius: .55rem; padding: .55rem .85rem; background: #fff; color: #102044; font: inherit; font-weight: 700; cursor: pointer; }
+    body.kb-controls-minimized .accessibility-panel,
+    body.kb-controls-minimized .site-nav { display: none !important; }
     [hidden] { display: none !important; }
     body.dark-mode .kb-panel { background: #10264a; color: #fff; border-color: #73b5ff; }
     body.dark-mode .kb-choice label, body.dark-mode .kb-key, body.dark-mode .kb-form input, body.dark-mode .kb-form select { background: #071a35; color: #fff; border-color: #73b5ff; }
@@ -39,6 +43,9 @@
 </head>
 <body>
   <main class="kb-shell" id="mainContent">
+    <div class="kb-toolbar" id="previewToolbar" hidden>
+      <button id="websiteControlsToggle" type="button" aria-expanded="true">Minimize Website Controls</button>
+    </div>
     <section class="kb-panel" id="unlockPanel" aria-labelledby="unlockHeading">
       <h1 id="unlockHeading">Keyboarding Center Preview</h1>
       <p>This unfinished testing area is not listed on the public website.</p>
@@ -51,7 +58,7 @@
     </section>
 
     <section class="kb-panel" id="setupPanel" aria-labelledby="setupHeading" hidden>
-      <h2 id="setupHeading">Keyboarding Center</h2>
+      <h2 id="setupHeading">Keyboarding Center Menu</h2>
       <p>Choose your practice settings, then start the introductory F and J lesson.</p>
       <form id="setupForm">
         <fieldset class="kb-choice">
