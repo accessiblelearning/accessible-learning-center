@@ -2014,3 +2014,49 @@ html[data-theme="dark"]:not([data-contrast="high"]) .mission-session-page .train
     margin-inline: .5rem;
   }
 }
+
+.practice-session-page .training-stage .practice-actions button,
+.practice-session-page .training-stage .practice-actions .button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: .65rem 1rem;
+  color: #ffffff;
+  background: var(--blue-700);
+  border: 2px solid var(--blue-700);
+  border-radius: .65rem;
+  font: inherit;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+}
+
+.practice-session-page .training-stage .practice-actions button:hover,
+.practice-session-page .training-stage .practice-actions .button-link:hover {
+  color: #ffffff;
+  background: var(--blue-900);
+  border-color: var(--blue-900);
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage .practice-actions button,
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage .practice-actions .button-link {
+  color: #ffffff;
+  background: #000000;
+  border-color: #8dd1ff;
+}
+
+html[data-contrast="high"] .practice-session-page .training-stage .practice-actions button,
+html[data-contrast="high"] .practice-session-page .training-stage .practice-actions .button-link {
+  color: #ffffff;
+  background: #000000;
+  border-color: #000000;
+}
+
+@media (max-width: 32rem) {
+  .practice-session-page .training-stage .practice-actions button,
+  .practice-session-page .training-stage .practice-actions .button-link {
+    width: 100%;
+  }
+}
