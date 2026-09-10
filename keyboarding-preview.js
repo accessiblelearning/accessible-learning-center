@@ -149,8 +149,12 @@
       }
     }
     let focus = Array.from(lessonData[index][2]).filter(character => belongsToHand(character, hand)).join("");
-    if (!focus.trim()) focus = allowed.replace(/ /g, "").slice(-5) || (hand === "right" ? "j" : "f");
-    return { number: index + 1, title: lessonData[index][0], description: lessonData[index][1], allowed, focus };
+    const adapted = hand !== "both" && !focus.trim();
+    if (adapted) focus = allowed.replace(/ /g, "").slice(-5) || (hand === "right" ? "j" : "f");
+    const description = adapted
+      ? "Continue strengthening " + hand + "-hand keys while this lesson introduces the other side of the keyboard."
+      : lessonData[index][1];
+    return { number: index + 1, title: lessonData[index][0], description, allowed, focus };
   }
 
   function fits(text, allowed) {
@@ -187,7 +191,13 @@
   }
 
   function getProgress() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { completed: [], difficult: {} }; }
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      return {
+        completed: saved && Array.isArray(saved.completed) ? saved.completed : [],
+        difficult: saved && saved.difficult && typeof saved.difficult === "object" ? saved.difficult : {}
+      };
+    }
     catch (error) { return { completed: [], difficult: {} }; }
   }
 
@@ -245,8 +255,8 @@
 
   function currentInstruction() {
     if (!session) return "";
-    const remaining = session.prompt.slice(session.position);
-    return session.lesson.description + " Type: " + speakable(remaining);
+    const nextCharacter = session.prompt[session.position];
+    return session.lesson.description + (nextCharacter === undefined ? "" : " Next character: " + speakable(nextCharacter) + ".");
   }
 
   function renderPractice() {
@@ -256,12 +266,14 @@
     document.getElementById("practiceInstruction").textContent = session.lesson.description;
     targetPrompt.className = "kb-prompt";
     targetPrompt.textContent = session.prompt;
+    targetPrompt.setAttribute("aria-label", "Typing area. " + currentInstruction());
     typedText.textContent = session.prompt.slice(0, session.position) || "Not started";
     lessonProgress.max = total;
     lessonProgress.value = session.position;
     lessonProgress.textContent = Math.round((session.position / total) * 100) + " percent";
     progressText.textContent = session.mode === "timed" ? session.secondsLeft + " seconds remaining" : "Character " + (session.position + 1) + " of " + total;
     practiceStatus.textContent = "Begin typing.";
+    targetPrompt.focus();
   }
 
   function startPractice() {
@@ -355,7 +367,7 @@
       speak(currentInstruction());
       return;
     }
-    if (!session.accepting || event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) return;
+    if (!session.accepting || event.repeat || event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) return;
     event.preventDefault();
     const expected = session.prompt[session.position];
     if (event.key === expected) {
@@ -368,9 +380,10 @@
       lessonProgress.value = session.position;
       progressText.textContent = session.mode === "timed" ? session.secondsLeft + " seconds remaining" : "Character " + Math.min(session.position + 1, session.prompt.length) + " of " + session.prompt.length;
       if (session.position >= session.prompt.length) {
+        session.accepting = false;
         window.setTimeout(finishPractice, 220);
       } else {
-        practiceStatus.textContent = "Correct.";
+        if (practiceStatus.textContent !== "Keep typing.") practiceStatus.textContent = "Keep typing.";
         window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
       }
     } else {

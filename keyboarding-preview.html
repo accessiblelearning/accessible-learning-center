@@ -142,9 +142,9 @@
       <p id="practiceInstruction"></p>
       <progress class="kb-progress" id="lessonProgress" max="1" value="0">0 percent</progress>
       <p id="progressText"></p>
-      <div class="kb-prompt" id="targetPrompt" aria-label="Typing prompt"></div>
+      <div class="kb-prompt" id="targetPrompt" role="application" tabindex="0" aria-describedby="practiceInstruction practiceStatus"></div>
       <p class="kb-typed" id="typedText" aria-label="Text typed correctly"></p>
-      <p class="kb-status" id="practiceStatus" role="status" aria-live="assertive"></p>
+      <p class="kb-status" id="practiceStatus" role="status" aria-live="polite"></p>
       <p class="kb-help"><strong>Controls:</strong> Type the prompt. Control repeats the instruction. Escape closes practice.</p>
     </section>
 
