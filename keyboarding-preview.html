@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Private preview of the Accessible Learning Center Keyboarding Center.">
+  <title>Keyboarding Center Preview - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=keyboarding-preview-1">
+  <script src="accessibility.js?v=keyboarding-preview-1" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-1" defer></script>
+  <style>
+    .kb-shell { max-width: 50rem; margin: 0 auto; padding: 1rem; }
+    .kb-panel { background: var(--card-bg, #f4f8ff); color: var(--text-color, #102044); border: 2px solid #78aeea; border-radius: 1rem; padding: clamp(1.25rem, 4vw, 2.25rem); box-shadow: 0 .6rem 1.5rem rgba(15, 53, 105, .12); }
+    .kb-panel h1, .kb-panel h2 { margin-top: 0; }
+    .kb-form { display: grid; gap: 1rem; }
+    .kb-form input, .kb-form select, .kb-form button, .kb-action { min-height: 3.25rem; font: inherit; }
+    .kb-form input, .kb-form select { width: 100%; box-sizing: border-box; padding: .75rem; border: 2px solid #356da8; border-radius: .55rem; background: #fff; color: #102044; }
+    .kb-primary, .kb-action { border: 2px solid #0b4281; border-radius: .65rem; padding: .75rem 1rem; background: #075fc1; color: #fff; font-weight: 700; cursor: pointer; }
+    .kb-primary:hover, .kb-action:hover { background: #044b9b; }
+    .kb-choice { display: grid; gap: .75rem; margin: 1.25rem 0; }
+    .kb-choice label { display: flex; align-items: center; gap: .75rem; padding: .8rem; border: 2px solid #8db8e8; border-radius: .65rem; background: #fff; color: #102044; }
+    .kb-choice input { width: 1.35rem; height: 1.35rem; flex: 0 0 auto; }
+    .kb-stage { text-align: center; }
+    .kb-progress { width: 100%; height: 1.35rem; }
+    .kb-key { display: grid; place-items: center; min-height: 10rem; margin: 1.25rem 0; border: .25rem solid #77ace7; border-radius: 1rem; background: #fff; color: #102044; font-size: clamp(4rem, 15vw, 8rem); font-weight: 800; text-transform: uppercase; }
+    .kb-key.correct { background: #d9f7df; border-color: #16813a; color: #0a5224; }
+    .kb-key.incorrect { background: #ffe0e0; border-color: #b51f2e; color: #7b101d; }
+    .kb-status { min-height: 2.5rem; font-weight: 700; }
+    .kb-help { padding: .85rem; background: rgba(116, 174, 234, .18); border-radius: .5rem; }
+    .kb-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+    [hidden] { display: none !important; }
+    body.dark-mode .kb-panel { background: #10264a; color: #fff; border-color: #73b5ff; }
+    body.dark-mode .kb-choice label, body.dark-mode .kb-key, body.dark-mode .kb-form input, body.dark-mode .kb-form select { background: #071a35; color: #fff; border-color: #73b5ff; }
+    body.dark-mode .kb-key.correct { background: #123f27; color: #eaffef; border-color: #54d47c; }
+    body.dark-mode .kb-key.incorrect { background: #571b24; color: #fff; border-color: #ff7a88; }
+    @media (max-width: 36rem) { .kb-shell { padding: .5rem; } .kb-panel { border-radius: .75rem; } }
+  </style>
+</head>
+<body>
+  <main class="kb-shell" id="mainContent">
+    <section class="kb-panel" id="unlockPanel" aria-labelledby="unlockHeading">
+      <h1 id="unlockHeading">Keyboarding Center Preview</h1>
+      <p>This unfinished testing area is not listed on the public website.</p>
+      <form class="kb-form" id="unlockForm">
+        <label for="previewCode">Testing code</label>
+        <input id="previewCode" type="password" autocomplete="off" required>
+        <button class="kb-primary" type="submit">Open Preview</button>
+      </form>
+      <p id="unlockMessage" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="kb-panel" id="setupPanel" aria-labelledby="setupHeading" hidden>
+      <h1 id="setupHeading">Keyboarding Center</h1>
+      <p>Choose your practice settings, then start the introductory F and J lesson.</p>
+      <form id="setupForm">
+        <fieldset class="kb-choice">
+          <legend>Instruction voice</legend>
+          <label><input type="radio" name="voice" value="screen-reader" checked> Use my own screen reader</label>
+          <label><input type="radio" name="voice" value="site"> Use site voice</label>
+        </fieldset>
+        <fieldset class="kb-choice">
+          <legend>Feedback sounds</legend>
+          <label><input id="soundSetting" type="checkbox" checked> Play correct and incorrect sounds</label>
+        </fieldset>
+        <button class="kb-primary" type="submit">Start Keyboarding Practice</button>
+      </form>
+    </section>
+
+    <section class="kb-panel kb-stage" id="practicePanel" aria-labelledby="practiceHeading" hidden>
+      <h1 id="practiceHeading">F and J Practice</h1>
+      <p id="practiceInstruction">Place your left index finger on F and your right index finger on J. Press the displayed key.</p>
+      <progress class="kb-progress" id="lessonProgress" max="12" value="0">0 of 12</progress>
+      <p id="progressText">Key 1 of 12</p>
+      <div class="kb-key" id="targetKey" aria-label="Press F">F</div>
+      <p class="kb-status" id="practiceStatus" role="status" aria-live="assertive">Press F.</p>
+      <p class="kb-help"><strong>Controls:</strong> Control repeats the instruction. Escape closes practice.</p>
+    </section>
+
+    <section class="kb-panel kb-stage" id="resultsPanel" aria-labelledby="resultsHeading" hidden>
+      <h1 id="resultsHeading">Practice complete</h1>
+      <p id="resultsSummary"></p>
+      <p>This preview does not save personal information or permanent progress.</p>
+      <div class="kb-actions">
+        <button class="kb-action" id="practiceAgain" type="button">Practice Again</button>
+        <button class="kb-action" id="changeSettings" type="button">Change Settings</button>
+        <button class="kb-action" id="lockPreview" type="button">Close Preview</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
