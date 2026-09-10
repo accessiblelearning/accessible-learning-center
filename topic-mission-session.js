@@ -13,7 +13,7 @@
     return;
   }
 
-  const useMissionVoice = params.get("voice") === "1";
+  const useMissionVoice = params.get("voice") === "1" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
   document.getElementById("atPerspective").value = reader;
   document.getElementById("simulatedVoice").checked = useMissionVoice;
   document.getElementById("transcript").setAttribute("aria-live", useMissionVoice ? "off" : "polite");

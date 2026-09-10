@@ -1,9 +1,10 @@
 (() => {
   "use strict";
 
+  const missionVoiceSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
   const speechOptions = [
     { value: "own", label: "Use my own screen reader" },
-    { value: "voice", label: "Use the Mission Control voice" }
+    ...(missionVoiceSupported ? [{ value: "voice", label: "Use the Mission Control voice" }] : [])
   ];
   const readerOptions = [
     { value: "jaws", label: "JAWS" },
@@ -32,6 +33,12 @@
   const items = [...menu.querySelectorAll("button")];
   const storageKey = "missionControlSettings";
 
+  if (!missionVoiceSupported) {
+    const speechItem = items.find(item => item.dataset.setting === "speech");
+    const speechHint = speechItem?.querySelector(".mission-setting-hint");
+    if (speechHint) speechHint.textContent = "Mission Control voice unavailable in this browser";
+  }
+
   function current(setting) {
     return settings[setting].options[settings[setting].index];
   }
@@ -45,7 +52,7 @@
   }
 
   function speak(text) {
-    if (!voiceEnabled() || !("speechSynthesis" in window)) return;
+    if (!voiceEnabled() || !missionVoiceSupported) return;
     stopVoice();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 0.95;
@@ -55,6 +62,7 @@
   function itemAnnouncement(item) {
     if (item === start) return "Start selected mission. Press Enter to begin.";
     const setting = item.dataset.setting;
+    if (setting === "speech" && !missionVoiceSupported) return "Speech. Use my own screen reader. Mission Control voice is unavailable in this browser.";
     return item.querySelector(".mission-setting-label").textContent + ". " + current(setting).label + ". Press Enter to change.";
   }
 
@@ -87,6 +95,11 @@
 
   function changeSetting(setting) {
     const data = settings[setting];
+    if (setting === "speech" && data.options.length === 1) {
+      status.setAttribute("aria-live", "polite");
+      status.textContent = "Mission Control voice is unavailable in this browser. Use your own screen reader.";
+      return;
+    }
     data.index = (data.index + 1) % data.options.length;
     data.valueElement.textContent = current(setting).label;
     status.setAttribute("aria-live", voiceEnabled() ? "off" : "polite");
@@ -140,7 +153,7 @@
     if (!["Escape", "Esc"].includes(event.key) || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
     event.preventDefault();
     stopVoice();
-    window.location.href = "troubleshooting-lab.html";
+    window.location.replace("troubleshooting-lab.html");
   }, true);
 
   restoreSettings();

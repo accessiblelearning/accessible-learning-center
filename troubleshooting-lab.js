@@ -114,7 +114,7 @@
   }
 
   function speak(text) {
-    if (!simulatedVoice.checked || !("speechSynthesis" in window)) return;
+    if (!simulatedVoice.checked || !("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return;
     stopVoice();
     speechSynthesis.speak(new SpeechSynthesisUtterance(text));
   }
@@ -169,7 +169,7 @@
     if (!focusedMissionSession || !["Escape", "Esc"].includes(event.key) || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
     event.preventDefault();
     stopVoice();
-    window.location.href = "topic-missions.html";
+    window.location.replace("topic-missions.html");
   }, true);
   missionControl.addEventListener("keydown", event => {
     if (!active) return;
