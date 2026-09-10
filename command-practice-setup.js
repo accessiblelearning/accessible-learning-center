@@ -212,7 +212,7 @@
   window.addEventListener("DOMContentLoaded", () => {
     items[0].focus();
     openingAnnouncement = false;
-    speak("Command Practice setup. Use Down Arrow and Up Arrow to move. Press Enter to change a setting or start. " + itemAnnouncement(items[0]));
+    speak("Command Practice setup. Use Down Arrow and Up Arrow to move. Press Enter to change a setting or start. Press Escape to return to the Command Center. " + itemAnnouncement(items[0]));
   });
   window.addEventListener("pagehide", stopVoice);
 })();
