@@ -22,7 +22,7 @@
     [unlockPanel, setupPanel, practicePanel, resultsPanel].forEach(function (item) {
       item.hidden = item !== panel;
     });
-    const heading = panel.querySelector("h1");
+    const heading = panel.querySelector("h1, h2");
     if (heading) {
       heading.setAttribute("tabindex", "-1");
       heading.focus();
