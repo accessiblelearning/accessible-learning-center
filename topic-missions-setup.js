@@ -65,6 +65,7 @@
     const data = settings[setting];
     data.index = (data.index + 1) % data.options.length;
     data.valueElement.textContent = current(setting).label;
+    status.setAttribute("aria-live", voiceEnabled() ? "off" : "polite");
     updateStatus();
 
     if (setting === "speech" && !voiceEnabled()) {
@@ -108,6 +109,13 @@
     if (event.key === "End") nextIndex = items.length - 1;
     items[nextIndex].focus();
   });
+
+  document.addEventListener("keydown", event => {
+    if (event.key !== "Escape" || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
+    event.preventDefault();
+    stopVoice();
+    window.location.href = "troubleshooting-lab.html";
+  }, true);
 
   window.addEventListener("DOMContentLoaded", () => items[0].focus());
 })();

@@ -5,20 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Choose a screen-reader Mission Control scenario using a simple keyboard-guided list.">
   <title>Choose a Topic Mission - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-toggle-settings-1">
+  <link rel="stylesheet" href="styles.css?v=mission-simplified-1">
   <script src="accessibility.js?v=minimal-pages-1" defer></script>
-  <script src="topic-missions-setup.js?v=mission-toggle-settings-1" defer></script>
+  <script src="topic-missions-setup.js?v=mission-simplified-1" defer></script>
 </head>
 <body class="mission-setup-page" data-minimal-page="true">
   <header>
-    <p class="eyebrow">Mission Control setup</p>
     <h1>Choose Your Topic Mission</h1>
-    <p>Use one simple list to choose how Mission Control should work.</p>
   </header>
   <main id="main-content">
-    <section class="mission-keyboard-setup" aria-labelledby="setup-heading">
-      <h2 id="setup-heading">Mission settings</h2>
-      <p id="missionSetupInstructions"><strong>Use Down Arrow and Up Arrow</strong> to move between four settings. Press <strong>Enter</strong> to change the highlighted setting. Continue to Start Mission and press Enter.</p>
+    <div class="mission-keyboard-setup">
+      <p id="missionSetupInstructions">Use <strong>Down Arrow</strong> and <strong>Up Arrow</strong> to move. Press <strong>Enter</strong> to change a setting or start. Press <strong>Escape</strong> to return to the Command Center.</p>
 
       <div id="missionSettingsMenu" class="mission-settings-menu" role="application" aria-label="Mission settings keyboard menu" aria-describedby="missionSetupInstructions">
         <button id="speechSetting" class="mission-setting-toggle" type="button" data-setting="speech">
@@ -38,8 +35,8 @@
         </button>
         <button id="startMissionSetup" class="mission-start-option" type="button">4. Start selected mission</button>
       </div>
-      <p id="missionSetupStatus">Selected: Use my own screen reader, JAWS, and The unexpected window.</p>
-    </section>
+      <p id="missionSetupStatus" class="visually-hidden" aria-live="polite">Selected: Use my own screen reader, JAWS, and The unexpected window.</p>
+    </div>
     <p><a href="troubleshooting-lab.html">Return to the Command Center</a></p>
   </main>
 </body>

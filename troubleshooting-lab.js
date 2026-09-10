@@ -75,11 +75,11 @@
     },
     {
       category: "Files and folders", title: "Rename the correct file",
-      problem: "Resume Final Copy.docx is selected in File Explorer. Give it the clearer name Amber Price Resume.docx without opening it.",
+      problem: "Resume Final Copy.docx is selected in File Explorer. Give it the clearer name Professional Resume.docx without opening it.",
       steps: [
         { command: "F2", success: "Resume Final Copy, filename edit.", why: "F2 opened rename mode for the selected file." },
         { command: "CTRL+A", success: "Filename selected. The .docx extension remains protected.", why: "You selected the editable filename before replacing it." },
-        { command: "ENTER", success: "Renamed: Amber Price Resume.docx.", why: "The simulator supplied the practice name and Enter confirmed it." }
+        { command: "ENTER", success: "Renamed: Professional Resume.docx.", why: "The simulator supplied the practice name and Enter confirmed it." }
       ],
       hint: "Use File Explorer’s rename command on the selected file."
     }
@@ -94,20 +94,22 @@
   const transcript = document.getElementById("transcript");
   const lastCommand = document.getElementById("lastCommand");
   const log = document.getElementById("missionLog");
-  const feedback = document.getElementById("scenarioFeedback");
   const nextButton = document.getElementById("nextMission");
   const progress = document.getElementById("missionProgress");
   const count = document.getElementById("missionCount");
-  const summary = document.getElementById("completionSummary");
   const simulatedVoice = document.getElementById("simulatedVoice");
-  const simulatedVoiceActions = document.getElementById("simulatedVoiceActions");
   const focusedMissionSession = document.body.dataset.missionSession === "true";
   let current = 0;
   let step = 0;
   let active = false;
   let completed = new Set();
 
-  try { completed = new Set(JSON.parse(localStorage.getItem("missionControlCompleted") || "[]")); } catch (error) { completed = new Set(); }
+  try {
+    const saved = JSON.parse(localStorage.getItem("missionControlCompleted") || "[]");
+    completed = new Set(Array.isArray(saved) ? saved.filter(index => Number.isInteger(index) && index >= 0 && index < missions.length) : []);
+  } catch (error) {
+    completed = new Set();
+  }
 
   function save() {
     try { localStorage.setItem("missionControlCompleted", JSON.stringify([...completed])); } catch (error) {}
@@ -119,17 +121,16 @@
     speechSynthesis.speak(new SpeechSynthesisUtterance(text));
   }
 
-  function announce(text, aloud = true) {
+  function announce(text, state = "") {
     transcript.textContent = screenReaders[perspective.value].name + " reports: “" + text + "”";
-    if (aloud) speak(transcript.textContent);
+    transcript.className = "scenario-feedback" + (state ? " is-" + state : "");
+    speak(transcript.textContent);
   }
 
   function updateProgress() {
+    progress.max = missions.length;
     progress.value = completed.size;
     progress.textContent = completed.size + " of " + missions.length + " missions completed";
-    summary.textContent = completed.size === missions.length
-      ? "All current missions completed. Mission Control will add more hangars and more difficult failures over time."
-      : completed.size + " of " + missions.length + " missions completed on this device.";
   }
 
   function displayedCommand(command) {
@@ -200,9 +201,6 @@
     } else if (altModifierArmed && !event.altKey && !event.ctrlKey && !event.metaKey) {
       const key = event.key.toUpperCase() === " " ? "SPACE" : event.key.toUpperCase();
       command = "ALT+" + key;
-    } else if (controlModifierArmed && !event.ctrlKey && !event.altKey && !event.metaKey) {
-      const key = event.key.toUpperCase() === " " ? "SPACE" : event.key.toUpperCase();
-      command = "CTRL+" + key;
     }
     modifierHeld = false;
     altModifierArmed = false;
@@ -227,18 +225,14 @@
     if (command === expected.command) {
       item.textContent = displayedCommand(command) + ": " + expected.success;
       log.append(item);
-      feedback.className = "scenario-feedback is-correct";
-      feedback.textContent = expected.why;
       step += 1;
       if (step === mission.steps.length) finishMission(expected.success + " " + expected.why);
-      else announce(expected.success + " " + expected.why);
+      else announce(expected.success + " " + expected.why, "correct");
     } else {
       const response = wrongResponse(command, expected.command);
       item.textContent = displayedCommand(command) + ": " + response;
       log.append(item);
-      feedback.className = "scenario-feedback is-incorrect";
-      feedback.textContent = "That changed or inspected something, but the problem is not solved. Use the new announcement as evidence and keep working.";
-      announce(response + " " + feedback.textContent);
+      announce(response + " That did not solve the problem. Use the response as evidence and keep working.", "incorrect");
     }
   }
 
@@ -257,9 +251,7 @@
     completed.add(current);
     save();
     updateProgress();
-    feedback.className = "scenario-feedback is-correct";
-    feedback.innerHTML = "<h3>Mission complete</h3><p>You solved the problem through keyboard commands and confirmed system feedback.</p>";
-    announce(finalStepFeedback + " Mission complete. " + missions[current].title);
+    announce(finalStepFeedback + " Mission complete. You solved " + missions[current].title + ".", "correct");
     nextButton.hidden = false;
     nextButton.focus();
   }
@@ -274,8 +266,6 @@
     problem.textContent = mission.problem;
     count.textContent = "Mission " + (current + 1) + " of " + missions.length;
     log.replaceChildren();
-    feedback.textContent = "";
-    feedback.className = "scenario-feedback";
     lastCommand.textContent = "None";
     modifierHeld = false;
     altModifierArmed = false;
@@ -294,19 +284,6 @@
   });
   document.getElementById("startMission").addEventListener("click", startMission);
   document.getElementById("restartMission").addEventListener("click", startMission);
-  document.getElementById("speakTranscript").addEventListener("click", () => speak(transcript.textContent));
-  document.getElementById("repeatProblem").addEventListener("click", () => announce("Mission problem. " + problem.textContent));
-  simulatedVoice.addEventListener("change", () => {
-    simulatedVoiceActions.hidden = !simulatedVoice.checked;
-    try { localStorage.setItem("missionControlSimulatedVoice", simulatedVoice.checked ? "on" : "off"); } catch (error) {}
-    if (simulatedVoice.checked) {
-      transcript.textContent = "Mission Control reports: “Extra simulator voice on.”";
-      speak("Extra simulator voice on.");
-    } else {
-      if ("speechSynthesis" in window) speechSynthesis.cancel();
-      transcript.textContent = "Mission Control reports: “Using your screen reader only.”";
-    }
-  });
   nextButton.addEventListener("click", () => {
     missionSelect.value = String((current + 1) % missions.length);
     startMission();
@@ -314,9 +291,5 @@
   perspective.addEventListener("change", () => {
     if (active) announce("Screen-reader perspective changed to " + screenReaders[perspective.value].name + ".");
   });
-  if (!focusedMissionSession) {
-    try { simulatedVoice.checked = localStorage.getItem("missionControlSimulatedVoice") === "on"; } catch (error) { simulatedVoice.checked = false; }
-  }
-  simulatedVoiceActions.hidden = !simulatedVoice.checked;
   updateProgress();
 })();

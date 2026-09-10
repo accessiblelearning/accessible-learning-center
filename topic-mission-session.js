@@ -12,8 +12,10 @@
     return;
   }
 
+  const useMissionVoice = params.get("voice") === "1";
   document.getElementById("atPerspective").value = reader;
-  document.getElementById("simulatedVoice").checked = params.get("voice") === "1";
+  document.getElementById("simulatedVoice").checked = useMissionVoice;
+  document.getElementById("transcript").setAttribute("aria-live", useMissionVoice ? "off" : "polite");
 
   window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("missionSelect").value = String(mission);
