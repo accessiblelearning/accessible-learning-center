@@ -166,7 +166,7 @@
   let altModifierArmed = false;
   let controlModifierArmed = false;
   document.addEventListener("keydown", event => {
-    if (!focusedMissionSession || event.key !== "Escape" || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
+    if (!focusedMissionSession || !["Escape", "Esc"].includes(event.key) || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
     event.preventDefault();
     stopVoice();
     window.location.href = "topic-missions.html";
@@ -176,6 +176,10 @@
     const expectedCommand = missions[current].steps[step].command;
     if (event.key === "F1" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && expectedCommand !== "F1") {
       event.preventDefault();
+      modifierHeld = false;
+      altModifierArmed = false;
+      controlModifierArmed = false;
+      lastCommand.textContent = "F1: hint provided";
       announce("Strategy hint: " + missions[current].hint);
       return;
     }
@@ -296,7 +300,7 @@
     speak(transcript.textContent);
     missionControl.focus();
     if (!simulatedVoice.checked) {
-      window.setTimeout(() => transcript.setAttribute("aria-live", "polite"), 100);
+      transcript.setAttribute("aria-live", "polite");
     }
   }
 

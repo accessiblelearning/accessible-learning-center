@@ -137,7 +137,7 @@
   });
 
   document.addEventListener("keydown", event => {
-    if (event.key !== "Escape" || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
+    if (!["Escape", "Esc"].includes(event.key) || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
     event.preventDefault();
     stopVoice();
     window.location.href = "troubleshooting-lab.html";
