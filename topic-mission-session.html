@@ -5,34 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A focused screen-reader Mission Control simulation.">
   <title>Topic Mission - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-simplified-2">
+  <link rel="stylesheet" href="styles.css?v=training-stage-1">
   <script src="accessibility.js?v=mission-audit-2" defer></script>
   <script src="topic-mission-session.js?v=mission-audit-4" defer></script>
-  <script src="troubleshooting-lab.js?v=mission-audit-4" defer></script>
+  <script src="troubleshooting-lab.js?v=training-stage-1" defer></script>
 </head>
 <body class="mission-session-page" data-minimal-page="true" data-mission-session="true">
-  <header>
-    <h1>Mission Control</h1>
-  </header>
+  <header class="training-header"><h1>Mission Control</h1></header>
   <main id="main-content">
-    <section class="simulator focused-mission" aria-labelledby="missionTitle">
-      <div class="mission-briefing">
+    <section class="simulator focused-mission training-stage" aria-labelledby="missionTitle">
+      <div class="mission-briefing training-stage__briefing">
         <p class="mission-meta"><span id="missionCount">Preparing mission</span><span id="missionCategory"></span></p>
         <progress id="missionProgress" max="8" value="0">0 of 8 missions completed</progress>
         <h2 id="missionTitle" tabindex="-1">Preparing your topic mission</h2>
-        <p id="missionProblem" class="scenario-problem">Your mission briefing will appear here.</p>
+        <p id="missionProblem" class="scenario-problem training-stage__prompt">Your mission briefing will appear here.</p>
       </div>
 
-      <div id="missionControlStation" class="mission-control-station" tabindex="0" role="application" aria-labelledby="missionControlHeading" aria-describedby="missionProblem missionControlInstructions">
-        <h3 id="missionControlHeading">Command area</h3>
-        <p id="missionControlInstructions">Press the command that solves the problem. F1 gives a hint. Control repeats the problem. Escape closes Mission Control. If your screen reader, browser, or computer takes a command, press its last key once to confirm it here.</p>
-        <p><strong>Last command:</strong> <span id="lastCommand">None</span></p>
+      <div id="missionControlStation" class="mission-control-station training-stage__input" tabindex="0" role="application" aria-labelledby="missionControlHeading" aria-describedby="missionProblem missionControlInstructions">
+        <h3 id="missionControlHeading" class="visually-hidden">Command area</h3>
+        <p id="missionControlInstructions" class="visually-hidden">Press the command that solves the problem. F1 gives a hint. Control repeats the problem. Escape closes Mission Control. If your screen reader, browser, or computer takes a command, press its last key once to confirm it here.</p>
+        <p class="training-stage__detected"><span class="training-stage__input-label">Last command</span><strong id="lastCommand">None yet</strong></p>
       </div>
 
-      <section class="mission-response" aria-labelledby="transcriptHeading">
-        <h3 id="transcriptHeading">Latest response</h3>
+      <section class="mission-response training-stage__feedback" aria-labelledby="transcriptHeading">
+        <h3 id="transcriptHeading" class="visually-hidden">Latest response</h3>
         <p id="transcript" class="scenario-feedback" aria-live="polite">Preparing the simulator.</p>
       </section>
+
+      <p class="practice-session-shortcuts training-stage__shortcuts"><strong>Control</strong> repeat <span aria-hidden="true">·</span> <strong>F1</strong> hint <span aria-hidden="true">·</span> <strong>Escape</strong> close</p>
 
       <details class="mission-log-panel">
         <summary>Mission options</summary>

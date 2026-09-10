@@ -292,7 +292,9 @@
   }
 
   function updateScore() {
-    score.textContent = "Correct commands: " + correctCount + ". Attempts: " + attempts + ".";
+    score.textContent = focusedSession
+      ? "Correct: " + correctCount + " · Attempts: " + attempts
+      : "Correct commands: " + correctCount + ". Attempts: " + attempts + ".";
   }
 
   start.addEventListener("click", () => {

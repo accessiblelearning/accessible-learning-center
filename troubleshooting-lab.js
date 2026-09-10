@@ -287,7 +287,7 @@
     problem.textContent = mission.problem;
     count.textContent = "Mission " + (current + 1) + " of " + missions.length;
     log.replaceChildren();
-    lastCommand.textContent = "None";
+    lastCommand.textContent = "None yet";
     modifierHeld = false;
     altModifierArmed = false;
     controlModifierArmed = false;

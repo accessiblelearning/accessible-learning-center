@@ -992,6 +992,281 @@ html[data-contrast="high"] td {
   }
 }
 
+/* Simple, single-task training stage inspired by accessible typing tutors. */
+.practice-session-page,
+.mission-session-page {
+  min-height: 100vh;
+  background: #edf6ff;
+}
+
+.training-header {
+  width: min(100% - 1rem, 56rem);
+  margin-inline: auto;
+  padding: .8rem 1rem;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.training-header h1 {
+  margin: 0;
+  color: var(--blue-950);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+}
+
+.practice-session-page > main,
+.mission-session-page > main {
+  display: grid;
+  width: min(100% - 1rem, 56rem);
+  min-height: calc(100vh - 5rem);
+  margin-inline: auto;
+  padding-block: 0 .5rem;
+}
+
+.training-stage {
+  align-self: stretch;
+  display: grid;
+  align-content: center;
+  gap: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: var(--ink);
+  background: #ffffff;
+  border: 3px solid var(--blue-700);
+  border-radius: 1rem;
+  box-shadow: 0 .75rem 2rem rgba(6, 50, 97, .12);
+}
+
+.training-stage__topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .35rem 1rem;
+  padding: .8rem 1.15rem;
+  background: #eaf5ff;
+  border-bottom: 2px solid #b8d8f3;
+}
+
+.training-stage__topbar h2,
+.training-stage__topbar p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.training-stage__prompt,
+.mission-session-page .training-stage__prompt {
+  display: grid;
+  place-content: center;
+  min-height: clamp(11rem, 34vh, 19rem);
+  margin: 0;
+  padding: clamp(1.25rem, 6vw, 3.5rem);
+  color: var(--blue-950);
+  background: #ffffff;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+}
+
+.training-stage__prompt h3 {
+  margin: 0 0 .7rem;
+  color: var(--blue-950);
+  font-size: clamp(1.8rem, 6vw, 3.4rem);
+  line-height: 1.15;
+}
+
+.training-stage__prompt p,
+.mission-session-page .training-stage__prompt {
+  max-width: 42rem;
+  margin-inline: auto;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.training-stage__input,
+.mission-session-page .training-stage__input {
+  display: grid;
+  place-content: center;
+  min-height: 7rem;
+  margin: 0 1rem;
+  padding: 1rem;
+  color: #ffffff;
+  background: var(--blue-900);
+  border: 4px solid #7fd0ff;
+  border-radius: .75rem;
+  box-shadow: inset 0 0 0 2px #ffffff;
+  text-align: center;
+}
+
+.training-stage__input:focus,
+.training-stage__input:focus-visible {
+  outline: 5px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.training-stage__detected {
+  display: grid;
+  gap: .25rem;
+  margin: 0;
+}
+
+.training-stage__input-label {
+  font-size: .95rem;
+  font-weight: 750;
+}
+
+.training-stage__detected strong {
+  color: #ffffff;
+  font-size: clamp(1.35rem, 4vw, 2rem);
+}
+
+.training-stage__feedback,
+.mission-session-page .training-stage__feedback {
+  min-height: 5rem;
+  margin: 0;
+  padding: 1rem 1.25rem;
+  color: var(--ink);
+  background: #ffffff;
+  border: 0;
+  text-align: center;
+}
+
+.training-stage__feedback:not(:empty),
+.training-stage__feedback .scenario-feedback:not(:empty) {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.training-stage__shortcuts {
+  margin: 0;
+  padding: .8rem 1rem;
+  color: #183b60;
+  background: #eaf5ff;
+  border: 0;
+  border-top: 2px solid #b8d8f3;
+  text-align: center;
+}
+
+.training-stage .practice-actions,
+.training-stage .simulator-actions {
+  justify-content: center;
+  margin: 0;
+  padding: 1rem;
+}
+
+.training-stage__briefing {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.training-stage__briefing .mission-meta {
+  margin: 0;
+  padding: .7rem 1rem .45rem;
+  background: #eaf5ff;
+}
+
+.training-stage__briefing progress {
+  display: block;
+  width: calc(100% - 2rem);
+  height: .85rem;
+  margin: 0 1rem;
+}
+
+.training-stage__briefing h2 {
+  margin: 0;
+  padding: .65rem 1rem 0;
+  color: var(--blue-950);
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  text-align: center;
+}
+
+.training-stage .mission-log-panel {
+  margin: 0;
+  padding: .75rem 1rem;
+  border: 0;
+  border-top: 1px solid #b8d8f3;
+}
+
+.training-stage .mission-log-panel > summary {
+  text-align: center;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-session-page,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-header,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-stage,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-stage__topbar,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-stage__prompt,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-session-page .training-stage__prompt,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-stage__feedback,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-session-page .training-stage__feedback,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-stage__shortcuts,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-stage__briefing .mission-meta {
+  color: #ffffff;
+  background: #000000;
+  border-color: #8dd1ff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .training-header h1,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-stage__prompt,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-stage__prompt h3,
+html[data-theme="dark"]:not([data-contrast="high"]) .training-stage__briefing h2 {
+  color: #ffffff;
+}
+
+html[data-contrast="high"] .training-stage,
+html[data-contrast="high"] .training-stage__topbar,
+html[data-contrast="high"] .training-stage__prompt,
+html[data-contrast="high"] .training-stage__feedback,
+html[data-contrast="high"] .training-stage__shortcuts {
+  color: #000000;
+  background: #ffffff;
+  border-color: #000000;
+  box-shadow: none;
+}
+
+html[data-contrast="high"] .training-stage__input {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 3px #000000;
+}
+
+@media (max-width: 32rem) {
+  .training-header {
+    padding-inline: .5rem;
+  }
+
+  .practice-session-page > main,
+  .mission-session-page > main {
+    width: calc(100% - .5rem);
+  }
+
+  .training-stage {
+    border-radius: .65rem;
+  }
+
+  .training-stage__prompt,
+  .mission-session-page .training-stage__prompt {
+    min-height: 10rem;
+    padding: 1.25rem .9rem;
+  }
+
+  .training-stage__input,
+  .mission-session-page .training-stage__input {
+    margin-inline: .5rem;
+  }
+
+  .training-stage__shortcuts {
+    font-size: .95rem;
+  }
+}
+
 .traffic-summary {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
@@ -1638,5 +1913,104 @@ html[data-theme="dark"] .mission-log li {
 
   .catalog-actions button {
     width: 100%;
+  }
+}
+
+/* Keep the training stage above older simulator and practice component rules. */
+.practice-session-page > header.training-header,
+.mission-session-page > header.training-header {
+  padding-block: .8rem;
+}
+
+.practice-session-page .training-stage,
+.mission-session-page .training-stage.focused-mission {
+  padding: 0;
+  background: #ffffff;
+  border: 3px solid var(--blue-700);
+  border-radius: 1rem;
+}
+
+.practice-session-page .training-stage .training-stage__prompt,
+.mission-session-page .training-stage .training-stage__prompt {
+  min-height: clamp(11rem, 34vh, 19rem);
+  margin: 0;
+  padding: clamp(1.25rem, 6vw, 3.5rem);
+  color: var(--blue-950);
+  background: #ffffff;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+}
+
+.practice-session-page .training-stage .training-stage__input,
+.mission-session-page .training-stage .training-stage__input {
+  min-height: 7rem;
+  margin: 0 1rem;
+  padding: 1rem;
+  color: #ffffff;
+  background: var(--blue-900);
+  border: 4px solid #7fd0ff;
+  border-radius: .75rem;
+  box-shadow: inset 0 0 0 2px #ffffff;
+}
+
+.practice-session-page .training-stage .training-stage__feedback,
+.practice-session-page .training-stage .training-stage__feedback:not(:empty),
+.mission-session-page .training-stage .training-stage__feedback,
+.mission-session-page .training-stage .training-stage__feedback:not(:empty) {
+  min-height: 5rem;
+  margin: 0;
+  padding: 1rem 1.25rem;
+  color: var(--ink);
+  background: #ffffff;
+  border: 0;
+  text-align: center;
+}
+
+.mission-session-page .training-stage .training-stage__briefing {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.practice-session-page .training-stage .training-stage__shortcuts,
+.mission-session-page .training-stage .training-stage__shortcuts {
+  margin: 0;
+  padding: .8rem 1rem;
+  color: #183b60;
+  background: #eaf5ff;
+  border: 0;
+  border-top: 2px solid #b8d8f3;
+  text-align: center;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-session-page .training-stage.focused-mission,
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage .training-stage__prompt,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-session-page .training-stage .training-stage__prompt,
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage .training-stage__feedback,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-session-page .training-stage .training-stage__feedback {
+  color: #ffffff;
+  background: #000000;
+  border-color: #8dd1ff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage .training-stage__shortcuts,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-session-page .training-stage .training-stage__shortcuts {
+  color: #ffffff;
+  background: #000000;
+  border-color: #8dd1ff;
+}
+
+@media (max-width: 32rem) {
+  .practice-session-page .training-stage .training-stage__prompt,
+  .mission-session-page .training-stage .training-stage__prompt {
+    min-height: 10rem;
+    padding: 1.25rem .9rem;
+  }
+
+  .practice-session-page .training-stage .training-stage__input,
+  .mission-session-page .training-stage .training-stage__input {
+    margin-inline: .5rem;
   }
 }
