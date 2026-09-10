@@ -1,22 +1,42 @@
 (() => {
   "use strict";
 
+  const speechOptions = [
+    { value: "own", label: "Use my own screen reader" },
+    { value: "voice", label: "Use the Mission Control voice" }
+  ];
+  const readerOptions = [
+    { value: "jaws", label: "JAWS" },
+    { value: "nvda", label: "NVDA" },
+    { value: "narrator", label: "Narrator" }
+  ];
+  const missionOptions = [
+    { value: "0", label: "Screen-reader recovery: The unexpected window" },
+    { value: "1", label: "Google applications: Letters navigate instead of typing" },
+    { value: "2", label: "Email and calendar: Protect the unsent Outlook message" },
+    { value: "3", label: "Microsoft applications: The risky Word edit" },
+    { value: "4", label: "Cloud storage: Move without losing the original" },
+    { value: "5", label: "Online meetings: The live microphone" },
+    { value: "6", label: "Privacy and cybersecurity: The suspicious pop-up" },
+    { value: "7", label: "Files and folders: Rename the correct file" }
+  ];
+
+  const settings = {
+    speech: { options: speechOptions, index: 0, valueElement: document.getElementById("speechSettingValue") },
+    reader: { options: readerOptions, index: 0, valueElement: document.getElementById("readerSettingValue") },
+    mission: { options: missionOptions, index: 0, valueElement: document.getElementById("missionSettingValue") }
+  };
   const menu = document.getElementById("missionSettingsMenu");
   const status = document.getElementById("missionSetupStatus");
   const start = document.getElementById("startMissionSetup");
   const items = [...menu.querySelectorAll("button")];
-  const selected = { speech: "own", reader: "jaws", mission: "0" };
 
-  function selectedButton(group) {
-    return menu.querySelector('[data-group="' + group + '"][aria-checked="true"]');
-  }
-
-  function selectedText(group) {
-    return selectedButton(group).textContent.trim();
+  function current(setting) {
+    return settings[setting].options[settings[setting].index];
   }
 
   function voiceEnabled() {
-    return selected.speech === "voice";
+    return current("speech").value === "voice";
   }
 
   function stopVoice() {
@@ -31,33 +51,34 @@
     speechSynthesis.speak(utterance);
   }
 
-  function updateStatus() {
-    status.textContent = "Selected: " + selectedText("speech") + ", " + selectedText("reader") + ", and " + selectedText("mission") + ".";
+  function itemAnnouncement(item) {
+    if (item === start) return "Start selected mission. Press Enter to begin.";
+    const setting = item.dataset.setting;
+    return item.querySelector(".mission-setting-label").textContent + ". " + current(setting).label + ". Press Enter to change.";
   }
 
-  function choose(button) {
-    const group = button.dataset.group;
-    menu.querySelectorAll('[data-group="' + group + '"]').forEach(option => {
-      option.setAttribute("aria-checked", String(option === button));
-    });
-    selected[group] = button.dataset.value;
+  function updateStatus() {
+    status.textContent = "Selected: " + current("speech").label + ", " + current("reader").label + ", and " + current("mission").label + ".";
+  }
+
+  function changeSetting(setting) {
+    const data = settings[setting];
+    data.index = (data.index + 1) % data.options.length;
+    data.valueElement.textContent = current(setting).label;
     updateStatus();
 
-    if (group === "speech" && selected.speech === "own") {
+    if (setting === "speech" && !voiceEnabled()) {
       stopVoice();
       return;
     }
-    speak(button.textContent.trim() + " selected.");
+    speak(current(setting).label + " selected.");
   }
 
   items.forEach(item => {
     item.tabIndex = item === items[0] ? 0 : -1;
     item.addEventListener("focus", () => {
       items.forEach(option => { option.tabIndex = option === item ? 0 : -1; });
-      const selection = item.getAttribute("role") === "radio"
-        ? (item.getAttribute("aria-checked") === "true" ? ", selected" : ", not selected")
-        : "";
-      speak(item.textContent.trim() + selection + ".");
+      speak(itemAnnouncement(item));
     });
   });
 
@@ -66,26 +87,26 @@
     if (!button) return;
     if (button === start) {
       const params = new URLSearchParams({
-        reader: selected.reader,
-        mission: selected.mission,
+        reader: current("reader").value,
+        mission: current("mission").value,
         voice: voiceEnabled() ? "1" : "0"
       });
       window.location.href = "topic-mission-session.html?" + params.toString();
       return;
     }
-    choose(button);
+    changeSetting(button.dataset.setting);
   });
 
   menu.addEventListener("keydown", event => {
     if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
-    const current = Math.max(0, items.indexOf(document.activeElement));
-    let next = current;
-    if (event.key === "ArrowDown") next = (current + 1) % items.length;
-    if (event.key === "ArrowUp") next = (current - 1 + items.length) % items.length;
-    if (event.key === "Home") next = 0;
-    if (event.key === "End") next = items.length - 1;
-    items[next].focus();
+    const activeIndex = Math.max(0, items.indexOf(document.activeElement));
+    let nextIndex = activeIndex;
+    if (event.key === "ArrowDown") nextIndex = (activeIndex + 1) % items.length;
+    if (event.key === "ArrowUp") nextIndex = (activeIndex - 1 + items.length) % items.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = items.length - 1;
+    items[nextIndex].focus();
   });
 
   window.addEventListener("DOMContentLoaded", () => items[0].focus());

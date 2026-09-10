@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Choose a screen-reader Mission Control scenario using a simple keyboard-guided list.">
   <title>Choose a Topic Mission - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-keyboard-menu-1">
+  <link rel="stylesheet" href="styles.css?v=mission-toggle-settings-1">
   <script src="accessibility.js?v=minimal-pages-1" defer></script>
-  <script src="topic-missions-setup.js?v=mission-keyboard-menu-1" defer></script>
+  <script src="topic-missions-setup.js?v=mission-toggle-settings-1" defer></script>
 </head>
 <body class="mission-setup-page" data-minimal-page="true">
   <header>
@@ -18,40 +18,24 @@
   <main id="main-content">
     <section class="mission-keyboard-setup" aria-labelledby="setup-heading">
       <h2 id="setup-heading">Mission settings</h2>
-      <p id="missionSetupInstructions"><strong>Use Down Arrow and Up Arrow</strong> to move through the list. Press <strong>Enter</strong> to select an option. Continue to the bottom and press Enter on Start Mission.</p>
+      <p id="missionSetupInstructions"><strong>Use Down Arrow and Up Arrow</strong> to move between four settings. Press <strong>Enter</strong> to change the highlighted setting. Continue to Start Mission and press Enter.</p>
 
       <div id="missionSettingsMenu" class="mission-settings-menu" role="application" aria-label="Mission settings keyboard menu" aria-describedby="missionSetupInstructions">
-        <section class="mission-settings-group" aria-labelledby="speech-heading">
-          <h3 id="speech-heading">1. Choose speech</h3>
-          <div role="radiogroup" aria-labelledby="speech-heading">
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="true" data-group="speech" data-value="own">Use my own screen reader</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="speech" data-value="voice">Use the Mission Control voice</button>
-          </div>
-        </section>
-
-        <section class="mission-settings-group" aria-labelledby="reader-heading">
-          <h3 id="reader-heading">2. Choose the screen reader for the mission</h3>
-          <div role="radiogroup" aria-labelledby="reader-heading">
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="true" data-group="reader" data-value="jaws">JAWS</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="reader" data-value="nvda">NVDA</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="reader" data-value="narrator">Narrator</button>
-          </div>
-        </section>
-
-        <section class="mission-settings-group" aria-labelledby="mission-heading">
-          <h3 id="mission-heading">3. Choose a mission</h3>
-          <div role="radiogroup" aria-labelledby="mission-heading">
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="true" data-group="mission" data-value="0">Screen-reader recovery: The unexpected window</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="1">Google applications: Letters navigate instead of typing</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="2">Email and calendar: Protect the unsent Outlook message</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="3">Microsoft applications: The risky Word edit</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="4">Cloud storage: Move without losing the original</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="5">Online meetings: The live microphone</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="6">Privacy and cybersecurity: The suspicious pop-up</button>
-            <button class="mission-setting-option" type="button" role="radio" aria-checked="false" data-group="mission" data-value="7">Files and folders: Rename the correct file</button>
-          </div>
-        </section>
-
+        <button id="speechSetting" class="mission-setting-toggle" type="button" data-setting="speech">
+          <span class="mission-setting-label">1. Speech</span>
+          <strong id="speechSettingValue" class="mission-setting-value">Use my own screen reader</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
+        <button id="readerSetting" class="mission-setting-toggle" type="button" data-setting="reader">
+          <span class="mission-setting-label">2. Screen reader</span>
+          <strong id="readerSettingValue" class="mission-setting-value">JAWS</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
+        <button id="missionSetting" class="mission-setting-toggle" type="button" data-setting="mission">
+          <span class="mission-setting-label">3. Mission</span>
+          <strong id="missionSettingValue" class="mission-setting-value">Screen-reader recovery: The unexpected window</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
         <button id="startMissionSetup" class="mission-start-option" type="button">4. Start selected mission</button>
       </div>
       <p id="missionSetupStatus">Selected: Use my own screen reader, JAWS, and The unexpected window.</p>
