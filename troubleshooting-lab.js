@@ -92,6 +92,17 @@
   const lastCommand = document.getElementById("lastCommand");
   const log = document.getElementById("missionLog");
   const nextButton = document.getElementById("nextMission");
+  const retryResultButton = document.getElementById("retryMissionResult");
+  const missionResults = document.getElementById("missionResults");
+  const missionResultsSummary = document.getElementById("missionResultsSummary");
+  const missionMasteredList = document.getElementById("missionMasteredList");
+  const missionReviewList = document.getElementById("missionReviewList");
+  const missionCompletedCount = document.getElementById("missionCompletedCount");
+  const missionSuggestedReview = document.getElementById("missionSuggestedReview");
+  const missionBriefing = document.querySelector(".mission-briefing");
+  const missionResponse = document.querySelector(".mission-response");
+  const missionShortcuts = document.querySelector(".practice-session-shortcuts");
+  const missionLogPanel = document.querySelector(".mission-log-panel");
   const progress = document.getElementById("missionProgress");
   const count = document.getElementById("missionCount");
   const simulatedVoice = document.getElementById("simulatedVoice");
@@ -100,6 +111,19 @@
   let step = 0;
   let active = false;
   let completed = new Set();
+  let missionAttempts = 0;
+  let missionCommandsToReview = new Map();
+
+  const missionReviewLinks = {
+    "Screen-reader recovery": ["jaws-lesson-2.html", "Review Screen Readers Lesson 2"],
+    "Google applications": ["google-services-manual.html", "Review the Google Services Manual"],
+    "Email and calendar": ["outlook-manual.html", "Review the Microsoft Outlook Manual"],
+    "Microsoft applications": ["word-lesson-2.html", "Review Microsoft Word Lesson 2"],
+    "Cloud storage": ["onedrive-manual.html", "Review the OneDrive Manual"],
+    "Online meetings": ["online-meetings-manual.html", "Review the Online Meetings Manual"],
+    "Privacy and cybersecurity": ["cybersecurity-lesson-2.html", "Review cybersecurity lessons"],
+    "Files and folders": ["windows-lesson-4.html", "Review Windows Lesson 4"]
+  };
 
   try {
     const saved = JSON.parse(localStorage.getItem("missionControlCompleted") || "[]");
@@ -241,6 +265,7 @@
       }));
     } catch (error) {}
     const expected = mission.steps[step];
+    missionAttempts += 1;
     lastCommand.textContent = displayedCommand(command);
     const item = document.createElement("li");
     if (command === expected.command) {
@@ -250,11 +275,51 @@
       if (step === mission.steps.length) finishMission(expected.success + " " + expected.why);
       else announce(expected.success + " " + expected.why, "correct");
     } else {
+      missionCommandsToReview.set(expected.command, expected);
       const response = wrongResponse(command, expected.command);
       item.textContent = displayedCommand(command) + ": " + response;
       log.append(item);
       announce(response + " That did not solve the problem. Use the response as evidence and keep working.", "incorrect");
     }
+  }
+
+  function showMissionResults(show) {
+    if (!missionResults) return;
+    missionResults.hidden = !show;
+    missionBriefing.hidden = show;
+    missionControl.hidden = show;
+    missionResponse.hidden = show;
+    missionShortcuts.hidden = show;
+    missionLogPanel.hidden = show;
+  }
+
+  function fillMissionResults() {
+    const mission = missions[current];
+    missionResultsSummary.textContent = "You solved " + mission.title + " in " + missionAttempts + " command attempt" + (missionAttempts === 1 ? "" : "s") + ".";
+    missionMasteredList.replaceChildren();
+    mission.steps.forEach(item => {
+      const listItem = document.createElement("li");
+      listItem.textContent = displayedCommand(item.command) + ": " + item.why;
+      missionMasteredList.append(listItem);
+    });
+    missionReviewList.replaceChildren();
+    if (missionCommandsToReview.size) {
+      const list = document.createElement("ul");
+      missionCommandsToReview.forEach((item, command) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = displayedCommand(command) + ": " + item.why;
+        list.append(listItem);
+      });
+      missionReviewList.append(list);
+    } else {
+      const none = document.createElement("p");
+      none.textContent = "None. You solved every step without a missed command.";
+      missionReviewList.append(none);
+    }
+    missionCompletedCount.textContent = "Missions completed: " + completed.size + " of " + missions.length + ".";
+    const suggestedReview = missionReviewLinks[mission.category];
+    missionSuggestedReview.href = suggestedReview[0];
+    missionSuggestedReview.textContent = suggestedReview[1];
   }
 
   function wrongResponse(command, expected) {
@@ -273,14 +338,17 @@
     save();
     updateProgress();
     announce(finalStepFeedback + " Mission complete. You solved " + missions[current].title + ".", "correct");
-    nextButton.hidden = false;
-    nextButton.focus();
+    fillMissionResults();
+    showMissionResults(true);
+    missionResults.focus();
   }
 
   function startMission() {
     current = Number(missionSelect.value);
     step = 0;
     active = true;
+    missionAttempts = 0;
+    missionCommandsToReview = new Map();
     const mission = missions[current];
     category.textContent = mission.category;
     title.textContent = mission.title;
@@ -291,7 +359,8 @@
     modifierHeld = false;
     altModifierArmed = false;
     controlModifierArmed = false;
-    nextButton.hidden = true;
+    missionLogPanel.open = false;
+    showMissionResults(false);
     updateProgress();
     const briefing = "Mission briefing. " + mission.title + ". " + mission.problem;
     transcript.setAttribute("aria-live", "off");
@@ -315,6 +384,7 @@
     document.querySelector(".mission-log-panel").open = false;
     startMission();
   });
+  retryResultButton.addEventListener("click", startMission);
   nextButton.addEventListener("click", () => {
     missionSelect.value = String((current + 1) % missions.length);
     startMission();

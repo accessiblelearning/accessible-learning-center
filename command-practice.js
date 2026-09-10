@@ -138,6 +138,12 @@
   const learnOnlyList = document.getElementById("learnOnlyCommands");
   const completionActions = document.getElementById("sessionCompletionActions");
   const practiceExit = document.getElementById("practiceExit");
+  const commandResults = document.getElementById("commandResults");
+  const commandResultsSummary = document.getElementById("commandResultsSummary");
+  const commandMasteredList = document.getElementById("commandMasteredList");
+  const commandReviewList = document.getElementById("commandReviewList");
+  const commandSuggestedReview = document.getElementById("commandSuggestedReview");
+  const practiceShortcuts = document.querySelector(".practice-session-shortcuts");
   const focusedSession = document.body.dataset.practiceSession === "true";
 
   let active = false;
@@ -347,6 +353,43 @@
       : "Correct commands: " + correctCount + ". Attempts: " + attempts + ".";
   }
 
+  function showPracticeResults(show) {
+    if (!commandResults) return;
+    commandResults.hidden = !show;
+    prompt.hidden = show;
+    capture.hidden = show;
+    status.hidden = show;
+    if (practiceShortcuts) practiceShortcuts.hidden = show;
+  }
+
+  function fillCommandResults() {
+    const uniqueCommands = [...new Map(order.map(item => [item[0], item])).values()];
+    commandResultsSummary.textContent = "You completed " + correctCount + " commands correctly in " + attempts + " attempts.";
+    commandMasteredList.replaceChildren();
+    uniqueCommands.forEach(item => {
+      const listItem = document.createElement("li");
+      listItem.textContent = spokenKeys(item[0]) + ": " + item[1];
+      commandMasteredList.append(listItem);
+    });
+    commandReviewList.replaceChildren();
+    if (missedCommands.size) {
+      const list = document.createElement("ul");
+      missedCommands.forEach(item => {
+        const listItem = document.createElement("li");
+        listItem.textContent = spokenKeys(item[0]) + ": " + item[1];
+        list.append(listItem);
+      });
+      commandReviewList.append(list);
+    } else {
+      const none = document.createElement("p");
+      none.textContent = "None. You completed every command without a missed attempt.";
+      commandReviewList.append(none);
+    }
+    const suggestedReview = reviewLinks[category.value];
+    commandSuggestedReview.href = suggestedReview[0];
+    commandSuggestedReview.textContent = suggestedReview[1];
+  }
+
   start.addEventListener("click", () => {
     active = true;
     controlTapPending = false;
@@ -359,6 +402,7 @@
     missedCommands.clear();
     practiceMissed.disabled = true;
     if (completionActions) completionActions.hidden = true;
+    showPracticeResults(false);
     if (random.checked) order.sort(() => Math.random() - 0.5);
     start.disabled = true;
     stop.disabled = false;
@@ -391,24 +435,15 @@
       repeat.disabled = true;
       next.disabled = true;
       const missedCount = missedCommands.size;
-      const heading = document.createElement("h3");
-      heading.textContent = "Practice complete";
-      const result = document.createElement("p");
-      result.textContent = "You completed " + correctCount + " tasks correctly in " + attempts + " attempts.";
-      const review = document.createElement("p");
-      const reviewLink = document.createElement("a");
-      const suggestedReview = reviewLinks[category.value];
-      reviewLink.href = suggestedReview[0];
-      reviewLink.textContent = suggestedReview[1];
-      review.append("Suggested next step: ", reviewLink, ".");
-      prompt.replaceChildren(heading, result, review);
       status.textContent = missedCount
         ? missedCount + " command" + (missedCount === 1 ? " is" : "s are") + " ready to practice again."
         : "Practice complete. No missed commands remain.";
       practiceMissed.disabled = missedCount === 0;
       if (completionActions) completionActions.hidden = false;
+      fillCommandResults();
+      showPracticeResults(true);
       speak("Practice complete. You practiced " + correctCount + " commands correctly in " + attempts + " attempts. " + status.textContent);
-      (missedCount ? practiceMissed : (practiceExit || start)).focus();
+      commandResults.focus();
       return;
     }
     showCommand();
@@ -427,6 +462,7 @@
     repeat.disabled = false;
     practiceMissed.disabled = true;
     if (completionActions) completionActions.hidden = true;
+    showPracticeResults(false);
     updateScore();
     showCommand();
   });
@@ -446,6 +482,7 @@
       window.location.href = "command-practice.html";
       return;
     }
+    showPracticeResults(false);
     start.disabled = false;
     stop.disabled = true;
     repeat.disabled = true;

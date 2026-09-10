@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-voice-1">
+  <link rel="stylesheet" href="styles.css?v=mission-results-1">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
   <script src="command-practice-session.js?v=training-accessibility-1" defer></script>
-  <script src="command-practice.js?v=protected-commands-1" defer></script>
+  <script src="command-practice.js?v=mission-results-1" defer></script>
 </head>
 <body class="practice-session-page" data-practice-session="true" data-minimal-page="true">
   <header class="training-header"><h1>Command Practice</h1></header>
@@ -27,6 +27,15 @@
       </div>
       <div id="practiceStatus" class="practice-status training-stage__feedback" role="status" aria-live="assertive"></div>
       <p class="practice-session-shortcuts training-stage__shortcuts"><strong>Control</strong> repeat, or protected first step when instructed <span aria-hidden="true">·</span> Correct commands advance automatically <span aria-hidden="true">·</span> <strong>Escape</strong> close</p>
+      <section id="commandResults" class="training-results" aria-labelledby="commandResultsHeading" tabindex="-1" hidden>
+        <h2 id="commandResultsHeading">Practice complete</h2>
+        <p id="commandResultsSummary"></p>
+        <h3>Commands mastered</h3>
+        <ul id="commandMasteredList"></ul>
+        <h3>Commands to review</h3>
+        <div id="commandReviewList"></div>
+        <p>Suggested next step: <a id="commandSuggestedReview" href="lessons.html">Review a related lesson</a>.</p>
+      </section>
       <div id="sessionCompletionActions" class="practice-actions" hidden>
         <button id="practiceMissed" type="button" disabled>Practice missed commands</button>
         <button id="practiceExit" type="button">Choose different practice settings</button>
