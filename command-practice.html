@@ -3,46 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Choose settings for a focused keyboard and screen-reader command practice session.">
+  <meta name="description" content="Choose command-practice settings using a simple keyboard-guided list.">
   <title>Choose Command Practice Settings - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=focused-command-practice-1">
-  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="command-practice-setup.js?v=focused-command-practice-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=command-toggle-settings-1">
+  <script src="accessibility.js?v=minimal-pages-1" defer></script>
+  <script src="command-practice-setup.js?v=command-toggle-settings-1" defer></script>
 </head>
-<body>
+<body class="command-setup-page" data-minimal-page="true">
   <header>
-    <p class="eyebrow">Command Practice</p>
+    <p class="eyebrow">Command Practice setup</p>
     <h1>Choose Your Practice Settings</h1>
-    <p>Set up your session, then enter a separate distraction-free practice page.</p>
+    <p>Use one simple list to set up a focused command-practice session.</p>
   </header>
   <main id="main-content">
-    <p><a class="button-link" href="troubleshooting-lab.html">Return to the Command Center</a></p>
+    <section class="mission-keyboard-setup" aria-labelledby="setup-heading">
+      <h2 id="setup-heading">Practice settings</h2>
+      <p id="commandSetupInstructions"><strong>Use Down Arrow and Up Arrow</strong> to move between settings. Press <strong>Enter</strong> to change the highlighted setting. Continue to Start Command Practice and press Enter.</p>
 
-    <details class="mission-support">
-      <summary>Read command-practice safety information</summary>
-      <div>
-        <p>The focused practice page blocks the included practice commands from reaching the webpage whenever the blue practice area has focus. It cannot block operating-system or protected browser commands everywhere.</p>
-        <p><strong>Commands such as Alt+Tab, Windows+E, Windows+D, Ctrl+Alt+Delete, Ctrl+W, and F5 are not included for physical practice.</strong> A running screen reader may also intercept its own commands before the page receives them.</p>
+      <div id="commandSettingsMenu" class="mission-settings-menu" role="application" aria-label="Command Practice settings keyboard menu" aria-describedby="commandSetupInstructions">
+        <button id="commandSpeechSetting" class="mission-setting-toggle" type="button" data-setting="speech">
+          <span class="mission-setting-label">1. Speech</span>
+          <strong id="commandSpeechValue" class="mission-setting-value">Use my own screen reader</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
+        <button id="commandCategorySetting" class="mission-setting-toggle" type="button" data-setting="category">
+          <span class="mission-setting-label">2. Command topic</span>
+          <strong id="commandCategoryValue" class="mission-setting-value">General editing</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
+        <button id="commandStyleSetting" class="mission-setting-toggle" type="button" data-setting="style">
+          <span class="mission-setting-label">3. Practice style</span>
+          <strong id="commandStyleValue" class="mission-setting-value">Quick Command Practice</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
+        <button id="commandLengthSetting" class="mission-setting-toggle" type="button" data-setting="length">
+          <span class="mission-setting-label">4. Session length</span>
+          <strong id="commandLengthValue" class="mission-setting-value">Five connected tasks</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
+        <button id="commandExplanationSetting" class="mission-setting-toggle" type="button" data-setting="level">
+          <span class="mission-setting-label">5. Explanation level</span>
+          <strong id="commandExplanationValue" class="mission-setting-value">General explanation</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
+        <button id="commandSoundSetting" class="mission-setting-toggle" type="button" data-setting="sounds">
+          <span class="mission-setting-label">6. Sound feedback</span>
+          <strong id="commandSoundValue" class="mission-setting-value">On</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
+        <button id="commandOrderSetting" class="mission-setting-toggle" type="button" data-setting="order">
+          <span class="mission-setting-label">7. Practice order</span>
+          <strong id="commandOrderValue" class="mission-setting-value">In topic order</strong>
+          <span class="mission-setting-hint">Press Enter to change</span>
+        </button>
+        <button id="startCommandSetup" class="mission-start-option" type="button">8. Start Command Practice</button>
       </div>
-    </details>
 
-    <section aria-labelledby="setup-heading">
-      <h2 id="setup-heading">Choose your practice</h2>
-      <form id="commandPracticeSetup">
-        <div class="practice-settings">
-          <p><label for="commandCategory">Command category</label><select id="commandCategory"></select></p>
-          <p><label for="practiceStyle">Practice style</label><select id="practiceStyle"><option value="quick">Quick Command Practice</option><option value="guided">Guided Skill Practice</option></select></p>
-          <p><label for="sessionLength">Session length</label><select id="sessionLength"><option value="5">Five connected tasks</option><option value="all">Complete topic</option></select></p>
-          <p><label for="explanationLevel">Explanation level</label><select id="explanationLevel"><option value="brief">General explanation</option><option value="detailed">More detailed explanation</option></select></p>
-          <p><label><input id="spokenInstructions" type="checkbox" checked> Speak instructions and feedback out loud</label></p>
-          <p><label><input id="soundFeedback" type="checkbox" checked> Play success and correction sounds</label></p>
-          <p><label><input id="randomOrder" type="checkbox"> Practice in random order</label></p>
-        </div>
-        <div class="practice-actions">
-          <button id="startPractice" type="submit">Start command practice</button>
-        </div>
-      </form>
+      <p id="commandSetupStatus">Selected: Use my own screen reader, General editing, Quick Command Practice, five connected tasks, general explanation, sound on, and topic order.</p>
+      <p class="tip"><strong>Practice safety:</strong> The session includes commands the webpage can contain. System and browser commands that could switch, close, or reload something are excluded from physical practice.</p>
     </section>
+    <p><a href="troubleshooting-lab.html">Return to the Command Center</a></p>
   </main>
 </body>
 </html>

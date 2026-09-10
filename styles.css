@@ -1338,11 +1338,13 @@ html[data-contrast="high"] .mission-mode-actions a:focus-visible {
   border-left: .35rem solid var(--blue-600);
 }
 
+.command-setup-page > header,
 .mission-setup-page > header,
 .mission-session-page > header {
   padding-block: 1.25rem;
 }
 
+.command-setup-page > main,
 .mission-setup-page > main,
 .mission-session-page > main {
   width: min(100% - 1rem, 56rem);

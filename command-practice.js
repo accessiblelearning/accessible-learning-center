@@ -252,7 +252,9 @@
     const explanation = document.createElement("p");
     explanation.textContent = describe();
     prompt.replaceChildren(heading, explanation);
-    status.textContent = "Waiting for " + spokenKeys(command[0]) + ".";
+    status.textContent = spoken.checked
+      ? "Waiting for " + spokenKeys(command[0]) + "."
+      : describe() + " Waiting for your command.";
     detected.textContent = "None yet";
     next.disabled = true;
     speak(describe());
@@ -308,6 +310,13 @@
     start.disabled = true;
     stop.disabled = false;
     repeat.disabled = false;
+    if (spoken.checked) {
+      status.removeAttribute("role");
+      status.setAttribute("aria-live", "off");
+    } else {
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "assertive");
+    }
     updateScore();
     showCommand();
   });
@@ -460,7 +469,7 @@
       detected.textContent = "Control";
       status.textContent = spoken.checked
         ? "Repeating the current command aloud."
-        : "Spoken instructions are turned off. Turn them on to hear the command.";
+        : describe();
       speak(describe());
       capture.focus();
     }
