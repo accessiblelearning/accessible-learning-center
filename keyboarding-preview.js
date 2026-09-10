@@ -114,6 +114,7 @@
     }
     sessionStorage.setItem("alcKeyboardingPreview", "open");
     previewToolbar.hidden = false;
+    setWebsiteControlsMinimized(true);
     show(setupPanel);
   });
 
@@ -182,6 +183,7 @@
 
   if (sessionStorage.getItem("alcKeyboardingPreview") === "open") {
     previewToolbar.hidden = false;
+    setWebsiteControlsMinimized(true);
     show(setupPanel);
   }
 })();
