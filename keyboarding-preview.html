@@ -49,6 +49,7 @@
     .kb-progress { width: 100%; height: 1.35rem; }
     .kb-prompt { display: grid; place-items: center; min-height: 13rem; margin: 2rem 0; padding: 1.25rem; border: .3rem solid #51d5ff; border-radius: 1rem; background: #f7fbff; color: #071a35; font-size: clamp(2.5rem, 9vw, 6.5rem); font-weight: 900; line-height: 1.35; overflow-wrap: anywhere; }
     .kb-prompt--long { font-size: clamp(1.5rem, 4vw, 3rem); }
+    .kb-ready-prompt { min-height: 10rem; background: #d9f7df; border-color: #16813a; color: #071a35; font-size: clamp(2.25rem, 7vw, 5rem); }
     .kb-prompt-line { display: block; max-width: 100%; text-align: left; }
     .kb-char { display: inline-block; min-width: .7em; padding: 0 .04em; border-radius: .14em; text-align: center; }
     .kb-char-complete { background: #c9f2d2; color: #083f1c; box-shadow: inset 0 0 0 .06em #16813a; }
@@ -87,17 +88,49 @@
     .kb-stats-note { max-width: 44rem; margin: 1rem auto; }
     body.kb-controls-minimized .accessibility-panel, body.kb-controls-minimized .site-nav { display: none !important; }
     [hidden] { display: none !important; }
-    body.dark-mode .kb-panel { background: #07152e; color: #fff; border-color: #73b5ff; }
-    body.dark-mode .kb-choice, body.dark-mode .kb-result { border-color: #73b5ff; }
-    body.dark-mode .kb-prompt, body.dark-mode .kb-field select, body.dark-mode .kb-form input { background: #071a35; color: #fff; border-color: #73b5ff; }
-    body.dark-mode .kb-free-type { background: #071a35; color: #fff; border-color: #73b5ff; }
-    body.dark-mode .kb-prompt.correct { background: #123f27; color: #eaffef; border-color: #54d47c; }
-    body.dark-mode .kb-prompt.incorrect { background: #571b24; color: #fff; border-color: #ff7a88; }
-    body.dark-mode .kb-char-complete { background: #176238; color: #fff; box-shadow: inset 0 0 0 .06em #8ef2ad; }
-    body.dark-mode .kb-char-current { background: #ffe37a; color: #071a35; outline-color: #fff; }
-    body.dark-mode .kb-char-current::after { color: #ffe37a; }
-    body.dark-mode .kb-complete { color: #8ef2ad; }
-    body.dark-mode .kb-finish-row { background: linear-gradient(135deg, #0b2147, #075fc1); border-color: #73b5ff; }
+    html[data-theme="dark"]:not([data-contrast="high"]),
+    html[data-theme="dark"]:not([data-contrast="high"]) body,
+    html[data-theme="dark"]:not([data-contrast="high"]) body:has(.kb-shell),
+    html[data-theme="dark"]:not([data-contrast="high"]) body > main.kb-shell,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-panel,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-menu-help,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-note,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-help,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-status,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-panel [role="status"],
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-choice,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-result,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-prompt,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-free-type,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-field select,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-form input,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-menu-option,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-finish-row,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-result-primary,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-toolbar button {
+      background: #000;
+      color: #fff;
+      border-color: #fff;
+      box-shadow: none;
+    }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-panel h1,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-panel h2,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-char,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-complete { color: #fff !important; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-prompt.correct { background: #000; color: #fff; border-color: #55e487; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-prompt.incorrect { background: #000; color: #fff; border-color: #ff7a88; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-ready-prompt { background: #000; color: #fff; border-color: #55e487; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-char-complete { background: #000; color: #fff; box-shadow: inset 0 0 0 .07em #55e487; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-char-current { background: #000; color: #fff; outline-color: #ffe37a; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-char-current::after,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-sparkle { color: #ffe37a; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-menu-option:hover,
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-menu-option:focus { background: #000; color: #fff; border-color: #ffe37a; box-shadow: 0 0 0 .25rem #ffe37a; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-result-primary:focus-visible { outline-color: #ffe37a; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress { background: #000; border: 2px solid #fff; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-bar { background: #000; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-value { background: #fff; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-moz-progress-bar { background: #fff; }
     html[data-contrast="high"] body > main.kb-shell { background: #fff; color: #000; }
     html[data-contrast="high"] .kb-panel { background: #fff; color: #000; border-color: #000; }
     html[data-contrast="high"] .kb-panel h1, html[data-contrast="high"] .kb-panel h2 { color: #000 !important; }
@@ -254,7 +287,7 @@
       <textarea class="kb-free-type" id="freeTypeInput" aria-label="Free typing area" hidden></textarea>
       <p class="kb-typed" id="typedText" aria-label="Text typed correctly"></p>
       <p class="kb-status" id="practiceStatus" role="status" aria-live="polite"></p>
-      <p class="kb-help"><strong>Controls:</strong> Type the prompt. Control announces the next key. Escape closes practice.</p>
+      <p class="kb-help"><strong>Controls:</strong> Press any key to start. Control announces the next key after typing begins. Escape closes practice.</p>
       <div class="kb-actions"><button class="kb-action" id="finishFreeType" type="button" hidden>Finish Free Typing</button></div>
     </section>
 

@@ -414,6 +414,22 @@
     };
     document.getElementById("practiceHeading").textContent = modeNames[session.mode];
     document.getElementById("practiceInstruction").textContent = session.mode === "guided" ? session.lesson.description : currentInstruction();
+    if (!session.started) {
+      targetPrompt.hidden = false;
+      freeTypeInput.hidden = true;
+      finishFreeType.hidden = true;
+      lessonProgress.hidden = true;
+      typedText.hidden = true;
+      targetPrompt.className = "kb-prompt kb-ready-prompt";
+      targetPrompt.textContent = "Press any key to start";
+      targetPrompt.setAttribute("aria-label", currentInstruction() + " Press any key to start. The timer has not started.");
+      progressText.textContent = session.durationSeconds
+        ? "Ready: " + (session.durationSeconds / 60) + (session.durationSeconds === 60 ? " minute" : " minutes")
+        : "Ready to begin";
+      practiceStatus.textContent = "The timer has not started.";
+      targetPrompt.focus();
+      return;
+    }
     const isFree = session.mode === "free";
     targetPrompt.hidden = isFree;
     freeTypeInput.hidden = !isFree;
@@ -444,13 +460,22 @@
     const durationSeconds = mode.startsWith("speed-") ? Number(mode.split("-")[1]) : 0;
     session = {
       lesson, hand, mode, prompt, position: 0, correct: 0, mistakes: 0,
-      mistakesByKey: {}, startedAt: Date.now(), durationSeconds,
-      secondsLeft: durationSeconds, finished: false, accepting: true
+      mistakesByKey: {}, startedAt: null, durationSeconds,
+      secondsLeft: durationSeconds, started: false, finished: false, accepting: false
     };
     show("practicePanel");
     renderPractice();
-    speak(currentInstruction());
-    if (durationSeconds) {
+    speak(currentInstruction() + " Press any key to start. The timer has not started.");
+  }
+
+  function beginPractice() {
+    if (!session || session.started || session.finished) return;
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    session.started = true;
+    session.accepting = true;
+    session.startedAt = Date.now();
+    renderPractice();
+    if (session.durationSeconds) {
       timerId = window.setInterval(() => {
         if (!session || session.finished) return;
         session.secondsLeft -= 1;
@@ -588,6 +613,19 @@
       return;
     }
     if (document.getElementById("practicePanel").hidden || !session) return;
+    if (!session.started) {
+      if (event.key === "Control") {
+        event.preventDefault();
+        const message = currentInstruction() + " Press any key to start. The timer has not started.";
+        practiceStatus.textContent = message;
+        speak(message);
+        return;
+      }
+      if (event.repeat || event.key === "Shift" || event.key === "Alt" || event.key === "Meta") return;
+      event.preventDefault();
+      beginPractice();
+      return;
+    }
     if (event.key === "Control") {
       event.preventDefault();
       const message = nextKeyInstruction();
