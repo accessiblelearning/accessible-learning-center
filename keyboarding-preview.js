@@ -3,8 +3,6 @@
 
   const PREVIEW_CODE = "KEYS2026";
   const STORAGE_KEY = "alcKeyboardingProgressV1";
-  const MIN_LESSON_ACCURACY = 80;
-  const MIN_LESSON_WPM = 10;
   const LEFT_KEYS = "qwertasdfgzxcvb12345`~!@#$%";
   const RIGHT_KEYS = "yuiophjklnm67890-=[]\\;',./^&*()_+{}|:\"<>?";
   const WORD_BANK = [
@@ -243,6 +241,8 @@
         lesson: session.lesson.number,
         accuracy: session.finalAccuracy,
         wpm: session.finalWpm,
+        targetAccuracy: session.targetAccuracy,
+        targetWpm: session.targetWpm,
         seconds: session.elapsedSeconds,
         completedAt: Date.now()
       });
@@ -282,6 +282,8 @@
     document.getElementById("menuHandValue").textContent = selectedText(handSetting);
     document.getElementById("menuVoiceValue").textContent = useSiteVoice ? "Site voice" : "My screen reader";
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
+    document.getElementById("menuWpmValue").textContent = document.getElementById("wpmSetting").value + " WPM";
+    document.getElementById("menuAccuracyValue").textContent = document.getElementById("accuracySetting").value + "%";
     document.getElementById("menuSizeValue").textContent = selectedText(document.getElementById("textSizeSetting"));
     document.getElementById("menuSaveValue").textContent = document.getElementById("saveSetting").checked ? "On" : "Off";
     document.getElementById("menuLanguageValue").textContent = selectedText(document.getElementById("languageSetting"));
@@ -331,6 +333,8 @@
       lessonSetting.value = available[next].value;
     }
     if (setting === "hand") cycleSelect(handSetting, direction);
+    if (setting === "wpm") cycleSelect(document.getElementById("wpmSetting"), direction);
+    if (setting === "accuracy") cycleSelect(document.getElementById("accuracySetting"), direction);
     if (setting === "size") cycleSelect(document.getElementById("textSizeSetting"), direction);
     if (setting === "language") cycleSelect(document.getElementById("languageSetting"), direction);
     if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
@@ -402,7 +406,7 @@
       return "Speed test for " + minutes + (minutes === 1 ? " minute" : " minutes") + ". Begin typing. Next character: " + speakable(session.prompt[session.position]) + ".";
     }
     const remaining = session.prompt.slice(session.position);
-    const mastery = session.mode === "guided" ? " To move on, reach 80 percent accuracy and 10 words per minute." : "";
+    const mastery = session.mode === "guided" ? " To move on, reach " + session.targetAccuracy + " percent accuracy and " + session.targetWpm + " words per minute." : "";
     if (session.mode === "guided" && remaining.length <= 80) {
       return session.lesson.description + mastery + " Type this sequence: " + speakableSequence(remaining) + ".";
     }
@@ -450,7 +454,7 @@
     };
     document.getElementById("practiceHeading").textContent = modeNames[session.mode];
     document.getElementById("practiceInstruction").textContent = session.mode === "guided"
-      ? session.lesson.description + " Pass with 80% accuracy and 10 WPM to move on."
+      ? session.lesson.description + " Pass with " + session.targetAccuracy + "% accuracy and " + session.targetWpm + " WPM to move on."
       : currentInstruction();
     if (!session.started) {
       targetPrompt.hidden = false;
@@ -496,10 +500,13 @@
     const mode = modeSetting.value;
     const prompt = buildPrompt(lesson, mode, hand);
     const durationSeconds = mode.startsWith("speed-") ? Number(mode.split("-")[1]) : 0;
+    const targetAccuracy = Number(document.getElementById("accuracySetting").value);
+    const targetWpm = Number(document.getElementById("wpmSetting").value);
     session = {
       lesson, hand, mode, prompt, position: 0, correct: 0, mistakes: 0,
       mistakesByKey: {}, startedAt: null, durationSeconds,
-      secondsLeft: durationSeconds, started: false, finished: false, accepting: false
+      secondsLeft: durationSeconds, targetAccuracy, targetWpm,
+      started: false, finished: false, accepting: false
     };
     show("practicePanel");
     renderPractice();
@@ -537,7 +544,7 @@
     const wpm = Math.round((session.correct / 5) / minutes);
     session.finalAccuracy = accuracy;
     session.finalWpm = wpm;
-    session.passed = session.mode !== "guided" || (accuracy >= MIN_LESSON_ACCURACY && wpm >= MIN_LESSON_WPM);
+    session.passed = session.mode !== "guided" || (accuracy >= session.targetAccuracy && wpm >= session.targetWpm);
     if (session.mode === "guided" && session.passed) {
       sessionUnlockedLessons[session.hand] = Math.max(sessionUnlockedLessons[session.hand], Math.min(session.lesson.number, lessonData.length - 1));
     }
@@ -560,7 +567,7 @@
     if (lessonFinished && !session.passed) {
       resultAction.dataset.action = "retry";
       resultActionLabel.textContent = "Try Lesson Again";
-      resultAction.setAttribute("aria-label", "Almost there. You need 80 percent accuracy and 10 words per minute to move on. Press Enter to try Lesson " + session.lesson.number + " again.");
+      resultAction.setAttribute("aria-label", "Almost there. You need " + session.targetAccuracy + " percent accuracy and " + session.targetWpm + " words per minute to move on. Press Enter to try Lesson " + session.lesson.number + " again.");
     } else if (lessonFinished && nextLesson) {
       resultAction.dataset.action = "next";
       resultActionLabel.textContent = "Next Lesson";
@@ -580,7 +587,7 @@
         ? '<span class="kb-sparkle" aria-hidden="true">✦</span> Good job! <span class="kb-sparkle" aria-hidden="true">✦</span>'
       : '<span class="kb-sparkle" aria-hidden="true">✦</span> Practice complete! <span class="kb-sparkle" aria-hidden="true">✦</span>';
     document.getElementById("completionMessage").textContent = lessonFinished && !session.passed
-      ? "Reach 80% accuracy and 10 WPM to move on."
+      ? "Reach " + session.targetAccuracy + "% accuracy and " + session.targetWpm + " WPM to move on."
       : lessonFinished ? "Lesson " + session.lesson.number + " passed." : "Nice work!";
     refreshLessonAvailability();
     renderCurriculum();

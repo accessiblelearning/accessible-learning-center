@@ -218,6 +218,33 @@
               <option value="2">Largest</option>
             </select>
           </div>
+          <div class="kb-field">
+            <label for="wpmSetting">Passing speed</label>
+            <select id="wpmSetting">
+              <option value="5">5 words per minute</option>
+              <option value="10" selected>10 words per minute</option>
+              <option value="15">15 words per minute</option>
+              <option value="20">20 words per minute</option>
+              <option value="25">25 words per minute</option>
+              <option value="30">30 words per minute</option>
+              <option value="35">35 words per minute</option>
+              <option value="40">40 words per minute</option>
+              <option value="45">45 words per minute</option>
+              <option value="50">50 words per minute</option>
+            </select>
+          </div>
+          <div class="kb-field">
+            <label for="accuracySetting">Passing accuracy</label>
+            <select id="accuracySetting">
+              <option value="70">70 percent</option>
+              <option value="75">75 percent</option>
+              <option value="80" selected>80 percent</option>
+              <option value="85">85 percent</option>
+              <option value="90">90 percent</option>
+              <option value="95">95 percent</option>
+              <option value="100">100 percent</option>
+            </select>
+          </div>
         </div>
         <fieldset class="kb-choice">
           <legend>Instruction voice</legend>
@@ -254,6 +281,8 @@
         <button class="kb-menu-option" type="button" data-setting="hand"><span class="kb-menu-label">Learning path</span><span class="kb-menu-value" id="menuHandValue"></span></button>
         <button class="kb-menu-option" type="button" data-setting="voice"><span class="kb-menu-label">Instruction voice</span><span class="kb-menu-value" id="menuVoiceValue">Site voice</span></button>
         <button class="kb-menu-option" type="button" data-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue">On</span></button>
+        <button class="kb-menu-option" type="button" data-setting="wpm"><span class="kb-menu-label">Passing speed</span><span class="kb-menu-value" id="menuWpmValue">10 WPM</span></button>
+        <button class="kb-menu-option" type="button" data-setting="accuracy"><span class="kb-menu-label">Passing accuracy</span><span class="kb-menu-value" id="menuAccuracyValue">80%</span></button>
         <button class="kb-menu-option" type="button" data-setting="size"><span class="kb-menu-label">Print size</span><span class="kb-menu-value" id="menuSizeValue"></span></button>
         <button class="kb-menu-option" type="button" data-setting="save"><span class="kb-menu-label">Save progress on this browser</span><span class="kb-menu-value" id="menuSaveValue">Off</span></button>
         <button class="kb-menu-option" type="button" data-setting="language"><span class="kb-menu-label">Lesson language</span><span class="kb-menu-value" id="menuLanguageValue">English</span></button>
