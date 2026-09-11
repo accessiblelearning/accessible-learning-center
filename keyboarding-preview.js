@@ -3,6 +3,8 @@
 
   const PREVIEW_CODE = "KEYS2026";
   const STORAGE_KEY = "alcKeyboardingProgressV1";
+  const MIN_LESSON_ACCURACY = 80;
+  const MIN_LESSON_WPM = 10;
   const LEFT_KEYS = "qwertasdfgzxcvb12345`~!@#$%";
   const RIGHT_KEYS = "yuiophjklnm67890-=[]\\;',./^&*()_+{}|:\"<>?";
   const WORD_BANK = [
@@ -21,11 +23,11 @@
   ];
 
   const lessonData = [
-    ["Keyboard orientation", "Find the Space bar and the F and J locator keys.", " fj"],
-    ["F and J locator keys", "Use your index fingers to press F and J.", "fj"],
-    ["Left home-row keys", "Add A, S, D, and F.", "asdf"],
-    ["Right home-row keys", "Add J, K, L, and semicolon.", "jkl;"],
-    ["Full home row", "Use both sides of the home row together.", "asdfjkl;"],
+    ["Home-row foundations", "Practice the left home-row keys, then the right home-row keys, and finish with short words.", "asdfjkl;"],
+    ["Left home-row accuracy", "Build control with A, S, D, and F.", "asdf"],
+    ["Right home-row accuracy", "Build control with J, K, L, and semicolon.", "jkl;"],
+    ["Full home-row words", "Combine both hands to type short home-row words.", "asdfjkl;"],
+    ["Home-row checkpoint", "Use both sides of the home row with accuracy and rhythm.", "asdfjkl;"],
     ["G and H reaches", "Reach inward for G and H, then return home.", "gh"],
     ["Home-row patterns", "Build steady movement across the home row.", "asdfghjkl;"],
     ["Home-row words", "Type short words with home-row keys.", "asdfghjkl;"],
@@ -200,7 +202,10 @@
     const selectedWords = Array.from({ length: 12 }, (_, index) => words[(start + index) % words.length]);
     const sentences = SENTENCE_BANK.filter(sentence => fits(sentence.toLowerCase(), lowerAllowed) && (hand === "both" || Array.from(sentence.toLowerCase()).every(character => !/[a-z]/.test(character) || belongsToHand(character, hand))));
     if (mode === "guided") {
-      if (lesson.number <= 2) return repeatedFocus(lesson.focus, 8, 4);
+      if (lesson.number === 1 && hand === "left") return "ffff dddd ssss aaaa sad fad dad add";
+      if (lesson.number === 1 && hand === "right") return "jjjj kkkk llll ;;;;";
+      if (lesson.number === 1) return "ffff dddd ssss aaaa sad fad dad add jjjj kkkk llll ;;;; lad fall salad ask hall flask";
+      if (lesson.number === 2) return repeatedFocus(lesson.focus, 12, 4);
       if (lesson.number < 11) return repeatedFocus(lesson.focus, 12, 6);
       return repeatedFocus(lesson.focus, 18, 6);
     }
@@ -228,7 +233,7 @@
     try {
       const progress = getProgress();
       const completion = "en:" + session.hand + ":" + session.lesson.number;
-      if (session.mode === "guided" && !progress.completed.includes(completion)) progress.completed.push(completion);
+      if (session.mode === "guided" && session.passed && !progress.completed.includes(completion)) progress.completed.push(completion);
       Object.keys(session.mistakesByKey).forEach(key => {
         progress.difficult[key] = (progress.difficult[key] || 0) + session.mistakesByKey[key];
       });
@@ -499,6 +504,7 @@
     const wpm = Math.round((session.correct / 5) / minutes);
     session.finalAccuracy = accuracy;
     session.finalWpm = wpm;
+    session.passed = session.mode !== "guided" || (accuracy >= MIN_LESSON_ACCURACY && wpm >= MIN_LESSON_WPM);
     session.elapsedSeconds = Math.max(1, Math.round((Date.now() - session.startedAt) / 1000));
     const difficult = Object.keys(session.mistakesByKey).sort((a, b) => session.mistakesByKey[b] - session.mistakesByKey[a]).slice(0, 5);
     const saved = saveProgress();
@@ -515,7 +521,11 @@
     const lessonFinished = session.mode === "guided";
     const resultAction = document.getElementById("resultAction");
     const resultActionLabel = document.getElementById("resultActionLabel");
-    if (lessonFinished && nextLesson) {
+    if (lessonFinished && !session.passed) {
+      resultAction.dataset.action = "retry";
+      resultActionLabel.textContent = "Try Lesson Again";
+      resultAction.setAttribute("aria-label", "Almost there. You need 80 percent accuracy and 10 words per minute to move on. Press Enter to try Lesson " + session.lesson.number + " again.");
+    } else if (lessonFinished && nextLesson) {
       resultAction.dataset.action = "next";
       resultActionLabel.textContent = "Next Lesson";
       resultAction.setAttribute("aria-label", "Good job. Lesson " + session.lesson.number + " done. Press Enter for Lesson " + (session.lesson.number + 1) + ": " + nextLesson[0] + ".");
@@ -528,10 +538,14 @@
       resultActionLabel.textContent = "Done";
       resultAction.setAttribute("aria-label", "Practice complete. Press Enter for Done.");
     }
-    document.getElementById("resultsHeading").innerHTML = lessonFinished
-      ? '<span class="kb-sparkle" aria-hidden="true">✦</span> Good job! <span class="kb-sparkle" aria-hidden="true">✦</span>'
+    document.getElementById("resultsHeading").innerHTML = lessonFinished && !session.passed
+      ? '<span class="kb-sparkle" aria-hidden="true">✦</span> Keep going! <span class="kb-sparkle" aria-hidden="true">✦</span>'
+      : lessonFinished
+        ? '<span class="kb-sparkle" aria-hidden="true">✦</span> Good job! <span class="kb-sparkle" aria-hidden="true">✦</span>'
       : '<span class="kb-sparkle" aria-hidden="true">✦</span> Practice complete! <span class="kb-sparkle" aria-hidden="true">✦</span>';
-    document.getElementById("completionMessage").textContent = lessonFinished ? "Lesson " + session.lesson.number + " done." : "Nice work!";
+    document.getElementById("completionMessage").textContent = lessonFinished && !session.passed
+      ? "Reach 80% accuracy and 10 WPM to move on."
+      : lessonFinished ? "Lesson " + session.lesson.number + " passed." : "Nice work!";
     renderCurriculum();
     show("resultsPanel");
   }
@@ -669,6 +683,10 @@
   lessonSetting.addEventListener("change", updateLessonSummary);
   handSetting.addEventListener("change", updateLessonSummary);
   document.getElementById("resultAction").addEventListener("click", event => {
+    if (event.currentTarget.dataset.action === "retry") {
+      startPractice();
+      return;
+    }
     if (event.currentTarget.dataset.action !== "next") {
       openMenu();
       return;
