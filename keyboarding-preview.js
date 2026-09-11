@@ -103,7 +103,7 @@
       heading.setAttribute("tabindex", "-1");
       heading.focus();
     }
-    const firstChoice = selected.querySelector(".kb-arrow-menu .kb-menu-option");
+    const firstChoice = Array.from(selected.querySelectorAll(".kb-arrow-menu .kb-menu-option")).find(button => !button.hidden && !button.disabled);
     if (firstChoice) window.setTimeout(() => firstChoice.focus(), 0);
   }
 
@@ -478,6 +478,7 @@
     const saved = saveProgress();
     const activity = document.getElementById("practiceHeading").textContent;
     document.getElementById("resultsSummary").textContent = "You completed " + activity + " with " + session.correct + " correct characters in " + attempts + " attempts.";
+    document.getElementById("errorsResult").textContent = String(session.mistakes);
     document.getElementById("accuracyResult").textContent = accuracy + "%";
     document.getElementById("speedResult").textContent = String(wpm);
     document.getElementById("difficultResult").textContent = difficult.length ? difficult.map(speakable).join(", ") : "None";
@@ -486,10 +487,27 @@
       : "This session was not saved.";
     const nextButton = document.getElementById("nextLesson");
     nextButton.hidden = session.mode !== "guided" || session.lesson.number >= lessonData.length;
-    nextButton.textContent = session.lesson.number >= lessonData.length ? "All Lessons Complete" : "Start Lesson " + (session.lesson.number + 1);
+    const nextLesson = lessonData[session.lesson.number];
+    nextButton.querySelector(".kb-menu-value").textContent = nextLesson
+      ? "Continue to Lesson " + (session.lesson.number + 1) + ": " + nextLesson[0]
+      : "All Lessons Complete";
+    const lessonFinished = session.mode === "guided";
+    const practiceAgainButton = document.getElementById("practiceAgain");
+    nextButton.removeAttribute("aria-label");
+    practiceAgainButton.removeAttribute("aria-label");
+    if (lessonFinished && nextLesson) {
+      nextButton.setAttribute("aria-label", "Good job. Lesson done. Press Enter to continue to Lesson " + (session.lesson.number + 1) + ": " + nextLesson[0] + ".");
+    } else if (lessonFinished) {
+      practiceAgainButton.setAttribute("aria-label", "Good job. All lessons complete. Press Enter to practice this lesson again, or use Up or Down for another choice.");
+    } else {
+      practiceAgainButton.setAttribute("aria-label", "Practice complete. Press Enter to practice again, or use Up or Down for another choice.");
+    }
+    document.getElementById("resultsHeading").innerHTML = lessonFinished
+      ? '<span class="kb-sparkle" aria-hidden="true">✦</span> Good job! <span class="kb-sparkle" aria-hidden="true">✦</span>'
+      : '<span class="kb-sparkle" aria-hidden="true">✦</span> Practice complete! <span class="kb-sparkle" aria-hidden="true">✦</span>';
+    document.getElementById("completionMessage").textContent = lessonFinished ? "Lesson done." : "Nice work!";
     renderCurriculum();
     show("resultsPanel");
-    speak("Practice complete. " + accuracy + " percent accuracy.");
   }
 
   function openMenu() {
@@ -523,17 +541,18 @@
   document.querySelectorAll(".kb-arrow-menu").forEach(menu => {
     const buttons = Array.from(menu.querySelectorAll(".kb-menu-option"));
     menu.addEventListener("keydown", event => {
-      const currentIndex = Math.max(0, buttons.indexOf(document.activeElement));
+      const availableButtons = buttons.filter(button => !button.hidden && !button.disabled);
+      const currentIndex = Math.max(0, availableButtons.indexOf(document.activeElement));
       let nextIndex = currentIndex;
-      if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % buttons.length;
-      else if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % availableButtons.length;
+      else if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + availableButtons.length) % availableButtons.length;
       else if (event.key === "Home") nextIndex = 0;
-      else if (event.key === "End") nextIndex = buttons.length - 1;
+      else if (event.key === "End") nextIndex = availableButtons.length - 1;
       else return;
       event.preventDefault();
-      buttons[nextIndex].focus();
+      availableButtons[nextIndex].focus();
     });
-    buttons.forEach(button => button.addEventListener("focus", () => speak(button.textContent.trim())));
+    buttons.forEach(button => button.addEventListener("focus", () => speak(button.getAttribute("aria-label") || button.textContent.trim())));
   });
 
   setupMenu.querySelectorAll("[data-main-action]").forEach(button => button.addEventListener("click", () => {

@@ -66,6 +66,13 @@
     .kb-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 1rem 0; }
     .kb-result { padding: 1rem; border: 2px solid #8db8e8; border-radius: .65rem; }
     .kb-result strong { display: block; font-size: 1.65em; }
+    .kb-celebration { position: relative; max-width: 52rem; margin: 0 auto 1.25rem; padding: 1rem; border: 3px solid #65aef5; border-radius: 1rem; background: linear-gradient(135deg, #12396f, #0872ce); color: #fff; }
+    .kb-celebration h2 { margin-bottom: .35rem; }
+    .kb-celebration p { margin: .25rem 0; font-size: 1.25em; font-weight: 800; }
+    .kb-sparkle { display: inline-block; color: #ffe37a; padding: 0 .2em; transform: rotate(-8deg); }
+    .kb-results-menu { max-width: 44rem; margin-top: 1.25rem; }
+    .kb-results-menu .kb-menu-option { min-height: 4.75rem; grid-template-columns: 1fr; text-align: center; }
+    .kb-results-menu .kb-menu-option:first-child { background: #0872ce; }
     .kb-back { background: #294c78; }
     .kb-free-type { width: 100%; min-height: 14rem; box-sizing: border-box; margin: 1.5rem 0; padding: 1rem; border: .3rem solid #51d5ff; border-radius: 1rem; background: #f7fbff; color: #071a35; font: inherit; font-size: clamp(1.5rem, 4vw, 3rem); line-height: 1.4; resize: vertical; }
     .kb-free-type:focus { outline: .25rem solid #f3a712; outline-offset: .15rem; }
@@ -82,6 +89,7 @@
     body.dark-mode .kb-char-current { background: #ffe37a; color: #071a35; outline-color: #fff; }
     body.dark-mode .kb-char-current::after { color: #ffe37a; }
     body.dark-mode .kb-complete { color: #8ef2ad; }
+    body.dark-mode .kb-celebration { background: linear-gradient(135deg, #0b2147, #075fc1); border-color: #73b5ff; }
     html[data-contrast="high"] body > main.kb-shell { background: #fff; color: #000; }
     html[data-contrast="high"] .kb-panel { background: #fff; color: #000; border-color: #000; }
     html[data-contrast="high"] .kb-panel h1, html[data-contrast="high"] .kb-panel h2 { color: #000 !important; }
@@ -90,6 +98,10 @@
     html[data-contrast="high"] .kb-char-complete { background: #000; color: #fff; box-shadow: none; }
     html[data-contrast="high"] .kb-char-current { background: #ff0; color: #000; outline-color: #000; }
     html[data-contrast="high"] .kb-char-current::after { color: #000; }
+    html[data-contrast="high"] .kb-celebration { background: #fff; color: #000; border-color: #000; }
+    html[data-contrast="high"] .kb-sparkle { color: #000; }
+    html[data-contrast="high"] .kb-results-menu .kb-menu-option,
+    html[data-contrast="high"] .kb-results-menu .kb-menu-option:first-child { background: #fff; color: #000; border-color: #000; }
     @media (max-width: 42rem) { .kb-grid, .kb-results { grid-template-columns: 1fr; } .kb-shell { padding: .5rem; } .kb-panel { border-radius: .75rem; min-height: calc(100vh - 4rem); } .kb-menu-option { grid-template-columns: 1fr; gap: .25rem; min-height: 5.5rem; text-align: center; } }
   </style>
 </head>
@@ -238,20 +250,25 @@
     </section>
 
     <section class="kb-panel kb-stage" id="resultsPanel" aria-labelledby="resultsHeading" hidden>
-      <h2 id="resultsHeading">Practice complete</h2>
+      <div class="kb-celebration">
+        <h2 id="resultsHeading"><span class="kb-sparkle" aria-hidden="true">✦</span> Good job! <span class="kb-sparkle" aria-hidden="true">✦</span></h2>
+        <p id="completionMessage">Lesson done.</p>
+      </div>
       <p id="resultsSummary"></p>
       <div class="kb-results">
+        <div class="kb-result"><span>Errors</span><strong id="errorsResult">0</strong></div>
         <div class="kb-result"><span>Accuracy</span><strong id="accuracyResult">0%</strong></div>
         <div class="kb-result"><span>Words per minute</span><strong id="speedResult">0</strong></div>
-        <div class="kb-result"><span>Difficult keys</span><strong id="difficultResult">None</strong></div>
       </div>
+      <p>Difficult keys: <strong id="difficultResult">None</strong></p>
       <p id="saveResult"></p>
-      <div class="kb-actions">
-        <button class="kb-action" id="nextLesson" type="button">Start Next Lesson</button>
-        <button class="kb-action" id="practiceAgain" type="button">Practice Again</button>
-        <button class="kb-action" id="changeSettings" type="button">Change Settings</button>
-        <button class="kb-action" id="lockPreview" type="button">Close Preview</button>
+      <div class="kb-menu kb-arrow-menu kb-results-menu" id="resultsMenu" aria-label="What would you like to do next?">
+        <button class="kb-menu-option" id="nextLesson" type="button"><span class="kb-menu-value">Continue to Next Lesson</span></button>
+        <button class="kb-menu-option" id="practiceAgain" type="button"><span class="kb-menu-value">Practice Again</span></button>
+        <button class="kb-menu-option kb-back" id="changeSettings" type="button"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
+        <button class="kb-menu-option kb-back" id="lockPreview" type="button"><span class="kb-menu-value">Close Preview</span></button>
       </div>
+      <p class="kb-menu-help"><strong>Enter:</strong> continue to the next lesson. <strong>Up or Down:</strong> choose another action.</p>
     </section>
   </main>
 </body>
