@@ -284,6 +284,10 @@
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
     document.getElementById("menuWpmValue").textContent = document.getElementById("wpmSetting").value + " WPM";
     document.getElementById("menuAccuracyValue").textContent = document.getElementById("accuracySetting").value + "%";
+    document.getElementById("wpmMinus").setAttribute("aria-label", "Decrease passing speed. Current target " + document.getElementById("wpmSetting").value + " words per minute.");
+    document.getElementById("wpmPlus").setAttribute("aria-label", "Increase passing speed. Current target " + document.getElementById("wpmSetting").value + " words per minute.");
+    document.getElementById("accuracyMinus").setAttribute("aria-label", "Decrease passing accuracy. Current target " + document.getElementById("accuracySetting").value + " percent.");
+    document.getElementById("accuracyPlus").setAttribute("aria-label", "Increase passing accuracy. Current target " + document.getElementById("accuracySetting").value + " percent.");
     document.getElementById("menuSizeValue").textContent = selectedText(document.getElementById("textSizeSetting"));
     document.getElementById("menuSaveValue").textContent = document.getElementById("saveSetting").checked ? "On" : "Off";
     document.getElementById("menuLanguageValue").textContent = selectedText(document.getElementById("languageSetting"));
@@ -310,6 +314,10 @@
     select.selectedIndex = (select.selectedIndex + direction + count) % count;
   }
 
+  function stepSelect(select, direction) {
+    select.selectedIndex = Math.max(0, Math.min(select.options.length - 1, select.selectedIndex + direction));
+  }
+
   function applyTextSize() {
     const scale = Number(document.getElementById("textSizeSetting").value);
     document.documentElement.style.setProperty("--kb-scale", String(scale));
@@ -333,8 +341,8 @@
       lessonSetting.value = available[next].value;
     }
     if (setting === "hand") cycleSelect(handSetting, direction);
-    if (setting === "wpm") cycleSelect(document.getElementById("wpmSetting"), direction);
-    if (setting === "accuracy") cycleSelect(document.getElementById("accuracySetting"), direction);
+    if (setting === "wpm") stepSelect(document.getElementById("wpmSetting"), direction);
+    if (setting === "accuracy") stepSelect(document.getElementById("accuracySetting"), direction);
     if (setting === "size") cycleSelect(document.getElementById("textSizeSetting"), direction);
     if (setting === "language") cycleSelect(document.getElementById("languageSetting"), direction);
     if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
@@ -625,14 +633,16 @@
   document.querySelectorAll(".kb-arrow-menu").forEach(menu => {
     const buttons = Array.from(menu.querySelectorAll(".kb-menu-option"));
     menu.addEventListener("keydown", event => {
+      if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
       const availableButtons = buttons.filter(button => !button.hidden && !button.disabled);
+      const adjustmentRow = document.activeElement.closest ? document.activeElement.closest(".kb-stepper-row") : null;
+      if (adjustmentRow && adjustmentRow.querySelector(".kb-menu-option")) adjustmentRow.querySelector(".kb-menu-option").focus();
       const currentIndex = Math.max(0, availableButtons.indexOf(document.activeElement));
       let nextIndex = currentIndex;
       if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % availableButtons.length;
       else if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + availableButtons.length) % availableButtons.length;
       else if (event.key === "Home") nextIndex = 0;
       else if (event.key === "End") nextIndex = availableButtons.length - 1;
-      else return;
       event.preventDefault();
       availableButtons[nextIndex].focus();
     });
@@ -663,6 +673,15 @@
   document.querySelectorAll("[data-setting]").forEach(button => button.addEventListener("click", event => {
     activateSetting(button, event.shiftKey ? -1 : 1);
   }));
+
+  document.querySelectorAll("[data-adjust]").forEach(button => {
+    button.addEventListener("click", event => {
+      event.stopPropagation();
+      const settingButton = document.querySelector('[data-setting="' + button.dataset.adjust + '"]');
+      activateSetting(settingButton, Number(button.dataset.direction));
+    });
+    button.addEventListener("focus", () => speak(button.getAttribute("aria-label")));
+  });
 
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && document.getElementById("unlockPanel").hidden && document.getElementById("setupPanel").hidden) {
