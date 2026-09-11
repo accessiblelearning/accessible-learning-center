@@ -278,7 +278,6 @@
 
   function updateSetupMenu() {
     document.getElementById("menuLessonValue").textContent = selectedText(lessonSetting);
-    document.getElementById("settingLessonValue").textContent = selectedText(lessonSetting);
     document.getElementById("menuHandValue").textContent = selectedText(handSetting);
     document.getElementById("menuVoiceValue").textContent = useSiteVoice ? "Site voice" : "My screen reader";
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
@@ -334,12 +333,6 @@
   function activateSetting(button, direction) {
     const setting = button.dataset.setting;
     if (setting === "back") return show("setupPanel");
-    if (setting === "lesson") {
-      const available = Array.from(lessonSetting.options).filter(option => !option.disabled);
-      const current = Math.max(0, available.indexOf(lessonSetting.options[lessonSetting.selectedIndex]));
-      const next = (current + direction + available.length) % available.length;
-      lessonSetting.value = available[next].value;
-    }
     if (setting === "hand") cycleSelect(handSetting, direction);
     if (setting === "wpm") stepSelect(document.getElementById("wpmSetting"), direction);
     if (setting === "accuracy") stepSelect(document.getElementById("accuracySetting"), direction);
@@ -349,7 +342,7 @@
     if (setting === "save") document.getElementById("saveSetting").checked = !document.getElementById("saveSetting").checked;
     if (setting === "voice") setVoice(!useSiteVoice, false);
     if (setting === "hand") refreshLessonAvailability();
-    if (setting === "lesson" || setting === "hand") updateLessonSummary();
+    if (setting === "hand") updateLessonSummary();
     else updateSetupMenu();
     if (setting === "size") applyTextSize();
     speak(button.textContent.trim());

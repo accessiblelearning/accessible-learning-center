@@ -283,10 +283,6 @@
     <section class="kb-panel" id="settingsPanel" aria-labelledby="settingsHeading" hidden>
       <h2 id="settingsHeading">Settings</h2>
       <div class="kb-menu kb-arrow-menu" id="settingsMenu" aria-label="Keyboarding settings">
-        <button class="kb-menu-option" type="button" data-setting="lesson"><span class="kb-menu-label">Current lesson</span><span class="kb-menu-value" id="settingLessonValue"></span></button>
-        <button class="kb-menu-option" type="button" data-setting="hand"><span class="kb-menu-label">Learning path</span><span class="kb-menu-value" id="menuHandValue"></span></button>
-        <button class="kb-menu-option" type="button" data-setting="voice"><span class="kb-menu-label">Instruction voice</span><span class="kb-menu-value" id="menuVoiceValue">Site voice</span></button>
-        <button class="kb-menu-option" type="button" data-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue">On</span></button>
         <div class="kb-stepper-row">
           <button class="kb-menu-option" type="button" data-setting="wpm"><span class="kb-menu-label">Passing speed</span><span class="kb-menu-value" id="menuWpmValue">10 WPM</span></button>
           <button class="kb-step-adjust" id="wpmMinus" type="button" data-adjust="wpm" data-direction="-1" aria-label="Decrease passing speed">−</button>
@@ -297,9 +293,12 @@
           <button class="kb-step-adjust" id="accuracyMinus" type="button" data-adjust="accuracy" data-direction="-1" aria-label="Decrease passing accuracy">−</button>
           <button class="kb-step-adjust" id="accuracyPlus" type="button" data-adjust="accuracy" data-direction="1" aria-label="Increase passing accuracy">+</button>
         </div>
+        <button class="kb-menu-option" type="button" data-setting="voice"><span class="kb-menu-label">Site voice</span><span class="kb-menu-value" id="menuVoiceValue">Site voice</span></button>
         <button class="kb-menu-option" type="button" data-setting="size"><span class="kb-menu-label">Print size</span><span class="kb-menu-value" id="menuSizeValue"></span></button>
-        <button class="kb-menu-option" type="button" data-setting="save"><span class="kb-menu-label">Save progress on this browser</span><span class="kb-menu-value" id="menuSaveValue">Off</span></button>
+        <button class="kb-menu-option" type="button" data-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue">On</span></button>
+        <button class="kb-menu-option" type="button" data-setting="hand"><span class="kb-menu-label">Learning path</span><span class="kb-menu-value" id="menuHandValue"></span></button>
         <button class="kb-menu-option" type="button" data-setting="language"><span class="kb-menu-label">Lesson language</span><span class="kb-menu-value" id="menuLanguageValue">English</span></button>
+        <button class="kb-menu-option" type="button" data-setting="save"><span class="kb-menu-label">Save progress on this browser</span><span class="kb-menu-value" id="menuSaveValue">Off</span></button>
         <button class="kb-menu-option kb-back" type="button" data-setting="back"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
       </div>
       <p class="kb-menu-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> increase or change. <strong>Shift plus Enter:</strong> decrease or choose the previous option. Speed and accuracy also have Minus and Plus buttons. <strong>Escape:</strong> go back.</p>
