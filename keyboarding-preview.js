@@ -96,6 +96,7 @@
   let audioContext = null;
   let session = null;
   let timerId = null;
+  const sessionUnlockedLessons = { both: 0, left: 0, right: 0 };
 
   function show(panelId) {
     const selected = document.getElementById(panelId);
@@ -286,31 +287,59 @@
     document.getElementById("menuLanguageValue").textContent = selectedText(document.getElementById("languageSetting"));
   }
 
+  function unlockedLessonIndex(hand) {
+    const completed = getProgress().completed || [];
+    const prefix = "en:" + hand + ":";
+    let unlocked = 0;
+    while (unlocked < lessonData.length - 1 && completed.includes(prefix + (unlocked + 1))) unlocked += 1;
+    return Math.max(unlocked, sessionUnlockedLessons[hand] || 0);
+  }
+
+  function refreshLessonAvailability() {
+    const unlocked = unlockedLessonIndex(handSetting.value);
+    Array.from(lessonSetting.options).forEach((option, index) => {
+      option.disabled = index > unlocked;
+    });
+    if (Number(lessonSetting.value) > unlocked) lessonSetting.value = String(unlocked);
+  }
+
   function cycleSelect(select, direction) {
     const count = select.options.length;
     select.selectedIndex = (select.selectedIndex + direction + count) % count;
   }
 
+  function applyTextSize() {
+    const scale = Number(document.getElementById("textSizeSetting").value);
+    document.documentElement.style.setProperty("--kb-scale", String(scale));
+    document.body.classList.toggle("kb-large-results", scale > 1.25);
+  }
+
   function startFromMenu() {
     useSounds = document.getElementById("soundSetting").checked;
     rememberProgress = document.getElementById("saveSetting").checked;
-    document.documentElement.style.setProperty("--kb-scale", document.getElementById("textSizeSetting").value);
+    applyTextSize();
     startPractice();
   }
 
   function activateSetting(button, direction) {
     const setting = button.dataset.setting;
     if (setting === "back") return show("setupPanel");
-    if (setting === "lesson") cycleSelect(lessonSetting, direction);
+    if (setting === "lesson") {
+      const available = Array.from(lessonSetting.options).filter(option => !option.disabled);
+      const current = Math.max(0, available.indexOf(lessonSetting.options[lessonSetting.selectedIndex]));
+      const next = (current + direction + available.length) % available.length;
+      lessonSetting.value = available[next].value;
+    }
     if (setting === "hand") cycleSelect(handSetting, direction);
     if (setting === "size") cycleSelect(document.getElementById("textSizeSetting"), direction);
     if (setting === "language") cycleSelect(document.getElementById("languageSetting"), direction);
     if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
     if (setting === "save") document.getElementById("saveSetting").checked = !document.getElementById("saveSetting").checked;
     if (setting === "voice") setVoice(!useSiteVoice, false);
+    if (setting === "hand") refreshLessonAvailability();
     if (setting === "lesson" || setting === "hand") updateLessonSummary();
     else updateSetupMenu();
-    if (setting === "size") document.documentElement.style.setProperty("--kb-scale", document.getElementById("textSizeSetting").value);
+    if (setting === "size") applyTextSize();
     speak(button.textContent.trim());
   }
 
@@ -361,6 +390,7 @@
     const prefix = "en:" + handSetting.value + ":";
     const nextLesson = lessonData.findIndex((item, index) => !progress.completed.includes(prefix + (index + 1)));
     lessonSetting.value = String(nextLesson < 0 ? lessonData.length - 1 : nextLesson);
+    refreshLessonAvailability();
     updateLessonSummary();
   }
 
@@ -372,11 +402,12 @@
       return "Speed test for " + minutes + (minutes === 1 ? " minute" : " minutes") + ". Begin typing. Next character: " + speakable(session.prompt[session.position]) + ".";
     }
     const remaining = session.prompt.slice(session.position);
+    const mastery = session.mode === "guided" ? " To move on, reach 80 percent accuracy and 10 words per minute." : "";
     if (session.mode === "guided" && remaining.length <= 80) {
-      return session.lesson.description + " Type this sequence: " + speakableSequence(remaining) + ".";
+      return session.lesson.description + mastery + " Type this sequence: " + speakableSequence(remaining) + ".";
     }
     const nextCharacter = session.prompt[session.position];
-    return session.lesson.description + (nextCharacter === undefined ? "" : " Next character: " + speakable(nextCharacter) + ".");
+    return session.lesson.description + mastery + (nextCharacter === undefined ? "" : " Next character: " + speakable(nextCharacter) + ".");
   }
 
   function nextKeyInstruction() {
@@ -418,7 +449,9 @@
       free: "Free Typing"
     };
     document.getElementById("practiceHeading").textContent = modeNames[session.mode];
-    document.getElementById("practiceInstruction").textContent = session.mode === "guided" ? session.lesson.description : currentInstruction();
+    document.getElementById("practiceInstruction").textContent = session.mode === "guided"
+      ? session.lesson.description + " Pass with 80% accuracy and 10 WPM to move on."
+      : currentInstruction();
     if (!session.started) {
       targetPrompt.hidden = false;
       freeTypeInput.hidden = true;
@@ -505,17 +538,20 @@
     session.finalAccuracy = accuracy;
     session.finalWpm = wpm;
     session.passed = session.mode !== "guided" || (accuracy >= MIN_LESSON_ACCURACY && wpm >= MIN_LESSON_WPM);
+    if (session.mode === "guided" && session.passed) {
+      sessionUnlockedLessons[session.hand] = Math.max(sessionUnlockedLessons[session.hand], Math.min(session.lesson.number, lessonData.length - 1));
+    }
     session.elapsedSeconds = Math.max(1, Math.round((Date.now() - session.startedAt) / 1000));
     const difficult = Object.keys(session.mistakesByKey).sort((a, b) => session.mistakesByKey[b] - session.mistakesByKey[a]).slice(0, 5);
     const saved = saveProgress();
     const activity = document.getElementById("practiceHeading").textContent;
-    document.getElementById("resultsSummary").textContent = "You completed " + activity + " with " + session.correct + " correct characters in " + attempts + " attempts.";
+    document.getElementById("resultsSummary").textContent = "You finished this attempt of " + activity + " with " + session.correct + " correct characters in " + attempts + " attempts.";
     document.getElementById("errorsResult").textContent = String(session.mistakes);
     document.getElementById("accuracyResult").textContent = accuracy + "%";
     document.getElementById("speedResult").textContent = String(wpm);
     document.getElementById("difficultResult").textContent = difficult.length ? difficult.map(speakable).join(", ") : "None";
     document.getElementById("saveResult").textContent = saved
-      ? (session.mode === "guided" ? "This lesson and its results were saved on this browser." : "These results were saved on this browser.")
+      ? (session.mode === "guided" && session.passed ? "This completed lesson and its results were saved on this browser." : "These results were saved on this browser.")
       : "This session was not saved.";
     const nextLesson = lessonData[session.lesson.number];
     const lessonFinished = session.mode === "guided";
@@ -546,6 +582,7 @@
     document.getElementById("completionMessage").textContent = lessonFinished && !session.passed
       ? "Reach 80% accuracy and 10 WPM to move on."
       : lessonFinished ? "Lesson " + session.lesson.number + " passed." : "Nice work!";
+    refreshLessonAvailability();
     renderCurriculum();
     show("resultsPanel");
   }
