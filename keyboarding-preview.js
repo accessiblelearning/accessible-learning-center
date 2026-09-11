@@ -360,7 +360,7 @@
 
   function currentInstruction() {
     if (!session) return "";
-    if (session.mode === "free") return "Type anything you would like. Select Finish Free Typing when you are done. Control repeats this instruction.";
+    if (session.mode === "free") return "Type anything you would like. Select Finish Free Typing when you are done.";
     if (session.durationSeconds) {
       const minutes = session.durationSeconds / 60;
       return "Speed test for " + minutes + (minutes === 1 ? " minute" : " minutes") + ". Begin typing. Next character: " + speakable(session.prompt[session.position]) + ".";
@@ -371,6 +371,13 @@
     }
     const nextCharacter = session.prompt[session.position];
     return session.lesson.description + (nextCharacter === undefined ? "" : " Next character: " + speakable(nextCharacter) + ".");
+  }
+
+  function nextKeyInstruction() {
+    if (!session) return "";
+    if (session.mode === "free") return "Free typing has no required next key.";
+    const nextCharacter = session.prompt[session.position];
+    return nextCharacter === undefined ? "Sequence complete." : "Next key: " + speakable(nextCharacter) + ".";
   }
 
   function renderTrackedPrompt() {
@@ -563,8 +570,9 @@
     if (document.getElementById("practicePanel").hidden || !session) return;
     if (event.key === "Control") {
       event.preventDefault();
-      practiceStatus.textContent = currentInstruction();
-      speak(currentInstruction());
+      const message = nextKeyInstruction();
+      practiceStatus.textContent = message;
+      speak(message);
       return;
     }
     if (session.mode === "free") return;
