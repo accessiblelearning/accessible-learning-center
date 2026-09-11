@@ -3,6 +3,7 @@
 
   const PREVIEW_CODE = "KEYS2026";
   const STORAGE_KEY = "alcKeyboardingProgressV1";
+  const LESSON_ONE_WORDS = new Set(["sad", "fad", "dad", "add", "lad", "fall", "salad", "ask", "hall", "flask"]);
   const LEFT_KEYS = "qwertasdfgzxcvb12345`~!@#$%";
   const RIGHT_KEYS = "yuiophjklnm67890-=[]\\;',./^&*()_+{}|:\"<>?";
   const WORD_BANK = [
@@ -115,11 +116,22 @@
     websiteControlsToggle.textContent = minimized ? "Show Website Controls" : "Minimize Website Controls";
   }
 
-  function speak(message) {
-    if (!useSiteVoice || !("speechSynthesis" in window)) return;
+  function speak(message, onComplete) {
+    let finished = false;
+    const complete = () => {
+      if (finished) return;
+      finished = true;
+      if (onComplete) onComplete();
+    };
+    if (!useSiteVoice || !("speechSynthesis" in window)) {
+      complete();
+      return;
+    }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(message);
     utterance.rate = 0.9;
+    utterance.onend = complete;
+    utterance.onerror = complete;
     window.speechSynthesis.speak(utterance);
   }
 
@@ -265,6 +277,44 @@
     return Array.from(text).map(speakable).join(", ");
   }
 
+  function currentPromptGroup() {
+    if (!session || !session.promptGroups) return "";
+    return session.promptGroups[session.groupIndex] || "";
+  }
+
+  function currentPromptGroupStart() {
+    if (!session || !session.groupOffsets) return 0;
+    return session.groupOffsets[session.groupIndex] || 0;
+  }
+
+  function spokenPromptGroup(group) {
+    if (session && session.lesson.number === 1 && LESSON_ONE_WORDS.has(group)) return group;
+    return speakableSequence(group);
+  }
+
+  function announceCurrentPromptGroup() {
+    const group = currentPromptGroup();
+    if (!group || !session) return;
+    session.accepting = false;
+    session.announcementToken += 1;
+    const token = session.announcementToken;
+    const message = "Type " + spokenPromptGroup(group) + ".";
+    practiceStatus.textContent = message;
+    targetPrompt.setAttribute("aria-label", message);
+    speak(message, () => {
+      if (!session || session.finished || token !== session.announcementToken) return;
+      session.accepting = true;
+      session.segmentStartedAt = Date.now();
+      if (!session.startedAt) session.startedAt = session.segmentStartedAt;
+    });
+  }
+
+  function closePromptGroupTimer() {
+    if (!session || !session.segmentStartedAt) return;
+    session.typingMilliseconds += Date.now() - session.segmentStartedAt;
+    session.segmentStartedAt = null;
+  }
+
   function updateLessonSummary() {
     const lesson = lessonFor(Number(lessonSetting.value || 0), handSetting.value);
     document.getElementById("lessonSummary").textContent = "Lesson " + lesson.number + ": " + lesson.title + ". " + lesson.description;
@@ -406,8 +456,13 @@
       const minutes = session.durationSeconds / 60;
       return "Speed test for " + minutes + (minutes === 1 ? " minute" : " minutes") + ". Begin typing. Next character: " + speakable(session.prompt[session.position]) + ".";
     }
-    const remaining = session.prompt.slice(session.position);
     const mastery = session.mode === "guided" ? " To move on, reach " + session.targetAccuracy + " percent accuracy and " + session.targetWpm + " words per minute." : "";
+    if (session.promptGroups) {
+      const group = currentPromptGroup() || session.promptGroups[0];
+      const position = session.started ? " Current group: " : " First group: ";
+      return session.lesson.description + mastery + position + spokenPromptGroup(group) + ".";
+    }
+    const remaining = session.prompt.slice(session.position);
     if (session.mode === "guided" && remaining.length <= 80) {
       return session.lesson.description + mastery + " Type this sequence: " + speakableSequence(remaining) + ".";
     }
@@ -424,8 +479,8 @@
 
   function renderTrackedPrompt() {
     if (!session || session.mode === "free") return;
-    const start = session.durationSeconds ? Math.max(0, session.position - 20) : 0;
-    const end = session.durationSeconds ? Math.min(session.prompt.length, start + 700) : session.prompt.length;
+    const start = session.promptGroups ? currentPromptGroupStart() : session.durationSeconds ? Math.max(0, session.position - 20) : 0;
+    const end = session.promptGroups ? start + currentPromptGroup().length : session.durationSeconds ? Math.min(session.prompt.length, start + 700) : session.prompt.length;
     const line = document.createElement("span");
     line.className = "kb-prompt-line";
     for (let index = start; index < end; index += 1) {
@@ -479,14 +534,19 @@
     finishFreeType.hidden = !isFree;
     lessonProgress.hidden = isFree;
     typedText.hidden = isFree;
-    targetPrompt.className = "kb-prompt" + (session.prompt.length > 40 ? " kb-prompt--long" : "");
+    const displayedPromptLength = session.promptGroups ? currentPromptGroup().length : session.prompt.length;
+    targetPrompt.className = "kb-prompt" + (displayedPromptLength > 40 ? " kb-prompt--long" : "");
     renderTrackedPrompt();
     targetPrompt.setAttribute("aria-label", "Typing area. " + currentInstruction());
-    typedText.textContent = session.prompt.slice(0, session.position) || "Not started";
+    typedText.textContent = session.promptGroups
+      ? "Part " + (session.groupIndex + 1) + " of " + session.promptGroups.length
+      : session.prompt.slice(0, session.position) || "Not started";
     lessonProgress.max = session.durationSeconds || total || 1;
     lessonProgress.value = session.position;
     lessonProgress.textContent = total ? Math.round((session.position / total) * 100) + " percent" : "0 percent";
-    progressText.textContent = session.durationSeconds ? session.secondsLeft + " seconds remaining" : isFree ? "Type at your own pace." : "Character " + (session.position + 1) + " of " + total;
+    progressText.textContent = session.durationSeconds ? session.secondsLeft + " seconds remaining" : isFree ? "Type at your own pace." : session.promptGroups
+      ? "Part " + (session.groupIndex + 1) + " of " + session.promptGroups.length
+      : "Character " + (session.position + 1) + " of " + total;
     practiceStatus.textContent = "Begin typing.";
     if (isFree) {
       freeTypeInput.value = "";
@@ -499,7 +559,10 @@
     const hand = handSetting.value;
     const lesson = lessonFor(Number(lessonSetting.value), hand);
     const mode = modeSetting.value;
-    const prompt = buildPrompt(lesson, mode, hand);
+    const builtPrompt = buildPrompt(lesson, mode, hand);
+    const promptGroups = mode === "guided" ? builtPrompt.split(/\s+/).filter(Boolean) : null;
+    const prompt = promptGroups ? promptGroups.join("") : builtPrompt;
+    const groupOffsets = promptGroups ? promptGroups.map((group, index) => promptGroups.slice(0, index).reduce((total, item) => total + item.length, 0)) : null;
     const durationSeconds = mode.startsWith("speed-") ? Number(mode.split("-")[1]) : 0;
     const targetAccuracy = Number(document.getElementById("accuracySetting").value);
     const targetWpm = Number(document.getElementById("wpmSetting").value);
@@ -507,6 +570,8 @@
       lesson, hand, mode, prompt, position: 0, correct: 0, mistakes: 0,
       mistakesByKey: {}, startedAt: null, durationSeconds,
       secondsLeft: durationSeconds, targetAccuracy, targetWpm,
+      promptGroups, groupOffsets, groupIndex: 0, announcementToken: 0,
+      typingMilliseconds: 0, segmentStartedAt: null,
       started: false, finished: false, accepting: false
     };
     show("practicePanel");
@@ -518,9 +583,13 @@
     if (!session || session.started || session.finished) return;
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
     session.started = true;
+    renderPractice();
+    if (session.promptGroups) {
+      announceCurrentPromptGroup();
+      return;
+    }
     session.accepting = true;
     session.startedAt = Date.now();
-    renderPractice();
     if (session.durationSeconds) {
       timerId = window.setInterval(() => {
         if (!session || session.finished) return;
@@ -534,6 +603,7 @@
 
   function finishPractice() {
     if (!session || session.finished) return;
+    if (session.promptGroups) closePromptGroupTimer();
     session.finished = true;
     session.accepting = false;
     if (timerId) window.clearInterval(timerId);
@@ -541,7 +611,10 @@
     if (session.mode === "free") session.correct = freeTypeInput.value.length;
     const attempts = session.correct + session.mistakes;
     const accuracy = attempts ? Math.round((session.correct / attempts) * 100) : 0;
-    const minutes = Math.max((Date.now() - session.startedAt) / 60000, 1 / 60);
+    const elapsedMilliseconds = session.promptGroups
+      ? Math.max(session.typingMilliseconds, 1000)
+      : Math.max(Date.now() - session.startedAt, 1000);
+    const minutes = Math.max(elapsedMilliseconds / 60000, 1 / 60);
     const wpm = Math.round((session.correct / 5) / minutes);
     session.finalAccuracy = accuracy;
     session.finalWpm = wpm;
@@ -549,7 +622,7 @@
     if (session.mode === "guided" && session.passed) {
       sessionUnlockedLessons[session.hand] = Math.max(sessionUnlockedLessons[session.hand], Math.min(session.lesson.number, lessonData.length - 1));
     }
-    session.elapsedSeconds = Math.max(1, Math.round((Date.now() - session.startedAt) / 1000));
+    session.elapsedSeconds = Math.max(1, Math.round(elapsedMilliseconds / 1000));
     const difficult = Object.keys(session.mistakesByKey).sort((a, b) => session.mistakesByKey[b] - session.mistakesByKey[a]).slice(0, 5);
     const saved = saveProgress();
     const activity = document.getElementById("practiceHeading").textContent;
@@ -698,28 +771,48 @@
     }
     if (event.key === "Control") {
       event.preventDefault();
+      if (session.promptGroups && !session.accepting) {
+        announceCurrentPromptGroup();
+        return;
+      }
       const message = nextKeyInstruction();
       practiceStatus.textContent = message;
       speak(message);
       return;
     }
     if (session.mode === "free") return;
-    if (!session.accepting || event.repeat || event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) return;
+    if (!session.accepting || event.repeat || event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) {
+      if (!session.accepting && event.key.length === 1) event.preventDefault();
+      return;
+    }
     event.preventDefault();
     const expected = session.prompt[session.position];
     if (event.key === expected) {
       session.correct += 1;
       session.position += 1;
+      const completedGroup = session.promptGroups && session.position >= currentPromptGroupStart() + currentPromptGroup().length;
+      if (completedGroup) {
+        closePromptGroupTimer();
+        if (session.position < session.prompt.length) session.groupIndex += 1;
+      }
       targetPrompt.classList.remove("incorrect");
       targetPrompt.classList.add("correct");
       tone(660, 0.08);
-      typedText.textContent = session.prompt.slice(Math.max(0, session.position - 120), session.position);
+      typedText.textContent = session.promptGroups
+        ? "Part " + Math.min(session.groupIndex + 1, session.promptGroups.length) + " of " + session.promptGroups.length
+        : session.prompt.slice(Math.max(0, session.position - 120), session.position);
       renderTrackedPrompt();
       if (!session.durationSeconds) lessonProgress.value = session.position;
-      progressText.textContent = session.durationSeconds ? session.secondsLeft + " seconds remaining" : "Character " + Math.min(session.position + 1, session.prompt.length) + " of " + session.prompt.length;
+      progressText.textContent = session.durationSeconds ? session.secondsLeft + " seconds remaining" : session.promptGroups
+        ? "Part " + Math.min(session.groupIndex + 1, session.promptGroups.length) + " of " + session.promptGroups.length
+        : "Character " + Math.min(session.position + 1, session.prompt.length) + " of " + session.prompt.length;
       if (session.position >= session.prompt.length) {
         session.accepting = false;
         window.setTimeout(finishPractice, 220);
+      } else if (completedGroup) {
+        session.accepting = false;
+        window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
+        announceCurrentPromptGroup();
       } else {
         if (practiceStatus.textContent !== "Keep typing.") practiceStatus.textContent = "Keep typing.";
         window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);

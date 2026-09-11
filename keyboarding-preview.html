@@ -138,19 +138,34 @@
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-bar { background: #000; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-value { background: #fff; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-moz-progress-bar { background: #fff; }
-    html[data-contrast="high"] body > main.kb-shell { background: #fff; color: #000; }
-    html[data-contrast="high"] .kb-panel { background: #fff; color: #000; border-color: #000; }
-    html[data-contrast="high"] .kb-panel h1, html[data-contrast="high"] .kb-panel h2 { color: #000 !important; }
-    html[data-contrast="high"] .kb-menu-help { background: #fff; color: #000; border-color: #000; }
-    html[data-contrast="high"] .kb-free-type { background: #fff; color: #000; border-color: #000; }
-    html[data-contrast="high"] .kb-char-complete { background: #000; color: #fff; box-shadow: none; }
+    html[data-contrast="high"] body:has(.kb-shell),
+    html[data-contrast="high"] body > main.kb-shell,
+    html[data-contrast="high"] .kb-panel,
+    html[data-contrast="high"] .kb-menu-help,
+    html[data-contrast="high"] .kb-note,
+    html[data-contrast="high"] .kb-help,
+    html[data-contrast="high"] .kb-status,
+    html[data-contrast="high"] .kb-choice,
+    html[data-contrast="high"] .kb-result,
+    html[data-contrast="high"] .kb-prompt,
+    html[data-contrast="high"] .kb-free-type,
+    html[data-contrast="high"] .kb-field select,
+    html[data-contrast="high"] .kb-form input,
+    html[data-contrast="high"] .kb-menu-option,
+    html[data-contrast="high"] .kb-finish-row,
+    html[data-contrast="high"] .kb-result-primary,
+    html[data-contrast="high"] .kb-step-adjust,
+    html[data-contrast="high"] .kb-toolbar button { background: #000; color: #fff; border-color: #fff; box-shadow: none; }
+    html[data-contrast="high"] .kb-panel h1, html[data-contrast="high"] .kb-panel h2, html[data-contrast="high"] .kb-char { color: #fff !important; }
+    html[data-contrast="high"] .kb-char-complete { background: #000; color: #fff; box-shadow: inset 0 0 0 .07em #fff; }
     html[data-contrast="high"] .kb-char-current { background: #ff0; color: #000; outline-color: #000; }
     html[data-contrast="high"] .kb-char-current::after { color: #000; }
-    html[data-contrast="high"] .kb-celebration { color: #000; }
-    html[data-contrast="high"] .kb-finish-row { background: #fff; color: #000; border-color: #000; }
-    html[data-contrast="high"] .kb-sparkle { color: #000; }
-    html[data-contrast="high"] .kb-result-primary { background: #fff; color: #000; border-color: #000; }
-    html[data-contrast="high"] .kb-step-adjust { background: #fff; color: #000; border-color: #000; }
+    html[data-contrast="high"] .kb-celebration { color: #fff; }
+    html[data-contrast="high"] .kb-sparkle { color: #ff0; }
+    html[data-contrast="high"] .kb-progress { background: #000; border: 2px solid #fff; }
+    html[data-contrast="high"] .kb-progress::-webkit-progress-bar { background: #000; }
+    html[data-contrast="high"] .kb-progress::-webkit-progress-value { background: #fff; }
+    html[data-contrast="high"] .kb-progress::-moz-progress-bar { background: #fff; }
     @media (max-width: 42rem) { .kb-finish-row { grid-template-columns: 1fr; } .kb-results-screen { height: auto; min-height: calc(100vh - 5rem); overflow: auto; } body.kb-results-active { overflow: auto; } }
     @media (max-width: 42rem) { .kb-grid, .kb-results { grid-template-columns: 1fr; } .kb-shell { padding: .5rem; } .kb-panel { border-radius: .75rem; min-height: calc(100vh - 4rem); } .kb-menu-option { grid-template-columns: 1fr; gap: .25rem; min-height: 5.5rem; text-align: center; } .kb-stepper-row { grid-template-columns: minmax(0, 1fr) 4rem 4rem; } .kb-step-adjust { min-height: 5.5rem; } }
   </style>
