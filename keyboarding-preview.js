@@ -98,12 +98,13 @@
   function show(panelId) {
     const selected = document.getElementById(panelId);
     panels.forEach(panel => { panel.hidden = panel !== selected; });
+    document.body.classList.toggle("kb-results-active", panelId === "resultsPanel");
     const heading = selected.querySelector("h1, h2");
     if (heading) {
       heading.setAttribute("tabindex", "-1");
       heading.focus();
     }
-    const firstChoice = Array.from(selected.querySelectorAll(".kb-arrow-menu .kb-menu-option")).find(button => !button.hidden && !button.disabled);
+    const firstChoice = Array.from(selected.querySelectorAll(".kb-arrow-menu .kb-menu-option, .kb-auto-focus")).find(button => !button.hidden && !button.disabled);
     if (firstChoice) window.setTimeout(() => firstChoice.focus(), 0);
   }
 
@@ -485,27 +486,27 @@
     document.getElementById("saveResult").textContent = saved
       ? (session.mode === "guided" ? "This lesson and its results were saved on this browser." : "These results were saved on this browser.")
       : "This session was not saved.";
-    const nextButton = document.getElementById("nextLesson");
-    nextButton.hidden = session.mode !== "guided" || session.lesson.number >= lessonData.length;
     const nextLesson = lessonData[session.lesson.number];
-    nextButton.querySelector(".kb-menu-value").textContent = nextLesson
-      ? "Continue to Lesson " + (session.lesson.number + 1) + ": " + nextLesson[0]
-      : "All Lessons Complete";
     const lessonFinished = session.mode === "guided";
-    const practiceAgainButton = document.getElementById("practiceAgain");
-    nextButton.removeAttribute("aria-label");
-    practiceAgainButton.removeAttribute("aria-label");
+    const resultAction = document.getElementById("resultAction");
+    const resultActionLabel = document.getElementById("resultActionLabel");
     if (lessonFinished && nextLesson) {
-      nextButton.setAttribute("aria-label", "Good job. Lesson done. Press Enter to continue to Lesson " + (session.lesson.number + 1) + ": " + nextLesson[0] + ".");
+      resultAction.dataset.action = "next";
+      resultActionLabel.textContent = "Next Lesson";
+      resultAction.setAttribute("aria-label", "Good job. Lesson " + session.lesson.number + " done. Press Enter for Lesson " + (session.lesson.number + 1) + ": " + nextLesson[0] + ".");
     } else if (lessonFinished) {
-      practiceAgainButton.setAttribute("aria-label", "Good job. All lessons complete. Press Enter to practice this lesson again, or use Up or Down for another choice.");
+      resultAction.dataset.action = "done";
+      resultActionLabel.textContent = "Done";
+      resultAction.setAttribute("aria-label", "Good job. All lessons complete. Press Enter for Done.");
     } else {
-      practiceAgainButton.setAttribute("aria-label", "Practice complete. Press Enter to practice again, or use Up or Down for another choice.");
+      resultAction.dataset.action = "done";
+      resultActionLabel.textContent = "Done";
+      resultAction.setAttribute("aria-label", "Practice complete. Press Enter for Done.");
     }
     document.getElementById("resultsHeading").innerHTML = lessonFinished
       ? '<span class="kb-sparkle" aria-hidden="true">✦</span> Good job! <span class="kb-sparkle" aria-hidden="true">✦</span>'
       : '<span class="kb-sparkle" aria-hidden="true">✦</span> Practice complete! <span class="kb-sparkle" aria-hidden="true">✦</span>';
-    document.getElementById("completionMessage").textContent = lessonFinished ? "Lesson done." : "Nice work!";
+    document.getElementById("completionMessage").textContent = lessonFinished ? "Lesson " + session.lesson.number + " done." : "Nice work!";
     renderCurriculum();
     show("resultsPanel");
   }
@@ -629,12 +630,18 @@
 
   lessonSetting.addEventListener("change", updateLessonSummary);
   handSetting.addEventListener("change", updateLessonSummary);
-  document.getElementById("practiceAgain").addEventListener("click", startPractice);
-  document.getElementById("changeSettings").addEventListener("click", openMenu);
-  document.getElementById("nextLesson").addEventListener("click", () => {
+  document.getElementById("resultAction").addEventListener("click", event => {
+    if (event.currentTarget.dataset.action !== "next") {
+      openMenu();
+      return;
+    }
     lessonSetting.value = String(Math.min(Number(lessonSetting.value) + 1, lessonData.length - 1));
+    modeSetting.value = "guided";
     updateLessonSummary();
     startPractice();
+  });
+  document.getElementById("resultAction").addEventListener("focus", event => {
+    speak(event.currentTarget.getAttribute("aria-label") || event.currentTarget.textContent.trim());
   });
   websiteControlsToggle.addEventListener("click", () => setWebsiteControlsMinimized(!document.body.classList.contains("kb-controls-minimized")));
   voiceToggle.addEventListener("click", () => setVoice(!useSiteVoice, true));
@@ -645,14 +652,6 @@
     if (!session || session.mode !== "free") return;
     progressText.textContent = freeTypeInput.value.length + (freeTypeInput.value.length === 1 ? " character typed" : " characters typed");
   });
-  document.getElementById("lockPreview").addEventListener("click", () => {
-    sessionStorage.removeItem("alcKeyboardingPreview");
-    document.getElementById("previewCode").value = "";
-    previewToolbar.hidden = true;
-    setWebsiteControlsMinimized(false);
-    show("unlockPanel");
-  });
-
   populateLessons();
   setVoice(true, false);
   if (sessionStorage.getItem("alcKeyboardingPreview") === "open") {

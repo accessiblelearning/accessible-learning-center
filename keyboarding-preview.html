@@ -66,13 +66,21 @@
     .kb-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 1rem 0; }
     .kb-result { padding: 1rem; border: 2px solid #8db8e8; border-radius: .65rem; }
     .kb-result strong { display: block; font-size: 1.65em; }
-    .kb-celebration { position: relative; max-width: 52rem; margin: 0 auto 1.25rem; padding: 1rem; border: 3px solid #65aef5; border-radius: 1rem; background: linear-gradient(135deg, #12396f, #0872ce); color: #fff; }
-    .kb-celebration h2 { margin-bottom: .35rem; }
+    .kb-celebration { position: relative; margin: 0; padding: .5rem; color: #fff; }
+    .kb-celebration h2 { margin-bottom: .2rem; font-size: clamp(2.4rem, 8vw, 5.25rem); }
     .kb-celebration p { margin: .25rem 0; font-size: 1.25em; font-weight: 800; }
     .kb-sparkle { display: inline-block; color: #ffe37a; padding: 0 .2em; transform: rotate(-8deg); }
-    .kb-results-menu { max-width: 44rem; margin-top: 1.25rem; }
-    .kb-results-menu .kb-menu-option { min-height: 4.75rem; grid-template-columns: 1fr; text-align: center; }
-    .kb-results-menu .kb-menu-option:first-child { background: #0872ce; }
+    .kb-results-screen { min-height: calc(100vh - 6.25rem); height: calc(100vh - 6.25rem); padding: clamp(.65rem, 2vh, 1.25rem); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; align-content: stretch; gap: clamp(.5rem, 1.5vh, 1rem); overflow: hidden; }
+    .kb-results-screen .kb-results { margin: 0; }
+    .kb-results-screen .kb-result { display: grid; align-content: center; padding: clamp(.45rem, 1.5vh, .85rem); background: #12396f; }
+    .kb-results-screen .kb-result strong { font-size: clamp(2rem, 7vh, 4.75rem); line-height: 1; }
+    .kb-finish-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(13rem, 19rem); align-items: center; gap: 1rem; min-height: 0; padding: clamp(.5rem, 1.5vh, 1rem); border: 3px solid #65aef5; border-radius: 1rem; background: linear-gradient(135deg, #12396f, #0872ce); }
+    .kb-result-primary { width: 100%; min-height: clamp(4.5rem, 12vh, 7rem); padding: .75rem; border: 3px solid #d9f7df; border-radius: .8rem; background: #2fbd68; color: #06142d; font: inherit; font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 900; cursor: pointer; }
+    .kb-result-primary small { display: block; margin-top: .15rem; font-size: .55em; }
+    .kb-result-primary:focus-visible { outline: .3rem solid #ffe37a; outline-offset: .2rem; }
+    .kb-result-exit { margin: 0; text-align: center; font-weight: 800; }
+    .kb-visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
+    body.kb-results-active { overflow: hidden; }
     .kb-back { background: #294c78; }
     .kb-free-type { width: 100%; min-height: 14rem; box-sizing: border-box; margin: 1.5rem 0; padding: 1rem; border: .3rem solid #51d5ff; border-radius: 1rem; background: #f7fbff; color: #071a35; font: inherit; font-size: clamp(1.5rem, 4vw, 3rem); line-height: 1.4; resize: vertical; }
     .kb-free-type:focus { outline: .25rem solid #f3a712; outline-offset: .15rem; }
@@ -89,7 +97,7 @@
     body.dark-mode .kb-char-current { background: #ffe37a; color: #071a35; outline-color: #fff; }
     body.dark-mode .kb-char-current::after { color: #ffe37a; }
     body.dark-mode .kb-complete { color: #8ef2ad; }
-    body.dark-mode .kb-celebration { background: linear-gradient(135deg, #0b2147, #075fc1); border-color: #73b5ff; }
+    body.dark-mode .kb-finish-row { background: linear-gradient(135deg, #0b2147, #075fc1); border-color: #73b5ff; }
     html[data-contrast="high"] body > main.kb-shell { background: #fff; color: #000; }
     html[data-contrast="high"] .kb-panel { background: #fff; color: #000; border-color: #000; }
     html[data-contrast="high"] .kb-panel h1, html[data-contrast="high"] .kb-panel h2 { color: #000 !important; }
@@ -98,10 +106,11 @@
     html[data-contrast="high"] .kb-char-complete { background: #000; color: #fff; box-shadow: none; }
     html[data-contrast="high"] .kb-char-current { background: #ff0; color: #000; outline-color: #000; }
     html[data-contrast="high"] .kb-char-current::after { color: #000; }
-    html[data-contrast="high"] .kb-celebration { background: #fff; color: #000; border-color: #000; }
+    html[data-contrast="high"] .kb-celebration { color: #000; }
+    html[data-contrast="high"] .kb-finish-row { background: #fff; color: #000; border-color: #000; }
     html[data-contrast="high"] .kb-sparkle { color: #000; }
-    html[data-contrast="high"] .kb-results-menu .kb-menu-option,
-    html[data-contrast="high"] .kb-results-menu .kb-menu-option:first-child { background: #fff; color: #000; border-color: #000; }
+    html[data-contrast="high"] .kb-result-primary { background: #fff; color: #000; border-color: #000; }
+    @media (max-width: 42rem) { .kb-finish-row { grid-template-columns: 1fr; } .kb-results-screen { height: auto; min-height: calc(100vh - 5rem); overflow: auto; } body.kb-results-active { overflow: auto; } }
     @media (max-width: 42rem) { .kb-grid, .kb-results { grid-template-columns: 1fr; } .kb-shell { padding: .5rem; } .kb-panel { border-radius: .75rem; min-height: calc(100vh - 4rem); } .kb-menu-option { grid-template-columns: 1fr; gap: .25rem; min-height: 5.5rem; text-align: center; } }
   </style>
 </head>
@@ -249,26 +258,26 @@
       <div class="kb-actions"><button class="kb-action" id="finishFreeType" type="button" hidden>Finish Free Typing</button></div>
     </section>
 
-    <section class="kb-panel kb-stage" id="resultsPanel" aria-labelledby="resultsHeading" hidden>
-      <div class="kb-celebration">
-        <h2 id="resultsHeading"><span class="kb-sparkle" aria-hidden="true">✦</span> Good job! <span class="kb-sparkle" aria-hidden="true">✦</span></h2>
-        <p id="completionMessage">Lesson done.</p>
-      </div>
-      <p id="resultsSummary"></p>
+    <section class="kb-panel kb-stage kb-results-screen" id="resultsPanel" aria-labelledby="resultsHeading" hidden>
+      <p class="kb-visually-hidden" id="resultsSummary"></p>
       <div class="kb-results">
         <div class="kb-result"><span>Errors</span><strong id="errorsResult">0</strong></div>
         <div class="kb-result"><span>Accuracy</span><strong id="accuracyResult">0%</strong></div>
         <div class="kb-result"><span>Words per minute</span><strong id="speedResult">0</strong></div>
       </div>
-      <p>Difficult keys: <strong id="difficultResult">None</strong></p>
-      <p id="saveResult"></p>
-      <div class="kb-menu kb-arrow-menu kb-results-menu" id="resultsMenu" aria-label="What would you like to do next?">
-        <button class="kb-menu-option" id="nextLesson" type="button"><span class="kb-menu-value">Continue to Next Lesson</span></button>
-        <button class="kb-menu-option" id="practiceAgain" type="button"><span class="kb-menu-value">Practice Again</span></button>
-        <button class="kb-menu-option kb-back" id="changeSettings" type="button"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
-        <button class="kb-menu-option kb-back" id="lockPreview" type="button"><span class="kb-menu-value">Close Preview</span></button>
+      <div class="kb-finish-row">
+        <div class="kb-celebration">
+          <h2 id="resultsHeading"><span class="kb-sparkle" aria-hidden="true">✦</span> Good job! <span class="kb-sparkle" aria-hidden="true">✦</span></h2>
+          <p id="completionMessage">Lesson done.</p>
+        </div>
+        <button class="kb-result-primary kb-auto-focus" id="resultAction" type="button">
+          <span id="resultActionLabel">Next Lesson</span>
+          <small>Press Enter</small>
+        </button>
       </div>
-      <p class="kb-menu-help"><strong>Enter:</strong> continue to the next lesson. <strong>Up or Down:</strong> choose another action.</p>
+      <p class="kb-result-exit">Escape returns to the Keyboarding Center.</p>
+      <p class="kb-visually-hidden">Difficult keys: <strong id="difficultResult">None</strong></p>
+      <p class="kb-visually-hidden" id="saveResult"></p>
     </section>
   </main>
 </body>
