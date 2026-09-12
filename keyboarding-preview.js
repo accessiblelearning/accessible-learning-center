@@ -89,6 +89,10 @@
   const previewToolbar = document.getElementById("previewToolbar");
   const voiceToggle = document.getElementById("voiceToggle");
   const websiteControlsToggle = document.getElementById("websiteControlsToggle");
+  const keyboardGuide = document.getElementById("keyboardGuide");
+  const visualKeyboard = document.getElementById("visualKeyboard");
+  const handCue = document.getElementById("handCue");
+  const handSymbol = document.getElementById("handSymbol");
   let useSiteVoice = true;
   let useSounds = true;
   let rememberProgress = false;
@@ -277,6 +281,56 @@
     return Array.from(text).map(speakable).join(", ");
   }
 
+  const KEYBOARD_ROWS = [
+    ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="],
+    ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"],
+    ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'"],
+    ["z", "x", "c", "v", "b", "n", "m", ",", ".", "/"],
+    [" "]
+  ];
+
+  function keyFinger(character) {
+    const key = String(character || "").toLowerCase();
+    const shiftedKeys = { "~": "`", "!": "1", "@": "2", "#": "3", "$": "4", "%": "5", "^": "6", "&": "7", "*": "8", "(": "9", ")": "0", "_": "-", "+": "=", "{": "[", "}": "]", "|": "\\", ":": ";", "\"": "'", "<": ",", ">": ".", "?": "/" };
+    const displayKey = shiftedKeys[key] || key;
+    if (key === " ") return { hand: "Either hand", handId: "either", finger: "Thumb", key: " " };
+    const groups = [
+      ["left", "Pinky finger", "`1qaz~!"], ["left", "Ring finger", "2wsx@"],
+      ["left", "Middle finger", "3edc#"], ["left", "Index finger", "45rtfgvb$%"],
+      ["right", "Index finger", "67yuhjnm^&"], ["right", "Middle finger", "8ik,<*"],
+      ["right", "Ring finger", "9ol.>("], ["right", "Pinky finger", "0p;/'-=[]\\_+{}|:\"?)"]
+    ];
+    const match = groups.find(group => group[2].includes(key));
+    return match
+      ? { hand: match[0] === "left" ? "Left hand" : "Right hand", handId: match[0], finger: match[1], key: displayKey }
+      : { hand: "Either hand", handId: "either", finger: "", key: displayKey };
+  }
+
+  function buildVisualKeyboard() {
+    KEYBOARD_ROWS.forEach(keys => {
+      const row = document.createElement("div");
+      row.className = "kb-key-row";
+      keys.forEach(key => {
+        const marker = document.createElement("span");
+        marker.className = "kb-key" + (key === " " ? " kb-key--space" : "");
+        marker.dataset.key = key;
+        marker.textContent = key === " " ? "Space" : key;
+        row.appendChild(marker);
+      });
+      visualKeyboard.appendChild(row);
+    });
+  }
+
+  function updateKeyGuide() {
+    const visible = session && session.started && !session.finished && session.mode !== "free";
+    keyboardGuide.hidden = !visible;
+    if (!visible) return;
+    const guidance = keyFinger(session.prompt[session.position]);
+    visualKeyboard.querySelectorAll(".kb-key").forEach(key => key.classList.toggle("kb-key--active", key.dataset.key === guidance.key));
+    handSymbol.dataset.hand = guidance.handId;
+    handCue.textContent = guidance.hand + (guidance.finger ? " • " + guidance.finger : "");
+  }
+
   function currentPromptGroup() {
     if (!session || !session.promptGroups) return "";
     return session.promptGroups[session.groupIndex] || "";
@@ -298,7 +352,8 @@
     session.accepting = false;
     session.announcementToken += 1;
     const token = session.announcementToken;
-    const message = "Type " + spokenPromptGroup(group) + ".";
+    const guidance = keyFinger(group[0]);
+    const message = "Type " + spokenPromptGroup(group) + ". Start with " + guidance.hand + ", " + guidance.finger + ".";
     practiceStatus.textContent = message;
     targetPrompt.setAttribute("aria-label", message);
     speak(message, () => {
@@ -474,7 +529,9 @@
     if (!session) return "";
     if (session.mode === "free") return "Free typing has no required next key.";
     const nextCharacter = session.prompt[session.position];
-    return nextCharacter === undefined ? "Sequence complete." : "Next key: " + speakable(nextCharacter) + ".";
+    if (nextCharacter === undefined) return "Sequence complete.";
+    const guidance = keyFinger(nextCharacter);
+    return "Next key: " + speakable(nextCharacter) + ". " + guidance.hand + ", " + guidance.finger + ".";
   }
 
   function renderTrackedPrompt() {
@@ -494,6 +551,7 @@
       line.appendChild(marker);
     }
     targetPrompt.replaceChildren(line);
+    updateKeyGuide();
   }
 
   function renderPractice() {
@@ -513,6 +571,7 @@
       ? session.lesson.description + " Pass with " + session.targetAccuracy + "% accuracy and " + session.targetWpm + " WPM to move on."
       : currentInstruction();
     if (!session.started) {
+      keyboardGuide.hidden = true;
       targetPrompt.hidden = false;
       freeTypeInput.hidden = true;
       finishFreeType.hidden = true;
@@ -529,6 +588,7 @@
       return;
     }
     const isFree = session.mode === "free";
+    keyboardGuide.hidden = isFree;
     targetPrompt.hidden = isFree;
     freeTypeInput.hidden = !isFree;
     finishFreeType.hidden = !isFree;
@@ -857,6 +917,7 @@
     if (!session || session.mode !== "free") return;
     progressText.textContent = freeTypeInput.value.length + (freeTypeInput.value.length === 1 ? " character typed" : " characters typed");
   });
+  buildVisualKeyboard();
   populateLessons();
   setVoice(true, false);
   if (sessionStorage.getItem("alcKeyboardingPreview") === "open") {

@@ -51,7 +51,19 @@
     .kb-complete { color: #0b6b31; font-weight: 700; }
     .kb-stage { text-align: center; }
     .kb-progress { width: 100%; height: 1.35rem; }
-    .kb-prompt { display: grid; place-items: center; min-height: 13rem; margin: 2rem 0; padding: 1.25rem; border: .3rem solid #51d5ff; border-radius: 1rem; background: #f7fbff; color: #071a35; font-size: clamp(2.5rem, 9vw, 6.5rem); font-weight: 900; line-height: 1.35; overflow-wrap: anywhere; }
+    #practicePanel { padding: clamp(.75rem, 2vw, 1.5rem); }
+    #practicePanel h2 { margin-bottom: .35rem; font-size: clamp(1.9rem, 5vw, 3.5rem); }
+    #practicePanel #practiceInstruction, #practicePanel #progressText { margin: .35rem 0; }
+    .kb-key-guide { max-width: 58rem; margin: .75rem auto; padding: .65rem; border: 3px solid #65aef5; border-radius: 1rem; background: #071a35; }
+    .kb-keyboard { display: grid; gap: .28rem; }
+    .kb-key-row { display: flex; justify-content: center; gap: .28rem; }
+    .kb-key { display: grid; place-items: center; width: clamp(1.55rem, 4vw, 3.15rem); height: clamp(1.55rem, 4vw, 3.15rem); border: 2px solid #9fc8f2; border-radius: .35rem; background: #e9f3ff; color: #071a35; font-size: clamp(.75rem, 2vw, 1.35rem); font-weight: 900; line-height: 1; text-transform: uppercase; }
+    .kb-key--space { width: min(42%, 15rem); }
+    .kb-key--active { background: #ffe37a; color: #071a35; border-color: #f3a712; box-shadow: 0 0 0 .2rem #f3a712; transform: translateY(-.08rem); }
+    .kb-hand-cue { display: flex; justify-content: center; align-items: center; gap: .75rem; min-height: 3rem; margin-top: .55rem; color: #fff; font-size: clamp(1rem, 3vw, 1.55rem); font-weight: 900; }
+    .kb-hand-symbol { color: #51d5ff; font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1; }
+    .kb-hand-symbol[data-hand="left"] { transform: scaleX(-1); }
+    .kb-prompt { display: grid; place-items: center; min-height: 8rem; margin: .75rem 0; padding: 1rem; border: .3rem solid #51d5ff; border-radius: 1rem; background: #f7fbff; color: #071a35; font-size: clamp(2.5rem, 9vw, 6.5rem); font-weight: 900; line-height: 1.35; overflow-wrap: anywhere; }
     .kb-prompt--long { font-size: clamp(1.5rem, 4vw, 3rem); }
     .kb-ready-prompt { min-height: 10rem; background: #d9f7df; border-color: #16813a; color: #071a35; font-size: clamp(2.25rem, 7vw, 5rem); }
     .kb-prompt-line { display: block; max-width: 100%; text-align: left; }
@@ -138,6 +150,12 @@
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-bar { background: #000; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-value { background: #fff; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-moz-progress-bar { background: #fff; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-key-guide,
+    html[data-contrast="high"] .kb-key-guide { background: #000; color: #fff; border-color: #fff; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-key,
+    html[data-contrast="high"] .kb-key { background: #000; color: #fff; border-color: #fff; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-key--active,
+    html[data-contrast="high"] .kb-key--active { background: #ff0; color: #000; border-color: #ff0; box-shadow: 0 0 0 .2rem #ff0; }
     html[data-contrast="high"] body:has(.kb-shell),
     html[data-contrast="high"] body > main.kb-shell,
     html[data-contrast="high"] .kb-panel,
@@ -342,6 +360,10 @@
       <p id="practiceInstruction"></p>
       <progress class="kb-progress" id="lessonProgress" max="1" value="0">0 percent</progress>
       <p id="progressText"></p>
+      <div class="kb-key-guide" id="keyboardGuide" aria-hidden="true" hidden>
+        <div class="kb-keyboard" id="visualKeyboard"></div>
+        <div class="kb-hand-cue"><span class="kb-hand-symbol" id="handSymbol">&#x270B;&#xFE0E;</span><span id="handCue"></span></div>
+      </div>
       <div class="kb-prompt" id="targetPrompt" role="application" tabindex="0" aria-describedby="practiceInstruction practiceStatus"></div>
       <textarea class="kb-free-type" id="freeTypeInput" aria-label="Free typing area" hidden></textarea>
       <p class="kb-typed" id="typedText" aria-label="Text typed correctly"></p>
