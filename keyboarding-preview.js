@@ -95,6 +95,7 @@
   const handSymbol = document.getElementById("handSymbol");
   let useSiteVoice = true;
   let useSounds = true;
+  let showHands = true;
   let rememberProgress = false;
   let audioContext = null;
   let session = null;
@@ -329,6 +330,7 @@
     visualKeyboard.querySelectorAll(".kb-key").forEach(key => key.classList.toggle("kb-key--active", key.dataset.key === guidance.key));
     handSymbol.dataset.hand = guidance.handId;
     handCue.textContent = guidance.hand + (guidance.finger ? " • " + guidance.finger : "");
+    document.querySelector(".kb-hand-cue").hidden = !showHands;
   }
 
   function currentPromptGroup() {
@@ -386,6 +388,7 @@
     document.getElementById("menuHandValue").textContent = selectedText(handSetting);
     document.getElementById("menuVoiceValue").textContent = useSiteVoice ? "Site voice" : "My screen reader";
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
+    document.getElementById("menuHandsValue").textContent = document.getElementById("handsSetting").checked ? "Shown" : "Hidden";
     document.getElementById("menuWpmValue").textContent = document.getElementById("wpmSetting").value + " WPM";
     document.getElementById("menuAccuracyValue").textContent = document.getElementById("accuracySetting").value + "%";
     document.getElementById("wpmMinus").setAttribute("aria-label", "Decrease passing speed. Current target " + document.getElementById("wpmSetting").value + " words per minute.");
@@ -430,6 +433,7 @@
 
   function startFromMenu() {
     useSounds = document.getElementById("soundSetting").checked;
+    showHands = document.getElementById("handsSetting").checked;
     rememberProgress = document.getElementById("saveSetting").checked;
     applyTextSize();
     startPractice();
@@ -444,6 +448,7 @@
     if (setting === "size") cycleSelect(document.getElementById("textSizeSetting"), direction);
     if (setting === "language") cycleSelect(document.getElementById("languageSetting"), direction);
     if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
+    if (setting === "hands") document.getElementById("handsSetting").checked = !document.getElementById("handsSetting").checked;
     if (setting === "save") document.getElementById("saveSetting").checked = !document.getElementById("saveSetting").checked;
     if (setting === "voice") setVoice(!useSiteVoice, false);
     if (setting === "hand") refreshLessonAvailability();
