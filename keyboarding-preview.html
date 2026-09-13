@@ -184,6 +184,26 @@
     html[data-contrast="high"] .kb-progress::-webkit-progress-bar { background: #000; }
     html[data-contrast="high"] .kb-progress::-webkit-progress-value { background: #fff; }
     html[data-contrast="high"] .kb-progress::-moz-progress-bar { background: #fff; }
+    @media (max-height: 56rem) and (min-width: 42.01rem) {
+      .kb-toolbar { margin-bottom: .35rem; }
+      #practicePanel { min-height: 0; height: calc(100vh - 4.5rem); overflow: hidden; padding: .55rem .8rem; }
+      #practicePanel h2 { margin: 0; font-size: clamp(1.8rem, 5vh, 2.8rem); }
+      #practicePanel #practiceInstruction { margin: .15rem 0; font-size: .95em; line-height: 1.2; }
+      #practicePanel .kb-progress { height: .85rem; }
+      #practicePanel #progressText { margin: .1rem 0; line-height: 1.15; }
+      #practicePanel .kb-prompt { min-height: clamp(4.5rem, 15vh, 7rem); margin: .3rem 0; padding: .35rem; font-size: clamp(2.5rem, 8vh, 5rem); line-height: 1.05; }
+      #practicePanel .kb-prompt--long { font-size: clamp(1.35rem, 4vh, 2.5rem); }
+      #practicePanel .kb-key-guide { margin: .3rem auto; padding: .35rem; }
+      #practicePanel .kb-keyboard { gap: .16rem; }
+      #practicePanel .kb-key-row { gap: .16rem; }
+      #practicePanel .kb-key { width: clamp(1.35rem, 3.5vw, 2.7rem); height: clamp(1.35rem, 4.2vh, 2.35rem); font-size: clamp(.7rem, 2vh, 1.05rem); }
+      #practicePanel .kb-key--space { width: min(38%, 12rem); }
+      #practicePanel .kb-hand-cue { min-height: 1.8rem; margin-top: .2rem; font-size: clamp(.9rem, 2.2vh, 1.15rem); }
+      #practicePanel .kb-hand-symbol { font-size: clamp(1.5rem, 3.5vh, 2.25rem); }
+      #practicePanel .kb-typed { display: none; }
+      #practicePanel .kb-status { min-height: 1.5rem; margin: .15rem 0; line-height: 1.15; }
+      #practicePanel .kb-help { margin: .2rem 0 0; padding: .4rem; font-size: .88em; line-height: 1.15; }
+    }
     @media (max-width: 42rem) { .kb-finish-row { grid-template-columns: 1fr; } .kb-results-screen { height: auto; min-height: calc(100vh - 5rem); overflow: auto; } body.kb-results-active { overflow: auto; } }
     @media (max-width: 42rem) { .kb-grid, .kb-results { grid-template-columns: 1fr; } .kb-shell { padding: .5rem; } .kb-panel { border-radius: .75rem; min-height: calc(100vh - 4rem); } .kb-menu-option { grid-template-columns: 1fr; gap: .25rem; min-height: 5.5rem; text-align: center; } .kb-stepper-row { grid-template-columns: minmax(0, 1fr) 4rem 4rem; } .kb-step-adjust { min-height: 5.5rem; } }
   </style>

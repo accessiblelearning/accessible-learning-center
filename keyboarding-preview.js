@@ -3,7 +3,7 @@
 
   const PREVIEW_CODE = "KEYS2026";
   const STORAGE_KEY = "alcKeyboardingProgressV1";
-  const LESSON_ONE_WORDS = new Set(["sad", "fad", "dad", "add", "lad", "fall", "salad", "ask", "hall", "flask"]);
+  const LESSON_ONE_WORDS = new Set(["sad", "fad", "dad", "add", "lad", "fall", "salad", "ask"]);
   const LEFT_KEYS = "qwertasdfgzxcvb12345`~!@#$%";
   const RIGHT_KEYS = "yuiophjklnm67890-=[]\\;',./^&*()_+{}|:\"<>?";
   const WORD_BANK = [
@@ -220,7 +220,7 @@
     if (mode === "guided") {
       if (lesson.number === 1 && hand === "left") return "ffff dddd ssss aaaa sad fad dad add";
       if (lesson.number === 1 && hand === "right") return "jjjj kkkk llll ;;;;";
-      if (lesson.number === 1) return "ffff dddd ssss aaaa sad fad dad add jjjj kkkk llll ;;;; lad fall salad ask hall flask";
+      if (lesson.number === 1) return "ffff dddd ssss aaaa sad fad dad add jjjj kkkk llll ;;;; lad fall salad ask";
       if (lesson.number === 2) return repeatedFocus(lesson.focus, 12, 4);
       if (lesson.number < 11) return repeatedFocus(lesson.focus, 12, 6);
       return repeatedFocus(lesson.focus, 18, 6);
@@ -355,7 +355,10 @@
     session.announcementToken += 1;
     const token = session.announcementToken;
     const guidance = keyFinger(group[0]);
-    const message = "Type " + spokenPromptGroup(group) + ". Start with " + guidance.hand + ", " + guidance.finger + ".";
+    const repeatedKey = group.length > 1 && Array.from(group).every(character => character === group[0]);
+    const message = repeatedKey
+      ? spokenPromptGroup(group) + ". " + guidance.hand + ", " + guidance.finger + "."
+      : "Type " + spokenPromptGroup(group) + ".";
     practiceStatus.textContent = message;
     targetPrompt.setAttribute("aria-label", message);
     speak(message, () => {
