@@ -533,6 +533,14 @@
     return session.lesson.description + mastery + (nextCharacter === undefined ? "" : " Next character: " + speakable(nextCharacter) + ".");
   }
 
+  function startInstruction() {
+    if (!session) return "Press any key to start.";
+    if (session.mode === "guided" && session.lesson.number === 1) {
+      return "Place your left index finger on F and your right index finger on J. The raised bumps help you find these keys. Rest your other left fingers on D, S, and A. Rest your other right fingers on K, L, and semicolon. Keep either thumb near the Space bar. When your hands are ready, press any key to start.";
+    }
+    return currentInstruction() + " Press any key to start.";
+  }
+
   function nextKeyInstruction() {
     if (!session) return "";
     if (session.mode === "free") return "Free typing has no required next key.";
@@ -588,7 +596,7 @@
       practiceStatus.hidden = true;
       targetPrompt.className = "kb-prompt kb-ready-prompt";
       targetPrompt.textContent = "Press any key to start";
-      targetPrompt.setAttribute("aria-label", currentInstruction() + " Press any key to start. The timer has not started.");
+      targetPrompt.setAttribute("aria-label", startInstruction());
       progressText.textContent = session.durationSeconds
         ? "Ready: " + (session.durationSeconds / 60) + (session.durationSeconds === 60 ? " minute" : " minutes")
         : "Ready to begin";
@@ -646,7 +654,7 @@
     };
     show("practicePanel");
     renderPractice();
-    speak(currentInstruction() + " Press any key to start. The timer has not started.");
+    speak(startInstruction());
   }
 
   function beginPractice() {
@@ -829,7 +837,7 @@
     if (!session.started) {
       if (event.key === "Control") {
         event.preventDefault();
-        const message = currentInstruction() + " Press any key to start. The timer has not started.";
+        const message = startInstruction();
         practiceStatus.textContent = message;
         speak(message);
         return;
