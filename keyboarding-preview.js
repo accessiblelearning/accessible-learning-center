@@ -207,17 +207,6 @@
     return Array.from(text).every(character => character === " " || allowed.includes(character));
   }
 
-  function repeatedFocus(focus, length, rowLength) {
-    let characters = Array.from(focus.replace(/ /g, ""));
-    if (!characters.length) characters = ["f", "j"];
-    const output = [];
-    for (let i = 0; i < length; i += 1) {
-      if (i > 0 && i % rowLength === 0) output.push(" ");
-      output.push(characters[i % characters.length]);
-    }
-    return output.join("");
-  }
-
   function buildPrompt(lesson, mode, hand) {
     const lowerAllowed = lesson.allowed.toLowerCase() + lesson.allowed.toUpperCase();
     let words = WORD_BANK.filter(word => fits(word, lowerAllowed));
@@ -228,7 +217,11 @@
     const sentences = SENTENCE_BANK.filter(sentence => fits(sentence.toLowerCase(), lowerAllowed) && (hand === "both" || Array.from(sentence.toLowerCase()).every(character => !/[a-z]/.test(character) || belongsToHand(character, hand))));
     if (mode === "guided") {
       if (hand === "both") return lesson.practiceGroups.slice();
-      return [repeatedFocus(lesson.focus, lesson.number < 11 ? 12 : 18, 6)];
+      const handGroups = lesson.practiceGroups.filter(group => Array.from(group).every(character => belongsToHand(character, hand)));
+      if (handGroups.length >= 2) return handGroups;
+      const reviewKeys = Array.from(new Set(lesson.focus.replace(/ /g, ""))).slice(0, 6);
+      const keyGroups = reviewKeys.map(character => character.repeat(4));
+      return keyGroups.length ? keyGroups : [hand === "right" ? "jjjj" : "ffff"];
     }
     if (mode === "words") return selectedWords.slice(0, 8).join(" ");
     if (mode === "sentences") return sentences[lesson.number % Math.max(sentences.length, 1)] || selectedWords.slice(0, 8).join(" ");
