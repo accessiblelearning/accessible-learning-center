@@ -546,6 +546,22 @@
     return "Next key: " + speakable(nextCharacter) + ". " + guidance.hand + ", " + guidance.finger + ".";
   }
 
+  function incorrectKeyInstruction(character) {
+    const shortMessage = "Incorrect. Press " + speakable(character) + ".";
+    if (!session || session.mode !== "guided" || session.lesson.number > 10) return shortMessage;
+    const locations = {
+      a: "Q", s: "W", d: "E", f: "R", g: "T",
+      h: "Y", j: "U", k: "I", l: "O", ";": "P"
+    };
+    const key = character.toLowerCase();
+    if (!locations[key]) return shortMessage;
+    const guidance = keyFinger(character);
+    const hand = guidance.hand.replace(" hand", "").toLowerCase();
+    const finger = guidance.finger.toLowerCase();
+    const locator = key === "f" || key === "j" ? " This key has a raised locator bump." : "";
+    return shortMessage + " It is on the home row below " + locations[key] + "." + locator + " Use your " + hand + " " + finger + ".";
+  }
+
   function renderTrackedPrompt() {
     if (!session || session.mode === "free") return;
     const start = session.promptGroups ? currentPromptGroupStart() : session.durationSeconds ? Math.max(0, session.position - 20) : 0;
@@ -896,9 +912,10 @@
       session.mistakesByKey[expected] = (session.mistakesByKey[expected] || 0) + 1;
       targetPrompt.classList.remove("correct");
       targetPrompt.classList.add("incorrect");
-      practiceStatus.textContent = "Try again. Next character: " + speakable(expected) + ".";
+      const correction = incorrectKeyInstruction(expected);
+      practiceStatus.textContent = correction;
       tone(190, 0.16);
-      speak("Try again. " + speakable(expected));
+      speak(correction);
       window.setTimeout(() => targetPrompt.classList.remove("incorrect"), 220);
     }
   });
