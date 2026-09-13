@@ -585,6 +585,7 @@
       finishFreeType.hidden = true;
       lessonProgress.hidden = true;
       typedText.hidden = true;
+      practiceStatus.hidden = true;
       targetPrompt.className = "kb-prompt kb-ready-prompt";
       targetPrompt.textContent = "Press any key to start";
       targetPrompt.setAttribute("aria-label", currentInstruction() + " Press any key to start. The timer has not started.");
@@ -602,6 +603,7 @@
     finishFreeType.hidden = !isFree;
     lessonProgress.hidden = isFree;
     typedText.hidden = isFree;
+    practiceStatus.hidden = false;
     const displayedPromptLength = session.promptGroups ? currentPromptGroup().length : session.prompt.length;
     targetPrompt.className = "kb-prompt" + (displayedPromptLength > 40 ? " kb-prompt--long" : "");
     renderTrackedPrompt();
