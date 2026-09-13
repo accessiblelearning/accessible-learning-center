@@ -351,9 +351,10 @@
   function announceCurrentPromptGroup() {
     const group = currentPromptGroup();
     if (!group || !session) return;
-    session.accepting = false;
+    session.accepting = true;
     session.announcementToken += 1;
-    const token = session.announcementToken;
+    session.segmentStartedAt = Date.now();
+    if (!session.startedAt) session.startedAt = session.segmentStartedAt;
     const guidance = keyFinger(group[0]);
     const repeatedKey = group.length > 1 && Array.from(group).every(character => character === group[0]);
     const message = repeatedKey
@@ -361,12 +362,7 @@
       : "Type " + spokenPromptGroup(group) + ".";
     practiceStatus.textContent = message;
     targetPrompt.setAttribute("aria-label", message);
-    speak(message, () => {
-      if (!session || session.finished || token !== session.announcementToken) return;
-      session.accepting = true;
-      session.segmentStartedAt = Date.now();
-      if (!session.startedAt) session.startedAt = session.segmentStartedAt;
-    });
+    speak(message);
   }
 
   function closePromptGroupTimer() {
