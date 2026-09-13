@@ -3,7 +3,7 @@
 
   const PREVIEW_CODE = "KEYS2026";
   const STORAGE_KEY = "alcKeyboardingProgressV1";
-  const LESSON_ONE_WORDS = new Set(["sad", "fad", "dad", "add", "lad", "fall", "salad", "ask"]);
+  const EARLY_WORDS = new Set(["sad", "dad", "fad", "add", "ads", "dads", "fads", "had", "has", "gas", "gag", "half", "hall", "dash", "hash"]);
   const LEFT_KEYS = "qwertasdfgzxcvb12345`~!@#$%";
   const RIGHT_KEYS = "yuiophjklnm67890-=[]\\;',./^&*()_+{}|:\"<>?";
   const WORD_BANK = [
@@ -21,57 +21,58 @@
     "i practiced for 10 minutes and reached 25 words per minute!"
   ];
 
+  // [title, goal, newly introduced keys, practice groups, lesson introduction]
   const lessonData = [
-    ["Home-row foundations", "Practice the left home-row keys, then the right home-row keys, and finish with short words.", "asdfjkl;"],
-    ["Left home-row accuracy", "Build control with A, S, D, and F.", "asdf"],
-    ["Right home-row accuracy", "Build control with J, K, L, and semicolon.", "jkl;"],
-    ["Full home-row words", "Combine both hands to type short home-row words.", "asdfjkl;"],
-    ["Home-row checkpoint", "Use both sides of the home row with accuracy and rhythm.", "asdfjkl;"],
-    ["G and H reaches", "Reach inward for G and H, then return home.", "gh"],
-    ["Home-row patterns", "Build steady movement across the home row.", "asdfghjkl;"],
-    ["Home-row words", "Type short words with home-row keys.", "asdfghjkl;"],
-    ["Home-row accuracy", "Keep a calm pace and reduce mistakes.", "asdfghjkl;"],
-    ["Home-row checkpoint", "Review every home-row key.", "asdfghjkl;"],
-    ["E and I", "Reach to E and I on the top row.", "ei"],
-    ["R and U", "Add R and U, returning to home row.", "ru"],
-    ["W and O", "Add W and O with controlled reaches.", "wo"],
-    ["Q and P", "Add the outside top-row keys Q and P.", "qp"],
-    ["T and Y", "Add the center top-row keys T and Y.", "ty"],
-    ["Full top row", "Use every top-row letter.", "qwertyuiop"],
-    ["Left top-row reaches", "Strengthen left-hand top-row movement.", "qwert"],
-    ["Right top-row reaches", "Strengthen right-hand top-row movement.", "yuiop"],
-    ["Top and home-row words", "Combine the top and home rows in words.", "qwertyuiopasdfghjkl;"],
-    ["Top-row checkpoint", "Review the top and home rows together.", "qwertyuiopasdfghjkl;"],
-    ["C and comma", "Reach down to C and comma.", "c,"],
-    ["V and M", "Add V and M on the bottom row.", "vm"],
-    ["X and period", "Add X and period.", "x."],
-    ["Z and slash", "Add Z and slash.", "z/"],
-    ["B and N", "Add the center bottom-row keys B and N.", "bn"],
-    ["Full bottom row", "Use every bottom-row key.", "zxcvbnm,./"],
-    ["Left-hand alphabet", "Review all letters typed by the left hand.", "qwertasdfgzxcvb"],
-    ["Right-hand alphabet", "Review all letters typed by the right hand.", "yuiophjklnm"],
-    ["Whole-alphabet words", "Type words using all three letter rows.", "abcdefghijklmnopqrstuvwxyz"],
-    ["Alphabet checkpoint", "Review all letter keys before adding Shift.", "abcdefghijklmnopqrstuvwxyz"],
-    ["Left-side capitals", "Use the opposite Shift key for left-side capitals.", "ASDFG"],
-    ["Right-side capitals", "Use the opposite Shift key for right-side capitals.", "HJKL"],
-    ["Capitalized words", "Combine capital and lowercase letters.", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
-    ["Numbers 1 through 5", "Reach to the left side of the number row.", "12345"],
-    ["Numbers 6 through 0", "Reach to the right side of the number row.", "67890"],
-    ["Full number row", "Practice every number key.", "1234567890"],
-    ["Comma and period", "Add commas and periods to text.", ",."],
-    ["Question and exclamation", "Use Shift for question marks and exclamation points.", "?!"],
-    ["Apostrophe, quote, and colon", "Practice common punctuation marks.", "'\":"],
-    ["Punctuation checkpoint", "Combine capitals, numbers, and punctuation.", ",./?!'\":;"],
-    ["Common words", "Build fluency with frequently used words.", "abcdefghijklmnopqrstuvwxyz"],
-    ["Short sentences", "Type short complete thoughts.", "abcdefghijklmnopqrstuvwxyz,."],
-    ["Longer sentences", "Maintain accuracy across longer prompts.", "abcdefghijklmnopqrstuvwxyz,."],
-    ["Accuracy builder", "Slow down enough to type each character correctly.", "abcdefghijklmnopqrstuvwxyz"],
-    ["Typing rhythm", "Use a steady, comfortable pace.", "abcdefghijklmnopqrstuvwxyz"],
-    ["Thirty-second typing", "Practice continuous typing for thirty seconds.", "abcdefghijklmnopqrstuvwxyz"],
-    ["Paragraph practice", "Keep your place through several sentences.", "abcdefghijklmnopqrstuvwxyz,."],
-    ["Numbers in text", "Combine words, numbers, capitals, and punctuation.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.!"],
-    ["Difficult-key review", "Spend time on the keys that need more practice.", "abcdefghijklmnopqrstuvwxyz"],
-    ["Final keyboarding check", "Bring every beginning keyboarding skill together.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'\":;" ]
+    ["Left Home Row ASDF", "Place the left hand on A, S, D, and F and use the correct finger for each key.", "asdf", ["asdf asdf asdf", "fdsa fdsa fdsa", "as ad af sa sd sf", "sad dad fad add", "ads dads fads"], "Place your left pinky on A, ring finger on S, middle finger on D, and index finger on F. Feel the raised bump on F. Use either thumb for Space."],
+    ["Right Home Row JKL Semicolon", "Place the right hand on J, K, L, and semicolon and use the correct finger for each key.", "jkl;", ["jkl; jkl; jkl;", ";lkj ;lkj ;lkj", "jk jl j; kl k; l;", "jkl jkj klk l;l", "j; kl; jkl;"], "Place your right index finger on J, middle finger on K, ring finger on L, and pinky on semicolon. Feel the raised bump on J."],
+    ["G and H with the Full Home Row", "Reach to G and H, then return the index fingers to F and J.", "gh", ["fff ggg fg gf", "jjj hhh jh hj", "gh hg fgh ghj", "had has gas gag", "half hall dash hash", "asdf gh jkl;"], "Move the left index finger from F to G and the right index finger from J to H. Return to F and J after every reach."],
+    ["Home Row Review", "Type home-row patterns and words with steady, even movement.", "asdfghjkl;", ["asdf jkl; fdsa ;lkj", "ask all fall glad", "salad glass flags", "shall flash halls", "a glad lad", "all flags fall"], "Keep both hands on the home row. Use a light touch and reset on F and J whenever your position feels uncertain."],
+    ["Left Top Row QWER", "Reach from the left home row to Q, W, E, and R.", "qwer", ["aq aq sw sw de de fr fr", "qwer rewq qwer", "read dear seed free", "wear fear rear", "safe safer freed", "a red flag"], "Reach from A to Q, S to W, D to E, and F to R. Return each finger to the home row after pressing a top-row key."],
+    ["T with the Left Top Row", "Reach the left index finger to T and combine it with learned keys.", "t", ["ft ft rt tr ft", "qwert trewq", "rest test fast start", "after street treat", "great draft taste", "a fast start"], "Reach the left index finger from F past R to T, then return it to F."],
+    ["Right Top Row UIOP", "Reach from the right home row to U, I, O, and P.", "uiop", ["ju ju ki ki lo lo ;p ;p", "uiop poiu uiop", "oil pool look pull", "loop pill soup", "pour spoil polite", "pull it up"], "Reach from J to U, K to I, L to O, and semicolon to P. Return each finger to the home row."],
+    ["Y with the Right Top Row", "Reach the right index finger to Y and combine both top-row hands.", "y", ["jy jy uy yu jy", "yuiop poiuy", "you your joy day", "play stay reply", "ready really pretty", "you did well"], "Reach the right index finger from J past U to Y, then return it to J."],
+    ["Top Row and Home Row Practice", "Move between the top and home rows without losing hand position.", "qwertyuiopasdfghjkl;", ["quiet write power", "people follow today", "yellow flower water", "reader paper story", "please read it", "write your reply"], "Keep F and J as your anchors. Reach up for each top-row key and return home."],
+    ["Building More Words", "Type longer words and short phrases with the top and home rows.", "qwertyuiopasdfghjkl;", ["weather airport railroad", "great laughter quality", "reported prepared started", "a quiet hour", "the yellow paper", "please start today"], "Notice the letters in each word, then type the word as one smooth unit. Use one Space between words."],
+    ["Left Bottom Row ZXCV", "Reach from the left home row to Z, X, C, and V.", "zxcv", ["az az sx sx dc dc fv fv", "zxcv vcxz zxcv", "save cave race voice", "zero cover exact", "active creative", "save your work"], "Reach from A to Z, S to X, D to C, and F to V. Return each finger to the home row."],
+    ["B with the Left Bottom Row", "Reach the left index finger to B and use it in words.", "b", ["fb fb vb bv fb", "zxcvb bvcxz", "bar bed best blue", "table about brave", "above bright trouble", "be ready to type"], "Reach the left index finger from F past V to B, then return it to F."],
+    ["Right Bottom Row NM", "Reach from the right home row to N and M.", "nm", ["jn jn km km nm mn", "name home mine", "number morning moment", "learn remain normal", "many new words", "remember your home row"], "Reach the right index finger from J to N and the right middle finger from K to M. Return both fingers home."],
+    ["Comma Period and Slash", "Find comma, period, and slash with the right hand.", ",./", ["k, k, l. l. ;/ ;/", "red, blue, green", "read. write. rest.", "yes/no on/off", "slow, calm, steady.", "type, check, continue."], "Reach from K to comma, L to period, and semicolon to slash. Return to K, L, and semicolon after each reach."],
+    ["Full Alphabet Review", "Use every letter of the alphabet with correct finger movement.", "abcdefghijklmnopqrstuvwxyz", ["abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqponmlkjihgfedcba", "quick brown fox", "jumps over lazy dog", "box five dozen jugs", "pack my red box."], "Reset on F and J before each group. This is an accuracy check, not a speed test."],
+    ["Short Words and Phrases", "Type useful words and phrases with rhythm and clean spacing.", "abcdefghijklmnopqrstuvwxyz", ["open the file", "save the new work", "meet me at home", "bring your blue bag", "we can begin now", "please send a reply"], "Listen to the full phrase before typing it. Keep one Space between words and use Backspace to correct an error."],
+    ["Shift and Capital Letters", "Use Shift with the opposite hand to type one capital letter.", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", ["A S D F", "J K L G H", "M R T P", "Sam Jill Mark", "Monday Friday", "Indiana Boston"], "Hold Shift with the hand opposite the letter, press the letter, and release both keys. Use Caps Lock only for several capitals in a row."],
+    ["Capitalized Words and Names", "Type names, days, months, and places with initial capitals.", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", ["Rosa Jacob Alex", "Tuesday Saturday", "January September", "Indiana Chicago", "Main Street", "Lake View Road"], "Hold Shift only for the first letter of each capitalized word, then continue with lowercase letters."],
+    ["Simple Sentences with 1 and 2", "Type complete sentences and introduce the number keys 1 and 2.", "12", ["1 1 1 2 2 2", "12 21 12 21", "I have 1 dog.", "Sam has 2 bags.", "The 2 dogs ran.", "I read 1 new book."], "Reach the left pinky to 1 and the left ring finger to 2. Return to the home row after each number."],
+    ["Sentence Building with 3 and 4", "Add useful details to sentences and introduce 3 and 4.", "34", ["3 3 3 4 4 4", "34 43 1234", "I have 3 red hats.", "The 4 dogs ran home.", "Mark read 3 pages today.", "Jill packed 4 blue bags."], "Reach the left middle finger to 3 and the left index finger to 4, then return home."],
+    ["Questions with 5 and 6", "Type questions and introduce the number keys 5 and 6.", "56?", ["5 5 5 6 6 6", "56 65 123456", "Do you have 5 bags?", "Did Sam read 6 pages?", "Are the 5 boxes ready?", "Can we meet at 6?"], "Reach the left index finger to 5 and the right index finger to 6. Hold left Shift and press slash with the right pinky for a question mark."],
+    ["Questions and Answers with 7 and 8", "Type connected questions and answers while introducing 7 and 8.", "78", ["7 7 7 8 8 8", "78 87 12345678", "Did you get 7 books?", "Yes, I got 7 books.", "Are all 8 bags ready?", "No, 2 bags are not ready."], "Reach the right index finger to 7 and the right middle finger to 8. Use a question mark for a question and a period for an answer."],
+    ["Exclamation Point with 9 and 0", "Use an exclamation point and complete the number row with 9 and 0.", "90!", ["9 9 9 0 0 0", "90 09 1234567890", "I got 9 right!", "We reached 10!", "That was a great job!", "Please stop!"], "Reach the right ring finger to 9 and the right pinky to 0. Hold right Shift and press 1 for an exclamation point."],
+    ["Capitalization and Ending Punctuation", "Choose a period, question mark, or exclamation point for each sentence.", "ABCDEFGHIJKLMNOPQRSTUVWXYZ?!.", ["The meeting begins at 10.", "Will you arrive at 9?", "I finished all 8 pages!", "Please bring 2 blue folders.", "Did Mark call at 6?", "What a fast reply!"], "Use a period for a statement, a question mark for a direct question, and an exclamation point for strong feeling."],
+    ["Money and the Dollar Sign", "Type dollar amounts inside complete sentences.", "$", ["$4 $9 $10 $25", "The blue bag costs $9.", "I saved $20.", "The 2 books cost $14.", "Did you pay $5?", "Yes! I paid $5."], "Hold right Shift and press 4 for the dollar sign. Place it directly before the amount with no Space."],
+    ["Commas in a Series", "Use commas to separate three or more items.", ",", ["red, blue, and green", "books, folders, and pens", "I packed 2 shirts, 3 socks, and 1 hat.", "We need paper, tape, and boxes.", "Sam called Mark, Jill, and Alex.", "I paid $4, $6, and $8."], "Type one Space after each comma. Place a comma before the final and in each series."],
+    ["Apostrophes in Contractions", "Use an apostrophe where letters are left out of a contraction.", "'", ["I am I'm", "do not don't", "can not can't", "it is it's", "I'm ready to begin.", "Don't close the file.", "It's 5 now."], "Press the apostrophe key with the right pinky. Keep the apostrophe inside a contraction with no Spaces around it."],
+    ["Apostrophes in Possessives", "Use an apostrophe to show that something belongs to someone or something.", "'", ["Sam's hat", "Jill's book", "the dog's bowl", "Mark's 2 files", "Sam's bag costs $20.", "The dog's 4 toys are here.", "Is this Jill's folder?"], "For one owner, add an apostrophe and S. The apostrophe shows who owns the item."],
+    ["Ages Dates and Quantities", "Use numbers naturally in practical sentences.", "0123456789", ["The class starts at 9.", "Read pages 4 and 5.", "Alex is 30 years old.", "The meeting is on September 12.", "Pack 3 boxes with 8 books each.", "I worked for 2 hours."], "Use numerals for dates, ages, times, page numbers, and exact quantities. Keep a Space between a number and the word after it."],
+    ["Percent Sign in Sentences", "Type the percent sign with numbers in complete sentences.", "%", ["5% 10% 25% 90%", "I finished 50% of the work.", "The battery is at 20%.", "The price dropped by 10%.", "Did you score 80%?", "Yes! I scored 90%."], "Hold right Shift and press 5 for the percent sign. Place it directly after the number with no Space."],
+    ["At Sign and Email Addresses", "Type the at sign and the basic parts of an email address.", "@", ["name@example.com", "sam12@mail.com", "jill.work@example.org", "My email is name@example.com.", "Send the file to sam12@mail.com.", "Did you email jill.work@example.org?"], "Hold right Shift and press 2 for the at sign. An email address contains no Spaces."],
+    ["Number Sign in Practical Text", "Use the number sign for labels and short references.", "#", ["Room #4", "Order #25", "Item #8", "Please check order #25.", "The meeting is in room #4.", "I need item #8 by 3."], "Hold right Shift and press 3 for the number sign. It can label an item, room, order, or reference number."],
+    ["Ampersand in Names and Labels", "Use the ampersand in names and compact labels.", "&", ["Smith & Jones", "Research & Development", "Q&A", "The file is named Q&A Notes.", "I called Smith & Jones at 9.", "Please open the Research & Development folder."], "Hold left Shift and press 7 for an ampersand. Use one Space on each side when it joins names."],
+    ["Parentheses in Sentences", "Place extra information inside parentheses.", "()", ["(Monday)", "(2 pages)", "(Room 4)", "The class meets at 9 (Room 4).", "Please read the file (2 pages).", "Sam will call on Monday (September 12)."], "Hold left Shift and press 9 for an opening parenthesis and 0 for a closing parenthesis."],
+    ["Quotation Marks", "Place exact spoken or written words inside quotation marks.", "\"", ["\"Please begin,\" Sam said.", "Jill said, \"I am ready.\"", "The sign reads, \"Open at 9.\"", "Mark asked, \"Is the file ready?\"", "\"Yes, it is ready,\" I said."], "Hold Shift and press the apostrophe key for a quotation mark. Use both an opening and closing quotation mark."],
+    ["Dialogue Practice", "Type short exchanges with quotation marks and varied ending punctuation.", "\"", ["\"Are you ready?\" Jill asked.", "\"Yes, I am ready,\" Sam said.", "\"Please open file #4,\" Jill said.", "\"Does it cost $8?\" Mark asked.", "\"No, it costs $6,\" Sam replied."], "Keep each speaker's exact words inside quotation marks and let the meaning guide the ending punctuation."],
+    ["Hyphens and Underscores", "Use a hyphen in joined words and an underscore in names or labels.", "-_", ["part-time", "well-known", "step-by-step", "student_notes", "lesson_4_notes", "I saved the step-by-step guide.", "Open the file named lesson_4_notes."], "Press the hyphen key with the right pinky. Hold Shift while pressing it for an underscore."],
+    ["Longer Sentences", "Type longer sentences in meaningful groups rather than one letter at a time.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["The morning class begins at 9 and ends at 10.", "Please open file #4, read 2 pages, and save your notes.", "Sam paid $20 for 3 books at the store.", "Jill's new email address is jill.work@example.org.", "The battery reached 90% before the meeting began."], "Listen to the full sentence, then type one phrase at a time. Pause at a comma without adding an extra Space."],
+    ["Sentence Practice 1", "Type complete statements with clear subjects and actions.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["The dog rested by the door.", "Sam opened the blue folder.", "Jill saved 3 files today.", "The class reviewed pages 8 and 9.", "My new keyboard works well."], "Type steadily from the capital letter through the final period."],
+    ["Sentence Practice 2", "Join related ideas with and, but, or or.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Sam opened the file, and Jill read it.", "I wanted the blue bag, but it cost $25.", "We can meet at 9, or we can meet at 10.", "The work was hard, but I finished it.", "Mark called, and I sent a reply."], "Use and to add an idea, but to show a difference, and or to show a choice."],
+    ["Sentence Practice 3", "Type sentences that explain a reason or a result.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["I saved the file because the work was complete.", "Jill called because she needed help.", "The meeting ended early, so I went home.", "The battery was low, so I charged it.", "We packed 4 boxes because the move starts Monday."], "Because introduces a reason. So introduces a result."],
+    ["Sentence Practice 4", "Type sentences that show when something happens.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["When the class ended, I saved my work.", "Before you close the file, check the name.", "After Sam called, I sent the 2 pages.", "I charged the battery before the meeting began.", "Jill smiled when she read the reply."], "Words such as when, before, and after connect actions in time."],
+    ["Sentence Practice 5", "Type sentences that describe a condition or possibility.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["If the file opens, read page 4.", "If you need help, call me at 9.", "We can begin if all 8 people are ready.", "If the bag costs $20, I will buy it.", "The class will meet online if the room is closed."], "If introduces a condition. Use a comma after an opening if phrase."],
+    ["Sentence Practice 6", "Combine capitals, numbers, punctuation, and symbols in detailed sentences.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["When Jill arrived at 9, she opened file #4 and read 50% of it.", "If the 2 books cost less than $20, Sam will buy them.", "Mark asked, \"Can you email the notes to me?\"", "Before Monday, save the file as lesson_8_notes.", "The class was part-time, but it included 10 useful lessons."], "Check capitals, Spaces, numbers, symbols, and final punctuation in every sentence."],
+    ["Paragraph Practice 1", "Type a short paragraph made of connected sentences.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Sam began work at 9.", "He opened the blue folder and reviewed 4 files.", "When he finished, he emailed the notes to Jill.", "The work took 2 hours."], "These four sentences form one paragraph about Sam's work. Type one sentence at a time."],
+    ["Paragraph Practice 2", "Type a paragraph that includes a question and an answer.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Jill checked her email before class.", "Did Sam send the new file?", "Yes, he sent it at 8.", "Jill opened file #6 and read all 3 pages before the meeting."], "Listen for the change from statement to question to answer as you type each sentence."],
+    ["Practical Typing 1", "Type a clear personal or workplace message.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Hi Jill,", "The meeting will begin at 9 in Room #4.", "Please bring the 2 blue folders.", "Let me know if you have any questions.", "Thank you,", "Sam"], "A clear message states its purpose, gives needed details, and ends politely. Each screen represents a new line."],
+    ["Practical Typing 2", "Type short instructions in a clear order.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["1. Open the folder.", "2. Select file #4.", "3. Read pages 2 and 3.", "4. Save the notes as lesson_4_notes.", "5. Email the file to name@example.com."], "Type the numbered steps in order. Each screen represents one instruction."],
+    ["Complex Sentence Practice", "Type a short paragraph with several connected sentence structures.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Although the morning was busy, Jill arrived at 9 and opened the class files.", "She reviewed 5 lessons because the new group would begin on Monday.", "When Sam asked, \"Is everything ready?\" Jill replied, \"Yes, all 10 files are ready.\""], "Type one sentence at a time and keep the punctuation accurate while moving through longer ideas."],
+    ["Final Keyboarding Challenge", "Use the full keyboarding course in one final practice.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["On Monday, September 12, Sam and Jill met at 9 in Room #4.", "They reviewed 10 files, corrected 2 email addresses, and completed 90% of the project before lunch.", "When Jill asked, \"Can we finish today?\" Sam replied, \"Yes!\"", "If we complete the last 3 pages, we can send the final file to name@example.com.", "The team saved the work as final_project_notes and finished by 4."], "Begin with your fingers on F and J. Work accurately, correct mistakes, and keep a comfortable rhythm. This is a skill check, not a race."]
   ];
 
   const panels = ["unlockPanel", "setupPanel", "practiceMenuPanel", "settingsPanel", "statsPanel", "practicePanel", "resultsPanel"].map(id => document.getElementById(id));
@@ -191,7 +192,15 @@
     const description = adapted
       ? "Continue strengthening " + hand + "-hand keys while this lesson introduces the other side of the keyboard."
       : lessonData[index][1];
-    return { number: index + 1, title: lessonData[index][0], description, allowed, focus };
+    return {
+      number: index + 1,
+      title: lessonData[index][0],
+      description,
+      allowed,
+      focus,
+      practiceGroups: lessonData[index][3],
+      introduction: lessonData[index][4]
+    };
   }
 
   function fits(text, allowed) {
@@ -218,12 +227,8 @@
     const selectedWords = Array.from({ length: 12 }, (_, index) => words[(start + index) % words.length]);
     const sentences = SENTENCE_BANK.filter(sentence => fits(sentence.toLowerCase(), lowerAllowed) && (hand === "both" || Array.from(sentence.toLowerCase()).every(character => !/[a-z]/.test(character) || belongsToHand(character, hand))));
     if (mode === "guided") {
-      if (lesson.number === 1 && hand === "left") return "ffff dddd ssss aaaa sad fad dad add";
-      if (lesson.number === 1 && hand === "right") return "jjjj kkkk llll ;;;;";
-      if (lesson.number === 1) return "ffff dddd ssss aaaa sad fad dad add jjjj kkkk llll ;;;; lad fall salad ask";
-      if (lesson.number === 2) return repeatedFocus(lesson.focus, 12, 4);
-      if (lesson.number < 11) return repeatedFocus(lesson.focus, 12, 6);
-      return repeatedFocus(lesson.focus, 18, 6);
+      if (hand === "both") return lesson.practiceGroups.slice();
+      return [repeatedFocus(lesson.focus, lesson.number < 11 ? 12 : 18, 6)];
     }
     if (mode === "words") return selectedWords.slice(0, 8).join(" ");
     if (mode === "sentences") return sentences[lesson.number % Math.max(sentences.length, 1)] || selectedWords.slice(0, 8).join(" ");
@@ -273,7 +278,10 @@
     const names = {
       " ": "space", ";": "semicolon", ",": "comma", ".": "period",
       "?": "question mark", "!": "exclamation point", "/": "slash",
-      "'": "apostrophe", '"': "quotation mark", ":": "colon"
+      "'": "apostrophe", '"': "quotation mark", ":": "colon",
+      "@": "at sign", "#": "number sign", "$": "dollar sign",
+      "%": "percent sign", "&": "ampersand", "(": "opening parenthesis",
+      ")": "closing parenthesis", "-": "hyphen", "_": "underscore"
     };
     return names[text] || text;
   }
@@ -344,7 +352,9 @@
   }
 
   function spokenPromptGroup(group) {
-    if (session && session.lesson.number === 1 && LESSON_ONE_WORDS.has(group)) return group;
+    if (!session) return speakableSequence(group);
+    const words = group.split(" ").filter(Boolean);
+    if (session.lesson.number >= 4 || (words.length && words.every(word => EARLY_WORDS.has(word)))) return group;
     return speakableSequence(group);
   }
 
@@ -531,8 +541,15 @@
 
   function startInstruction() {
     if (!session) return "Press any key to start.";
-    if (session.mode === "guided" && session.lesson.number === 1) {
-      return "Place your left index finger on F and your right index finger on J. The raised bumps help you find these keys. Rest your other left fingers on D, S, and A. Rest your other right fingers on K, L, and semicolon. Keep either thumb near the Space bar. When your hands are ready, press any key to start.";
+    if (session.mode === "guided") {
+      if (session.hand !== "both") {
+        return session.lesson.description + " Begin with your " + session.hand + " hand in its home-row position. When you are ready, press any key to start.";
+      }
+      let handPosition = " Begin with your " + session.hand + " hand in its home-row position.";
+      if (session.hand === "both" && session.lesson.number === 1) handPosition = " Keep your left hand on A, S, D, and F.";
+      else if (session.hand === "both" && session.lesson.number === 2) handPosition = " Keep your right hand on J, K, L, and semicolon.";
+      else if (session.hand === "both") handPosition = " Begin with your index fingers on the raised bumps on F and J.";
+      return session.lesson.introduction + handPosition + " When you are ready, press any key to start.";
     }
     return currentInstruction() + " Press any key to start.";
   }
@@ -548,10 +565,14 @@
 
   function incorrectKeyInstruction(character) {
     const shortMessage = "Incorrect. Press " + speakable(character) + ".";
-    if (!session || session.mode !== "guided" || session.lesson.number > 10) return shortMessage;
+    if (!session || session.mode !== "guided" || session.lesson.number > 15) return shortMessage;
     const locations = {
-      a: "Q", s: "W", d: "E", f: "R", g: "T",
-      h: "Y", j: "U", k: "I", l: "O", ";": "P"
+      q: "on the top row above A", w: "on the top row above S", e: "on the top row above D", r: "on the top row above F", t: "on the top row above G",
+      y: "on the top row above H", u: "on the top row above J", i: "on the top row above K", o: "on the top row above L", p: "on the top row above semicolon",
+      a: "on the home row below Q", s: "on the home row below W", d: "on the home row below E", f: "on the home row below R", g: "on the home row below T",
+      h: "on the home row below Y", j: "on the home row below U", k: "on the home row below I", l: "on the home row below O", ";": "on the home row below P",
+      z: "on the bottom row below A", x: "on the bottom row below S", c: "on the bottom row below D", v: "on the bottom row below F", b: "on the bottom row below G",
+      n: "on the bottom row below J", m: "on the bottom row below K", ",": "on the bottom row below K", ".": "on the bottom row below L", "/": "on the bottom row below semicolon"
     };
     const key = character.toLowerCase();
     if (!locations[key]) return shortMessage;
@@ -559,7 +580,7 @@
     const hand = guidance.hand.replace(" hand", "").toLowerCase();
     const finger = guidance.finger.toLowerCase();
     const locator = key === "f" || key === "j" ? " This key has a raised locator bump." : "";
-    return shortMessage + " It is on the home row below " + locations[key] + "." + locator + " Use your " + hand + " " + finger + ".";
+    return shortMessage + " It is " + locations[key] + "." + locator + " Use your " + hand + " " + finger + ".";
   }
 
   function renderTrackedPrompt() {
@@ -650,7 +671,9 @@
     const lesson = lessonFor(Number(lessonSetting.value), hand);
     const mode = modeSetting.value;
     const builtPrompt = buildPrompt(lesson, mode, hand);
-    const promptGroups = mode === "guided" ? builtPrompt.split(/\s+/).filter(Boolean) : null;
+    const promptGroups = mode === "guided"
+      ? (Array.isArray(builtPrompt) ? builtPrompt : [builtPrompt]).filter(Boolean)
+      : null;
     const prompt = promptGroups ? promptGroups.join("") : builtPrompt;
     const groupOffsets = promptGroups ? promptGroups.map((group, index) => promptGroups.slice(0, index).reduce((total, item) => total + item.length, 0)) : null;
     const durationSeconds = mode.startsWith("speed-") ? Number(mode.split("-")[1]) : 0;
