@@ -31,6 +31,8 @@
     .kb-choice input { width: 1.35rem; height: 1.35rem; flex: 0 0 auto; }
     .kb-note, .kb-help { padding: .85rem; background: rgba(116, 174, 234, .18); border-radius: .5rem; }
     .kb-summary { max-width: 48rem; margin: 0 auto 1.25rem; text-align: center; font-size: 1.2em; }
+    #setupPanel { padding-top: clamp(.65rem, 1.5vw, 1rem); }
+    #setupPanel .kb-menu { margin-top: 0; }
     .kb-menu { display: grid; gap: .85rem; max-width: 58rem; margin: 1.5rem auto; }
     .kb-menu-option { width: 100%; min-height: 6.5rem; display: grid; grid-template-columns: minmax(9rem, .8fr) minmax(0, 1.5fr); align-items: center; gap: 1rem; padding: 1rem 1.5rem; border: 3px solid #65aef5; border-radius: .85rem; background: #12396f; color: #fff; font: inherit; text-align: left; cursor: pointer; }
     .kb-menu-option .kb-menu-label { font-weight: 700; font-size: 1.05em; }
@@ -226,8 +228,8 @@
     </section>
 
     <section class="kb-panel" id="setupPanel" aria-labelledby="setupHeading" hidden>
-      <h2 id="setupHeading">Keyboarding Center</h2>
-      <p class="kb-summary" id="lessonSummary">Choose what you want to do.</p>
+      <h2 class="kb-visually-hidden" id="setupHeading">Keyboarding Center</h2>
+      <p class="kb-summary kb-visually-hidden" id="lessonSummary">Choose what you want to do.</p>
       <div class="kb-menu kb-arrow-menu" id="setupMenu" aria-label="Keyboarding Center menu">
         <button class="kb-menu-option" type="button" data-main-action="lesson"><span class="kb-menu-label">Current lesson</span><span class="kb-menu-value" id="menuLessonValue"></span></button>
         <button class="kb-menu-option" type="button" data-main-action="practice"><span class="kb-menu-label">Practice</span><span class="kb-menu-value">Words, sentences, speed tests, or free typing</span></button>
