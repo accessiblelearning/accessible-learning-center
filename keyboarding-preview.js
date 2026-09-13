@@ -71,8 +71,8 @@
     ["Paragraph Practice 2", "Type a paragraph that includes a question and an answer.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Jill checked her email before class.", "Did Sam send the new file?", "Yes, he sent it at 8.", "Jill opened file #6 and read all 3 pages before the meeting."], "Listen for the change from statement to question to answer as you type each sentence."],
     ["Practical Typing 1", "Type a clear personal or workplace message.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Hi Jill,", "The meeting will begin at 9 in Room #4.", "Please bring the 2 blue folders.", "Let me know if you have any questions.", "Thank you,", "Sam"], "A clear message states its purpose, gives needed details, and ends politely. Each screen represents a new line."],
     ["Practical Typing 2", "Type short instructions in a clear order.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["1. Open the folder.", "2. Select file #4.", "3. Read pages 2 and 3.", "4. Save the notes as lesson_4_notes.", "5. Email the file to name@example.com."], "Type the numbered steps in order. Each screen represents one instruction."],
-    ["Complex Sentence Practice", "Type a short paragraph with several connected sentence structures.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Although the morning was busy, Jill arrived at 9 and opened the class files.", "She reviewed 5 lessons because the new group would begin on Monday.", "When Sam asked, \"Is everything ready?\" Jill replied, \"Yes, all 10 files are ready.\""], "Type one sentence at a time and keep the punctuation accurate while moving through longer ideas."],
-    ["Final Keyboarding Challenge", "Use the full keyboarding course in one final practice.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["On Monday, September 12, Sam and Jill met at 9 in Room #4.", "They reviewed 10 files, corrected 2 email addresses, and completed 90% of the project before lunch.", "When Jill asked, \"Can we finish today?\" Sam replied, \"Yes!\"", "If we complete the last 3 pages, we can send the final file to name@example.com.", "The team saved the work as final_project_notes and finished by 4."], "Begin with your fingers on F and J. Work accurately, correct mistakes, and keep a comfortable rhythm. This is a skill check, not a race."]
+    ["Complex Sentence Practice", "Type a short paragraph with several connected sentence structures.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Although the morning was busy,", "Jill arrived at 9 and opened the class files.", "She reviewed 5 lessons because the new group would begin on Monday.", "When Sam asked, \"Is everything ready?\"", "Jill replied, \"Yes, all 10 files are ready.\""], "Type one phrase at a time and keep the punctuation accurate while moving through longer ideas."],
+    ["Final Keyboarding Challenge", "Use the full keyboarding course in one final practice.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["On Monday, September 12, Sam and Jill met at 9 in Room #4.", "They reviewed 10 files and corrected 2 email addresses.", "They completed 90% of the project before lunch.", "When Jill asked, \"Can we finish today?\"", "Sam replied, \"Yes!\"", "If we complete the last 3 pages,", "we can send the final file to name@example.com.", "The team saved the work as final_project_notes and finished by 4."], "Begin with your fingers on F and J. Work accurately, correct mistakes, and type one part at a time. This is a skill check, not a race."]
   ];
 
   const panels = ["unlockPanel", "setupPanel", "practiceMenuPanel", "settingsPanel", "statsPanel", "practicePanel", "resultsPanel"].map(id => document.getElementById(id));
@@ -290,6 +290,22 @@
     return Array.from(text).map(speakable).join(", ");
   }
 
+  function needsShift(character) {
+    return /^[A-Z]$/.test(character) || "~!@#$%^&*()_+{}|:\"<>?".includes(character);
+  }
+
+  function spokenKeyName(character) {
+    return /^[A-Z]$/.test(character) ? "capital " + character : speakable(character);
+  }
+
+  function requiredShift(character) {
+    if (!needsShift(character)) return "";
+    const guidance = keyFinger(character);
+    if (guidance.handId === "left") return "right Shift";
+    if (guidance.handId === "right") return "left Shift";
+    return "Shift";
+  }
+
   const KEYBOARD_ROWS = [
     ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="],
     ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"],
@@ -337,7 +353,8 @@
     const guidance = keyFinger(session.prompt[session.position]);
     visualKeyboard.querySelectorAll(".kb-key").forEach(key => key.classList.toggle("kb-key--active", key.dataset.key === guidance.key));
     handSymbol.dataset.hand = guidance.handId;
-    handCue.textContent = guidance.hand + (guidance.finger ? " • " + guidance.finger : "");
+    const shift = requiredShift(session.prompt[session.position]);
+    handCue.textContent = (shift ? "Hold " + shift + " • " : "") + guidance.hand + (guidance.finger ? " • " + guidance.finger : "");
     document.querySelector(".kb-hand-cue").hidden = !showHands;
   }
 
@@ -560,11 +577,13 @@
     const nextCharacter = session.prompt[session.position];
     if (nextCharacter === undefined) return "Sequence complete.";
     const guidance = keyFinger(nextCharacter);
-    return "Next key: " + speakable(nextCharacter) + ". " + guidance.hand + ", " + guidance.finger + ".";
+    const shift = requiredShift(nextCharacter);
+    return "Next key: " + spokenKeyName(nextCharacter) + ". " + (shift ? "Hold " + shift + ". " : "") + guidance.hand + ", " + guidance.finger + ".";
   }
 
   function incorrectKeyInstruction(character) {
-    const shortMessage = "Incorrect. Press " + speakable(character) + ".";
+    const shift = requiredShift(character);
+    const shortMessage = "Incorrect. Press " + spokenKeyName(character) + "." + (shift ? " Hold " + shift + "." : "");
     if (!session || session.mode !== "guided" || session.lesson.number > 15) return shortMessage;
     const locations = {
       q: "on the top row above A", w: "on the top row above S", e: "on the top row above D", r: "on the top row above F", t: "on the top row above G",
@@ -926,10 +945,7 @@
         session.accepting = false;
         window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
         announceCurrentPromptGroup();
-      } else {
-        if (practiceStatus.textContent !== "Keep typing.") practiceStatus.textContent = "Keep typing.";
-        window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
-      }
+      } else window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
     } else {
       session.mistakes += 1;
       session.mistakesByKey[expected] = (session.mistakesByKey[expected] || 0) + 1;
