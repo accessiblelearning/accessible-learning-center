@@ -187,19 +187,18 @@
     @media (max-height: 64rem) and (min-width: 42.01rem) {
       .kb-toolbar { margin-bottom: .35rem; }
       #practicePanel { min-height: 0; height: calc(100vh - 4.5rem); overflow: hidden; padding: .55rem .8rem; }
-      #practicePanel h2 { margin: 0; font-size: clamp(1.8rem, 5vh, 2.8rem); }
-      #practicePanel #practiceInstruction { margin: .15rem 0; font-size: .95em; line-height: 1.2; }
+      #practicePanel h2 { margin: 0; }
       #practicePanel .kb-progress { height: .85rem; }
       #practicePanel #progressText { margin: .1rem 0; line-height: 1.15; }
-      #practicePanel .kb-prompt { min-height: clamp(4.5rem, 15vh, 7rem); margin: .3rem 0; padding: .35rem; font-size: clamp(2.5rem, 8vh, 5rem); line-height: 1.05; }
-      #practicePanel .kb-prompt--long { font-size: clamp(1.35rem, 4vh, 2.5rem); }
+      #practicePanel .kb-prompt { min-height: clamp(6rem, 19vh, 8.5rem); margin: .25rem 0; padding: .45rem; font-size: clamp(3.25rem, 10vh, 6rem); line-height: 1.05; }
+      #practicePanel .kb-prompt--long { font-size: clamp(1.75rem, 4.8vh, 3rem); }
       #practicePanel .kb-key-guide { margin: .3rem auto; padding: .35rem; }
       #practicePanel .kb-keyboard { gap: .16rem; }
       #practicePanel .kb-key-row { gap: .16rem; }
-      #practicePanel .kb-key { width: clamp(1.35rem, 3.5vw, 2.7rem); height: clamp(1.35rem, 4.2vh, 2.35rem); font-size: clamp(.7rem, 2vh, 1.05rem); }
-      #practicePanel .kb-key--space { width: min(38%, 12rem); }
-      #practicePanel .kb-hand-cue { min-height: 1.8rem; margin-top: .2rem; font-size: clamp(.9rem, 2.2vh, 1.15rem); }
-      #practicePanel .kb-hand-symbol { font-size: clamp(1.5rem, 3.5vh, 2.25rem); }
+      #practicePanel .kb-key { width: clamp(2rem, 4.4vw, 3.35rem); height: clamp(2rem, 5.3vh, 3rem); font-size: clamp(.9rem, 2.5vh, 1.35rem); }
+      #practicePanel .kb-key--space { width: min(42%, 15rem); }
+      #practicePanel .kb-hand-cue { min-height: 2.2rem; margin-top: .25rem; font-size: clamp(1.05rem, 2.7vh, 1.4rem); }
+      #practicePanel .kb-hand-symbol { font-size: clamp(1.9rem, 4.2vh, 2.75rem); }
       #practicePanel .kb-typed { display: none; }
       #practicePanel .kb-status { min-height: 1.5rem; margin: .15rem 0; line-height: 1.15; }
       #practicePanel .kb-help { margin: .2rem 0 0; padding: .4rem; font-size: .88em; line-height: 1.15; }
@@ -378,11 +377,11 @@
     </section>
 
     <section class="kb-panel kb-stage" id="practicePanel" aria-labelledby="practiceHeading" hidden>
-      <h2 id="practiceHeading">Keyboarding Practice</h2>
-      <p id="practiceInstruction"></p>
+      <h2 class="kb-visually-hidden" id="practiceHeading">Keyboarding Practice</h2>
+      <p class="kb-visually-hidden" id="practiceInstruction"></p>
+      <div class="kb-prompt" id="targetPrompt" role="application" tabindex="0" aria-describedby="practiceInstruction practiceStatus"></div>
       <progress class="kb-progress" id="lessonProgress" max="1" value="0">0 percent</progress>
       <p id="progressText"></p>
-      <div class="kb-prompt" id="targetPrompt" role="application" tabindex="0" aria-describedby="practiceInstruction practiceStatus"></div>
       <div class="kb-key-guide" id="keyboardGuide" aria-hidden="true" hidden>
         <div class="kb-keyboard" id="visualKeyboard"></div>
         <div class="kb-hand-cue"><span class="kb-hand-symbol" id="handSymbol">&#x270B;&#xFE0E;</span><span id="handCue"></span></div>
