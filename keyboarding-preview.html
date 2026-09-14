@@ -95,6 +95,7 @@
     .kb-prompt.incorrect { background: #ffe0e0; border-color: #b51f2e; color: #7b101d; }
     .kb-typed { min-height: 2rem; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-weight: 700; }
     .kb-status { min-height: 2.5rem; font-weight: 700; }
+    #practicePanel .kb-caption { box-sizing: border-box; width: 100%; min-height: 0; margin: .2rem 0; padding: .45rem .7rem; border: 2px solid #65aef5 !important; border-radius: .35rem; background: #d9efff !important; color: #06142d !important; font-weight: 900; line-height: 1.25; }
     .kb-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
     .kb-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; margin-bottom: .75rem; }
     .kb-toolbar button { min-height: 2.75rem; border: 2px solid #356da8; border-radius: .55rem; padding: .55rem .85rem; background: #fff; color: #102044; font: inherit; font-weight: 700; cursor: pointer; }
@@ -342,6 +343,7 @@
         <fieldset class="kb-choice">
           <legend>Practice options</legend>
           <label><input id="soundSetting" type="checkbox" checked> Play correct and incorrect sounds</label>
+          <label><input id="captionSetting" type="checkbox"> Show high-contrast captions</label>
           <label><input id="handsSetting" type="checkbox" checked> Show the visual hand guide</label>
           <label><input id="saveSetting" type="checkbox"> Remember completed lessons on this browser</label>
         </fieldset>
@@ -379,6 +381,7 @@
         <button class="kb-menu-option" type="button" data-setting="voice"><span class="kb-menu-label">Site voice</span><span class="kb-menu-value" id="menuVoiceValue">Site voice</span></button>
         <button class="kb-menu-option" type="button" data-setting="size"><span class="kb-menu-label">Print size</span><span class="kb-menu-value" id="menuSizeValue"></span></button>
         <button class="kb-menu-option" type="button" data-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue">On</span></button>
+        <button class="kb-menu-option" type="button" data-setting="captions"><span class="kb-menu-label">High-contrast captions</span><span class="kb-menu-value" id="menuCaptionValue">Off</span></button>
         <button class="kb-menu-option" type="button" data-setting="hands"><span class="kb-menu-label">Visible hands</span><span class="kb-menu-value" id="menuHandsValue">Shown</span></button>
         <button class="kb-menu-option" type="button" data-setting="hand"><span class="kb-menu-label">Learning path</span><span class="kb-menu-value" id="menuHandValue"></span></button>
         <button class="kb-menu-option" type="button" data-setting="language"><span class="kb-menu-label">Lesson language</span><span class="kb-menu-value" id="menuLanguageValue">English</span></button>
