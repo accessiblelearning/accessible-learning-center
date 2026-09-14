@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-16" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-17" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -30,6 +30,9 @@
     .kb-choice label { display: flex; align-items: center; gap: .65rem; }
     .kb-choice input { width: 1.35rem; height: 1.35rem; flex: 0 0 auto; }
     .kb-note, .kb-help { padding: .85rem; background: rgba(116, 174, 234, .18); border-radius: .5rem; }
+    #practicePanel .kb-help { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1rem; margin: .15rem 0 0; padding: .4rem .65rem; border-top: 2px solid #65aef5; border-radius: .2rem; background: #06142d; color: #fff; font-size: clamp(.78rem, 1.4vw, .95rem); line-height: 1.2; }
+    #practicePanel .kb-help span { white-space: nowrap; }
+    #practicePanel .kb-help kbd { font: inherit; font-weight: 900; color: #fff; }
     .kb-summary { max-width: 48rem; margin: 0 auto 1.25rem; text-align: center; font-size: 1.2em; }
     #setupPanel { padding-top: clamp(.65rem, 1.5vw, 1rem); }
     #setupPanel .kb-menu { margin-top: 0; }
@@ -180,6 +183,7 @@
     html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-key { color: #b5b5b5; border-color: #666; }
     html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-key--active { color: #000; border-color: #ff0; }
     html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-char { color: #fff !important; }
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-help { background: #06142d; color: #fff; border-color: #31597f; }
     html[data-contrast="high"] body:has(.kb-shell),
     html[data-contrast="high"] body > main.kb-shell,
     html[data-contrast="high"] .kb-panel,
@@ -413,7 +417,12 @@
       <textarea class="kb-free-type" id="freeTypeInput" aria-label="Free typing area" hidden></textarea>
       <p class="kb-typed" id="typedText" aria-label="Text typed correctly"></p>
       <p class="kb-status" id="practiceStatus" role="status" aria-live="polite"></p>
-      <p class="kb-help"><strong>Controls:</strong> Control plus Plus makes print larger. Control plus Minus makes print smaller. Control repeats the remaining sequence. Escape exits practice.</p>
+      <p class="kb-help" aria-label="Keyboard controls: Control plus Plus, larger print. Control plus Minus, smaller print. Control, repeat the remaining sequence. Escape, exit practice.">
+        <span><kbd>Ctrl + Plus</kbd> Larger</span>
+        <span><kbd>Ctrl + Minus</kbd> Smaller</span>
+        <span><kbd>Ctrl</kbd> Repeat</span>
+        <span><kbd>Esc</kbd> Exit</span>
+      </p>
       <div class="kb-actions"><button class="kb-action" id="finishFreeType" type="button" hidden>Finish Free Typing</button></div>
     </section>
 
