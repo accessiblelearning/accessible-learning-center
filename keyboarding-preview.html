@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-10" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-11" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -148,10 +148,10 @@
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-menu-option:hover,
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-menu-option:focus { background: #000; color: #fff; border-color: #ffe37a; box-shadow: 0 0 0 .25rem #ffe37a; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-result-primary:focus-visible { outline-color: #ffe37a; }
-    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress { background: #000; border: 2px solid #fff; }
-    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-bar { background: #000; }
-    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-value { background: #fff; }
-    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-moz-progress-bar { background: #fff; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress { background: #242424; border: 2px solid #777; accent-color: #737373; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-bar { background: #242424; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-value { background: #737373; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-moz-progress-bar { background: #737373; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-key-guide,
     html[data-contrast="high"] .kb-key-guide { background: #000; color: #fff; border-color: #fff; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-key,
@@ -182,10 +182,10 @@
     html[data-contrast="high"] .kb-char-current::after { color: #000; }
     html[data-contrast="high"] .kb-celebration { color: #fff; }
     html[data-contrast="high"] .kb-sparkle { color: #ff0; }
-    html[data-contrast="high"] .kb-progress { background: #000; border: 2px solid #fff; }
-    html[data-contrast="high"] .kb-progress::-webkit-progress-bar { background: #000; }
-    html[data-contrast="high"] .kb-progress::-webkit-progress-value { background: #fff; }
-    html[data-contrast="high"] .kb-progress::-moz-progress-bar { background: #fff; }
+    html[data-contrast="high"] .kb-progress { background: #242424; border: 2px solid #777; accent-color: #737373; }
+    html[data-contrast="high"] .kb-progress::-webkit-progress-bar { background: #242424; }
+    html[data-contrast="high"] .kb-progress::-webkit-progress-value { background: #737373; }
+    html[data-contrast="high"] .kb-progress::-moz-progress-bar { background: #737373; }
     @media (max-height: 64rem) and (min-width: 42.01rem) {
       .kb-toolbar { margin-bottom: .35rem; }
       #practicePanel { min-height: 0; height: calc(100vh - 4.5rem); overflow: hidden; padding: .55rem .8rem; }
