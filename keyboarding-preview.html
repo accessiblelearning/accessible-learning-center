@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-37" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-38" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -614,6 +614,48 @@
           <legend>Instruction voice</legend>
           <label><input type="radio" name="voice" value="screen-reader"> Use my own screen reader</label>
           <label><input type="radio" name="voice" value="site" checked> Use site voice</label>
+          <div class="kb-field">
+            <label for="voiceChoiceSetting">Site voice choice</label>
+            <select id="voiceChoiceSetting">
+              <option value="">Default browser voice</option>
+            </select>
+          </div>
+          <div class="kb-field">
+            <label for="voiceRateSetting">Speaking rate</label>
+            <select id="voiceRateSetting">
+              <option value="50">50 percent</option>
+              <option value="55">55 percent</option>
+              <option value="60">60 percent</option>
+              <option value="65">65 percent</option>
+              <option value="70">70 percent</option>
+              <option value="75">75 percent</option>
+              <option value="80">80 percent</option>
+              <option value="85">85 percent</option>
+              <option value="90" selected>90 percent</option>
+              <option value="95">95 percent</option>
+              <option value="100">100 percent</option>
+              <option value="105">105 percent</option>
+              <option value="110">110 percent</option>
+              <option value="115">115 percent</option>
+              <option value="120">120 percent</option>
+              <option value="125">125 percent</option>
+              <option value="130">130 percent</option>
+              <option value="135">135 percent</option>
+              <option value="140">140 percent</option>
+              <option value="145">145 percent</option>
+              <option value="150">150 percent</option>
+              <option value="155">155 percent</option>
+              <option value="160">160 percent</option>
+              <option value="165">165 percent</option>
+              <option value="170">170 percent</option>
+              <option value="175">175 percent</option>
+              <option value="180">180 percent</option>
+              <option value="185">185 percent</option>
+              <option value="190">190 percent</option>
+              <option value="195">195 percent</option>
+              <option value="200">200 percent</option>
+            </select>
+          </div>
         </fieldset>
         <fieldset class="kb-choice">
           <legend>Practice options</legend>
@@ -655,6 +697,16 @@
           <button class="kb-step-adjust" id="accuracyPlus" type="button" data-adjust="accuracy" data-direction="1" aria-label="Increase passing accuracy">+</button>
         </div>
         <button class="kb-menu-option" type="button" data-setting="voice"><span class="kb-menu-label">Site voice</span><span class="kb-menu-value" id="menuVoiceValue">Site voice</span></button>
+        <div class="kb-stepper-row">
+          <button class="kb-menu-option" type="button" data-setting="voice-choice"><span class="kb-menu-label">Voice choice</span><span class="kb-menu-value" id="menuVoiceChoiceValue">Default browser voice</span></button>
+          <button class="kb-step-adjust" id="voiceChoiceMinus" type="button" data-adjust="voice-choice" data-direction="-1" aria-label="Previous site voice">−</button>
+          <button class="kb-step-adjust" id="voiceChoicePlus" type="button" data-adjust="voice-choice" data-direction="1" aria-label="Next site voice">+</button>
+        </div>
+        <div class="kb-stepper-row">
+          <button class="kb-menu-option" type="button" data-setting="voice-rate"><span class="kb-menu-label">Speaking rate</span><span class="kb-menu-value" id="menuVoiceRateValue">90%</span></button>
+          <button class="kb-step-adjust" id="voiceRateMinus" type="button" data-adjust="voice-rate" data-direction="-1" aria-label="Decrease speaking rate">−</button>
+          <button class="kb-step-adjust" id="voiceRatePlus" type="button" data-adjust="voice-rate" data-direction="1" aria-label="Increase speaking rate">+</button>
+        </div>
         <button class="kb-menu-option" type="button" data-setting="size"><span class="kb-menu-label">Print size</span><span class="kb-menu-value" id="menuSizeValue"></span></button>
         <button class="kb-menu-option" type="button" data-setting="dark"><span class="kb-menu-label">Keyboarding dark mode</span><span class="kb-menu-value" id="menuDarkValue">Off</span></button>
         <button class="kb-menu-option" type="button" data-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue">On</span></button>
@@ -665,7 +717,7 @@
         <button class="kb-menu-option" type="button" data-setting="save"><span class="kb-menu-label">Save progress on this browser</span><span class="kb-menu-value" id="menuSaveValue">Off</span></button>
         <button class="kb-menu-option kb-back" type="button" data-setting="back"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
       </div>
-      <p class="kb-menu-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> increase or change. <strong>Shift plus Enter:</strong> decrease or choose the previous option. Speed and accuracy also have Minus and Plus buttons. <strong>Escape:</strong> go back.</p>
+      <p class="kb-menu-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> increase or change. <strong>Shift plus Enter:</strong> decrease or choose the previous option. Speed, accuracy, voice choice, and speaking rate also have Minus and Plus buttons. <strong>Escape:</strong> go back.</p>
     </section>
 
     <section class="kb-panel kb-stage" id="statsPanel" aria-labelledby="statsHeading" hidden>
