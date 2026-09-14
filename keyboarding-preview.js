@@ -493,6 +493,7 @@
     document.getElementById("statsNote").textContent = sessions.length
       ? "These stats are saved only on this browser."
       : "Turn on Save progress in Settings to build your stats on this browser.";
+    renderCurriculum();
   }
 
   function renderCurriculum() {
