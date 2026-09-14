@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-14" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-15" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -167,6 +167,16 @@
     html[data-contrast="high"] .kb-key { background: #000; color: #fff; border-color: #fff; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-key--active,
     html[data-contrast="high"] .kb-key--active { background: #ff0; color: #000; border-color: #ff0; box-shadow: 0 0 0 .2rem #ff0; }
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel #progressText,
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-typed,
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-status,
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-help,
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-hand-cue { color: #a6a6a6; }
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-ready-prompt { color: #b8b8b8; border-color: #666; }
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-key-guide { color: #a6a6a6; border-color: #666; }
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-key { color: #b5b5b5; border-color: #666; }
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-key--active { color: #000; border-color: #ff0; }
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-char { color: #fff !important; }
     html[data-contrast="high"] body:has(.kb-shell),
     html[data-contrast="high"] body > main.kb-shell,
     html[data-contrast="high"] .kb-panel,
@@ -400,7 +410,7 @@
       <textarea class="kb-free-type" id="freeTypeInput" aria-label="Free typing area" hidden></textarea>
       <p class="kb-typed" id="typedText" aria-label="Text typed correctly"></p>
       <p class="kb-status" id="practiceStatus" role="status" aria-live="polite"></p>
-      <p class="kb-help"><strong>Controls:</strong> Press any key to start. Control announces the next key after typing begins. Escape closes practice.</p>
+      <p class="kb-help"><strong>Controls:</strong> Control plus Plus makes print larger. Control plus Minus makes print smaller. Control repeats the remaining sequence. Escape exits practice.</p>
       <div class="kb-actions"><button class="kb-action" id="finishFreeType" type="button" hidden>Finish Free Typing</button></div>
     </section>
 
