@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-13" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-14" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -57,10 +57,19 @@
     #practicePanel h2 { margin-bottom: .35rem; font-size: clamp(1.9rem, 5vw, 3.5rem); }
     #practicePanel #practiceInstruction, #practicePanel #progressText { margin: .35rem 0; }
     .kb-key-guide { max-width: 58rem; margin: .75rem auto; padding: .65rem; border: 3px solid #65aef5; border-radius: 1rem; background: #071a35; }
-    .kb-keyboard { display: grid; gap: .28rem; }
+    .kb-keyboard { --kb-key-size: clamp(1.35rem, 3.4vw, 3.15rem); display: grid; gap: .28rem; max-width: 100%; }
     .kb-key-row { display: flex; justify-content: center; gap: .28rem; }
-    .kb-key { display: grid; place-items: center; width: clamp(1.55rem, 4vw, 3.15rem); height: clamp(1.55rem, 4vw, 3.15rem); border: 2px solid #9fc8f2; border-radius: .35rem; background: #e9f3ff; color: #071a35; font-size: clamp(.75rem, 2vw, 1.35rem); font-weight: 900; line-height: 1; text-transform: uppercase; }
-    .kb-key--space { width: min(42%, 15rem); }
+    .kb-key { --kb-key-width: var(--kb-key-size); display: grid; place-items: center; flex: 0 0 var(--kb-key-width); width: var(--kb-key-width); height: var(--kb-key-size); border: 2px solid #9fc8f2; border-radius: .35rem; background: #e9f3ff; color: #071a35; font-size: clamp(.72rem, 1.7vw, 1.35rem); font-weight: 900; line-height: 1; text-transform: uppercase; }
+    .kb-key--special { font-size: clamp(.52rem, 1.05vw, .88rem); text-transform: none; }
+    .kb-key--backspace { --kb-key-width: calc(var(--kb-key-size) * 2 + .28rem); }
+    .kb-key--tab { --kb-key-width: calc(var(--kb-key-size) * 1.5 + .14rem); }
+    .kb-key--caps { --kb-key-width: calc(var(--kb-key-size) * 1.75 + .21rem); }
+    .kb-key--enter { --kb-key-width: calc(var(--kb-key-size) * 2.25 + .35rem); }
+    .kb-key--shift-left { --kb-key-width: calc(var(--kb-key-size) * 2.25 + .35rem); }
+    .kb-key--shift-right { --kb-key-width: calc(var(--kb-key-size) * 2.75 + .49rem); }
+    .kb-key--control { --kb-key-width: calc(var(--kb-key-size) * 1.6 + .17rem); }
+    .kb-key--alt { --kb-key-width: calc(var(--kb-key-size) * 1.4 + .11rem); }
+    .kb-key--space { --kb-key-width: calc(var(--kb-key-size) * 7 + 1.68rem); }
     .kb-key--active { background: #ffe37a; color: #071a35; border-color: #f3a712; box-shadow: 0 0 0 .2rem #f3a712; transform: translateY(-.08rem); }
     .kb-hand-cue { display: flex; justify-content: center; align-items: center; gap: .75rem; min-height: 3rem; margin-top: .55rem; color: #fff; font-size: clamp(1rem, 3vw, 1.55rem); font-weight: 900; }
     .kb-hand-symbol { color: #51d5ff; font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1; }
@@ -195,10 +204,10 @@
       #practicePanel .kb-prompt { min-height: clamp(6rem, 19vh, 8.5rem); margin: .25rem 0; padding: .45rem; font-size: clamp(3.25rem, 10vh, 6rem); line-height: 1.05; }
       #practicePanel .kb-prompt--long { font-size: clamp(1.75rem, 4.8vh, 3rem); }
       #practicePanel .kb-key-guide { margin: .3rem auto; padding: .35rem; }
-      #practicePanel .kb-keyboard { gap: .16rem; }
+      #practicePanel .kb-keyboard { --kb-key-size: clamp(1.45rem, 3.4vw, 3rem); gap: .16rem; }
       #practicePanel .kb-key-row { gap: .16rem; }
-      #practicePanel .kb-key { width: clamp(2rem, 4.4vw, 3.35rem); height: clamp(2rem, 5.3vh, 3rem); font-size: clamp(.9rem, 2.5vh, 1.35rem); }
-      #practicePanel .kb-key--space { width: min(42%, 15rem); }
+      #practicePanel .kb-key { height: clamp(1.75rem, 5.3vh, 3rem); font-size: clamp(.82rem, 2.5vh, 1.35rem); }
+      #practicePanel .kb-key--special { font-size: clamp(.5rem, 1.7vh, .84rem); }
       #practicePanel .kb-hand-cue { min-height: 2.2rem; margin-top: .25rem; font-size: clamp(1.05rem, 2.7vh, 1.4rem); }
       #practicePanel .kb-hand-symbol { font-size: clamp(1.9rem, 4.2vh, 2.75rem); }
       #practicePanel .kb-typed { display: none; }
