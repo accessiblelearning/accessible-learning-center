@@ -109,6 +109,7 @@
     const selected = document.getElementById(panelId);
     panels.forEach(panel => { panel.hidden = panel !== selected; });
     document.body.classList.toggle("kb-results-active", panelId === "resultsPanel");
+    document.body.classList.toggle("kb-practice-active", panelId === "practicePanel");
     const heading = selected.querySelector("h1, h2");
     if (heading) {
       heading.setAttribute("tabindex", "-1");
