@@ -371,6 +371,7 @@
   function announceCurrentPromptGroup() {
     const group = currentPromptGroup();
     if (!group || !session) return;
+    stopPendingKeyAnnouncement();
     session.accepting = true;
     session.announcementToken += 1;
     session.segmentStartedAt = Date.now();
@@ -575,6 +576,27 @@
     return "Next key: " + spokenKeyName(nextCharacter) + ". " + (shift ? "Hold " + shift + ". " : "") + guidance.hand + ", " + guidance.finger + ".";
   }
 
+  function stopPendingKeyAnnouncement() {
+    if (!session || !session.nextKeyAnnouncementTimer) return;
+    window.clearTimeout(session.nextKeyAnnouncementTimer);
+    session.nextKeyAnnouncementTimer = null;
+  }
+
+  function announceNextKeyAfterPause() {
+    if (!session || !session.accepting || session.mode === "free") return;
+    stopPendingKeyAnnouncement();
+    const expectedPosition = session.position;
+    session.nextKeyAnnouncementTimer = window.setTimeout(() => {
+      if (!session || !session.accepting || session.finished || session.position !== expectedPosition) return;
+      const nextCharacter = session.prompt[session.position];
+      if (nextCharacter === undefined) return;
+      const message = "Next: " + spokenKeyName(nextCharacter) + ".";
+      practiceStatus.textContent = message;
+      speak(message);
+      session.nextKeyAnnouncementTimer = null;
+    }, 220);
+  }
+
   function incorrectKeyInstruction(character) {
     const shift = requiredShift(character);
     const shortMessage = "Incorrect. Press " + spokenKeyName(character) + "." + (shift ? " Hold " + shift + "." : "");
@@ -583,7 +605,7 @@
       q: "on the top row above A", w: "on the top row above S", e: "on the top row above D", r: "on the top row above F", t: "on the top row above G",
       y: "on the top row above H", u: "on the top row above J", i: "on the top row above K", o: "on the top row above L", p: "on the top row above semicolon",
       a: "on the home row below Q", s: "on the home row below W", d: "on the home row below E", f: "on the home row below R", g: "on the home row below T",
-      h: "on the home row below Y", j: "on the home row below U", k: "on the home row below I", l: "on the home row below O", ";": "on the home row below P",
+      h: "on the home row immediately to the left of J", j: "on the home row below U", k: "on the home row below I", l: "on the home row below O", ";": "on the home row below P",
       z: "on the bottom row below A", x: "on the bottom row below S", c: "on the bottom row below D", v: "on the bottom row below F", b: "on the bottom row below G",
       n: "on the bottom row below J", m: "on the bottom row below K", ",": "on the bottom row below K", ".": "on the bottom row below L", "/": "on the bottom row below semicolon"
     };
@@ -697,7 +719,7 @@
       mistakesByKey: {}, startedAt: null, durationSeconds,
       secondsLeft: durationSeconds, targetAccuracy, targetWpm,
       promptGroups, groupOffsets, groupIndex: 0, announcementToken: 0,
-      typingMilliseconds: 0, segmentStartedAt: null,
+      typingMilliseconds: 0, segmentStartedAt: null, nextKeyAnnouncementTimer: null,
       started: false, finished: false, accepting: false
     };
     show("practicePanel");
@@ -729,6 +751,7 @@
 
   function finishPractice() {
     if (!session || session.finished) return;
+    stopPendingKeyAnnouncement();
     if (session.promptGroups) closePromptGroupTimer();
     session.finished = true;
     session.accepting = false;
@@ -914,6 +937,8 @@
     event.preventDefault();
     const expected = session.prompt[session.position];
     if (event.key === expected) {
+      stopPendingKeyAnnouncement();
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
       session.correct += 1;
       session.position += 1;
       const completedGroup = session.promptGroups && session.position >= currentPromptGroupStart() + currentPromptGroup().length;
@@ -939,8 +964,12 @@
         session.accepting = false;
         window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
         announceCurrentPromptGroup();
-      } else window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
+      } else {
+        window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
+        announceNextKeyAfterPause();
+      }
     } else {
+      stopPendingKeyAnnouncement();
       session.mistakes += 1;
       session.mistakesByKey[expected] = (session.mistakesByKey[expected] || 0) + 1;
       targetPrompt.classList.remove("correct");
