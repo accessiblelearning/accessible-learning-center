@@ -419,10 +419,13 @@
     if (/^[0-9 ]+$/.test(group)) {
       return "these number keys with the spaces exactly as announced, " + spokenExactSequence(group);
     }
+    if (/^[^A-Za-z0-9](?: [^A-Za-z0-9])+$/.test(group)) {
+      return "these symbols with a space between each symbol, " + spokenExactSequence(group);
+    }
     if (/^[^A-Za-z]+$/.test(group) && /[0-9]/.test(group)) {
       return "this number and symbol sequence, " + spokenExactSequence(group);
     }
-    if (/[0-9]|[.,?!;:'"@#$%&()_+\-\/\\]/.test(group)) {
+    if (/[0-9]|[.,?!;:'"@#$%&()_+<>\-\/\\]/.test(group)) {
       return spokenDetailedText(group);
     }
     if (!session) return speakableSequence(group);
