@@ -23,7 +23,7 @@
 
   // [title, goal, newly introduced keys, practice groups, lesson introduction]
   const lessonData = [
-    ["Left Home Row ASDF", "Place the left hand on A, S, D, and F and use the correct finger for each key.", "asdf", ["asdf asdf asdf", "fdsa fdsa fdsa", "as ad af sa sd sf", "sad dad fad add", "ads dads fads"], "Place your left pinky on A, ring finger on S, middle finger on D, and index finger on F. Feel the raised bump on F. Use either thumb for Space."],
+    ["Left Home Row ASDF", "Find F by its raised bump, then position the remaining left-hand fingers on D, S, and A.", "asdf", ["fdsa fdsa fdsa", "asdf asdf asdf", "fa fd fs da ds sa", "sad dad fad add", "ads dads fads"], "Find F by feeling for its raised bump. Place your left pointer finger on F. Moving to the left, place your middle finger on D, your ring finger on S, and your pinky finger on A. Use either thumb for Space."],
     ["Right Home Row JKL Semicolon", "Place the right hand on J, K, L, and semicolon and use the correct finger for each key.", "jkl;", ["jkl; jkl; jkl;", ";lkj ;lkj ;lkj", "jk jl j; kl k; l;", "jkl jkj klk l;l", "j; kl; jkl;"], "Place your right index finger on J, middle finger on K, ring finger on L, and pinky on semicolon. Feel the raised bump on J."],
     ["G and H with the Full Home Row", "Reach to G and H, then return the index fingers to F and J.", "gh", ["fff ggg fg gf", "jjj hhh jh hj", "gh hg fgh ghj", "had has gas gag", "half hall dash hash", "asdf gh jkl;"], "Move the left index finger from F to G and the right index finger from J to H. Return to F and J after every reach."],
     ["Home Row Review", "Type home-row patterns and words with steady, even movement.", "asdfghjkl;", ["asdf jkl; fdsa ;lkj", "ask all fall glad", "salad glass flags", "shall flash halls", "a glad lad", "all flags fall"], "Keep both hands on the home row. Use a light touch and reset on F and J whenever your position feels uncertain."],
@@ -591,7 +591,7 @@
         return session.lesson.description + " Begin with your " + session.hand + " hand in its home-row position. When you are ready, press Enter to start.";
       }
       let handPosition = " Begin with your " + session.hand + " hand in its home-row position.";
-      if (session.hand === "both" && session.lesson.number === 1) handPosition = " Keep your left hand on A, S, D, and F.";
+      if (session.hand === "both" && session.lesson.number === 1) handPosition = " Keep those fingers resting on F, D, S, and A.";
       else if (session.hand === "both" && session.lesson.number === 2) handPosition = " Keep your right hand on J, K, L, and semicolon.";
       else if (session.hand === "both") handPosition = " Begin with your index fingers on the raised bumps on F and J.";
       return session.lesson.introduction + handPosition + " When you are ready, press Enter to start.";
