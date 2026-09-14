@@ -440,6 +440,55 @@
       #practicePanel .kb-key--special { font-size: clamp(.42rem, .9vw, .65rem); }
       #practicePanel .kb-help { font-size: clamp(.68rem, 1.3vw, .82rem); }
     }
+    /* Final local-dark overrides must follow the focused practice layout. */
+    body.kb-keyboarding-dark #practicePanel {
+      background: #000 !important;
+      color: #b8b8b8 !important;
+    }
+    body.kb-keyboarding-dark #practicePanel .kb-prompt,
+    body.kb-keyboarding-dark #practicePanel .kb-ready-prompt {
+      background: #000 !important;
+      color: #fff !important;
+      border-color: #4c4c4c !important;
+      box-shadow: none !important;
+    }
+    body.kb-keyboarding-dark #practicePanel .kb-char {
+      color: #fff !important;
+    }
+    body.kb-keyboarding-dark #practicePanel #progressText,
+    body.kb-keyboarding-dark #practicePanel .kb-hand-cue,
+    body.kb-keyboarding-dark #practicePanel .kb-status {
+      color: #b8b8b8 !important;
+    }
+    body.kb-keyboarding-dark #practicePanel .kb-key-guide {
+      background: #000 !important;
+      color: #b8b8b8 !important;
+      border-color: #4c4c4c !important;
+    }
+    body.kb-keyboarding-dark #practicePanel .kb-key {
+      background: #111 !important;
+      color: #e2e2e2 !important;
+      border-color: #5f5f5f !important;
+    }
+    body.kb-keyboarding-dark #practicePanel .kb-key--active {
+      background: #ffdf4d !important;
+      color: #000 !important;
+      border-color: #ffdf4d !important;
+    }
+    body.kb-keyboarding-dark #practicePanel .kb-help {
+      background: #000 !important;
+      color: #b8b8b8 !important;
+      border-color: #3f3f3f !important;
+    }
+    body.kb-keyboarding-dark #practicePanel .kb-help kbd,
+    body.kb-keyboarding-dark #practicePanel .kb-help span {
+      color: #d5d5d5 !important;
+    }
+    body.kb-keyboarding-dark #practicePanel .kb-caption {
+      background: #d9efff !important;
+      color: #06142d !important;
+      border-color: #65aef5 !important;
+    }
   </style>
 </head>
 <body>
