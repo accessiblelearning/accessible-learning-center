@@ -98,6 +98,12 @@
   let useSounds = true;
   let showKeyboard = true;
   let showCaptions = false;
+  let keyboardDarkMode = false;
+  try {
+    keyboardDarkMode = localStorage.getItem("alcKeyboardingDarkMode") === "on";
+  } catch (error) {
+    keyboardDarkMode = false;
+  }
   let rememberProgress = false;
   let audioContext = null;
   let session = null;
@@ -425,6 +431,7 @@
     document.getElementById("accuracyMinus").setAttribute("aria-label", "Decrease passing accuracy. Current target " + document.getElementById("accuracySetting").value + " percent.");
     document.getElementById("accuracyPlus").setAttribute("aria-label", "Increase passing accuracy. Current target " + document.getElementById("accuracySetting").value + " percent.");
     document.getElementById("menuSizeValue").textContent = selectedText(document.getElementById("textSizeSetting"));
+    document.getElementById("menuDarkValue").textContent = keyboardDarkMode ? "On" : "Off";
     document.getElementById("menuSaveValue").textContent = document.getElementById("saveSetting").checked ? "On" : "Off";
     document.getElementById("menuLanguageValue").textContent = selectedText(document.getElementById("languageSetting"));
   }
@@ -458,6 +465,14 @@
     const scale = Number(document.getElementById("textSizeSetting").value);
     document.documentElement.style.setProperty("--kb-scale", String(scale));
     document.body.classList.toggle("kb-large-results", scale > 1.25);
+  }
+
+  function applyKeyboardDarkMode() {
+    document.body.classList.toggle("kb-keyboarding-dark", keyboardDarkMode);
+    const checkbox = document.getElementById("darkModeSetting");
+    if (checkbox) checkbox.checked = keyboardDarkMode;
+    const value = document.getElementById("menuDarkValue");
+    if (value) value.textContent = keyboardDarkMode ? "On" : "Off";
   }
 
   function applyCaptionVisibility() {
@@ -509,6 +524,15 @@
     if (setting === "wpm") stepSelect(document.getElementById("wpmSetting"), direction);
     if (setting === "accuracy") stepSelect(document.getElementById("accuracySetting"), direction);
     if (setting === "size") cycleSelect(document.getElementById("textSizeSetting"), direction);
+    if (setting === "dark") {
+      keyboardDarkMode = !keyboardDarkMode;
+      try {
+        localStorage.setItem("alcKeyboardingDarkMode", keyboardDarkMode ? "on" : "off");
+      } catch (error) {
+        // The setting still works for this visit when browser storage is unavailable.
+      }
+      applyKeyboardDarkMode();
+    }
     if (setting === "language") cycleSelect(document.getElementById("languageSetting"), direction);
     if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
     if (setting === "captions") document.getElementById("captionSetting").checked = !document.getElementById("captionSetting").checked;
@@ -1083,6 +1107,7 @@
   });
   buildVisualKeyboard();
   populateLessons();
+  applyKeyboardDarkMode();
   setVoice(true, false);
   if (sessionStorage.getItem("alcKeyboardingPreview") === "open") {
     previewToolbar.hidden = false;
