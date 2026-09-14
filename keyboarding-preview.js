@@ -585,18 +585,18 @@
   }
 
   function startInstruction() {
-    if (!session) return "Press any key to start.";
+    if (!session) return "Press Enter to start.";
     if (session.mode === "guided") {
       if (session.hand !== "both") {
-        return session.lesson.description + " Begin with your " + session.hand + " hand in its home-row position. When you are ready, press any key to start.";
+        return session.lesson.description + " Begin with your " + session.hand + " hand in its home-row position. When you are ready, press Enter to start.";
       }
       let handPosition = " Begin with your " + session.hand + " hand in its home-row position.";
       if (session.hand === "both" && session.lesson.number === 1) handPosition = " Keep your left hand on A, S, D, and F.";
       else if (session.hand === "both" && session.lesson.number === 2) handPosition = " Keep your right hand on J, K, L, and semicolon.";
       else if (session.hand === "both") handPosition = " Begin with your index fingers on the raised bumps on F and J.";
-      return session.lesson.introduction + handPosition + " When you are ready, press any key to start.";
+      return session.lesson.introduction + handPosition + " When you are ready, press Enter to start.";
     }
-    return currentInstruction() + " Press any key to start.";
+    return currentInstruction() + " Press Enter to start.";
   }
 
   function nextKeyInstruction() {
@@ -683,15 +683,19 @@
       typedText.hidden = true;
       practiceStatus.hidden = true;
       targetPrompt.className = "kb-prompt kb-ready-prompt";
-      targetPrompt.textContent = "Press any key to start";
+      targetPrompt.textContent = "Press Enter to start";
       targetPrompt.setAttribute("aria-label", startInstruction());
       progressText.textContent = session.durationSeconds
         ? "Ready: " + (session.durationSeconds / 60) + (session.durationSeconds === 60 ? " minute" : " minutes")
         : "Ready to begin";
       practiceStatus.textContent = "The timer has not started.";
+      const startShortcut = document.getElementById("startShortcut");
+      if (startShortcut) startShortcut.hidden = false;
       targetPrompt.focus();
       return;
     }
+    const startShortcut = document.getElementById("startShortcut");
+    if (startShortcut) startShortcut.hidden = true;
     const isFree = session.mode === "free";
     keyboardGuide.hidden = isFree;
     targetPrompt.hidden = isFree;
@@ -939,7 +943,10 @@
         if (!event.repeat) controlUsedAsModifier = false;
         return;
       }
-      if (event.repeat || event.key === "Shift" || event.key === "Alt" || event.key === "Meta") return;
+      if (event.key !== "Enter") {
+        if (event.key.length === 1) event.preventDefault();
+        return;
+      }
       event.preventDefault();
       beginPractice();
       return;
