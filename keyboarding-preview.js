@@ -595,18 +595,19 @@
   }
 
   function startInstruction() {
-    if (!session) return "Press Enter to start.";
+    const controls = " Press Control to repeat these instructions. The Control key is located in the bottom-left corner of your keyboard. Press any key to start. Press Escape to exit.";
+    if (!session) return controls.trim();
     if (session.mode === "guided") {
       if (session.hand !== "both") {
-        return session.lesson.description + " Begin with your " + session.hand + " hand in its home-row position. When you are ready, press Enter to start.";
+        return session.lesson.description + " Begin with your " + session.hand + " hand in its home-row position." + controls;
       }
       let handPosition = " Begin with your " + session.hand + " hand in its home-row position.";
       if (session.hand === "both" && session.lesson.number === 1) handPosition = " Keep those fingers resting on F, D, S, and A.";
       else if (session.hand === "both" && session.lesson.number === 2) handPosition = " Keep your right hand on J, K, L, and semicolon.";
       else if (session.hand === "both") handPosition = " Begin with your index fingers on the raised bumps on F and J.";
-      return session.lesson.introduction + handPosition + " When you are ready, press Enter to start.";
+      return session.lesson.introduction + handPosition + controls;
     }
-    return currentInstruction() + " Press Enter to start.";
+    return currentInstruction() + controls;
   }
 
   function nextKeyInstruction() {
@@ -694,7 +695,7 @@
       practiceStatus.hidden = !showCaptions;
       applyCaptionVisibility();
       targetPrompt.className = "kb-prompt kb-ready-prompt";
-      targetPrompt.textContent = "Press Enter to start";
+      targetPrompt.textContent = "Press any key to start";
       targetPrompt.setAttribute("aria-label", startInstruction());
       progressText.textContent = session.durationSeconds
         ? "Ready: " + (session.durationSeconds / 60) + (session.durationSeconds === 60 ? " minute" : " minutes")
@@ -955,10 +956,7 @@
         if (!event.repeat) controlUsedAsModifier = false;
         return;
       }
-      if (event.key !== "Enter") {
-        if (event.key.length === 1) event.preventDefault();
-        return;
-      }
+      if (event.repeat || event.key === "Shift" || event.key === "Alt" || event.key === "Meta") return;
       event.preventDefault();
       beginPractice();
       return;
