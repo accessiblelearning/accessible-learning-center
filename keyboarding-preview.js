@@ -97,6 +97,7 @@
   let useSiteVoice = true;
   let useSounds = true;
   let showHands = true;
+  let showCaptions = false;
   let rememberProgress = false;
   let audioContext = null;
   let session = null;
@@ -414,6 +415,7 @@
     document.getElementById("menuHandValue").textContent = selectedText(handSetting);
     document.getElementById("menuVoiceValue").textContent = useSiteVoice ? "Site voice" : "My screen reader";
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
+    document.getElementById("menuCaptionValue").textContent = document.getElementById("captionSetting").checked ? "On" : "Off";
     document.getElementById("menuHandsValue").textContent = document.getElementById("handsSetting").checked ? "Shown" : "Hidden";
     document.getElementById("menuWpmValue").textContent = document.getElementById("wpmSetting").value + " WPM";
     document.getElementById("menuAccuracyValue").textContent = document.getElementById("accuracySetting").value + "%";
@@ -457,6 +459,11 @@
     document.body.classList.toggle("kb-large-results", scale > 1.25);
   }
 
+  function applyCaptionVisibility() {
+    practiceStatus.classList.toggle("kb-visually-hidden", !showCaptions);
+    practiceStatus.classList.toggle("kb-caption", showCaptions);
+  }
+
   function adjustPracticeTextSize(direction) {
     const sizeSetting = document.getElementById("textSizeSetting");
     stepSelect(sizeSetting, direction);
@@ -487,8 +494,10 @@
   function startFromMenu() {
     useSounds = document.getElementById("soundSetting").checked;
     showHands = document.getElementById("handsSetting").checked;
+    showCaptions = document.getElementById("captionSetting").checked;
     rememberProgress = document.getElementById("saveSetting").checked;
     applyTextSize();
+    applyCaptionVisibility();
     startPractice();
   }
 
@@ -501,6 +510,7 @@
     if (setting === "size") cycleSelect(document.getElementById("textSizeSetting"), direction);
     if (setting === "language") cycleSelect(document.getElementById("languageSetting"), direction);
     if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
+    if (setting === "captions") document.getElementById("captionSetting").checked = !document.getElementById("captionSetting").checked;
     if (setting === "hands") document.getElementById("handsSetting").checked = !document.getElementById("handsSetting").checked;
     if (setting === "save") document.getElementById("saveSetting").checked = !document.getElementById("saveSetting").checked;
     if (setting === "voice") setVoice(!useSiteVoice, false);
@@ -681,14 +691,15 @@
       finishFreeType.hidden = true;
       lessonProgress.hidden = true;
       typedText.hidden = true;
-      practiceStatus.hidden = true;
+      practiceStatus.hidden = !showCaptions;
+      applyCaptionVisibility();
       targetPrompt.className = "kb-prompt kb-ready-prompt";
       targetPrompt.textContent = "Press Enter to start";
       targetPrompt.setAttribute("aria-label", startInstruction());
       progressText.textContent = session.durationSeconds
         ? "Ready: " + (session.durationSeconds / 60) + (session.durationSeconds === 60 ? " minute" : " minutes")
         : "Ready to begin";
-      practiceStatus.textContent = "The timer has not started.";
+      practiceStatus.textContent = showCaptions ? startInstruction() : "The timer has not started.";
       const startShortcut = document.getElementById("startShortcut");
       if (startShortcut) startShortcut.hidden = false;
       targetPrompt.focus();
@@ -704,6 +715,7 @@
     lessonProgress.hidden = isFree;
     typedText.hidden = isFree;
     practiceStatus.hidden = false;
+    applyCaptionVisibility();
     const displayedPromptLength = session.promptGroups ? currentPromptGroup().length : session.prompt.length;
     targetPrompt.className = "kb-prompt" + (displayedPromptLength > 40 ? " kb-prompt--long" : "");
     renderTrackedPrompt();
