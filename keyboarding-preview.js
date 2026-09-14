@@ -45,21 +45,21 @@
     ["Sentence Building with 3 and 4", "Add useful details to sentences and introduce 3 and 4.", "34", ["3 3 3 4 4 4", "34 43 1234", "I have 3 red hats.", "The 4 dogs ran home.", "Mark read 3 pages today.", "Jill packed 4 blue bags."], "Reach the left middle finger to 3 and the left index finger to 4, then return home."],
     ["Questions with 5 and 6", "Learn the question mark, then type questions while introducing the number keys 5 and 6.", "56?", ["5 5 5 6 6 6", "56 65 123456", "???", "5? 6?", "Do you have 5 bags?", "Did Sam read 6 pages?", "Are the 5 boxes ready?", "Can we meet at 6?"], "First practice the question mark. Hold left Shift and press the slash key with the right pinky. The slash key is on the bottom row directly to the left of the right Shift key. Release both keys after each question mark. Then practice number 5 with the left index finger and number 6 with the right index finger."],
     ["Questions and Answers with 7 and 8", "Type connected questions and answers while introducing 7 and 8.", "78", ["7 7 7 8 8 8", "78 87 12345678", "Did you get 7 books?", "Yes, I got 7 books.", "Are all 8 bags ready?", "No, 2 bags are not ready."], "Reach the right index finger to 7 and the right middle finger to 8. Use a question mark for a question and a period for an answer."],
-    ["Exclamation Point with 9 and 0", "Use an exclamation point and complete the number row with 9 and 0.", "90!", ["9 9 9 0 0 0", "90 09 1234567890", "I got 9 right!", "We reached 10!", "That was a great job!", "Please stop!"], "Reach the right ring finger to 9 and the right pinky to 0. Hold right Shift and press 1 for an exclamation point."],
+    ["Exclamation Point with 9 and 0", "Use an exclamation point and complete the number row with 9 and 0.", "90!", ["9 9 9 0 0 0", "90 09 1234567890", "!!!", "9! 0!", "I got 9 right!", "We reached 10!", "That was a great job!", "Please stop!"], "Reach the right ring finger to 9 and the right pinky to 0. Hold right Shift and press 1 for an exclamation point."],
     ["Capitalization and Ending Punctuation", "Choose a period, question mark, or exclamation point for each sentence.", "ABCDEFGHIJKLMNOPQRSTUVWXYZ?!.", ["The meeting begins at 10.", "Will you arrive at 9?", "I finished all 8 pages!", "Please bring 2 blue folders.", "Did Mark call at 6?", "What a fast reply!"], "Use a period for a statement, a question mark for a direct question, and an exclamation point for strong feeling."],
     ["Money and the Dollar Sign", "Type dollar amounts inside complete sentences.", "$", ["$4 $9 $10 $25", "The blue bag costs $9.", "I saved $20.", "The 2 books cost $14.", "Did you pay $5?", "Yes! I paid $5."], "Hold right Shift and press 4 for the dollar sign. Place it directly before the amount with no Space."],
     ["Commas in a Series", "Use commas to separate three or more items.", ",", ["red, blue, and green", "books, folders, and pens", "I packed 2 shirts, 3 socks, and 1 hat.", "We need paper, tape, and boxes.", "Sam called Mark, Jill, and Alex.", "I paid $4, $6, and $8."], "Type one Space after each comma. Place a comma before the final and in each series."],
     ["Apostrophes in Contractions", "Use an apostrophe where letters are left out of a contraction.", "'", ["I am I'm", "do not don't", "can not can't", "it is it's", "I'm ready to begin.", "Don't close the file.", "It's 5 now."], "Press the apostrophe key with the right pinky. Keep the apostrophe inside a contraction with no Spaces around it."],
     ["Apostrophes in Possessives", "Use an apostrophe to show that something belongs to someone or something.", "'", ["Sam's hat", "Jill's book", "the dog's bowl", "Mark's 2 files", "Sam's bag costs $20.", "The dog's 4 toys are here.", "Is this Jill's folder?"], "For one owner, add an apostrophe and S. The apostrophe shows who owns the item."],
     ["Ages Dates and Quantities", "Use numbers naturally in practical sentences.", "0123456789", ["The class starts at 9.", "Read pages 4 and 5.", "Alex is 30 years old.", "The meeting is on September 12.", "Pack 3 boxes with 8 books each.", "I worked for 2 hours."], "Use numerals for dates, ages, times, page numbers, and exact quantities. Keep a Space between a number and the word after it."],
-    ["Percent Sign in Sentences", "Type the percent sign with numbers in complete sentences.", "%", ["5% 10% 25% 90%", "I finished 50% of the work.", "The battery is at 20%.", "The price dropped by 10%.", "Did you score 80%?", "Yes! I scored 90%."], "Hold right Shift and press 5 for the percent sign. Place it directly after the number with no Space."],
+    ["Percent Sign in Sentences", "Type the percent sign with numbers in complete sentences.", "%", ["5% 10% 25% 90%", "I finished 50% of the work.", "The battery is at 20%.", "The cost dropped by 10%.", "Did you score 80%?", "Yes! I scored 90%."], "Hold right Shift and press 5 for the percent sign. Place it directly after the number with no Space."],
     ["At Sign and Email Addresses", "Type the at sign and the basic parts of an email address.", "@", ["name@example.com", "sam12@mail.com", "jill.work@example.org", "My email is name@example.com.", "Send the file to sam12@mail.com.", "Did you email jill.work@example.org?"], "Hold right Shift and press 2 for the at sign. An email address contains no Spaces."],
     ["Number Sign in Practical Text", "Use the number sign for labels and short references.", "#", ["Room #4", "Order #25", "Item #8", "Please check order #25.", "The meeting is in room #4.", "I need item #8 by 3."], "Hold right Shift and press 3 for the number sign. It can label an item, room, order, or reference number."],
     ["Ampersand in Names and Labels", "Use the ampersand in names and compact labels.", "&", ["Smith & Jones", "Research & Development", "Q&A", "The file is named Q&A Notes.", "I called Smith & Jones at 9.", "Please open the Research & Development folder."], "Hold left Shift and press 7 for an ampersand. Use one Space on each side when it joins names."],
     ["Parentheses in Sentences", "Place extra information inside parentheses.", "()", ["(Monday)", "(2 pages)", "(Room 4)", "The class meets at 9 (Room 4).", "Please read the file (2 pages).", "Sam will call on Monday (September 12)."], "Hold left Shift and press 9 for an opening parenthesis and 0 for a closing parenthesis."],
-    ["Quotation Marks", "Place exact spoken or written words inside quotation marks.", "\"", ["\"Please begin,\" Sam said.", "Jill said, \"I am ready.\"", "The sign reads, \"Open at 9.\"", "Mark asked, \"Is the file ready?\"", "\"Yes, it is ready,\" I said."], "Hold Shift and press the apostrophe key for a quotation mark. Use both an opening and closing quotation mark."],
+    ["Quotation Marks", "Place exact spoken or written words inside quotation marks.", "\"", ["\"\"\"", "\"Please begin,\" Sam said.", "Jill said, \"I am ready.\"", "The sign reads, \"Open at 9.\"", "Mark asked, \"Is the file ready?\"", "\"Yes, it is ready,\" I said."], "Hold Shift and press the apostrophe key for a quotation mark. Use both an opening and closing quotation mark."],
     ["Dialogue Practice", "Type short exchanges with quotation marks and varied ending punctuation.", "\"", ["\"Are you ready?\" Jill asked.", "\"Yes, I am ready,\" Sam said.", "\"Please open file #4,\" Jill said.", "\"Does it cost $8?\" Mark asked.", "\"No, it costs $6,\" Sam replied."], "Keep each speaker's exact words inside quotation marks and let the meaning guide the ending punctuation."],
-    ["Hyphens, Underscores, and Comparison Signs", "Use hyphens and underscores, then learn the less-than and greater-than signs.", "-_<>", ["part-time", "well-known", "student_notes", "lesson_4_notes", "< > < >", "2 < 5", "9 > 4", "I saved the step-by-step guide.", "Open the file named lesson_4_notes."], "Press the hyphen key with the right pinky. Hold Shift while pressing it for an underscore. To type the less-than sign, hold left Shift and press comma with the right middle finger. To type the greater-than sign, hold left Shift and press period with the right ring finger. Put one Space on each side of a comparison sign."],
+    ["Hyphens, Underscores, and Comparison Signs", "Use hyphens and underscores, then learn the less-than and greater-than signs.", "-_<>", ["part-time", "well-known", "student_notes", "lesson_4_notes", "< > < >", "2 < 5", "9 > 4", "I saved the step-by-step guide.", "Open the file named lesson_4_notes."], "Press the hyphen key with the right pinky. Hold left Shift while pressing the hyphen key for an underscore. To type the less-than sign, hold left Shift and press comma with the right middle finger. To type the greater-than sign, hold left Shift and press period with the right ring finger. Put one Space on each side of a comparison sign."],
     ["Longer Sentences", "Type longer sentences in meaningful groups rather than one letter at a time.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["The morning class begins at 9 and ends at 10.", "Please open file #4, read 2 pages, and save your notes.", "Sam paid $20 for 3 books at the store.", "Jill's new email address is jill.work@example.org.", "The battery reached 90% before the meeting began."], "Listen to the full sentence, then type one phrase at a time. Pause at a comma without adding an extra Space."],
     ["Sentence Practice 1", "Type complete statements with clear subjects and actions.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["The dog rested by the door.", "Sam opened the blue folder.", "Jill saved 3 files today.", "The class reviewed pages 8 and 9.", "My new keyboard works well."], "Type steadily from the capital letter through the final period."],
     ["Sentence Practice 2", "Join related ideas with and, but, or or.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Sam opened the file, and Jill read it.", "I wanted the blue bag, but it cost $25.", "We can meet at 9, or we can meet at 10.", "The work was hard, but I finished it.", "Mark called, and I sent a reply."], "Use and to add an idea, but to show a difference, and or to show a choice."],
@@ -439,8 +439,7 @@
     if (!group || !session) return;
     session.accepting = true;
     session.announcementToken += 1;
-    session.segmentStartedAt = Date.now();
-    if (!session.startedAt) session.startedAt = session.segmentStartedAt;
+    session.segmentStartedAt = null;
     const guidance = keyFinger(group[0]);
     const shift = requiredShift(group[0]);
     const repeatedKey = group.length > 1 && Array.from(group).every(character => character === group[0]);
@@ -668,10 +667,10 @@
     }
     const remaining = session.prompt.slice(session.position);
     if (session.mode === "guided" && remaining.length <= 80) {
-      return session.lesson.description + mastery + " Type this sequence: " + speakableSequence(remaining) + ".";
+      return session.lesson.description + mastery + " Type this sequence: " + spokenExactSequence(remaining) + ".";
     }
     const nextCharacter = session.prompt[session.position];
-    return session.lesson.description + mastery + (nextCharacter === undefined ? "" : " Next character: " + speakable(nextCharacter) + ".");
+    return session.lesson.description + mastery + (nextCharacter === undefined ? "" : " Next character: " + spokenKeyName(nextCharacter) + ".");
   }
 
   function startInstruction() {
@@ -1034,6 +1033,10 @@
       speak(warning);
       window.setTimeout(() => targetPrompt.classList.remove("incorrect"), 300);
       return;
+    }
+    if (session.promptGroups && !session.segmentStartedAt) {
+      session.segmentStartedAt = Date.now();
+      if (!session.startedAt) session.startedAt = session.segmentStartedAt;
     }
     if (typedKey === expected) {
       if ("speechSynthesis" in window) window.speechSynthesis.cancel();
