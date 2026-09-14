@@ -162,6 +162,16 @@
   } catch (error) {
     keyboardDarkMode = false;
   }
+  let selectedVoiceURI = "";
+  let voiceRatePercent = 90;
+  try {
+    selectedVoiceURI = localStorage.getItem("alcKeyboardingVoiceURI") || "";
+    const savedVoiceRate = Number(localStorage.getItem("alcKeyboardingVoiceRate"));
+    if (savedVoiceRate >= 50 && savedVoiceRate <= 200 && savedVoiceRate % 5 === 0) voiceRatePercent = savedVoiceRate;
+  } catch (error) {
+    selectedVoiceURI = "";
+    voiceRatePercent = 90;
+  }
   let rememberProgress = false;
   let audioContext = null;
   let session = null;
@@ -189,6 +199,59 @@
     websiteControlsToggle.textContent = minimized ? "Show Website Controls" : "Minimize Website Controls";
   }
 
+  function getSiteVoices() {
+    if (!("speechSynthesis" in window)) return [];
+    const allVoices = window.speechSynthesis.getVoices();
+    const englishVoices = allVoices.filter(voice => /^en(?:-|_)/i.test(voice.lang || ""));
+    return englishVoices.length ? englishVoices : allVoices;
+  }
+
+  function selectedVoiceName() {
+    const voiceSelect = document.getElementById("voiceChoiceSetting");
+    return voiceSelect && voiceSelect.selectedIndex >= 0
+      ? selectedText(voiceSelect)
+      : "Default browser voice";
+  }
+
+  function saveVoicePreferences() {
+    try {
+      localStorage.setItem("alcKeyboardingVoiceURI", selectedVoiceURI);
+      localStorage.setItem("alcKeyboardingVoiceRate", String(voiceRatePercent));
+    } catch (error) {
+      // Voice preferences still work for this visit when storage is unavailable.
+    }
+  }
+
+  function populateVoiceChoices() {
+    const voiceSelect = document.getElementById("voiceChoiceSetting");
+    if (!voiceSelect) return;
+    const voices = getSiteVoices();
+    const requestedVoice = selectedVoiceURI || voiceSelect.value;
+    voiceSelect.replaceChildren();
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Default browser voice";
+    voiceSelect.appendChild(defaultOption);
+    const used = new Set();
+    voices.forEach(voice => {
+      const identifier = voice.voiceURI || voice.name;
+      if (!identifier || used.has(identifier)) return;
+      used.add(identifier);
+      const option = document.createElement("option");
+      option.value = identifier;
+      option.textContent = voice.name + (voice.lang ? " (" + voice.lang + ")" : "");
+      voiceSelect.appendChild(option);
+    });
+    if (Array.from(voiceSelect.options).some(option => option.value === requestedVoice)) {
+      voiceSelect.value = requestedVoice;
+      selectedVoiceURI = requestedVoice;
+    } else {
+      voiceSelect.value = "";
+      selectedVoiceURI = "";
+    }
+    updateSetupMenu();
+  }
+
   function speak(message, onComplete) {
     let finished = false;
     const complete = () => {
@@ -202,7 +265,11 @@
     }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(message);
-    utterance.rate = 0.9;
+    const selectedVoice = getSiteVoices().find(voice =>
+      (voice.voiceURI || voice.name) === selectedVoiceURI
+    );
+    if (selectedVoice) utterance.voice = selectedVoice;
+    utterance.rate = voiceRatePercent / 100;
     utterance.onend = complete;
     utterance.onerror = complete;
     window.speechSynthesis.speak(utterance);
@@ -563,6 +630,8 @@
     document.getElementById("menuLessonValue").textContent = selectedText(lessonSetting);
     document.getElementById("menuHandValue").textContent = selectedText(handSetting);
     document.getElementById("menuVoiceValue").textContent = useSiteVoice ? "Site voice" : "My screen reader";
+    document.getElementById("menuVoiceChoiceValue").textContent = selectedVoiceName();
+    document.getElementById("menuVoiceRateValue").textContent = voiceRatePercent + "%";
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
     document.getElementById("menuCaptionValue").textContent = document.getElementById("captionSetting").checked ? "On" : "Off";
     document.getElementById("menuKeyboardValue").textContent = document.getElementById("keyboardSetting").checked ? "Shown" : "Hidden";
@@ -572,6 +641,10 @@
     document.getElementById("wpmPlus").setAttribute("aria-label", "Increase passing speed. Current target " + document.getElementById("wpmSetting").value + " words per minute.");
     document.getElementById("accuracyMinus").setAttribute("aria-label", "Decrease passing accuracy. Current target " + document.getElementById("accuracySetting").value + " percent.");
     document.getElementById("accuracyPlus").setAttribute("aria-label", "Increase passing accuracy. Current target " + document.getElementById("accuracySetting").value + " percent.");
+    document.getElementById("voiceChoiceMinus").setAttribute("aria-label", "Previous site voice. Current voice " + selectedVoiceName() + ".");
+    document.getElementById("voiceChoicePlus").setAttribute("aria-label", "Next site voice. Current voice " + selectedVoiceName() + ".");
+    document.getElementById("voiceRateMinus").setAttribute("aria-label", "Decrease speaking rate. Current rate " + voiceRatePercent + " percent.");
+    document.getElementById("voiceRatePlus").setAttribute("aria-label", "Increase speaking rate. Current rate " + voiceRatePercent + " percent.");
     document.getElementById("menuSizeValue").textContent = selectedText(document.getElementById("textSizeSetting"));
     document.getElementById("menuDarkValue").textContent = keyboardDarkMode ? "On" : "Off";
     document.getElementById("menuSaveValue").textContent = document.getElementById("saveSetting").checked ? "On" : "Off";
@@ -665,6 +738,18 @@
     if (setting === "hand") cycleSelect(handSetting, direction);
     if (setting === "wpm") stepSelect(document.getElementById("wpmSetting"), direction);
     if (setting === "accuracy") stepSelect(document.getElementById("accuracySetting"), direction);
+    if (setting === "voice-choice") {
+      const voiceSelect = document.getElementById("voiceChoiceSetting");
+      cycleSelect(voiceSelect, direction);
+      selectedVoiceURI = voiceSelect.value;
+      saveVoicePreferences();
+    }
+    if (setting === "voice-rate") {
+      const voiceRate = document.getElementById("voiceRateSetting");
+      stepSelect(voiceRate, direction);
+      voiceRatePercent = Number(voiceRate.value);
+      saveVoicePreferences();
+    }
     if (setting === "size") cycleSelect(document.getElementById("textSizeSetting"), direction);
     if (setting === "dark") {
       keyboardDarkMode = !keyboardDarkMode;
@@ -676,10 +761,27 @@
       applyKeyboardDarkMode();
     }
     if (setting === "language") cycleSelect(document.getElementById("languageSetting"), direction);
-    if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
-    if (setting === "captions") document.getElementById("captionSetting").checked = !document.getElementById("captionSetting").checked;
-    if (setting === "keyboard") document.getElementById("keyboardSetting").checked = !document.getElementById("keyboardSetting").checked;
-    if (setting === "save") document.getElementById("saveSetting").checked = !document.getElementById("saveSetting").checked;
+    if (setting === "sound") {
+      const sound = document.getElementById("soundSetting");
+      sound.checked = !sound.checked;
+      useSounds = sound.checked;
+    }
+    if (setting === "captions") {
+      const captions = document.getElementById("captionSetting");
+      captions.checked = !captions.checked;
+      showCaptions = captions.checked;
+      applyCaptionVisibility();
+    }
+    if (setting === "keyboard") {
+      const keyboard = document.getElementById("keyboardSetting");
+      keyboard.checked = !keyboard.checked;
+      showKeyboard = keyboard.checked;
+    }
+    if (setting === "save") {
+      const save = document.getElementById("saveSetting");
+      save.checked = !save.checked;
+      rememberProgress = save.checked;
+    }
     if (setting === "voice") setVoice(!useSiteVoice, false);
     if (setting === "hand") refreshLessonAvailability();
     if (setting === "hand") updateLessonSummary();
@@ -1260,7 +1362,13 @@
   });
   buildVisualKeyboard();
   populateLessons();
+  document.getElementById("voiceRateSetting").value = String(voiceRatePercent);
+  populateVoiceChoices();
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.addEventListener("voiceschanged", populateVoiceChoices);
+  }
   applyKeyboardDarkMode();
+  updateSetupMenu();
   setVoice(true, false);
   if (sessionStorage.getItem("alcKeyboardingPreview") === "open") {
     previewToolbar.hidden = false;
