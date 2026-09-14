@@ -691,6 +691,13 @@
       line.appendChild(marker);
     }
     targetPrompt.replaceChildren(line);
+    const currentMarker = line.querySelector(".kb-char-current");
+    if (currentMarker) {
+      window.requestAnimationFrame(() => {
+        const centeredPosition = currentMarker.offsetLeft - ((line.clientWidth - currentMarker.offsetWidth) / 2);
+        line.scrollLeft = Math.max(0, centeredPosition);
+      });
+    }
     updateKeyGuide();
   }
 
