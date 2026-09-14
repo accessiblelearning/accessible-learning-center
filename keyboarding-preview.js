@@ -43,7 +43,7 @@
     ["Capitalized Words and Names", "Type names, days, months, and places with initial capitals.", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", ["Rosa Jacob Alex", "Tuesday Saturday", "January September", "Indiana Chicago", "Main Street", "Lake View Road"], "Hold Shift only for the first letter of each capitalized word, then continue with lowercase letters."],
     ["Simple Sentences with 1 and 2", "Type complete sentences and introduce the number keys 1 and 2.", "12", ["1 1 1 2 2 2", "12 21 12 21", "I have 1 dog.", "Sam has 2 bags.", "The 2 dogs ran.", "I read 1 new book."], "Reach the left pinky to 1 and the left ring finger to 2. Return to the home row after each number."],
     ["Sentence Building with 3 and 4", "Add useful details to sentences and introduce 3 and 4.", "34", ["3 3 3 4 4 4", "34 43 1234", "I have 3 red hats.", "The 4 dogs ran home.", "Mark read 3 pages today.", "Jill packed 4 blue bags."], "Reach the left middle finger to 3 and the left index finger to 4, then return home."],
-    ["Questions with 5 and 6", "Type questions and introduce the number keys 5 and 6.", "56?", ["5 5 5 6 6 6", "56 65 123456", "Do you have 5 bags?", "Did Sam read 6 pages?", "Are the 5 boxes ready?", "Can we meet at 6?"], "Reach the left index finger to 5 and the right index finger to 6. Hold left Shift and press slash with the right pinky for a question mark."],
+    ["Questions with 5 and 6", "Learn the question mark, then type questions while introducing the number keys 5 and 6.", "56?", ["5 5 5 6 6 6", "56 65 123456", "???", "5? 6?", "Do you have 5 bags?", "Did Sam read 6 pages?", "Are the 5 boxes ready?", "Can we meet at 6?"], "First practice the question mark. Hold left Shift and press the slash key with the right pinky. The slash key is on the bottom row directly to the left of the right Shift key. Release both keys after each question mark. Then practice number 5 with the left index finger and number 6 with the right index finger."],
     ["Questions and Answers with 7 and 8", "Type connected questions and answers while introducing 7 and 8.", "78", ["7 7 7 8 8 8", "78 87 12345678", "Did you get 7 books?", "Yes, I got 7 books.", "Are all 8 bags ready?", "No, 2 bags are not ready."], "Reach the right index finger to 7 and the right middle finger to 8. Use a question mark for a question and a period for an answer."],
     ["Exclamation Point with 9 and 0", "Use an exclamation point and complete the number row with 9 and 0.", "90!", ["9 9 9 0 0 0", "90 09 1234567890", "I got 9 right!", "We reached 10!", "That was a great job!", "Please stop!"], "Reach the right ring finger to 9 and the right pinky to 0. Hold right Shift and press 1 for an exclamation point."],
     ["Capitalization and Ending Punctuation", "Choose a period, question mark, or exclamation point for each sentence.", "ABCDEFGHIJKLMNOPQRSTUVWXYZ?!.", ["The meeting begins at 10.", "Will you arrive at 9?", "I finished all 8 pages!", "Please bring 2 blue folders.", "Did Mark call at 6?", "What a fast reply!"], "Use a period for a statement, a question mark for a direct question, and an exclamation point for strong feeling."],
@@ -59,7 +59,7 @@
     ["Parentheses in Sentences", "Place extra information inside parentheses.", "()", ["(Monday)", "(2 pages)", "(Room 4)", "The class meets at 9 (Room 4).", "Please read the file (2 pages).", "Sam will call on Monday (September 12)."], "Hold left Shift and press 9 for an opening parenthesis and 0 for a closing parenthesis."],
     ["Quotation Marks", "Place exact spoken or written words inside quotation marks.", "\"", ["\"Please begin,\" Sam said.", "Jill said, \"I am ready.\"", "The sign reads, \"Open at 9.\"", "Mark asked, \"Is the file ready?\"", "\"Yes, it is ready,\" I said."], "Hold Shift and press the apostrophe key for a quotation mark. Use both an opening and closing quotation mark."],
     ["Dialogue Practice", "Type short exchanges with quotation marks and varied ending punctuation.", "\"", ["\"Are you ready?\" Jill asked.", "\"Yes, I am ready,\" Sam said.", "\"Please open file #4,\" Jill said.", "\"Does it cost $8?\" Mark asked.", "\"No, it costs $6,\" Sam replied."], "Keep each speaker's exact words inside quotation marks and let the meaning guide the ending punctuation."],
-    ["Hyphens and Underscores", "Use a hyphen in joined words and an underscore in names or labels.", "-_", ["part-time", "well-known", "step-by-step", "student_notes", "lesson_4_notes", "I saved the step-by-step guide.", "Open the file named lesson_4_notes."], "Press the hyphen key with the right pinky. Hold Shift while pressing it for an underscore."],
+    ["Hyphens, Underscores, and Comparison Signs", "Use hyphens and underscores, then learn the less-than and greater-than signs.", "-_<>", ["part-time", "well-known", "student_notes", "lesson_4_notes", "< > < >", "2 < 5", "9 > 4", "I saved the step-by-step guide.", "Open the file named lesson_4_notes."], "Press the hyphen key with the right pinky. Hold Shift while pressing it for an underscore. To type the less-than sign, hold left Shift and press comma with the right middle finger. To type the greater-than sign, hold left Shift and press period with the right ring finger. Put one Space on each side of a comparison sign."],
     ["Longer Sentences", "Type longer sentences in meaningful groups rather than one letter at a time.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["The morning class begins at 9 and ends at 10.", "Please open file #4, read 2 pages, and save your notes.", "Sam paid $20 for 3 books at the store.", "Jill's new email address is jill.work@example.org.", "The battery reached 90% before the meeting began."], "Listen to the full sentence, then type one phrase at a time. Pause at a comma without adding an extra Space."],
     ["Sentence Practice 1", "Type complete statements with clear subjects and actions.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["The dog rested by the door.", "Sam opened the blue folder.", "Jill saved 3 files today.", "The class reviewed pages 8 and 9.", "My new keyboard works well."], "Type steadily from the capital letter through the final period."],
     ["Sentence Practice 2", "Join related ideas with and, but, or or.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["Sam opened the file, and Jill read it.", "I wanted the blue bag, but it cost $25.", "We can meet at 9, or we can meet at 10.", "The work was hard, but I finished it.", "Mark called, and I sent a reply."], "Use and to add an idea, but to show a difference, and or to show a choice."],
@@ -283,7 +283,8 @@
       "'": "apostrophe", '"': "quotation mark", ":": "colon",
       "@": "at sign", "#": "number sign", "$": "dollar sign",
       "%": "percent sign", "&": "ampersand", "(": "opening parenthesis",
-      ")": "closing parenthesis", "-": "hyphen", "_": "underscore"
+      ")": "closing parenthesis", "-": "hyphen", "_": "underscore",
+      "<": "less-than sign", ">": "greater-than sign"
     };
     return names[text] || text;
   }
@@ -304,7 +305,8 @@
       "(": "opening parenthesis", ")": "closing parenthesis", "[": "opening bracket",
       "]": "closing bracket", "{": "opening brace", "}": "closing brace",
       "@": "at sign", "#": "number sign", "$": "dollar sign", "%": "percent sign",
-      "&": "ampersand", "+": "plus sign", "=": "equals sign"
+      "&": "ampersand", "+": "plus sign", "=": "equals sign",
+      "<": "less-than sign", ">": "greater-than sign"
     };
     const tokens = text.match(/[A-Za-z]+|[0-9]+|\s+|./g) || [];
     return tokens.map(token => {
@@ -437,10 +439,14 @@
     session.segmentStartedAt = Date.now();
     if (!session.startedAt) session.startedAt = session.segmentStartedAt;
     const guidance = keyFinger(group[0]);
+    const shift = requiredShift(group[0]);
     const repeatedKey = group.length > 1 && Array.from(group).every(character => character === group[0]);
-    const message = repeatedKey
+    const shiftGuidance = shift
+      ? " To type " + spokenKeyName(group[0]) + ", hold " + shift + " and press " + spokenKeyName(guidance.key) + "."
+      : "";
+    const message = (repeatedKey
       ? spokenPromptGroup(group) + ". " + guidance.hand + ", " + guidance.finger + "."
-      : "Type " + spokenPromptGroup(group) + ".";
+      : "Type " + spokenPromptGroup(group) + ".") + shiftGuidance;
     practiceStatus.textContent = message;
     targetPrompt.setAttribute("aria-label", message);
     speak(message);
