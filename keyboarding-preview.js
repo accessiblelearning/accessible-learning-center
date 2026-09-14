@@ -935,8 +935,20 @@
     button.addEventListener("focus", () => speak(button.getAttribute("aria-label")));
   });
 
-  function processPracticeCharacter(typedKey) {
+  function processPracticeCharacter(typedKey, capsLockOn) {
     const expected = session.prompt[session.position];
+    const capsLockMismatch = Boolean(capsLockOn) && /^[a-z]$/.test(expected || "") &&
+      typedKey === expected.toUpperCase();
+    if (capsLockMismatch) {
+      targetPrompt.classList.remove("correct");
+      targetPrompt.classList.add("incorrect");
+      const warning = "Caps Lock is on. Press Caps Lock to turn it off, then press " + expected.toUpperCase() + ".";
+      practiceStatus.textContent = warning;
+      tone(190, 0.12);
+      speak(warning);
+      window.setTimeout(() => targetPrompt.classList.remove("incorrect"), 300);
+      return;
+    }
     if (typedKey === expected) {
       if ("speechSynthesis" in window) window.speechSynthesis.cancel();
       session.correct += 1;
@@ -1006,10 +1018,14 @@
       if (event.repeat || event.key === "Shift" || event.key === "Alt" || event.key === "Meta") return;
       event.preventDefault();
       const startingKey = event.key;
+      const capsLockOn = event.getModifierState && event.getModifierState("CapsLock");
       beginPractice();
-      if (session && session.mode !== "free" && session.accepting && startingKey.length === 1 &&
-          startingKey === session.prompt[session.position]) {
-        processPracticeCharacter(startingKey);
+      if (session && session.mode !== "free" && session.accepting && startingKey.length === 1) {
+        const expected = session.prompt[session.position];
+        if (startingKey === expected || (capsLockOn && /^[a-z]$/.test(expected || "") &&
+            startingKey === expected.toUpperCase())) {
+          processPracticeCharacter(startingKey, capsLockOn);
+        }
       }
       return;
     }
@@ -1024,7 +1040,7 @@
       return;
     }
     event.preventDefault();
-    processPracticeCharacter(event.key);
+    processPracticeCharacter(event.key, event.getModifierState && event.getModifierState("CapsLock"));
   });
 
   document.addEventListener("keyup", event => {
