@@ -573,7 +573,15 @@
     if (nextCharacter === undefined) return "Sequence complete.";
     const guidance = keyFinger(nextCharacter);
     const shift = requiredShift(nextCharacter);
-    return "Next key: " + spokenKeyName(nextCharacter) + ". " + (shift ? "Hold " + shift + ". " : "") + guidance.hand + ", " + guidance.finger + ".";
+    let remaining = "";
+    if (session.promptGroups) {
+      const groupEnd = currentPromptGroupStart() + currentPromptGroup().length;
+      remaining = session.prompt.slice(session.position, groupEnd);
+    } else {
+      remaining = session.prompt.slice(session.position, session.position + 40);
+    }
+    const remainderMessage = remaining ? "Continue: " + speakableSequence(remaining) + ". " : "";
+    return remainderMessage + "Next key: " + spokenKeyName(nextCharacter) + ". " + (shift ? "Hold " + shift + ". " : "") + guidance.hand + ", " + guidance.finger + ".";
   }
 
   function stopPendingKeyAnnouncement() {
