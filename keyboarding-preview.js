@@ -300,11 +300,11 @@
   }
 
   const KEYBOARD_ROWS = [
-    ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="],
-    ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"],
-    ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'"],
-    ["z", "x", "c", "v", "b", "n", "m", ",", ".", "/"],
-    [" "]
+    ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", { key: "Backspace", label: "Backspace", size: "backspace" }],
+    [{ key: "Tab", label: "Tab", size: "tab" }, "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"],
+    [{ key: "CapsLock", label: "Caps Lock", size: "caps" }, "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", { key: "Enter", label: "Enter", size: "enter" }],
+    [{ key: "ShiftLeft", label: "Shift", size: "shift-left" }, "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", { key: "ShiftRight", label: "Shift", size: "shift-right" }],
+    [{ key: "ControlLeft", label: "Ctrl", size: "control" }, { key: "AltLeft", label: "Alt", size: "alt" }, { key: " ", label: "Space", size: "space" }, { key: "AltRight", label: "Alt", size: "alt" }, { key: "ControlRight", label: "Ctrl", size: "control" }]
   ];
 
   function keyFinger(character) {
@@ -328,11 +328,12 @@
     KEYBOARD_ROWS.forEach(keys => {
       const row = document.createElement("div");
       row.className = "kb-key-row";
-      keys.forEach(key => {
+      keys.forEach(item => {
+        const key = typeof item === "string" ? { key: item, label: item === " " ? "Space" : item } : item;
         const marker = document.createElement("span");
-        marker.className = "kb-key" + (key === " " ? " kb-key--space" : "");
-        marker.dataset.key = key;
-        marker.textContent = key === " " ? "Space" : key;
+        marker.className = "kb-key" + (key.size ? " kb-key--special kb-key--" + key.size : "");
+        marker.dataset.key = key.key;
+        marker.textContent = key.label;
         row.appendChild(marker);
       });
       visualKeyboard.appendChild(row);
@@ -344,9 +345,14 @@
     keyboardGuide.hidden = !visible;
     if (!visible) return;
     const guidance = keyFinger(session.prompt[session.position]);
-    visualKeyboard.querySelectorAll(".kb-key").forEach(key => key.classList.toggle("kb-key--active", key.dataset.key === guidance.key));
-    handSymbol.dataset.hand = guidance.handId;
     const shift = requiredShift(session.prompt[session.position]);
+    const shiftKey = shift === "left Shift" ? "ShiftLeft" : shift === "right Shift" ? "ShiftRight" : "";
+    visualKeyboard.querySelectorAll(".kb-key").forEach(key => {
+      const isTypingKey = key.dataset.key === guidance.key;
+      const isShiftKey = shiftKey && key.dataset.key === shiftKey;
+      key.classList.toggle("kb-key--active", Boolean(isTypingKey || isShiftKey));
+    });
+    handSymbol.dataset.hand = guidance.handId;
     handCue.textContent = (shift ? "Hold " + shift + " • " : "") + guidance.hand + (guidance.finger ? " • " + guidance.finger : "");
     document.querySelector(".kb-hand-cue").hidden = !showHands;
   }
