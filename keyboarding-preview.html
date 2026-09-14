@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-25" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-26" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -236,6 +236,148 @@
     }
     @media (max-width: 42rem) { .kb-finish-row { grid-template-columns: 1fr; } .kb-results-screen { height: auto; min-height: calc(100vh - 5rem); overflow: auto; } body.kb-results-active { overflow: auto; } }
     @media (max-width: 42rem) { .kb-grid, .kb-results { grid-template-columns: 1fr; } .kb-shell { padding: .5rem; } .kb-panel { border-radius: .75rem; min-height: calc(100vh - 4rem); } .kb-menu-option { grid-template-columns: 1fr; gap: .25rem; min-height: 5.5rem; text-align: center; } .kb-stepper-row { grid-template-columns: minmax(0, 1fr) 4rem 4rem; } .kb-step-adjust { min-height: 5.5rem; } }
+
+    /* Focused typing workspace: large prompt, slim progress, keyboard below. */
+    body.kb-practice-active { overflow: hidden; }
+    body.kb-practice-active .kb-toolbar {
+      position: fixed;
+      top: .45rem;
+      right: .65rem;
+      z-index: 20;
+      width: auto;
+      margin: 0;
+      justify-content: flex-end;
+    }
+    body.kb-practice-active .kb-toolbar button {
+      min-height: 2.4rem;
+      padding: .4rem .7rem;
+      font-size: clamp(.78rem, 1.4vw, .95rem);
+    }
+    #practicePanel:not([hidden]) {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: calc(100vh - 1.5rem);
+      min-height: 0;
+      overflow: hidden;
+      padding: .35rem .65rem .5rem;
+      border: 0;
+      border-radius: 0;
+      background: #06142d;
+    }
+    #practicePanel .kb-prompt {
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: clamp(10rem, 35vh, 24rem);
+      max-height: 46vh;
+      margin: 0 0 .45rem;
+      padding: clamp(1rem, 4vw, 3rem);
+      border: 2px solid #65aef5;
+      border-radius: .55rem;
+      background: #f7fbff;
+      font-size: clamp(4rem, 11vw, 8.5rem);
+      line-height: 1.12;
+      text-align: left;
+    }
+    #practicePanel .kb-prompt--long {
+      font-size: clamp(2rem, 5vw, 4rem);
+    }
+    #practicePanel .kb-ready-prompt {
+      min-height: clamp(10rem, 36vh, 22rem);
+      max-height: none;
+      justify-items: center;
+      text-align: center;
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+    }
+    #practicePanel .kb-progress {
+      flex: 0 0 auto;
+      height: .72rem;
+      margin: 0 0 .2rem;
+      border-radius: .2rem;
+    }
+    #practicePanel #progressText {
+      flex: 0 0 auto;
+      min-height: 1.35rem;
+      margin: 0 0 .15rem;
+      color: #d5e3f1;
+      font-size: clamp(.82rem, 1.6vw, 1rem);
+      line-height: 1.2;
+    }
+    #practicePanel .kb-key-guide {
+      flex: 0 1 auto;
+      width: min(100%, 58rem);
+      margin: .15rem auto;
+      padding: .4rem;
+      border: 2px solid #65aef5;
+      border-radius: .65rem;
+      background: #071a35;
+    }
+    #practicePanel .kb-keyboard {
+      --kb-key-size: clamp(1.7rem, 3.6vw, 3.1rem);
+      gap: .18rem;
+    }
+    #practicePanel .kb-key-row { gap: .18rem; }
+    #practicePanel .kb-key {
+      height: var(--kb-key-size);
+      font-size: clamp(.78rem, 1.7vw, 1.25rem);
+    }
+    #practicePanel .kb-key--special {
+      font-size: clamp(.52rem, 1vw, .82rem);
+    }
+    #practicePanel .kb-hand-cue {
+      min-height: 2rem;
+      margin-top: .2rem;
+      font-size: clamp(1rem, 2.4vw, 1.35rem);
+    }
+    #practicePanel .kb-hand-symbol {
+      font-size: clamp(1.75rem, 3.8vw, 2.6rem);
+    }
+    #practicePanel .kb-typed {
+      display: none;
+      min-height: 0;
+      margin: 0;
+    }
+    #practicePanel .kb-status {
+      flex: 0 0 auto;
+      min-height: 0;
+      margin: .15rem 0;
+    }
+    #practicePanel .kb-caption {
+      padding: .35rem .6rem;
+      font-size: clamp(.85rem, 1.5vw, 1rem);
+    }
+    #practicePanel .kb-help {
+      flex: 0 0 auto;
+      margin-top: .15rem;
+      padding: .3rem .45rem;
+    }
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-prompt {
+      background: #000;
+      color: #fff;
+      border-color: #4c4c4c;
+    }
+    html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-ready-prompt {
+      color: #fff;
+    }
+    @media (max-width: 42rem), (max-height: 42rem) {
+      body.kb-practice-active .kb-toolbar { top: .2rem; right: .3rem; }
+      #practicePanel:not([hidden]) { height: calc(100vh - .5rem); padding: .25rem; }
+      #practicePanel .kb-prompt {
+        min-height: clamp(7rem, 31vh, 13rem);
+        max-height: 38vh;
+        padding: .75rem;
+        font-size: clamp(3rem, 12vw, 5.5rem);
+      }
+      #practicePanel .kb-prompt--long { font-size: clamp(1.55rem, 5.5vw, 2.5rem); }
+      #practicePanel .kb-ready-prompt { max-height: none; font-size: clamp(2.2rem, 7vw, 4rem); }
+      #practicePanel .kb-key-guide { padding: .25rem; }
+      #practicePanel .kb-keyboard { --kb-key-size: clamp(1.25rem, 3.35vw, 2.2rem); gap: .1rem; }
+      #practicePanel .kb-key-row { gap: .1rem; }
+      #practicePanel .kb-key { font-size: clamp(.58rem, 1.6vw, .9rem); }
+      #practicePanel .kb-key--special { font-size: clamp(.42rem, .9vw, .65rem); }
+      #practicePanel .kb-help { font-size: clamp(.68rem, 1.3vw, .82rem); }
+    }
   </style>
 </head>
 <body>
