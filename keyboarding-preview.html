@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-9" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-10" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -358,10 +358,6 @@
         <button class="kb-menu-option kb-back" type="button" data-setting="back"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
       </div>
       <p class="kb-menu-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> increase or change. <strong>Shift plus Enter:</strong> decrease or choose the previous option. Speed and accuracy also have Minus and Plus buttons. <strong>Escape:</strong> go back.</p>
-      <details class="kb-curriculum">
-        <summary>View all 50 lessons</summary>
-        <ol id="curriculumList"></ol>
-      </details>
     </section>
 
     <section class="kb-panel kb-stage" id="statsPanel" aria-labelledby="statsHeading" hidden>
@@ -375,6 +371,10 @@
         <div class="kb-result"><span>Difficult keys</span><strong id="statsDifficult">None</strong></div>
       </div>
       <p class="kb-stats-note" id="statsNote">Turn on Save progress in Settings to build your stats on this browser.</p>
+      <details class="kb-curriculum">
+        <summary>Curriculum overview: view all 50 lessons</summary>
+        <ol id="curriculumList"></ol>
+      </details>
       <div class="kb-actions"><button class="kb-action" id="statsBack" type="button">Back to Keyboarding Center</button></div>
     </section>
 
