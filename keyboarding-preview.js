@@ -292,6 +292,10 @@
     return Array.from(text).map(speakable).join(", ");
   }
 
+  function spokenExactSequence(text) {
+    return Array.from(text).map(spokenKeyName).join(", ");
+  }
+
   function needsShift(character) {
     return /^[A-Z]$/.test(character) || "~!@#$%^&*()_+{}|:\"<>?".includes(character);
   }
@@ -377,6 +381,18 @@
   }
 
   function spokenPromptGroup(group) {
+    const forwardAlphabet = "abcdefghijklmnopqrstuvwxyz";
+    const reverseAlphabet = "zyxwvutsrqponmlkjihgfedcba";
+    const lowerGroup = group.toLowerCase();
+    if (lowerGroup === forwardAlphabet) {
+      return "the alphabet, " + spokenExactSequence(group);
+    }
+    if (lowerGroup === reverseAlphabet) {
+      return "the alphabet in reverse, " + spokenExactSequence(group);
+    }
+    if (/^[A-Z](?: [A-Z])+$/.test(group)) {
+      return "these capital letters with a space between each letter, " + spokenExactSequence(group);
+    }
     if (!session) return speakableSequence(group);
     const words = group.split(" ").filter(Boolean);
     if (session.lesson.number >= 4 || (words.length && words.every(word => EARLY_WORDS.has(word)))) return group;
@@ -649,7 +665,7 @@
     } else {
       remaining = session.prompt.slice(session.position, session.position + 40);
     }
-    const remainderMessage = remaining ? "Continue: " + speakableSequence(remaining) + ". " : "";
+    const remainderMessage = remaining ? "Continue: " + spokenExactSequence(remaining) + ". " : "";
     return remainderMessage + "Next key: " + spokenKeyName(nextCharacter) + ". " + (shift ? "Hold " + shift + ". " : "") + guidance.hand + ", " + guidance.finger + ".";
   }
 
