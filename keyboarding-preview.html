@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-15" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-16" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -52,7 +52,10 @@
     .kb-curriculum li { padding-left: .25rem; }
     .kb-complete { color: #0b6b31; font-weight: 700; }
     .kb-stage { text-align: center; }
-    .kb-progress { width: 100%; height: 1.35rem; }
+    .kb-progress { width: 100%; height: 1.35rem; appearance: none; -webkit-appearance: none; overflow: hidden; border: 0; border-radius: 999px; background: #d5e3f1; color: #1681d8; accent-color: #1681d8; }
+    .kb-progress::-webkit-progress-bar { background: #d5e3f1; border-radius: 999px; }
+    .kb-progress::-webkit-progress-value { background: #1681d8; border-radius: 999px; }
+    .kb-progress::-moz-progress-bar { background: #1681d8; border-radius: 999px; }
     #practicePanel { padding: clamp(.75rem, 2vw, 1.5rem); }
     #practicePanel h2 { margin-bottom: .35rem; font-size: clamp(1.9rem, 5vw, 3.5rem); }
     #practicePanel #practiceInstruction, #practicePanel #progressText { margin: .35rem 0; }
@@ -157,10 +160,10 @@
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-menu-option:hover,
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-menu-option:focus { background: #000; color: #fff; border-color: #ffe37a; box-shadow: 0 0 0 .25rem #ffe37a; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-result-primary:focus-visible { outline-color: #ffe37a; }
-    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress { background: #242424; border: 2px solid #777; accent-color: #737373; }
-    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-bar { background: #242424; }
-    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-value { background: #737373; }
-    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-moz-progress-bar { background: #737373; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress { background: #242424 !important; border: 2px solid #555; color: #737373; accent-color: #737373; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-bar { background: #242424 !important; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-webkit-progress-value { background: #737373 !important; }
+    html[data-theme="dark"]:not([data-contrast="high"]) .kb-progress::-moz-progress-bar { background: #737373 !important; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-key-guide,
     html[data-contrast="high"] .kb-key-guide { background: #000; color: #fff; border-color: #fff; }
     html[data-theme="dark"]:not([data-contrast="high"]) .kb-key,
@@ -201,10 +204,10 @@
     html[data-contrast="high"] .kb-char-current::after { color: #000; }
     html[data-contrast="high"] .kb-celebration { color: #fff; }
     html[data-contrast="high"] .kb-sparkle { color: #ff0; }
-    html[data-contrast="high"] .kb-progress { background: #242424; border: 2px solid #777; accent-color: #737373; }
-    html[data-contrast="high"] .kb-progress::-webkit-progress-bar { background: #242424; }
-    html[data-contrast="high"] .kb-progress::-webkit-progress-value { background: #737373; }
-    html[data-contrast="high"] .kb-progress::-moz-progress-bar { background: #737373; }
+    html[data-contrast="high"] .kb-progress { background: #242424 !important; border: 2px solid #555; color: #737373; accent-color: #737373; }
+    html[data-contrast="high"] .kb-progress::-webkit-progress-bar { background: #242424 !important; }
+    html[data-contrast="high"] .kb-progress::-webkit-progress-value { background: #737373 !important; }
+    html[data-contrast="high"] .kb-progress::-moz-progress-bar { background: #737373 !important; }
     @media (max-height: 64rem) and (min-width: 42.01rem) {
       .kb-toolbar { margin-bottom: .35rem; }
       #practicePanel { min-height: 0; height: calc(100vh - 4.5rem); overflow: hidden; padding: .55rem .8rem; }
