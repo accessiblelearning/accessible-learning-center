@@ -935,46 +935,9 @@
     button.addEventListener("focus", () => speak(button.getAttribute("aria-label")));
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && document.getElementById("unlockPanel").hidden && document.getElementById("setupPanel").hidden) {
-      event.preventDefault();
-      openMenu();
-      return;
-    }
-    if (document.getElementById("practicePanel").hidden || !session) return;
-    const isLargerPrint = event.ctrlKey && (event.key === "+" || event.key === "=" || event.code === "NumpadAdd");
-    const isSmallerPrint = event.ctrlKey && (event.key === "-" || event.code === "NumpadSubtract");
-    if (isLargerPrint || isSmallerPrint) {
-      event.preventDefault();
-      controlUsedAsModifier = true;
-      adjustPracticeTextSize(isLargerPrint ? 1 : -1);
-      return;
-    }
-    if (event.ctrlKey && event.key !== "Control") controlUsedAsModifier = true;
-    if (!session.started) {
-      if (event.key === "Control") {
-        event.preventDefault();
-        if (!event.repeat) controlUsedAsModifier = false;
-        return;
-      }
-      if (event.repeat || event.key === "Shift" || event.key === "Alt" || event.key === "Meta") return;
-      event.preventDefault();
-      beginPractice();
-      return;
-    }
-    if (event.key === "Control") {
-      event.preventDefault();
-      if (!event.repeat) controlUsedAsModifier = false;
-      return;
-    }
-    if (session.mode === "free") return;
-    if (!session.accepting || event.repeat || event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) {
-      if (!session.accepting && event.key.length === 1) event.preventDefault();
-      return;
-    }
-    event.preventDefault();
+  function processPracticeCharacter(typedKey) {
     const expected = session.prompt[session.position];
-    if (event.key === expected) {
+    if (typedKey === expected) {
       if ("speechSynthesis" in window) window.speechSynthesis.cancel();
       session.correct += 1;
       session.position += 1;
@@ -1015,6 +978,53 @@
       speak(correction);
       window.setTimeout(() => targetPrompt.classList.remove("incorrect"), 220);
     }
+
+  }
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && document.getElementById("unlockPanel").hidden && document.getElementById("setupPanel").hidden) {
+      event.preventDefault();
+      openMenu();
+      return;
+    }
+    if (document.getElementById("practicePanel").hidden || !session) return;
+    const isLargerPrint = event.ctrlKey && (event.key === "+" || event.key === "=" || event.code === "NumpadAdd");
+    const isSmallerPrint = event.ctrlKey && (event.key === "-" || event.code === "NumpadSubtract");
+    if (isLargerPrint || isSmallerPrint) {
+      event.preventDefault();
+      controlUsedAsModifier = true;
+      adjustPracticeTextSize(isLargerPrint ? 1 : -1);
+      return;
+    }
+    if (event.ctrlKey && event.key !== "Control") controlUsedAsModifier = true;
+    if (!session.started) {
+      if (event.key === "Control") {
+        event.preventDefault();
+        if (!event.repeat) controlUsedAsModifier = false;
+        return;
+      }
+      if (event.repeat || event.key === "Shift" || event.key === "Alt" || event.key === "Meta") return;
+      event.preventDefault();
+      const startingKey = event.key;
+      beginPractice();
+      if (session && session.mode !== "free" && session.accepting && startingKey.length === 1 &&
+          startingKey === session.prompt[session.position]) {
+        processPracticeCharacter(startingKey);
+      }
+      return;
+    }
+    if (event.key === "Control") {
+      event.preventDefault();
+      if (!event.repeat) controlUsedAsModifier = false;
+      return;
+    }
+    if (session.mode === "free") return;
+    if (!session.accepting || event.repeat || event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) {
+      if (!session.accepting && event.key.length === 1) event.preventDefault();
+      return;
+    }
+    event.preventDefault();
+    processPracticeCharacter(event.key);
   });
 
   document.addEventListener("keyup", event => {
