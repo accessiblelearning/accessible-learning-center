@@ -7,21 +7,79 @@
   const LEFT_KEYS = "qwertasdfgzxcvb12345`~!@#$%";
   const RIGHT_KEYS = "yuiophjklnm67890-=[]\\;',./^&*()_+{}|:\"<>?";
   const WORD_BANK = [
-    "a", "add", "all", "ask", "at", "bad", "bag", "ball", "best", "big", "book", "bring", "calm", "can", "cat", "clear", "come", "day", "desk", "dog", "each", "easy", "fast", "find", "first", "from", "good", "great", "hand", "help", "home", "hope", "join", "jump", "keep", "key", "kind", "learn", "left", "light", "look", "make", "map", "milk", "move", "new", "next", "nice", "now", "open", "page", "place", "practice", "press", "quick", "read", "ready", "right", "row", "safe", "see", "slow", "small", "space", "start", "steady", "step", "still", "take", "text", "time", "today", "type", "use", "very", "voice", "word", "work", "write", "you"
+    "a", "add", "adds", "all", "also", "and", "any", "are", "ask", "at", "away",
+    "back", "bad", "bag", "ball", "be", "bear", "begin", "best", "big", "bird", "blue", "book", "box", "bring",
+    "calm", "can", "care", "cat", "chair", "check", "class", "clean", "clear", "close", "come", "cool", "correct",
+    "dad", "day", "desk", "did", "do", "dog", "done", "door", "down", "each", "early", "easy", "end", "even",
+    "fast", "feel", "file", "find", "fine", "finish", "first", "flag", "floor", "folder", "follow", "for", "free", "from",
+    "game", "get", "give", "glad", "go", "good", "great", "green", "group", "grow",
+    "had", "half", "hall", "hand", "happy", "has", "have", "hear", "help", "here", "home", "hope", "hour",
+    "in", "is", "it", "job", "join", "jump", "just", "keep", "key", "kind", "know",
+    "large", "last", "learn", "left", "letter", "light", "like", "line", "list", "little", "long", "look",
+    "make", "map", "meet", "more", "move", "name", "near", "new", "next", "nice", "now",
+    "of", "on", "one", "open", "or", "page", "paper", "part", "place", "play", "please", "practice", "press",
+    "quick", "quiet", "read", "ready", "repeat", "rest", "right", "room", "row",
+    "sad", "safe", "same", "save", "say", "see", "send", "short", "show", "slow", "small", "sound", "space",
+    "start", "steady", "step", "still", "stop", "take", "tell", "test", "text", "the", "then", "this", "time",
+    "to", "today", "try", "type", "under", "up", "use", "very", "voice", "wait", "walk", "want", "warm",
+    "way", "well", "when", "white", "will", "with", "word", "work", "write", "yes", "you", "your"
   ];
   const SENTENCE_BANK = [
+    "dad adds",
+    "a dad adds",
+    "a sad dad adds",
+    "a sad dad asks",
+    "all flags fall",
+    "a glad lad asks",
+    "jill asks dad",
+    "dad had a salad",
+    "a fast reader starts",
+    "read a safe list",
+    "keep your hands ready",
+    "use a light touch",
+    "type each word slowly",
+    "start at a steady pace",
+    "practice each new key",
+    "read the words first",
+    "keep both hands on home row",
+    "press each key with care",
+    "finish the short practice",
+    "look at the next word",
+    "you can begin now",
+    "take your time and type",
     "a fast reader starts at a safe rate.",
-    "join in. you jump.",
+    "join in. you can do it.",
     "keep your hands ready on the home row.",
     "type each word at a calm and steady pace.",
     "accuracy comes first and speed grows with practice.",
     "use a light touch and return each finger to home row.",
-    "today i will type with care and correct my difficult keys.",
+    "today i will type with care and correct difficult keys.",
     "the quick brown fox jumps over the lazy dog.",
-    "i practiced for 10 minutes and reached 25 words per minute!"
+    "read the prompt, then type one word at a time.",
+    "take a short break when your hands feel tired.",
+    "i can type this sentence with calm, steady hands.",
+    "please check the sentence before you finish.",
+    "will you practice for 10 minutes today?",
+    "yes, i will practice for 10 minutes!",
+    "the class begins at 9 and ends at 10.",
+    "open file #4, read 2 pages, and save your notes.",
+    "the bag costs $8, but the book costs $5.",
+    "did you finish 80% of the lesson?",
+    "send the notes to class@example.org.",
+    "the well-known guide is saved as lesson_notes.",
+    "if 4 < 7, type the less-than sign.",
+    "if 9 > 3, type the greater-than sign.",
+    "the teacher said, \"please begin.\"",
+    "when the timer ends, save your work and rest.",
+    "before you close the file, check your work.",
+    "after the lesson, review each difficult key.",
+    "i made 2 errors, but my accuracy was 90%.",
+    "the next practice includes words, numbers, and punctuation.",
+    "type with a comfortable rhythm, not a rushed pace.",
+    "good posture can help your hands stay relaxed."
   ];
 
-  // [title, goal, newly introduced keys, practice groups, lesson introduction]
+    // [title, goal, newly introduced keys, practice groups, lesson introduction]
   const lessonData = [
     ["Left Home Row ASDF", "Find F by its raised bump, then position the remaining left-hand fingers on D, S, and A.", "asdf", ["fdsa fdsa fdsa", "asdf asdf asdf", "fa fd fs da ds sa", "sad dad fad add", "ads dads fads"], "Find F by feeling for its raised bump. Place your left pointer finger on F. Moving to the left, place your middle finger on D, your ring finger on S, and your pinky finger on A. Use either thumb for Space."],
     ["Right Home Row JKL Semicolon", "Find J by its raised bump, then position the remaining right-hand fingers on K, L, and semicolon.", "jkl;", ["jkl; jkl; jkl;", ";lkj ;lkj ;lkj", "jk jl j; kl k; l;", "jkl jkj klk l;l", "j; kl; jkl;"], "Find J by feeling for its raised bump. Place your right pointer finger on J. Moving to the right, place your middle finger on K, your ring finger on L, and your pinky finger on semicolon."],
@@ -218,25 +276,55 @@
 
   function buildPrompt(lesson, mode, hand) {
     const lowerAllowed = lesson.allowed.toLowerCase() + lesson.allowed.toUpperCase();
-    let words = WORD_BANK.filter(word => fits(word, lowerAllowed));
-    if (hand !== "both") words = words.filter(word => Array.from(word).every(character => belongsToHand(character, hand)));
-    if (!words.length) words = [lesson.focus.replace(/ /g, "") || (hand === "right" ? "j" : "f")];
-    const start = (lesson.number * 3) % words.length;
-    const selectedWords = Array.from({ length: 12 }, (_, index) => words[(start + index) % words.length]);
-    const sentences = SENTENCE_BANK.filter(sentence => fits(sentence.toLowerCase(), lowerAllowed) && (hand === "both" || Array.from(sentence.toLowerCase()).every(character => !/[a-z]/.test(character) || belongsToHand(character, hand))));
+    const handFits = text => hand === "both" || Array.from(text.toLowerCase()).every(character =>
+      !/[a-z]/.test(character) || belongsToHand(character, hand)
+    );
+    let words = WORD_BANK.filter(word => fits(word, lowerAllowed) && handFits(word));
+    if (!words.length) {
+      words = Array.from(new Set(lesson.focus.toLowerCase().replace(/[^a-z]/g, ""))) || [];
+      words = words.length ? words : [hand === "right" ? "j" : "f"];
+    }
+
+    const lessonGroups = lesson.practiceGroups.filter(group =>
+      fits(group, lowerAllowed) && handFits(group)
+    );
+    const sentenceChoices = SENTENCE_BANK.filter(sentence =>
+      fits(sentence, lowerAllowed) && handFits(sentence)
+    );
+    const phraseChoices = lessonGroups.filter(group =>
+      group.includes(" ") && /[a-z]/i.test(group)
+    );
+    const start = (lesson.number * 7) % words.length;
+    const rotatedWords = words.slice(start).concat(words.slice(0, start));
+    const practiceWords = Array.from({ length: 48 }, (_, index) =>
+      rotatedWords[index % rotatedWords.length]
+    );
+
     if (mode === "guided") {
       if (hand === "both") return lesson.practiceGroups.slice();
-      const handGroups = lesson.practiceGroups.filter(group => Array.from(group).every(character => belongsToHand(character, hand)));
-      if (handGroups.length >= 2) return handGroups;
+      if (lessonGroups.length >= 2) return lessonGroups;
       const reviewKeys = Array.from(new Set(lesson.focus.replace(/ /g, ""))).slice(0, 6);
       const keyGroups = reviewKeys.map(character => character.repeat(4));
       return keyGroups.length ? keyGroups : [hand === "right" ? "jjjj" : "ffff"];
     }
-    if (mode === "words") return selectedWords.slice(0, 8).join(" ");
-    if (mode === "sentences") return sentences[lesson.number % Math.max(sentences.length, 1)] || selectedWords.slice(0, 8).join(" ");
-    if (mode.startsWith("speed-")) return Array.from({ length: 200 }, () => selectedWords.join(" ")).join(" ");
+    if (mode === "words") return practiceWords.join(" ");
+    if (mode === "sentences") {
+      const available = sentenceChoices.length ? sentenceChoices : phraseChoices;
+      if (available.length) {
+        const sentenceStart = lesson.number % available.length;
+        return Array.from({ length: 8 }, (_, index) =>
+          available[(sentenceStart + index) % available.length]
+        ).join(" ");
+      }
+      return practiceWords.slice(0, 24).join(" ");
+    }
+    if (mode.startsWith("speed-")) {
+      return Array.from({ length: 1800 }, (_, index) =>
+        rotatedWords[(index * 11 + Math.floor(index / Math.max(rotatedWords.length, 1))) % rotatedWords.length]
+      ).join(" ");
+    }
     if (mode === "free") return "";
-    return selectedWords.join(" ");
+    return practiceWords.join(" ");
   }
 
   function getProgress() {
