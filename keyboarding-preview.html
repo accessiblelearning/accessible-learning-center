@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-29" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-30" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -187,6 +187,68 @@
     html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-key--active { color: #000; border-color: #ff0; }
     html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-char { color: #fff !important; }
     html[data-theme="dark"]:not([data-contrast="high"]) #practicePanel .kb-help { background: #06142d; color: #fff; border-color: #31597f; }
+    /* Keyboarding Center-only dark mode; does not change the website preference. */
+    body.kb-keyboarding-dark,
+    body.kb-keyboarding-dark body,
+    body.kb-keyboarding-dark body:has(.kb-shell),
+    body.kb-keyboarding-dark body > main.kb-shell,
+    body.kb-keyboarding-dark .kb-panel,
+    body.kb-keyboarding-dark .kb-menu-help,
+    body.kb-keyboarding-dark .kb-note,
+    body.kb-keyboarding-dark .kb-help,
+    body.kb-keyboarding-dark .kb-status,
+    body.kb-keyboarding-dark .kb-panel [role="status"],
+    body.kb-keyboarding-dark .kb-choice,
+    body.kb-keyboarding-dark .kb-result,
+    body.kb-keyboarding-dark .kb-prompt,
+    body.kb-keyboarding-dark .kb-free-type,
+    body.kb-keyboarding-dark .kb-field select,
+    body.kb-keyboarding-dark .kb-form input,
+    body.kb-keyboarding-dark .kb-menu-option,
+    body.kb-keyboarding-dark .kb-finish-row,
+    body.kb-keyboarding-dark .kb-result-primary,
+    body.kb-keyboarding-dark .kb-step-adjust,
+    body.kb-keyboarding-dark .kb-toolbar button {
+      background: #000;
+      color: #fff;
+      border-color: #fff;
+      box-shadow: none;
+    }
+    body.kb-keyboarding-dark .kb-panel h1,
+    body.kb-keyboarding-dark .kb-panel h2,
+    body.kb-keyboarding-dark .kb-char,
+    body.kb-keyboarding-dark .kb-complete { color: #fff !important; }
+    body.kb-keyboarding-dark .kb-prompt.correct { background: #000; color: #fff; border-color: #55e487; }
+    body.kb-keyboarding-dark .kb-prompt.incorrect { background: #000; color: #fff; border-color: #ff7a88; }
+    body.kb-keyboarding-dark .kb-ready-prompt { background: #000; color: #fff; border-color: #55e487; }
+    body.kb-keyboarding-dark .kb-char-complete { background: #000; color: #fff; box-shadow: inset 0 0 0 .07em #55e487; }
+    body.kb-keyboarding-dark .kb-char-current { background: #000; color: #fff; outline-color: #ffe37a; }
+    body.kb-keyboarding-dark .kb-char-current::after,
+    body.kb-keyboarding-dark .kb-sparkle { color: #ffe37a; }
+    body.kb-keyboarding-dark .kb-menu-option:hover,
+    body.kb-keyboarding-dark .kb-menu-option:focus { background: #000; color: #fff; border-color: #ffe37a; box-shadow: 0 0 0 .25rem #ffe37a; }
+    body.kb-keyboarding-dark .kb-result-primary:focus-visible { outline-color: #ffe37a; }
+    body.kb-keyboarding-dark .kb-progress { background: #242424 !important; border: 2px solid #555; color: #737373; accent-color: #737373; }
+    body.kb-keyboarding-dark .kb-progress::-webkit-progress-bar { background: #242424 !important; }
+    body.kb-keyboarding-dark .kb-progress::-webkit-progress-value { background: #737373 !important; }
+    body.kb-keyboarding-dark .kb-progress::-moz-progress-bar { background: #737373 !important; }
+    body.kb-keyboarding-dark .kb-key-guide,
+    html[data-contrast="high"] .kb-key-guide { background: #000; color: #fff; border-color: #fff; }
+    body.kb-keyboarding-dark .kb-key,
+    html[data-contrast="high"] .kb-key { background: #000; color: #fff; border-color: #fff; }
+    body.kb-keyboarding-dark .kb-key--active,
+    html[data-contrast="high"] .kb-key--active { background: #ff0; color: #000; border-color: #ff0; box-shadow: 0 0 0 .2rem #ff0; }
+    body.kb-keyboarding-dark #practicePanel #progressText,
+    body.kb-keyboarding-dark #practicePanel .kb-typed,
+    body.kb-keyboarding-dark #practicePanel .kb-status,
+    body.kb-keyboarding-dark #practicePanel .kb-help,
+    body.kb-keyboarding-dark #practicePanel .kb-hand-cue { color: #a6a6a6; }
+    body.kb-keyboarding-dark #practicePanel .kb-ready-prompt { color: #b8b8b8; border-color: #666; }
+    body.kb-keyboarding-dark #practicePanel .kb-key-guide { color: #a6a6a6; border-color: #666; }
+    body.kb-keyboarding-dark #practicePanel .kb-key { color: #b5b5b5; border-color: #666; }
+    body.kb-keyboarding-dark #practicePanel .kb-key--active { color: #000; border-color: #ff0; }
+    body.kb-keyboarding-dark #practicePanel .kb-char { color: #fff !important; }
+    body.kb-keyboarding-dark #practicePanel .kb-help { background: #06142d; color: #fff; border-color: #31597f; }
     html[data-contrast="high"] body:has(.kb-shell),
     html[data-contrast="high"] body > main.kb-shell,
     html[data-contrast="high"] .kb-panel,
@@ -487,6 +549,7 @@
           <label><input id="soundSetting" type="checkbox" checked> Play correct and incorrect sounds</label>
           <label><input id="captionSetting" type="checkbox"> Show high-contrast captions</label>
           <label><input id="keyboardSetting" type="checkbox" checked> Show the visual keyboard and hand guide</label>
+          <label><input id="darkModeSetting" type="checkbox"> Use dark mode in the Keyboarding Center</label>
           <label><input id="saveSetting" type="checkbox"> Remember completed lessons on this browser</label>
         </fieldset>
       </form>
@@ -522,6 +585,7 @@
         </div>
         <button class="kb-menu-option" type="button" data-setting="voice"><span class="kb-menu-label">Site voice</span><span class="kb-menu-value" id="menuVoiceValue">Site voice</span></button>
         <button class="kb-menu-option" type="button" data-setting="size"><span class="kb-menu-label">Print size</span><span class="kb-menu-value" id="menuSizeValue"></span></button>
+        <button class="kb-menu-option" type="button" data-setting="dark"><span class="kb-menu-label">Keyboarding dark mode</span><span class="kb-menu-value" id="menuDarkValue">Off</span></button>
         <button class="kb-menu-option" type="button" data-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue">On</span></button>
         <button class="kb-menu-option" type="button" data-setting="captions"><span class="kb-menu-label">High-contrast captions</span><span class="kb-menu-value" id="menuCaptionValue">Off</span></button>
         <button class="kb-menu-option" type="button" data-setting="keyboard"><span class="kb-menu-label">Visual keyboard</span><span class="kb-menu-value" id="menuKeyboardValue">Shown</span></button>
