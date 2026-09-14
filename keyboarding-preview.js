@@ -101,6 +101,7 @@
   let audioContext = null;
   let session = null;
   let timerId = null;
+  let controlUsedAsModifier = false;
   const sessionUnlockedLessons = { both: 0, left: 0, right: 0 };
 
   function show(panelId) {
@@ -454,6 +455,33 @@
     const scale = Number(document.getElementById("textSizeSetting").value);
     document.documentElement.style.setProperty("--kb-scale", String(scale));
     document.body.classList.toggle("kb-large-results", scale > 1.25);
+  }
+
+  function adjustPracticeTextSize(direction) {
+    const sizeSetting = document.getElementById("textSizeSetting");
+    stepSelect(sizeSetting, direction);
+    applyTextSize();
+    updateSetupMenu();
+    const message = "Print size: " + selectedText(sizeSetting) + ".";
+    practiceStatus.textContent = message;
+    speak(message);
+  }
+
+  function repeatPracticeInstruction() {
+    if (!session) return;
+    if (!session.started) {
+      const message = startInstruction();
+      practiceStatus.textContent = message;
+      speak(message);
+      return;
+    }
+    if (session.promptGroups && !session.accepting) {
+      announceCurrentPromptGroup();
+      return;
+    }
+    const message = nextKeyInstruction();
+    practiceStatus.textContent = message;
+    speak(message);
   }
 
   function startFromMenu() {
@@ -896,12 +924,19 @@
       return;
     }
     if (document.getElementById("practicePanel").hidden || !session) return;
+    const isLargerPrint = event.ctrlKey && (event.key === "+" || event.key === "=" || event.code === "NumpadAdd");
+    const isSmallerPrint = event.ctrlKey && (event.key === "-" || event.code === "NumpadSubtract");
+    if (isLargerPrint || isSmallerPrint) {
+      event.preventDefault();
+      controlUsedAsModifier = true;
+      adjustPracticeTextSize(isLargerPrint ? 1 : -1);
+      return;
+    }
+    if (event.ctrlKey && event.key !== "Control") controlUsedAsModifier = true;
     if (!session.started) {
       if (event.key === "Control") {
         event.preventDefault();
-        const message = startInstruction();
-        practiceStatus.textContent = message;
-        speak(message);
+        if (!event.repeat) controlUsedAsModifier = false;
         return;
       }
       if (event.repeat || event.key === "Shift" || event.key === "Alt" || event.key === "Meta") return;
@@ -911,13 +946,7 @@
     }
     if (event.key === "Control") {
       event.preventDefault();
-      if (session.promptGroups && !session.accepting) {
-        announceCurrentPromptGroup();
-        return;
-      }
-      const message = nextKeyInstruction();
-      practiceStatus.textContent = message;
-      speak(message);
+      if (!event.repeat) controlUsedAsModifier = false;
       return;
     }
     if (session.mode === "free") return;
@@ -968,6 +997,16 @@
       speak(correction);
       window.setTimeout(() => targetPrompt.classList.remove("incorrect"), 220);
     }
+  });
+
+  document.addEventListener("keyup", event => {
+    if (event.key !== "Control") return;
+    const practiceIsOpen = !document.getElementById("practicePanel").hidden && session;
+    if (practiceIsOpen) {
+      event.preventDefault();
+      if (!controlUsedAsModifier) repeatPracticeInstruction();
+    }
+    controlUsedAsModifier = false;
   });
 
   lessonSetting.addEventListener("change", updateLessonSummary);
