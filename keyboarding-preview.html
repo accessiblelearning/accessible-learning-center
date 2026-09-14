@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-30" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-31" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -488,6 +488,29 @@
       background: #d9efff !important;
       color: #06142d !important;
       border-color: #65aef5 !important;
+    }
+    /* Keep enlarged typing sequences on one line and pan to the active character. */
+    #practicePanel .kb-prompt {
+      overflow: hidden;
+    }
+    #practicePanel .kb-prompt-line {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      padding: .1em 0 .65em;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      text-align: left;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+    }
+    #practicePanel .kb-prompt-line::-webkit-scrollbar {
+      display: none;
+    }
+    #practicePanel .kb-char-current::after {
+      bottom: -.55em;
     }
   </style>
 </head>
