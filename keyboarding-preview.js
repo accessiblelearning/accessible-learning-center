@@ -96,7 +96,7 @@
   const handSymbol = document.getElementById("handSymbol");
   let useSiteVoice = true;
   let useSounds = true;
-  let showHands = true;
+  let showKeyboard = true;
   let showCaptions = false;
   let rememberProgress = false;
   let audioContext = null;
@@ -343,7 +343,7 @@
   }
 
   function updateKeyGuide() {
-    const visible = session && session.started && !session.finished && session.mode !== "free";
+    const visible = session && session.started && !session.finished && session.mode !== "free" && showKeyboard;
     keyboardGuide.hidden = !visible;
     if (!visible) return;
     const guidance = keyFinger(session.prompt[session.position]);
@@ -356,7 +356,7 @@
     });
     handSymbol.dataset.hand = guidance.handId;
     handCue.textContent = (shift ? "Hold " + shift + " • " : "") + guidance.hand + (guidance.finger ? " • " + guidance.finger : "");
-    document.querySelector(".kb-hand-cue").hidden = !showHands;
+    document.querySelector(".kb-hand-cue").hidden = false;
   }
 
   function currentPromptGroup() {
@@ -416,7 +416,7 @@
     document.getElementById("menuVoiceValue").textContent = useSiteVoice ? "Site voice" : "My screen reader";
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
     document.getElementById("menuCaptionValue").textContent = document.getElementById("captionSetting").checked ? "On" : "Off";
-    document.getElementById("menuHandsValue").textContent = document.getElementById("handsSetting").checked ? "Shown" : "Hidden";
+    document.getElementById("menuKeyboardValue").textContent = document.getElementById("keyboardSetting").checked ? "Shown" : "Hidden";
     document.getElementById("menuWpmValue").textContent = document.getElementById("wpmSetting").value + " WPM";
     document.getElementById("menuAccuracyValue").textContent = document.getElementById("accuracySetting").value + "%";
     document.getElementById("wpmMinus").setAttribute("aria-label", "Decrease passing speed. Current target " + document.getElementById("wpmSetting").value + " words per minute.");
@@ -493,7 +493,7 @@
 
   function startFromMenu() {
     useSounds = document.getElementById("soundSetting").checked;
-    showHands = document.getElementById("handsSetting").checked;
+    showKeyboard = document.getElementById("keyboardSetting").checked;
     showCaptions = document.getElementById("captionSetting").checked;
     rememberProgress = document.getElementById("saveSetting").checked;
     applyTextSize();
@@ -511,7 +511,7 @@
     if (setting === "language") cycleSelect(document.getElementById("languageSetting"), direction);
     if (setting === "sound") document.getElementById("soundSetting").checked = !document.getElementById("soundSetting").checked;
     if (setting === "captions") document.getElementById("captionSetting").checked = !document.getElementById("captionSetting").checked;
-    if (setting === "hands") document.getElementById("handsSetting").checked = !document.getElementById("handsSetting").checked;
+    if (setting === "keyboard") document.getElementById("keyboardSetting").checked = !document.getElementById("keyboardSetting").checked;
     if (setting === "save") document.getElementById("saveSetting").checked = !document.getElementById("saveSetting").checked;
     if (setting === "voice") setVoice(!useSiteVoice, false);
     if (setting === "hand") refreshLessonAvailability();
