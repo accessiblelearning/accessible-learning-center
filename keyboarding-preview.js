@@ -942,7 +942,7 @@
     if (capsLockMismatch) {
       targetPrompt.classList.remove("correct");
       targetPrompt.classList.add("incorrect");
-      const warning = "Caps Lock is on. Press Caps Lock to turn it off, then press " + expected.toUpperCase() + ".";
+      const warning = "Caps Lock is on. Press Caps Lock to turn it off. Caps Lock is located directly to the left of the A key. Then press " + expected.toUpperCase() + ".";
       practiceStatus.textContent = warning;
       tone(190, 0.12);
       speak(warning);
