@@ -296,12 +296,33 @@
     return Array.from(text).map(spokenKeyName).join(", ");
   }
 
+  function spokenDetailedText(text) {
+    const punctuationNames = {
+      ".": "period", ",": "comma", "?": "question mark", "!": "exclamation point",
+      ";": "semicolon", ":": "colon", "'": "apostrophe", '"': "quotation mark",
+      "-": "hyphen", "_": "underscore", "/": "slash", "\\": "backslash",
+      "(": "opening parenthesis", ")": "closing parenthesis", "[": "opening bracket",
+      "]": "closing bracket", "{": "opening brace", "}": "closing brace",
+      "@": "at sign", "#": "number sign", "$": "dollar sign", "%": "percent sign",
+      "&": "ampersand", "+": "plus sign", "=": "equals sign"
+    };
+    const tokens = text.match(/[A-Za-z]+|[0-9]+|\s+|./g) || [];
+    return tokens.map(token => {
+      if (/^[0-9]+$/.test(token)) return " number " + token + " ";
+      if (/^\s+$/.test(token)) return " ";
+      if (punctuationNames[token]) return " " + punctuationNames[token] + " ";
+      return token;
+    }).join("").replace(/\s+/g, " ").trim();
+  }
+
   function needsShift(character) {
     return /^[A-Z]$/.test(character) || "~!@#$%^&*()_+{}|:\"<>?".includes(character);
   }
 
   function spokenKeyName(character) {
-    return /^[A-Z]$/.test(character) ? "capital " + character : speakable(character);
+    if (/^[A-Z]$/.test(character)) return "capital " + character;
+    if (/^[0-9]$/.test(character)) return "number " + character;
+    return speakable(character);
   }
 
   function requiredShift(character) {
@@ -392,6 +413,15 @@
     }
     if (/^[A-Z](?: [A-Z])+$/.test(group)) {
       return "these capital letters with a space between each letter, " + spokenExactSequence(group);
+    }
+    if (/^[0-9 ]+$/.test(group)) {
+      return "these number keys with the spaces exactly as announced, " + spokenExactSequence(group);
+    }
+    if (/^[^A-Za-z]+$/.test(group) && /[0-9]/.test(group)) {
+      return "this number and symbol sequence, " + spokenExactSequence(group);
+    }
+    if (/[0-9]|[.,?!;:'"@#$%&()_+\-\/\\]/.test(group)) {
+      return spokenDetailedText(group);
     }
     if (!session) return speakableSequence(group);
     const words = group.split(" ").filter(Boolean);
