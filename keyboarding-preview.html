@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-40" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-41" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -526,6 +526,22 @@
     body.kb-size-large #practicePanel .kb-hand-cue { font-size: clamp(1.25rem, 3.4vw, 1.8rem); }
     body.kb-size-extra-large #practicePanel .kb-hand-cue { font-size: clamp(1.45rem, 3.8vw, 2rem); }
     #freeTypeIdea { flex: 0 0 auto; margin: .2rem 0 .4rem; }
+    body.kb-size-large #practicePanel .kb-prompt-line.kb-prompt-window,
+    body.kb-size-extra-large #practicePanel .kb-prompt-line.kb-prompt-window {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      padding-left: .2em;
+      padding-right: .2em;
+      overflow: hidden;
+      white-space: nowrap;
+      text-align: center;
+    }
+    body.kb-size-large #practicePanel .kb-prompt-window .kb-char-space,
+    body.kb-size-extra-large #practicePanel .kb-prompt-window .kb-char-space {
+      min-width: 1.5em;
+    }
   </style>
 </head>
 <body>
