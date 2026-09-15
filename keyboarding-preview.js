@@ -758,6 +758,7 @@
     stepSelect(sizeSetting, direction);
     applyTextSize();
     updateSetupMenu();
+    if (session && session.started && !session.finished && !isFreeTypingMode(session.mode)) renderTrackedPrompt();
     const message = "Print size: " + selectedText(sizeSetting) + ".";
     practiceStatus.textContent = message;
     speak(message);
@@ -987,10 +988,39 @@
 
   function renderTrackedPrompt() {
     if (!session || isFreeTypingMode(session.mode)) return;
-    const start = session.promptGroups ? currentPromptGroupStart() : session.durationSeconds ? Math.max(0, session.position - 20) : 0;
-    const end = session.promptGroups ? start + currentPromptGroup().length : session.durationSeconds ? Math.min(session.prompt.length, start + 700) : session.prompt.length;
+    const largeWindow = document.body.classList.contains("kb-size-large");
+    const extraLargeWindow = document.body.classList.contains("kb-size-extra-large");
+    const useReadingWindow = largeWindow || extraLargeWindow;
+    const scopeStart = session.promptGroups ? currentPromptGroupStart() : 0;
+    const scopeEnd = session.promptGroups ? scopeStart + currentPromptGroup().length : session.prompt.length;
+    let start = session.promptGroups ? scopeStart : session.durationSeconds ? Math.max(0, session.position - 20) : 0;
+    let end = session.promptGroups ? scopeEnd : session.durationSeconds ? Math.min(session.prompt.length, start + 700) : session.prompt.length;
+
+    if (useReadingWindow && scopeEnd > scopeStart) {
+      const currentPosition = Math.min(session.position, scopeEnd - 1);
+      const currentCharacter = session.prompt[currentPosition];
+      if (currentCharacter === " ") {
+        start = currentPosition;
+        end = currentPosition + 1;
+      } else {
+        let wordStart = currentPosition;
+        let wordEnd = currentPosition + 1;
+        while (wordStart > scopeStart && session.prompt[wordStart - 1] !== " ") wordStart -= 1;
+        while (wordEnd < scopeEnd && session.prompt[wordEnd] !== " ") wordEnd += 1;
+        const maximumCharacters = extraLargeWindow ? 4 : 6;
+        if (wordEnd - wordStart <= maximumCharacters) {
+          start = wordStart;
+          end = wordEnd;
+        } else {
+          const positionInWord = currentPosition - wordStart;
+          start = wordStart + Math.floor(positionInWord / maximumCharacters) * maximumCharacters;
+          end = Math.min(wordEnd, start + maximumCharacters);
+        }
+      }
+    }
+
     const line = document.createElement("span");
-    line.className = "kb-prompt-line";
+    line.className = "kb-prompt-line" + (useReadingWindow ? " kb-prompt-window" : "");
     for (let index = start; index < end; index += 1) {
       const character = session.prompt[index];
       const marker = document.createElement("span");
@@ -1003,7 +1033,7 @@
     }
     targetPrompt.replaceChildren(line);
     const currentMarker = line.querySelector(".kb-char-current");
-    if (currentMarker) {
+    if (currentMarker && !useReadingWindow) {
       window.requestAnimationFrame(() => {
         const centeredPosition = currentMarker.offsetLeft - ((line.clientWidth - currentMarker.offsetWidth) / 2);
         line.scrollLeft = Math.max(0, centeredPosition);
