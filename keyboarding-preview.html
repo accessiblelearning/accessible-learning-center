@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-38" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-39" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -576,10 +576,10 @@
           <div class="kb-field">
             <label for="textSizeSetting">Practice text size</label>
             <select id="textSizeSetting">
-              <option value="1">Standard</option>
-              <option value="1.25">Large</option>
-              <option value="1.5">Extra large</option>
-              <option value="2">Largest</option>
+              <option value="0.85">Small</option>
+              <option value="1" selected>Standard</option>
+              <option value="1.5">Large</option>
+              <option value="2">Extra large</option>
             </select>
           </div>
           <div class="kb-field">
@@ -623,6 +623,14 @@
           <div class="kb-field">
             <label for="voiceRateSetting">Speaking rate</label>
             <select id="voiceRateSetting">
+              <option value="10">10 percent</option>
+              <option value="15">15 percent</option>
+              <option value="20">20 percent</option>
+              <option value="25">25 percent</option>
+              <option value="30">30 percent</option>
+              <option value="35">35 percent</option>
+              <option value="40">40 percent</option>
+              <option value="45">45 percent</option>
               <option value="50">50 percent</option>
               <option value="55">55 percent</option>
               <option value="60">60 percent</option>
@@ -634,26 +642,6 @@
               <option value="90" selected>90 percent</option>
               <option value="95">95 percent</option>
               <option value="100">100 percent</option>
-              <option value="105">105 percent</option>
-              <option value="110">110 percent</option>
-              <option value="115">115 percent</option>
-              <option value="120">120 percent</option>
-              <option value="125">125 percent</option>
-              <option value="130">130 percent</option>
-              <option value="135">135 percent</option>
-              <option value="140">140 percent</option>
-              <option value="145">145 percent</option>
-              <option value="150">150 percent</option>
-              <option value="155">155 percent</option>
-              <option value="160">160 percent</option>
-              <option value="165">165 percent</option>
-              <option value="170">170 percent</option>
-              <option value="175">175 percent</option>
-              <option value="180">180 percent</option>
-              <option value="185">185 percent</option>
-              <option value="190">190 percent</option>
-              <option value="195">195 percent</option>
-              <option value="200">200 percent</option>
             </select>
           </div>
         </fieldset>
@@ -717,7 +705,7 @@
         <button class="kb-menu-option" type="button" data-setting="save"><span class="kb-menu-label">Save progress on this browser</span><span class="kb-menu-value" id="menuSaveValue">Off</span></button>
         <button class="kb-menu-option kb-back" type="button" data-setting="back"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
       </div>
-      <p class="kb-menu-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> increase or change. <strong>Shift plus Enter:</strong> decrease or choose the previous option. Speed, accuracy, voice choice, and speaking rate also have Minus and Plus buttons. <strong>Escape:</strong> go back.</p>
+      <p class="kb-menu-help"><strong>Up or Down:</strong> move through every setting and its Minus or Plus controls. <strong>Enter:</strong> increase or change. Speaking rate returns to 10% after 100%. <strong>Shift plus Enter:</strong> decrease or choose the previous option. <strong>Escape:</strong> go back.</p>
     </section>
 
     <section class="kb-panel kb-stage" id="statsPanel" aria-labelledby="statsHeading" hidden>
