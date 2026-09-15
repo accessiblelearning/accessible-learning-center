@@ -8,7 +8,7 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-39" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-40" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -511,6 +511,21 @@
     #practicePanel .kb-char-current::after {
       bottom: -.55em;
     }
+    /* Clearly distinct lesson text sizes. */
+    body.kb-size-small #practicePanel .kb-prompt { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+    body.kb-size-standard #practicePanel .kb-prompt { font-size: clamp(4rem, 11vw, 8.5rem); }
+    body.kb-size-large #practicePanel .kb-prompt { font-size: clamp(5rem, 13vw, 10rem); }
+    body.kb-size-extra-large #practicePanel .kb-prompt { font-size: clamp(6rem, 15vw, 11.5rem); }
+    body.kb-size-small #practicePanel .kb-prompt--long { font-size: clamp(1.45rem, 3vw, 2.35rem); }
+    body.kb-size-standard #practicePanel .kb-prompt--long { font-size: clamp(2rem, 5vw, 4rem); }
+    body.kb-size-large #practicePanel .kb-prompt--long { font-size: clamp(2.65rem, 6.5vw, 5rem); }
+    body.kb-size-extra-large #practicePanel .kb-prompt--long { font-size: clamp(3.25rem, 8vw, 6rem); }
+    body.kb-size-small #practicePanel .kb-key { font-size: clamp(.58rem, 1.25vw, .9rem); }
+    body.kb-size-large #practicePanel .kb-key { font-size: clamp(.88rem, 2vw, 1.55rem); }
+    body.kb-size-extra-large #practicePanel .kb-key { font-size: clamp(1rem, 2.3vw, 1.75rem); }
+    body.kb-size-large #practicePanel .kb-hand-cue { font-size: clamp(1.25rem, 3.4vw, 1.8rem); }
+    body.kb-size-extra-large #practicePanel .kb-hand-cue { font-size: clamp(1.45rem, 3.8vw, 2rem); }
+    #freeTypeIdea { flex: 0 0 auto; margin: .2rem 0 .4rem; }
   </style>
 </head>
 <body>
@@ -553,10 +568,13 @@
               <option value="guided">Guided lesson</option>
               <option value="words">Practice words</option>
               <option value="sentences">Practice sentences</option>
-              <option value="speed-60">One-minute speed test</option>
-              <option value="speed-180">Three-minute speed test</option>
-              <option value="speed-360">Six-minute speed test</option>
-              <option value="free">Free typing</option>
+              <option value="speed-60">One-minute timed copy practice</option>
+              <option value="speed-180">Three-minute timed copy practice</option>
+              <option value="speed-360">Six-minute timed copy practice</option>
+              <option value="free-speed-60">One-minute timed free typing</option>
+              <option value="free-speed-180">Three-minute timed free typing</option>
+              <option value="free-speed-360">Six-minute timed free typing</option>
+              <option value="free">Untimed free typing</option>
             </select>
           </div>
           <div class="kb-field">
@@ -631,7 +649,7 @@
               <option value="35">35 percent</option>
               <option value="40">40 percent</option>
               <option value="45">45 percent</option>
-              <option value="50">50 percent</option>
+              <option value="50" selected>50 percent</option>
               <option value="55">55 percent</option>
               <option value="60">60 percent</option>
               <option value="65">65 percent</option>
@@ -639,7 +657,7 @@
               <option value="75">75 percent</option>
               <option value="80">80 percent</option>
               <option value="85">85 percent</option>
-              <option value="90" selected>90 percent</option>
+              <option value="90">90 percent</option>
               <option value="95">95 percent</option>
               <option value="100">100 percent</option>
             </select>
@@ -658,17 +676,40 @@
 
     <section class="kb-panel" id="practiceMenuPanel" aria-labelledby="practiceMenuHeading" hidden>
       <h2 id="practiceMenuHeading">Practice</h2>
-      <p class="kb-summary">Choose a practice activity.</p>
+      <p class="kb-summary">Choose an activity. Copy practice uses only keys learned through your current lesson.</p>
       <div class="kb-menu kb-arrow-menu" id="practiceMenu" aria-label="Practice choices">
-        <button class="kb-menu-option" type="button" data-practice-mode="words"><span class="kb-menu-value">Practice words</span></button>
-        <button class="kb-menu-option" type="button" data-practice-mode="sentences"><span class="kb-menu-value">Practice sentences</span></button>
-        <button class="kb-menu-option" type="button" data-practice-mode="speed-60"><span class="kb-menu-value">One-minute speed test</span></button>
-        <button class="kb-menu-option" type="button" data-practice-mode="speed-180"><span class="kb-menu-value">Three-minute speed test</span></button>
-        <button class="kb-menu-option" type="button" data-practice-mode="speed-360"><span class="kb-menu-value">Six-minute speed test</span></button>
-        <button class="kb-menu-option" type="button" data-practice-mode="free"><span class="kb-menu-value">Free typing</span></button>
-        <button class="kb-menu-option kb-back" type="button" data-practice-mode="back"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="words"><span class="kb-menu-value">Practice Words</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="sentences"><span class="kb-menu-value">Practice Sentences</span></button>
+        <button class="kb-menu-option" type="button" data-practice-menu="copyTestMenuPanel"><span class="kb-menu-label">Timed Copy Practice</span><span class="kb-menu-value">Copy provided material</span></button>
+        <button class="kb-menu-option" type="button" data-practice-menu="freeTestMenuPanel"><span class="kb-menu-label">Timed Free Typing</span><span class="kb-menu-value">Type anything you choose</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="free"><span class="kb-menu-value">Untimed Free Typing</span></button>
+        <button class="kb-menu-option kb-back" type="button" data-practice-menu="setupPanel"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
       </div>
-      <p class="kb-menu-help"><strong>Up or Down:</strong> move through practice choices. <strong>Enter:</strong> start. <strong>Escape:</strong> go back.</p>
+      <p class="kb-menu-help"><strong>Up or Down:</strong> move through choices. <strong>Enter:</strong> open or start. <strong>Escape:</strong> go back.</p>
+    </section>
+
+    <section class="kb-panel" id="copyTestMenuPanel" aria-labelledby="copyTestMenuHeading" hidden>
+      <h2 id="copyTestMenuHeading">Timed Copy Practice</h2>
+      <p class="kb-summary">Copy varied lesson-safe material. Results include accuracy, errors, and WPM.</p>
+      <div class="kb-menu kb-arrow-menu" aria-label="Timed copy practice lengths">
+        <button class="kb-menu-option" type="button" data-practice-mode="speed-60"><span class="kb-menu-value">1 Minute</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="speed-180"><span class="kb-menu-value">3 Minutes</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="speed-360"><span class="kb-menu-value">6 Minutes</span></button>
+        <button class="kb-menu-option kb-back" type="button" data-practice-menu="practiceMenuPanel"><span class="kb-menu-value">Back to Practice</span></button>
+      </div>
+      <p class="kb-menu-help"><strong>Up or Down:</strong> choose a time. <strong>Enter:</strong> start. <strong>Escape:</strong> go back.</p>
+    </section>
+
+    <section class="kb-panel" id="freeTestMenuPanel" aria-labelledby="freeTestMenuHeading" hidden>
+      <h2 id="freeTestMenuHeading">Timed Free Typing</h2>
+      <p class="kb-summary">Type anything you choose. An optional writing idea is provided. Results include gross WPM, words, and characters.</p>
+      <div class="kb-menu kb-arrow-menu" aria-label="Timed free typing lengths">
+        <button class="kb-menu-option" type="button" data-practice-mode="free-speed-60"><span class="kb-menu-value">1 Minute</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="free-speed-180"><span class="kb-menu-value">3 Minutes</span></button>
+        <button class="kb-menu-option" type="button" data-practice-mode="free-speed-360"><span class="kb-menu-value">6 Minutes</span></button>
+        <button class="kb-menu-option kb-back" type="button" data-practice-menu="practiceMenuPanel"><span class="kb-menu-value">Back to Practice</span></button>
+      </div>
+      <p class="kb-menu-help"><strong>Up or Down:</strong> choose a time. <strong>Enter:</strong> open. Begin typing to start the timer. <strong>Escape:</strong> go back.</p>
     </section>
 
     <section class="kb-panel" id="settingsPanel" aria-labelledby="settingsHeading" hidden>
@@ -691,7 +732,7 @@
           <button class="kb-step-adjust" id="voiceChoicePlus" type="button" data-adjust="voice-choice" data-direction="1" aria-label="Next site voice">+</button>
         </div>
         <div class="kb-stepper-row">
-          <button class="kb-menu-option" type="button" data-setting="voice-rate"><span class="kb-menu-label">Speaking rate</span><span class="kb-menu-value" id="menuVoiceRateValue">90%</span></button>
+          <button class="kb-menu-option" type="button" data-setting="voice-rate"><span class="kb-menu-label">Speaking rate</span><span class="kb-menu-value" id="menuVoiceRateValue">50%</span></button>
           <button class="kb-step-adjust" id="voiceRateMinus" type="button" data-adjust="voice-rate" data-direction="-1" aria-label="Decrease speaking rate">−</button>
           <button class="kb-step-adjust" id="voiceRatePlus" type="button" data-adjust="voice-rate" data-direction="1" aria-label="Increase speaking rate">+</button>
         </div>
@@ -736,6 +777,7 @@
         <div class="kb-keyboard" id="visualKeyboard"></div>
         <div class="kb-hand-cue"><span class="kb-hand-symbol" id="handSymbol">&#x270B;&#xFE0E;</span><span id="handCue"></span></div>
       </div>
+      <p class="kb-summary" id="freeTypeIdea" hidden></p>
       <textarea class="kb-free-type" id="freeTypeInput" aria-label="Free typing area" hidden></textarea>
       <p class="kb-typed" id="typedText" aria-label="Text typed correctly"></p>
       <p class="kb-status kb-visually-hidden" id="practiceStatus" role="status" aria-live="polite"></p>
@@ -752,9 +794,9 @@
     <section class="kb-panel kb-stage kb-results-screen" id="resultsPanel" aria-labelledby="resultsHeading" hidden>
       <p class="kb-visually-hidden" id="resultsSummary"></p>
       <div class="kb-results">
-        <div class="kb-result"><span>Errors</span><strong id="errorsResult">0</strong></div>
-        <div class="kb-result"><span>Accuracy</span><strong id="accuracyResult">0%</strong></div>
-        <div class="kb-result"><span>Words per minute</span><strong id="speedResult">0</strong></div>
+        <div class="kb-result"><span id="errorsLabel">Errors</span><strong id="errorsResult">0</strong></div>
+        <div class="kb-result"><span id="accuracyLabel">Accuracy</span><strong id="accuracyResult">0%</strong></div>
+        <div class="kb-result"><span id="speedLabel">Words per minute</span><strong id="speedResult">0</strong></div>
       </div>
       <div class="kb-finish-row">
         <div class="kb-celebration">
