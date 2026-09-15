@@ -167,7 +167,7 @@
   try {
     selectedVoiceURI = localStorage.getItem("alcKeyboardingVoiceURI") || "";
     const savedVoiceRate = Number(localStorage.getItem("alcKeyboardingVoiceRate"));
-    if (savedVoiceRate >= 50 && savedVoiceRate <= 200 && savedVoiceRate % 5 === 0) voiceRatePercent = savedVoiceRate;
+    if (savedVoiceRate >= 10 && savedVoiceRate <= 100 && savedVoiceRate % 5 === 0) voiceRatePercent = savedVoiceRate;
   } catch (error) {
     selectedVoiceURI = "";
     voiceRatePercent = 90;
@@ -746,7 +746,7 @@
     }
     if (setting === "voice-rate") {
       const voiceRate = document.getElementById("voiceRateSetting");
-      stepSelect(voiceRate, direction);
+      cycleSelect(voiceRate, direction);
       voiceRatePercent = Number(voiceRate.value);
       saveVoicePreferences();
     }
@@ -1158,22 +1158,20 @@
   });
 
   document.querySelectorAll(".kb-arrow-menu").forEach(menu => {
-    const buttons = Array.from(menu.querySelectorAll(".kb-menu-option"));
+    const controls = Array.from(menu.querySelectorAll(".kb-menu-option, .kb-step-adjust"));
     menu.addEventListener("keydown", event => {
       if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
-      const availableButtons = buttons.filter(button => !button.hidden && !button.disabled);
-      const adjustmentRow = document.activeElement.closest ? document.activeElement.closest(".kb-stepper-row") : null;
-      if (adjustmentRow && adjustmentRow.querySelector(".kb-menu-option")) adjustmentRow.querySelector(".kb-menu-option").focus();
-      const currentIndex = Math.max(0, availableButtons.indexOf(document.activeElement));
+      const availableControls = controls.filter(control => !control.hidden && !control.disabled);
+      const currentIndex = Math.max(0, availableControls.indexOf(document.activeElement));
       let nextIndex = currentIndex;
-      if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % availableButtons.length;
-      else if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + availableButtons.length) % availableButtons.length;
+      if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % availableControls.length;
+      else if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + availableControls.length) % availableControls.length;
       else if (event.key === "Home") nextIndex = 0;
-      else if (event.key === "End") nextIndex = availableButtons.length - 1;
+      else if (event.key === "End") nextIndex = availableControls.length - 1;
       event.preventDefault();
-      availableButtons[nextIndex].focus();
+      availableControls[nextIndex].focus();
     });
-    buttons.forEach(button => button.addEventListener("focus", () => speak(button.getAttribute("aria-label") || button.textContent.trim())));
+    controls.forEach(control => control.addEventListener("focus", () => speak(control.getAttribute("aria-label") || control.textContent.trim())));
   });
 
   setupMenu.querySelectorAll("[data-main-action]").forEach(button => button.addEventListener("click", () => {
@@ -1207,7 +1205,6 @@
       const settingButton = document.querySelector('[data-setting="' + button.dataset.adjust + '"]');
       activateSetting(settingButton, Number(button.dataset.direction));
     });
-    button.addEventListener("focus", () => speak(button.getAttribute("aria-label")));
   });
 
   function processPracticeCharacter(typedKey, capsLockOn) {
