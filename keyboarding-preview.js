@@ -79,6 +79,38 @@
     "good posture can help your hands stay relaxed."
   ];
 
+  const PASSAGE_BANK = [
+    "the morning was quiet. a reader opened a book and began to type. each word appeared at a calm, steady pace.",
+    "a small bird sat near the open window. it sang for a while, then flew over the green trees.",
+    "the student placed both hands on home row. after a short practice, the keys felt easier to find.",
+    "a blue folder rested on the desk. inside it were clear notes, a short list, and a map for the day.",
+    "The morning class began with a short review. Everyone found the home-row keys and typed at a comfortable pace.",
+    "A reader opened a new book at the library. The first page described a quiet park filled with birds and trees.",
+    "The student practiced for 10 minutes. After the timer ended, the results showed better speed and steady accuracy.",
+    "There were 2 folders on the desk. One held 5 pages, and the other held 8 pages.",
+    "Did the student save the new file? Yes, the file was saved before the class ended.",
+    "The timer reached 0, and everyone finished! The group took a short break before beginning again.",
+    "A notebook cost $4, and a folder cost $2. The student paid $6 for both items.",
+    "The reader's goal was 90% accuracy. After careful practice, the score reached 95%.",
+    "The teacher wrote, \"Please open file #4.\" The student opened it, read 3 pages, and saved the notes.",
+    "Before class, send the notes to class@example.org. Use the subject line \"Lesson #5 is complete.\"",
+    "The step-by-step guide was saved as lesson_5_notes. It included a short review, 2 examples, and a final question.",
+    "The group compared the scores: 6 < 9, and 10 > 4. Everyone checked the signs before moving on.",
+    "The class practiced reading & typing. Some students copied a passage, while others chose free typing.",
+    "When the timer begins, type at a natural pace. If an error happens, correct it and continue without rushing."
+  ];
+
+  const FREE_TYPING_IDEAS = [
+    "Optional writing idea: Describe something you did today.",
+    "Optional writing idea: Write about a favorite place.",
+    "Optional writing idea: Describe your morning routine.",
+    "Optional writing idea: Explain how to make a simple meal.",
+    "Optional writing idea: Write a short message to a friend.",
+    "Optional writing idea: Describe a useful piece of technology.",
+    "Optional writing idea: Tell a short story about finding something that was lost.",
+    "Optional writing idea: Explain one goal you would like to reach."
+  ];
+
     // [title, goal, newly introduced keys, practice groups, lesson introduction]
   const lessonData = [
     ["Left Home Row ASDF", "Find F by its raised bump, then position the remaining left-hand fingers on D, S, and A.", "asdf", ["fdsa fdsa fdsa", "asdf asdf asdf", "fa fd fs da ds sa", "sad dad fad add", "ads dads fads"], "Find F by feeling for its raised bump. Place your left pointer finger on F. Moving to the left, place your middle finger on D, your ring finger on S, and your pinky finger on A. Use either thumb for Space."],
@@ -133,13 +165,14 @@
     ["Final Keyboarding Challenge", "Use the full keyboarding course in one final practice.", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?!'$%@#&()\"-_", ["On Monday, September 12, Sam and Jill met at 9 in Room #4.", "They reviewed 10 files and corrected 2 email addresses.", "They completed 90% of the project before lunch.", "When Jill asked, \"Can we finish today?\"", "Sam replied, \"Yes!\"", "If we complete the last 3 pages,", "we can send the final file to name@example.com.", "The team saved the work as final_project_notes and finished by 4."], "Begin with your fingers on F and J. Work accurately, correct mistakes, and type one part at a time. This is a skill check, not a race."]
   ];
 
-  const panels = ["unlockPanel", "setupPanel", "practiceMenuPanel", "settingsPanel", "statsPanel", "practicePanel", "resultsPanel"].map(id => document.getElementById(id));
+  const panels = ["unlockPanel", "setupPanel", "practiceMenuPanel", "copyTestMenuPanel", "freeTestMenuPanel", "settingsPanel", "statsPanel", "practicePanel", "resultsPanel"].map(id => document.getElementById(id));
   const lessonSetting = document.getElementById("lessonSetting");
   const modeSetting = document.getElementById("modeSetting");
   const handSetting = document.getElementById("handSetting");
   const setupMenu = document.getElementById("setupMenu");
   const targetPrompt = document.getElementById("targetPrompt");
   const freeTypeInput = document.getElementById("freeTypeInput");
+  const freeTypeIdea = document.getElementById("freeTypeIdea");
   const finishFreeType = document.getElementById("finishFreeType");
   const typedText = document.getElementById("typedText");
   const practiceStatus = document.getElementById("practiceStatus");
@@ -163,14 +196,14 @@
     keyboardDarkMode = false;
   }
   let selectedVoiceURI = "";
-  let voiceRatePercent = 90;
+  let voiceRatePercent = 50;
   try {
     selectedVoiceURI = localStorage.getItem("alcKeyboardingVoiceURI") || "";
     const savedVoiceRate = Number(localStorage.getItem("alcKeyboardingVoiceRate"));
     if (savedVoiceRate >= 10 && savedVoiceRate <= 100 && savedVoiceRate % 5 === 0) voiceRatePercent = savedVoiceRate;
   } catch (error) {
     selectedVoiceURI = "";
-    voiceRatePercent = 90;
+    voiceRatePercent = 50;
   }
   let rememberProgress = false;
   let audioContext = null;
@@ -269,7 +302,9 @@
       (voice.voiceURI || voice.name) === selectedVoiceURI
     );
     if (selectedVoice) utterance.voice = selectedVoice;
-    utterance.rate = voiceRatePercent / 100;
+    utterance.rate = voiceRatePercent <= 50
+      ? 0.4 + ((voiceRatePercent - 10) / 40) * 0.6
+      : 1 + ((voiceRatePercent - 50) / 50) * 2;
     utterance.onend = complete;
     utterance.onerror = complete;
     window.speechSynthesis.speak(utterance);
@@ -341,31 +376,35 @@
     return Array.from(text).every(character => character === " " || allowed.includes(character));
   }
 
+  function isFreeTypingMode(mode) {
+    return mode === "free" || mode.startsWith("free-speed-");
+  }
+
+  function durationForMode(mode) {
+    const match = mode.match(/^(?:speed|free-speed)-(60|180|360)$/);
+    return match ? Number(match[1]) : 0;
+  }
+
+  let practiceVariationCounter = 0;
+
   function buildPrompt(lesson, mode, hand) {
-    const lowerAllowed = lesson.allowed.toLowerCase() + lesson.allowed.toUpperCase();
+    const allowed = lesson.allowed;
     const handFits = text => hand === "both" || Array.from(text.toLowerCase()).every(character =>
       !/[a-z]/.test(character) || belongsToHand(character, hand)
     );
-    let words = WORD_BANK.filter(word => fits(word, lowerAllowed) && handFits(word));
+    let words = WORD_BANK.filter(word => fits(word, allowed) && handFits(word));
     if (!words.length) {
-      words = Array.from(new Set(lesson.focus.toLowerCase().replace(/[^a-z]/g, ""))) || [];
+      words = Array.from(new Set(lesson.focus.toLowerCase().replace(/[^a-z]/g, "")));
       words = words.length ? words : [hand === "right" ? "j" : "f"];
     }
 
-    const lessonGroups = lesson.practiceGroups.filter(group =>
-      fits(group, lowerAllowed) && handFits(group)
-    );
-    const sentenceChoices = SENTENCE_BANK.filter(sentence =>
-      fits(sentence, lowerAllowed) && handFits(sentence)
-    );
-    const phraseChoices = lessonGroups.filter(group =>
-      group.includes(" ") && /[a-z]/i.test(group)
-    );
-    const start = (lesson.number * 7) % words.length;
+    const lessonGroups = lesson.practiceGroups.filter(group => fits(group, allowed) && handFits(group));
+    const sentenceChoices = SENTENCE_BANK.filter(sentence => fits(sentence, allowed) && handFits(sentence));
+    const passageChoices = PASSAGE_BANK.filter(passage => fits(passage, allowed) && handFits(passage));
+    const phraseChoices = lessonGroups.filter(group => group.includes(" ") && /[a-z]/i.test(group));
+    const start = (lesson.number * 7 + practiceVariationCounter * 5) % words.length;
     const rotatedWords = words.slice(start).concat(words.slice(0, start));
-    const practiceWords = Array.from({ length: 48 }, (_, index) =>
-      rotatedWords[index % rotatedWords.length]
-    );
+    const practiceWords = Array.from({ length: 48 }, (_, index) => rotatedWords[index % rotatedWords.length]);
 
     if (mode === "guided") {
       if (hand === "both") return lesson.practiceGroups.slice();
@@ -374,23 +413,37 @@
       const keyGroups = reviewKeys.map(character => character.repeat(4));
       return keyGroups.length ? keyGroups : [hand === "right" ? "jjjj" : "ffff"];
     }
+    if (isFreeTypingMode(mode)) return "";
     if (mode === "words") return practiceWords.join(" ");
     if (mode === "sentences") {
       const available = sentenceChoices.length ? sentenceChoices : phraseChoices;
       if (available.length) {
-        const sentenceStart = lesson.number % available.length;
-        return Array.from({ length: 8 }, (_, index) =>
-          available[(sentenceStart + index) % available.length]
-        ).join(" ");
+        const sentenceStart = (lesson.number + practiceVariationCounter) % available.length;
+        return Array.from({ length: 8 }, (_, index) => available[(sentenceStart + index) % available.length]).join(" ");
       }
       return practiceWords.slice(0, 24).join(" ");
     }
     if (mode.startsWith("speed-")) {
-      return Array.from({ length: 1800 }, (_, index) =>
-        rotatedWords[(index * 11 + Math.floor(index / Math.max(rotatedWords.length, 1))) % rotatedWords.length]
-      ).join(" ");
+      const wordLines = Array.from({ length: Math.max(1, Math.ceil(rotatedWords.length / 8)) }, (_, index) =>
+        Array.from({ length: 8 }, (unused, wordIndex) => rotatedWords[(index * 8 + wordIndex) % rotatedWords.length]).join(" ")
+      );
+      let copyChoices = lesson.number >= 15 && passageChoices.length
+        ? passageChoices.concat(sentenceChoices)
+        : sentenceChoices.concat(phraseChoices, wordLines);
+      copyChoices = Array.from(new Set(copyChoices.filter(Boolean)));
+      if (!copyChoices.length) copyChoices = wordLines;
+      const copyStart = (lesson.number + practiceVariationCounter * 3) % copyChoices.length;
+      const sections = [];
+      let characterCount = 0;
+      let index = 0;
+      while (characterCount < 16000) {
+        const section = copyChoices[(copyStart + index * 5) % copyChoices.length].trim();
+        sections.push(section);
+        characterCount += section.length + 1;
+        index += 1;
+      }
+      return sections.join(" ");
     }
-    if (mode === "free") return "";
     return practiceWords.join(" ");
   }
 
@@ -532,7 +585,7 @@
   }
 
   function updateKeyGuide() {
-    const visible = session && session.started && !session.finished && session.mode !== "free" && showKeyboard;
+    const visible = session && session.started && !session.finished && !isFreeTypingMode(session.mode) && showKeyboard;
     keyboardGuide.hidden = !visible;
     if (!visible) return;
     const guidance = keyFinger(session.prompt[session.position]);
@@ -677,8 +730,13 @@
   }
 
   function applyTextSize() {
-    const scale = Number(document.getElementById("textSizeSetting").value);
+    const sizeSetting = document.getElementById("textSizeSetting");
+    const scale = Number(sizeSetting.value);
+    const sizeNames = { "0.85": "small", "1": "standard", "1.5": "large", "2": "extra-large" };
     document.documentElement.style.setProperty("--kb-scale", String(scale));
+    ["small", "standard", "large", "extra-large"].forEach(sizeName => {
+      document.body.classList.toggle("kb-size-" + sizeName, sizeNames[sizeSetting.value] === sizeName);
+    });
     document.body.classList.toggle("kb-large-results", scale > 1.25);
   }
 
@@ -797,7 +855,8 @@
     const completedLessons = new Set(progress.completed.filter(item => item.startsWith(prefix)).map(item => item.slice(prefix.length)));
     document.getElementById("statsLessons").textContent = completedLessons.size + " of 50";
     document.getElementById("statsSessions").textContent = String(sessions.length);
-    document.getElementById("statsAccuracy").textContent = sessions.length ? Math.max(...sessions.map(item => Number(item.accuracy) || 0)) + "%" : "No sessions";
+    const accuracySessions = sessions.filter(item => item.accuracy !== null && Number.isFinite(Number(item.accuracy)));
+    document.getElementById("statsAccuracy").textContent = accuracySessions.length ? Math.max(...accuracySessions.map(item => Number(item.accuracy))) + "%" : "No copy sessions";
     document.getElementById("statsSpeed").textContent = sessions.length ? Math.max(...sessions.map(item => Number(item.wpm) || 0)) + " WPM" : "No sessions";
     const minutes = Math.round(sessions.reduce((total, item) => total + (Number(item.seconds) || 0), 0) / 60);
     document.getElementById("statsTime").textContent = minutes + (minutes === 1 ? " minute" : " minutes");
@@ -844,10 +903,15 @@
 
   function currentInstruction() {
     if (!session) return "";
-    if (session.mode === "free") return "Type anything you would like. Select Finish Free Typing when you are done.";
+    if (isFreeTypingMode(session.mode)) {
+      const timeMessage = session.durationSeconds
+        ? "You have " + (session.durationSeconds / 60) + (session.durationSeconds === 60 ? " minute" : " minutes") + ". "
+        : "";
+      return "Free typing. " + timeMessage + session.freeTypingIdea + " You may use the idea or type anything you choose.";
+    }
     if (session.durationSeconds) {
       const minutes = session.durationSeconds / 60;
-      return "Speed test for " + minutes + (minutes === 1 ? " minute" : " minutes") + ". Begin typing. Next character: " + speakable(session.prompt[session.position]) + ".";
+      return "Timed copy practice for " + minutes + (minutes === 1 ? " minute" : " minutes") + ". Begin typing. Next character: " + speakable(session.prompt[session.position]) + ".";
     }
     const mastery = session.mode === "guided" ? " To move on, reach " + session.targetAccuracy + " percent accuracy and " + session.targetWpm + " words per minute." : "";
     if (session.promptGroups) {
@@ -866,6 +930,9 @@
   function startInstruction() {
     const controls = " Press Control to repeat these instructions. The Control key is located in the bottom-left corner of your keyboard. Press any key to start. Press Escape to exit.";
     if (!session) return controls.trim();
+    if (isFreeTypingMode(session.mode)) {
+      return currentInstruction() + " Begin typing to start. The first character you type will count. Press Control to repeat. Press Escape to exit.";
+    }
     if (session.mode === "guided") {
       if (session.hand !== "both") {
         return session.lesson.description + " Begin with your " + session.hand + " hand in its home-row position." + controls;
@@ -881,7 +948,7 @@
 
   function nextKeyInstruction() {
     if (!session) return "";
-    if (session.mode === "free") return "Free typing has no required next key.";
+    if (isFreeTypingMode(session.mode)) return currentInstruction();
     const nextCharacter = session.prompt[session.position];
     if (nextCharacter === undefined) return "Sequence complete.";
     const guidance = keyFinger(nextCharacter);
@@ -919,7 +986,7 @@
   }
 
   function renderTrackedPrompt() {
-    if (!session || session.mode === "free") return;
+    if (!session || isFreeTypingMode(session.mode)) return;
     const start = session.promptGroups ? currentPromptGroupStart() : session.durationSeconds ? Math.max(0, session.position - 20) : 0;
     const end = session.promptGroups ? start + currentPromptGroup().length : session.durationSeconds ? Math.min(session.prompt.length, start + 700) : session.prompt.length;
     const line = document.createElement("span");
@@ -954,8 +1021,11 @@
       sentences: "Practice Sentences",
       "speed-60": "One-Minute Speed Test",
       "speed-180": "Three-Minute Speed Test",
-      "speed-360": "Six-Minute Speed Test",
-      free: "Free Typing"
+      "speed-360": "Six-Minute Timed Copy Practice",
+      "free-speed-60": "One-Minute Timed Free Typing",
+      "free-speed-180": "Three-Minute Timed Free Typing",
+      "free-speed-360": "Six-Minute Timed Free Typing",
+      free: "Untimed Free Typing"
     };
     document.getElementById("practiceHeading").textContent = modeNames[session.mode];
     document.getElementById("practiceInstruction").textContent = session.mode === "guided"
@@ -964,6 +1034,7 @@
     if (!session.started) {
       keyboardGuide.hidden = true;
       targetPrompt.hidden = false;
+      freeTypeIdea.hidden = true;
       freeTypeInput.hidden = true;
       finishFreeType.hidden = true;
       lessonProgress.hidden = true;
@@ -971,7 +1042,8 @@
       practiceStatus.hidden = !showCaptions;
       applyCaptionVisibility();
       targetPrompt.className = "kb-prompt kb-ready-prompt";
-      targetPrompt.textContent = "Press any key to start";
+      const readyForFreeTyping = isFreeTypingMode(session.mode);
+      targetPrompt.textContent = readyForFreeTyping ? "Begin typing to start" : "Press any key to start";
       targetPrompt.setAttribute("aria-label", startInstruction());
       progressText.textContent = session.durationSeconds
         ? "Ready: " + (session.durationSeconds / 60) + (session.durationSeconds === 60 ? " minute" : " minutes")
@@ -984,9 +1056,11 @@
     }
     const startShortcut = document.getElementById("startShortcut");
     if (startShortcut) startShortcut.hidden = true;
-    const isFree = session.mode === "free";
+    const isFree = isFreeTypingMode(session.mode);
     keyboardGuide.hidden = isFree;
     targetPrompt.hidden = isFree;
+    freeTypeIdea.hidden = !isFree;
+    freeTypeIdea.textContent = isFree ? session.freeTypingIdea : "";
     freeTypeInput.hidden = !isFree;
     finishFreeType.hidden = !isFree;
     lessonProgress.hidden = isFree;
@@ -1008,7 +1082,10 @@
       : "Character " + (session.position + 1) + " of " + total;
     practiceStatus.textContent = "Begin typing.";
     if (isFree) {
-      freeTypeInput.value = "";
+      if (!session.freeInputInitialized) {
+        freeTypeInput.value = "";
+        session.freeInputInitialized = true;
+      }
       freeTypeInput.focus();
     } else targetPrompt.focus();
   }
@@ -1018,20 +1095,24 @@
     const hand = handSetting.value;
     const lesson = lessonFor(Number(lessonSetting.value), hand);
     const mode = modeSetting.value;
+    practiceVariationCounter += 1;
     const builtPrompt = buildPrompt(lesson, mode, hand);
     const promptGroups = mode === "guided"
       ? (Array.isArray(builtPrompt) ? builtPrompt : [builtPrompt]).filter(Boolean)
       : null;
     const prompt = promptGroups ? promptGroups.join("") : builtPrompt;
     const groupOffsets = promptGroups ? promptGroups.map((group, index) => promptGroups.slice(0, index).reduce((total, item) => total + item.length, 0)) : null;
-    const durationSeconds = mode.startsWith("speed-") ? Number(mode.split("-")[1]) : 0;
+    const durationSeconds = durationForMode(mode);
+    const freeTypingIdea = lesson.number < 15
+      ? "Optional idea: Practice words you know using keys from your current lesson."
+      : FREE_TYPING_IDEAS[(lesson.number + practiceVariationCounter) % FREE_TYPING_IDEAS.length];
     const targetAccuracy = Number(document.getElementById("accuracySetting").value);
     const targetWpm = Number(document.getElementById("wpmSetting").value);
     session = {
       lesson, hand, mode, prompt, position: 0, correct: 0, mistakes: 0,
       mistakesByKey: {}, startedAt: null, durationSeconds,
-      secondsLeft: durationSeconds, targetAccuracy, targetWpm,
-      promptGroups, groupOffsets, groupIndex: 0, announcementToken: 0,
+      secondsLeft: durationSeconds, targetAccuracy, targetWpm, freeTypingIdea,
+      promptGroups, groupOffsets, groupIndex: 0, announcementToken: 0, freeInputInitialized: false,
       typingMilliseconds: 0, segmentStartedAt: null,
       started: false, finished: false, accepting: false
     };
@@ -1069,9 +1150,13 @@
     session.accepting = false;
     if (timerId) window.clearInterval(timerId);
     timerId = null;
-    if (session.mode === "free") session.correct = freeTypeInput.value.length;
+    const isFree = isFreeTypingMode(session.mode);
+    const freeText = isFree ? freeTypeInput.value : "";
+    const freeCharacters = freeText.length;
+    const freeWords = isFree ? (freeText.trim().match(/\S+/g) || []).length : 0;
+    if (isFree) session.correct = freeCharacters;
     const attempts = session.correct + session.mistakes;
-    const accuracy = attempts ? Math.round((session.correct / attempts) * 100) : 0;
+    const accuracy = isFree ? null : (attempts ? Math.round((session.correct / attempts) * 100) : 0);
     const elapsedMilliseconds = session.promptGroups
       ? Math.max(session.typingMilliseconds, 1000)
       : Math.max(Date.now() - session.startedAt, 1000);
@@ -1087,9 +1172,14 @@
     const difficult = Object.keys(session.mistakesByKey).sort((a, b) => session.mistakesByKey[b] - session.mistakesByKey[a]).slice(0, 5);
     const saved = saveProgress();
     const activity = document.getElementById("practiceHeading").textContent;
-    document.getElementById("resultsSummary").textContent = "You finished this attempt of " + activity + " with " + session.correct + " correct characters in " + attempts + " attempts.";
-    document.getElementById("errorsResult").textContent = String(session.mistakes);
-    document.getElementById("accuracyResult").textContent = accuracy + "%";
+    document.getElementById("resultsSummary").textContent = isFree
+      ? "You finished " + activity + " with " + freeWords + " words and " + freeCharacters + " characters at " + wpm + " gross words per minute."
+      : "You finished this attempt of " + activity + " with " + session.correct + " correct characters in " + attempts + " attempts.";
+    document.getElementById("errorsLabel").textContent = isFree ? "Words typed" : "Errors";
+    document.getElementById("accuracyLabel").textContent = isFree ? "Characters typed" : "Accuracy";
+    document.getElementById("speedLabel").textContent = isFree ? "Gross words per minute" : "Words per minute";
+    document.getElementById("errorsResult").textContent = isFree ? String(freeWords) : String(session.mistakes);
+    document.getElementById("accuracyResult").textContent = isFree ? String(freeCharacters) : accuracy + "%";
     document.getElementById("speedResult").textContent = String(wpm);
     document.getElementById("difficultResult").textContent = difficult.length ? difficult.map(speakable).join(", ") : "None";
     document.getElementById("saveResult").textContent = saved
@@ -1189,6 +1279,10 @@
     if (action === "settings") show("settingsPanel");
   }));
 
+  document.querySelectorAll("[data-practice-menu]").forEach(button => button.addEventListener("click", () => {
+    show(button.dataset.practiceMenu);
+  }));
+
   document.querySelectorAll("[data-practice-mode]").forEach(button => button.addEventListener("click", () => {
     if (button.dataset.practiceMode === "back") return show("setupPanel");
     modeSetting.value = button.dataset.practiceMode;
@@ -1272,7 +1366,11 @@
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && document.getElementById("unlockPanel").hidden && document.getElementById("setupPanel").hidden) {
       event.preventDefault();
-      openMenu();
+      if (!document.getElementById("copyTestMenuPanel").hidden || !document.getElementById("freeTestMenuPanel").hidden) {
+        show("practiceMenuPanel");
+      } else {
+        openMenu();
+      }
       return;
     }
     if (document.getElementById("practicePanel").hidden || !session) return;
@@ -1292,11 +1390,16 @@
         return;
       }
       if (event.repeat || event.key === "Shift" || event.key === "Alt" || event.key === "Meta") return;
-      event.preventDefault();
       const startingKey = event.key;
+      const freeTyping = isFreeTypingMode(session.mode);
+      if (freeTyping && startingKey.length !== 1) return;
+      event.preventDefault();
       const capsLockOn = event.getModifierState && event.getModifierState("CapsLock");
       beginPractice();
-      if (session && session.mode !== "free" && session.accepting && startingKey.length === 1) {
+      if (session && freeTyping && startingKey.length === 1) {
+        freeTypeInput.value = startingKey;
+        freeTypeInput.dispatchEvent(new Event("input", { bubbles: true }));
+      } else if (session && session.accepting && startingKey.length === 1) {
         const expected = session.prompt[session.position];
         if (startingKey === expected || (capsLockOn && /^[a-z]$/.test(expected || "") &&
             startingKey === expected.toUpperCase())) {
@@ -1310,7 +1413,7 @@
       if (!event.repeat) controlUsedAsModifier = false;
       return;
     }
-    if (session.mode === "free") return;
+    if (isFreeTypingMode(session.mode)) return;
     if (!session.accepting || event.repeat || event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) {
       if (!session.accepting && event.key.length === 1) event.preventDefault();
       return;
@@ -1354,7 +1457,7 @@
   document.getElementById("statsBack").addEventListener("click", () => show("setupPanel"));
   finishFreeType.addEventListener("click", finishPractice);
   freeTypeInput.addEventListener("input", () => {
-    if (!session || session.mode !== "free") return;
+    if (!session || !isFreeTypingMode(session.mode)) return;
     progressText.textContent = freeTypeInput.value.length + (freeTypeInput.value.length === 1 ? " character typed" : " characters typed");
   });
   buildVisualKeyboard();
