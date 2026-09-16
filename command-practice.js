@@ -24,6 +24,18 @@
       ["Control+Shift+Right Arrow", "Select the next word.", "Extends the selection forward by one word."],
       ["Shift+Down Arrow", "Extend selection down one line.", "Selects from the current cursor position into the next visual line."]
     ],
+    "Google Docs and applications": [
+      ["Control+C", "Copy selected content.", "Copies selected text or an item in Google Docs without removing the original."],
+      ["Control+X", "Cut selected content.", "Removes selected content and places it on the clipboard so it can be moved."],
+      ["Control+V", "Paste clipboard content.", "Inserts the current clipboard content at the active cursor location."],
+      ["Control+Z", "Undo the last action.", "Reverses the most recent supported edit in Google Docs and many Google applications."],
+      ["Control+Y", "Redo an undone action.", "Restores an action that was reversed with Undo when the Google application supports Redo."],
+      ["Control+B", "Toggle bold formatting.", "Turns bold formatting on or off for selected text or text typed next in Google Docs."],
+      ["Control+I", "Toggle italic formatting.", "Turns italic formatting on or off in Google Docs."],
+      ["Control+U", "Toggle underline formatting.", "Turns underline formatting on or off in Google Docs."],
+      ["Control+K", "Insert or edit a link.", "Opens the link controls for selected text in Google Docs and other supported Google editors."],
+      ["Control+F", "Find text.", "Opens Find so you can locate text in the current document or webpage."]
+    ],
     "Web and screen-reader navigation": [
       ["H", "Move to the next heading.", "In JAWS or NVDA webpage browse mode, H moves to the next heading."],
       ["Shift+H", "Move to the previous heading.", "In JAWS or NVDA browse mode, Shift+H moves backward by heading."],
@@ -178,6 +190,7 @@
   const practiceContexts = {
     "General editing": "You are editing information in a workplace document.",
     "Microsoft Word and documents": "You are working in a document with the text cursor active.",
+    "Google Docs and applications": "You are editing a document in a Google application with the text cursor active.",
     "Web and screen-reader navigation": "You are reading a webpage with browse or scan mode active.",
     "Microsoft Excel and spreadsheets": "You are working in a spreadsheet with one cell active.",
     "Presentations": "You are editing a presentation with a slide or object selected.",
@@ -191,6 +204,7 @@
   const reviewLinks = {
     "General editing": ["word-lesson-2.html", "Review Microsoft Word Lesson 2"],
     "Microsoft Word and documents": ["word-lesson-2.html", "Review Microsoft Word Lesson 2"],
+    "Google Docs and applications": ["google-services-manual.html", "Review the Google Services Manual"],
     "Web and screen-reader navigation": ["jaws-lesson-5.html", "Review Screen Readers Lesson 5"],
     "Microsoft Excel and spreadsheets": ["excel-lesson-2.html", "Review Microsoft Excel Lesson 2"],
     "Presentations": ["powerpoint-lesson-2.html", "Review Microsoft PowerPoint Lesson 2"],
@@ -483,7 +497,7 @@
   });
 
   practiceExit?.addEventListener("click", () => {
-    window.location.href = "command-practice.html";
+    window.location.href = "troubleshooting-lab.html?mode=commands";
   });
 
   document.addEventListener("keydown", event => {
@@ -491,7 +505,7 @@
     if (event.target === capture && active) return;
     event.preventDefault();
     if ("speechSynthesis" in window) speechSynthesis.cancel();
-    window.location.href = "command-practice.html";
+    window.location.href = "troubleshooting-lab.html?mode=commands";
   });
 
   stop.addEventListener("click", () => {
@@ -502,7 +516,7 @@
     protectedModifierArmed = "";
     if ("speechSynthesis" in window) speechSynthesis.cancel();
     if (focusedSession) {
-      window.location.href = "command-practice.html";
+      window.location.href = "troubleshooting-lab.html?mode=commands";
       return;
     }
     showPracticeResults(false);

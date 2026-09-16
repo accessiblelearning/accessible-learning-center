@@ -1,6 +1,9 @@
 (() => {
   "use strict";
 
+  window.location.replace("troubleshooting-lab.html?mode=commands");
+  return;
+
   const siteVoiceSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
   const preferenceStorageKey = "accessibleLearningPreferences";
 

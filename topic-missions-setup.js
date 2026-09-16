@@ -1,6 +1,9 @@
 (() => {
   "use strict";
 
+  window.location.replace("troubleshooting-lab.html?mode=topics");
+  return;
+
   const missionVoiceSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
   const speechOptions = [
     { value: "own", label: "Use my own screen reader" },
