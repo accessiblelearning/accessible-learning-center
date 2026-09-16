@@ -2305,6 +2305,21 @@ html[data-contrast="high"] .training-results h3 {
   font-size: 1rem;
 }
 
+.mission-center-page .mission-center-menu--simple {
+  max-width: 42rem;
+}
+
+.mission-center-page .mission-center-menu--simple .mission-center-option {
+  grid-template-columns: 1fr;
+  min-height: 7rem;
+  text-align: center;
+}
+
+.mission-center-page .mission-center-menu--simple .mission-center-option strong {
+  font-size: clamp(1.8rem, 5vw, 3.25rem);
+  line-height: 1.15;
+}
+
 .mission-center-help {
   max-width: 58rem;
   margin: 1rem auto 0;

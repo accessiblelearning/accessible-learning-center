@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Open topic missions, command practice, or settings in Accessible Learning Center Mission Control.">
   <title>Mission Control Center - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-sections-1">
+  <link rel="stylesheet" href="styles.css?v=mission-simple-menu-1">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
   <script src="mission-center.js?v=mission-sections-1" defer></script>
 </head>
@@ -13,19 +13,12 @@
   <main id="main-content" class="mission-center-shell">
     <section class="mission-center-panel" aria-labelledby="missionCenterHeading">
       <h1 id="missionCenterHeading">Mission Control Center</h1>
-      <p class="mission-center-summary">Choose a practice section or change your Mission Control settings.</p>
       <p id="missionCenterInstructions" class="visually-hidden">Use Down Arrow and Up Arrow to move through Topic Missions, Command Practice, and Settings. Press Enter to open the highlighted section. Press Escape to return to Start Here.</p>
-      <div id="missionCenterMenu" class="mission-center-menu mission-mode-actions" role="application" aria-label="Mission Control Center sections" aria-describedby="missionCenterInstructions">
-        <a class="mission-center-option" href="topic-missions.html"><strong>Topic Missions</strong><span>Choose a directly named troubleshooting problem from the manuals.</span></a>
-        <a class="mission-center-option" href="command-practice.html"><strong>Command Practice</strong><span>Choose a directly named command topic from the manuals.</span></a>
-        <a class="mission-center-option" href="mission-settings.html"><strong>Settings</strong><span>Choose speech, sound feedback, screen reader, explanations, session length, and practice order.</span></a>
+      <div id="missionCenterMenu" class="mission-center-menu mission-mode-actions mission-center-menu--simple" role="application" aria-label="Mission Control Center sections" aria-describedby="missionCenterInstructions">
+        <a class="mission-center-option" href="topic-missions.html"><strong>Topic Missions</strong></a>
+        <a class="mission-center-option" href="command-practice.html"><strong>Command Practice</strong></a>
+        <a class="mission-center-option" href="mission-settings.html"><strong>Settings</strong></a>
       </div>
-      <p class="mission-center-help"><strong>Up or Down:</strong> move through sections. <strong>Enter:</strong> open. <strong>Escape:</strong> return to Start Here.</p>
-      <p class="mission-center-safety"><strong>Open practice:</strong> All available topics can be selected in any order. Nothing is locked.</p>
-      <nav class="mission-center-links" aria-label="Mission Control links">
-        <a href="start-here.html">Return to Start Here</a>
-        <a href="student-progress.html">Open My Progress</a>
-      </nav>
     </section>
   </main>
 </body>
