@@ -118,7 +118,9 @@
   window.addEventListener("DOMContentLoaded", () => {
     items[0]?.focus();
     openingAnnouncement = false;
-    speak("Mission Control Settings. Training speech. " + current("speech").label + ". Press Enter to change, or use the Down Arrow for more settings.");
+    const introduction = "Mission Control Settings. Use the Down Arrow or Up Arrow to move through the settings. Press Enter to change a setting. Press Escape to return to Mission Control Center.";
+    status.textContent = introduction + " Training speech is set to " + current("speech").label + ".";
+    speak(introduction + " Training speech is set to " + current("speech").label + ". Press Enter to change it.");
   });
   window.addEventListener("pagehide", stopVoice);
 })();
