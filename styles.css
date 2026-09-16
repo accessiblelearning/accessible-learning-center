@@ -2165,3 +2165,536 @@ html[data-contrast="high"] .training-results h3 {
     width: 100%;
   }
 }
+
+/* Mission Control uses the same focused, full-screen interaction pattern as the Keyboarding Center. */
+.mission-center-page {
+  min-height: 100vh;
+  margin: 0;
+  color: #ffffff;
+  background: #06142d;
+}
+
+.mission-center-page > main.mission-center-shell {
+  display: block;
+  width: 100%;
+  max-width: 72rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(.75rem, 2vw, 1.5rem);
+  color: #ffffff;
+  background: #06142d;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 1.2rem;
+}
+
+.mission-center-page .mission-center-panel {
+  min-height: calc(100vh - 3rem);
+  margin: 0;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  color: #ffffff;
+  background: #0b2147;
+  border: 3px solid #65aef5;
+  border-radius: 1rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18);
+}
+
+.mission-center-page .mission-center-panel h1,
+.mission-center-page .mission-center-panel > h2 {
+  margin-top: 0;
+  color: #ffffff;
+  font-size: clamp(2.25rem, 7vw, 4.75rem);
+  line-height: 1.15;
+  text-align: center;
+}
+
+.mission-center-summary {
+  max-width: 48rem;
+  margin: 0 auto 1.25rem;
+  color: #ffffff;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.mission-center-menu,
+.mission-center-page .mission-settings-menu {
+  display: grid;
+  gap: .85rem;
+  width: 100%;
+  max-width: 58rem;
+  margin: 1.5rem auto;
+}
+
+.mission-center-page .mission-center-option,
+.mission-center-page .mission-setting-toggle,
+.mission-center-page .mission-start-option,
+.mission-center-page .mission-mode-actions a {
+  display: grid;
+  grid-template-columns: minmax(9rem, .8fr) minmax(0, 1.5fr);
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 6.5rem;
+  padding: 1rem 1.5rem;
+  color: #ffffff;
+  background: #12396f;
+  border: 3px solid #65aef5;
+  border-radius: .85rem;
+  box-shadow: none;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mission-center-page .mission-center-option:hover,
+.mission-center-page .mission-setting-toggle:hover,
+.mission-center-page .mission-mode-actions a:hover {
+  color: #ffffff;
+  background: #185095;
+  border-color: #65aef5;
+  transform: none;
+}
+
+.mission-center-page .mission-center-option:focus,
+.mission-center-page .mission-setting-toggle:focus,
+.mission-center-page .mission-start-option:focus,
+.mission-center-page .mission-mode-actions a:focus {
+  color: #071a35;
+  background: #f7fbff;
+  border-color: #51d5ff;
+  outline: none;
+  box-shadow: 0 0 0 .25rem #087fd8;
+}
+
+.mission-center-page .mission-setting-label,
+.mission-center-page .mission-mode-actions strong {
+  font-size: 1.05em;
+  font-weight: 700;
+}
+
+.mission-center-page .mission-setting-value,
+.mission-center-page .mission-mode-actions span {
+  color: inherit;
+  font-size: clamp(1.45rem, 4vw, 2.7rem);
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.mission-center-page .mission-setting-hint {
+  grid-column: 2;
+  color: inherit;
+  font-size: .9rem;
+}
+
+.mission-center-page .mission-center-option--start,
+.mission-center-page .mission-start-option {
+  grid-template-columns: 1fr;
+  color: #06142d;
+  background: #2fbd68;
+  border-color: #d9f7df;
+  text-align: center;
+}
+
+.mission-center-page .mission-center-option--start strong {
+  font-size: clamp(1.8rem, 5vw, 3.25rem);
+}
+
+.mission-center-page .mission-center-option--start span {
+  font-size: 1rem;
+}
+
+.mission-center-help {
+  max-width: 58rem;
+  margin: 1rem auto 0;
+  padding: .85rem 1rem;
+  color: #ffffff;
+  background: #06142d;
+  border-top: 2px solid #65aef5;
+  font-weight: 800;
+  text-align: center;
+}
+
+.mission-center-safety {
+  max-width: 58rem;
+  margin: 1rem auto 0;
+  padding: .85rem 1rem;
+  color: #ffffff;
+  background: #12396f;
+  border: 2px solid #65aef5;
+  border-radius: .65rem;
+}
+
+.mission-center-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .75rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.mission-center-links a,
+.mission-center-page .mission-result-details a {
+  color: #ffffff;
+}
+
+.mission-center-page .mission-training-panel {
+  display: grid;
+  align-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.mission-center-page .training-stage__topbar,
+.mission-center-page .training-stage__briefing .mission-meta {
+  color: #ffffff;
+  background: #06142d;
+  border-color: #31597f;
+}
+
+.mission-center-page .training-stage__briefing h2 {
+  color: #ffffff;
+}
+
+.mission-center-page .training-stage__briefing progress {
+  height: 1.35rem;
+  appearance: none;
+  -webkit-appearance: none;
+  overflow: hidden;
+  color: #1681d8;
+  background: #d5e3f1;
+  border: 0;
+  border-radius: 999px;
+  accent-color: #1681d8;
+}
+
+.mission-center-page .training-stage__briefing progress::-webkit-progress-bar {
+  background: #d5e3f1;
+}
+
+.mission-center-page .training-stage__briefing progress::-webkit-progress-value,
+.mission-center-page .training-stage__briefing progress::-moz-progress-bar {
+  background: #1681d8;
+}
+
+.mission-center-page .training-stage .training-stage__prompt,
+.mission-center-page.mission-session-page .training-stage .training-stage__prompt {
+  min-height: clamp(11rem, 34vh, 19rem);
+  margin: .75rem;
+  padding: clamp(1.25rem, 5vw, 3rem);
+  color: #071a35;
+  background: #f7fbff;
+  border: .3rem solid #51d5ff;
+  border-radius: 1rem;
+  font-size: clamp(1.35rem, 3.2vw, 2.25rem);
+  font-weight: 800;
+}
+
+.mission-center-page .training-stage .training-stage__input,
+.mission-center-page.mission-session-page .training-stage .training-stage__input {
+  min-height: 7rem;
+  margin: 0 .75rem;
+  color: #ffffff;
+  background: #06142d;
+  border: 3px solid #65aef5;
+  border-radius: 1rem;
+  box-shadow: none;
+}
+
+.mission-center-page .training-stage .training-stage__input.is-correct {
+  color: #ffffff;
+  background: #086b38;
+  border-color: #72eba6;
+}
+
+.mission-center-page .training-stage .training-stage__input.is-incorrect {
+  color: #ffffff;
+  background: #8f211c;
+  border-color: #ffaaa4;
+}
+
+.mission-center-page .training-stage .training-stage__feedback,
+.mission-center-page.mission-session-page .training-stage .training-stage__feedback {
+  min-height: 4rem;
+  color: #ffffff;
+  background: #0b2147;
+}
+
+.mission-center-page .training-stage__feedback .is-correct {
+  color: #d9f7df;
+}
+
+.mission-center-page .training-stage__feedback .is-incorrect {
+  color: #ffd4d4;
+}
+
+.mission-center-page .training-stage .training-stage__shortcuts {
+  color: #ffffff;
+  background: #06142d;
+  border-color: #31597f;
+}
+
+.mission-center-page .mission-log-panel {
+  color: #ffffff;
+  background: #0b2147;
+  border-color: #31597f;
+}
+
+.mission-center-page .mission-log-panel a {
+  color: #ffffff;
+}
+
+.mission-center-page .mission-log li {
+  color: #ffffff;
+  background: #12396f;
+  border-color: #65aef5;
+}
+
+.mission-results-screen {
+  min-height: calc(100vh - 3rem);
+  padding: clamp(.65rem, 2vh, 1.25rem);
+  color: #ffffff;
+  background: #0b2147;
+}
+
+.mission-result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+
+.mission-result {
+  display: grid;
+  align-content: center;
+  min-height: clamp(7rem, 20vh, 12rem);
+  padding: clamp(.75rem, 2vh, 1.25rem);
+  color: #ffffff;
+  background: #12396f;
+  border: 2px solid #8db8e8;
+  border-radius: .65rem;
+  text-align: center;
+}
+
+.mission-result strong {
+  display: block;
+  color: #ffffff;
+  font-size: clamp(2rem, 7vh, 4.75rem);
+  line-height: 1;
+}
+
+.mission-finish-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(13rem, 19rem);
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(.75rem, 2vh, 1.25rem);
+  color: #ffffff;
+  background: linear-gradient(135deg, #12396f, #0872ce);
+  border: 3px solid #65aef5;
+  border-radius: 1rem;
+}
+
+.mission-celebration {
+  text-align: center;
+}
+
+.mission-celebration h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2.4rem, 8vw, 5.25rem);
+}
+
+.mission-celebration h2 span {
+  color: #ffe37a;
+}
+
+.mission-celebration p {
+  margin: .25rem 0;
+  font-size: 1.25em;
+  font-weight: 800;
+}
+
+.mission-result-primary {
+  width: 100%;
+  min-height: clamp(4.5rem, 12vh, 7rem);
+  padding: .75rem;
+  color: #06142d;
+  background: #2fbd68;
+  border: 3px solid #d9f7df;
+  border-radius: .8rem;
+  font: inherit;
+  font-size: clamp(1.4rem, 3.5vw, 2.25rem);
+  font-weight: 900;
+}
+
+.mission-result-primary small {
+  display: block;
+  margin-top: .15rem;
+  font-size: .55em;
+}
+
+.mission-result-primary:focus-visible {
+  outline: .3rem solid #ffe37a;
+  outline-offset: .2rem;
+}
+
+.mission-result-primary:hover {
+  color: #06142d;
+  background: #27a85a;
+  border-color: #ffffff;
+}
+
+.mission-result-exit {
+  margin: .75rem 0;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 800;
+}
+
+.mission-result-details {
+  margin-top: 1rem;
+  padding: .8rem 1rem;
+  color: #ffffff;
+  background: #06142d;
+  border: 2px solid #65aef5;
+  border-radius: .65rem;
+}
+
+.mission-result-details > summary {
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mission-result-details h3 {
+  color: #ffffff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page > main.mission-center-shell,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-center-panel,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-center-option,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-setting-toggle,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-start-option,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .training-stage__prompt,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .training-stage__feedback,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-result,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-finish-row,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-result-details {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffffff;
+  box-shadow: none;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .training-stage__prompt,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .training-stage__briefing h2,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-result strong,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-celebration h2,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-result-details h3 {
+  color: #ffffff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .training-stage__input {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffffff;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-center-option:focus,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-setting-toggle:focus,
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-start-option:focus {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffe37a;
+  box-shadow: 0 0 0 .25rem #ffe37a;
+}
+
+html[data-contrast="high"] .mission-center-page,
+html[data-contrast="high"] .mission-center-page > main.mission-center-shell,
+html[data-contrast="high"] .mission-center-page .mission-center-panel,
+html[data-contrast="high"] .mission-center-page .mission-center-option,
+html[data-contrast="high"] .mission-center-page .mission-setting-toggle,
+html[data-contrast="high"] .mission-center-page .mission-start-option,
+html[data-contrast="high"] .mission-center-page .training-stage__prompt,
+html[data-contrast="high"] .mission-center-page .training-stage__feedback,
+html[data-contrast="high"] .mission-center-page .mission-result,
+html[data-contrast="high"] .mission-center-page .mission-finish-row,
+html[data-contrast="high"] .mission-center-page .mission-result-details {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffffff;
+  box-shadow: none;
+}
+
+html[data-contrast="high"] .mission-center-page .mission-setting-value,
+html[data-contrast="high"] .mission-center-page .mission-mode-actions span,
+html[data-contrast="high"] .mission-center-page .training-stage__prompt,
+html[data-contrast="high"] .mission-center-page .training-stage__briefing h2,
+html[data-contrast="high"] .mission-center-page .mission-result strong,
+html[data-contrast="high"] .mission-center-page .mission-celebration h2,
+html[data-contrast="high"] .mission-center-page .mission-result-details h3 {
+  color: #ffffff;
+}
+
+html[data-contrast="high"] .mission-center-page .training-stage__input {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffffff;
+  box-shadow: none;
+}
+
+html[data-contrast="high"] .mission-center-page .mission-center-option:focus,
+html[data-contrast="high"] .mission-center-page .mission-setting-toggle:focus,
+html[data-contrast="high"] .mission-center-page .mission-start-option:focus {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffff00;
+  box-shadow: 0 0 0 .25rem #ffff00;
+}
+
+html[data-contrast="high"] .mission-center-page .mission-result-primary {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffffff;
+}
+
+html[data-contrast="high"] .mission-center-page .mission-result-primary:focus-visible {
+  outline-color: #ffff00;
+}
+
+@media (max-width: 42rem) {
+  .mission-center-page > main.mission-center-shell {
+    padding: .5rem;
+  }
+
+  .mission-center-page .mission-center-panel {
+    min-height: calc(100vh - 1rem);
+    padding: 1rem;
+    border-radius: .75rem;
+  }
+
+  .mission-center-page .mission-center-option,
+  .mission-center-page .mission-setting-toggle,
+  .mission-center-page .mission-mode-actions a {
+    grid-template-columns: 1fr;
+    gap: .25rem;
+    min-height: 5.5rem;
+    text-align: center;
+  }
+
+  .mission-center-page .mission-setting-hint {
+    grid-column: 1;
+  }
+
+  .mission-result-grid,
+  .mission-finish-row {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-results-screen {
+    min-height: calc(100vh - 1rem);
+    overflow: auto;
+  }
+}

@@ -98,6 +98,9 @@
   const missionMasteredList = document.getElementById("missionMasteredList");
   const missionReviewList = document.getElementById("missionReviewList");
   const missionCompletedCount = document.getElementById("missionCompletedCount");
+  const missionAttemptResult = document.getElementById("missionAttemptResult");
+  const missionCompletedResult = document.getElementById("missionCompletedResult");
+  const missionReviewResult = document.getElementById("missionReviewResult");
   const missionSuggestedReview = document.getElementById("missionSuggestedReview");
   const missionBriefing = document.querySelector(".mission-briefing");
   const missionResponse = document.querySelector(".mission-response");
@@ -149,6 +152,8 @@
   function announce(text, state = "") {
     transcript.textContent = screenReaders[perspective.value].name + " reports: “" + text + "”";
     transcript.className = "scenario-feedback" + (state ? " is-" + state : "");
+    missionControl.classList.remove("is-correct", "is-incorrect");
+    if (state) missionControl.classList.add("is-" + state);
     speak(transcript.textContent);
   }
 
@@ -296,6 +301,9 @@
   function fillMissionResults() {
     const mission = missions[current];
     missionResultsSummary.textContent = "You solved " + mission.title + " in " + missionAttempts + " command attempt" + (missionAttempts === 1 ? "" : "s") + ".";
+    if (missionAttemptResult) missionAttemptResult.textContent = String(missionAttempts);
+    if (missionCompletedResult) missionCompletedResult.textContent = completed.size + " of " + missions.length;
+    if (missionReviewResult) missionReviewResult.textContent = String(missionCommandsToReview.size);
     missionMasteredList.replaceChildren();
     mission.steps.forEach(item => {
       const listItem = document.createElement("li");
@@ -340,7 +348,7 @@
     announce(finalStepFeedback + " Mission complete. You solved " + missions[current].title + ".", "correct");
     fillMissionResults();
     showMissionResults(true);
-    missionResults.focus();
+    nextButton.focus();
   }
 
   function startMission() {
@@ -356,6 +364,7 @@
     count.textContent = "Mission " + (current + 1) + " of " + missions.length;
     log.replaceChildren();
     lastCommand.textContent = "None yet";
+    missionControl.classList.remove("is-correct", "is-incorrect");
     modifierHeld = false;
     altModifierArmed = false;
     controlModifierArmed = false;

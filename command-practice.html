@@ -5,64 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Choose command-practice settings using a simple keyboard-guided list.">
   <title>Choose Command Practice Settings - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-voice-1">
+  <link rel="stylesheet" href="styles.css?v=mission-keyboarding-ui-1">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
   <script src="command-practice-setup.js?v=mission-instructions-1" defer></script>
 </head>
-<body class="command-setup-page" data-minimal-page="true">
-  <header>
-    <p class="eyebrow">Command Practice setup</p>
-    <h1>Choose Your Practice Settings</h1>
-    <p>Use one simple list to set up a focused command-practice session.</p>
-  </header>
-  <main id="main-content">
-    <section class="mission-keyboard-setup" aria-labelledby="setup-heading">
-      <h2 id="setup-heading">Practice settings</h2>
-      <p id="commandSetupInstructions"><strong>Use Down Arrow and Up Arrow</strong> to move between settings. Press <strong>Enter</strong> to change the highlighted setting. Continue to Start Command Practice and press Enter. Press <strong>Escape</strong> to return to the Command Center.</p>
+<body class="command-setup-page mission-center-page" data-minimal-page="true">
+  <main id="main-content" class="mission-center-shell">
+    <section class="mission-keyboard-setup mission-center-panel" aria-labelledby="setup-heading">
+      <h1 id="setup-heading">Choose Your Practice Settings</h1>
+      <p class="mission-center-summary">Set up a focused command-practice session.</p>
+      <p id="commandSetupInstructions" class="visually-hidden">Use Down Arrow and Up Arrow to move between settings. Press Enter to change the highlighted setting. Continue to Start Command Practice and press Enter. Press Escape to return to Mission Control.</p>
 
-      <div id="commandSettingsMenu" class="mission-settings-menu" role="application" aria-label="Command Practice settings keyboard menu" aria-describedby="commandSetupInstructions">
-        <button id="commandSpeechSetting" class="mission-setting-toggle" type="button" data-setting="speech" aria-describedby="commandSetupInstructions">
-          <span class="mission-setting-label">1. Training speech</span>
+      <div id="commandSettingsMenu" class="mission-settings-menu mission-center-menu" role="application" aria-label="Command Practice settings keyboard menu" aria-describedby="commandSetupInstructions">
+        <button id="commandSpeechSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="speech" aria-describedby="commandSetupInstructions">
+          <span class="mission-setting-label">Training speech</span>
           <strong id="commandSpeechValue" class="mission-setting-value">Use my own screen reader</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
-        <button id="commandCategorySetting" class="mission-setting-toggle" type="button" data-setting="category">
-          <span class="mission-setting-label">2. Command topic</span>
+        <button id="commandCategorySetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="category">
+          <span class="mission-setting-label">Command topic</span>
           <strong id="commandCategoryValue" class="mission-setting-value">General editing</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
-        <button id="commandStyleSetting" class="mission-setting-toggle" type="button" data-setting="style">
-          <span class="mission-setting-label">3. Practice style</span>
+        <button id="commandStyleSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="style">
+          <span class="mission-setting-label">Practice style</span>
           <strong id="commandStyleValue" class="mission-setting-value">Quick Command Practice</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
-        <button id="commandLengthSetting" class="mission-setting-toggle" type="button" data-setting="length">
-          <span class="mission-setting-label">4. Session length</span>
+        <button id="commandLengthSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="length">
+          <span class="mission-setting-label">Session length</span>
           <strong id="commandLengthValue" class="mission-setting-value">Five connected tasks</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
-        <button id="commandExplanationSetting" class="mission-setting-toggle" type="button" data-setting="level">
-          <span class="mission-setting-label">5. Explanation level</span>
+        <button id="commandExplanationSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="level">
+          <span class="mission-setting-label">Explanation level</span>
           <strong id="commandExplanationValue" class="mission-setting-value">General explanation</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
-        <button id="commandSoundSetting" class="mission-setting-toggle" type="button" data-setting="sounds">
-          <span class="mission-setting-label">6. Sound feedback</span>
+        <button id="commandSoundSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="sounds">
+          <span class="mission-setting-label">Sound feedback</span>
           <strong id="commandSoundValue" class="mission-setting-value">On</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
-        <button id="commandOrderSetting" class="mission-setting-toggle" type="button" data-setting="order">
-          <span class="mission-setting-label">7. Practice order</span>
+        <button id="commandOrderSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="order">
+          <span class="mission-setting-label">Practice order</span>
           <strong id="commandOrderValue" class="mission-setting-value">In topic order</strong>
           <span class="mission-setting-hint">Press Enter to change</span>
         </button>
-        <button id="startCommandSetup" class="mission-start-option" type="button">8. Start Command Practice</button>
+        <button id="startCommandSetup" class="mission-start-option mission-center-option mission-center-option--start" type="button"><strong>Start Command Practice</strong><span>Press Enter</span></button>
       </div>
 
-      <p id="commandSetupStatus">Selected: Use my own screen reader, General editing, Quick Command Practice, five connected tasks, general explanation, sound on, and topic order.</p>
-      <p class="tip"><strong>Practice safety:</strong> The session includes commands the webpage can contain. System and browser commands that could switch, close, or reload something are excluded from physical practice.</p>
+      <p id="commandSetupStatus" class="visually-hidden">Selected: Use my own screen reader, General editing, Quick Command Practice, five connected tasks, general explanation, sound on, and topic order.</p>
+      <p class="mission-center-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> change or start. <strong>Escape:</strong> return to Mission Control.</p>
+      <p class="mission-center-safety"><strong>Practice safety:</strong> System and browser commands that could switch, close, or reload something are not physically practiced.</p>
     </section>
-    <p><a href="troubleshooting-lab.html">Return to the Command Center</a></p>
   </main>
 </body>
 </html>

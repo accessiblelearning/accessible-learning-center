@@ -5,27 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Choose command practice or realistic screen-reader topic missions in the Accessible Learning Center Command Center.">
   <title>Assistive Technology Command Center - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-voice-1">
+  <link rel="stylesheet" href="styles.css?v=mission-keyboarding-ui-1">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
+  <script src="mission-center.js?v=mission-keyboarding-ui-1" defer></script>
 </head>
-<body>
-  <header>
-    <p class="eyebrow">Keyboard and assistive technology training</p>
-    <h1>Assistive Technology Command Center</h1>
-    <p>Choose the kind of practice you want. Your activity will open on its own page with only the controls you need.</p>
-  </header>
-  <main id="main-content">
-    <section class="mission-mode-picker" aria-labelledby="mode-heading">
-      <h2 id="mode-heading">Choose your training mode</h2>
-      <div class="mission-mode-actions">
-        <a href="command-practice.html"><strong>Command Practice</strong><span>Hear what a command does, press it, and receive immediate feedback.</span></a>
-        <a href="topic-missions.html"><strong>Topic Missions</strong><span>Hear a realistic problem and decide which commands will solve it.</span></a>
+<body class="mission-center-page" data-minimal-page="true">
+  <main id="main-content" class="mission-center-shell">
+    <section class="mission-center-panel" aria-labelledby="mode-heading">
+      <h1 id="mode-heading">Mission Control</h1>
+      <p class="mission-center-summary">Choose how you want to practice screen-reader and keyboard commands.</p>
+      <div id="missionModeMenu" class="mission-center-menu mission-mode-actions" role="application" aria-label="Mission Control training choices">
+        <a class="mission-center-option" href="command-practice.html"><strong>Command Practice</strong><span>Hear what a command does, press it, and receive immediate feedback.</span></a>
+        <a class="mission-center-option" href="topic-missions.html"><strong>Topic Missions</strong><span>Hear a realistic problem and decide which commands will solve it.</span></a>
       </div>
+      <p class="mission-center-help"><strong>Up or Down:</strong> move through the list. <strong>Enter:</strong> open the choice. <strong>Escape:</strong> return to Start Here.</p>
+      <nav class="mission-center-links" aria-label="Mission Control links">
+        <a href="start-here.html">Return to Start Here</a>
+        <a href="student-progress.html">Open My Progress</a>
+      </nav>
     </section>
-    <nav class="lesson-nav" aria-label="Command Center links">
-      <a href="start-here.html">Return to Start Here</a>
-      <a href="student-progress.html">Open My Progress</a>
-    </nav>
   </main>
 </body>
 </html>

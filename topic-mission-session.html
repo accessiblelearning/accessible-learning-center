@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A focused screen-reader Mission Control simulation.">
   <title>Topic Mission - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-results-1">
+  <link rel="stylesheet" href="styles.css?v=mission-keyboarding-ui-1">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
   <script src="topic-mission-session.js?v=training-accessibility-1" defer></script>
-  <script src="troubleshooting-lab.js?v=mission-results-1" defer></script>
+  <script src="troubleshooting-lab.js?v=mission-keyboarding-ui-1" defer></script>
 </head>
-<body class="mission-session-page" data-minimal-page="true" data-mission-session="true">
-  <header class="training-header"><h1>Mission Control</h1></header>
-  <main id="main-content">
-    <section class="simulator focused-mission training-stage" aria-labelledby="missionTitle">
+<body class="mission-session-page mission-center-page" data-minimal-page="true" data-mission-session="true">
+  <main id="main-content" class="mission-center-shell">
+    <h1 class="visually-hidden">Mission Control</h1>
+    <section class="simulator focused-mission training-stage mission-center-panel mission-training-panel" aria-labelledby="missionTitle">
       <div class="mission-briefing training-stage__briefing">
         <p class="mission-meta"><span id="missionCount">Preparing mission</span><span id="missionCategory"></span></p>
         <progress id="missionProgress" max="8" value="0">0 of 8 missions completed</progress>
@@ -32,20 +32,34 @@
         <p id="transcript" class="scenario-feedback" aria-live="polite">Preparing the simulator.</p>
       </section>
 
-      <section id="missionResults" class="training-results" aria-labelledby="missionResultsHeading" tabindex="-1" hidden>
-        <h2 id="missionResultsHeading">Mission complete</h2>
-        <p id="missionResultsSummary"></p>
-        <h3>Commands mastered</h3>
-        <ul id="missionMasteredList"></ul>
-        <h3>Commands to review</h3>
-        <div id="missionReviewList"></div>
-        <p id="missionCompletedCount"></p>
-        <p>Suggested next step: <a id="missionSuggestedReview" href="lessons.html">Review a related lesson</a>.</p>
-        <div class="training-results__actions">
-          <button id="retryMissionResult" type="button">Try this mission again</button>
-          <button id="nextMission" type="button">Start next mission</button>
-          <a class="button-link" href="topic-missions.html">Choose different mission settings</a>
+      <section id="missionResults" class="training-results mission-results-screen" aria-labelledby="missionResultsHeading" tabindex="-1" hidden>
+        <p id="missionResultsSummary" class="visually-hidden"></p>
+        <div class="mission-result-grid">
+          <div class="mission-result"><span>Command attempts</span><strong id="missionAttemptResult">0</strong></div>
+          <div class="mission-result"><span>Missions completed</span><strong id="missionCompletedResult">0 of 8</strong></div>
+          <div class="mission-result"><span>Commands to review</span><strong id="missionReviewResult">0</strong></div>
         </div>
+        <div class="mission-finish-row">
+          <div class="mission-celebration">
+            <h2 id="missionResultsHeading"><span aria-hidden="true">✦</span> Good job! <span aria-hidden="true">✦</span></h2>
+            <p>Mission complete.</p>
+          </div>
+          <button id="nextMission" class="mission-result-primary" type="button"><span>Start Next Mission</span><small>Press Enter</small></button>
+        </div>
+        <p class="mission-result-exit">Escape returns to Mission settings.</p>
+        <details class="mission-result-details">
+          <summary>Review mission details</summary>
+          <h3>Commands mastered</h3>
+          <ul id="missionMasteredList"></ul>
+          <h3>Commands to review</h3>
+          <div id="missionReviewList"></div>
+          <p id="missionCompletedCount"></p>
+          <p>Suggested next step: <a id="missionSuggestedReview" href="lessons.html">Review a related lesson</a>.</p>
+          <div class="training-results__actions">
+            <button id="retryMissionResult" type="button">Try This Mission Again</button>
+            <a class="button-link" href="topic-missions.html">Choose Different Mission Settings</a>
+          </div>
+        </details>
       </section>
 
       <p class="practice-session-shortcuts training-stage__shortcuts"><strong>Control</strong> repeat <span aria-hidden="true">·</span> <strong>F1</strong> hint <span aria-hidden="true">·</span> Protected Alt: release, then final key <span aria-hidden="true">·</span> <strong>Escape</strong> close</p>

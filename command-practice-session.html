@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-results-1">
+  <link rel="stylesheet" href="styles.css?v=mission-keyboarding-ui-1">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
   <script src="command-practice-session.js?v=training-accessibility-1" defer></script>
-  <script src="command-practice.js?v=mission-results-1" defer></script>
+  <script src="command-practice.js?v=mission-keyboarding-ui-1" defer></script>
 </head>
-<body class="practice-session-page" data-practice-session="true" data-minimal-page="true">
-  <header class="training-header"><h1>Command Practice</h1></header>
-  <main id="main-content">
-    <section class="practice-session-shell training-stage" aria-labelledby="practice-heading">
+<body class="practice-session-page mission-center-page" data-practice-session="true" data-minimal-page="true">
+  <main id="main-content" class="mission-center-shell">
+    <h1 class="visually-hidden">Command Practice</h1>
+    <section class="practice-session-shell training-stage mission-center-panel mission-training-panel" aria-labelledby="practice-heading">
       <div class="training-stage__topbar">
         <h2 id="practice-heading">Current command</h2>
         <p id="practiceScore">Correct: 0 · Attempts: 0</p>
@@ -27,19 +27,31 @@
       </div>
       <div id="practiceStatus" class="practice-status training-stage__feedback" role="status" aria-live="assertive"></div>
       <p class="practice-session-shortcuts training-stage__shortcuts"><strong>Control</strong> repeat, or protected first step when instructed <span aria-hidden="true">·</span> Correct commands advance automatically <span aria-hidden="true">·</span> <strong>Escape</strong> close</p>
-      <section id="commandResults" class="training-results" aria-labelledby="commandResultsHeading" tabindex="-1" hidden>
-        <h2 id="commandResultsHeading">Practice complete</h2>
-        <p id="commandResultsSummary"></p>
-        <h3>Commands mastered</h3>
-        <ul id="commandMasteredList"></ul>
-        <h3>Commands to review</h3>
-        <div id="commandReviewList"></div>
-        <p>Suggested next step: <a id="commandSuggestedReview" href="lessons.html">Review a related lesson</a>.</p>
+      <section id="commandResults" class="training-results mission-results-screen" aria-labelledby="commandResultsHeading" tabindex="-1" hidden>
+        <p id="commandResultsSummary" class="visually-hidden"></p>
+        <div class="mission-result-grid">
+          <div class="mission-result"><span>Correct commands</span><strong id="commandCorrectResult">0</strong></div>
+          <div class="mission-result"><span>Attempts</span><strong id="commandAttemptResult">0</strong></div>
+          <div class="mission-result"><span>Accuracy</span><strong id="commandAccuracyResult">0%</strong></div>
+        </div>
+        <div class="mission-finish-row">
+          <div class="mission-celebration">
+            <h2 id="commandResultsHeading"><span aria-hidden="true">✦</span> Good job! <span aria-hidden="true">✦</span></h2>
+            <p>Practice complete.</p>
+          </div>
+          <button id="practiceMissed" class="mission-result-primary" type="button"><span id="practiceResultActionLabel">Practice This Set Again</span><small>Press Enter</small></button>
+        </div>
+        <p class="mission-result-exit">Escape returns to Practice settings.</p>
+        <details class="mission-result-details">
+          <summary>Review practice details</summary>
+          <h3>Commands mastered</h3>
+          <ul id="commandMasteredList"></ul>
+          <h3>Commands to review</h3>
+          <div id="commandReviewList"></div>
+          <p>Suggested next step: <a id="commandSuggestedReview" href="lessons.html">Review a related lesson</a>.</p>
+          <button id="practiceExit" type="button">Choose Different Practice Settings</button>
+        </details>
       </section>
-      <div id="sessionCompletionActions" class="practice-actions" hidden>
-        <button id="practiceMissed" type="button" disabled>Practice missed commands</button>
-        <button id="practiceExit" type="button">Choose different practice settings</button>
-      </div>
     </section>
 
     <div hidden aria-hidden="true">
