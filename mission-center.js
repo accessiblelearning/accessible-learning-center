@@ -4,6 +4,27 @@
   const menu = document.getElementById("missionCenterMenu");
   if (!menu) return;
   const items = [...menu.querySelectorAll("a")];
+  const voiceSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  let openingAnnouncement = true;
+
+  function voiceEnabled() {
+    try {
+      const preferences = JSON.parse(localStorage.getItem("accessibleLearningPreferences") || "{}");
+      return preferences.trainingSpeech === "voice";
+    } catch (error) { return false; }
+  }
+
+  function stopVoice() {
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+  }
+
+  function speak(text) {
+    if (!voiceEnabled() || !voiceSupported) return;
+    stopVoice();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.95;
+    speechSynthesis.speak(utterance);
+  }
 
   function setActive(item) {
     items.forEach(option => { option.tabIndex = option === item ? 0 : -1; });
@@ -11,7 +32,10 @@
 
   items.forEach((item, index) => {
     item.tabIndex = index === 0 ? 0 : -1;
-    item.addEventListener("focus", () => setActive(item));
+    item.addEventListener("focus", () => {
+      setActive(item);
+      if (!openingAnnouncement) speak(item.textContent.trim() + ". Press Enter to open.");
+    });
   });
 
   menu.addEventListener("keydown", event => {
@@ -29,8 +53,14 @@
   document.addEventListener("keydown", event => {
     if (!["Escape", "Esc"].includes(event.key) || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
     event.preventDefault();
+    stopVoice();
     window.location.href = "start-here.html";
   }, true);
 
-  window.addEventListener("DOMContentLoaded", () => items[0]?.focus());
+  window.addEventListener("DOMContentLoaded", () => {
+    items[0]?.focus();
+    openingAnnouncement = false;
+    speak("Mission Control Center. Topic Missions. Press Enter to open, or use the Down Arrow for Command Practice and Settings.");
+  });
+  window.addEventListener("pagehide", stopVoice);
 })();

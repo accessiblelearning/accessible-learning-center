@@ -8,6 +8,8 @@
 
   const settingsKey = "missionControlPracticeSettings";
   const preferenceKey = "accessibleLearningPreferences";
+  const voiceSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  let openingAnnouncement = true;
 
   function readSettings() {
     try {
@@ -21,6 +23,18 @@
       const preferences = JSON.parse(localStorage.getItem(preferenceKey) || "{}");
       return preferences.trainingSpeech === "voice";
     } catch (error) { return false; }
+  }
+
+  function stopVoice() {
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+  }
+
+  function speak(text) {
+    if (!siteVoiceEnabled() || !voiceSupported) return;
+    stopVoice();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.95;
+    speechSynthesis.speak(utterance);
   }
 
   const choices = [];
@@ -46,6 +60,7 @@
   }
 
   function startMission(item) {
+    stopVoice();
     const settings = readSettings();
     const params = new URLSearchParams({
       reader: item.dataset.reader || settings.reader,
@@ -59,7 +74,9 @@
     item.tabIndex = index === 0 ? 0 : -1;
     item.addEventListener("focus", () => {
       setActive(item);
-      status.textContent = item.querySelector("strong").textContent + ". Press Enter to start.";
+      const announcement = item.querySelector("strong").textContent + ". Press Enter to start.";
+      status.textContent = announcement;
+      if (!openingAnnouncement) speak(announcement);
     });
     item.addEventListener("click", event => {
       event.preventDefault();
@@ -82,8 +99,16 @@
   document.addEventListener("keydown", event => {
     if (!["Escape", "Esc"].includes(event.key) || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
     event.preventDefault();
+    stopVoice();
     window.location.href = "troubleshooting-lab.html";
   }, true);
 
-  window.addEventListener("DOMContentLoaded", () => choices[0]?.focus());
+  status.setAttribute("aria-live", siteVoiceEnabled() ? "off" : "polite");
+  window.addEventListener("DOMContentLoaded", () => {
+    choices[0]?.focus();
+    openingAnnouncement = false;
+    const first = choices[0]?.querySelector("strong")?.textContent || "";
+    speak("Welcome to Topic Missions. Use the Down Arrow or Up Arrow to choose a troubleshooting topic from the manuals. " + first + ". Press Enter to start.");
+  });
+  window.addEventListener("pagehide", stopVoice);
 })();

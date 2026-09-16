@@ -17,6 +17,7 @@
     order: { options: [{ value: "0", label: "In manual order" }, { value: "1", label: "Random order" }], valueElement: document.getElementById("orderValue"), index: 0 }
   };
   const items = [...menu.querySelectorAll("button")];
+  let openingAnnouncement = true;
 
   function current(key) { return settings[key].options[settings[key].index]; }
   function voiceEnabled() { return current("speech").value === "voice"; }
@@ -63,7 +64,14 @@
 
   items.forEach((item, index) => {
     item.tabIndex = index === 0 ? 0 : -1;
-    item.addEventListener("focus", () => setActive(item));
+    item.addEventListener("focus", () => {
+      setActive(item);
+      if (!openingAnnouncement) {
+        const key = item.dataset.setting;
+        const label = item.querySelector(".mission-setting-label").textContent;
+        speak(label + ". " + current(key).label + ". Press Enter to change.");
+      }
+    });
     item.addEventListener("click", () => {
       const key = item.dataset.setting;
       const data = settings[key];
@@ -105,6 +113,10 @@
     if (hint) hint.textContent = "Site voice unavailable in this browser";
   }
   restore();
-  window.addEventListener("DOMContentLoaded", () => items[0]?.focus());
+  window.addEventListener("DOMContentLoaded", () => {
+    items[0]?.focus();
+    openingAnnouncement = false;
+    speak("Mission Control Settings. Training speech. " + current("speech").label + ". Press Enter to change, or use the Down Arrow for more settings.");
+  });
   window.addEventListener("pagehide", stopVoice);
 })();
