@@ -2346,6 +2346,42 @@ html[data-contrast="high"] .training-results h3 {
   overflow: hidden;
 }
 
+.mission-center-page .mission-ready-screen {
+  display: grid;
+  align-content: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.mission-ready-screen:focus,
+.mission-ready-screen:focus-visible {
+  outline: .3rem solid #ffe37a;
+  outline-offset: -.65rem;
+}
+
+.mission-ready-prompt {
+  display: grid;
+  place-items: center;
+  min-height: clamp(12rem, 38vh, 22rem);
+  padding: clamp(1.25rem, 5vw, 3rem);
+  color: #071a35;
+  background: #d9f7df;
+  border: .3rem solid #55e487;
+  border-radius: 1rem;
+}
+
+.mission-ready-prompt p {
+  margin: 0;
+  font-size: clamp(2.25rem, 7vw, 5rem);
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.mission-ready-screen .mission-result-primary {
+  width: min(100%, 32rem);
+  margin-inline: auto;
+}
+
 .mission-center-page .training-stage__topbar,
 .mission-center-page .training-stage__briefing .mission-meta {
   color: #ffffff;
@@ -2602,6 +2638,12 @@ html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .traini
   border-color: #ffffff;
 }
 
+html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-ready-prompt {
+  color: #ffffff;
+  background: #000000;
+  border-color: #55e487;
+}
+
 html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-center-option:focus,
 html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-setting-toggle:focus,
 html[data-theme="dark"]:not([data-contrast="high"]) .mission-center-page .mission-start-option:focus {
@@ -2643,6 +2685,12 @@ html[data-contrast="high"] .mission-center-page .training-stage__input {
   background: #000000;
   border-color: #ffffff;
   box-shadow: none;
+}
+
+html[data-contrast="high"] .mission-center-page .mission-ready-prompt {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffffff;
 }
 
 html[data-contrast="high"] .mission-center-page .mission-center-option:focus,

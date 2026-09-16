@@ -25,7 +25,29 @@
   document.getElementById("transcript").setAttribute("aria-live", useMissionVoice ? "off" : "polite");
 
   window.addEventListener("DOMContentLoaded", () => {
+    const readyScreen = document.getElementById("missionReadyScreen");
+    const readyStart = document.getElementById("missionReadyStart");
+    const trainingStage = document.querySelector(".mission-training-panel");
+    let started = false;
+
     document.getElementById("missionSelect").value = String(mission);
-    document.getElementById("startMission").click();
+
+    function beginMission() {
+      if (started) return;
+      started = true;
+      readyScreen.hidden = true;
+      trainingStage.hidden = false;
+      document.getElementById("startMission").click();
+    }
+
+    function startFromKey(event) {
+      if (started || ["Escape", "Esc", "Tab", "Shift", "Control", "Alt", "Meta"].includes(event.key)) return;
+      event.preventDefault();
+      beginMission();
+    }
+
+    readyScreen.addEventListener("keydown", startFromKey);
+    readyStart.addEventListener("click", beginMission);
+    readyScreen.focus();
   });
 })();

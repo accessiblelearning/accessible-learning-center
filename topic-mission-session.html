@@ -5,15 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A focused screen-reader Mission Control simulation.">
   <title>Topic Mission - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-keyboarding-ui-1">
+  <link rel="stylesheet" href="styles.css?v=mission-keyboarding-ui-2">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
-  <script src="topic-mission-session.js?v=training-accessibility-1" defer></script>
+  <script src="topic-mission-session.js?v=press-any-key-1" defer></script>
   <script src="troubleshooting-lab.js?v=mission-keyboarding-ui-1" defer></script>
 </head>
 <body class="mission-session-page mission-center-page" data-minimal-page="true" data-mission-session="true">
   <main id="main-content" class="mission-center-shell">
-    <h1 class="visually-hidden">Mission Control</h1>
-    <section class="simulator focused-mission training-stage mission-center-panel mission-training-panel" aria-labelledby="missionTitle">
+    <section id="missionReadyScreen" class="mission-center-panel mission-ready-screen" aria-labelledby="missionReadyHeading" tabindex="0" role="application" aria-describedby="missionReadyInstructions">
+      <h1 id="missionReadyHeading">Mission Control</h1>
+      <div class="mission-ready-prompt">
+        <p id="missionReadyInstructions">Press any key to start.</p>
+      </div>
+      <button id="missionReadyStart" class="mission-result-primary" type="button">Start Mission</button>
+      <p class="mission-result-exit">Escape returns to Mission settings.</p>
+    </section>
+    <section class="simulator focused-mission training-stage mission-center-panel mission-training-panel" aria-labelledby="missionTitle" hidden>
       <div class="mission-briefing training-stage__briefing">
         <p class="mission-meta"><span id="missionCount">Preparing mission</span><span id="missionCategory"></span></p>
         <progress id="missionProgress" max="8" value="0">0 of 8 missions completed</progress>

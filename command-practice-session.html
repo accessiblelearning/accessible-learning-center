@@ -5,15 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-keyboarding-ui-1">
+  <link rel="stylesheet" href="styles.css?v=mission-keyboarding-ui-2">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
-  <script src="command-practice-session.js?v=training-accessibility-1" defer></script>
+  <script src="command-practice-session.js?v=press-any-key-1" defer></script>
   <script src="command-practice.js?v=mission-keyboarding-ui-1" defer></script>
 </head>
 <body class="practice-session-page mission-center-page" data-practice-session="true" data-minimal-page="true">
   <main id="main-content" class="mission-center-shell">
-    <h1 class="visually-hidden">Command Practice</h1>
-    <section class="practice-session-shell training-stage mission-center-panel mission-training-panel" aria-labelledby="practice-heading">
+    <section id="commandReadyScreen" class="mission-center-panel mission-ready-screen" aria-labelledby="commandReadyHeading" tabindex="0" role="application" aria-describedby="commandReadyInstructions">
+      <h1 id="commandReadyHeading">Command Practice</h1>
+      <div class="mission-ready-prompt">
+        <p id="commandReadyInstructions">Press any key to start.</p>
+      </div>
+      <button id="commandReadyStart" class="mission-result-primary" type="button">Start Command Practice</button>
+      <p class="mission-result-exit">Escape returns to Practice settings.</p>
+    </section>
+    <section class="practice-session-shell training-stage mission-center-panel mission-training-panel" aria-labelledby="practice-heading" hidden>
       <div class="training-stage__topbar">
         <h2 id="practice-heading">Current command</h2>
         <p id="practiceScore">Correct: 0 · Attempts: 0</p>

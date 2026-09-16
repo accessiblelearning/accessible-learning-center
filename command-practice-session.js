@@ -25,6 +25,28 @@
       : savedSpeech === "voice";
     document.getElementById("soundFeedback").checked = params.get("sounds") !== "0";
     document.getElementById("randomOrder").checked = params.get("random") === "1";
-    document.getElementById("startPractice").click();
+
+    const readyScreen = document.getElementById("commandReadyScreen");
+    const readyStart = document.getElementById("commandReadyStart");
+    const trainingStage = document.querySelector(".mission-training-panel");
+    let started = false;
+
+    function beginPractice() {
+      if (started) return;
+      started = true;
+      readyScreen.hidden = true;
+      trainingStage.hidden = false;
+      document.getElementById("startPractice").click();
+    }
+
+    function startFromKey(event) {
+      if (started || ["Escape", "Esc", "Tab", "Shift", "Control", "Alt", "Meta"].includes(event.key)) return;
+      event.preventDefault();
+      beginPractice();
+    }
+
+    readyScreen.addEventListener("keydown", startFromKey);
+    readyStart.addEventListener("click", beginPractice);
+    readyScreen.focus();
   });
 })();
