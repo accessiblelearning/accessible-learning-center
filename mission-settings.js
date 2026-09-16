@@ -56,8 +56,10 @@
   }
 
   function updateStatus() {
-    status.setAttribute("aria-live", voiceEnabled() ? "off" : "polite");
     status.textContent = "Settings saved: " + Object.keys(settings).map(key => current(key).label).join(", ") + ".";
+    // Keep a live fallback even when site voice is selected. This prevents a
+    // silent Settings page if the browser delays or blocks speech synthesis.
+    status.setAttribute("aria-live", "polite");
   }
 
   function setActive(item) { items.forEach(option => { option.tabIndex = option === item ? 0 : -1; }); }
@@ -66,11 +68,11 @@
     item.tabIndex = index === 0 ? 0 : -1;
     item.addEventListener("focus", () => {
       setActive(item);
-      if (!openingAnnouncement) {
-        const key = item.dataset.setting;
-        const label = item.querySelector(".mission-setting-label").textContent;
-        speak(label + ". " + current(key).label + ". Press Enter to change.");
-      }
+      const key = item.dataset.setting;
+      const label = item.querySelector(".mission-setting-label").textContent;
+      const announcement = label + ". " + current(key).label + ". Press Enter to change.";
+      status.textContent = announcement;
+      if (!openingAnnouncement) speak(announcement);
     });
     item.addEventListener("click", () => {
       const key = item.dataset.setting;
