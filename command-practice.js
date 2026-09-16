@@ -310,7 +310,9 @@
         ? "Guided task " + (position + 1) + " of " + order.length
         : "Press " + spokenKeys(command[0]);
     const explanation = document.createElement("p");
-    explanation.textContent = describe();
+    explanation.textContent = !protectedSequence && practiceStyle.value !== "guided"
+      ? commandExplanation()
+      : describe();
     prompt.replaceChildren(heading, explanation);
     status.textContent = spoken.checked
       ? "Waiting for " + spokenKeys(command[0]) + "."

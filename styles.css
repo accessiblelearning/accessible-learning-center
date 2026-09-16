@@ -2693,6 +2693,154 @@ html[data-contrast="high"] .mission-center-page .mission-ready-prompt {
   border-color: #ffffff;
 }
 
+/* Command Practice uses the same single-focus stage as Keyboarding Center. */
+.practice-session-page .mission-training-panel:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 2rem);
+  padding: .5rem;
+  overflow: hidden;
+  background: #06142d;
+  border: 0;
+  border-radius: 0;
+}
+
+.practice-session-page .training-stage .command-focus-area {
+  display: grid;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: clamp(18rem, 68vh, 42rem);
+  margin: 0 0 .45rem;
+  padding: 0;
+  color: #071a35;
+  background: transparent;
+  border: 0;
+  border-radius: .55rem;
+  box-shadow: none;
+}
+
+.practice-session-page .training-stage .command-focus-area:focus,
+.practice-session-page .training-stage .command-focus-area:focus-visible {
+  outline: .3rem solid #ffe37a;
+  outline-offset: .2rem;
+}
+
+.practice-session-page .training-stage .command-focus-area .training-stage__prompt {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: clamp(1.5rem, 6vw, 4rem);
+  color: #071a35;
+  background: #f7fbff;
+  border: .2rem solid #65aef5;
+  border-radius: .55rem;
+  font-size: clamp(1.75rem, 4.5vw, 3.75rem);
+  font-weight: 900;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.practice-session-page .training-stage .command-focus-area .training-stage__prompt p {
+  margin: 0;
+}
+
+.practice-session-page .training-stage .command-focus-area.is-correct,
+.practice-session-page .training-stage .command-focus-area.is-incorrect {
+  color: #071a35;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.practice-session-page .training-stage .command-focus-area.is-correct .training-stage__prompt {
+  color: #0a5224;
+  background: #d9f7df;
+  border-color: #16813a;
+}
+
+.practice-session-page .training-stage .command-focus-area.is-incorrect .training-stage__prompt {
+  color: #7b101d;
+  background: #ffe0e0;
+  border-color: #b51f2e;
+}
+
+.practice-session-page .training-stage .practice-session-shortcuts {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .35rem 1.5rem;
+  margin: 0;
+  padding: .4rem .6rem;
+  color: #ffffff;
+  background: #06142d;
+  border: 0;
+  font-size: clamp(.85rem, 1.5vw, 1rem);
+}
+
+.practice-session-page .training-stage .practice-session-shortcuts kbd {
+  padding: .08rem .35rem;
+  color: #071a35;
+  background: #ffffff;
+  border: 1px solid #65aef5;
+  border-radius: .25rem;
+  font: inherit;
+  font-weight: 900;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .mission-training-panel,
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage .command-focus-area {
+  background: #000000;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage .command-focus-area .training-stage__prompt {
+  color: #ffffff;
+  background: #000000;
+  border-color: #4c4c4c;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage .command-focus-area.is-correct .training-stage__prompt {
+  border-color: #55e487;
+}
+
+html[data-theme="dark"]:not([data-contrast="high"]) .practice-session-page .training-stage .command-focus-area.is-incorrect .training-stage__prompt {
+  border-color: #ff7a88;
+}
+
+html[data-contrast="high"] .practice-session-page .training-stage .command-focus-area,
+html[data-contrast="high"] .practice-session-page .training-stage .command-focus-area .training-stage__prompt {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffffff;
+  box-shadow: none;
+}
+
+html[data-contrast="high"] .practice-session-page .training-stage .command-focus-area.is-correct .training-stage__prompt {
+  border-color: #55e487;
+}
+
+html[data-contrast="high"] .practice-session-page .training-stage .command-focus-area.is-incorrect .training-stage__prompt {
+  border-color: #ff7a88;
+}
+
+@media (max-width: 42rem), (max-height: 42rem) {
+  .practice-session-page .mission-training-panel:not([hidden]) {
+    min-height: calc(100vh - .5rem);
+    padding: .25rem;
+  }
+
+  .practice-session-page .training-stage .command-focus-area {
+    min-height: clamp(12rem, 72vh, 30rem);
+  }
+
+  .practice-session-page .training-stage .command-focus-area .training-stage__prompt {
+    padding: 1rem;
+    font-size: clamp(1.5rem, 7vw, 2.75rem);
+  }
+}
+
 html[data-contrast="high"] .mission-center-page .mission-center-option:focus,
 html[data-contrast="high"] .mission-center-page .mission-setting-toggle:focus,
 html[data-contrast="high"] .mission-center-page .mission-start-option:focus {
