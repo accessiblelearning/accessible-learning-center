@@ -2958,6 +2958,8 @@ html[data-contrast="high"] .mission-center-page .mission-result-primary:focus-vi
   display: grid;
   flex: 1 1 auto;
   place-items: center;
+  width: min(100%, 62rem);
+  align-self: center;
   min-height: 0;
   max-height: none;
   margin: 0 0 .35rem;
@@ -2965,6 +2967,11 @@ html[data-contrast="high"] .mission-center-page .mission-result-primary:focus-vi
   font-size: clamp(1.25rem, 3vw, 2.15rem);
   line-height: 1.25;
   text-align: center;
+}
+
+.mission-session-page .mission-training-panel .training-stage__prompt p {
+  width: min(100%, 52rem);
+  margin: 0;
 }
 
 .mission-session-page .mission-control-station {
@@ -2994,6 +3001,11 @@ html[data-contrast="high"] .mission-center-page .mission-result-primary:focus-vi
   margin: .3rem 0 0;
   padding: .25rem .4rem;
   font-size: .8rem;
+}
+
+.mission-session-page .mission-training-panel .mission-log-panel > summary {
+  color: #ffffff;
+  text-align: center;
 }
 
 @media (max-width: 42rem), (max-height: 42rem) {
