@@ -2346,6 +2346,12 @@ html[data-contrast="high"] .training-results h3 {
   overflow: hidden;
 }
 
+/* Ready, training, and results panels replace one another; hidden panels must
+   never remain in the page layout even when a component sets display. */
+.mission-center-page [hidden] {
+  display: none !important;
+}
+
 .mission-center-page .mission-ready-screen {
   display: grid;
   align-content: center;
