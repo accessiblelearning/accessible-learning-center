@@ -9,7 +9,7 @@
   const validMission = missionParam !== null && Number.isInteger(mission) && mission >= 0 && mission < 8;
 
   if (!validReader || !validMission) {
-    window.location.replace("troubleshooting-lab.html?mode=topics");
+    window.location.replace("topic-missions.html");
     return;
   }
 

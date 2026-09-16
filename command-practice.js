@@ -497,7 +497,7 @@
   });
 
   practiceExit?.addEventListener("click", () => {
-    window.location.href = "troubleshooting-lab.html?mode=commands";
+    window.location.href = "command-practice.html";
   });
 
   document.addEventListener("keydown", event => {
@@ -505,7 +505,7 @@
     if (event.target === capture && active) return;
     event.preventDefault();
     if ("speechSynthesis" in window) speechSynthesis.cancel();
-    window.location.href = "troubleshooting-lab.html?mode=commands";
+    window.location.href = "command-practice.html";
   });
 
   stop.addEventListener("click", () => {
@@ -516,7 +516,7 @@
     protectedModifierArmed = "";
     if ("speechSynthesis" in window) speechSynthesis.cancel();
     if (focusedSession) {
-      window.location.href = "troubleshooting-lab.html?mode=commands";
+      window.location.href = "command-practice.html";
       return;
     }
     showPracticeResults(false);

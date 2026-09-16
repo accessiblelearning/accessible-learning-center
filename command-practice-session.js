@@ -7,7 +7,7 @@
   window.addEventListener("DOMContentLoaded", () => {
     const category = document.getElementById("commandCategory");
     if (!requestedCategory || ![...category.options].some(option => option.value === requestedCategory)) {
-      window.location.replace("troubleshooting-lab.html?mode=commands");
+      window.location.replace("command-practice.html");
       return;
     }
 

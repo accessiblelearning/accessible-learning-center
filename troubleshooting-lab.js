@@ -197,7 +197,7 @@
     if (!focusedMissionSession || !["Escape", "Esc"].includes(event.key) || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
     event.preventDefault();
     stopVoice();
-    window.location.replace("troubleshooting-lab.html?mode=topics");
+    window.location.replace("topic-missions.html");
   }, true);
   missionControl.addEventListener("keydown", event => {
     if (!active) return;

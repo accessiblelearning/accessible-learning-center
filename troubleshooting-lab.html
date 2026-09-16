@@ -3,77 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Choose a manual, practice commands, or solve realistic topic missions in Accessible Learning Center Mission Control.">
-  <title>Mission Control Settings - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=mission-library-1">
+  <meta name="description" content="Open topic missions, command practice, or settings in Accessible Learning Center Mission Control.">
+  <title>Mission Control Center - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=mission-sections-1">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
-  <script src="mission-catalog.js?v=mission-library-1" defer></script>
-  <script src="mission-center.js?v=mission-library-1" defer></script>
+  <script src="mission-center.js?v=mission-sections-1" defer></script>
 </head>
-<body class="mission-center-page mission-library-page" data-minimal-page="true">
+<body class="mission-center-page" data-minimal-page="true">
   <main id="main-content" class="mission-center-shell">
-    <section class="mission-center-panel" aria-labelledby="missionSettingsHeading">
-      <h1 id="missionSettingsHeading">Mission Control Settings</h1>
-      <p class="mission-center-summary">Choose a type of practice, a manual or program, and an available practice set. Lessons are open—you do not have to pass one to choose another.</p>
-      <p id="missionLibraryInstructions" class="visually-hidden">Use Down Arrow and Up Arrow to move through settings. Press Enter to change the highlighted setting. Continue to Start Practice and press Enter. Press Escape to return to Start Here.</p>
-
-      <div id="missionLibraryMenu" class="mission-settings-menu mission-center-menu" role="application" aria-label="Mission Control practice library and settings" aria-describedby="missionLibraryInstructions">
-        <button id="practiceTypeSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="mode">
-          <span class="mission-setting-label">Practice section</span>
-          <strong id="practiceTypeValue" class="mission-setting-value">Topic Missions</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="manualSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="manual">
-          <span class="mission-setting-label">Manual or program</span>
-          <strong id="manualValue" class="mission-setting-value">Screen Readers and Web Navigation</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="practiceSetSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="set">
-          <span class="mission-setting-label">Practice lesson</span>
-          <strong id="practiceSetValue" class="mission-setting-value">The unexpected window</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="readerSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="reader" data-mode="topics">
-          <span class="mission-setting-label">Screen reader used in the mission</span>
-          <strong id="readerValue" class="mission-setting-value">JAWS</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="styleSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="style" data-mode="commands" hidden>
-          <span class="mission-setting-label">Command practice style</span>
-          <strong id="styleValue" class="mission-setting-value">Quick Command Practice</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="lengthSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="length" data-mode="commands" hidden>
-          <span class="mission-setting-label">Session length</span>
-          <strong id="lengthValue" class="mission-setting-value">Five commands</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="explanationSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="level" data-mode="commands" hidden>
-          <span class="mission-setting-label">Explanation level</span>
-          <strong id="explanationValue" class="mission-setting-value">General explanation</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="speechSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="speech">
-          <span class="mission-setting-label">Training speech</span>
-          <strong id="speechValue" class="mission-setting-value">Use my own screen reader</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="soundSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="sounds" data-mode="commands" hidden>
-          <span class="mission-setting-label">Sound feedback</span>
-          <strong id="soundValue" class="mission-setting-value">On</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="orderSetting" class="mission-setting-toggle mission-center-option" type="button" data-setting="order" data-mode="commands" hidden>
-          <span class="mission-setting-label">Practice order</span>
-          <strong id="orderValue" class="mission-setting-value">In lesson order</strong>
-          <span class="mission-setting-hint">Press Enter to change</span>
-        </button>
-        <button id="startMissionPractice" class="mission-start-option mission-center-option mission-center-option--start" type="button"><strong id="startMissionPracticeLabel">Start Topic Mission</strong><span>Press Enter</span></button>
+    <section class="mission-center-panel" aria-labelledby="missionCenterHeading">
+      <h1 id="missionCenterHeading">Mission Control Center</h1>
+      <p class="mission-center-summary">Choose a practice section or change your Mission Control settings.</p>
+      <p id="missionCenterInstructions" class="visually-hidden">Use Down Arrow and Up Arrow to move through Topic Missions, Command Practice, and Settings. Press Enter to open the highlighted section. Press Escape to return to Start Here.</p>
+      <div id="missionCenterMenu" class="mission-center-menu mission-mode-actions" role="application" aria-label="Mission Control Center sections" aria-describedby="missionCenterInstructions">
+        <a class="mission-center-option" href="topic-missions.html"><strong>Topic Missions</strong><span>Choose a directly named troubleshooting problem from the manuals.</span></a>
+        <a class="mission-center-option" href="command-practice.html"><strong>Command Practice</strong><span>Choose a directly named command topic from the manuals.</span></a>
+        <a class="mission-center-option" href="mission-settings.html"><strong>Settings</strong><span>Choose speech, sound feedback, screen reader, explanations, session length, and practice order.</span></a>
       </div>
-
-      <p id="missionLibraryStatus" class="visually-hidden" role="status" aria-live="polite"></p>
-      <p class="mission-center-help"><strong>Up or Down:</strong> move through choices. <strong>Enter:</strong> change or start. <strong>Escape:</strong> return to Start Here.</p>
-      <p class="mission-center-safety"><strong>Open practice:</strong> Choose any available lesson or mission. Nothing is locked, and no passing score is required.</p>
+      <p class="mission-center-help"><strong>Up or Down:</strong> move through sections. <strong>Enter:</strong> open. <strong>Escape:</strong> return to Start Here.</p>
+      <p class="mission-center-safety"><strong>Open practice:</strong> All available topics can be selected in any order. Nothing is locked.</p>
       <nav class="mission-center-links" aria-label="Mission Control links">
         <a href="start-here.html">Return to Start Here</a>
         <a href="student-progress.html">Open My Progress</a>
