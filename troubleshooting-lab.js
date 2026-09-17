@@ -116,6 +116,8 @@
   let completed = new Set();
   let missionAttempts = 0;
   let missionCommandsToReview = new Map();
+  let audioContext = null;
+  const soundFeedbackEnabled = new URLSearchParams(window.location.search).get("sounds") !== "0";
 
   const missionReviewLinks = {
     "Screen-reader recovery": ["jaws-lesson-2.html", "Review Screen Readers Lesson 2"],
@@ -147,6 +149,27 @@
 
   function stopVoice() {
     if ("speechSynthesis" in window) speechSynthesis.cancel();
+  }
+
+  function tone(correct) {
+    if (!soundFeedbackEnabled) return;
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return;
+    audioContext ||= new AudioContextClass();
+    const notes = correct ? [523.25, 659.25] : [180];
+    notes.forEach((frequency, index) => {
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      const startAt = audioContext.currentTime + index * 0.1;
+      oscillator.frequency.value = frequency;
+      oscillator.type = correct ? "sine" : "square";
+      gain.gain.setValueAtTime(0.0001, startAt);
+      gain.gain.exponentialRampToValueAtTime(correct ? 0.1 : 0.06, startAt + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, startAt + 0.18);
+      oscillator.connect(gain).connect(audioContext.destination);
+      oscillator.start(startAt);
+      oscillator.stop(startAt + 0.2);
+    });
   }
 
   function announce(text, state = "") {
@@ -283,12 +306,14 @@
     lastCommand.textContent = displayedCommand(command);
     const item = document.createElement("li");
     if (command === expected.command) {
+      tone(true);
       item.textContent = displayedCommand(command) + ": " + expected.success;
       log.append(item);
       step += 1;
       if (step === mission.steps.length) finishMission(expected.success + " " + expected.why);
       else announce(expected.success + " " + expected.why, "correct");
     } else {
+      tone(false);
       missionCommandsToReview.set(expected.command, expected);
       const response = wrongResponse(command, expected.command);
       item.textContent = displayedCommand(command) + ": " + response;
