@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=command-focus-ui-2">
+  <link rel="stylesheet" href="styles.css?v=command-insert-fix-1">
   <script src="accessibility.js?v=text-controls-restored-1" defer></script>
   <script src="command-practice-session.js?v=mission-sections-1" defer></script>
   <script src="command-practice.js?v=mission-sections-1" defer></script>
@@ -29,7 +29,7 @@
         <div id="commandPrompt" class="command-prompt training-stage__prompt">
           <p>Preparing your command practice.</p>
         </div>
-        <p id="captureInstructions" class="visually-hidden">Press the requested key combination. For a protected browser command, press and release the named modifier, then press the final key by itself. A correct command advances automatically. Press Control by itself to repeat when it is not part of a protected command. Press Escape to exit.</p>
+        <p id="captureInstructions" class="visually-hidden">Press the requested key combination. For a screen-reader command such as Insert plus T, let your screen reader handle the command, then press the final key once to confirm it here. For a protected browser command, press and release the named modifier, then press the final key by itself. A correct command advances automatically. Press Control by itself to repeat when it is not part of a protected command. Press Escape to exit.</p>
         <p class="training-stage__detected visually-hidden"><span class="training-stage__input-label">Keys pressed</span><strong id="detectedKeys">None yet</strong></p>
       </div>
       <div id="practiceStatus" class="practice-status training-stage__feedback visually-hidden" role="status" aria-live="assertive"></div>
