@@ -28,7 +28,7 @@ function page(initial = {}, audio) {
     }
     focus() { document.activeElement?.fire("blur"); document.activeElement = this; this.fire("focus"); }
     click() { if (!this.disabled) this.fire("click"); }
-    closest() { return this.closestMatch === false ? null : this; }
+    closest(selector) { if (selector === "[hidden]") return this.hidden ? this : null; return this.closestMatch === false ? null : this; }
     querySelector(selector) { return get(this.id + " " + selector); }
     querySelectorAll() { return this.children; }
     append(...children) { this.children.push(...children); }
@@ -203,6 +203,7 @@ test("shared toolbar toggles website controls and practice speech without resett
   assert.equal(p.document.body.classList.contains("mission-website-controls-hidden"), false);
   voice.click();
   assert.equal(p.get("spokenInstructions").checked, true);
+  assert.equal(p.document.activeElement, p.get("keyCapture"));
   assert.equal(p.get("practiceStatus").getAttribute("aria-live"), "off");
   voice.click();
   assert.equal(p.get("spokenInstructions").checked, false);

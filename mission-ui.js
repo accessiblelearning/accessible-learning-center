@@ -66,6 +66,8 @@
       speechSynthesis.cancel();
       if (on) speechSynthesis.speak(new SpeechSynthesisUtterance(status.textContent));
     }
+    const capture = document.getElementById("keyCapture") || document.getElementById("missionControlStation");
+    if (capture && !capture.closest("[hidden]")) capture.focus({ preventScroll: true });
   });
 
   window.addEventListener("missionvoicechange", event => {
