@@ -33,8 +33,8 @@
       id: "microsoft-word",
       label: "Microsoft Word",
       commandSets: [
-        { id: "editing-basics", label: "Microsoft Word: Essential Editing Commands", category: "General editing" },
-        { id: "word-documents", label: "Microsoft Word: Document Navigation and Formatting Commands", category: "Microsoft Word and documents" }
+        { id: "editing-basics", menuLabel: "Microsoft Word — Editing", label: "Microsoft Word: Essential Editing Commands", category: "General editing" },
+        { id: "word-documents", menuLabel: "Microsoft Word — Navigation and Formatting", label: "Microsoft Word: Document Navigation and Formatting Commands", category: "Microsoft Word and documents" }
       ],
       missionSets: [
         { id: "risky-word-edit", label: "Microsoft Word: Recover a Risky Edit", mission: "3" }

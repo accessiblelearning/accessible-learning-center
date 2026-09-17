@@ -34,6 +34,7 @@
     item.tabIndex = index === 0 ? 0 : -1;
     item.addEventListener("focus", () => {
       setActive(item);
+      try { sessionStorage.setItem("missionControlCenterChoice", item.getAttribute("href")); } catch (error) {}
       if (!openingAnnouncement) speak(item.textContent.trim() + ". Press Enter to open.");
     });
   });
@@ -58,9 +59,12 @@
   }, true);
 
   window.addEventListener("DOMContentLoaded", () => {
-    items[0]?.focus();
+    let remembered = "";
+    try { remembered = sessionStorage.getItem("missionControlCenterChoice") || ""; } catch (error) {}
+    const selected = items.find(item => item.getAttribute("href") === remembered) || items[0];
+    selected?.focus();
     openingAnnouncement = false;
-    speak("Mission Control Center. Topic Missions. Press Enter to open, or use the Down Arrow for Command Practice and Settings.");
+    speak("Mission Control Center. " + selected.textContent.trim() + ". Press Enter to open. Use Up or Down Arrow to choose Topic Missions, Command Practice, or Settings.");
   });
   window.addEventListener("pagehide", stopVoice);
 })();

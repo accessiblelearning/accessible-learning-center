@@ -187,9 +187,11 @@
   }
 
   function updateProgress() {
-    progress.max = missions.length;
-    progress.value = completed.size;
-    progress.textContent = completed.size + " of " + missions.length + " missions completed";
+    const total = missions[current].steps.length;
+    progress.max = total;
+    progress.value = step;
+    progress.textContent = step + " of " + total + " steps completed";
+    count.textContent = "Step " + Math.min(step + 1, total) + " of " + total;
   }
 
   function displayedCommand(command) {
@@ -339,6 +341,7 @@
       item.textContent = displayedCommand(command) + ": " + expected.success;
       log.append(item);
       step += 1;
+      updateProgress();
       if (step === mission.steps.length) finishMission(expected.success + " " + expected.why);
       else announce(expected.success + " " + expected.why, "correct");
     } else {
@@ -421,10 +424,9 @@
     missionAttempts = 0;
     missionCommandsToReview = new Map();
     const mission = missions[current];
-    category.textContent = mission.category;
+    category.textContent = mission.title;
     title.textContent = mission.title;
     problem.textContent = mission.problem;
-    count.textContent = "Mission " + (current + 1) + " of " + missions.length;
     log.replaceChildren();
     lastCommand.textContent = "None yet";
     missionControl.classList.remove("is-correct", "is-incorrect");

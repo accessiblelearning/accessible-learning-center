@@ -15,7 +15,8 @@ function page(initial = {}, audio) {
       Object.assign(this, { id, value: "", checked: false, disabled: false, hidden: false,
         textContent: "", children: [], listeners: {}, attributes: {}, dataset: {}, style: {} });
       const classes = new Set();
-      this.classList = { add: (...v) => v.forEach(x => classes.add(x)), remove: (...v) => v.forEach(x => classes.delete(x)) };
+      this.classList = { add: (...v) => v.forEach(x => classes.add(x)), remove: (...v) => v.forEach(x => classes.delete(x)),
+        contains: value => classes.has(value), toggle: (value, on) => on ? classes.add(value) : classes.delete(value) };
     }
     addEventListener(type, listener) { (this.listeners[type] ||= []).push(listener); }
     fire(type, details = {}) {
@@ -35,6 +36,7 @@ function page(initial = {}, audio) {
     prepend(...children) { this.children.unshift(...children); }
     replaceChildren(...children) { this.children = children; }
     setAttribute(name, value) { this.attributes[name] = value; }
+    getAttribute(name) { return this.attributes[name] ?? null; }
     removeAttribute(name) { delete this.attributes[name]; }
   }
   const get = id => { if (!nodes.has(id)) nodes.set(id, new Element(id)); return nodes.get(id); };
@@ -188,4 +190,58 @@ test("display controls preserve the voice selected by Mission Settings", () => {
   p.get("speechSetting").click();
   panel.fire("click", { target: p.get("increase") });
   assert.equal(JSON.parse(p.storage.getItem("accessibleLearningPreferences")).trainingSpeech, "own");
+});
+
+test("shared toolbar toggles website controls and practice speech without resetting a task", () => {
+  const p = practice();
+  p.load("mission-ui.js");
+  p.window.fire("DOMContentLoaded"); p.advance();
+  const [, controls, voice] = p.get("main.mission-center-shell").children[0].children;
+  assert.equal(controls.getAttribute("aria-expanded"), "false");
+  controls.click();
+  assert.equal(controls.getAttribute("aria-expanded"), "true");
+  assert.equal(p.document.body.classList.contains("mission-website-controls-hidden"), false);
+  voice.click();
+  assert.equal(p.get("spokenInstructions").checked, true);
+  assert.equal(p.get("practiceStatus").getAttribute("aria-live"), "off");
+  voice.click();
+  assert.equal(p.get("spokenInstructions").checked, false);
+  assert.equal(p.get("practiceStatus").getAttribute("aria-live"), "polite");
+  chord(p, "Control+C");
+  assert.equal(p.get("practiceScore").textContent, "Correct: 1 · Attempts: 1");
+});
+
+test("toolbar and Settings voice stay synchronized; Left and Right change values", () => {
+  const p = page(); p.document.body.dataset = {};
+  const menu = p.get("missionSettingsMenu");
+  for (const key of ["speech", "sounds", "reader", "style", "length", "level", "order"]) {
+    const item = p.get(key + "Setting"); item.dataset.setting = key;
+    item.querySelector(".mission-setting-label").textContent = key; menu.append(item);
+  }
+  p.load("mission-ui.js"); p.load("mission-settings.js");
+  p.window.fire("DOMContentLoaded"); p.advance();
+  const voice = p.get("main.mission-center-shell").children[0].children[2];
+  voice.click();
+  assert.equal(p.get("speechValue").textContent, "Use the Mission Control voice");
+  p.get("speechSetting").click();
+  assert.equal(voice.textContent, "Voice: My screen reader");
+  p.get("readerSetting").focus();
+  menu.fire("keydown", { key: "ArrowLeft" });
+  assert.equal(p.get("readerValue").textContent, "NVDA");
+  menu.fire("keydown", { key: "ArrowRight" });
+  assert.equal(p.get("readerValue").textContent, "JAWS");
+});
+
+test("progress tracks the current command set and the current mission's steps", () => {
+  const p = practice();
+  assert.equal(p.get("commandPosition").textContent, "Command 1 of 10");
+  chord(p, "Control+C"); p.advance();
+  assert.equal(p.get("commandProgress").value, 1);
+  assert.equal(p.get("commandPosition").textContent, "Command 2 of 10");
+  const m = page({ atPerspective: { value: "jaws" }, missionSelect: { value: "0" } });
+  m.load("troubleshooting-lab.js"); m.get("startMission").click();
+  assert.equal(m.get("missionProgress").max, 3);
+  chord(m, "Insert+T", "missionControlStation");
+  assert.equal(m.get("missionProgress").value, 1);
+  assert.equal(m.get("missionCount").textContent, "Step 2 of 3");
 });

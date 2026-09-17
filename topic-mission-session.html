@@ -6,11 +6,13 @@
   <meta name="description" content="A focused screen-reader Mission Control simulation.">
   <title>Topic Mission - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=mission-sweep-3">
+  <link rel="stylesheet" href="mission-ui.css?v=keyboard-match-1">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
+  <script src="mission-ui.js?v=keyboard-match-1" defer></script>
   <script src="topic-mission-session.js?v=mission-sections-1" defer></script>
-  <script src="troubleshooting-lab.js?v=mission-sweep-2" defer></script>
+  <script src="troubleshooting-lab.js?v=keyboard-match-1" defer></script>
 </head>
-<body class="mission-session-page mission-center-page" data-minimal-page="true" data-mission-session="true">
+<body class="mission-session-page mission-center-page" data-mission-session="true" data-mission-back="topic-missions.html" data-mission-back-label="Back to Topic Missions">
   <main id="main-content" class="mission-center-shell">
     <section id="missionReadyScreen" class="mission-center-panel mission-ready-screen" aria-labelledby="missionReadyHeading" tabindex="0" role="application" aria-describedby="missionReadyInstructions">
       <h1 id="missionReadyHeading">Mission Control</h1>
@@ -25,7 +27,7 @@
         <h3 id="missionControlHeading" class="visually-hidden">Command area</h3>
         <div class="mission-briefing training-stage__briefing">
           <p class="mission-meta"><span id="missionCount">Preparing mission</span><span id="missionCategory"></span></p>
-          <progress id="missionProgress" max="8" value="0">0 of 8 missions completed</progress>
+          <progress aria-label="Mission progress" id="missionProgress" max="8" value="0">0 of 8 missions completed</progress>
           <h2 id="missionTitle" class="visually-hidden" tabindex="-1">Preparing your topic mission</h2>
           <p id="missionProblem" class="scenario-problem training-stage__prompt">Your mission briefing will appear here.</p>
         </div>

@@ -6,11 +6,13 @@
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=mission-sweep-3">
+  <link rel="stylesheet" href="mission-ui.css?v=keyboard-match-1">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
+  <script src="mission-ui.js?v=keyboard-match-1" defer></script>
   <script src="command-practice-session.js?v=mission-sections-1" defer></script>
-  <script src="command-practice.js?v=mission-sweep-2" defer></script>
+  <script src="command-practice.js?v=keyboard-match-1" defer></script>
 </head>
-<body class="practice-session-page mission-center-page" data-practice-session="true" data-minimal-page="true">
+<body class="practice-session-page mission-center-page" data-practice-session="true" data-mission-back="command-practice.html" data-mission-back-label="Back to Command Practice">
   <main id="main-content" class="mission-center-shell">
     <section id="commandReadyScreen" class="mission-center-panel mission-ready-screen" aria-labelledby="commandReadyHeading" tabindex="0" role="application" aria-describedby="commandReadyInstructions">
       <h1 id="commandReadyHeading">Command Practice</h1>
@@ -32,6 +34,8 @@
         <p id="captureInstructions" class="visually-hidden">Press the requested key combination. For a screen-reader command such as Insert plus T, let your screen reader handle the command, then press the final key once to confirm it here. For a protected browser command, press and release the named modifier, then press the final key by itself. A correct command advances automatically. Press Control by itself to repeat when it is not part of a protected command. Tab or Shift plus Tab moves through the page controls when it is not the requested command. Press Escape to exit.</p>
         <p class="training-stage__detected visually-hidden"><span class="training-stage__input-label">Keys pressed</span><strong id="detectedKeys">None yet</strong></p>
       </div>
+      <progress id="commandProgress" class="mission-training-progress" max="1" value="0" aria-label="Command practice progress"></progress>
+      <p id="commandPosition" class="mission-training-position"></p>
       <div id="practiceStatus" class="practice-status training-stage__feedback" role="status" aria-live="assertive"></div>
       <p class="practice-session-shortcuts training-stage__shortcuts"><span><kbd>Ctrl</kbd> Repeat</span><span>Correct advances</span><a href="command-practice.html">Back to Command Practice (Esc)</a></p>
       <section id="commandResults" class="training-results mission-results-screen" aria-labelledby="commandResultsHeading" tabindex="-1" hidden>

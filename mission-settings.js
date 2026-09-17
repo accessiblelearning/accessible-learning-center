@@ -53,6 +53,7 @@
       preferences.trainingSpeech = voiceEnabled() ? "voice" : "own";
       localStorage.setItem(preferenceKey, JSON.stringify(preferences));
     } catch (error) {}
+    window.dispatchEvent(new CustomEvent("missionvoicechange", { detail: { enabled: voiceEnabled() } }));
   }
 
   function updateStatus() {
@@ -92,6 +93,16 @@
   });
 
   menu.addEventListener("keydown", event => {
+    if (["ArrowLeft", "ArrowRight"].includes(event.key)) {
+      const item = document.activeElement;
+      if (!items.includes(item)) return;
+      event.preventDefault();
+      const data = settings[item.dataset.setting];
+      // The click handler advances one step; offset first for a backward step.
+      if (event.key === "ArrowLeft") data.index = (data.index - 2 + data.options.length * 2) % data.options.length;
+      item.click();
+      return;
+    }
     if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
     const activeIndex = Math.max(0, items.indexOf(document.activeElement));
@@ -115,10 +126,15 @@
     if (hint) hint.textContent = "Site voice unavailable in this browser";
   }
   restore();
+  window.addEventListener("missionvoicechange", event => {
+    settings.speech.index = event.detail.enabled && voiceSupported ? 1 : 0;
+    settings.speech.valueElement.textContent = current("speech").label;
+    updateStatus();
+  });
   window.addEventListener("DOMContentLoaded", () => {
     items[0]?.focus();
     openingAnnouncement = false;
-    const introduction = "Mission Control Settings. Use the Down Arrow or Up Arrow to move through the settings. Press Enter to change a setting. Press Escape to return to Mission Control Center.";
+    const introduction = "Mission Control Settings. Use the Down Arrow or Up Arrow to move through the settings. Press Enter or Right Arrow for the next value, or Left Arrow for the previous value. Press Escape to return to Mission Control Center.";
     status.textContent = introduction + " Training speech is set to " + current("speech").label + ".";
     speak(introduction + " Training speech is set to " + current("speech").label + ". Press Enter to change it.");
   });

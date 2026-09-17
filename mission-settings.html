@@ -6,16 +6,17 @@
   <meta name="description" content="Change speech, sound, screen-reader, explanation, session length, and practice-order settings for Mission Control.">
   <title>Mission Control Settings - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=mission-sweep-2">
+  <link rel="stylesheet" href="mission-ui.css?v=keyboard-match-1">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
-  <script src="mission-settings.js?v=mission-settings-announce-1" defer></script>
+  <script src="mission-ui.js?v=keyboard-match-1" defer></script>
+  <script src="mission-settings.js?v=keyboard-match-1" defer></script>
 </head>
-<body class="mission-center-page">
+<body class="mission-center-page" data-mission-back="troubleshooting-lab.html" data-mission-back-label="Back to Mission Control Center">
   <main id="main-content" class="mission-center-shell">
     <section class="mission-center-panel" aria-labelledby="missionSettingsHeading">
       <h1 id="missionSettingsHeading">Mission Control Settings</h1>
-      <p class="mission-center-summary">These settings are saved and used when you start a topic mission or command-practice topic.</p>
-      <p class="mission-center-back"><a class="button-link" href="troubleshooting-lab.html">Back to Mission Control Center</a></p>
-      <p id="missionSettingsInstructions" class="visually-hidden">Use Down Arrow and Up Arrow to move through settings. Press Enter to change the highlighted setting. Press Escape to return to Mission Control Center.</p>
+      <p class="mission-center-summary">Your choices are saved for both practice modes.</p>
+      <p id="missionSettingsInstructions" class="visually-hidden">Use Down Arrow and Up Arrow to move through settings. Press Enter or Right Arrow for the next value, or Left Arrow for the previous value. Press Escape to return to Mission Control Center.</p>
       <div id="missionSettingsMenu" class="mission-settings-menu mission-center-menu" role="application" aria-label="Mission Control settings" aria-describedby="missionSettingsInstructions">
         <button class="mission-setting-toggle mission-center-option" type="button" data-setting="speech"><span class="mission-setting-label">Training speech</span><strong id="speechValue" class="mission-setting-value">Use my own screen reader</strong><span class="mission-setting-hint">Press Enter to change</span></button>
         <button class="mission-setting-toggle mission-center-option" type="button" data-setting="sounds"><span class="mission-setting-label">Sound feedback</span><strong id="soundValue" class="mission-setting-value">On</strong><span class="mission-setting-hint">Press Enter to change</span></button>
@@ -26,7 +27,7 @@
         <button class="mission-setting-toggle mission-center-option" type="button" data-setting="order"><span class="mission-setting-label">Command practice order</span><strong id="orderValue" class="mission-setting-value">In manual order</strong><span class="mission-setting-hint">Press Enter to change</span></button>
       </div>
       <p id="missionSettingsStatus" class="visually-hidden" role="status" aria-live="polite"></p>
-      <p class="mission-center-help"><strong>Up or Down:</strong> move through settings. <strong>Enter:</strong> change. <strong>Escape:</strong> return to Mission Control Center.</p>
+      <p class="mission-center-help"><strong>Up or Down:</strong> move through settings. <strong>Enter or Left/Right:</strong> change. <strong>Escape:</strong> return to Mission Control Center.</p>
     </section>
   </main>
 </body>

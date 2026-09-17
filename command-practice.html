@@ -6,20 +6,23 @@
   <meta name="description" content="Choose an independently available keyboard-command topic based on Accessible Learning Center manuals.">
   <title>Command Practice Topics - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=mission-sweep-2">
+  <link rel="stylesheet" href="mission-ui.css?v=keyboard-match-1">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
-  <script src="mission-catalog.js?v=mission-sections-1" defer></script>
-  <script src="command-practice-setup.js?v=mission-menu-voice-1" defer></script>
+  <script src="mission-ui.js?v=keyboard-match-1" defer></script>
+  <script src="mission-catalog.js?v=keyboard-match-1" defer></script>
+  <script src="command-practice-setup.js?v=keyboard-match-1" defer></script>
 </head>
-<body class="command-setup-page mission-center-page">
+<body class="command-setup-page mission-center-page" data-mission-back="troubleshooting-lab.html" data-mission-back-label="Back to Mission Control Center">
   <main id="main-content" class="mission-center-shell">
     <section class="mission-center-panel" aria-labelledby="commandTopicsHeading">
       <h1 id="commandTopicsHeading">Command Practice</h1>
-      <p class="mission-center-summary">Welcome to Command Practice. Choose a practice topic from the manuals below. Use the Down Arrow or Up Arrow to choose, then press Enter to start.</p>
+      <p class="mission-center-summary">Welcome to Command Practice. Use the arrow keys to choose a manual.</p>
       <p id="commandTopicsInstructions" class="visually-hidden">Use Down Arrow and Up Arrow to move through command topics. Press Enter to start the highlighted topic. Press Escape to return to Mission Control Center.</p>
       <div id="commandTopicsMenu" class="mission-center-menu" role="application" aria-label="Command Practice topics" aria-describedby="commandTopicsInstructions"></div>
+      <p id="missionSelectionDescription" class="mission-selection-detail"></p>
       <p id="commandTopicsStatus" class="visually-hidden" role="status" aria-live="polite"></p>
       <p class="mission-center-help"><strong>Up or Down:</strong> move through topics. <strong>Enter:</strong> start. <strong>Escape:</strong> return to Mission Control Center.</p>
-      <p class="mission-center-safety"><strong>Practice safety:</strong> System and browser commands that could switch, close, or reload something are not physically practiced.</p>
+      <details class="mission-support"><summary>About this practice</summary><p><strong>Practice safety:</strong> System and browser commands that could switch, close, or reload something are not physically practiced.</p></details>
     </section>
   </main>
 </body>

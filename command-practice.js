@@ -366,6 +366,7 @@
     capture.classList.remove("is-correct", "is-incorrect");
     next.disabled = true;
     speak(describe());
+    updateScore();
     capture.focus();
   }
 
@@ -403,6 +404,10 @@
     score.textContent = focusedSession
       ? "Correct: " + correctCount + " · Attempts: " + attempts
       : "Correct commands: " + correctCount + ". Attempts: " + attempts + ".";
+    const progress = document.getElementById("commandProgress");
+    const positionText = document.getElementById("commandPosition");
+    if (progress) { progress.max = order.length || 1; progress.value = correctCount; }
+    if (positionText) positionText.textContent = "Command " + Math.min(position + 1, order.length) + " of " + order.length;
   }
 
   function showPracticeResults(show) {
@@ -413,6 +418,10 @@
     capture.hidden = show;
     status.hidden = show;
     if (practiceShortcuts) practiceShortcuts.hidden = show;
+    for (const id of ["commandProgress", "commandPosition"]) {
+      const element = document.getElementById(id);
+      if (element) element.hidden = show;
+    }
   }
 
   function fillCommandResults() {

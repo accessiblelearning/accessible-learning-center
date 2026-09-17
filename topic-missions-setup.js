@@ -37,6 +37,8 @@
     speechSynthesis.speak(utterance);
   }
 
+  const description = document.getElementById("missionSelectionDescription");
+  const focusKey = "missionControlFocus:" + menu.id;
   const choices = [];
   catalog.forEach(manual => {
     manual.missionSets.forEach(set => {
@@ -46,9 +48,12 @@
       link.dataset.mission = set.mission;
       if (set.reader) link.dataset.reader = set.reader;
       const name = document.createElement("strong");
-      name.textContent = set.label;
+      name.textContent = set.menuLabel || set.label.split(":")[0];
+      link.dataset.choice = set.id;
+      link.dataset.description = set.label;
       const source = document.createElement("span");
       source.textContent = "From " + manual.label;
+      source.className = "visually-hidden";
       link.append(name, source);
       menu.append(link);
       choices.push(link);
@@ -75,7 +80,9 @@
     item.tabIndex = index === 0 ? 0 : -1;
     item.addEventListener("focus", () => {
       setActive(item);
-      const announcement = item.querySelector("strong").textContent + ". Press Enter to start.";
+      try { sessionStorage.setItem(focusKey, item.dataset.choice); } catch (error) {}
+      if (description) description.textContent = item.dataset.description;
+      const announcement = item.dataset.description + ". Press Enter to start.";
       status.textContent = announcement;
       if (!openingAnnouncement) speak(announcement);
     });
@@ -106,9 +113,12 @@
 
   status.setAttribute("aria-live", siteVoiceEnabled() ? "off" : "polite");
   window.addEventListener("DOMContentLoaded", () => {
-    choices[0]?.focus();
+    let remembered = "";
+    try { remembered = sessionStorage.getItem(focusKey) || ""; } catch (error) {}
+    const selected = choices.find(item => item.dataset.choice === remembered) || choices[0];
+    selected?.focus();
     openingAnnouncement = false;
-    const first = choices[0]?.querySelector("strong")?.textContent || "";
+    const first = selected?.dataset.description || "";
     speak("Welcome to Topic Missions. Use the Down Arrow or Up Arrow to choose a troubleshooting topic from the manuals. " + first + ". Press Enter to start.");
   });
   window.addEventListener("pagehide", stopVoice);
