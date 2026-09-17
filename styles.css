@@ -2940,16 +2940,26 @@ html[data-contrast="high"] .mission-center-page .mission-result-primary:focus-vi
   }
 }
 
-/* Topic Mission active state: keep the briefing and controls in one calm viewport. */
-.mission-session-page .mission-training-panel:not([hidden]) {
+/* One command surface, followed by feedback and reachable controls. */
+.mission-center-page.mission-session-page > main.mission-center-shell,
+.mission-center-page.practice-session-page > main.mission-center-shell {
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.mission-center-page.mission-session-page .mission-training-panel:not([hidden]) {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  min-height: 0;
-  height: calc(100vh - 3rem);
-  max-height: calc(100vh - 3rem);
-  padding: .45rem .6rem .4rem;
-  overflow: hidden;
+  min-height: calc(100svh - 3rem);
+  height: auto;
+  max-height: none;
+  padding: .75rem;
+  overflow: visible;
+  color: #ffffff;
+  background: #06142d;
+  border: 0;
+  box-shadow: none;
 }
 
 .mission-session-page .mission-training-panel .mission-briefing {
@@ -2978,15 +2988,16 @@ html[data-contrast="high"] .mission-center-page .mission-result-primary:focus-vi
   margin: 0 0 .3rem;
 }
 
-.mission-session-page .mission-training-panel .training-stage__prompt {
+.mission-center-page.mission-session-page .mission-training-panel .training-stage__prompt {
   display: grid;
   flex: 1 1 auto;
   place-items: center;
-  width: min(100%, 62rem);
+  width: 100%;
   align-self: center;
-  min-height: 0;
+  min-height: clamp(10rem, 42vh, 25rem);
+  max-width: none;
   max-height: none;
-  margin: 0 0 .35rem;
+  margin: 0;
   padding: clamp(.8rem, 3vw, 2rem);
   font-size: clamp(1.25rem, 3vw, 2.15rem);
   line-height: 1.25;
@@ -2998,21 +3009,68 @@ html[data-contrast="high"] .mission-center-page .mission-result-primary:focus-vi
   margin: 0;
 }
 
-.mission-session-page .mission-control-station {
-  flex: 0 0 auto;
+.mission-center-page.mission-session-page .training-stage .command-focus-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
   min-height: 0;
-  margin: 0 0 .3rem;
+  margin: 0 0 .5rem;
   padding: 0;
   background: transparent;
   border: 0;
   box-shadow: none;
 }
 
-.mission-session-page .mission-response.visually-hidden {
-  position: absolute;
+.mission-center-page.mission-session-page .training-stage .training-stage__feedback,
+.mission-center-page.practice-session-page .training-stage .training-stage__feedback {
+  flex: 0 0 auto;
+  min-height: 0;
+  margin: .25rem 0;
+  padding: .65rem;
+  color: #ffffff;
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.mission-center-page.mission-session-page .command-focus-area.is-correct .training-stage__prompt {
+  color: #0a5224;
+  background: #d9f7df;
+  border-color: #16813a;
+}
+
+.mission-center-page.mission-session-page .command-focus-area.is-incorrect .training-stage__prompt {
+  color: #7b101d;
+  background: #ffe0e0;
+  border-color: #b51f2e;
+}
+
+html[data-theme="dark"] .mission-center-page.mission-session-page .command-focus-area .training-stage__prompt,
+html[data-contrast="high"] .mission-center-page.mission-session-page .command-focus-area .training-stage__prompt {
+  color: #ffffff;
+  background: #000000;
+}
+
+.mission-center-page .command-focus-area .training-stage__prompt h3 {
+  color: inherit;
+}
+
+.mission-center-page .training-stage__shortcuts a {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.mission-center-page .mission-results-screen {
+  min-height: 0;
 }
 
 .mission-session-page .mission-training-panel .training-stage__shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .35rem 1.25rem;
   flex: 0 0 auto;
   margin: 0;
   padding: .3rem .4rem;
@@ -3033,13 +3091,12 @@ html[data-contrast="high"] .mission-center-page .mission-result-primary:focus-vi
 }
 
 @media (max-width: 42rem), (max-height: 42rem) {
-  .mission-session-page .mission-training-panel:not([hidden]) {
-    height: calc(100vh - 1rem);
-    max-height: calc(100vh - 1rem);
+  .mission-center-page.mission-session-page .mission-training-panel:not([hidden]) {
+    min-height: calc(100svh - 1rem);
     padding: .3rem .35rem;
   }
 
-  .mission-session-page .mission-training-panel .training-stage__prompt {
+  .mission-center-page.mission-session-page .mission-training-panel .training-stage__prompt {
     padding: .7rem;
     font-size: clamp(1.15rem, 5vw, 1.75rem);
   }

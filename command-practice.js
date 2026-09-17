@@ -252,22 +252,45 @@
 
   function tone(correct) {
     if (!sounds.checked) return;
-    audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
-    const notes = correct ? [523.25, 659.25, 783.99] : [180];
-    notes.forEach((frequency, index) => {
-      const oscillator = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-      const startAt = audioContext.currentTime + index * 0.11;
-      oscillator.frequency.value = frequency;
-      oscillator.type = correct ? "sine" : "square";
-      gain.gain.setValueAtTime(0.0001, startAt);
-      gain.gain.exponentialRampToValueAtTime(correct ? 0.12 : 0.07, startAt + 0.015);
-      gain.gain.exponentialRampToValueAtTime(0.0001, startAt + (correct ? 0.16 : 0.22));
-      oscillator.connect(gain).connect(audioContext.destination);
-      oscillator.start(startAt);
-      oscillator.stop(startAt + (correct ? 0.18 : 0.24));
-    });
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return;
+    try {
+      audioContext ||= new AudioContextClass();
+      if (audioContext.state === "suspended") audioContext.resume().catch(() => {});
+      const notes = correct ? [523.25, 659.25, 783.99] : [180];
+      notes.forEach((frequency, index) => {
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        const startAt = audioContext.currentTime + index * 0.11;
+        oscillator.frequency.value = frequency;
+        oscillator.type = correct ? "sine" : "square";
+        gain.gain.setValueAtTime(0.0001, startAt);
+        gain.gain.exponentialRampToValueAtTime(correct ? 0.12 : 0.07, startAt + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startAt + (correct ? 0.16 : 0.22));
+        oscillator.connect(gain).connect(audioContext.destination);
+        oscillator.start(startAt);
+        oscillator.stop(startAt + (correct ? 0.18 : 0.24));
+      });
+    } catch (error) {
+      // Optional feedback must never interrupt scoring or advancement.
+      audioContext = null;
+    }
   }
+
+  function resetModifiers() {
+    insertHeld = false;
+    controlTapPending = false;
+    protectedModifierArmed = "";
+  }
+
+  capture.addEventListener("blur", resetModifiers);
+  window.addEventListener("blur", resetModifiers);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) resetModifiers();
+  });
+  capture.addEventListener("click", () => {
+    if (active) capture.focus({ preventScroll: true });
+  });
 
   function spokenKeys(value) {
     return value.replaceAll("+", " plus ").replace("Ctrl", "Control").replace("Arrow", " Arrow").replace("Grave", "grave accent");
@@ -314,8 +337,7 @@
     clearAutoAdvance();
     awaitingAdvance = false;
     command = order[position];
-    controlTapPending = false;
-    protectedModifierArmed = "";
+    resetModifiers();
     const heading = document.createElement("h3");
     const protectedSequence = protectedSequences[normalizeExpected(command[0])];
     heading.textContent = protectedSequence
@@ -328,9 +350,18 @@
       ? commandExplanation()
       : describe();
     prompt.replaceChildren(heading, explanation);
-    status.textContent = spoken.checked
-      ? "Waiting for " + spokenKeys(command[0]) + "."
-      : describe() + " Waiting for your command.";
+    const waiting = document.createElement("span");
+    waiting.textContent = "Waiting for your command.";
+    if (spoken.checked) {
+      status.replaceChildren(waiting);
+    } else {
+      // Announce each new task to a personal screen reader without repeating
+      // the whole prompt visually below the command surface.
+      const announcement = document.createElement("span");
+      announcement.className = "visually-hidden";
+      announcement.textContent = describe() + " ";
+      status.replaceChildren(announcement, waiting);
+    }
     detected.textContent = "None yet";
     capture.classList.remove("is-correct", "is-incorrect");
     next.disabled = true;
@@ -418,8 +449,7 @@
 
   start.addEventListener("click", () => {
     active = true;
-    controlTapPending = false;
-    protectedModifierArmed = "";
+    resetModifiers();
     correctCount = 0;
     attempts = 0;
     position = 0;
@@ -512,8 +542,7 @@
     active = false;
     awaitingAdvance = false;
     clearAutoAdvance();
-    controlTapPending = false;
-    protectedModifierArmed = "";
+    resetModifiers();
     if ("speechSynthesis" in window) speechSynthesis.cancel();
     if (focusedSession) {
       window.location.href = "command-practice.html";
@@ -539,6 +568,16 @@
 
   capture.addEventListener("keydown", event => {
     if (!active) return;
+    const expected = normalizeExpected(command[0]);
+    // Keep keyboard navigation available unless Tab is the requested command.
+    if (event.key === "Tab" && !event.ctrlKey && !event.altKey && !event.metaKey) {
+      const tabCommand = event.shiftKey ? expected === "shift+tab"
+        : expected === "tab" || expected === "insert+tab";
+      if (awaitingAdvance || !tabCommand) {
+        resetModifiers();
+        return;
+      }
+    }
     event.preventDefault();
     event.stopPropagation();
 
@@ -547,7 +586,6 @@
       return;
     }
     if (awaitingAdvance) return;
-    const expected = normalizeExpected(command[0]);
     const protectedSequence = protectedSequences[expected];
     const pressedKey = keyName(event);
     const isProtectedModifier = protectedSequence &&
@@ -592,6 +630,8 @@
       !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
       pressed = "insert+" + pressed;
     }
+    // Consume Insert once, even if the browser misses its release event.
+    insertHeld = false;
     if (
       protectedSequence &&
       protectedModifierArmed === protectedSequence.modifier &&

@@ -21,3 +21,6 @@ jobs:
           node-version: 22
       - name: Validate pages and links
         run: node tests/validate-site.mjs
+      - name: Check Mission Control behavior
+        if: always()
+        run: node --test tests/mission-control.test.mjs

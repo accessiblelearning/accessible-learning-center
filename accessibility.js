@@ -38,7 +38,11 @@
 
   function savePreferences() {
     try {
-      localStorage.setItem(storageKey, JSON.stringify(preferences));
+      // Training pages can change speech after this toolbar has loaded.
+      // Preserve their latest choice when saving the display controls.
+      const stored = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      preferences.trainingSpeech = stored?.trainingSpeech === "voice" ? "voice" : "own";
+      localStorage.setItem(storageKey, JSON.stringify({ ...stored, ...preferences }));
     } catch (error) {
       // Controls still work for the current page when storage is unavailable.
     }

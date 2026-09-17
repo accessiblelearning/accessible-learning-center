@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=command-insert-fix-1">
-  <script src="accessibility.js?v=text-controls-restored-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=mission-sweep-2">
+  <script src="accessibility.js?v=mission-sweep-2" defer></script>
   <script src="command-practice-session.js?v=mission-sections-1" defer></script>
-  <script src="command-practice.js?v=screen-reader-command-fix-1" defer></script>
+  <script src="command-practice.js?v=mission-sweep-2" defer></script>
 </head>
 <body class="practice-session-page mission-center-page" data-practice-session="true" data-minimal-page="true">
   <main id="main-content" class="mission-center-shell">
@@ -25,15 +25,15 @@
         <h2 id="practice-heading">Current command</h2>
         <p id="practiceScore">Correct: 0 · Attempts: 0</p>
       </div>
-      <div id="keyCapture" class="key-capture training-stage__input command-focus-area" tabindex="0" role="application" aria-describedby="captureInstructions practiceStatus" aria-label="Keyboard command practice area">
+      <div id="keyCapture" class="key-capture training-stage__input command-focus-area" tabindex="0" role="application" aria-describedby="commandPrompt captureInstructions practiceStatus" aria-label="Keyboard command practice area">
         <div id="commandPrompt" class="command-prompt training-stage__prompt">
           <p>Preparing your command practice.</p>
         </div>
-        <p id="captureInstructions" class="visually-hidden">Press the requested key combination. For a screen-reader command such as Insert plus T, let your screen reader handle the command, then press the final key once to confirm it here. For a protected browser command, press and release the named modifier, then press the final key by itself. A correct command advances automatically. Press Control by itself to repeat when it is not part of a protected command. Press Escape to exit.</p>
+        <p id="captureInstructions" class="visually-hidden">Press the requested key combination. For a screen-reader command such as Insert plus T, let your screen reader handle the command, then press the final key once to confirm it here. For a protected browser command, press and release the named modifier, then press the final key by itself. A correct command advances automatically. Press Control by itself to repeat when it is not part of a protected command. Tab or Shift plus Tab moves through the page controls when it is not the requested command. Press Escape to exit.</p>
         <p class="training-stage__detected visually-hidden"><span class="training-stage__input-label">Keys pressed</span><strong id="detectedKeys">None yet</strong></p>
       </div>
-      <div id="practiceStatus" class="practice-status training-stage__feedback visually-hidden" role="status" aria-live="assertive"></div>
-      <p class="practice-session-shortcuts training-stage__shortcuts" aria-label="Keyboard controls: Control, repeat or protected first step when instructed. Correct commands advance automatically. Escape, exit practice."><span><kbd>Ctrl</kbd> Repeat</span><span>Correct advances</span><span><kbd>Esc</kbd> Exit</span></p>
+      <div id="practiceStatus" class="practice-status training-stage__feedback" role="status" aria-live="assertive"></div>
+      <p class="practice-session-shortcuts training-stage__shortcuts"><span><kbd>Ctrl</kbd> Repeat</span><span>Correct advances</span><a href="command-practice.html">Back to Command Practice (Esc)</a></p>
       <section id="commandResults" class="training-results mission-results-screen" aria-labelledby="commandResultsHeading" tabindex="-1" hidden>
         <p id="commandResultsSummary" class="visually-hidden"></p>
         <div class="mission-result-grid">
