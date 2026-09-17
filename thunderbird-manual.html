@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Learn Thunderbird email on Windows with keyboard commands, screen-reader practice, account setup, messages, drafts, attachments, search, and troubleshooting.">
 <title>Thunderbird Email Keyboard Manual - Accessible Learning Center</title>
 <link rel="stylesheet" href="styles.css?v=manual-card-layout-2">
@@ -9,13 +10,47 @@
 </head>
 <body class="manual-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<header><p class="eyebrow">Communication · Standalone manual</p><h1>Thunderbird Email Keyboard Manual</h1><p>Build an independent email routine on Windows, one task at a time.</p></header>
+<header><p class="eyebrow">Communication · Standalone manual</p>
+<h1>Thunderbird Email Keyboard Manual</h1>
+<p>Build an independent email routine on Windows, one task at a time.</p></header>
 <main id="main-content">
 <p><a href="manuals.html">Back to all manuals</a> · <a href="resources.html">Search learning resources</a></p>
 <p>This manual covers the Thunderbird desktop application on Windows, not Thunderbird for Android. Use your usual screen reader. Commands were checked against Mozilla documentation on September 17, 2026; the procedures have not been tested here with JAWS, NVDA, or Narrator on Windows. Names and announcements can vary by version, account provider, and layout.</p>
-<nav class="manual-tools manual-contents lesson-nav" aria-label="Thunderbird manual table of contents"><a href="#prepare">Before you begin</a><a href="#setup">Connect an account</a><a href="#navigate">Find your place</a><a href="#write">Write and save</a><a href="#attachments">Attachments</a><a href="#find">Find messages</a><a href="#organize">Archive</a><a href="#troubleshoot">Troubleshooting</a><a href="#practice">Practice tasks</a><a href="#commands">Keyboard commands</a><a href="#sources">Sources</a></nav>
+<nav class="manual-tools manual-contents lesson-nav" aria-label="Thunderbird manual table of contents">
+<a href="#first-steps">First-time learner: how to follow a task</a>
+<a href="#prepare">Before you begin</a>
+<a href="#terms">Email terms before you start</a>
+<a href="#install">Install and open Thunderbird on Windows</a>
+<a href="#setup">1. Connect an existing email account</a>
+<a href="#navigate">2. Find your place and read a message</a>
+<a href="#write">3. Write, review, and save a draft</a>
+<a href="#attachments">4. Add and verify a practice attachment</a>
+<a href="#find">5. Find a message without losing the rest of your inbox</a>
+<a href="#organize">6. Archive a message and locate it again</a>
+<a href="#troubleshoot">7. Troubleshooting practice</a>
+<a href="#practice">8. Independent practice tasks</a>
+<a href="#recipients">Address a message: To, Cc, and Bcc</a>
+<a href="#send-reply">Send to yourself, reply, and forward</a>
+<a href="#daily-routine">A repeatable mailbox routine</a>
+<a href="#commands">Keyboard command reference — Windows</a>
+<a href="#sources">Sources and next steps</a>
+</nav>
 
-<section id="prepare"><h2>Before you begin</h2>
+<section id="first-steps"><h2>First-time learner: how to follow a task</h2>
+    <p>Read the task title and its starting location before pressing anything. A keyboard command acts on the active application and focused control. Merely having these instructions visible does not make the other application active.</p>
+    <ol>
+<li>Keep these instructions available. Open the application separately. On Windows, hold Alt, tap Tab to choose its window, and release Alt. Check the window title before continuing.</li>
+    <li>
+<strong>Focus</strong> is the place receiving your next keystroke. A screen reader announces its name and role; a visible border or highlight may mark it. Tab selects the next keyboard-accessible control. Shift+Tab reverses that movement. Neither command means “activate.”</li>
+    <li>At a button or link, press Enter to activate. A checkbox is an on/off choice: Space changes it. Listen for checked or not checked. In an open menu, use arrows to select an item, then Enter. Escape usually closes that menu; it does not universally return to the previous page.</li>
+    <li>At a text field, enter only the requested information. Ctrl+A selects all text <em>in that field</em>; typing then replaces it. Confirm focus before doing this. Use Left and Right to review a small correction, or Backspace to remove the character before the cursor.</li>
+    <li>After opening a dialog, listen to its title, read its instructions, and Tab through its controls. Use Cancel if you are unsure. Do not repeatedly activate a button while a page or file is loading.</li>
+    <li>At the result checkpoint, stop. Say what changed. If the result is different, use that task’s recovery paragraph before attempting the next task.</li>
+</ol>
+    <p>With a screen reader, arrow-key reading and text editing can use different modes. If letters become navigation commands instead of text, confirm you reached an editable field and consult your reader’s forms/focus-mode instructions in the <a href="jaws-manual.html">Screen Readers manual</a>. Do not turn the reader off to solve an unidentified focus problem.</p>
+    <p>When a task says to locate a named control, start with Tab or Shift+Tab and listen to each complete label and role. Tab skips ordinary paragraphs. If the page itself needs to be read, use your screen reader’s reading commands. If you pass the same controls twice without finding the requested one, stop and check the application, page, account, and open dialogs. A fixed number of Tab presses is unreliable because layouts change.</p>
+    <p><strong>Recording progress:</strong> Write down the task, your starting location, the result, and one step to practice again. These activities are optional and repeatable; they are not a sequence of locked lessons.</p>
+    </section><section id="prepare"><h2>Before you begin</h2>
 <p>You need Thunderbird installed, an existing email account, an internet connection for account setup and sending, and access to your provider's sign-in verification method. On a workplace computer, ask your technology team whether this email application is permitted before connecting a work account.</p>
 <p>Begin with a personal practice account or a draft with no recipient. Use made-up practice content. Do not use client records in exercises.</p>
 <h3>Read the keyboard directions</h3>
@@ -23,77 +58,286 @@
 <p>Tab moves among controls; Shift+Tab moves backward. Follow the announced control names instead of counting a fixed number of Tab presses. Read this manual in your browser, then switch to Thunderbird before practicing. A command sent to the browser can do something entirely different.</p>
 <p>For screen-reader modes and recovery, review the <a href="jaws-manual.html">Screen Readers manual</a> and <a href="screen-reader-recovery-manual.html">Recovery manual</a>.</p></section>
 
-<section id="setup"><h2>1. Connect an existing email account</h2>
+<section id="terms"><h2>Email terms before you start</h2>
+<dl>
+<dt>Email provider and Thunderbird</dt>
+<dd>Your provider operates your mailbox. Thunderbird is an application for accessing it; installing Thunderbird does not create an email address.</dd>
+<dt>Account, folder, and message</dt>
+<dd>An account is a mailbox identity. Its folders organize messages. Select the account’s Inbox before choosing a message; two accounts can each have an Inbox.</dd>
+<dt>Draft, Sent, and Outbox</dt>
+<dd>A draft is unfinished mail. Sent normally stores a copy after sending. An Outbox can contain mail waiting to be sent. A saved draft is not evidence of delivery.</dd>
+<dt>Attachment</dt>
+<dd>A separate file included with a message. Its filename is different from the subject. Check both before sending.</dd>
+<dt>Thread</dt>
+<dd>A grouped conversation. A collapsed thread can conceal replies; expand it with the list’s available controls before concluding a reply is missing.</dd>
+</dl></section><section id="install"><h2>Install and open Thunderbird on Windows</h2>
+<p><strong>Start here:</strong> A supported Windows computer, an internet connection, and permission to install applications. Have your existing email address available.</p>
+<h3>Step-by-step instructions</h3>
+<ol>
+<li>Open your browser. Go to <a href="https://www.thunderbird.net/">Thunderbird’s official website</a>. Locate its download option and choose the Windows installer. Do not use a sponsored download site.</li>
+<li>After the download finishes, open the installer from your browser’s downloads list. Read the Windows permission prompt. Continue only if it identifies the application you intended to install; a managed device may require your technology team.</li>
+<li>Follow the installer’s labeled Next or Install controls. Leave options you do not understand at their defaults. Finish the installation and open Thunderbird.</li>
+<li>If Thunderbird is installed already, press the Windows key, type Thunderbird, review the matching application name, and press Enter. Continue with “Connect an existing email account” below.</li>
+</ol>
+<h3>Check your result</h3>
+<p>The Thunderbird application is open. You may see account setup instead of a mailbox on the first launch.</p>
+<h3>If something goes wrong</h3>
+<p>A browser tab showing Thunderbird’s website is not the installed application. Use the Windows application search to verify. If installation is blocked, retain the error and ask the device administrator.</p>
+<h3>Try it yourself</h3>
+<p>Point out which window is the browser and which is Thunderbird before entering account information.</p>
+<p>Documentation: <a href="https://support.mozilla.org/en-US/kb/installing-thunderbird-windows">Mozilla installation instructions</a>.</p></section><section id="setup"><h2>1. Connect an existing email account</h2>
 <p><strong>What you will learn:</strong> Connect your account and reach your mailbox without guessing server settings.</p>
 <h3>Exactly how to do it</h3>
-<ol><li>Open Thunderbird. A new installation offers account setup. Otherwise, open its application menu and choose New Account, then Existing Email. Use Tab to reach the menu, Enter to open it, and arrow keys to explore.</li>
+<ol>
+<li>Open Thunderbird. A new installation offers account setup. Otherwise, open its application menu and choose New Account, then Existing Email. Use Tab to reach the menu, Enter to open it, and arrow keys to explore.</li>
 <li>Enter the requested display name, complete email address, and password. Review each field before moving on.</li>
 <li>Activate Continue. Wait for the provider configuration results.</li>
 <li>Review the account and connection choices. IMAP is normally the proposed option. If automatic setup fails, obtain the exact settings from your provider or technology team.</li>
 <li>Activate Done when the settings are correct. If your provider opens a sign-in window, complete its authentication and review the requested access.</li>
-<li>Allow time for folders and messages to arrive.</li></ol>
+<li>Allow time for folders and messages to arrive.</li>
+</ol>
 <p><strong>What should happen:</strong> Your account and folders become available.</p>
 <p><strong>If that does not happen:</strong> Read the actual sign-in or configuration error before retrying. Never replace server names with guesses.</p>
 <p><a href="https://support.mozilla.org/en-US/kb/automatic-account-configuration">Source: Mozilla account configuration</a></p></section>
 
 <section id="navigate"><h2>2. Find your place and read a message</h2>
-<ol><li>Press F6 to move between major areas; Shift+F6 moves backward.</li><li>Find the folder pane. Select Inbox with arrow keys.</li><li>Move to the message list. Choose a message with Up or Down.</li><li>Press Enter to open it. Read with your screen reader's reading commands.</li><li>Close the opened message tab with Ctrl+W. Confirm the mailbox is active before continuing.</li></ol>
+<ol>
+<li>Press F6 to move between major areas; Shift+F6 moves backward.</li>
+<li>Find the folder pane. Select Inbox with arrow keys.</li>
+<li>Move to the message list. Choose a message with Up or Down.</li>
+<li>Press Enter to open it. Read with your screen reader's reading commands.</li>
+<li>Close the opened message tab with Ctrl+W. Confirm the mailbox is active before continuing.</li>
+</ol>
 <p><strong>Practice:</strong> Explain aloud whether you are choosing a folder, choosing a message, or reading its contents. If you cannot name the area, pause rather than issuing a deletion or reply command.</p>
 <p><a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-thunderbird">Source: Mozilla keyboard shortcuts</a></p></section>
 
 <section id="write"><h2>3. Write, review, and save a draft</h2>
-<ol><li>From the mail window, press Ctrl+N for a new message.</li><li>For an unsent exercise, leave the recipient empty. To send yourself a practice message, enter your own address in To, then press Enter to confirm that address.</li><li>Move to Subject and enter “Email practice.” Move to the message body and write two short sentences.</li><li>Review the recipient, subject, and body separately. Check the actual email address, not only its display name.</li><li>Press Ctrl+S to save a draft. You can stop here without sending.</li><li>Only when you intend to send, activate Send. Then check your account's Sent folder for the copy.</li></ol>
-<p><strong>Expected result:</strong> You have a saved draft or a sent practice message. These are different outcomes: a draft is unfinished work, not evidence of delivery.</p>
-<p><strong>Practice:</strong> Write “I practiced reading my message before sending.” Correct one word, then read the complete sentence again.</p>
-<p><a href="https://support.mozilla.org/en-US/kb/sending-and-receiving-messages-thunderbird">Source: Mozilla sending and receiving</a> · <a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-thunderbird">Draft and compose shortcuts</a></p></section>
-
-<section id="attachments"><h2>4. Add a practice attachment</h2>
-<p><strong>Prepare:</strong> Create a small text file named email-practice.txt in a folder you can find. Put only a made-up appointment time inside it.</p>
-<ol><li>In your draft, press Ctrl+Shift+A.</li><li>In the file picker, locate email-practice.txt and activate Open.</li><li>Review the attachment name before deciding whether to send.</li></ol>
-<p><strong>Checkpoint:</strong> Can you distinguish the document's filename from the email subject? Can you explain what the recipient would receive? Stop if the selected file is not your practice file.</p>
-<p><a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-thunderbird">Source: Mozilla attachment shortcut</a></p></section>
-
-<section id="find"><h2>5. Find a message without losing the rest of your inbox</h2>
-<ol><li>Select the folder you want to search.</li><li>Press Ctrl+Shift+K to reach Quick Filter.</li><li>Enter a distinctive subject word or sender name.</li><li>Review the available Sender, Recipients, Subject, and Body options. Select the fields relevant to your search.</li><li>Check whether Unread, Starred, or Attachment filters are also limiting the results.</li><li>Return to the results and inspect the matching messages.</li><li>Press Escape as needed to clear the filter and hide the filter bar.</li></ol>
+<p><strong>Start here:</strong> Thunderbird’s main mail window, with an account connected. This first exercise will not be sent.</p>
+<h3>Step-by-step instructions</h3>
+<ol>
+<li>Press Ctrl+N to open a composition window. Confirm that a new message is active, rather than a folder or browser search field.</li>
+<li>Leave To empty for this exercise. Tab until Subject is announced. Type “Email practice — draft only.” Tab to the editable message body.</li>
+<li>Type a greeting, two practice sentences, and your name. Press Enter between paragraphs. Read back what you wrote using your normal text-reading method.</li>
+<li>Use Shift+Tab or Tab to review Subject and the recipient area. Confirm that no recipient has accidentally been added. Return to the body if you need to correct a sentence.</li>
+<li>Press Ctrl+S. Wait for saving to finish. Close only the composition window with Ctrl+W; if asked whether to save changes, choose Save.</li>
+<li>In the main window, use F6 to locate the folder pane. Use arrows to reach this account’s Drafts folder. Move to its message list with F6, select your subject, and open it with Enter.</li>
+<li>Verify that the subject and both sentences are still present. Save again after any changes.</li>
+</ol>
+<h3>Check your result</h3>
+<p>You can reopen your unfinished message. It remains a draft and has not been sent.</p>
+<h3>If something goes wrong</h3>
+<p>If Drafts appears empty, check the account and clear any active filter. If the composition window is still open, return there and save again. Do not use Send to make a draft appear in a folder.</p>
+<h3>Try it yourself</h3>
+<p>Change one sentence, save, close, and reopen the same draft. Explain how saving differs from sending.</p>
+<p>Documentation: <a href="https://support.mozilla.org/en-US/kb/sending-and-receiving-messages-thunderbird">Writing and saving messages</a>.</p></section><section id="attachments"><h2>4. Add and verify a practice attachment</h2>
+<p><strong>Start here:</strong> An open practice draft and a small, harmless file named email-practice.txt. Know the folder containing it.</p>
+<h3>Step-by-step instructions</h3>
+<ol>
+<li>Press Ctrl+Shift+A in the composition window. Confirm that the file-selection dialog opens.</li>
+<li>If you know the file’s full path, Tab to File name, enter that path, and activate Open. Otherwise use the dialog’s folder navigation to reach its containing folder, select the filename, and activate Open. Selecting a folder only navigates; it does not attach a file.</li>
+<li>Back in the draft, locate the attachment area with Tab or Shift+Tab. Review the exact filename. If it is the wrong file, select that attachment and use its context menu to remove it. Confirm the attachment item has focus before deleting anything.</li>
+<li>Reattach the intended file and save the draft. Before sending an actual document, open the original file separately and verify its contents as well as its name.</li>
+<li>When receiving an attachment, identify its sender, message context, and filename before opening it. Use its available Save action if you want a local copy; note the destination folder and any rename you make.</li>
+</ol>
+<h3>Check your result</h3>
+<p>The draft lists exactly the file you intended. You can distinguish the attached copy from the original file on your computer.</p>
+<h3>If something goes wrong</h3>
+<p>If the file picker says the item cannot be found, check the path and extension. Cancel and locate the file in File Explorer instead of choosing another similarly named document. Large attachments may exceed your provider’s limit.</p>
+<h3>Try it yourself</h3>
+<p>Attach, remove, and reattach the practice file without deleting its original on disk.</p>
+<p>Documentation: <a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-thunderbird">Attachment shortcut</a>.</p></section><section id="find"><h2>5. Find a message without losing the rest of your inbox</h2>
+<ol>
+<li>Select the folder you want to search.</li>
+<li>Press Ctrl+Shift+K to reach Quick Filter.</li>
+<li>Enter a distinctive subject word or sender name.</li>
+<li>Review the available Sender, Recipients, Subject, and Body options. Select the fields relevant to your search.</li>
+<li>Check whether Unread, Starred, or Attachment filters are also limiting the results.</li>
+<li>Return to the results and inspect the matching messages.</li>
+<li>Press Escape as needed to clear the filter and hide the filter bar.</li>
+</ol>
 <p><strong>Expected result:</strong> Matching messages appear; clearing the filter restores the broader list. Filtering changes which messages you see, not which messages exist.</p>
 <p><strong>Practice:</strong> Search for “Email practice,” then deliberately use a word that is not in your message. Explain why an empty result does not prove your mail was deleted.</p>
 <p><a href="https://support.mozilla.org/en-US/kb/quick-filter-toolbar">Source: Mozilla Quick Filter</a></p></section>
 
 <section id="organize"><h2>6. Archive a message and locate it again</h2>
-<ol><li>Select one expendable practice message.</li><li>Activate Archive, or press A while the message list has focus.</li><li>Find the archive location for that account and locate the message again.</li></ol>
+<ol>
+<li>Select one expendable practice message.</li>
+<li>Activate Archive, or press A while the message list has focus.</li>
+<li>Find the archive location for that account and locate the message again.</li>
+</ol>
 <p>Archiving moves a message out of its current folder. The destination can be an account folder or a local folder, depending on the account's Copies &amp; Folders settings. It remains searchable. Archiving is not a separate backup.</p>
 <p><strong>Practice:</strong> Before archiving anything important, demonstrate the complete round trip with your practice message: find it, archive it, and find it again.</p>
 <p><a href="https://support.mozilla.org/en-US/kb/archived-messages">Source: Mozilla archived messages</a></p></section>
 
 <section id="troubleshoot"><h2>7. Troubleshooting practice</h2>
-<dl><dt><strong>The command affected my browser.</strong></dt><dd>Switch to Thunderbird, confirm the active window, and try again.</dd>
-<dt><strong>Typing goes into a search field.</strong></dt><dd>Identify the focused control before repeating the command. Do not assume the message list is active.</dd>
-<dt><strong>My message list suddenly looks empty.</strong></dt><dd>Check the selected folder and clear Quick Filter before assuming mail is missing.</dd>
-<dt><strong>The draft is not in Sent.</strong></dt><dd>Saving and sending are different tasks. Look for the draft and review it before sending.</dd>
-<dt><strong>My screen reader uses the letter command itself.</strong></dt><dd>Check focus and your reader's interaction mode. Use the corresponding Thunderbird menu action if needed. Do not turn off speech and continue blindly.</dd>
-<dt><strong>I cannot explain an error.</strong></dt><dd>Record the exact error text, the action immediately before it, and whether it affects one account or all accounts. Share that information with your instructor or technology team.</dd></dl></section>
+<dl>
+<dt><strong>The command affected my browser.</strong></dt>
+<dd>Switch to Thunderbird, confirm the active window, and try again.</dd>
+<dt><strong>Typing goes into a search field.</strong></dt>
+<dd>Identify the focused control before repeating the command. Do not assume the message list is active.</dd>
+<dt><strong>My message list suddenly looks empty.</strong></dt>
+<dd>Check the selected folder and clear Quick Filter before assuming mail is missing.</dd>
+<dt><strong>The draft is not in Sent.</strong></dt>
+<dd>Saving and sending are different tasks. Look for the draft and review it before sending.</dd>
+<dt><strong>My screen reader uses the letter command itself.</strong></dt>
+<dd>Check focus and your reader's interaction mode. Use the corresponding Thunderbird menu action if needed. Do not turn off speech and continue blindly.</dd>
+<dt><strong>I cannot explain an error.</strong></dt>
+<dd>Record the exact error text, the action immediately before it, and whether it affects one account or all accounts. Share that information with your instructor or technology team.</dd>
+</dl></section>
 
 <section id="practice"><h2>8. Independent practice tasks</h2>
 <p>Choose any task. There is no required order or passing score. Use the instructions again whenever you need them.</p>
-<ol><li><strong>Orientation:</strong> Find Inbox and identify one message's sender and subject. Describe your current location.</li><li><strong>Draft:</strong> Write a three-sentence introduction without a recipient. Save it and explain why it has not been sent.</li><li><strong>Attachment:</strong> Add email-practice.txt and verify the filename.</li><li><strong>Search:</strong> Find your practice subject, then restore the unfiltered list.</li><li><strong>Recovery:</strong> Ask an instructor to select a different folder. Identify what changed before searching.</li><li><strong>Organization:</strong> Archive a practice message and retrieve it.</li></ol>
+<ol>
+<li>
+<strong>Orientation:</strong> Find Inbox and identify one message's sender and subject. Describe your current location.</li>
+<li>
+<strong>Draft:</strong> Write a three-sentence introduction without a recipient. Save it and explain why it has not been sent.</li>
+<li>
+<strong>Attachment:</strong> Add email-practice.txt and verify the filename.</li>
+<li>
+<strong>Search:</strong> Find your practice subject, then restore the unfiltered list.</li>
+<li>
+<strong>Recovery:</strong> Ask an instructor to select a different folder. Identify what changed before searching.</li>
+<li>
+<strong>Organization:</strong> Archive a practice message and retrieve it.</li>
+</ol>
 <p>After each task, note what you completed independently, what prompt helped, and what you want to repeat. These are practice activities in Thunderbird; this manual does not yet add an automated Thunderbird Mission Control lesson.</p></section>
 
-<section id="commands"><h2>Keyboard command reference — Windows</h2>
+<section id="recipients"><h2>Address a message: To, Cc, and Bcc</h2>
+<p><strong>Start here:</strong> A new composition window. Use only your own address for the first practice.</p>
+<h3>Step-by-step instructions</h3>
+<ol>
+<li>Tab to the To field. Type your complete email address and press Enter. The address becomes a recipient item. Review its spelling; an accepted-looking item is not proof that the address belongs to the intended person.</li>
+<li>To add another recipient, enter their address in the same row and confirm with Enter. To move onward after the last recipient, press Enter again or Tab and identify the next field.</li>
+<li>To correct an existing recipient, use the arrow keys in the recipient row to select that item. Press Enter to edit it, make the correction, and press Enter again. Delete removes a selected recipient item.</li>
+<li>If you need Cc or Bcc, reach the corresponding control above the address row with Tab or Shift+Tab and activate it. Cc recipients are visible to the other recipients. Bcc conceals the Bcc recipient list from them.</li>
+<li>Before sending, review every recipient row, not only To. In a practice draft, remove added recipients and save without sending.</li>
+</ol>
+<h3>Check your result</h3>
+<p>Each intended address is a distinct recipient item, and you know which address row it is in.</p>
+<h3>If something goes wrong</h3>
+<p>If a field is absent, activate its Cc or Bcc control first. If deleting removes message text instead of an address, stop: focus is in the body. Return to the recipient row before trying again.</p>
+<h3>Try it yourself</h3>
+<p>Explain who should see a copy of a hypothetical meeting invitation, then choose To or Cc. Do not test privacy by mailing real groups.</p>
+<p>Documentation: <a href="https://support.mozilla.org/en-US/kb/addressing-email">Mozilla recipient addressing</a>.</p></section><section id="send-reply"><h2>Send to yourself, reply, and forward</h2>
+<p><strong>Start here:</strong> A saved practice draft and your own working email address.</p>
+<h3>Step-by-step instructions</h3>
+<ol>
+<li>Open the draft, add your own address in To, and review Subject, body, and any attachments. Remove anything you did not intend to include.</li>
+<li>Press Ctrl+Enter to send. If a confirmation appears, read it and confirm only when the reviewed message is ready. Allow the operation to finish.</li>
+<li>Return to the main mail window and select the account’s Sent folder. Locate the practice subject. Then select Inbox and refresh that account with F5 if needed. Delivery can take time.</li>
+<li>Open the received practice message. Press Ctrl+R to reply to its sender. Check the recipient before writing a short answer; save the reply as a draft or send it to yourself.</li>
+<li>For a real group message, Ctrl+Shift+R opens Reply All. Review the expanded recipient list before writing. Cancel an unnecessary group reply rather than sending it by accident.</li>
+<li>To forward, open the original practice message and press Ctrl+L. Add your own address, inspect the quoted material and attached files, and add a sentence explaining why you are forwarding it. Save the practice forward as a draft.</li>
+</ol>
+<h3>Check your result</h3>
+<p>You can distinguish a newly composed message, a reply, and a forward by checking recipients and content, not just the subject prefix.</p>
+<h3>If something goes wrong</h3>
+<p>A Sent copy does not guarantee that someone read a message. If sending reports an error, record it and check the connection and account sign-in. Inspect Sent and Outbox before pressing Send repeatedly.</p>
+<h3>Try it yourself</h3>
+<p>Send yourself one clearly labeled test only. Identify its Sent copy and its received Inbox copy.</p>
+<p>Documentation: <a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-thunderbird">Thunderbird command reference</a> · <a href="https://support.mozilla.org/en-US/kb/sending-and-receiving-messages-thunderbird">Sending and receiving</a>.</p></section><section id="daily-routine"><h2>A repeatable mailbox routine</h2>
+<p><strong>Start here:</strong> The main mail window. Choose a practice message that you can safely reorganize.</p>
+<h3>Step-by-step instructions</h3>
+<ol>
+<li>Identify the account and select Inbox. Use F6 to reach the message list and arrows to select one message. Read its sender and subject before opening it.</li>
+<li>Open it with Enter, read it, and decide whether it needs a reply, a later action, or no action. Close the message tab with Ctrl+W when finished.</li>
+<li>If you want to distinguish read from unread, select the message in the list and press M once. Check the resulting status before pressing again; this command toggles the state.</li>
+<li>To retain the message outside Inbox, archive it using the archive task. To discard only an expendable practice message, select it in the message list and press Delete.</li>
+<li>After an accidental deletion, try Ctrl+Z immediately. Otherwise examine the account’s Trash folder and use the message’s context menu to move it back to Inbox. Do not empty Trash during this exercise.</li>
+<li>Finish by clearing any Quick Filter and checking the selected folder. This leaves a predictable starting point for your next session.</li>
+</ol>
+<h3>Check your result</h3>
+<p>You can explain where the practice message went and find it again.</p>
+<h3>If something goes wrong</h3>
+<p>Do not use Shift+Delete for practice: permanent deletion may not be recoverable. If multiple messages are selected unexpectedly, stop and select only the intended item before continuing.</p>
+<h3>Try it yourself</h3>
+<p>Record the starting folder, action, and destination for one archived message and one discarded test message.</p>
+<p>Documentation: <a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-thunderbird">Read status, delete, and undo commands</a> · <a href="https://support.mozilla.org/en-US/kb/archived-messages">Archive behavior</a>.</p></section><section id="commands"><h2>Keyboard command reference — Windows</h2>
 <p>Commands depend on focus. Use mail commands in the mail window and composition commands in a draft.</p>
-<table><caption>Core Thunderbird shortcuts</caption><thead><tr><th scope="col">Task</th><th scope="col">Command</th></tr></thead><tbody>
-<tr><td>Next / previous major area</td><td>F6 / Shift+F6</td></tr>
-<tr><td>Open selected message</td><td>Enter</td></tr>
-<tr><td>New message</td><td>Ctrl+N</td></tr>
-<tr><td>Reply to sender</td><td>Ctrl+R</td></tr>
-<tr><td>Reply to everyone</td><td>Ctrl+Shift+R</td></tr>
-<tr><td>Forward</td><td>Ctrl+L</td></tr>
-<tr><td>Save draft</td><td>Ctrl+S</td></tr>
-<tr><td>Attach a file</td><td>Ctrl+Shift+A</td></tr>
-<tr><td>Quick Filter</td><td>Ctrl+Shift+K</td></tr>
-<tr><td>Archive selected message</td><td>A</td></tr>
-<tr><td>Close current tab or window</td><td>Ctrl+W</td></tr></tbody></table>
+<table>
+<caption>Core Thunderbird shortcuts</caption>
+<thead><tr>
+<th scope="col">Task</th>
+<th scope="col">Command</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Next / previous major area</td>
+<td>F6 / Shift+F6</td>
+</tr>
+<tr>
+<td>Open selected message</td>
+<td>Enter</td>
+</tr>
+<tr>
+<td>New message</td>
+<td>Ctrl+N</td>
+</tr>
+<tr>
+<td>Reply to sender</td>
+<td>Ctrl+R</td>
+</tr>
+<tr>
+<td>Reply to everyone</td>
+<td>Ctrl+Shift+R</td>
+</tr>
+<tr>
+<td>Forward</td>
+<td>Ctrl+L</td>
+</tr>
+<tr>
+<td>Save draft</td>
+<td>Ctrl+S</td>
+</tr>
+<tr>
+<td>Attach a file</td>
+<td>Ctrl+Shift+A</td>
+</tr>
+<tr>
+<td>Quick Filter</td>
+<td>Ctrl+Shift+K</td>
+</tr>
+<tr>
+<td>Archive selected message</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Close current tab or window</td>
+<td>Ctrl+W</td>
+</tr>
+<tr>
+<td>Send reviewed message</td>
+<td>Ctrl+Enter (composition window)</td>
+</tr>
+<tr>
+<td>Get messages for current account</td>
+<td>F5</td>
+</tr>
+<tr>
+<td>Toggle read/unread</td>
+<td>M (selected message)</td>
+</tr>
+<tr>
+<td>Delete selected message</td>
+<td>Delete</td>
+</tr>
+<tr>
+<td>Undo last supported action</td>
+<td>Ctrl+Z</td>
+</tr>
+<tr>
+<td>Open context menu</td>
+<td>Shift+F10</td>
+</tr>
+</tbody>
+</table>
 <p><a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-thunderbird">Source: Mozilla's full shortcut reference</a></p></section>
 
-<section id="sources"><h2>Sources and next steps</h2><p>Each procedure links to the supporting Mozilla documentation. Original practice exercises are provided by Accessible Learning Center. For account-specific sign-in issues, consult your email provider. This standalone manual does not include a graded quiz or certificate.</p><p>Related manuals: <a href="outlook-manual.html">Outlook</a>, <a href="gmail-manual.html">Gmail</a>, and <a href="cybersecurity-manual.html">Cybersecurity</a>.</p></section>
+<section id="sources"><h2>Sources and next steps</h2>
+<p>Each procedure links to the supporting Mozilla documentation. Original practice exercises are provided by Accessible Learning Center. For account-specific sign-in issues, consult your email provider. This standalone manual does not include a graded quiz or certificate.</p>
+<p>Related manuals: <a href="outlook-manual.html">Outlook</a>, <a href="gmail-manual.html">Gmail</a>, and <a href="cybersecurity-manual.html">Cybersecurity</a>.</p></section>
 <p><a href="manuals.html">Back to all manuals</a> · <a href="#main-content">Back to the beginning of this manual</a></p>
-</main><footer><p>&copy; 2026 Accessible Learning Center</p></footer></body></html>
+</main><footer><p>© 2026 Accessible Learning Center</p></footer>
+</body>
+</html>
