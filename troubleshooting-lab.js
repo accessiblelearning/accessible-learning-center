@@ -234,6 +234,7 @@
       controlModifierArmed = false;
       event.preventDefault();
       lastCommand.textContent = screenReaders[perspective.value].name + " key ready; press the remaining key";
+      announce(screenReaders[perspective.value].name + " key ready. Press the remaining key for " + displayedCommand(expectedCommand) + ".");
       return;
     }
     let command = normalizedKey(event);
@@ -247,6 +248,14 @@
     modifierHeld = false;
     altModifierArmed = false;
     controlModifierArmed = false;
+    // Screen readers may consume their modifier and the browser may receive
+    // only the final key. Accept that final key as confirmation for the
+    // screen-reader commands practiced in this simulator.
+    if (!command.includes("+") &&
+      ["TITLE", "FOCUS", "MODE"].includes(expectedCommand) &&
+      command === finalKeyFor(expectedCommand)) {
+      command = expectedCommand;
+    }
     if (!command || command.endsWith("+")) return;
     if (!command.includes("+") && command === finalKeyFor(expectedCommand)) command = expectedCommand;
     event.preventDefault();
