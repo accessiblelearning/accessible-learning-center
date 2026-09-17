@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 const read = file => readFileSync(new URL('../'+file, import.meta.url),'utf8');
 // Exercise production scoring/readiness/certificate code without writing real student records.
-async function fixture(slug, completed=10) {
+async function fixture(slug, completed=10, faults={}) {
   const markup=read(slug+'-quiz.html');
   const data=JSON.parse(markup.match(/<script id="quizData" type="application\/json">([\s\S]*?)<\/script>/)[1]);
   class Node {
@@ -43,12 +43,36 @@ async function fixture(slug, completed=10) {
   const storage=new Map([['accessibleLearningStudentId','course_test']]);
   const doc={getElementById:get,createElement:tag=>new Node(tag),createTextNode:text=>Object.assign(new Node(),{textContent:text}),body:new Node()};
   const window={print(){window.printed=true;},addEventListener(){}};
-  const context={document:doc,window,localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},
-    fetch:async()=>({ok:true,json:async()=>Array.from({length:completed},(_,i)=>({course:data.course,lesson_number:i+1,status:'completed'}))}),console};
+  const context={document:doc,window,localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>{if(faults.save)throw Error('Storage full');storage.set(k,v);},removeItem:k=>storage.delete(k)},
+    fetch:async()=>{if(faults.network)throw Error('Offline');return {ok:true,json:async()=>Array.from({length:completed},(_,i)=>({course:data.course,lesson_number:i+1,status:'completed'}))};},console};
   vm.runInNewContext(read('quiz.js'),context);await new Promise(r=>setImmediate(r));
   const answer=count=>data.questions.forEach((q,i)=>{for(const n of form.querySelectorAll(`input[name="question-${i}"]`))n.checked=Number(n.value)===(i<count?q.answer:(q.answer+1)%3);});
   return {get,form,grade,data,storage,window,answer};
 }
+
+test('storage failure reports the unsaved score while allowing an immediate certificate',async()=>{
+ const p=await fixture('firefox',10,{save:true});p.answer(8);p.form.fire('submit');
+ assert.match(p.get('quizStatus').children[1].textContent,/could not save/);
+ assert.equal(p.get('certificateSetup').hidden,false);
+ p.get('certificateName').value='Test';p.get('certificateForm').fire('submit');assert.equal(p.get('certificateSection').hidden,false);
+});
+test('a changed Student ID cannot inherit an unlocked quiz or certificate',async()=>{
+ const p=await fixture('bookshare');p.answer(10);p.storage.set('accessibleLearningStudentId','another_learner');p.form.fire('submit');
+ assert.match(p.get('quizStatus').textContent,/Student ID changed/);assert.equal(p.get('certificateSetup').hidden,true);
+ assert.equal(p.storage.has('accessibleLearningQuizResults:another_learner'),false);
+ const q=await fixture('firefox');q.answer(10);q.form.fire('submit');q.storage.set('accessibleLearningStudentId','another_learner');q.get('certificateName').value='Test';q.get('certificateForm').fire('submit');assert.equal(q.get('certificateSection').hidden,true);
+});
+test('retaking clears the previous certificate and cannot reuse the passing score',async()=>{
+ const p=await fixture('thunderbird');p.answer(10);p.form.fire('submit');p.get('certificateName').value='Test';p.get('certificateForm').fire('submit');
+ p.form.children.find(n=>n.textContent==='Retake with new question order').fire('click');
+ assert.equal(p.get('certificateSection').hidden,true);assert.equal(p.get('certificateName').value,'');assert.equal(p.form.querySelectorAll('input:checked').length,0);
+ p.get('certificateName').value='Test';p.get('certificateForm').fire('submit');assert.equal(p.get('certificateSection').hidden,true);
+});
+test('network failure stays locked and unowned legacy results are not assigned to a learner',async()=>{
+ const p=await fixture('learning-ally',10,{network:true});assert.equal(p.grade.disabled,true);
+ const q=await fixture('learning-ally');q.storage.set('accessibleLearningQuizResults',JSON.stringify({Firefox:{score:100}}));q.answer(8);q.form.fire('submit');
+ const saved=JSON.parse(q.storage.get('accessibleLearningQuizResults:course_test'));assert.equal(saved.Firefox,undefined);assert.equal(saved['Learning Ally'].score,80);assert.ok(q.storage.has('accessibleLearningQuizResults'));
+});
 for(const slug of ['thunderbird','firefox','zoomtext-fusion','bookshare','learning-ally']){
   test(slug+': ten lessons required; incomplete or failing answers do not issue a certificate',async()=>{
     const locked=await fixture(slug,9);assert.equal(locked.grade.disabled,true);locked.get('certificateName').value='Test Learner';locked.get('certificateForm').fire('submit');assert.equal(locked.get('certificateSection').hidden,true);

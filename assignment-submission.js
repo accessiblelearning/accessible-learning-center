@@ -21,7 +21,10 @@
     .filter(Boolean);
   const allowedExtensions = new Set(extensionList);
   const allowedLabel = extensionList.map(value => value.toUpperCase()).join(", ");
-  const studentId = localStorage.getItem("accessibleLearningStudentId");
+  let studentId = "";
+  let storageUnavailable = false;
+  try { studentId = localStorage.getItem("accessibleLearningStudentId") || ""; }
+  catch (error) { storageUnavailable = true; }
   const studentDisplay = document.getElementById("studentDisplay");
   const form = document.getElementById("submissionForm");
   const fileInput = document.getElementById("assignmentFile");
@@ -48,6 +51,12 @@
     status.setAttribute("aria-live", "polite");
 
     section.append(heading, explanation);
+
+    if (storageUnavailable) {
+      status.textContent = "This browser is blocking storage. Allow site storage and reload before saving lesson completion. You can still read and practice this lesson.";
+      section.append(status);
+      return section;
+    }
 
     if (!studentId) {
       const signInMessage = document.createElement("p");
@@ -102,6 +111,15 @@
     }
 
     button.addEventListener("click", async () => {
+      try {
+        if (localStorage.getItem("accessibleLearningStudentId") !== studentId) {
+          status.textContent = "The Student ID changed. Reload this lesson before saving completion for the current learner.";
+          return;
+        }
+      } catch (error) {
+        status.textContent = "Your Student ID could not be checked. Allow site storage and reload before saving completion.";
+        return;
+      }
       const newStatus = isComplete ? "in_progress" : "completed";
       button.disabled = true;
       status.textContent = isComplete

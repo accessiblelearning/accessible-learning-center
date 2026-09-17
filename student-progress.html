@@ -45,7 +45,10 @@
   <script>
     const API_URL =
       "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
-    const studentId = localStorage.getItem("accessibleLearningStudentId");
+    let studentId = "";
+    let storageUnavailable = false;
+    try { studentId = localStorage.getItem("accessibleLearningStudentId") || ""; }
+    catch (error) { storageUnavailable = true; }
     const studentName = document.getElementById("studentName");
     const progressMessage = document.getElementById("progressMessage");
     const continueSection = document.getElementById("continueSection");
@@ -56,6 +59,9 @@
     const startedCoursesOnly = document.getElementById("startedCoursesOnly");
     const progressFilterStatus = document.getElementById("progressFilterStatus");
     const courseTopics = {
+      thunderbird: "communication other", firefox: "windows screen-readers",
+      "zoomtext-fusion": "windows screen-readers", bookshare: "other braille",
+      "learning-ally": "other",
       jaws: "windows screen-readers", windows: "windows screen-readers",
       "ai-fundamentals": "ai", chatgpt: "ai", word: "microsoft",
       excel: "microsoft", powerpoint: "microsoft", copilot: "microsoft ai",
@@ -478,7 +484,9 @@
       }
 ];
 
-    if (!studentId) {
+    if (storageUnavailable) {
+      progressMessage.textContent = "This browser is blocking storage, so your Student ID could not be read. Allow site storage and reload to view saved progress. You can still read lessons and manuals.";
+    } else if (!studentId) {
       window.location.href = "student-id.html";
     } else {
       studentName.textContent = "Student ID: " + studentId;
@@ -489,13 +497,8 @@
       try {
         const studentKey = "accessibleLearningQuizResults:" + studentId;
         const savedForStudent = localStorage.getItem(studentKey);
-        if (savedForStudent) return JSON.parse(savedForStudent);
-
-        const legacyResults = localStorage.getItem("accessibleLearningQuizResults");
-        if (!legacyResults) return {};
-        localStorage.setItem(studentKey, legacyResults);
-        localStorage.removeItem("accessibleLearningQuizResults");
-        return JSON.parse(legacyResults);
+        const results = JSON.parse(savedForStudent || "{}");
+        return results && typeof results === "object" && !Array.isArray(results) ? results : {};
       } catch (error) {
         return {};
       }
@@ -585,7 +588,8 @@
       details.append(detailsSummary, list, quizParagraph);
       section.dataset.searchText = (course.displayName || course.name).toLowerCase();
       section.dataset.topics = courseTopics[course.slug] || "other";
-      section.dataset.started = String(completedCount > 0 || Boolean(quizResult));
+      section.dataset.started = String(completedCount > 0 || Boolean(quizResult) ||
+        records.some(record => record.course === course.name && record.status === "in_progress"));
       section.append(heading, summary, meter, details);
       return { section, completedCount, firstIncomplete };
     }

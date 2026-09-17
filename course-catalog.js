@@ -9,7 +9,8 @@
   if (!filter || !topicFilter || !startedOnly || !status || !sections.length) return;
 
   const API_URL = "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
-  const studentId = localStorage.getItem("accessibleLearningStudentId");
+  let studentId = "";
+  try { studentId = localStorage.getItem("accessibleLearningStudentId") || ""; } catch (error) {}
   const courseData = {
     "thunderbird": {"name": "Thunderbird Email", "topics": "communication other"},
     "firefox": {"name": "Firefox", "topics": "screen-readers windows"},
@@ -87,9 +88,21 @@
     sections.forEach(section => { section.querySelector("details").open = false; });
   });
 
-  const target = location.hash ? document.querySelector(location.hash) : null;
-  target?.querySelector("details")?.setAttribute("open", "");
   applyFilter();
+  function revealLinkedCourse() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (error) { return; }
+    const target = document.getElementById(id);
+    if (!sections.includes(target)) return;
+    filter.value = "";
+    topicFilter.value = "all";
+    startedOnly.checked = false;
+    target.querySelector("details").open = true;
+    applyFilter();
+    target.scrollIntoView?.({ block: "start" });
+  }
+  revealLinkedCourse();
+  window.addEventListener("hashchange", revealLinkedCourse);
 
   if (!studentId) {
     startedOnly.disabled = true;
@@ -108,15 +121,17 @@
           record.course === courseName &&
           ["completed", "submitted"].includes(record.status)
         );
-        section.dataset.started = String(completed.length > 0);
+        section.dataset.started = String(records.some(record => record.course === courseName &&
+          ["in_progress", "completed", "submitted"].includes(record.status)));
         const details = section.querySelector("details");
         const summary = details.querySelector("summary");
         const lessonLinks = [...details.querySelectorAll('.course-lesson-list a')];
-        const completedNumbers = new Set(completed.map(record => Number(record.lesson_number)));
+        const completedNumbers = new Set(completed.map(record => Number(record.lesson_number))
+          .filter(number => Number.isInteger(number) && number >= 1 && number <= lessonLinks.length));
         const nextIndex = lessonLinks.findIndex((link, index) => !completedNumbers.has(index + 1));
-        summary.textContent = completed.length + " of " + lessonLinks.length + " lessons complete. Show course details for " +
+        summary.textContent = completedNumbers.size + " of " + lessonLinks.length + " lessons complete. Show course details for " +
           section.querySelector("h2").textContent.replace(/ lessons$/i, "");
-        if (nextIndex >= 0 && completed.length > 0) {
+        if (nextIndex >= 0 && section.dataset.started === "true") {
           const continueParagraph = document.createElement("p");
           continueParagraph.className = "course-continue";
           const continueLink = document.createElement("a");

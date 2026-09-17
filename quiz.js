@@ -50,6 +50,7 @@
   let questionOrder = data.questions.map((question, index) => index);
   let quizReady = false;
   let graded = false;
+  let verifiedStudentId = "";
 
   readiness.className = "quiz-readiness";
   readiness.setAttribute("role", "status");
@@ -177,6 +178,7 @@
       }
 
       quizReady = true;
+      verifiedStudentId = studentId;
       readinessText.textContent =
         "Ready. All ten lessons are marked complete. Use Tab to enter each answer group and the arrow keys to choose an answer.";
       setQuizControls(true);
@@ -192,7 +194,7 @@
   }
 
   function resultStorageKey() {
-    const studentId = localStorage.getItem("accessibleLearningStudentId");
+    const studentId = verifiedStudentId;
     return studentId
       ? "accessibleLearningQuizResults:" + studentId
       : "accessibleLearningQuizResults";
@@ -201,16 +203,28 @@
   function saveResult(score) {
     try {
       const key = resultStorageKey();
-      const legacyKey = "accessibleLearningQuizResults";
       const savedResults = localStorage.getItem(key);
-      const legacyResults = key === legacyKey ? null : localStorage.getItem(legacyKey);
-      const results = JSON.parse(savedResults || legacyResults || "{}");
+      const parsed = JSON.parse(savedResults || "{}");
+      const results = parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
       results[data.course] = { score, completedAt: new Date().toISOString() };
       localStorage.setItem(key, JSON.stringify(results));
-      if (legacyResults) localStorage.removeItem(legacyKey);
+      return true;
     } catch (error) {
       // The quiz and certificate still work when local storage is unavailable.
+      return false;
     }
+  }
+
+  function sameStudent() {
+    try {
+      if (localStorage.getItem("accessibleLearningStudentId") === verifiedStudentId) return true;
+    } catch (error) {}
+    quizReady = false;
+    setup.hidden = true;
+    certificate.hidden = true;
+    setQuizControls(false);
+    status.textContent = "The Student ID changed or could not be checked. Reload this quiz to verify the current learner's lessons.";
+    return false;
   }
 
   questionInputs.forEach(input => input.addEventListener("change", updateAnswered));
@@ -221,6 +235,7 @@
   form.addEventListener("submit", event => {
     event.preventDefault();
     if (!quizReady || graded) return;
+    if (!sameStudent()) return;
 
     const answers = data.questions.map((question, index) => {
       const selected = form.querySelector('input[name="question-' + index + '"]:checked');
@@ -242,6 +257,7 @@
     );
     latestScore = Math.round((correct / data.questions.length) * 100);
     const passed = latestScore >= data.passPercent;
+    const resultSaved = passed && saveResult(latestScore);
     graded = true;
     setQuizControls(false);
     retakeButton.hidden = false;
@@ -254,7 +270,8 @@
       : "Not passed yet: " + correct + " of " + data.questions.length + " correct, " + latestScore + " percent.";
     const note = document.createElement("p");
     note.textContent = passed
-      ? "Your result was saved. You may create your course-completion certificate below."
+      ? (resultSaved ? "Your result was saved. You may create your course-completion certificate below."
+        : "You passed, but this browser could not save your result. You may still create and print your certificate now; your progress page may not show this score.")
       : "Review the explanations below, then retake the quiz. " + requiredCorrect +
         " correct answer" + (requiredCorrect === 1 ? " is" : "s are") + " required.";
     status.append(heading, note);
@@ -285,7 +302,6 @@
     setup.hidden = !passed;
     certificate.hidden = true;
     certificateStatus.textContent = "";
-    if (passed) saveResult(latestScore);
     heading.focus();
   });
 
@@ -314,6 +330,7 @@
       certificateStatus.textContent = "Complete all ten lessons and pass this quiz before creating a certificate.";
       return;
     }
+    if (!sameStudent()) return;
     const name = nameInput.value.trim().replace(/\s+/g, " ");
     if (!name) {
       certificateStatus.textContent = "Enter the learner's name before creating the certificate.";
