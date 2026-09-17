@@ -2320,6 +2320,30 @@ html[data-contrast="high"] .training-results h3 {
   line-height: 1.15;
 }
 
+.mission-center-back {
+  margin: .65rem auto 0;
+  text-align: center;
+}
+
+.mission-center-back a {
+  display: inline-block;
+  padding: .65rem 1.25rem;
+  color: #06142d;
+  background: #2fbd68;
+  border: 3px solid #d9f7df;
+  border-radius: .65rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.mission-center-back a:hover,
+.mission-center-back a:focus-visible {
+  color: #06142d;
+  background: #55e487;
+  outline: .25rem solid #ffe37a;
+  outline-offset: .15rem;
+}
+
 .mission-center-help {
   max-width: 58rem;
   margin: 1rem auto 0;
