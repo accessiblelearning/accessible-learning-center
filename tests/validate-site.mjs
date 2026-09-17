@@ -5,6 +5,12 @@ const root = process.cwd();
 const htmlFiles = readdirSync(root).filter((file) => extname(file) === ".html");
 const errors = [];
 const courses = [
+{"name": "Thunderbird Email", "slug": "thunderbird", "ext": "txt,docx,pdf,brf"},
+{"name": "Firefox", "slug": "firefox", "ext": "txt,docx,pdf,brf"},
+{"name": "ZoomText and Fusion", "slug": "zoomtext-fusion", "ext": "txt,docx,pdf,brf"},
+{"name": "Bookshare", "slug": "bookshare", "ext": "txt,docx,pdf,brf"},
+{"name": "Learning Ally", "slug": "learning-ally", "ext": "txt,docx,pdf,brf"},
+
   {
     "name": "Choosing a Free Office Suite",
     "slug": "free-office",
@@ -209,7 +215,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 352, "Expected 352 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 407, "Expected 407 HTML pages, found " + htmlFiles.length + ".");
 const manualsHtml = readFileSync(resolve(root, "manuals.html"), "utf8");
 check(manualsHtml.includes('id="manualSearch"'), "Manuals page is missing its title filter.");
 check(manualsHtml.includes('id="manualType"'), "Manuals page is missing its resource-type filter.");
@@ -320,7 +326,7 @@ check(quizScript.includes("data.passPercent"), "Quiz passing-score behavior is m
 check(quizScript.includes("print-certificate"), "Printable certificate behavior is missing.");
 check(quizScript.includes("accessibleLearningQuizResults"), "Local quiz result storage is missing.");
 check(!quizScript.includes("certificateStudentName") || !quizScript.includes("localStorage.setItem(key, name"), "Certificate names must not be stored.");
-check(searchIndex.count === 340 && searchIndex.entries.length === 340, "Search index must contain 340 public learning, practice, quiz, and help pages.");
+check(searchIndex.count === 395 && searchIndex.entries.length === 395, "Search index must contain 395 public learning, practice, quiz, and help pages.");
 check(assignmentScript.includes("const UPLOADS_ENABLED = false"), "Lesson upload interface is not paused.");
 check(assignmentScript.includes("submissionSection?.remove()"), "Paused upload interface is not removed.");
 check(assignmentScript.includes("Mark this lesson complete"), "Lesson completion control is missing.");
@@ -344,7 +350,7 @@ check(accessibilityScript.includes('details class="accessibility-menu"'), "Acces
 check(accessibilityScript.includes("Last accessibility and structure review:"), "Manual review dates are missing.");
 check(accessibilityScript.includes('href="quizzes.html">Quizzes</a>'), "Primary navigation is missing Quizzes.");
 check(existsSync(resolve(root, "quizzes.html")), "Quizzes page is missing.");
-check((readFileSync(resolve(root, "quizzes.html"), "utf8").match(/-quiz\.html/g) || []).length === 25, "Quizzes page must link all 25 final quizzes.");
+check((readFileSync(resolve(root, "quizzes.html"), "utf8").match(/-quiz\.html/g) || []).length === 30, "Quizzes page must link all 30 final quizzes.");
 const quizFiles = htmlFiles.filter(file => file.endsWith("-quiz.html"));
 const answerPositionTotals = [0, 0, 0];
 for (const file of quizFiles) {
@@ -353,7 +359,8 @@ for (const file of quizFiles) {
   check(Boolean(quizDataMatch), file + " is missing quiz data.");
   if (!quizDataMatch) continue;
   const quizData = JSON.parse(quizDataMatch[1]);
-  check(quizData.questions.length === 5, file + " must contain five questions.");
+  const expectedQuestions = ["thunderbird", "firefox", "zoomtext-fusion", "bookshare", "learning-ally"].includes(quizData.slug) ? 10 : 5;
+  check(quizData.questions.length === expectedQuestions, file + " has the wrong question count.");
   const answerPositions = quizData.questions.map(question => question.answer);
   check(new Set(answerPositions).size === 3, file + " must use all three correct-answer positions.");
   check(answerPositions.every(position => Number.isInteger(position) && position >= 0 && position <= 2), file + " contains an invalid answer position.");
@@ -433,4 +440,4 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("Validated " + htmlFiles.length + " accessible pages, " + instructionalManualFiles.length + " instructional manuals, 250 lessons, 25 final quizzes, command practice, local certificates, searchable help, and paused private uploads.");
+console.log("Validated " + htmlFiles.length + " accessible pages, " + instructionalManualFiles.length + " instructional manuals, 300 lessons, 30 final quizzes, command practice, local certificates, searchable help, and paused private uploads.");

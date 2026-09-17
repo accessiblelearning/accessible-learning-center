@@ -4,6 +4,11 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const SUBMISSIONS_ENABLED = false;
 const COURSE_EXTENSIONS = new Map([
   ["Choosing a Free Office Suite", new Set(["txt","docx","xlsx","pptx","pdf","brf"])],
+  ["Thunderbird Email", new Set(["txt","docx","pdf","brf"])],
+  ["Firefox", new Set(["txt","docx","pdf","brf"])],
+  ["ZoomText and Fusion", new Set(["txt","docx","pdf","brf"])],
+  ["Bookshare", new Set(["txt","docx","pdf","brf"])],
+  ["Learning Ally", new Set(["txt","docx","pdf","brf"])],
   ["LibreOffice Writer", new Set(["odt","docx","pdf","txt","brf"])],
   ["LibreOffice Calc", new Set(["ods","xlsx","csv","pdf"])],
   ["LibreOffice Impress", new Set(["odp","pptx","pdf"])],

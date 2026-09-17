@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible ten-question final quiz and printable completion certificate for ZoomText and Fusion.">
+  <title>ZoomText and Fusion Final Quiz - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=quiz-quality-2">
+  <script src="accessibility.js?v=nav-quizzes-1" defer></script>
+  <script src="quiz.js?v=five-courses-1" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Course completion quiz</p>
+    <h1>ZoomText and Fusion Final Quiz</h1>
+    <p>Answer ten questions about the skills covered in this course. A score of 80 percent, or eight correct answers, earns a printable course-completion certificate.</p>
+  </header>
+  <main id="main-content">
+    <nav class="lesson-nav" aria-label="ZoomText and Fusion quiz navigation">
+      <a href="zoomtext-fusion-manual.html">ZoomText and Fusion manual</a>
+      <a href="zoomtext-fusion-lesson-10.html">Review Lesson 10</a>
+      <a href="lessons.html#zoomtext-fusion-lessons">All ZoomText and Fusion lessons</a>
+      <a href="resources.html">Help and resource search</a>
+    </nav>
+    <section aria-labelledby="quiz-heading">
+      <h2 id="quiz-heading">Final quiz</h2>
+      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <form id="courseQuiz" novalidate>
+        <fieldset class="quiz-question">
+<legend>1. A computer is physically a laptop. Which command layout should you assume?</legend>
+<label><input type="radio" name="question-0" value="0"> Always ZoomText Magnifier/Reader layout</label><label><input type="radio" name="question-0" value="1"> None; check the configured product and JAWS layout</label><label><input type="radio" name="question-0" value="2"> Always Fusion Laptop layout</label>
+</fieldset>
+<fieldset class="quiz-question">
+<legend>2. Before changing several access settings, what gives you a recoverable baseline?</legend>
+<label><input type="radio" name="question-1" value="0"> Close all access tools first</label><label><input type="radio" name="question-1" value="1"> Maximize every visual enhancement</label><label><input type="radio" name="question-1" value="2"> Record product, layout, magnification, and speech settings</label>
+</fieldset>
+<fieldset class="quiz-question">
+<legend>3. In the ZoomText Zoom Level control, Up changes zoom. How do you move to an adjacent toolbar item?</legend>
+<label><input type="radio" name="question-2" value="0"> Use the document text-selection command</label><label><input type="radio" name="question-2" value="1"> Use Left or Right</label><label><input type="radio" name="question-2" value="2"> Keep pressing Up until focus moves</label>
+</fieldset>
+<fieldset class="quiz-question">
+<legend>4. Which magnification comparison command matches Fusion Laptop layout?</legend>
+<label><input type="radio" name="question-3" value="0"> Caps Lock+Alt+Enter</label><label><input type="radio" name="question-3" value="1"> Insert+Enter</label><label><input type="radio" name="question-3" value="2"> Caps Lock+Enter</label>
+</fieldset>
+<fieldset class="quiz-question">
+<legend>5. Typing appears at a location different from the mouse pointer. Which indicator identifies the insertion point?</legend>
+<label><input type="radio" name="question-4" value="0"> The enhanced mouse pointer</label><label><input type="radio" name="question-4" value="1"> The window border</label><label><input type="radio" name="question-4" value="2"> The text cursor</label>
+</fieldset>
+<fieldset class="quiz-question">
+<legend>6. How should you evaluate a color enhancement?</legend>
+<label><input type="radio" name="question-5" value="0"> Compare familiar text and selected controls before and after the change</label><label><input type="radio" name="question-5" value="1"> Change zoom, contrast, and speech at the same time</label><label><input type="radio" name="question-5" value="2"> Choose the brightest setting without reading</label>
+</fieldset>
+<fieldset class="quiz-question">
+<legend>7. Fusion is running. Which component supplies its screen-reading speech?</legend>
+<label><input type="radio" name="question-6" value="0"> The Windows display-resolution setting</label><label><input type="radio" name="question-6" value="1"> JAWS</label><label><input type="radio" name="question-6" value="2"> ZoomText Magnifier-only speech</label>
+</fieldset>
+<fieldset class="quiz-question">
+<legend>8. The magnified view moves while you edit. What should you identify first?</legend>
+<label><input type="radio" name="question-7" value="0"> The maximum available zoom factor</label><label><input type="radio" name="question-7" value="1"> Whether the browser has a saved login</label><label><input type="radio" name="question-7" value="2"> The cursor and the content receiving typing</label>
+</fieldset>
+<fieldset class="quiz-question">
+<legend>9. A book player and screen reader speak together. What is a useful first step?</legend>
+<label><input type="radio" name="question-8" value="0"> Increase both voices to maximum speed</label><label><input type="radio" name="question-8" value="1"> Disable the access tool needed to navigate</label><label><input type="radio" name="question-8" value="2"> Pause the book player through its labeled control</label>
+</fieldset>
+<fieldset class="quiz-question">
+<legend>10. A scanned document is recognized with OCR. What should you do before relying on an important number?</legend>
+<label><input type="radio" name="question-9" value="0"> Increase magnification and skip verification</label><label><input type="radio" name="question-9" value="1"> Check the recognized number against the source</label><label><input type="radio" name="question-9" value="2"> Assume recognition guarantees accuracy</label>
+</fieldset>
+<button type="submit">Grade my quiz</button>
+      </form>
+      <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
+      <div id="quizReview" class="quiz-review"></div>
+    </section>
+    <section id="certificateSetup" hidden aria-labelledby="certificate-setup-heading">
+      <h2 id="certificate-setup-heading">Create your certificate</h2>
+      <p>Your name is used only to create the certificate on this page. It is not uploaded or saved with your Student ID.</p>
+      <form id="certificateForm">
+        <p><label for="certificateName">Name for certificate</label><br><input id="certificateName" name="name" type="text" autocomplete="name" maxlength="100" required></p>
+        <button type="submit">Create certificate</button>
+      </form>
+      <p id="certificateStatus" role="status" aria-live="polite"></p>
+    </section>
+    <section id="certificateSection" class="certificate" hidden aria-labelledby="certificate-heading">
+      <p class="certificate__eyebrow">Accessible Learning Center</p>
+      <h2 id="certificate-heading">Certificate of Course Completion</h2>
+      <p>This certificate recognizes</p>
+      <p id="certificateStudentName" class="certificate__name"></p>
+      <p>for completing</p>
+      <p id="certificateCourse" class="certificate__course"></p>
+      <div class="certificate__details">
+        <p><strong>Final quiz score:</strong> <span id="certificateScore"></span></p>
+        <p><strong>Completion date:</strong> <span id="certificateDate"></span></p>
+      </div>
+      <p>This certificate records completion of this training course. It is not a professional license or accredited credential.</p>
+      <button id="printCertificate" type="button">Print or Save Certificate</button>
+    </section>
+  </main>
+  <script id="quizData" type="application/json">{"course": "ZoomText and Fusion", "displayName": "ZoomText and Fusion", "slug": "zoomtext-fusion", "passPercent": 80, "questions": [{"question": "A computer is physically a laptop. Which command layout should you assume?", "options": ["Always ZoomText Magnifier/Reader layout", "None; check the configured product and JAWS layout", "Always Fusion Laptop layout"], "answer": 1, "explanation": "Physical hardware does not establish the configured command layout. Review ZoomText and Fusion Lesson 1."}, {"question": "Before changing several access settings, what gives you a recoverable baseline?", "options": ["Close all access tools first", "Maximize every visual enhancement", "Record product, layout, magnification, and speech settings"], "answer": 2, "explanation": "A baseline lets you identify and reverse individual changes. Review ZoomText and Fusion Lesson 2."}, {"question": "In the ZoomText Zoom Level control, Up changes zoom. How do you move to an adjacent toolbar item?", "options": ["Use the document text-selection command", "Use Left or Right", "Keep pressing Up until focus moves"], "answer": 1, "explanation": "The Zoom Level control uses Up/Down for value and Left/Right for adjacent controls. Review ZoomText and Fusion Lesson 3."}, {"question": "Which magnification comparison command matches Fusion Laptop layout?", "options": ["Caps Lock+Alt+Enter", "Insert+Enter", "Caps Lock+Enter"], "answer": 0, "explanation": "Fusion Laptop adds Alt for this magnification toggle. Review ZoomText and Fusion Lesson 4."}, {"question": "Typing appears at a location different from the mouse pointer. Which indicator identifies the insertion point?", "options": ["The enhanced mouse pointer", "The window border", "The text cursor"], "answer": 2, "explanation": "The pointer, cursor, and keyboard focus can be in different places. Review ZoomText and Fusion Lesson 5."}, {"question": "How should you evaluate a color enhancement?", "options": ["Compare familiar text and selected controls before and after the change", "Change zoom, contrast, and speech at the same time", "Choose the brightest setting without reading"], "answer": 0, "explanation": "One change at a time makes its effect easier to assess. Review ZoomText and Fusion Lesson 6."}, {"question": "Fusion is running. Which component supplies its screen-reading speech?", "options": ["The Windows display-resolution setting", "JAWS", "ZoomText Magnifier-only speech"], "answer": 1, "explanation": "Fusion uses JAWS speech, not ZoomText reader hotkeys. Review ZoomText and Fusion Lesson 7."}, {"question": "The magnified view moves while you edit. What should you identify first?", "options": ["The maximum available zoom factor", "Whether the browser has a saved login", "The cursor and the content receiving typing"], "answer": 2, "explanation": "Tracking can follow focus or editing; identify the target before further edits. Review ZoomText and Fusion Lesson 8."}, {"question": "A book player and screen reader speak together. What is a useful first step?", "options": ["Increase both voices to maximum speed", "Disable the access tool needed to navigate", "Pause the book player through its labeled control"], "answer": 2, "explanation": "Pausing media preserves navigation feedback while reducing competing speech. Review ZoomText and Fusion Lesson 9."}, {"question": "A scanned document is recognized with OCR. What should you do before relying on an important number?", "options": ["Increase magnification and skip verification", "Check the recognized number against the source", "Assume recognition guarantees accuracy"], "answer": 1, "explanation": "Recognition can misread text, especially numbers and names. Review ZoomText and Fusion Lesson 10."}]}</script>
+</body>
+</html>

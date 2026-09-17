@@ -310,6 +310,10 @@
 
   certificateForm.addEventListener("submit", event => {
     event.preventDefault();
+    if (!quizReady || !graded || latestScore < data.passPercent) {
+      certificateStatus.textContent = "Complete all ten lessons and pass this quiz before creating a certificate.";
+      return;
+    }
     const name = nameInput.value.trim().replace(/\s+/g, " ");
     if (!name) {
       certificateStatus.textContent = "Enter the learner's name before creating the certificate.";

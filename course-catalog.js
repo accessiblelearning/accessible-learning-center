@@ -11,6 +11,12 @@
   const API_URL = "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
   const studentId = localStorage.getItem("accessibleLearningStudentId");
   const courseData = {
+    "thunderbird": {"name": "Thunderbird Email", "topics": "communication other"},
+    "firefox": {"name": "Firefox", "topics": "screen-readers windows"},
+    "zoomtext-fusion": {"name": "ZoomText and Fusion", "topics": "screen-readers windows"},
+    "bookshare": {"name": "Bookshare", "topics": "other braille"},
+    "learning-ally": {"name": "Learning Ally", "topics": "other"},
+
     jaws: { name: "JAWS Screen Reader", topics: "windows screen-readers" },
     windows: { name: "Windows 11", topics: "windows screen-readers" },
     "ai-fundamentals": { name: "AI Fundamentals", topics: "ai" },
