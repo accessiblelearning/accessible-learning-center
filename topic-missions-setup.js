@@ -14,8 +14,8 @@
   function readSettings() {
     try {
       const saved = JSON.parse(localStorage.getItem(settingsKey) || "{}");
-      return { reader: "jaws", ...saved };
-    } catch (error) { return { reader: "jaws" }; }
+      return { reader: "jaws", sounds: "1", ...saved };
+    } catch (error) { return { reader: "jaws", sounds: "1" }; }
   }
 
   function siteVoiceEnabled() {
@@ -65,7 +65,8 @@
     const params = new URLSearchParams({
       reader: item.dataset.reader || settings.reader,
       mission: item.dataset.mission,
-      voice: siteVoiceEnabled() ? "1" : "0"
+      voice: siteVoiceEnabled() ? "1" : "0",
+      sounds: settings.sounds
     });
     window.location.href = "topic-mission-session.html?" + params.toString();
   }
