@@ -575,6 +575,8 @@
     if (event.key === "Insert") {
       insertHeld = true;
       detected.textContent = "Insert";
+      status.textContent = "Insert ready. Press the final key for the screen-reader command.";
+      speak(status.textContent);
       return;
     }
     if (["Alt", "Shift", "Meta"].includes(event.key)) {
@@ -583,6 +585,13 @@
     }
 
     let pressed = signature(event);
+    // JAWS and NVDA may consume Insert before the browser receives it.
+    // When the expected command uses Insert, accept the final key as a
+    // confirmation after the screen reader handles the real chord.
+    if (!insertHeld && expected.startsWith("insert+") &&
+      !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
+      pressed = "insert+" + pressed;
+    }
     if (
       protectedSequence &&
       protectedModifierArmed === protectedSequence.modifier &&
