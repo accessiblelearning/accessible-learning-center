@@ -2954,6 +2954,7 @@ html[data-contrast="high"] .mission-center-page .mission-result-primary:focus-vi
   min-height: calc(100svh - 3rem);
   height: auto;
   max-height: none;
+  margin-inline: auto;
   padding: .75rem;
   overflow: visible;
   color: #ffffff;
@@ -3067,6 +3068,8 @@ html[data-contrast="high"] .mission-center-page.mission-session-page .command-fo
 }
 
 .mission-session-page .mission-training-panel .training-stage__shortcuts {
+  width: 100%;
+  max-width: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
