@@ -209,7 +209,7 @@ for (const course of courses) {
   check(worker.includes('["' + course.name + '", new Set('), "Submission Worker is missing " + course.name + ".");
 }
 check(worker.includes('"bbz"'), "Submission Worker is missing BBZ validation.");
-check(htmlFiles.length === 348, "Expected 348 HTML pages, found " + htmlFiles.length + ".");
+check(htmlFiles.length === 352, "Expected 352 HTML pages, found " + htmlFiles.length + ".");
 const manualsHtml = readFileSync(resolve(root, "manuals.html"), "utf8");
 check(manualsHtml.includes('id="manualSearch"'), "Manuals page is missing its title filter.");
 check(manualsHtml.includes('id="manualType"'), "Manuals page is missing its resource-type filter.");
@@ -217,7 +217,7 @@ check(manualsHtml.includes("Full course · 10 lessons + final quiz"), "Manuals p
 check(manualsHtml.includes("Standalone manual"), "Manuals page is missing standalone-manual labels.");
 check(manualsHtml.includes("Instructor resource"), "Manuals page is missing instructor-resource labels.");
 const catalogManualLinks = [...manualsHtml.matchAll(/<a href="([^"]+-manual\.html)">/g)].map(match => match[1]);
-check(catalogManualLinks.length === 54, "Expected 54 manuals in the catalog, found " + catalogManualLinks.length + ".");
+check(catalogManualLinks.length === 58, "Expected 58 manuals in the catalog, found " + catalogManualLinks.length + ".");
 check(new Set(catalogManualLinks).size === catalogManualLinks.length, "The Manuals catalog contains duplicate manual entries.");
 const accessibilityScript = readFileSync(resolve(root, "accessibility.js"), "utf8");
 const assignmentScript = readFileSync(resolve(root, "assignment-submission.js"), "utf8");
@@ -320,7 +320,7 @@ check(quizScript.includes("data.passPercent"), "Quiz passing-score behavior is m
 check(quizScript.includes("print-certificate"), "Printable certificate behavior is missing.");
 check(quizScript.includes("accessibleLearningQuizResults"), "Local quiz result storage is missing.");
 check(!quizScript.includes("certificateStudentName") || !quizScript.includes("localStorage.setItem(key, name"), "Certificate names must not be stored.");
-check(searchIndex.count === 336 && searchIndex.entries.length === 336, "Search index must contain 336 public learning, practice, quiz, and help pages.");
+check(searchIndex.count === 340 && searchIndex.entries.length === 340, "Search index must contain 340 public learning, practice, quiz, and help pages.");
 check(assignmentScript.includes("const UPLOADS_ENABLED = false"), "Lesson upload interface is not paused.");
 check(assignmentScript.includes("submissionSection?.remove()"), "Paused upload interface is not removed.");
 check(assignmentScript.includes("Mark this lesson complete"), "Lesson completion control is missing.");
