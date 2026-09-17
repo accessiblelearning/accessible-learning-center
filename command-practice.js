@@ -2,6 +2,191 @@
   "use strict";
 
   const categories = {
+    "Thunderbird email": [
+        [
+            "Control+N",
+            "Start a new Thunderbird message.",
+            "In Thunderbird mail on Windows, this opens a composition window."
+        ],
+        [
+            "Control+S",
+            "Save the current draft.",
+            "Use this in the composition window; in the message list it can save a message as a file."
+        ],
+        [
+            "Control+Shift+A",
+            "Attach a file to this draft.",
+            "In composition, this opens the attachment file picker."
+        ],
+        [
+            "Control+R",
+            "Reply to the selected message sender.",
+            "Review the recipient before writing."
+        ],
+        [
+            "Control+Shift+R",
+            "Reply to everyone on the selected message.",
+            "Review all recipients before sending a group reply."
+        ],
+        [
+            "Control+L",
+            "Forward the selected message.",
+            "Add the intended recipient and review the forwarded contents."
+        ],
+        [
+            "Control+Shift+K",
+            "Open Quick Filter.",
+            "Search the current folder rather than the whole mailbox."
+        ],
+        [
+            "F6",
+            "Move to the next major mail area.",
+            "Identify whether focus reaches folders, messages, or another mail pane."
+        ]
+    ],
+    "Firefox browser": [
+        [
+            "Control+L",
+            "Focus the Firefox address bar.",
+            "Enter an address or search words here."
+        ],
+        [
+            "Control+T",
+            "Open a new Firefox tab.",
+            "Keep the original page available in its own tab."
+        ],
+        [
+            "Control+Shift+T",
+            "Reopen the last closed tab.",
+            "Recover an accidentally closed page."
+        ],
+        [
+            "Control+D",
+            "Bookmark the current page.",
+            "Review its saved name and folder."
+        ],
+        [
+            "Control+Shift+O",
+            "Open the bookmark Library.",
+            "Locate a previously saved link."
+        ],
+        [
+            "Control+J",
+            "Open Downloads.",
+            "Inspect the intended file and its completion status."
+        ],
+        [
+            "Control+F",
+            "Find text in this page.",
+            "This searches the active page rather than the entire web."
+        ],
+        [
+            "F9",
+            "Toggle Reader View on a supported article.",
+            "Reader View is not offered for every page."
+        ]
+    ],
+    "ZoomText and Fusion Desktop magnification": [
+        [
+            "Caps Lock+Up Arrow",
+            "Increase magnification.",
+            "Applies to ZoomText and Fusion Desktop layout. Fusion Laptop adds Alt."
+        ],
+        [
+            "Caps Lock+Down Arrow",
+            "Decrease magnification.",
+            "A lower level shows more surrounding context. Fusion Laptop adds Alt."
+        ],
+        [
+            "Caps Lock+Enter",
+            "Compare with the unmagnified view.",
+            "Toggle between the current level and 1x. Fusion Laptop adds Alt."
+        ],
+        [
+            "Caps Lock+C",
+            "Toggle color enhancement.",
+            "Compare the result on familiar text. Fusion Laptop adds Alt."
+        ]
+    ],
+    "Bookshare Reader on the web": [
+        [
+            "Alt+C",
+            "Open the table of contents.",
+            "Bookshare Reader must be active in the browser on Windows or Linux."
+        ],
+        [
+            "Alt+B",
+            "Add a bookmark.",
+            "Mark the current book location."
+        ],
+        [
+            "Alt+Shift+B",
+            "Open the bookmarks list.",
+            "Choose a saved passage to revisit."
+        ],
+        [
+            "Alt+N",
+            "Add a study note.",
+            "Enter your comment and activate Save."
+        ],
+        [
+            "Alt+R",
+            "Start reading aloud.",
+            "Use the reader playback controls if a screen reader intercepts this command."
+        ],
+        [
+            "Alt+Shift+R",
+            "Stop reading aloud.",
+            "Pause narration before exploring spoken control labels."
+        ],
+        [
+            "Alt+P",
+            "Go to a page.",
+            "Confirm the edition and printed-page information."
+        ],
+        [
+            "Alt+T",
+            "Open reader settings.",
+            "Choose audio or display preferences."
+        ],
+        [
+            "Alt+W",
+            "Request your current location.",
+            "Identify where you are in the book."
+        ]
+    ],
+    "Learning Ally control navigation": [
+        [
+            "Tab",
+            "Move to the next keyboard-accessible control.",
+            "Desktop control navigation, not a Learning Ally app-wide shortcut. Listen to the label."
+        ],
+        [
+            "Shift+Tab",
+            "Return to the previous control.",
+            "Use this when you passed the intended button."
+        ],
+        [
+            "Enter",
+            "Activate the selected reading control.",
+            "In this exercise the Play button is focused. The result depends on the selected control."
+        ],
+        [
+            "Space",
+            "Activate the focused button.",
+            "This exercise uses a standard focused Pause button; Space is not a universal player shortcut."
+        ],
+        [
+            "Down Arrow",
+            "Select the next item in the open chapter list.",
+            "This exercise uses an interactive list, not screen-reader browse-mode text."
+        ],
+        [
+            "Up Arrow",
+            "Select the previous item in the open chapter list.",
+            "Confirm the chapter label before activating it."
+        ]
+    ],
     "General editing": [
       ["Control+C", "Copy selected content.", "Copies selected text or an item to the clipboard without removing the original."],
       ["Control+X", "Cut selected content.", "Removes the selected content and places it on the clipboard so it can be moved."],
@@ -180,6 +365,21 @@
   const AUTO_ADVANCE_DELAY = 2400;
 
   const protectedSequences = {
+    "control+n": { modifier: "control", finalKey: "n" },
+    "control+t": { modifier: "control", finalKey: "t" },
+    "control+l": { modifier: "control", finalKey: "l" },
+    "control+r": { modifier: "control", finalKey: "r" },
+    "control+d": { modifier: "control", finalKey: "d" },
+    "control+j": { modifier: "control", finalKey: "j" },
+    "control+shift+t": { modifier: "control", finalKey: "t" },
+    "control+shift+o": { modifier: "control", finalKey: "o" },
+    "control+shift+a": { modifier: "control", finalKey: "a" },
+    "control+shift+k": { modifier: "control", finalKey: "k" },
+    "caps lock+up arrow": { modifier: "caps lock", finalKey: "up arrow" },
+    "caps lock+down arrow": { modifier: "caps lock", finalKey: "down arrow" },
+    "caps lock+enter": { modifier: "caps lock", finalKey: "enter" },
+    "caps lock+c": { modifier: "caps lock", finalKey: "c" },
+
     "control+page down": { modifier: "control", finalKey: "page down" },
     "control+page up": { modifier: "control", finalKey: "page up" },
     "alt+left arrow": { modifier: "alt", finalKey: "left arrow" },
@@ -188,6 +388,12 @@
   };
 
   const practiceContexts = {
+    "Thunderbird email": "This is simulated Thunderbird email practice. No real application or account is being controlled.",
+    "Firefox browser": "This is simulated Firefox browser practice. No real application or account is being controlled.",
+    "ZoomText and Fusion Desktop magnification": "This is simulated ZoomText and Fusion Desktop magnification practice. No real application or account is being controlled.",
+    "Bookshare Reader on the web": "This is simulated Bookshare Reader on the web practice. No real application or account is being controlled.",
+    "Learning Ally control navigation": "This is simulated Learning Ally control navigation practice. No real application or account is being controlled.",
+
     "General editing": "You are editing information in a workplace document.",
     "Microsoft Word and documents": "You are working in a document with the text cursor active.",
     "Google Docs and applications": "You are editing a document in a Google application with the text cursor active.",
@@ -202,6 +408,12 @@
   };
 
   const reviewLinks = {
+    "Thunderbird email": ["thunderbird-manual.html", "Review the Thunderbird email manual"],
+    "Firefox browser": ["firefox-manual.html", "Review the Firefox browser manual"],
+    "ZoomText and Fusion Desktop magnification": ["zoomtext-fusion-manual.html", "Review the ZoomText and Fusion Desktop magnification manual"],
+    "Bookshare Reader on the web": ["bookshare-manual.html", "Review the Bookshare Reader on the web manual"],
+    "Learning Ally control navigation": ["learning-ally-manual.html", "Review the Learning Ally control navigation manual"],
+
     "General editing": ["word-lesson-2.html", "Review Microsoft Word Lesson 2"],
     "Microsoft Word and documents": ["word-lesson-2.html", "Review Microsoft Word Lesson 2"],
     "Google Docs and applications": ["google-services-manual.html", "Review the Google Services Manual"],
@@ -378,7 +590,7 @@
     const names = {
       " ": "space", "ArrowLeft": "left arrow", "ArrowRight": "right arrow",
       "ArrowUp": "up arrow", "ArrowDown": "down arrow", "Control": "control",
-      "Shift": "shift", "Alt": "alt", "Meta": "windows", "Insert": "insert",
+      "Shift": "shift", "Alt": "alt", "Meta": "windows", "Insert": "insert", "CapsLock": "caps lock",
       "Enter": "enter", "PageDown": "page down", "PageUp": "page up",
       ";": "semicolon", "`": "grave", "=": "equals", ">": "greater than", "<": "less than"
     };

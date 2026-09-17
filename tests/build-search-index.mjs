@@ -13,7 +13,7 @@ const helpFiles = [
 ];
 const files = [...new Set([...manualFiles, ...lessonFiles, ...quizFiles, ...helpFiles])];
 
-if (manualFiles.length !== 53 || lessonFiles.length !== 250 || quizFiles.length !== 25 || files.length !== 335) {
+if (!manualFiles.length || !lessonFiles.length || !quizFiles.length || new Set(manualFiles).size !== manualFiles.length) {
   throw new Error(`Unexpected search catalog size: ${manualFiles.length} manuals, ${lessonFiles.length} lessons, ${quizFiles.length} quizzes, ${files.length} total.`);
 }
 

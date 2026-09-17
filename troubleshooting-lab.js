@@ -80,7 +80,99 @@
       ],
       hint: "Use File Explorer’s rename command on the selected file."
     }
+,
+{
+    "category": "Thunderbird",
+    "title": "Protect a Thunderbird draft",
+    "problem": "You are in the Thunderbird composition window with an unfinished message. Save the draft, then open the file picker to attach a practice document. This simulation does not send mail. For the attachment command, press and release Control, then press A by itself.",
+    "hint": "Save with Control plus S, then use the composition attachment command.",
+    "steps": [
+        {
+            "command": "CTRL+S",
+            "success": "Practice draft saved. The composition window remains active.",
+            "why": "Saving protects the unfinished message without sending it."
+        },
+        {
+            "command": "CTRL+SHIFT+A",
+            "success": "Simulated attachment file picker opened.",
+            "why": "You reached the attachment action from the composition window, where this shortcut applies."
+        }
+    ]
+},
+{
+    "category": "Firefox",
+    "title": "Recover a closed Firefox article",
+    "problem": "You accidentally closed an article tab in Firefox. Reopen the tab, then bookmark it so you can return later. Use protected practice here: press and release Control, then T to simulate reopening; press and release Control, then D to simulate bookmarking. Do not hold the real browser shortcuts in this exercise.",
+    "hint": "The real commands are Control plus Shift plus T, then Control plus D. Here, release Control before pressing T or D by itself.",
+    "steps": [
+        {
+            "command": "CTRL+SHIFT+T",
+            "success": "Simulated article reopened. The title matches your reading task.",
+            "why": "You recovered the closed page instead of starting another search."
+        },
+        {
+            "command": "CTRL+D",
+            "success": "Simulated bookmark editor opened.",
+            "why": "You can now review the bookmark name and location before saving it."
+        }
+    ]
+},
+{
+    "category": "ZoomText and Fusion Desktop",
+    "title": "Regain context while magnified",
+    "problem": "Text is too small in a practice document. Increase magnification once, then compare it with the whole screen. Use ZoomText or Fusion Desktop commands. Here, press and release Caps Lock before the final key; real software uses the held combination.",
+    "hint": "Caps Lock plus Up Arrow increases zoom. Caps Lock plus Enter compares with 1x. In this simulator release Caps Lock before the final key.",
+    "steps": [
+        {
+            "command": "CAPSLOCK+ARROWUP",
+            "success": "Simulated magnification increased. The text is larger.",
+            "why": "You changed one level before checking readability."
+        },
+        {
+            "command": "CAPSLOCK+ENTER",
+            "success": "Simulated 1x view. The whole window is visible.",
+            "why": "You regained surrounding context. In the application, the same toggle returns to your working level."
+        }
+    ]
+},
+{
+    "category": "Bookshare Reader web",
+    "title": "Keep a Bookshare study passage",
+    "problem": "A book is open in Bookshare Reader on the web. Mark this passage, then open the bookmarks list to find it again. This is a simulation. For Alt commands, press and release Alt, then the final key.",
+    "hint": "Alt plus B adds a bookmark. Alt plus Shift plus B opens the bookmarks list; use the complete combination or the protected Alt sequence.",
+    "steps": [
+        {
+            "command": "ALT+B",
+            "success": "Simulated bookmark added at the current passage.",
+            "why": "A saved marker helps you return deliberately."
+        },
+        {
+            "command": "ALT+SHIFT+B",
+            "success": "Simulated bookmarks list opened with your passage listed.",
+            "why": "You can verify the saved location instead of assuming the current playback position is a bookmark."
+        }
+    ]
+},
+{
+    "category": "Learning Ally",
+    "title": "Pause before choosing a chapter",
+    "problem": "The simulated Learning Ally player is speaking. Its Pause button already has focus. Activate it, then use the focused chapter navigation control. This exercise practices labeled controls, not app-wide shortcuts.",
+    "hint": "Press Enter on the focused Pause button. Listen to the new focus description, then press Enter on the chapter control.",
+    "steps": [
+        {
+            "command": "ENTER",
+            "success": "Narration paused. The simulator now places focus on the chapter navigation button.",
+            "why": "Pausing makes spoken control labels easier to hear."
+        },
+        {
+            "command": "ENTER",
+            "success": "Simulated chapter list opened. You can now review chapter names.",
+            "why": "You activated the identified navigation control instead of guessing an unlabeled shortcut."
+        }
+    ]
+}
   ];
+  window.MissionControlMissionCount = missions.length;
 
   const perspective = document.getElementById("atPerspective");
   const missionSelect = document.getElementById("missionSelect");
@@ -120,6 +212,11 @@
   const soundFeedbackEnabled = new URLSearchParams(window.location.search).get("sounds") !== "0";
 
   const missionReviewLinks = {
+    "Thunderbird": ["thunderbird-manual.html", "Review Thunderbird"],
+    "Firefox": ["firefox-manual.html", "Review Firefox"],
+    "ZoomText and Fusion Desktop": ["zoomtext-fusion-manual.html", "Review ZoomText and Fusion layouts"],
+    "Bookshare Reader web": ["bookshare-manual.html", "Review Bookshare Reader"],
+    "Learning Ally": ["learning-ally-manual.html", "Review Learning Ally"],
     "Screen-reader recovery": ["jaws-lesson-2.html", "Review Screen Readers Lesson 2"],
     "Google applications": ["google-services-manual.html", "Review the Google Services Manual"],
     "Email and calendar": ["outlook-manual.html", "Review the Microsoft Outlook Manual"],
@@ -196,6 +293,7 @@
 
   function displayedCommand(command) {
     const sr = screenReaders[perspective.value];
+    if (command.startsWith("CAPSLOCK+")) return command.replace("CAPSLOCK", "Caps Lock").replace("ARROWUP", "Up Arrow").replace("ENTER", "Enter");
     return command === "TITLE" ? sr.title : command === "FOCUS" ? sr.focus : command === "MODE" ? sr.mode : command;
   }
 
@@ -222,6 +320,7 @@
   }
 
   let modifierHeld = false;
+  const protectedControlCommands = new Set(["CTRL+SHIFT+T", "CTRL+D", "CTRL+SHIFT+A"]);
   let altModifierArmed = false;
   let controlModifierArmed = false;
   function resetModifiers() {
@@ -280,6 +379,17 @@
       modifierHeld = false;
       altModifierArmed = false;
       lastCommand.textContent = "Control ready; press the remaining key";
+      if (protectedControlCommands.has(expectedCommand)) {
+        announce("Protected practice. Release Control, then press " + finalKeyFor(expectedCommand) + " by itself. The simulator will count this as " + displayedCommand(expectedCommand) + ".");
+      }
+      return;
+    }
+    if (event.key === "CapsLock" && expectedCommand.startsWith("CAPSLOCK+")) {
+      event.preventDefault();
+      modifierHeld = true;
+      altModifierArmed = false;
+      controlModifierArmed = false;
+      announce("Caps Lock ready. Release it, then press the final key.");
       return;
     }
     if (normalizedKey(event) === "MODIFIER") {
@@ -294,10 +404,10 @@
     let command = normalizedKey(event);
     if (modifierHeld && !event.ctrlKey && !event.altKey) {
       const key = event.key.toUpperCase() === " " ? "SPACE" : event.key.toUpperCase();
-      command = key === "T" ? "TITLE" : key === "TAB" ? "FOCUS" : key === "Z" || key === "SPACE" ? "MODE" : "SCREENREADER+" + key;
+      command = expectedCommand.startsWith("CAPSLOCK+") ? "CAPSLOCK+" + key : key === "T" ? "TITLE" : key === "TAB" ? "FOCUS" : key === "Z" || key === "SPACE" ? "MODE" : "SCREENREADER+" + key;
     } else if (altModifierArmed && !event.altKey && !event.ctrlKey && !event.metaKey) {
       const key = event.key.toUpperCase() === " " ? "SPACE" : event.key.toUpperCase();
-      command = "ALT+" + key;
+      command = "ALT+" + (event.shiftKey ? "SHIFT+" : "") + key;
     }
     modifierHeld = false;
     altModifierArmed = false;
@@ -318,6 +428,7 @@
   missionControl.addEventListener("keyup", event => {
     if (!active || event.key !== "Control" || !controlModifierArmed) return;
     event.preventDefault();
+    if (protectedControlCommands.has(missions[current].steps[step].command)) return;
     controlModifierArmed = false;
     lastCommand.textContent = "Control: repeated mission problem";
     announce("Mission problem. " + problem.textContent);
@@ -391,7 +502,7 @@
       missionReviewList.append(none);
     }
     missionCompletedCount.textContent = "Missions completed: " + completed.size + " of " + missions.length + ".";
-    const suggestedReview = missionReviewLinks[mission.category];
+    const suggestedReview = missionReviewLinks[mission.category] || ["manuals.html", "Choose a manual to review"];
     missionSuggestedReview.href = suggestedReview[0];
     missionSuggestedReview.textContent = suggestedReview[1];
   }

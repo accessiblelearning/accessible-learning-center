@@ -106,5 +106,101 @@
         { id: "live-microphone", label: "Zoom: Protect a Live Microphone", mission: "5" }
       ]
     }
-  ];
+ ,
+{
+    "id": "thunderbird",
+    "label": "Thunderbird Email",
+    "commandSets": [
+        {
+            "id": "thunderbird-commands",
+            "menuLabel": "Thunderbird Email",
+            "label": "Thunderbird Email: Thunderbird email",
+            "category": "Thunderbird email"
+        }
+    ],
+    "missionSets": [
+        {
+            "id": "thunderbird-mission",
+            "label": "Thunderbird Email: Protect a Thunderbird draft",
+            "mission": "8"
+        }
+    ]
+},
+{
+    "id": "firefox",
+    "label": "Firefox",
+    "commandSets": [
+        {
+            "id": "firefox-commands",
+            "menuLabel": "Firefox",
+            "label": "Firefox: Firefox browser",
+            "category": "Firefox browser"
+        }
+    ],
+    "missionSets": [
+        {
+            "id": "firefox-mission",
+            "label": "Firefox: Recover a closed Firefox article",
+            "mission": "9"
+        }
+    ]
+},
+{
+    "id": "zoomtext-fusion",
+    "label": "ZoomText and Fusion",
+    "commandSets": [
+        {
+            "id": "zoomtext-fusion-commands",
+            "menuLabel": "ZoomText and Fusion — Desktop magnification",
+            "label": "ZoomText and Fusion: ZoomText and Fusion Desktop magnification",
+            "category": "ZoomText and Fusion Desktop magnification"
+        }
+    ],
+    "missionSets": [
+        {
+            "id": "zoomtext-fusion-mission",
+            "label": "ZoomText and Fusion: Regain context while magnified",
+            "mission": "10"
+        }
+    ]
+},
+{
+    "id": "bookshare",
+    "label": "Bookshare",
+    "commandSets": [
+        {
+            "id": "bookshare-commands",
+            "menuLabel": "Bookshare",
+            "label": "Bookshare: Bookshare Reader on the web",
+            "category": "Bookshare Reader on the web"
+        }
+    ],
+    "missionSets": [
+        {
+            "id": "bookshare-mission",
+            "label": "Bookshare: Keep a Bookshare study passage",
+            "mission": "11"
+        }
+    ]
+},
+{
+    "id": "learning-ally",
+    "label": "Learning Ally",
+    "commandSets": [
+        {
+            "id": "learning-ally-commands",
+            "menuLabel": "Learning Ally",
+            "label": "Learning Ally: Learning Ally control navigation",
+            "category": "Learning Ally control navigation"
+        }
+    ],
+    "missionSets": [
+        {
+            "id": "learning-ally-mission",
+            "label": "Learning Ally: Pause before choosing a chapter",
+            "mission": "12"
+        }
+    ]
+}
+  ].sort((a, b) => a.label.localeCompare(b.label));
 })();

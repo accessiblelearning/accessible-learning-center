@@ -76,6 +76,7 @@ function chord(p, command, id = "keyCapture") {
     Equals: "=", Semicolon: ";", Grave: "`", "Greater Than": ">", "Less Than": "<" };
   const parts = command.split("+");
   if (parts.includes("Insert")) p.get(id).fire("keydown", { key: "Insert" });
+  if (parts.includes("Caps Lock")) p.key(id, "CapsLock");
   const event = p.key(id, aliases[parts.at(-1)] || parts.at(-1), {
     ctrlKey: parts.includes("Control"), altKey: parts.includes("Alt"), shiftKey: parts.includes("Shift") });
   if (parts.includes("Insert")) p.get(id).fire("keyup", { key: "Insert" });
@@ -114,6 +115,73 @@ test("Insert release, missing release, focus loss, and retry do not leave a modi
   assert.equal(plain.get("practiceScore").textContent, "Correct: 1 · Attempts: 1");
 });
 
+test("new topic routes wait for the mission catalog and reject invalid mission numbers", () => {
+  for (const [mission, valid] of [["8", true], ["12", true], ["13", false], ["", false], ["-1", false], ["1.5", false]]) {
+    const p = page();
+    p.window.location.search = `?reader=jaws&mission=${mission}`;
+    p.load("topic-mission-session.js");
+    p.load("troubleshooting-lab.js");
+    p.window.fire("DOMContentLoaded");
+    assert.equal(p.window.location.href === "topic-missions.html", !valid, mission);
+    if (valid) {
+      assert.equal(p.get("missionSelect").value, mission);
+      p.get("missionReadyStart").click();
+      assert.match(p.get("missionProblem").textContent, /Thunderbird|Learning Ally/);
+    }
+  }
+});
+
+test("protected magnifier input clears on focus loss and Bookshare retains Shift", () => {
+  const p = practice("ZoomText and Fusion Desktop magnification");
+  p.key("keyCapture", "CapsLock"); p.window.fire("blur");
+  p.key("keyCapture", "ArrowUp");
+  assert.equal(p.get("practiceScore").textContent, "Correct: 0 · Attempts: 1");
+  p.key("keyCapture", "CapsLock"); p.key("keyCapture", "ArrowUp");
+  assert.equal(p.get("practiceScore").textContent, "Correct: 1 · Attempts: 2");
+  const m = page({ atPerspective: { value: "jaws" }, missionSelect: { value: "11" } });
+  m.load("troubleshooting-lab.js"); m.get("startMission").click();
+  m.key("missionControlStation", "Alt"); m.key("missionControlStation", "b");
+  m.key("missionControlStation", "Alt"); m.key("missionControlStation", "b", { shiftKey: true });
+  assert.equal(m.get("missionResults").hidden, false);
+  assert.equal(m.get("missionAttemptResult").textContent, "2");
+  assert.equal(m.get("missionSuggestedReview").href, "bookshare-manual.html");
+});
+
+test("new browser commands complete through protected input without opening browser UI", () => {
+  const p = practice("Firefox browser");
+  for (const key of ["l", "t", "t", "d", "o", "j"]) {
+    assert.equal(p.key("keyCapture", "Control").defaultPrevented, true);
+    assert.equal(p.key("keyCapture", key).defaultPrevented, true);
+    p.advance();
+  }
+  assert.equal(p.get("practiceScore").textContent, "Correct: 6 · Attempts: 6");
+  const m = page({ atPerspective: { value: "jaws" }, missionSelect: { value: "9" } });
+  m.load("troubleshooting-lab.js"); m.get("startMission").click();
+  for (const key of ["t", "d"]) {
+    m.key("missionControlStation", "Control");
+    assert.match(m.get("transcript").textContent, /Protected practice/);
+    m.key("missionControlStation", key);
+  }
+  assert.equal(m.get("missionResults").hidden, false);
+});
+
+test("every manual menu entry resolves to an existing command set and mission", () => {
+  const p = page(); p.load("mission-catalog.js"); p.load("troubleshooting-lab.js");
+  const categories = vm.runInNewContext("(" + source("command-practice.js").match(/const categories = (\{[\s\S]*?\n  \});/)[1] + ")");
+  const ids = new Set();
+  for (const manual of p.window.MissionControlCatalog) {
+    for (const set of [...manual.commandSets, ...manual.missionSets]) {
+      assert.equal(ids.has(set.id), false, set.id); ids.add(set.id);
+    }
+    manual.commandSets.forEach(set => assert.ok(categories[set.category], set.category));
+    manual.missionSets.forEach(set => assert.ok(Number(set.mission) < p.window.MissionControlMissionCount));
+  }
+  for (const id of ["thunderbird", "firefox", "zoomtext-fusion", "bookshare", "learning-ally"]) {
+    const manual = p.window.MissionControlCatalog.find(item => item.id === id);
+    assert.ok(manual?.commandSets.length && manual?.missionSets.length, id);
+  }
+});
+
 test("unrelated Tab leaves command capture without adding an attempt", () => {
   const p = practice();
   assert.equal(p.key("keyCapture", "Tab").defaultPrevented, false);
@@ -149,7 +217,9 @@ test("missing or failing audio cannot block scoring or automatic advancement", a
 
 test("missions show hints, retain focus, allow Tab, and complete despite sound failure", () => {
   const solutions = [["Insert+T", "Alt+Tab", "Control+S"], ["E", "Enter"], ["Control+S", "Alt+F4"],
-    ["Control+Z", "Control+S"], ["Control+C", "Control+V"], ["Alt+A", "Alt+U"], ["Alt+F4"], ["F2", "Enter"]];
+    ["Control+Z", "Control+S"], ["Control+C", "Control+V"], ["Alt+A", "Alt+U"], ["Alt+F4"], ["F2", "Enter"],
+    ["Control+S", "Control+Shift+A"], ["Control+Shift+T", "Control+D"],
+    ["Caps Lock+Up Arrow", "Caps Lock+Enter"], ["Alt+B", "Alt+Shift+B"], ["Enter", "Enter"]];
   for (const reader of ["jaws", "nvda", "narrator"]) for (const [index, solution] of solutions.entries()) {
     const p = page({ atPerspective: { value: reader }, missionSelect: { value: String(index) } },
       class { constructor() { throw Error("No audio"); } });

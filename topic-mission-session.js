@@ -6,7 +6,7 @@
   const missionParam = params.get("mission");
   const mission = Number(missionParam);
   const validReader = ["jaws", "nvda", "narrator"].includes(reader);
-  const validMission = missionParam !== null && Number.isInteger(mission) && mission >= 0 && mission < 8;
+  const validMission = /^\d+$/.test(missionParam || "") && Number.isSafeInteger(mission);
 
   if (!validReader || !validMission) {
     window.location.replace("topic-missions.html");
@@ -25,6 +25,10 @@
   document.getElementById("transcript").setAttribute("aria-live", useMissionVoice ? "off" : "polite");
 
   window.addEventListener("DOMContentLoaded", () => {
+    if (!Number.isInteger(window.MissionControlMissionCount) || mission >= window.MissionControlMissionCount) {
+      window.location.replace("topic-missions.html");
+      return;
+    }
     const readyScreen = document.getElementById("missionReadyScreen");
     const readyStart = document.getElementById("missionReadyStart");
     const trainingStage = document.querySelector(".mission-training-panel");
