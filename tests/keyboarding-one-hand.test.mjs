@@ -85,6 +85,10 @@ function page({ saved = {}, blocked = false, typingDelay = 700 } = {}) {
     key,
     completeLesson(hand, index) {
       const lesson = context.testApi.lessonFor(index, hand); api.start(index);
+      if (hand !== 'both') {
+        assert.match(get('targetPrompt').getAttribute('aria-label'), new RegExp('Use your ' + hand + ' hand only'));
+        assert.doesNotMatch(get('targetPrompt').getAttribute('aria-label'), new RegExp(hand === 'left' ? 'right hand' : 'left hand'));
+      }
       for (const character of lesson.practiceGroups.join('')) key(character);
       assert.equal(get('resultsPanel').hidden, false);
       assert.equal(get('completionMessage').textContent, `Lesson ${index + 1} passed.`);
@@ -96,7 +100,7 @@ function page({ saved = {}, blocked = false, typingDelay = 700 } = {}) {
 test('both one-hand curricula teach the complete alphabet and never introduce untaught practice characters', () => {
   const p = page();
   for (const hand of ['left', 'right']) {
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 50; index++) {
       const lesson = p.helpers.lessonFor(index, hand);
       assert.match(lesson.handPosition, new RegExp(hand + ' hand only'));
       for (const mode of ['guided', 'words', 'sentences', 'speed-60', 'speed-180', 'speed-360']) {
@@ -132,9 +136,9 @@ test('the Settings button and native hand selector replace lessons, pace, instru
   assert.match(p.get('lessonSetting').options[0].textContent, /Left Home Row ASDF/);
   p.setting('hand');
   assert.equal(p.get('handSetting').value, 'left');
-  assert.equal(p.get('lessonSetting').options.length, 20);
+  assert.equal(p.get('lessonSetting').options.length, 50);
   assert.equal(p.get('wpmSetting').value, '0');
-  assert.match(p.get('curriculumSummary').textContent, /Left hand only.*20/);
+  assert.match(p.get('curriculumSummary').textContent, /Left hand only.*50/);
   p.start(0);
   assert.match(p.get('targetPrompt').getAttribute('aria-label'), /left little finger for F/);
   p.key('Escape');
@@ -145,29 +149,29 @@ test('the Settings button and native hand selector replace lessons, pace, instru
   assert.equal(p.get('wpmSetting').value, '10');
 });
 
-test('all 20 lessons pass, unlock in order, and end at Done for each one-hand path', () => {
-  for (const hand of ['left', 'right']) {
+test('all 50 lessons pass, unlock in order, and end at Done for all three paths', () => {
+  for (const hand of ['both', 'left', 'right']) {
     const p = page(); p.changeHand(hand); p.get('saveSetting').checked = true;
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 50; index++) {
       assert.equal(p.get('lessonSetting').options[index].disabled, false);
-      if (index < 19) assert.equal(p.get('lessonSetting').options[index + 1].disabled, true);
+      if (index < 49) assert.equal(p.get('lessonSetting').options[index + 1].disabled, true);
       p.completeLesson(hand, index);
-      assert.equal(p.get('resultAction').dataset.action, index < 19 ? 'next' : 'done');
+      assert.equal(p.get('resultAction').dataset.action, index < 49 ? 'next' : 'done');
       p.get('resultAction').click();
     }
     const progress = JSON.parse(p.data.get(storageKey));
-    assert.equal(progress.completed.length, 20);
-    assert.ok(progress.completed.every(item => item.startsWith(`en:${hand}:one-hand-v1:`)));
+    assert.equal(progress.completed.length, 50);
+    assert.ok(progress.completed.every(item => item.startsWith(hand === 'both' ? 'en:both:' : `en:${hand}:one-hand-v1:`)));
     p.menu('stats');
-    assert.equal(p.get('statsLessons').textContent, '20 of 20');
-    assert.equal(p.get('statsSessions').textContent, '20');
+    assert.equal(p.get('statsLessons').textContent, '50 of 50');
+    assert.equal(p.get('statsSessions').textContent, '50');
     const restored = page({saved: Object.fromEntries(p.data)});
     assert.equal(restored.get('handSetting').value, hand);
-    assert.equal(restored.get('lessonSetting').value, '19');
+    assert.equal(restored.get('lessonSetting').value, '49');
     restored.changeHand(hand === 'left' ? 'right' : 'left');
     assert.equal(restored.get('lessonSetting').value, '0');
     restored.menu('stats');
-    assert.equal(restored.get('statsLessons').textContent, '0 of 20');
+    assert.equal(restored.get('statsLessons').textContent, '0 of 50');
     assert.equal(restored.get('statsSessions').textContent, '0');
   }
 });
@@ -207,4 +211,34 @@ test('a failed lesson stays locked and blocked storage still permits the complet
   p.completeLesson('right', 0);
   p.key('Escape'); p.changeHand('left'); p.changeHand('right');
   assert.equal(p.get('lessonSetting').value, '1');
+});
+
+
+test('all three paths have 50 distinct lessons and the full US printable keyboard is taught one-handed', () => {
+  const p = page();
+  for (const hand of ['both', 'left', 'right']) {
+    p.changeHand(hand);
+    assert.equal(p.get('lessonSetting').options.length, 50);
+    const titles = Array.from({length: 50}, (_, i) => p.helpers.lessonFor(i, hand).title);
+    assert.equal(new Set(titles).size, 50);
+    if (hand !== 'both') {
+      const allowed = p.helpers.lessonFor(49, hand).allowed;
+      for (let code = 32; code <= 126; code++) {
+        assert.ok(allowed.includes(String.fromCharCode(code)), `${hand}: missing ${String.fromCharCode(code)}`);
+        assert.equal(p.oneHand.keyFinger(String.fromCharCode(code), hand).handId, hand);
+      }
+    }
+  }
+});
+
+test('completed first 20 one-hand lessons carry forward to lesson 21 after expansion', () => {
+  for (const hand of ['left', 'right']) {
+    const completed = Array.from({length: 20}, (_, i) => `en:${hand}:one-hand-v1:${i + 1}`);
+    const p = page({saved: {alcKeyboardingHand: hand, [storageKey]: JSON.stringify({completed})}});
+    assert.equal(p.get('lessonSetting').value, '20');
+    assert.equal(p.get('lessonSetting').options[20].disabled, false);
+    assert.equal(p.get('lessonSetting').options[21].disabled, true);
+    p.menu('stats');
+    assert.equal(p.get('statsLessons').textContent, '20 of 50');
+  }
 });

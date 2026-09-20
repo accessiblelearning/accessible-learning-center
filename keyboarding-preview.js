@@ -400,8 +400,9 @@
     }
 
     const lessonGroups = lesson.practiceGroups.filter(group => fits(group, allowed));
-    const oneHandGroups = hand === "both" ? [] : Array.from({ length: lesson.number }, (_, index) =>
-      lessonFor(index, hand).practiceGroups
+    const reviewStart = Math.max(0, lesson.number - 5);
+    const oneHandGroups = hand === "both" ? [] : Array.from({ length: lesson.number - reviewStart }, (_, index) =>
+      lessonFor(reviewStart + index, hand).practiceGroups
     ).flat().filter(group => group.includes(" ") && fits(group, allowed));
     const sentenceChoices = (hand === "both" ? SENTENCE_BANK : oneHandGroups).filter(sentence => fits(sentence, allowed));
     const passageChoices = (hand === "both" ? PASSAGE_BANK : [oneHandGroups.slice(-6).join(" ")]).filter(passage => passage && fits(passage, allowed));
@@ -493,7 +494,9 @@
       "@": "at sign", "#": "number sign", "$": "dollar sign",
       "%": "percent sign", "&": "ampersand", "(": "opening parenthesis",
       ")": "closing parenthesis", "-": "hyphen", "_": "underscore",
-      "<": "less-than sign", ">": "greater-than sign", "+": "plus sign", "=": "equals sign"
+      "<": "less-than sign", ">": "greater-than sign", "+": "plus sign", "=": "equals sign",
+      "[": "opening bracket", "]": "closing bracket", "{": "opening brace", "}": "closing brace",
+      "\\": "backslash", "|": "vertical bar", "*": "asterisk", "^": "caret", "`": "grave accent", "~": "tilde"
     };
     return names[text] || text;
   }
@@ -515,7 +518,8 @@
       "]": "closing bracket", "{": "opening brace", "}": "closing brace",
       "@": "at sign", "#": "number sign", "$": "dollar sign", "%": "percent sign",
       "&": "ampersand", "+": "plus sign", "=": "equals sign",
-      "<": "less-than sign", ">": "greater-than sign"
+      "<": "less-than sign", ">": "greater-than sign",
+      "|": "vertical bar", "*": "asterisk", "^": "caret", "`": "grave accent", "~": "tilde"
     };
     const tokens = text.match(/[A-Za-z]+|[0-9]+|\s+|./g) || [];
     return tokens.map(token => {
@@ -648,7 +652,7 @@
     if (/^[^A-Za-z]+$/.test(group) && /[0-9]/.test(group)) {
       return "this number and symbol sequence, " + spokenExactSequence(group);
     }
-    if (/[0-9]|[.,?!;:'"@#$%&()_+<>\-\/\\]/.test(group)) {
+    if (/[0-9]|[^A-Za-z\s]/.test(group)) {
       return spokenDetailedText(group);
     }
     if (!session) return speakableSequence(group);
@@ -697,7 +701,7 @@
     const pathDescription = document.getElementById("pathDescription");
     pathDescription.textContent = handSetting.value === "both"
       ? "Both hands: 50 lessons using standard touch typing."
-      : selectedText(handSetting) + ": 20 lessons covering the whole keyboard with one hand. Begin around F, G, H, and J and move the whole hand for distant keys. Start with accuracy only; add a passing speed when ready. For capitals and shortcuts, turn on Sticky Keys in your device keyboard accessibility settings. The matching manual has setup steps and all 20 lessons.";
+      : selectedText(handSetting) + ": 50 lessons for learners using only this hand, covering the whole keyboard. Begin around F, G, H, and J and move the whole hand for distant keys. Start with accuracy only; add a passing speed when ready. For capitals and shortcuts, turn on Sticky Keys in your device keyboard accessibility settings. The matching manual has setup steps and all 50 lessons.";
     document.querySelectorAll("[data-manual-hand]").forEach(link => {
       if (link.dataset.manualHand === handSetting.value) link.setAttribute("aria-current", "true");
       else link.removeAttribute("aria-current");
