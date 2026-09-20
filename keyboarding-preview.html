@@ -8,7 +8,8 @@
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=keyboarding-preview-2">
   <script src="accessibility.js?v=keyboarding-preview-2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-41" defer></script>
+  <script src="keyboarding-one-hand.js?v=1" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-42" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -619,6 +620,7 @@
           <div class="kb-field">
             <label for="wpmSetting">Passing speed</label>
             <select id="wpmSetting">
+              <option value="0">Accuracy only (no speed target)</option>
               <option value="5">5 words per minute</option>
               <option value="10" selected>10 words per minute</option>
               <option value="15">15 words per minute</option>
@@ -757,11 +759,13 @@
         <button class="kb-menu-option" type="button" data-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue">On</span></button>
         <button class="kb-menu-option" type="button" data-setting="captions"><span class="kb-menu-label">High-contrast captions</span><span class="kb-menu-value" id="menuCaptionValue">Off</span></button>
         <button class="kb-menu-option" type="button" data-setting="keyboard"><span class="kb-menu-label">Visual keyboard</span><span class="kb-menu-value" id="menuKeyboardValue">Shown</span></button>
-        <button class="kb-menu-option" type="button" data-setting="hand"><span class="kb-menu-label">Learning path</span><span class="kb-menu-value" id="menuHandValue"></span></button>
+        <button class="kb-menu-option" type="button" data-setting="hand" aria-describedby="pathDescription"><span class="kb-menu-label">Learning path</span><span class="kb-menu-value" id="menuHandValue"></span></button>
         <button class="kb-menu-option" type="button" data-setting="language"><span class="kb-menu-label">Lesson language</span><span class="kb-menu-value" id="menuLanguageValue">English</span></button>
         <button class="kb-menu-option" type="button" data-setting="save"><span class="kb-menu-label">Save progress on this browser</span><span class="kb-menu-value" id="menuSaveValue">Off</span></button>
         <button class="kb-menu-option kb-back" type="button" data-setting="back"><span class="kb-menu-value">Back to Keyboarding Center</span></button>
       </div>
+      <p class="kb-summary" id="pathDescription"></p>
+      <p class="kb-summary">Typing manuals (Word): <a href="downloads/Left_Hand_Only_Typing_Manual.docx" data-manual-hand="left" download>Left hand only manual</a> · <a href="downloads/Right_Hand_Only_Typing_Manual.docx" data-manual-hand="right" download>Right hand only manual</a></p>
       <p class="kb-menu-help"><strong>Up or Down:</strong> move through every setting and its Minus or Plus controls. <strong>Enter:</strong> increase or change. Speaking rate returns to 10% after 100%. <strong>Shift plus Enter:</strong> decrease or choose the previous option. <strong>Escape:</strong> go back.</p>
     </section>
 
@@ -776,8 +780,9 @@
         <div class="kb-result"><span>Difficult keys</span><strong id="statsDifficult">None</strong></div>
       </div>
       <p class="kb-stats-note" id="statsNote">Turn on Save progress in Settings to build your stats on this browser.</p>
+      <p class="kb-stats-note" id="earlierStats" hidden></p>
       <details class="kb-curriculum">
-        <summary>Curriculum overview: view all 50 lessons</summary>
+        <summary id="curriculumSummary">Both hands: view all 50 lessons</summary>
         <ol id="curriculumList"></ol>
       </details>
       <div class="kb-actions"><button class="kb-action" id="statsBack" type="button">Back to Keyboarding Center</button></div>

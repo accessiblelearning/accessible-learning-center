@@ -4,8 +4,7 @@
   const PREVIEW_CODE = "KEYS2026";
   const STORAGE_KEY = "alcKeyboardingProgressV1";
   const EARLY_WORDS = new Set(["sad", "dad", "fad", "add", "ads", "dads", "fads", "had", "has", "gas", "gag", "half", "hall", "dash", "hash"]);
-  const LEFT_KEYS = "qwertasdfgzxcvb12345`~!@#$%";
-  const RIGHT_KEYS = "yuiophjklnm67890-=[]\\;',./^&*()_+{}|:\"<>?";
+  const oneHand = globalThis.ALCOneHandCurriculum;
   const WORD_BANK = [
     "a", "add", "adds", "all", "also", "and", "any", "are", "ask", "at", "away",
     "back", "bad", "bag", "ball", "be", "bear", "begin", "best", "big", "bird", "blue", "book", "box", "bring",
@@ -211,6 +210,16 @@
   let timerId = null;
   let controlUsedAsModifier = false;
   const sessionUnlockedLessons = { both: 0, left: 0, right: 0 };
+  const pathWpmTargets = { both: 10, left: 0, right: 0 };
+  let selectedHand = "both";
+  try {
+    const savedHand = localStorage.getItem("alcKeyboardingHand");
+    if (["both", "left", "right"].includes(savedHand)) selectedHand = savedHand;
+  } catch (error) {
+    // The selected path still works when browser storage is unavailable.
+  }
+  handSetting.value = selectedHand;
+  document.getElementById("wpmSetting").value = String(pathWpmTargets[selectedHand]);
 
   function show(panelId) {
     const selected = document.getElementById(panelId);
@@ -340,33 +349,28 @@
     }
   }
 
-  function belongsToHand(character, hand) {
-    if (character === " ") return true;
-    const lower = character.toLowerCase();
-    if (hand === "left") return LEFT_KEYS.includes(lower) || LEFT_KEYS.includes(character);
-    if (hand === "right") return RIGHT_KEYS.includes(lower) || RIGHT_KEYS.includes(character);
-    return true;
+  function lessonCount(hand) {
+    return hand === "both" ? lessonData.length : oneHand.count;
+  }
+
+  function progressPrefix(hand) {
+    return hand === "both" ? "en:both:" : oneHand.progressPrefix(hand);
   }
 
   function lessonFor(index, hand) {
-    let allowed = hand === "left" ? " f" : hand === "right" ? " j" : " fj";
+    if (hand !== "both") return oneHand.lessonFor(index, hand);
+    let allowed = " fj";
     for (let i = 0; i <= index; i += 1) {
       for (const character of lessonData[i][2]) {
-        if (belongsToHand(character, hand) && !allowed.includes(character)) allowed += character;
+        if (!allowed.includes(character)) allowed += character;
       }
     }
-    let focus = Array.from(lessonData[index][2]).filter(character => belongsToHand(character, hand)).join("");
-    const adapted = hand !== "both" && !focus.trim();
-    if (adapted) focus = allowed.replace(/ /g, "").slice(-5) || (hand === "right" ? "j" : "f");
-    const description = adapted
-      ? "Continue strengthening " + hand + "-hand keys while this lesson introduces the other side of the keyboard."
-      : lessonData[index][1];
     return {
       number: index + 1,
       title: lessonData[index][0],
-      description,
+      description: lessonData[index][1],
       allowed,
-      focus,
+      focus: lessonData[index][2],
       practiceGroups: lessonData[index][3],
       introduction: lessonData[index][4]
     };
@@ -389,30 +393,24 @@
 
   function buildPrompt(lesson, mode, hand) {
     const allowed = lesson.allowed;
-    const handFits = text => hand === "both" || Array.from(text.toLowerCase()).every(character =>
-      !/[a-z]/.test(character) || belongsToHand(character, hand)
-    );
-    let words = WORD_BANK.filter(word => fits(word, allowed) && handFits(word));
+    let words = WORD_BANK.filter(word => fits(word, allowed));
     if (!words.length) {
       words = Array.from(new Set(lesson.focus.toLowerCase().replace(/[^a-z]/g, "")));
       words = words.length ? words : [hand === "right" ? "j" : "f"];
     }
 
-    const lessonGroups = lesson.practiceGroups.filter(group => fits(group, allowed) && handFits(group));
-    const sentenceChoices = SENTENCE_BANK.filter(sentence => fits(sentence, allowed) && handFits(sentence));
-    const passageChoices = PASSAGE_BANK.filter(passage => fits(passage, allowed) && handFits(passage));
+    const lessonGroups = lesson.practiceGroups.filter(group => fits(group, allowed));
+    const oneHandGroups = hand === "both" ? [] : Array.from({ length: lesson.number }, (_, index) =>
+      lessonFor(index, hand).practiceGroups
+    ).flat().filter(group => group.includes(" ") && fits(group, allowed));
+    const sentenceChoices = (hand === "both" ? SENTENCE_BANK : oneHandGroups).filter(sentence => fits(sentence, allowed));
+    const passageChoices = (hand === "both" ? PASSAGE_BANK : [oneHandGroups.slice(-6).join(" ")]).filter(passage => passage && fits(passage, allowed));
     const phraseChoices = lessonGroups.filter(group => group.includes(" ") && /[a-z]/i.test(group));
     const start = (lesson.number * 7 + practiceVariationCounter * 5) % words.length;
     const rotatedWords = words.slice(start).concat(words.slice(0, start));
     const practiceWords = Array.from({ length: 48 }, (_, index) => rotatedWords[index % rotatedWords.length]);
 
-    if (mode === "guided") {
-      if (hand === "both") return lesson.practiceGroups.slice();
-      if (lessonGroups.length >= 2) return lessonGroups;
-      const reviewKeys = Array.from(new Set(lesson.focus.replace(/ /g, ""))).slice(0, 6);
-      const keyGroups = reviewKeys.map(character => character.repeat(4));
-      return keyGroups.length ? keyGroups : [hand === "right" ? "jjjj" : "ffff"];
-    }
+    if (mode === "guided") return lesson.practiceGroups.slice();
     if (isFreeTypingMode(mode)) return "";
     if (mode === "words") return practiceWords.join(" ");
     if (mode === "sentences") {
@@ -463,12 +461,15 @@
     if (!rememberProgress || !session) return false;
     try {
       const progress = getProgress();
-      const completion = "en:" + session.hand + ":" + session.lesson.number;
+      const completion = progressPrefix(session.hand) + session.lesson.number;
       if (session.mode === "guided" && session.passed && !progress.completed.includes(completion)) progress.completed.push(completion);
       Object.keys(session.mistakesByKey).forEach(key => {
         progress.difficult[key] = (progress.difficult[key] || 0) + session.mistakesByKey[key];
       });
       progress.sessions.push({
+        path: progressPrefix(session.hand),
+        hand: session.hand,
+        mistakesByKey: session.mistakesByKey,
         mode: session.mode,
         lesson: session.lesson.number,
         accuracy: session.finalAccuracy,
@@ -492,7 +493,7 @@
       "@": "at sign", "#": "number sign", "$": "dollar sign",
       "%": "percent sign", "&": "ampersand", "(": "opening parenthesis",
       ")": "closing parenthesis", "-": "hyphen", "_": "underscore",
-      "<": "less-than sign", ">": "greater-than sign"
+      "<": "less-than sign", ">": "greater-than sign", "+": "plus sign", "=": "equals sign"
     };
     return names[text] || text;
   }
@@ -537,10 +538,20 @@
 
   function requiredShift(character) {
     if (!needsShift(character)) return "";
+    if (session && session.hand !== "both") return "Shift";
     const guidance = keyFinger(character);
     if (guidance.handId === "left") return "right Shift";
     if (guidance.handId === "right") return "left Shift";
     return "Shift";
+  }
+
+  function shiftInstruction(character) {
+    const shift = requiredShift(character);
+    if (!shift) return "";
+    if (session && session.hand !== "both") {
+      return "With Sticky Keys on, use your " + session.hand + " hand to press and release either Shift, then press " + spokenKeyName(keyFinger(character).key) + ". ";
+    }
+    return "Hold " + shift + " and press " + spokenKeyName(keyFinger(character).key) + ". ";
   }
 
   const KEYBOARD_ROWS = [
@@ -552,6 +563,8 @@
   ];
 
   function keyFinger(character) {
+    const hand = session ? session.hand : handSetting.value;
+    if (hand !== "both") return oneHand.keyFinger(character, hand);
     const key = String(character || "").toLowerCase();
     const shiftedKeys = { "~": "`", "!": "1", "@": "2", "#": "3", "$": "4", "%": "5", "^": "6", "&": "7", "*": "8", "(": "9", ")": "0", "_": "-", "+": "=", "{": "[", "}": "]", "|": "\\", ":": ";", "\"": "'", "<": ",", ">": ".", "?": "/" };
     const displayKey = shiftedKeys[key] || key;
@@ -593,11 +606,13 @@
     const shiftKey = shift === "left Shift" ? "ShiftLeft" : shift === "right Shift" ? "ShiftRight" : "";
     visualKeyboard.querySelectorAll(".kb-key").forEach(key => {
       const isTypingKey = key.dataset.key === guidance.key;
-      const isShiftKey = shiftKey && key.dataset.key === shiftKey;
+      const isShiftKey = shift === "Shift"
+        ? ["ShiftLeft", "ShiftRight"].includes(key.dataset.key)
+        : shiftKey && key.dataset.key === shiftKey;
       key.classList.toggle("kb-key--active", Boolean(isTypingKey || isShiftKey));
     });
     handSymbol.dataset.hand = guidance.handId;
-    handCue.textContent = (shift ? "Hold " + shift + " • " : "") + guidance.hand + (guidance.finger ? " • " + guidance.finger : "");
+    handCue.textContent = shiftInstruction(session.prompt[session.position]) + guidance.hand + (guidance.finger ? " • " + guidance.finger : "");
     document.querySelector(".kb-hand-cue").hidden = false;
   }
 
@@ -649,14 +664,11 @@
     session.announcementToken += 1;
     session.segmentStartedAt = null;
     const guidance = keyFinger(group[0]);
-    const shift = requiredShift(group[0]);
     const repeatedKey = group.length > 1 && Array.from(group).every(character => character === group[0]);
-    const shiftGuidance = shift
-      ? " To type " + spokenKeyName(group[0]) + ", hold " + shift + " and press " + spokenKeyName(guidance.key) + "."
-      : "";
+    const shiftGuidance = shiftInstruction(group[0]);
     const message = (repeatedKey
       ? spokenPromptGroup(group) + ". " + guidance.hand + ", " + guidance.finger + "."
-      : "Type " + spokenPromptGroup(group) + ".") + shiftGuidance;
+      : "Type " + spokenPromptGroup(group) + ".") + " " + shiftGuidance;
     practiceStatus.textContent = message;
     targetPrompt.setAttribute("aria-label", message);
     speak(message);
@@ -670,7 +682,7 @@
 
   function updateLessonSummary() {
     const lesson = lessonFor(Number(lessonSetting.value || 0), handSetting.value);
-    document.getElementById("lessonSummary").textContent = "Lesson " + lesson.number + ": " + lesson.title + ". " + lesson.description;
+    document.getElementById("lessonSummary").textContent = selectedText(handSetting) + ". Lesson " + lesson.number + " of " + lessonCount(handSetting.value) + ": " + lesson.title + ". " + lesson.description;
     renderCurriculum();
     updateSetupMenu();
   }
@@ -682,16 +694,26 @@
   function updateSetupMenu() {
     document.getElementById("menuLessonValue").textContent = selectedText(lessonSetting);
     document.getElementById("menuHandValue").textContent = selectedText(handSetting);
+    const pathDescription = document.getElementById("pathDescription");
+    pathDescription.textContent = handSetting.value === "both"
+      ? "Both hands: 50 lessons using standard touch typing."
+      : selectedText(handSetting) + ": 20 lessons covering the whole keyboard with one hand. Begin around F, G, H, and J and move the whole hand for distant keys. Start with accuracy only; add a passing speed when ready. For capitals and shortcuts, turn on Sticky Keys in your device keyboard accessibility settings. The matching manual has setup steps and all 20 lessons.";
+    document.querySelectorAll("[data-manual-hand]").forEach(link => {
+      if (link.dataset.manualHand === handSetting.value) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
     document.getElementById("menuVoiceValue").textContent = useSiteVoice ? "Site voice" : "My screen reader";
     document.getElementById("menuVoiceChoiceValue").textContent = selectedVoiceName();
     document.getElementById("menuVoiceRateValue").textContent = voiceRatePercent + "%";
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
     document.getElementById("menuCaptionValue").textContent = document.getElementById("captionSetting").checked ? "On" : "Off";
     document.getElementById("menuKeyboardValue").textContent = document.getElementById("keyboardSetting").checked ? "Shown" : "Hidden";
-    document.getElementById("menuWpmValue").textContent = document.getElementById("wpmSetting").value + " WPM";
+    const speedTarget = Number(document.getElementById("wpmSetting").value);
+    const speedLabel = speedTarget ? speedTarget + " words per minute" : "accuracy only, no speed target";
+    document.getElementById("menuWpmValue").textContent = speedTarget ? speedTarget + " WPM" : "Accuracy only";
     document.getElementById("menuAccuracyValue").textContent = document.getElementById("accuracySetting").value + "%";
-    document.getElementById("wpmMinus").setAttribute("aria-label", "Decrease passing speed. Current target " + document.getElementById("wpmSetting").value + " words per minute.");
-    document.getElementById("wpmPlus").setAttribute("aria-label", "Increase passing speed. Current target " + document.getElementById("wpmSetting").value + " words per minute.");
+    document.getElementById("wpmMinus").setAttribute("aria-label", "Decrease passing speed. Current target " + speedLabel + ".");
+    document.getElementById("wpmPlus").setAttribute("aria-label", "Increase passing speed. Current target " + speedLabel + ".");
     document.getElementById("accuracyMinus").setAttribute("aria-label", "Decrease passing accuracy. Current target " + document.getElementById("accuracySetting").value + " percent.");
     document.getElementById("accuracyPlus").setAttribute("aria-label", "Increase passing accuracy. Current target " + document.getElementById("accuracySetting").value + " percent.");
     document.getElementById("voiceChoiceMinus").setAttribute("aria-label", "Previous site voice. Current voice " + selectedVoiceName() + ".");
@@ -706,9 +728,9 @@
 
   function unlockedLessonIndex(hand) {
     const completed = getProgress().completed || [];
-    const prefix = "en:" + hand + ":";
+    const prefix = progressPrefix(hand);
     let unlocked = 0;
-    while (unlocked < lessonData.length - 1 && completed.includes(prefix + (unlocked + 1))) unlocked += 1;
+    while (unlocked < lessonCount(hand) - 1 && completed.includes(prefix + (unlocked + 1))) unlocked += 1;
     return Math.max(unlocked, sessionUnlockedLessons[hand] || 0);
   }
 
@@ -842,8 +864,7 @@
       rememberProgress = save.checked;
     }
     if (setting === "voice") setVoice(!useSiteVoice, false);
-    if (setting === "hand") refreshLessonAvailability();
-    if (setting === "hand") updateLessonSummary();
+    if (setting === "hand") changeLearningPath();
     else updateSetupMenu();
     if (setting === "size") applyTextSize();
     speak(button.textContent.trim());
@@ -851,21 +872,32 @@
 
   function updateStats() {
     const progress = getProgress();
-    const sessions = progress.sessions;
-    const prefix = "en:" + handSetting.value + ":";
+    const prefix = progressPrefix(handSetting.value);
+    const sessions = progress.sessions.filter(item => item.path === prefix);
     const completedLessons = new Set(progress.completed.filter(item => item.startsWith(prefix)).map(item => item.slice(prefix.length)));
-    document.getElementById("statsLessons").textContent = completedLessons.size + " of 50";
+    document.getElementById("statsHeading").textContent = "My Stats: " + selectedText(handSetting);
+    document.getElementById("statsLessons").textContent = completedLessons.size + " of " + lessonCount(handSetting.value);
     document.getElementById("statsSessions").textContent = String(sessions.length);
     const accuracySessions = sessions.filter(item => item.accuracy !== null && Number.isFinite(Number(item.accuracy)));
     document.getElementById("statsAccuracy").textContent = accuracySessions.length ? Math.max(...accuracySessions.map(item => Number(item.accuracy))) + "%" : "No copy sessions";
     document.getElementById("statsSpeed").textContent = sessions.length ? Math.max(...sessions.map(item => Number(item.wpm) || 0)) + " WPM" : "No sessions";
     const minutes = Math.round(sessions.reduce((total, item) => total + (Number(item.seconds) || 0), 0) / 60);
     document.getElementById("statsTime").textContent = minutes + (minutes === 1 ? " minute" : " minutes");
-    const difficult = Object.keys(progress.difficult).sort((a, b) => progress.difficult[b] - progress.difficult[a]).slice(0, 5);
+    const mistakes = {};
+    sessions.forEach(item => Object.entries(item.mistakesByKey || {}).forEach(([key, count]) => {
+      mistakes[key] = (mistakes[key] || 0) + count;
+    }));
+    const difficult = Object.keys(mistakes).sort((a, b) => mistakes[b] - mistakes[a]).slice(0, 5);
     document.getElementById("statsDifficult").textContent = difficult.length ? difficult.map(speakable).join(", ") : "None";
     document.getElementById("statsNote").textContent = sessions.length
-      ? "These stats are saved only on this browser."
+      ? "These stats are for " + selectedText(handSetting).toLowerCase() + " and are saved only on this browser."
       : "Turn on Save progress in Settings to build your stats on this browser.";
+    const earlierSessions = progress.sessions.filter(item => !item.path);
+    const earlierStats = document.getElementById("earlierStats");
+    earlierStats.hidden = !earlierSessions.length;
+    earlierStats.textContent = earlierSessions.length
+      ? "Earlier practice history: " + earlierSessions.length + " saved sessions; best speed " + Math.max(...earlierSessions.map(item => Number(item.wpm) || 0)) + " WPM. These sessions were saved before separate learning path statistics were available."
+      : "";
     renderCurriculum();
   }
 
@@ -873,33 +905,51 @@
     const list = document.getElementById("curriculumList");
     const hand = handSetting.value;
     const completed = getProgress().completed || [];
+    document.getElementById("curriculumSummary").textContent = selectedText(handSetting) + ": view all " + lessonCount(hand) + " lessons";
     list.replaceChildren();
-    lessonData.forEach((item, index) => {
+    for (let index = 0; index < lessonCount(hand); index += 1) {
+      const item = lessonFor(index, hand);
       const li = document.createElement("li");
-      li.textContent = "Lesson " + (index + 1) + ": " + item[0] + " — " + item[1];
-      if (completed.includes("en:" + hand + ":" + (index + 1))) {
+      li.textContent = "Lesson " + item.number + ": " + item.title + " — " + item.description;
+      if (completed.includes(progressPrefix(hand) + item.number)) {
         const mark = document.createElement("span");
         mark.className = "kb-complete";
         mark.textContent = " Completed";
         li.append(" ", mark);
       }
       list.appendChild(li);
-    });
+    }
   }
 
   function populateLessons() {
-    lessonData.forEach((lesson, index) => {
+    lessonSetting.replaceChildren();
+    const hand = handSetting.value;
+    for (let index = 0; index < lessonCount(hand); index += 1) {
+      const lesson = lessonFor(index, hand);
       const option = document.createElement("option");
       option.value = String(index);
-      option.textContent = "Lesson " + (index + 1) + ": " + lesson[0];
+      option.textContent = "Lesson " + (index + 1) + ": " + lesson.title;
       lessonSetting.appendChild(option);
-    });
-    const progress = getProgress();
-    const prefix = "en:" + handSetting.value + ":";
-    const nextLesson = lessonData.findIndex((item, index) => !progress.completed.includes(prefix + (index + 1)));
-    lessonSetting.value = String(nextLesson < 0 ? lessonData.length - 1 : nextLesson);
+    }
+    lessonSetting.value = String(unlockedLessonIndex(hand));
     refreshLessonAvailability();
     updateLessonSummary();
+  }
+
+  function changeLearningPath() {
+    pathWpmTargets[selectedHand] = Number(document.getElementById("wpmSetting").value);
+    selectedHand = handSetting.value;
+    document.getElementById("wpmSetting").value = String(pathWpmTargets[selectedHand]);
+    try {
+      localStorage.setItem("alcKeyboardingHand", selectedHand);
+    } catch (error) {
+      // Keep the setting usable for this visit.
+    }
+    populateLessons();
+  }
+
+  function passingRequirement() {
+    return session.targetAccuracy + " percent accuracy" + (session.targetWpm ? " and " + session.targetWpm + " words per minute" : "");
   }
 
   function currentInstruction() {
@@ -914,7 +964,7 @@
       const minutes = session.durationSeconds / 60;
       return "Timed copy practice for " + minutes + (minutes === 1 ? " minute" : " minutes") + ". Begin typing. Next character: " + speakable(session.prompt[session.position]) + ".";
     }
-    const mastery = session.mode === "guided" ? " To move on, reach " + session.targetAccuracy + " percent accuracy and " + session.targetWpm + " words per minute." : "";
+    const mastery = session.mode === "guided" ? " To move on, reach " + passingRequirement() + "." : "";
     if (session.promptGroups) {
       const group = currentPromptGroup() || session.promptGroups[0];
       const position = session.started ? " Current group: " : " First group: ";
@@ -931,12 +981,13 @@
   function startInstruction() {
     const controls = " Press Control to repeat these instructions. The Control key is located in the bottom-left corner of your keyboard. Press any key to start. Press Escape to exit.";
     if (!session) return controls.trim();
+    const oneHandPosition = session.hand === "both" ? "" : session.lesson.handPosition + " Move the hand rather than stretching. A comfortable stronger finger is always an option. ";
     if (isFreeTypingMode(session.mode)) {
-      return currentInstruction() + " Begin typing to start. The first character you type will count. Press Control to repeat. Press Escape to exit.";
+      return oneHandPosition + currentInstruction() + " Begin typing to start. The first character you type will count. Press Control to repeat. Press Escape to exit.";
     }
     if (session.mode === "guided") {
       if (session.hand !== "both") {
-        return session.lesson.description + " Begin with your " + session.hand + " hand in its home-row position." + controls;
+        return oneHandPosition + session.lesson.introduction + controls;
       }
       let handPosition = " Begin with your " + session.hand + " hand in its home-row position.";
       if (session.hand === "both" && session.lesson.number === 1) handPosition = " Keep those fingers resting on F, D, S, and A.";
@@ -944,7 +995,7 @@
       else if (session.hand === "both") handPosition = " Begin with your index fingers on the raised bumps on F and J.";
       return session.lesson.introduction + handPosition + controls;
     }
-    return currentInstruction() + controls;
+    return oneHandPosition + currentInstruction() + controls;
   }
 
   function nextKeyInstruction() {
@@ -953,7 +1004,6 @@
     const nextCharacter = session.prompt[session.position];
     if (nextCharacter === undefined) return "Sequence complete.";
     const guidance = keyFinger(nextCharacter);
-    const shift = requiredShift(nextCharacter);
     let remaining = "";
     if (session.promptGroups) {
       const groupEnd = currentPromptGroupStart() + currentPromptGroup().length;
@@ -962,12 +1012,15 @@
       remaining = session.prompt.slice(session.position, session.position + 40);
     }
     const remainderMessage = remaining ? "Continue: " + spokenExactSequence(remaining) + ". " : "";
-    return remainderMessage + "Next key: " + spokenKeyName(nextCharacter) + ". " + (shift ? "Hold " + shift + ". " : "") + guidance.hand + ", " + guidance.finger + ".";
+    return remainderMessage + "Next key: " + spokenKeyName(nextCharacter) + ". " + shiftInstruction(nextCharacter) + guidance.hand + ", " + guidance.finger + ".";
   }
 
   function incorrectKeyInstruction(character) {
-    const shift = requiredShift(character);
-    const shortMessage = "Incorrect. Press " + spokenKeyName(character) + "." + (shift ? " Hold " + shift + "." : "");
+    const shortMessage = "Incorrect. Press " + spokenKeyName(character) + ". " + shiftInstruction(character);
+    if (session && session.hand !== "both") {
+      const guidance = keyFinger(character);
+      return shortMessage + guidance.hand + ", " + guidance.finger + ". Refind the raised mark on F or J if needed.";
+    }
     if (!session || session.mode !== "guided" || session.lesson.number > 15) return shortMessage;
     const locations = {
       q: "on the top row above A", w: "on the top row above S", e: "on the top row above D", r: "on the top row above F", t: "on the top row above G",
@@ -1059,7 +1112,7 @@
     };
     document.getElementById("practiceHeading").textContent = modeNames[session.mode];
     document.getElementById("practiceInstruction").textContent = session.mode === "guided"
-      ? session.lesson.description + " Pass with " + session.targetAccuracy + "% accuracy and " + session.targetWpm + " WPM to move on."
+      ? selectedText(handSetting) + ". " + session.lesson.description + " Pass with " + passingRequirement() + " to move on."
       : currentInstruction();
     if (!session.started) {
       keyboardGuide.hidden = true;
@@ -1196,7 +1249,7 @@
     session.finalWpm = wpm;
     session.passed = session.mode !== "guided" || (accuracy >= session.targetAccuracy && wpm >= session.targetWpm);
     if (session.mode === "guided" && session.passed) {
-      sessionUnlockedLessons[session.hand] = Math.max(sessionUnlockedLessons[session.hand], Math.min(session.lesson.number, lessonData.length - 1));
+      sessionUnlockedLessons[session.hand] = Math.max(sessionUnlockedLessons[session.hand], Math.min(session.lesson.number, lessonCount(session.hand) - 1));
     }
     session.elapsedSeconds = Math.max(1, Math.round(elapsedMilliseconds / 1000));
     const difficult = Object.keys(session.mistakesByKey).sort((a, b) => session.mistakesByKey[b] - session.mistakesByKey[a]).slice(0, 5);
@@ -1215,18 +1268,18 @@
     document.getElementById("saveResult").textContent = saved
       ? (session.mode === "guided" && session.passed ? "This completed lesson and its results were saved on this browser." : "These results were saved on this browser.")
       : "This session was not saved.";
-    const nextLesson = lessonData[session.lesson.number];
+    const nextLesson = session.lesson.number < lessonCount(session.hand) ? lessonFor(session.lesson.number, session.hand) : null;
     const lessonFinished = session.mode === "guided";
     const resultAction = document.getElementById("resultAction");
     const resultActionLabel = document.getElementById("resultActionLabel");
     if (lessonFinished && !session.passed) {
       resultAction.dataset.action = "retry";
       resultActionLabel.textContent = "Try Lesson Again";
-      resultAction.setAttribute("aria-label", "Almost there. You need " + session.targetAccuracy + " percent accuracy and " + session.targetWpm + " words per minute to move on. Press Enter to try Lesson " + session.lesson.number + " again.");
+      resultAction.setAttribute("aria-label", "Almost there. You need " + passingRequirement() + " to move on. Press Enter to try Lesson " + session.lesson.number + " again.");
     } else if (lessonFinished && nextLesson) {
       resultAction.dataset.action = "next";
       resultActionLabel.textContent = "Next Lesson";
-      resultAction.setAttribute("aria-label", "Good job. Lesson " + session.lesson.number + " done. Press Enter for Lesson " + (session.lesson.number + 1) + ": " + nextLesson[0] + ".");
+      resultAction.setAttribute("aria-label", "Good job. Lesson " + session.lesson.number + " done. Press Enter for Lesson " + (session.lesson.number + 1) + ": " + nextLesson.title + ".");
     } else if (lessonFinished) {
       resultAction.dataset.action = "done";
       resultActionLabel.textContent = "Done";
@@ -1242,7 +1295,7 @@
         ? '<span class="kb-sparkle" aria-hidden="true">✦</span> Good job! <span class="kb-sparkle" aria-hidden="true">✦</span>'
       : '<span class="kb-sparkle" aria-hidden="true">✦</span> Practice complete! <span class="kb-sparkle" aria-hidden="true">✦</span>';
     document.getElementById("completionMessage").textContent = lessonFinished && !session.passed
-      ? "Reach " + session.targetAccuracy + "% accuracy and " + session.targetWpm + " WPM to move on."
+      ? "Reach " + passingRequirement() + " to move on."
       : lessonFinished ? "Lesson " + session.lesson.number + " passed." : "Nice work!";
     refreshLessonAvailability();
     renderCurriculum();
@@ -1463,7 +1516,7 @@
   });
 
   lessonSetting.addEventListener("change", updateLessonSummary);
-  handSetting.addEventListener("change", updateLessonSummary);
+  handSetting.addEventListener("change", changeLearningPath);
   document.getElementById("resultAction").addEventListener("click", event => {
     if (event.currentTarget.dataset.action === "retry") {
       startPractice();
@@ -1473,7 +1526,7 @@
       openMenu();
       return;
     }
-    lessonSetting.value = String(Math.min(Number(lessonSetting.value) + 1, lessonData.length - 1));
+    lessonSetting.value = String(Math.min(Number(lessonSetting.value) + 1, lessonCount(handSetting.value) - 1));
     modeSetting.value = "guided";
     updateLessonSummary();
     startPractice();
