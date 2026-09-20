@@ -111,45 +111,107 @@
     body.kb-large-results .kb-results-screen { height: auto; min-height: calc(100vh - 6.25rem); overflow: visible; }
     .kb-back { background: #294c78; }
 
-body { overflow: auto !important; }
-.kb-shell .kb-panel { height: auto; overflow: visible; }
-.kb-shell [hidden] { display:none !important; }
-.kb-shell .kb-toolbar { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:.5rem; margin-bottom:.7rem; }
-.kb-shell .kb-toolbar button { padding:.65rem; font:inherit; color:#fff; background:#06142d; border:2px solid #65aef5; border-radius:.5rem; }
-.kb-shell :is(button,select,input,a,summary,[tabindex]):focus-visible { outline:4px solid #ffe37a; outline-offset:4px; }
-.kb-shell a {color:#a3d9ff;}
-.kb-shell p {overflow-wrap:anywhere;}
-.kb-settings {display:grid;gap:1rem;max-width:48rem;margin:auto;}
-.kb-settings label {display:grid;gap:.4rem;}
-.kb-settings select {font:inherit;max-width:100%;padding:.65rem;background:#fff;color:#102044;}
-.kb-settings input[type=checkbox] {width:1.4rem;height:1.4rem;}
-.kb-settings .check {display:flex;align-items:center;gap:.7rem;}
-.kb-shell .kb-menu-label {font-size:1em;}
-.kb-shell .kb-menu-value {font-size:1.2em;}
-#capture {padding:1rem;border:3px solid #65aef5;border-radius:.8rem;outline-offset:5px;}
-#targetPrint {font-size:clamp(2rem,5vw,4rem);line-height:1.3;margin:.5rem 0;}
-#targetCells,#writtenCells {font-family:'DejaVu Sans','Segoe UI Symbol',sans-serif;font-size:clamp(2.5rem,6vw,4rem);letter-spacing:.12em;overflow-wrap:anywhere;}
-#targetCells span {display:inline-block;border-bottom:4px solid transparent;}
-#targetCells .current-cell {border-bottom-color:#ffe37a;color:#ffe37a;}
-#practiceStatus {min-height:3rem;color:#fff;background:#06142d;border:1px solid #65aef5;}
-.braille-cell {display:grid;grid-template-columns:repeat(2,3.5rem);gap:.5rem;justify-content:center;margin:1rem auto;}
-.braille-dot {border:2px solid #93b5da;border-radius:50%;width:3.5rem;height:3.5rem;display:grid;place-items:center;background:#102044;color:#fff;}
-.braille-dot.active {background:#fff;color:#06142d;border-color:#ffe37a;}
-.braille-keys {text-align:center;}
-.kb-actions {display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1rem;}
-.kb-shell progress {width:100%;accent-color:#8cabc6;height:.7rem;}
-.kb-shell table {background:#0b2147;color:#fff;}
-.kb-shell th {background:#102044;color:#fff;}
-.kb-shell td {color:#fff;}
-#learnText {max-width:56rem;margin:auto;}
-.kb-shell .table-scroll {margin:1rem 0;}
-.kb-results {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}
-.kb-result {min-width:0;overflow-wrap:anywhere;}
-.kb-result strong {display:block;font-size:2em;}
-.kb-shell .kb-progress {background:#243956;}
-.kb-shell .kb-complete {color:#9bf2bb;}
-html[data-theme=dark] .kb-shell,html[data-theme=dark] .kb-panel,html[data-theme=dark] #capture {background:#000;color:#fff;}
-html[data-contrast=high] .kb-shell,html[data-contrast=high] .kb-panel {background:#000;color:#fff;border-color:#fff;}
-html[data-contrast=high] .kb-shell :is(button,select,input) {background:#000;color:#fff;border-color:#fff;}
-html[data-contrast=high] .kb-shell :is(th,td) {background:#000;color:#fff;border-color:#fff;}
-@media(max-width:40rem){.kb-menu-option {grid-template-columns:1fr;gap:.4rem;}.kb-results{grid-template-columns:1fr;}.kb-panel{padding:1rem;}.kb-actions>*{width:100%;}.kb-shell .kb-menu-value{text-align:left;}}
+/* Braille adaptation of the current Keyboarding Center interface (preview 43).
+   Keep the same results hierarchy and allow reflow at enlarged print sizes. */
+html { background: #06142d; }
+[hidden] { display: none !important; }
+.kb-shell *, .kb-shell *::before, .kb-shell *::after { box-sizing: border-box; }
+.kb-shell :is(button, select, input, a, summary, [tabindex]):focus-visible { outline: 4px solid #ffe37a; outline-offset: 4px; }
+.kb-shell a { color: #a3d9ff; }
+.kb-shell p { overflow-wrap: anywhere; }
+.kb-shell .kb-menu-value { font-size: 1.2em; }
+.kb-menu-option:disabled { opacity: .65; cursor: default; }
+.kb-menu-option:not(:has(.kb-menu-label)) { grid-template-columns: 1fr; }
+.kb-settings { display: grid; gap: 1rem; max-width: 48rem; margin: auto; }
+.kb-settings label { display: grid; gap: .4rem; }
+.kb-settings select { font: inherit; width: 100%; min-width: 0; padding: .65rem; background: #fff; color: #102044; }
+.kb-settings input[type=checkbox] { width: 1.4rem; height: 1.4rem; flex-shrink: 0; }
+.kb-settings .check { display: flex; align-items: center; gap: .7rem; }
+.kb-actions { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; margin-top: 1rem; }
+.kb-shell table { background: #0b2147; color: #fff; }
+.kb-shell th { background: #102044; color: #fff; }
+.kb-shell td { color: #fff; }
+#learnText { max-width: 56rem; margin: auto; }
+.kb-shell .table-scroll { margin: 1rem 0; }
+.kb-results { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.kb-result { min-width: 0; overflow-wrap: anywhere; }
+
+/* Results: metrics first, celebration and primary action together, exit below. */
+#resultsPanel { height: auto; min-height: calc(100dvh - 7rem); grid-template-rows: auto minmax(13rem, 1fr) auto; overflow: visible; }
+#resultsPanel .kb-result { padding: clamp(.45rem, 1.5vh, .85rem); }
+#resultsPanel .kb-result strong { font-size: calc(clamp(2rem, 7vh, 4.75rem) * var(--kb-scale)); }
+.kb-finish-row { min-width: 0; }
+.kb-celebration h2 { font-size: calc(clamp(2.4rem, 6vw, 5.25rem) * var(--kb-scale)); }
+.kb-celebration p { font-size: 1.1em; }
+.kb-result-primary { font-size: calc(clamp(1.6rem, 3vw, 2.5rem) * var(--kb-scale)); }
+.kb-result-footer { display: grid; gap: .5rem; }
+#saveWarning { margin: 0; padding: .5rem; background: #06142d; color: #ffe37a; font-size: 1em; border: 2px solid #ffe37a; }
+body[data-braille-large=true] .kb-finish-row { grid-template-columns: 1fr; }
+body[data-braille-large=true] .kb-result-primary { max-width: 28rem; justify-self: center; }
+
+/* The target occupies the top of practice; the six-key guide sits below. */
+#practicePanel:not([hidden]) { display: flex; flex-direction: column; gap: .4rem; min-height: calc(100dvh - 7rem); padding: .7rem; }
+#phaseLabel { margin: 0; font-weight: 700; }
+#capture { display: flex; flex-direction: column; justify-content: center; flex: 1; min-height: 10rem; min-width: 0; padding: .6rem; border: 3px solid #65aef5; border-radius: .8rem; outline-offset: 4px; background: #0b2147; }
+#capture[data-feedback=correct] { border-color: #55e487; }
+#capture[data-feedback=incorrect] { border-color: #ff7a88; }
+#targetPrint { font-size: calc(clamp(2.5rem, 6vw, 5rem) * var(--kb-scale)); font-weight: 900; line-height: 1.2; margin: .15rem 0; color: #fff; }
+#targetCells, #writtenCells { font-family: 'DejaVu Sans', 'Segoe UI Symbol', sans-serif; font-size: calc(clamp(2.5rem, 5vw, 3.5rem) * var(--kb-scale)); letter-spacing: .12em; overflow-wrap: anywhere; }
+#targetCells span { display: inline-block; border-bottom: 4px solid transparent; border-radius: .1em; padding: 0 .1em; }
+#targetCells .current-cell { background: #ffe37a; color: #06142d; border-bottom-color: #fff; }
+#dotHint { font-size: 1em; line-height: 1.25; margin: .25rem 0; }
+#cellPosition, #selectedDots { font-size: .9em; margin: .15rem 0; }
+#selectedDots:empty, #writtenCells:empty { display: none; }
+#writtenCells { font-size: calc(1.8rem * var(--kb-scale)); }
+#writingProgress { appearance: none; width: 100%; height: .45rem; margin: .15rem 0 0; border: 0; border-radius: 1rem; background: #243956; color: #8cabc6; accent-color: #8cabc6; }
+#writingProgress::-webkit-progress-bar { background: #243956; border-radius: 1rem; }
+#writingProgress::-webkit-progress-value { background: #8cabc6; border-radius: 1rem; }
+#writingProgress::-moz-progress-bar { background: #8cabc6; }
+#practicePanel #progressText { margin: 0; font-size: .85em; }
+#visualGuide { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.5rem; padding: .45rem; border: 2px solid #65aef5; border-radius: .7rem; background: #071a35; }
+.braille-cell { display: grid; grid-template-columns: repeat(2, 1.65em); gap: .2em; justify-content: center; }
+.braille-dot { border: 2px solid #93b5da; border-radius: 50%; width: 1.65em; height: 1.65em; display: grid; place-items: center; background: #102044; color: #fff; font-size: .9em; }
+.braille-dot.active { background: #ffe37a; color: #06142d; border-color: #fff; }
+.braille-keys { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; }
+.braille-hand { display: grid; gap: .25rem; font-weight: 700; }
+.braille-key-row { display: flex; gap: .3rem; }
+.braille-key { min-width: 3.2em; padding: .25rem; border: 2px solid #9fc8f2; border-radius: .35rem; background: #e9f3ff; color: #071a35; font-weight: 900; }
+.braille-key small { display: block; font-size: .65em; }
+.braille-key[data-active=true] { background: #ffe37a; color: #071a35; border-color: #ffe37a; }
+#practicePanel .kb-caption { margin: 0; min-height: 2.4rem; padding: .35rem .6rem; border: 2px solid #65aef5; border-radius: .35rem; background: #d9efff; color: #06142d; font-size: .9em; font-weight: 700; line-height: 1.25; }
+#practiceCaption:empty { display: none; }
+#practicePanel .kb-actions { margin: 0; gap: .5rem; }
+#practicePanel .kb-action { min-height: 2.75rem; padding: .4rem .65rem; font-size: .9em; }
+#practicePanel .kb-help { font-size: .85em; }
+
+/* Braille's black background stays local to this program. */
+body[data-braille-dark=true],
+html[data-theme=dark], html[data-theme=dark] body,
+html[data-contrast=high], html[data-contrast=high] body { background: #000; color: #fff; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.kb-shell, .kb-panel, .kb-menu-help, .kb-menu-option, .kb-result, .kb-finish-row, #capture, #visualGuide, .braille-dot, .braille-key, .kb-help, .kb-settings select, .kb-toolbar button, .kb-action, .kb-result-primary, th, td) { background: #000 !important; color: #fff !important; border-color: #fff; box-shadow: none; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .kb-menu-option:focus { border-color: #ffe37a; outline: 4px solid #ffe37a; outline-offset: 3px; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #targetCells .current-cell { background: #000; color: #fff; outline: 3px solid #ffe37a; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.braille-dot.active, .braille-key[data-active=true]) { background: #ffe37a !important; color: #000 !important; border-color: #ffe37a; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #practiceCaption { background: #000 !important; color: #fff !important; border-color: #fff !important; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #capture[data-feedback=incorrect] { border-color: #ff7a88; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #capture[data-feedback=correct] { border-color: #55e487; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #writingProgress { background: #242424; color: #737373; accent-color: #737373; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #writingProgress::-webkit-progress-bar { background: #242424; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #writingProgress::-webkit-progress-value { background: #737373; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #writingProgress::-moz-progress-bar { background: #737373; }
+@media (max-width: 42rem) {
+  html body > main.kb-shell { padding: .5rem; }
+  .kb-panel { padding: 1rem; }
+  .kb-menu-option, .kb-finish-row { grid-template-columns: 1fr; gap: .5rem; }
+  .kb-menu-option { padding: 1rem; }
+  .kb-results { grid-template-columns: 1fr; gap: .5rem; }
+  #resultsPanel { min-height: calc(100dvh - 5rem); }
+  #resultsPanel .kb-result { display: flex; align-items: center; justify-content: space-between; gap: .5rem; text-align: left; }
+  #resultsPanel .kb-result strong { font-size: calc(2rem * var(--kb-scale)); }
+  .kb-celebration h2 { font-size: calc(2.4rem * var(--kb-scale)); }
+  .kb-sparkle { padding: 0; font-size: .65em; }
+  #visualGuide { gap: .5rem; }
+  .braille-keys { gap: .5rem; }
+  .braille-key { min-width: 2.4em; }
+  .kb-actions > * { width: 100%; }
+}
