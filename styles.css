@@ -3099,6 +3099,7 @@ html[data-contrast="high"] .mission-center-page.mission-session-page .command-fo
   background: #000000;
 }
 
+
 .mission-center-page .command-focus-area .training-stage__prompt h3 {
   color: inherit;
 }
@@ -3147,5 +3148,126 @@ html[data-contrast="high"] .mission-center-page.mission-session-page .command-fo
   .mission-center-page.mission-session-page .mission-training-panel .training-stage__prompt {
     padding: .7rem;
     font-size: clamp(1.15rem, 5vw, 1.75rem);
+  }
+}
+
+/* Screen theme colors take precedence over the light high-contrast palette.
+   Dark mode and high contrast are independent preferences: enabling contrast
+   must strengthen outlines without turning a dark page white. Keep this after
+   component styles so catalogs, forms, tables, and generated results agree. */
+@media screen {
+  html:root[data-theme="dark"] {
+    --ink: #ffffff;
+    --muted: #dceeff;
+    --surface: #000000;
+    --surface-soft: #000000;
+    --border: #8dd1ff;
+    --shadow: none;
+    color-scheme: dark;
+    background: #000000;
+  }
+
+  html:root[data-theme="dark"][data-contrast="high"] {
+    --muted: #ffffff;
+    --border: #ffffff;
+    --focus: #ffde00;
+  }
+
+  html:root[data-theme="dark"] body,
+  html:root[data-theme="dark"] body > header,
+  html:root[data-theme="dark"] body > main,
+  html:root[data-theme="dark"] .site-nav,
+  html:root[data-theme="dark"] .accessibility-panel,
+  html:root[data-theme="dark"] main > section,
+  html:root[data-theme="dark"] main > nav,
+  html:root[data-theme="dark"] form,
+  html:root[data-theme="dark"] fieldset {
+    color: #ffffff;
+    background: #000000;
+    border-color: var(--border);
+    box-shadow: none;
+  }
+
+  html:root[data-theme="dark"] :is(
+    .catalog-tools, .catalog-shortcuts, .course-progress details,
+    .lesson-nav, .lesson-nav a, .course-lesson-list li,
+    .progress-list li, .submission-history, .tip,
+    .learning-path-list li, .card-list a, .traffic-summary > div,
+    .manual-tools, .manual-tools a, .manual-contents, .manual-procedure,
+    .resource-search, .search-results article, .resource-directory li,
+    .quiz-readiness, .quiz-question, .quiz-status, .quiz-review li,
+    .certificate, .practice-safety, .command-prompt, .practice-status,
+    .learn-only-list article, .training-results,
+    .table-scroll, table, th, td
+  ),
+  html:root[data-theme="dark"] main > section[id$="-lessons"] > details,
+  html:root[data-theme="dark"] #progressList li {
+    color: #ffffff;
+    background: #000000;
+    border-color: var(--border);
+    box-shadow: none;
+  }
+
+  html:root[data-theme="dark"] :is(
+    h1, h2, h3, h4, h5, h6, legend, caption, main summary,
+    .certificate__name, .certificate__course,
+    .manual-catalog .manual-kind, .learning-path-list .path-order,
+    .search-result__meta, .resource-directory span
+  ) {
+    color: #ffffff;
+  }
+
+  html:root[data-theme="dark"] :is(
+    input, select, textarea, .catalog-tools input[type="search"],
+    .resource-search input, .resource-search select, .practice-settings select
+  ) {
+    color: #ffffff;
+    background: #000000;
+    border-color: var(--border);
+    caret-color: #ffffff;
+  }
+
+  html:root[data-theme="dark"] :is(input, textarea)::placeholder {
+    color: #dceeff;
+    opacity: 1;
+  }
+
+  html:root[data-theme="dark"] :is(button, input[type="submit"], .button-link),
+  html:root[data-theme="dark"] .accessibility-controls button,
+  html:root[data-theme="dark"] .site-nav a,
+  html:root[data-theme="dark"] [role="status"]:not(:empty) {
+    color: #ffffff;
+    background: #000000;
+    border-color: var(--border);
+  }
+
+  html:root[data-theme="dark"] a {
+    color: #9ee8ff;
+  }
+
+  html:root[data-theme="dark"] :is(.site-nav a, .card-list a, .lesson-nav a, .manual-tools a, .button-link) {
+    color: #ffffff;
+    background: #000000;
+  }
+
+  html:root[data-theme="dark"] :is(button, input[type="submit"], .site-nav a, .card-list a, .lesson-nav a):hover,
+  html:root[data-theme="dark"] .accessibility-menu summary:hover,
+  html:root[data-theme="dark"] .site-nav a[aria-current="page"] {
+    color: #ffffff;
+    background: #000000;
+    border-color: #ffffff;
+  }
+
+  html:root[data-theme="dark"] .accessibility-controls button[aria-pressed="true"] {
+    color: #ffffff;
+    background: #000000;
+    border-color: var(--focus);
+    box-shadow: inset 0 0 0 1px var(--focus);
+  }
+
+  html:root[data-theme="dark"] .skip-link {
+    color: #ffffff;
+    background: #000000;
+    border-color: var(--focus);
   }
 }
