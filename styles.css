@@ -20,6 +20,11 @@
   box-sizing: border-box;
 }
 
+/* Layout rules must never reveal filtered items or inactive lesson panels. */
+[hidden]:not([hidden="until-found"]) {
+  display: none !important;
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -83,6 +88,18 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
   outline: 4px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* A dark outer edge keeps the yellow focus ring visible on pale surfaces. */
+html:not([data-theme="dark"]) :is(a, button, input, select, textarea, summary, .table-scroll):focus-visible {
+  outline: 4px solid var(--focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 7px #061a3a;
+}
+
+main:focus-visible {
+  outline: 3px solid currentColor;
   outline-offset: 3px;
 }
 
@@ -481,6 +498,7 @@ html[data-contrast="high"] .learning-path-list li {
 
 [role="status"]:not(:empty) {
   padding: 0.75rem 1rem;
+  color: #10213d;
   background: #e3f5ff;
   border-left: 0.35rem solid var(--blue-600);
   border-radius: 0.4rem;
@@ -615,6 +633,14 @@ html[data-theme="dark"] .card-list a {
   box-shadow: none;
 }
 
+html[data-theme="dark"] .manual-catalog .manual-kind {
+  color: #dceeff;
+}
+
+html[data-contrast="high"] .manual-catalog .manual-kind {
+  color: #000000;
+}
+
 html[data-theme="dark"] .card-list a:hover {
   color: #ffffff;
   background: #101010;
@@ -716,6 +742,25 @@ html[data-contrast="high"] form {
   background: #ffffff;
   border: 2px solid #000000;
   box-shadow: none;
+}
+
+html[data-contrast="high"] .site-nav a {
+  color: #ffffff;
+  background: #000000;
+  border-color: #ffffff;
+}
+
+html[data-contrast="high"] .site-nav a:hover,
+html[data-contrast="high"] .site-nav a[aria-current="page"] {
+  color: #000000;
+  background: #ffffff;
+}
+
+html[data-contrast="high"] caption,
+html[data-contrast="high"] .learning-path-list .path-order,
+html[data-contrast="high"] body .search-result__meta,
+html[data-contrast="high"] body .resource-directory span {
+  color: #000000;
 }
 
 html[data-reduce-motion="true"] *,

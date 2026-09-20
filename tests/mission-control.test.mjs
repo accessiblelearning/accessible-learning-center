@@ -316,3 +316,19 @@ test("progress tracks the current command set and the current mission's steps", 
   assert.equal(m.get("missionProgress").value, 1);
   assert.equal(m.get("missionCount").textContent, "Step 2 of 3");
 });
+
+test("shared skip navigation reuses the existing link and focuses main on full and minimal pages", () => {
+  for (const minimal of [false, true]) {
+    const p = page();
+    p.document.body.dataset.minimalPage = String(minimal);
+    const existing = p.get('existingSkip'), main = p.get('main');
+    const originalQuery = p.document.querySelector;
+    p.document.querySelector = selector => selector === 'a.skip-link' ? existing : originalQuery(selector);
+    p.load('accessibility.js');
+    p.document.fire('DOMContentLoaded');
+    assert.equal(p.document.body.children[0], existing);
+    assert.equal(main.getAttribute('tabindex'), '-1');
+    existing.click();
+    assert.equal(p.document.activeElement, main);
+  }
+});

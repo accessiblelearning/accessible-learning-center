@@ -42,7 +42,7 @@
     return value;
   }
 
-  function render() {
+  function render(moveFocus = false) {
     const query = queryInput.value.trim().toLowerCase();
     const type = typeSelect.value;
     results.replaceChildren();
@@ -98,12 +98,13 @@
       fragment.appendChild(item);
     }
     results.appendChild(fragment);
-    results.querySelector("a")?.focus();
+    // Filtering and asynchronous loading must not interrupt the current control.
+    if (moveFocus) results.querySelector("a")?.focus();
   }
 
   form.addEventListener("submit", event => {
     event.preventDefault();
-    render();
+    render(true);
   });
   typeSelect.addEventListener("change", () => {
     if (queryInput.value.trim()) render();

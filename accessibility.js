@@ -106,10 +106,17 @@
       skipTarget.id = "main-content";
     }
 
-    const skipLink = document.createElement("a");
+    const skipLink = document.querySelector("a.skip-link") || document.createElement("a");
     skipLink.className = "skip-link";
     skipLink.href = "#" + (skipTarget ? skipTarget.id : "main-content");
     skipLink.textContent = "Skip to main content";
+    if (skipTarget) {
+      skipTarget.setAttribute("tabindex", "-1");
+      skipLink.addEventListener("click", () => {
+        // Keep native fragment navigation and move keyboard focus as well.
+        skipTarget.focus({ preventScroll: true });
+      });
+    }
 
     if (document.body.dataset.minimalPage === "true") {
       document.body.prepend(skipLink);
