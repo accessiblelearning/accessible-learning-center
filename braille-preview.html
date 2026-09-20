@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Private development preview of the Accessible Learning Center Braille writing course.">
+  <title>Braille Learning Center Preview - Accessible Learning Center</title>
+  <link rel="stylesheet" href="styles.css?v=accessibility-20260920">
+  <link rel="stylesheet" href="braille-preview.css?v=1">
+  <script src="accessibility.js?v=accessibility-20260920" defer></script>
+  <script src="braille-unlock.js?v=1" defer></script>
+</head>
+<body data-minimal-page="true">
+  <main class="kb-shell" id="main-content">
+    <section class="kb-panel" aria-labelledby="previewHeading">
+      <h1 id="previewHeading">Braille Learning Center Preview</h1>
+      <p>This private development preview is not listed in the public site menus or search. Use the access code supplied with your preview link.</p>
+      <form class="kb-form" id="privatePreviewForm">
+        <label for="privatePreviewCode">Preview access code</label>
+        <input id="privatePreviewCode" type="password" autocomplete="off" spellcheck="false" autocapitalize="none" required aria-describedby="accessNote">
+        <button class="kb-primary" id="openPrivatePreview" type="submit">Open private preview</button>
+      </form>
+      <p id="accessNote">The code opens the encrypted course on this device. Reloading closes the preview. Keep the code with your private preview link.</p>
+      <p id="privatePreviewStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+      <noscript>Enable JavaScript to open this writing preview.</noscript>
+    </section>
+  </main>
+</body>
+</html>
