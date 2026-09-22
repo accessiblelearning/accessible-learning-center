@@ -20,7 +20,7 @@
     const code=input.value;input.value='';button.disabled=true;status.textContent='Opening the private preview…';
     let bundle;
     try {
-      const response=await fetch('braille-preview.bundle.json?v=2',{cache:'no-store'});
+      const response=await fetch('braille-preview.bundle.json?v=3',{cache:'no-store'});
       if(!response.ok)throw Error('Unavailable');bundle=await response.json();
     } catch(_){status.textContent='The preview could not be loaded. Check your connection and try again.';button.disabled=false;input.focus();return;}
     let payload;
