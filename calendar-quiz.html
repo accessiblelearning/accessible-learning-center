@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Google Calendar.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Google Calendar. Score 85 percent to earn a course-completion certificate.">
   <title>Google Calendar Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Google Calendar Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Google Calendar quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. What information belongs in a complete calendar event?</legend>
-          <label><input type="radio" name="question-0" value="0"> Only a color</label>
-          <label><input type="radio" name="question-0" value="1"> Date, time, time zone, location or link, and description</label>
-          <label><input type="radio" name="question-0" value="2"> Only a guest name</label>
+          <legend>1. Pressing C does not open a new event. What should you check before assuming Calendar is broken?</legend>
+          <label><input type="radio" name="question-0" value="0"> Whether the event&#x27;s calendar color is blue</label>
+          <label><input type="radio" name="question-0" value="1"> Whether Calendar shortcuts are enabled and focus is in the appropriate context</label>
+          <label><input type="radio" name="question-0" value="2"> Whether the current month has thirty-one days</label>
+          <label><input type="radio" name="question-0" value="3"> Whether your browser has only one bookmark</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What should be checked before inviting guests?</legend>
-          <label><input type="radio" name="question-1" value="0"> Event details and guest list</label>
-          <label><input type="radio" name="question-1" value="1"> Browser history</label>
-          <label><input type="radio" name="question-1" value="2"> Font size only</label>
+          <legend>2. You have navigated several weeks away and want to return to the current date. With shortcuts enabled, which key fits?</legend>
+          <label><input type="radio" name="question-1" value="0"> C</label>
+          <label><input type="radio" name="question-1" value="1"> J</label>
+          <label><input type="radio" name="question-1" value="2"> T</label>
+          <label><input type="radio" name="question-1" value="3"> K</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. When is a recurring event useful?</legend>
-          <label><input type="radio" name="question-2" value="0"> For a one-time password</label>
-          <label><input type="radio" name="question-2" value="1"> For deleting a calendar</label>
-          <label><input type="radio" name="question-2" value="2"> For an event that repeats on a schedule</label>
+          <legend>3. A check-in starts at 9:15 a.m. and lasts thirty minutes. Which time entry fits?</legend>
+          <label><input type="radio" name="question-2" value="0"> 9:15 a.m. to 10:15 a.m. on the intended date</label>
+          <label><input type="radio" name="question-2" value="1"> 9:45 a.m. to 10:15 a.m. on the intended date</label>
+          <label><input type="radio" name="question-2" value="2"> 9:15 a.m. to 9:45 a.m. on the intended date</label>
+          <label><input type="radio" name="question-2" value="3"> An all-day event on the intended date</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What should be considered when sharing a calendar?</legend>
-          <label><input type="radio" name="question-3" value="0"> Privacy and permission level</label>
-          <label><input type="radio" name="question-3" value="1"> Only calendar color</label>
-          <label><input type="radio" name="question-3" value="2"> Only event length</label>
+          <legend>4. You saved a practice event. What most directly confirms the details were stored correctly?</legend>
+          <label><input type="radio" name="question-3" value="0"> Check that the event editor disappeared</label>
+          <label><input type="radio" name="question-3" value="1"> Reopen it and review title, date, times, location, and description</label>
+          <label><input type="radio" name="question-3" value="2"> Confirm the calendar still has the same color</label>
+          <label><input type="radio" name="question-3" value="3"> Return to today without opening the event</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Why confirm the time zone?</legend>
-          <label><input type="radio" name="question-4" value="0"> To change the filename</label>
-          <label><input type="radio" name="question-4" value="1"> To enable spell check</label>
-          <label><input type="radio" name="question-4" value="2"> To prevent scheduling at the wrong local time</label>
+          <legend>5. Two events have similar titles and one should be deleted. What should be confirmed first?</legend>
+          <label><input type="radio" name="question-4" value="0"> The event&#x27;s date, time, calendar, and identifying details</label>
+          <label><input type="radio" name="question-4" value="1"> Only that its title contains the expected word</label>
+          <label><input type="radio" name="question-4" value="2"> Only that its notification has already appeared</label>
+          <label><input type="radio" name="question-4" value="3"> Only that it is the first search result</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You deleted a disposable practice event and want to recover it where restoration is available. Where should you look?</legend>
+          <label><input type="radio" name="question-5" value="0"> A new event&#x27;s guest-permission controls</label>
+          <label><input type="radio" name="question-5" value="1"> The browser&#x27;s Downloads list</label>
+          <label><input type="radio" name="question-5" value="2"> The browser&#x27;s bookmark manager</label>
+          <label><input type="radio" name="question-5" value="3"> Calendar Trash and its restore controls</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. Only next week&#x27;s training session moves from 10 a.m. to 11 a.m. Which edit scope fits?</legend>
+          <label><input type="radio" name="question-6" value="0"> Delete the entire series and recreate one session</label>
+          <label><input type="radio" name="question-6" value="1"> All future occurrences from next week onward</label>
+          <label><input type="radio" name="question-6" value="2"> Every occurrence in the series</label>
+          <label><input type="radio" name="question-6" value="3"> That occurrence only</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. Training should run weekly for four weeks. What should the recurrence review establish?</legend>
+          <label><input type="radio" name="question-7" value="0"> A daily repeat with no end condition</label>
+          <label><input type="radio" name="question-7" value="1"> Only that the first event has the right title</label>
+          <label><input type="radio" name="question-7" value="2"> The weekly pattern and an end condition matching four sessions</label>
+          <label><input type="radio" name="question-7" value="3"> Only that the event repeats weekly</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A guest cannot yet commit to attending. Which response best communicates that state?</legend>
+          <label><input type="radio" name="question-8" value="0"> Yes</label>
+          <label><input type="radio" name="question-8" value="1"> No</label>
+          <label><input type="radio" name="question-8" value="2"> Delete the invitation without responding</label>
+          <label><input type="radio" name="question-8" value="3"> Maybe</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. You are preparing a practice invitation as required by the lesson. Which workflow respects the exercise?</legend>
+          <label><input type="radio" name="question-9" value="0"> Send the invitation first and label it practice afterward</label>
+          <label><input type="radio" name="question-9" value="1"> Make the event public so no guest addresses are needed</label>
+          <label><input type="radio" name="question-9" value="2"> Add coworkers as temporary guests and remove them after sending</label>
+          <label><input type="radio" name="question-9" value="3"> Review fictional guest details and permissions without sending real invitations</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. An event has a desktop reminder, but the browser blocks notifications. What should you inspect?</legend>
+          <label><input type="radio" name="question-10" value="0"> Only the event&#x27;s description length</label>
+          <label><input type="radio" name="question-10" value="1"> Only the calendar&#x27;s display color</label>
+          <label><input type="radio" name="question-10" value="2"> Only the event&#x27;s recurrence pattern</label>
+          <label><input type="radio" name="question-10" value="3"> Both the event reminder and browser notification permissions</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A learner receives so many reminders that important ones are missed. What is the most useful adjustment?</legend>
+          <label><input type="radio" name="question-11" value="0"> Choose relevant reminder methods and intervals for each event type</label>
+          <label><input type="radio" name="question-11" value="1"> Remove descriptions while keeping all reminders unchanged</label>
+          <label><input type="radio" name="question-11" value="2"> Use the same longest lead time for every event</label>
+          <label><input type="radio" name="question-11" value="3"> Add identical reminders every minute to every event</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. Training events disappear after you uncheck the Training calendar. What should you try first?</legend>
+          <label><input type="radio" name="question-12" value="0"> Show that calendar again and verify the events return</label>
+          <label><input type="radio" name="question-12" value="1"> Restore all events from Trash</label>
+          <label><input type="radio" name="question-12" value="2"> Recreate every training event from memory</label>
+          <label><input type="radio" name="question-12" value="3"> Delete and reconnect the whole account</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. Work and Training calendars differ only by color. What would make them easier to distinguish accessibly?</legend>
+          <label><input type="radio" name="question-13" value="0"> Two more similar shades with no names</label>
+          <label><input type="radio" name="question-13" value="1"> The same name on both calendars</label>
+          <label><input type="radio" name="question-13" value="2"> Descriptive calendar names and verification of the selected calendar</label>
+          <label><input type="radio" name="question-13" value="3"> A longer description on one unrelated event</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. Search returns two meetings with the same title. Which check identifies the intended result?</legend>
+          <label><input type="radio" name="question-14" value="0"> Choose the first result without opening it</label>
+          <label><input type="radio" name="question-14" value="1"> Choose whichever uses the brighter calendar color</label>
+          <label><input type="radio" name="question-14" value="2"> Open each relevant result and confirm date, time, and time zone</label>
+          <label><input type="radio" name="question-14" value="3"> Choose the result with the shortest description</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. You need to check the next seven days for conflicts. Which approach is most useful?</legend>
+          <label><input type="radio" name="question-15" value="0"> Review only the calendar&#x27;s list of names</label>
+          <label><input type="radio" name="question-15" value="1"> Review events chronologically in Schedule view and inspect overlaps</label>
+          <label><input type="radio" name="question-15" value="2"> Search for the word meeting and ignore other event types</label>
+          <label><input type="radio" name="question-15" value="3"> Read only the first event visible today</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. Two teammates see different local start times for the same remote meeting. What should they compare?</legend>
+          <label><input type="radio" name="question-16" value="0"> The default reminder intervals and notification methods in both accounts</label>
+          <label><input type="radio" name="question-16" value="1"> The event date and both viewers&#x27; time zones</label>
+          <label><input type="radio" name="question-16" value="2"> The calendar sharing permissions and whether each person can edit the event</label>
+          <label><input type="radio" name="question-16" value="3"> The event title and the display color assigned by each calendar owner</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. A team needs to know when you are unavailable but not private event details. Which sharing principle fits?</legend>
+          <label><input type="radio" name="question-17" value="0"> Publish every event description so times are clear</label>
+          <label><input type="radio" name="question-17" value="1"> Grant only the availability visibility needed for that purpose</label>
+          <label><input type="radio" name="question-17" value="2"> Share the account password so the team can inspect the calendar</label>
+          <label><input type="radio" name="question-17" value="3"> Give all teammates full calendar-management access</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Your weekly plan has five events, but one recurring meeting continues beyond the training period. What needs correction?</legend>
+          <label><input type="radio" name="question-18" value="0"> The recurrence&#x27;s end condition</label>
+          <label><input type="radio" name="question-18" value="1"> Only the event&#x27;s title</label>
+          <label><input type="radio" name="question-18" value="2"> Only the default calendar color</label>
+          <label><input type="radio" name="question-18" value="3"> The number of notes in the report</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which final report best supports another person&#x27;s review of your schedule?</legend>
+          <label><input type="radio" name="question-19" value="0"> Dates, durations, recurrence, reminders, and time zones</label>
+          <label><input type="radio" name="question-19" value="1"> Start dates and invitee names, without the duration or recurring-series settings</label>
+          <label><input type="radio" name="question-19" value="2"> Event titles and calendar colors, leaving the event timing to be checked separately</label>
+          <label><input type="radio" name="question-19" value="3"> A count of calendar entries, using matching totals as evidence the schedule is correct</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Calendar","displayName":"Google Calendar","slug":"calendar","passPercent":80,"questions":[{"answer":1,"explanation":"Complete details help everyone understand the event.","options":["Only a color","Date, time, time zone, location or link, and description","Only a guest name"],"question":"What information belongs in a complete calendar event?"},{"answer":0,"explanation":"Reviewing prevents incorrect invitations.","options":["Event details and guest list","Browser history","Font size only"],"question":"What should be checked before inviting guests?"},{"answer":2,"explanation":"Recurrence automates repeating events.","options":["For a one-time password","For deleting a calendar","For an event that repeats on a schedule"],"question":"When is a recurring event useful?"},{"answer":0,"explanation":"Sharing can expose event information.","options":["Privacy and permission level","Only calendar color","Only event length"],"question":"What should be considered when sharing a calendar?"},{"answer":2,"explanation":"Time-zone errors can shift event times.","options":["To change the filename","To enable spell check","To prevent scheduling at the wrong local time"],"question":"Why confirm the time zone?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Calendar","displayName":"Google Calendar","slug":"calendar","passPercent":85,"questions":[{"lesson":1,"question":"Pressing C does not open a new event. What should you check before assuming Calendar is broken?","options":["Whether the event's calendar color is blue","Whether Calendar shortcuts are enabled and focus is in the appropriate context","Whether the current month has thirty-one days","Whether your browser has only one bookmark"],"answer":1,"explanation":"Calendar shortcuts depend on settings and focus. In an edit field, a letter may be typed rather than used as a command."},{"lesson":1,"question":"You have navigated several weeks away and want to return to the current date. With shortcuts enabled, which key fits?","options":["C","J","T","K"],"answer":2,"explanation":"T returns to today. C creates an event; J and K navigate date ranges where supported."},{"lesson":2,"question":"A check-in starts at 9:15 a.m. and lasts thirty minutes. Which time entry fits?","options":["9:15 a.m. to 10:15 a.m. on the intended date","9:45 a.m. to 10:15 a.m. on the intended date","9:15 a.m. to 9:45 a.m. on the intended date","An all-day event on the intended date"],"answer":2,"explanation":"Both start and end times determine duration. Verify the date and time fields instead of relying on the event title."},{"lesson":2,"question":"You saved a practice event. What most directly confirms the details were stored correctly?","options":["Check that the event editor disappeared","Reopen it and review title, date, times, location, and description","Confirm the calendar still has the same color","Return to today without opening the event"],"answer":1,"explanation":"Closing the editor is not a content check. Reopen the event to verify the actual saved fields."},{"lesson":3,"question":"Two events have similar titles and one should be deleted. What should be confirmed first?","options":["The event's date, time, calendar, and identifying details","Only that its title contains the expected word","Only that its notification has already appeared","Only that it is the first search result"],"answer":0,"explanation":"Similar titles are insufficient identification. Verify the intended event before making a change that affects the schedule."},{"lesson":3,"question":"You deleted a disposable practice event and want to recover it where restoration is available. Where should you look?","options":["A new event's guest-permission controls","The browser's Downloads list","The browser's bookmark manager","Calendar Trash and its restore controls"],"answer":3,"explanation":"Calendar's recovery controls concern deleted events. Browser downloads and bookmarks do not restore a calendar record."},{"lesson":4,"question":"Only next week's training session moves from 10 a.m. to 11 a.m. Which edit scope fits?","options":["Delete the entire series and recreate one session","All future occurrences from next week onward","Every occurrence in the series","That occurrence only"],"answer":3,"explanation":"The change concerns a single date. Series-wide or future-occurrence changes would alter additional sessions."},{"lesson":4,"question":"Training should run weekly for four weeks. What should the recurrence review establish?","options":["A daily repeat with no end condition","Only that the first event has the right title","The weekly pattern and an end condition matching four sessions","Only that the event repeats weekly"],"answer":2,"explanation":"A recurrence needs both a pattern and a boundary. An unlimited weekly series exceeds the intended four-week plan."},{"lesson":5,"question":"A guest cannot yet commit to attending. Which response best communicates that state?","options":["Yes","No","Delete the invitation without responding","Maybe"],"answer":3,"explanation":"Maybe expresses uncertainty. Yes and No communicate different attendance decisions."},{"lesson":5,"question":"You are preparing a practice invitation as required by the lesson. Which workflow respects the exercise?","options":["Send the invitation first and label it practice afterward","Make the event public so no guest addresses are needed","Add coworkers as temporary guests and remove them after sending","Review fictional guest details and permissions without sending real invitations"],"answer":3,"explanation":"The exercise is about understanding invitations and permissions without contacting real people or exposing calendar details."},{"lesson":6,"question":"An event has a desktop reminder, but the browser blocks notifications. What should you inspect?","options":["Only the event's description length","Only the calendar's display color","Only the event's recurrence pattern","Both the event reminder and browser notification permissions"],"answer":3,"explanation":"The event setting and browser permission are separate parts of the notification path. A reminder entry alone does not ensure delivery."},{"lesson":6,"question":"A learner receives so many reminders that important ones are missed. What is the most useful adjustment?","options":["Choose relevant reminder methods and intervals for each event type","Remove descriptions while keeping all reminders unchanged","Use the same longest lead time for every event","Add identical reminders every minute to every event"],"answer":0,"explanation":"Reminders should support the task without overwhelming the learner. Match timing and method to the event's actual needs."},{"lesson":7,"question":"Training events disappear after you uncheck the Training calendar. What should you try first?","options":["Show that calendar again and verify the events return","Restore all events from Trash","Recreate every training event from memory","Delete and reconnect the whole account"],"answer":0,"explanation":"Hiding a calendar changes visibility, not necessarily the stored events. Check visibility before assuming deletion."},{"lesson":7,"question":"Work and Training calendars differ only by color. What would make them easier to distinguish accessibly?","options":["Two more similar shades with no names","The same name on both calendars","Descriptive calendar names and verification of the selected calendar","A longer description on one unrelated event"],"answer":2,"explanation":"Names identify calendars independently of color and help confirm where an event belongs."},{"lesson":8,"question":"Search returns two meetings with the same title. Which check identifies the intended result?","options":["Choose the first result without opening it","Choose whichever uses the brighter calendar color","Open each relevant result and confirm date, time, and time zone","Choose the result with the shortest description"],"answer":2,"explanation":"A title match does not uniquely identify an event. Confirm its actual scheduling details."},{"lesson":8,"question":"You need to check the next seven days for conflicts. Which approach is most useful?","options":["Review only the calendar's list of names","Review events chronologically in Schedule view and inspect overlaps","Search for the word meeting and ignore other event types","Read only the first event visible today"],"answer":1,"explanation":"Chronological review across the requested date range exposes overlapping commitments that a narrow title search can miss."},{"lesson":9,"question":"Two teammates see different local start times for the same remote meeting. What should they compare?","options":["The default reminder intervals and notification methods in both accounts","The event date and both viewers' time zones","The calendar sharing permissions and whether each person can edit the event","The event title and the display color assigned by each calendar owner"],"answer":1,"explanation":"Different local clock times may represent the same instant. Confirm the date and time zones before changing the event."},{"lesson":9,"question":"A team needs to know when you are unavailable but not private event details. Which sharing principle fits?","options":["Publish every event description so times are clear","Grant only the availability visibility needed for that purpose","Share the account password so the team can inspect the calendar","Give all teammates full calendar-management access"],"answer":1,"explanation":"Match access to the actual need. Scheduling availability does not justify broad control or disclosure of private details."},{"lesson":10,"question":"Your weekly plan has five events, but one recurring meeting continues beyond the training period. What needs correction?","options":["The recurrence's end condition","Only the event's title","Only the default calendar color","The number of notes in the report"],"answer":0,"explanation":"The final plan requires a sensible schedule. A recurrence extending beyond the intended period is still an error despite the event count."},{"lesson":10,"question":"Which final report best supports another person's review of your schedule?","options":["Dates, durations, recurrence, reminders, and time zones","Start dates and invitee names, without the duration or recurring-series settings","Event titles and calendar colors, leaving the event timing to be checked separately","A count of calendar entries, using matching totals as evidence the schedule is correct"],"answer":0,"explanation":"A scheduling report needs enough detail to check when events occur and whether their settings support the intended plan."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

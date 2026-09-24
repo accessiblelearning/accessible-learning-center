@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Windows 11.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Windows 11. Score 85 percent to earn a course-completion certificate.">
   <title>Windows 11 Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Windows 11 Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Windows 11 quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. Which Windows shortcut opens File Explorer?</legend>
-          <label><input type="radio" name="question-0" value="0"> Ctrl+E</label>
-          <label><input type="radio" name="question-0" value="1"> Alt+E</label>
-          <label><input type="radio" name="question-0" value="2"> Windows+E</label>
+          <legend>1. You want to open Calculator when it is not already running. Which sequence fits?</legend>
+          <label><input type="radio" name="question-0" value="0"> Press Alt+Tab until Calculator appears in the switcher</label>
+          <label><input type="radio" name="question-0" value="1"> Press Windows+T and type Calculator into the taskbar</label>
+          <label><input type="radio" name="question-0" value="2"> Open Start, type Calculator, and open the matching app</label>
+          <label><input type="radio" name="question-0" value="3"> Press Windows+D and type Calculator into the desktop</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What is the safest first step before moving or deleting a file?</legend>
-          <label><input type="radio" name="question-1" value="0"> Confirm its name and location</label>
-          <label><input type="radio" name="question-1" value="1"> Rename every file</label>
-          <label><input type="radio" name="question-1" value="2"> Empty the Recycle Bin</label>
+          <legend>2. You pressed Windows+T, but expected to browse desktop shortcuts. What should you change?</legend>
+          <label><input type="radio" name="question-1" value="0"> Use Windows+I, then navigate the desktop items</label>
+          <label><input type="radio" name="question-1" value="1"> Use Windows+E, then navigate the taskbar buttons</label>
+          <label><input type="radio" name="question-1" value="2"> Use Alt+Tab, then navigate the desktop items</label>
+          <label><input type="radio" name="question-1" value="3"> Use Windows+D, then navigate the desktop items</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. Which shortcut switches among open applications?</legend>
-          <label><input type="radio" name="question-2" value="0"> Ctrl+Tab</label>
-          <label><input type="radio" name="question-2" value="1"> Alt+Tab</label>
-          <label><input type="radio" name="question-2" value="2"> Windows+R</label>
+          <legend>3. A second virtual desktop is active. You want to return to the first without closing either. Which command fits?</legend>
+          <label><input type="radio" name="question-2" value="0"> Windows+Ctrl+D</label>
+          <label><input type="radio" name="question-2" value="1"> Windows+Left Arrow</label>
+          <label><input type="radio" name="question-2" value="2"> Windows+Ctrl+Left Arrow</label>
+          <label><input type="radio" name="question-2" value="3"> Windows+Ctrl+F4</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. Where should related work files be kept?</legend>
-          <label><input type="radio" name="question-3" value="0"> Only in Downloads</label>
-          <label><input type="radio" name="question-3" value="1"> In the Recycle Bin</label>
-          <label><input type="radio" name="question-3" value="2"> In clearly named folders</label>
+          <legend>4. You need Notepad and File Explorer side by side. Which approach changes their placement?</legend>
+          <label><input type="radio" name="question-3" value="0"> Create a new virtual desktop for each application</label>
+          <label><input type="radio" name="question-3" value="1"> Open Task View and select Notepad twice</label>
+          <label><input type="radio" name="question-3" value="2"> Press Alt+Tab twice while both applications are open</label>
+          <label><input type="radio" name="question-3" value="3"> Activate each window and use Windows+Left or Right Arrow</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. What should you do before installing a download?</legend>
-          <label><input type="radio" name="question-4" value="0"> Disable security warnings</label>
-          <label><input type="radio" name="question-4" value="1"> Verify the source, filename, and extension</label>
-          <label><input type="radio" name="question-4" value="2"> Open every attachment</label>
+          <legend>5. You reached a folder through search and need its parent folder, not the previous search results. Which command fits?</legend>
+          <label><input type="radio" name="question-4" value="0"> Alt+Right Arrow</label>
+          <label><input type="radio" name="question-4" value="1"> Alt+Up Arrow</label>
+          <label><input type="radio" name="question-4" value="2"> Alt+Left Arrow</label>
+          <label><input type="radio" name="question-4" value="3"> Ctrl+L followed by Escape</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. File Explorer announces toolbar controls, but you want to inspect the current folder path. What should you do?</legend>
+          <label><input type="radio" name="question-5" value="0"> Press Ctrl+L and read the address bar</label>
+          <label><input type="radio" name="question-5" value="1"> Press Alt+Enter and read the selected item&#x27;s properties</label>
+          <label><input type="radio" name="question-5" value="2"> Press Ctrl+F and read the search field</label>
+          <label><input type="radio" name="question-5" value="3"> Press Windows+T and read the selected button</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. A document must remain in Incoming while a second copy goes to Archive. Which sequence meets both requirements?</legend>
+          <label><input type="radio" name="question-6" value="0"> Copy the selected file, open Archive, and paste</label>
+          <label><input type="radio" name="question-6" value="1"> Move the file to Archive, then make a copy there</label>
+          <label><input type="radio" name="question-6" value="2"> Rename the selected file with Archive in its name</label>
+          <label><input type="radio" name="question-6" value="3"> Cut the selected file, open Archive, and paste</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. Pasting a practice file produces an unexpected replace-existing-file prompt. What is the best next step?</legend>
+          <label><input type="radio" name="question-7" value="0"> Choose Skip and report that the move succeeded</label>
+          <label><input type="radio" name="question-7" value="1"> Choose Replace because the names already match</label>
+          <label><input type="radio" name="question-7" value="2"> Rename the destination before checking its contents</label>
+          <label><input type="radio" name="question-7" value="3"> Cancel and compare the source and destination files</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. You remember part of a filename but not where it appears in the current folder. Which action narrows the results?</legend>
+          <label><input type="radio" name="question-8" value="0"> Sort the folder by Date modified</label>
+          <label><input type="radio" name="question-8" value="1"> Change the folder from Details to List view</label>
+          <label><input type="radio" name="question-8" value="2"> Select all items and open Properties</label>
+          <label><input type="radio" name="question-8" value="3"> Search the folder for the remembered text</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. You selected several practice files, then decide to delete only one. What should you verify immediately before Delete?</legend>
+          <label><input type="radio" name="question-9" value="0"> That File Explorer is maximized</label>
+          <label><input type="radio" name="question-9" value="1"> That only the intended file remains selected</label>
+          <label><input type="radio" name="question-9" value="2"> That the folder is sorted alphabetically</label>
+          <label><input type="radio" name="question-9" value="3"> That the selected file is the first item</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. A learner wants larger text but does not want to magnify the whole screen. Which setting should you evaluate first?</legend>
+          <label><input type="radio" name="question-10" value="0"> Text size in Accessibility</label>
+          <label><input type="radio" name="question-10" value="1"> Magnifier&#x27;s zoom level</label>
+          <label><input type="radio" name="question-10" value="2"> The keyboard repeat delay</label>
+          <label><input type="radio" name="question-10" value="3"> The system audio output</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. You are reviewing accessibility settings on a shared computer. Which method best supports a reversible trial?</legend>
+          <label><input type="radio" name="question-11" value="0"> Reset all accessibility settings before testing a preference</label>
+          <label><input type="radio" name="question-11" value="1"> Apply several related settings and compare the final result</label>
+          <label><input type="radio" name="question-11" value="2"> Record the original setting, agree on a change, test, and restore if needed</label>
+          <label><input type="radio" name="question-11" value="3"> Copy another learner&#x27;s settings and leave them as the default</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. Speech became inaudible after connecting a headset, though the volume is up. Which check is most relevant?</legend>
+          <label><input type="radio" name="question-12" value="0"> Clear the Notification Center</label>
+          <label><input type="radio" name="question-12" value="1"> Confirm which audio output is selected</label>
+          <label><input type="radio" name="question-12" value="2"> Change the keyboard accessibility options</label>
+          <label><input type="radio" name="question-12" value="3"> Increase the screen magnification</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. You need to review a recent system alert, not adjust Wi-Fi or volume. Which panel should you open?</legend>
+          <label><input type="radio" name="question-13" value="0"> File Explorer with Windows+E</label>
+          <label><input type="radio" name="question-13" value="1"> Quick Settings with Windows+A</label>
+          <label><input type="radio" name="question-13" value="2"> Notification Center with Windows+N</label>
+          <label><input type="radio" name="question-13" value="3"> Settings search with Windows+I</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. A supposed PDF download is identified as an application in Properties. What should you do?</legend>
+          <label><input type="radio" name="question-14" value="0"> Rename its extension to .pdf and try opening it</label>
+          <label><input type="radio" name="question-14" value="1"> Stop and verify the source and file type before opening</label>
+          <label><input type="radio" name="question-14" value="2"> Open it in a different browser to check its contents</label>
+          <label><input type="radio" name="question-14" value="3"> Move it to Documents before opening it</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. A workplace update requires a restart while you have unsaved work. What is the appropriate plan?</legend>
+          <label><input type="radio" name="question-15" value="0"> Pause updates indefinitely to avoid interrupting the task</label>
+          <label><input type="radio" name="question-15" value="1"> Save the work and coordinate the restart under workplace procedures</label>
+          <label><input type="radio" name="question-15" value="2"> Restart first because open files will always be restored</label>
+          <label><input type="radio" name="question-15" value="3"> Uninstall the update to remove the restart request</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. One practice application is frozen while other apps respond. Which troubleshooting approach is most appropriate?</legend>
+          <label><input type="radio" name="question-16" value="0"> Save responsive work, identify the affected app, and use approved recovery steps</label>
+          <label><input type="radio" name="question-16" value="1"> Change the screen reader settings across all applications</label>
+          <label><input type="radio" name="question-16" value="2"> End every process with a similar name in Task Manager</label>
+          <label><input type="radio" name="question-16" value="3"> Restart the computer before checking other applications</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. Which support message gives the most useful starting point for troubleshooting?</legend>
+          <label><input type="radio" name="question-17" value="0"> The app name and a request to reset every setting</label>
+          <label><input type="radio" name="question-17" value="1"> The computer brand, desk location, and usual work schedule</label>
+          <label><input type="radio" name="question-17" value="2"> The app, attempted task, expected result, actual result, and exact error</label>
+          <label><input type="radio" name="question-17" value="3"> The error&#x27;s approximate meaning and a request for a replacement</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. After copying Schedule.txt to Archive and moving Weekly-Tasks.txt to Completed, what should you find?</legend>
+          <label><input type="radio" name="question-18" value="0"> Schedule in both Incoming and Archive; Weekly-Tasks only in Completed</label>
+          <label><input type="radio" name="question-18" value="1"> Both files in Incoming and in their destination folders</label>
+          <label><input type="radio" name="question-18" value="2"> Schedule only in Archive; Weekly-Tasks in Incoming and Completed</label>
+          <label><input type="radio" name="question-18" value="3"> Both files only in Archive, with shortcuts in Completed</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. The final project report lists commands, but you cannot reopen the files it describes. What remains to be demonstrated?</legend>
+          <label><input type="radio" name="question-19" value="0"> Changing all folders to the same visual layout</label>
+          <label><input type="radio" name="question-19" value="1"> Memorizing additional commands from unrelated settings</label>
+          <label><input type="radio" name="question-19" value="2"> Renaming the report to include every command used</label>
+          <label><input type="radio" name="question-19" value="3"> Locating and verifying the saved files and their contents</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Windows 11","displayName":"Windows 11","slug":"windows","passPercent":80,"questions":[{"answer":2,"explanation":"Windows+E opens File Explorer.","options":["Ctrl+E","Alt+E","Windows+E"],"question":"Which Windows shortcut opens File Explorer?"},{"answer":0,"explanation":"Confirming the item and location helps prevent mistakes.","options":["Confirm its name and location","Rename every file","Empty the Recycle Bin"],"question":"What is the safest first step before moving or deleting a file?"},{"answer":1,"explanation":"Alt+Tab switches among open applications.","options":["Ctrl+Tab","Alt+Tab","Windows+R"],"question":"Which shortcut switches among open applications?"},{"answer":2,"explanation":"Clear folders and filenames make work easier to find.","options":["Only in Downloads","In the Recycle Bin","In clearly named folders"],"question":"Where should related work files be kept?"},{"answer":1,"explanation":"Verify downloads before opening or installing them.","options":["Disable security warnings","Verify the source, filename, and extension","Open every attachment"],"question":"What should you do before installing a download?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Windows 11","displayName":"Windows 11","slug":"windows","passPercent":85,"questions":[{"lesson":1,"question":"You want to open Calculator when it is not already running. Which sequence fits?","options":["Press Alt+Tab until Calculator appears in the switcher","Press Windows+T and type Calculator into the taskbar","Open Start, type Calculator, and open the matching app","Press Windows+D and type Calculator into the desktop"],"answer":2,"explanation":"Start search can launch an app. Alt+Tab switches among apps that are already open."},{"lesson":1,"question":"You pressed Windows+T, but expected to browse desktop shortcuts. What should you change?","options":["Use Windows+I, then navigate the desktop items","Use Windows+E, then navigate the taskbar buttons","Use Alt+Tab, then navigate the desktop items","Use Windows+D, then navigate the desktop items"],"answer":3,"explanation":"Windows+T focuses taskbar buttons; Windows+D displays the desktop. Identify the area before navigating its items."},{"lesson":2,"question":"A second virtual desktop is active. You want to return to the first without closing either. Which command fits?","options":["Windows+Ctrl+D","Windows+Left Arrow","Windows+Ctrl+Left Arrow","Windows+Ctrl+F4"],"answer":2,"explanation":"The Ctrl+Windows arrow shortcuts switch desktops. The other commands close a desktop, snap a window, or create a desktop."},{"lesson":2,"question":"You need Notepad and File Explorer side by side. Which approach changes their placement?","options":["Create a new virtual desktop for each application","Open Task View and select Notepad twice","Press Alt+Tab twice while both applications are open","Activate each window and use Windows+Left or Right Arrow"],"answer":3,"explanation":"Snap positions the active window. Switching windows or separating them across desktops does not place them side by side."},{"lesson":3,"question":"You reached a folder through search and need its parent folder, not the previous search results. Which command fits?","options":["Alt+Right Arrow","Alt+Up Arrow","Alt+Left Arrow","Ctrl+L followed by Escape"],"answer":1,"explanation":"Up follows the folder hierarchy; Back and Forward follow navigation history, which may lead somewhere else."},{"lesson":3,"question":"File Explorer announces toolbar controls, but you want to inspect the current folder path. What should you do?","options":["Press Ctrl+L and read the address bar","Press Alt+Enter and read the selected item's properties","Press Ctrl+F and read the search field","Press Windows+T and read the selected button"],"answer":0,"explanation":"The address bar identifies the current location. Search, taskbar focus, and item properties serve different purposes."},{"lesson":4,"question":"A document must remain in Incoming while a second copy goes to Archive. Which sequence meets both requirements?","options":["Copy the selected file, open Archive, and paste","Move the file to Archive, then make a copy there","Rename the selected file with Archive in its name","Cut the selected file, open Archive, and paste"],"answer":0,"explanation":"Copy preserves the source file. Cut and paste moves it, while renaming does not create the required second copy."},{"lesson":4,"question":"Pasting a practice file produces an unexpected replace-existing-file prompt. What is the best next step?","options":["Choose Skip and report that the move succeeded","Choose Replace because the names already match","Rename the destination before checking its contents","Cancel and compare the source and destination files"],"answer":3,"explanation":"A matching name does not establish which version is needed. Canceling preserves both versions while you investigate."},{"lesson":5,"question":"You remember part of a filename but not where it appears in the current folder. Which action narrows the results?","options":["Sort the folder by Date modified","Change the folder from Details to List view","Select all items and open Properties","Search the folder for the remembered text"],"answer":3,"explanation":"Search narrows items by a query. Sorting and changing views rearrange or display the same collection."},{"lesson":5,"question":"You selected several practice files, then decide to delete only one. What should you verify immediately before Delete?","options":["That File Explorer is maximized","That only the intended file remains selected","That the folder is sorted alphabetically","That the selected file is the first item"],"answer":1,"explanation":"Delete acts on the selection, which can include multiple files. The sort order or window size does not make it a single-file action."},{"lesson":6,"question":"A learner wants larger text but does not want to magnify the whole screen. Which setting should you evaluate first?","options":["Text size in Accessibility","Magnifier's zoom level","The keyboard repeat delay","The system audio output"],"answer":0,"explanation":"Text size targets text enlargement; Magnifier enlarges a region or view. Choose the feature that addresses the stated need."},{"lesson":6,"question":"You are reviewing accessibility settings on a shared computer. Which method best supports a reversible trial?","options":["Reset all accessibility settings before testing a preference","Apply several related settings and compare the final result","Record the original setting, agree on a change, test, and restore if needed","Copy another learner's settings and leave them as the default"],"answer":2,"explanation":"Changing one agreed setting with a known starting point makes its effect and recovery clear."},{"lesson":7,"question":"Speech became inaudible after connecting a headset, though the volume is up. Which check is most relevant?","options":["Clear the Notification Center","Confirm which audio output is selected","Change the keyboard accessibility options","Increase the screen magnification"],"answer":1,"explanation":"Volume can be adequate while sound is routed to another output. Confirm the intended device before changing unrelated settings."},{"lesson":7,"question":"You need to review a recent system alert, not adjust Wi-Fi or volume. Which panel should you open?","options":["File Explorer with Windows+E","Quick Settings with Windows+A","Notification Center with Windows+N","Settings search with Windows+I"],"answer":2,"explanation":"Notification Center contains recent alerts. Quick Settings is intended for common device and connection controls."},{"lesson":8,"question":"A supposed PDF download is identified as an application in Properties. What should you do?","options":["Rename its extension to .pdf and try opening it","Stop and verify the source and file type before opening","Open it in a different browser to check its contents","Move it to Documents before opening it"],"answer":1,"explanation":"Renaming or moving a file does not change what it is. An unexpected executable requires verification before it runs."},{"lesson":8,"question":"A workplace update requires a restart while you have unsaved work. What is the appropriate plan?","options":["Pause updates indefinitely to avoid interrupting the task","Save the work and coordinate the restart under workplace procedures","Restart first because open files will always be restored","Uninstall the update to remove the restart request"],"answer":1,"explanation":"Save first and follow the approved update process. A restart can interrupt work, and update history does not justify removal."},{"lesson":9,"question":"One practice application is frozen while other apps respond. Which troubleshooting approach is most appropriate?","options":["Save responsive work, identify the affected app, and use approved recovery steps","Change the screen reader settings across all applications","End every process with a similar name in Task Manager","Restart the computer before checking other applications"],"answer":0,"explanation":"Determine the scope and protect work first. Ending unfamiliar processes or changing unrelated settings introduces avoidable problems."},{"lesson":9,"question":"Which support message gives the most useful starting point for troubleshooting?","options":["The app name and a request to reset every setting","The computer brand, desk location, and usual work schedule","The app, attempted task, expected result, actual result, and exact error","The error's approximate meaning and a request for a replacement"],"answer":2,"explanation":"A precise task and observed result help support reproduce the problem. Include recovery steps already tried when available."},{"lesson":10,"question":"After copying Schedule.txt to Archive and moving Weekly-Tasks.txt to Completed, what should you find?","options":["Schedule in both Incoming and Archive; Weekly-Tasks only in Completed","Both files in Incoming and in their destination folders","Schedule only in Archive; Weekly-Tasks in Incoming and Completed","Both files only in Archive, with shortcuts in Completed"],"answer":0,"explanation":"Copy keeps a source; move changes its location. Checking both source and destination verifies the actual outcome."},{"lesson":10,"question":"The final project report lists commands, but you cannot reopen the files it describes. What remains to be demonstrated?","options":["Changing all folders to the same visual layout","Memorizing additional commands from unrelated settings","Renaming the report to include every command used","Locating and verifying the saved files and their contents"],"answer":3,"explanation":"An independent workflow includes finding the finished work. A command list alone does not show that the required files exist and are usable."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

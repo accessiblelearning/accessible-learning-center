@@ -352,18 +352,28 @@ check(accessibilityScript.includes('href="quizzes.html">Quizzes</a>'), "Primary 
 check(existsSync(resolve(root, "quizzes.html")), "Quizzes page is missing.");
 check((readFileSync(resolve(root, "quizzes.html"), "utf8").match(/-quiz\.html/g) || []).length === 30, "Quizzes page must link all 30 final quizzes.");
 const quizFiles = htmlFiles.filter(file => file.endsWith("-quiz.html"));
-const answerPositionTotals = [0, 0, 0];
+const answerPositionTotals = [0, 0, 0, 0];
 for (const file of quizFiles) {
   const quizHtml = readFileSync(resolve(root, file), "utf8");
   const quizDataMatch = quizHtml.match(/<script id="quizData" type="application\/json">([\s\S]*?)<\/script>/);
   check(Boolean(quizDataMatch), file + " is missing quiz data.");
   if (!quizDataMatch) continue;
   const quizData = JSON.parse(quizDataMatch[1]);
-  const expectedQuestions = ["thunderbird", "firefox", "zoomtext-fusion", "bookshare", "learning-ally"].includes(quizData.slug) ? 10 : 5;
-  check(quizData.questions.length === expectedQuestions, file + " has the wrong question count.");
+  check(quizData.questions.length === 20, file + " must have 20 questions.");
+  check(quizData.passPercent === 85, file + " must require 85 percent.");
+  check(Boolean(quizData.assessmentVersion), file + " must identify its assessment version.");
+  for (let lesson = 1; lesson <= 10; lesson += 1) {
+    check(quizData.questions.filter(question => question.lesson === lesson).length === 2,
+      file + " must cover Lesson " + lesson + " with two questions.");
+  }
+  for (const question of quizData.questions) {
+    check(question.options.length === 4 && new Set(question.options).size === 4,
+      file + " must have four distinct choices per question.");
+    check(Boolean(question.explanation?.trim()), file + " is missing an explanation.");
+  }
   const answerPositions = quizData.questions.map(question => question.answer);
-  check(new Set(answerPositions).size === 3, file + " must use all three correct-answer positions.");
-  check(answerPositions.every(position => Number.isInteger(position) && position >= 0 && position <= 2), file + " contains an invalid answer position.");
+  check(new Set(answerPositions).size === 4, file + " must use all four correct-answer positions.");
+  check(answerPositions.every(position => Number.isInteger(position) && position >= 0 && position <= 3), file + " contains an invalid answer position.");
   for (const position of answerPositions) answerPositionTotals[position] += 1;
   check(quizHtml.includes("Question and answer order changes each time."), file + " is missing the randomized-order instruction.");
 }

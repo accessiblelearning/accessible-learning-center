@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Mantis Q40.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Mantis Q40. Score 85 percent to earn a course-completion certificate.">
   <title>Mantis Q40 Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Mantis Q40 Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Mantis Q40 quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. What distinguishes the Mantis Q40?</legend>
-          <label><input type="radio" name="question-0" value="0"> A QWERTY keyboard with a refreshable Braille display</label>
-          <label><input type="radio" name="question-0" value="1"> A touchscreen only</label>
-          <label><input type="radio" name="question-0" value="2"> A printer with no display</label>
+          <legend>1. You are orienting to a Mantis Q40. Which distinction is important for planning text entry?</legend>
+          <label><input type="radio" name="question-0" value="0"> It can display text but cannot accept any keyboard input</label>
+          <label><input type="radio" name="question-0" value="1"> Its keyboard operates only as a row of cursor routers</label>
+          <label><input type="radio" name="question-0" value="2"> It combines a QWERTY keyboard with a refreshable braille display</label>
+          <label><input type="radio" name="question-0" value="3"> Every text-entry command must use Perkins-style braille chords</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What is Terminal Mode used for?</legend>
-          <label><input type="radio" name="question-1" value="0"> Printing ink pages</label>
-          <label><input type="radio" name="question-1" value="1"> Connecting to a computer or mobile device as a Braille display</label>
-          <label><input type="radio" name="question-1" value="2"> Deleting firmware</label>
+          <legend>2. You are unsure whether the device is in its own menu or controlling the computer. What should you identify?</legend>
+          <label><input type="radio" name="question-1" value="0"> Only the host computer&#x27;s volume</label>
+          <label><input type="radio" name="question-1" value="1"> Only whether forty cells are present</label>
+          <label><input type="radio" name="question-1" value="2"> Only the last file&#x27;s extension</label>
+          <label><input type="radio" name="question-1" value="3"> The current mode and the status or menu being shown</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What should happen before transferring files by USB?</legend>
-          <label><input type="radio" name="question-2" value="0"> Confirm the storage mode, filenames, and safe-eject process</label>
-          <label><input type="radio" name="question-2" value="1"> Unplug during writing</label>
-          <label><input type="radio" name="question-2" value="2"> Rename every folder</label>
+          <legend>3. A Bluetooth list includes multiple similar device names. What should happen before pairing?</legend>
+          <label><input type="radio" name="question-2" value="0"> Select the first match and correct it later if necessary</label>
+          <label><input type="radio" name="question-2" value="1"> Confirm the intended Mantis and host identities</label>
+          <label><input type="radio" name="question-2" value="2"> Remove every other learner&#x27;s device from the list</label>
+          <label><input type="radio" name="question-2" value="3"> Use a pairing code copied from another device</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. Why use cursor routing?</legend>
-          <label><input type="radio" name="question-3" value="0"> To change Wi-Fi password</label>
-          <label><input type="radio" name="question-3" value="1"> To move directly to a text position</label>
-          <label><input type="radio" name="question-3" value="2"> To start charging</label>
+          <legend>4. The cable is attached, but the computer is not receiving Mantis input. Which additional state matters?</legend>
+          <label><input type="radio" name="question-3" value="0"> Only the host&#x27;s print settings</label>
+          <label><input type="radio" name="question-3" value="1"> Only the local editor&#x27;s document title</label>
+          <label><input type="radio" name="question-3" value="2"> The selected connection and Terminal mode</label>
+          <label><input type="radio" name="question-3" value="3"> Only the case&#x27;s physical position on the desk</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. What is the safest update source?</legend>
-          <label><input type="radio" name="question-4" value="0"> An unknown attachment</label>
-          <label><input type="radio" name="question-4" value="1"> A social-media comment</label>
-          <label><input type="radio" name="question-4" value="2"> Official APH or device documentation</label>
+          <legend>5. You want Mantis to provide braille and keyboard input for JAWS on Windows. Which workflow fits?</legend>
+          <label><input type="radio" name="question-4" value="0"> Rename a local file to the computer&#x27;s name</label>
+          <label><input type="radio" name="question-4" value="1"> Open a local book without configuring the host display</label>
+          <label><input type="radio" name="question-4" value="2"> Open only the local Editor and assume JAWS receives every key</label>
+          <label><input type="radio" name="question-4" value="3"> Start JAWS, connect, choose Terminal mode, and verify the active display</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. Terminal mode is active and JAWS is configured. Which check best verifies useful operation?</legend>
+          <label><input type="radio" name="question-5" value="0"> Read known computer text, type a practice sentence, and test routing or panning</label>
+          <label><input type="radio" name="question-5" value="1"> Check only that the device name appears in a saved pairing list</label>
+          <label><input type="radio" name="question-5" value="2"> Check only that a local TXT file exists</label>
+          <label><input type="radio" name="question-5" value="3"> Check only that the computer can play audio</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. You need to read the next segment of text, not move an editing cursor to a specific character. Which action fits?</legend>
+          <label><input type="radio" name="question-6" value="0"> Switch to another Bluetooth host</label>
+          <label><input type="radio" name="question-6" value="1"> Pan using the documented thumb-key controls</label>
+          <label><input type="radio" name="question-6" value="2"> Route the cursor to a random displayed cell</label>
+          <label><input type="radio" name="question-6" value="3"> Open the local Save As dialog</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. A heading-navigation command changes when you use another screen reader. What should you conclude?</legend>
+          <label><input type="radio" name="question-7" value="0"> All screen readers are required to use identical commands</label>
+          <label><input type="radio" name="question-7" value="1"> Some navigation depends on the active screen reader, so consult its mapping</label>
+          <label><input type="radio" name="question-7" value="2"> The Mantis must have suffered a hardware failure</label>
+          <label><input type="radio" name="question-7" value="3"> Changing the local filename will restore the old command</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. You want a note saved in the Mantis local Editor. What should you verify after saving?</legend>
+          <label><input type="radio" name="question-8" value="0"> The local filename and location, then the contents after reopening</label>
+          <label><input type="radio" name="question-8" value="1"> Only that the braille cells displayed the last sentence</label>
+          <label><input type="radio" name="question-8" value="2"> Only that the host computer has an open Word window</label>
+          <label><input type="radio" name="question-8" value="3"> Only that the keyboard produced audible feedback</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. Two local TXT files have similar names. What should you do before deleting an unwanted copy?</legend>
+          <label><input type="radio" name="question-9" value="0"> Assume the shorter filename is the older version</label>
+          <label><input type="radio" name="question-9" value="1"> Open or inspect the intended file and confirm its saved location</label>
+          <label><input type="radio" name="question-9" value="2"> Rename both identically to simplify the choice</label>
+          <label><input type="radio" name="question-9" value="3"> Delete whichever appears first in the menu</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. You want to replace one phrase in the local note. What should be confirmed before typing the replacement?</legend>
+          <label><input type="radio" name="question-10" value="0"> Only that another device is paired</label>
+          <label><input type="radio" name="question-10" value="1"> Only the total length of the note</label>
+          <label><input type="radio" name="question-10" value="2"> The routed cursor and exact selected text</label>
+          <label><input type="radio" name="question-10" value="3"> Only that the file ends in .txt</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. An intentional practice edit removed the wrong text. What should you do first when Undo is available?</legend>
+          <label><input type="radio" name="question-11" value="0"> Save over the only copy and continue without review</label>
+          <label><input type="radio" name="question-11" value="1"> Undo and verify the restored content before retrying</label>
+          <label><input type="radio" name="question-11" value="2"> Copy another unrelated paragraph over the missing text</label>
+          <label><input type="radio" name="question-11" value="3"> Change the file&#x27;s name to corrected</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. You are testing a reversible display setting on a shared Mantis. Which method gives useful evidence?</legend>
+          <label><input type="radio" name="question-12" value="0"> Record the original value, change one setting, test, and restore it</label>
+          <label><input type="radio" name="question-12" value="1"> Leave the changed setting without recording it</label>
+          <label><input type="radio" name="question-12" value="2"> Use factory reset as the default way to finish practice</label>
+          <label><input type="radio" name="question-12" value="3"> Change several unrelated settings at once</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. An unfamiliar menu contains reset and firmware actions. What should ordinary settings practice do?</legend>
+          <label><input type="radio" name="question-13" value="0"> Try reset once as part of ordinary exploration because settings menus contain reversible choices</label>
+          <label><input type="radio" name="question-13" value="1"> Start an update to see which version it offers before checking the current device state</label>
+          <label><input type="radio" name="question-13" value="2"> Use a factory reset to undo a changed preference before looking for that preference itself</label>
+          <label><input type="radio" name="question-13" value="3"> Use documented guidance before reset or firmware work</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. You copy a practice file from the Mantis to USB storage. What demonstrates a successful transfer?</legend>
+          <label><input type="radio" name="question-14" value="0"> The intended file opens from the destination and matches the source</label>
+          <label><input type="radio" name="question-14" value="1"> The source file still appears in its original folder</label>
+          <label><input type="radio" name="question-14" value="2"> The USB device&#x27;s name appeared once during connection</label>
+          <label><input type="radio" name="question-14" value="3"> The file manager closed without an error</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. The exercise asks you to copy, not move, the original file. What should remain afterward?</legend>
+          <label><input type="radio" name="question-15" value="0"> Only the destination file, with the source removed</label>
+          <label><input type="radio" name="question-15" value="1"> Only the source file and an empty destination folder</label>
+          <label><input type="radio" name="question-15" value="2"> Two filenames pointing to a file whose location is unknown</label>
+          <label><input type="radio" name="question-15" value="3"> A verified destination copy and the unchanged source file</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. Braille output stops during terminal use. Which checks should precede a reset?</legend>
+          <label><input type="radio" name="question-16" value="0"> The local file&#x27;s paragraph spacing and page margins</label>
+          <label><input type="radio" name="question-16" value="1"> The host&#x27;s printer selection and paper size</label>
+          <label><input type="radio" name="question-16" value="2"> Power, battery, cable, connection mode, and host display configuration</label>
+          <label><input type="radio" name="question-16" value="3"> The number of stored books and their title lengths</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. An update is proposed, but you do not know the installed software version. What should happen first?</legend>
+          <label><input type="radio" name="question-17" value="0"> Confirm model and version; use matching instructions</label>
+          <label><input type="radio" name="question-17" value="1"> Install first and identify the version afterward if the display appears to work</label>
+          <label><input type="radio" name="question-17" value="2"> Choose the newest-looking update file and use its date as evidence that it applies</label>
+          <label><input type="radio" name="question-17" value="3"> Follow an update guide for another braille device with the same number of cells</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. You edited a computer document and wrote a separate local summary. Which distinction matters for submission?</legend>
+          <label><input type="radio" name="question-18" value="0"> Submit the host document and assume the locally written summary is automatically included</label>
+          <label><input type="radio" name="question-18" value="1"> Choose the most recently edited filename without checking which device stores that version</label>
+          <label><input type="radio" name="question-18" value="2"> Locate the host and local files before transferring</label>
+          <label><input type="radio" name="question-18" value="3"> Treat the connected device as a single shared folder containing both the local and computer files</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which result demonstrates the full final Mantis task?</legend>
+          <label><input type="radio" name="question-19" value="0"> Copy a file with the expected name and disconnect before checking its destination contents</label>
+          <label><input type="radio" name="question-19" value="1"> Finish editing the computer document and assume the local summary was saved alongside it</label>
+          <label><input type="radio" name="question-19" value="2"> Pair successfully and list the commands needed, without producing the requested saved work</label>
+          <label><input type="radio" name="question-19" value="3"> Correct the work, save, verify transfer, and disconnect</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Mantis Q40","displayName":"Mantis Q40","slug":"mantis","passPercent":80,"questions":[{"answer":0,"explanation":"The Mantis combines QWERTY input and Braille output.","options":["A QWERTY keyboard with a refreshable Braille display","A touchscreen only","A printer with no display"],"question":"What distinguishes the Mantis Q40?"},{"answer":1,"explanation":"Terminal Mode provides connected-device access.","options":["Printing ink pages","Connecting to a computer or mobile device as a Braille display","Deleting firmware"],"question":"What is Terminal Mode used for?"},{"answer":0,"explanation":"Safe transfer prevents corruption.","options":["Confirm the storage mode, filenames, and safe-eject process","Unplug during writing","Rename every folder"],"question":"What should happen before transferring files by USB?"},{"answer":1,"explanation":"Routing connects a Braille cell to the editing cursor.","options":["To change Wi-Fi password","To move directly to a text position","To start charging"],"question":"Why use cursor routing?"},{"answer":2,"explanation":"Use official update instructions and files.","options":["An unknown attachment","A social-media comment","Official APH or device documentation"],"question":"What is the safest update source?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Mantis Q40","displayName":"Mantis Q40","slug":"mantis","passPercent":85,"questions":[{"lesson":1,"question":"You are orienting to a Mantis Q40. Which distinction is important for planning text entry?","options":["It can display text but cannot accept any keyboard input","Its keyboard operates only as a row of cursor routers","It combines a QWERTY keyboard with a refreshable braille display","Every text-entry command must use Perkins-style braille chords"],"answer":2,"explanation":"Identify the actual input hardware. The Mantis keyboard and braille reading controls have different roles."},{"lesson":1,"question":"You are unsure whether the device is in its own menu or controlling the computer. What should you identify?","options":["Only the host computer's volume","Only whether forty cells are present","Only the last file's extension","The current mode and the status or menu being shown"],"answer":3,"explanation":"The current mode determines which system receives input and which commands are appropriate."},{"lesson":2,"question":"A Bluetooth list includes multiple similar device names. What should happen before pairing?","options":["Select the first match and correct it later if necessary","Confirm the intended Mantis and host identities","Remove every other learner's device from the list","Use a pairing code copied from another device"],"answer":1,"explanation":"A connection must be established with the correct device and host. Do not disrupt unrelated pairings."},{"lesson":2,"question":"The cable is attached, but the computer is not receiving Mantis input. Which additional state matters?","options":["Only the host's print settings","Only the local editor's document title","The selected connection and Terminal mode","Only the case's physical position on the desk"],"answer":2,"explanation":"A physical cable is one part of the setup. The intended connection and terminal state must also be active."},{"lesson":3,"question":"You want Mantis to provide braille and keyboard input for JAWS on Windows. Which workflow fits?","options":["Rename a local file to the computer's name","Open a local book without configuring the host display","Open only the local Editor and assume JAWS receives every key","Start JAWS, connect, choose Terminal mode, and verify the active display"],"answer":3,"explanation":"Terminal operation links the device with the host screen reader. Local apps have a different role."},{"lesson":3,"question":"Terminal mode is active and JAWS is configured. Which check best verifies useful operation?","options":["Read known computer text, type a practice sentence, and test routing or panning","Check only that the device name appears in a saved pairing list","Check only that a local TXT file exists","Check only that the computer can play audio"],"answer":0,"explanation":"Actual input and braille output verify the working path, rather than merely a remembered configuration."},{"lesson":4,"question":"You need to read the next segment of text, not move an editing cursor to a specific character. Which action fits?","options":["Switch to another Bluetooth host","Pan using the documented thumb-key controls","Route the cursor to a random displayed cell","Open the local Save As dialog"],"answer":1,"explanation":"Panning advances the braille view. Cursor routing and connection changes serve other purposes."},{"lesson":4,"question":"A heading-navigation command changes when you use another screen reader. What should you conclude?","options":["All screen readers are required to use identical commands","Some navigation depends on the active screen reader, so consult its mapping","The Mantis must have suffered a hardware failure","Changing the local filename will restore the old command"],"answer":1,"explanation":"Device controls and host-screen-reader commands interact. Record which part of the setup defines the behavior."},{"lesson":5,"question":"You want a note saved in the Mantis local Editor. What should you verify after saving?","options":["The local filename and location, then the contents after reopening","Only that the braille cells displayed the last sentence","Only that the host computer has an open Word window","Only that the keyboard produced audible feedback"],"answer":0,"explanation":"Local editing has its own storage workflow. Reopen the saved local file to verify persistence."},{"lesson":5,"question":"Two local TXT files have similar names. What should you do before deleting an unwanted copy?","options":["Assume the shorter filename is the older version","Open or inspect the intended file and confirm its saved location","Rename both identically to simplify the choice","Delete whichever appears first in the menu"],"answer":1,"explanation":"Names alone may be ambiguous. Confirm the actual file before a destructive action."},{"lesson":6,"question":"You want to replace one phrase in the local note. What should be confirmed before typing the replacement?","options":["Only that another device is paired","Only the total length of the note","The routed cursor and exact selected text","Only that the file ends in .txt"],"answer":2,"explanation":"Typing can replace a selection. Verify the target and scope so unrelated text is preserved."},{"lesson":6,"question":"An intentional practice edit removed the wrong text. What should you do first when Undo is available?","options":["Save over the only copy and continue without review","Undo and verify the restored content before retrying","Copy another unrelated paragraph over the missing text","Change the file's name to corrected"],"answer":1,"explanation":"Undo is a targeted recovery action, but its result must be checked before continuing."},{"lesson":7,"question":"You are testing a reversible display setting on a shared Mantis. Which method gives useful evidence?","options":["Record the original value, change one setting, test, and restore it","Leave the changed setting without recording it","Use factory reset as the default way to finish practice","Change several unrelated settings at once"],"answer":0,"explanation":"One controlled change makes its effect understandable and recovery straightforward."},{"lesson":7,"question":"An unfamiliar menu contains reset and firmware actions. What should ordinary settings practice do?","options":["Try reset once as part of ordinary exploration because settings menus contain reversible choices","Start an update to see which version it offers before checking the current device state","Use a factory reset to undo a changed preference before looking for that preference itself","Use documented guidance before reset or firmware work"],"answer":3,"explanation":"Some actions have much wider effects than a normal preference. Match the action to the authorized task."},{"lesson":8,"question":"You copy a practice file from the Mantis to USB storage. What demonstrates a successful transfer?","options":["The intended file opens from the destination and matches the source","The source file still appears in its original folder","The USB device's name appeared once during connection","The file manager closed without an error"],"answer":0,"explanation":"Destination verification shows that the copy exists and is usable. Source visibility alone does not."},{"lesson":8,"question":"The exercise asks you to copy, not move, the original file. What should remain afterward?","options":["Only the destination file, with the source removed","Only the source file and an empty destination folder","Two filenames pointing to a file whose location is unknown","A verified destination copy and the unchanged source file"],"answer":3,"explanation":"Copy preserves the source while creating a second file. Verify both sides before disconnecting storage."},{"lesson":9,"question":"Braille output stops during terminal use. Which checks should precede a reset?","options":["The local file's paragraph spacing and page margins","The host's printer selection and paper size","Power, battery, cable, connection mode, and host display configuration","The number of stored books and their title lengths"],"answer":2,"explanation":"Start with the conditions involved in the connection. Unrelated document settings do not diagnose the terminal path."},{"lesson":9,"question":"An update is proposed, but you do not know the installed software version. What should happen first?","options":["Confirm model and version; use matching instructions","Install first and identify the version afterward if the display appears to work","Choose the newest-looking update file and use its date as evidence that it applies","Follow an update guide for another braille device with the same number of cells"],"answer":0,"explanation":"Updates require the correct device, version, and process. Preserve stable power and follow the official guidance."},{"lesson":10,"question":"You edited a computer document and wrote a separate local summary. Which distinction matters for submission?","options":["Submit the host document and assume the locally written summary is automatically included","Choose the most recently edited filename without checking which device stores that version","Locate the host and local files before transferring","Treat the connected device as a single shared folder containing both the local and computer files"],"answer":2,"explanation":"The final workflow spans host and device storage. Verify locations and deliver the specified original summary."},{"lesson":10,"question":"Which result demonstrates the full final Mantis task?","options":["Copy a file with the expected name and disconnect before checking its destination contents","Finish editing the computer document and assume the local summary was saved alongside it","Pair successfully and list the commands needed, without producing the requested saved work","Correct the work, save, verify transfer, and disconnect"],"answer":3,"explanation":"Completion includes the actual reading, editing, saving, and transfer outcomes, not connection alone."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Microsoft Word.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Microsoft Word. Score 85 percent to earn a course-completion certificate.">
   <title>Microsoft Word Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Microsoft Word Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Microsoft Word quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. Which feature creates navigable document structure?</legend>
-          <label><input type="radio" name="question-0" value="0"> Bold text alone</label>
-          <label><input type="radio" name="question-0" value="1"> Heading styles</label>
-          <label><input type="radio" name="question-0" value="2"> Extra blank lines</label>
+          <legend>1. Word is open on an existing document. You need a separate blank document. Which command fits?</legend>
+          <label><input type="radio" name="question-0" value="0"> Ctrl+W</label>
+          <label><input type="radio" name="question-0" value="1"> Ctrl+O</label>
+          <label><input type="radio" name="question-0" value="2"> Ctrl+N</label>
+          <label><input type="radio" name="question-0" value="3"> Ctrl+S</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What should a table include?</legend>
-          <label><input type="radio" name="question-1" value="0"> Clear header cells</label>
-          <label><input type="radio" name="question-1" value="1"> Merged decorative cells everywhere</label>
-          <label><input type="radio" name="question-1" value="2"> Meaning only through color</label>
+          <legend>2. You saved your first document, but only remember its title inside the page. What must you confirm to find it later?</legend>
+          <label><input type="radio" name="question-1" value="0"> The last word spoken before closing Word</label>
+          <label><input type="radio" name="question-1" value="1"> Its title&#x27;s font, size, and alignment</label>
+          <label><input type="radio" name="question-1" value="2"> Its saved filename, folder, and DOCX format</label>
+          <label><input type="radio" name="question-1" value="3"> The number of paragraphs and blank lines</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. Why should link text be descriptive?</legend>
-          <label><input type="radio" name="question-2" value="0"> It makes the link blue</label>
-          <label><input type="radio" name="question-2" value="1"> It prevents saving</label>
-          <label><input type="radio" name="question-2" value="2"> It explains the destination out of context</label>
+          <legend>3. You want to replace one word without removing the surrounding sentence. What should you do?</legend>
+          <label><input type="radio" name="question-2" value="0"> Copy the word, move to the end, and paste its replacement</label>
+          <label><input type="radio" name="question-2" value="1"> Select the paragraph and type only the replacement word</label>
+          <label><input type="radio" name="question-2" value="2"> Move beside the word, type the replacement, and save immediately</label>
+          <label><input type="radio" name="question-2" value="3"> Select just that word, type the replacement, and review the sentence</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What should be added to a meaningful image?</legend>
-          <label><input type="radio" name="question-3" value="0"> Accurate alternative text</label>
-          <label><input type="radio" name="question-3" value="1"> A random filename</label>
-          <label><input type="radio" name="question-3" value="2"> More blank lines</label>
+          <legend>4. You undid an intentional paste and now want that paste restored. Which command fits?</legend>
+          <label><input type="radio" name="question-3" value="0"> Ctrl+X</label>
+          <label><input type="radio" name="question-3" value="1"> Ctrl+Y</label>
+          <label><input type="radio" name="question-3" value="2"> Ctrl+C</label>
+          <label><input type="radio" name="question-3" value="3"> Ctrl+F</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Which tool helps find common document accessibility problems?</legend>
-          <label><input type="radio" name="question-4" value="0"> Calculator</label>
-          <label><input type="radio" name="question-4" value="1"> Accessibility Checker</label>
-          <label><input type="radio" name="question-4" value="2"> Task Manager</label>
+          <legend>5. A word appears four times, but only one occurrence should change. Which approach fits the lesson?</legend>
+          <label><input type="radio" name="question-4" value="0"> Change the search term without activating Replace</label>
+          <label><input type="radio" name="question-4" value="1"> Delete every occurrence and type the replacement once</label>
+          <label><input type="radio" name="question-4" value="2"> Find the intended occurrence and replace that occurrence only</label>
+          <label><input type="radio" name="question-4" value="3"> Use Replace All, then reread only the first paragraph</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You need evidence that your edits survived closing Word. Which check is strongest?</legend>
+          <label><input type="radio" name="question-5" value="0"> Reopen the saved file and read the changed passage</label>
+          <label><input type="radio" name="question-5" value="1"> Confirm that the Save command was pressed once</label>
+          <label><input type="radio" name="question-5" value="2"> Check that the filename still appears in a recent-files list</label>
+          <label><input type="radio" name="question-5" value="3"> Confirm that the document window closed successfully</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. The title should be centered while body paragraphs remain left aligned. Which method fits?</legend>
+          <label><input type="radio" name="question-6" value="0"> Select the entire document and center all text</label>
+          <label><input type="radio" name="question-6" value="1"> Apply alignment to the intended paragraphs and review each one</label>
+          <label><input type="radio" name="question-6" value="2"> Apply bold to the title and assume alignment changes too</label>
+          <label><input type="radio" name="question-6" value="3"> Use spaces before the title until it appears centered</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. Only the phrase increase independence should be italic. What must be checked before applying the command?</legend>
+          <label><input type="radio" name="question-7" value="0"> That exactly that phrase is selected</label>
+          <label><input type="radio" name="question-7" value="1"> That the document is at the end</label>
+          <label><input type="radio" name="question-7" value="2"> That the entire paragraph is selected</label>
+          <label><input type="radio" name="question-7" value="3"> That the paragraph is centered</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A large bold section label is missing from Word&#x27;s heading navigation. What is the most likely correction?</legend>
+          <label><input type="radio" name="question-8" value="0"> Apply the appropriate built-in heading style</label>
+          <label><input type="radio" name="question-8" value="1"> Increase the label&#x27;s font size again</label>
+          <label><input type="radio" name="question-8" value="2"> Add a blank paragraph before the label</label>
+          <label><input type="radio" name="question-8" value="3"> Center the label and underline it</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. Your document has a main Heading 1 and two sibling sections. Which structure matches the lesson?</legend>
+          <label><input type="radio" name="question-9" value="0"> Use Normal for section labels and Heading 2 for body text</label>
+          <label><input type="radio" name="question-9" value="1"> Use Heading 1 for every paragraph in both sections</label>
+          <label><input type="radio" name="question-9" value="2"> Use Heading 2 for one section and Heading 4 for the other</label>
+          <label><input type="radio" name="question-9" value="3"> Use Heading 2 for both sections and Normal for their body text</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. You are writing five steps that must be performed in order. Which structure best conveys that sequence?</legend>
+          <label><input type="radio" name="question-10" value="0"> A true numbered list</label>
+          <label><input type="radio" name="question-10" value="1"> Five paragraphs beginning with typed dashes</label>
+          <label><input type="radio" name="question-10" value="2"> One paragraph with repeated spaces</label>
+          <label><input type="radio" name="question-10" value="3"> A table with no row or column labels</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. Your checklist looks bulleted because you typed a symbol before each line. What should you improve?</legend>
+          <label><input type="radio" name="question-11" value="0"> Make the first symbol bold</label>
+          <label><input type="radio" name="question-11" value="1"> Increase the symbols&#x27; font size</label>
+          <label><input type="radio" name="question-11" value="2"> Indent each line with more spaces</label>
+          <label><input type="radio" name="question-11" value="3"> Use Word&#x27;s actual list formatting for those items</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. A schedule table has bold column names but no designated header row. What remains to be done?</legend>
+          <label><input type="radio" name="question-12" value="0"> Convert the table into an image with the same text</label>
+          <label><input type="radio" name="question-12" value="1"> Set the first row as a header row and verify the structure</label>
+          <label><input type="radio" name="question-12" value="2"> Bold all data cells to match the first row</label>
+          <label><input type="radio" name="question-12" value="3"> Merge the column names into one large title cell</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. A learner has difficulty following the schedule&#x27;s row and column relationships. Which design is most appropriate?</legend>
+          <label><input type="radio" name="question-13" value="0"> A simple table with clear headers and no merged or split cells</label>
+          <label><input type="radio" name="question-13" value="1"> Separate text boxes placed to resemble a table</label>
+          <label><input type="radio" name="question-13" value="2"> A table with merged cells wherever space is limited</label>
+          <label><input type="radio" name="question-13" value="3"> A table whose meaning depends only on background colors</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. Which link text best supports someone reviewing links out of context?</legend>
+          <label><input type="radio" name="question-14" value="0"> Website</label>
+          <label><input type="radio" name="question-14" value="1"> Read more</label>
+          <label><input type="radio" name="question-14" value="2"> Click here</label>
+          <label><input type="radio" name="question-14" value="3"> Microsoft Accessibility support</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. A picture communicates a step that is not explained in the document text. How should it be treated?</legend>
+          <label><input type="radio" name="question-15" value="0"> Use the image&#x27;s filename as its complete description</label>
+          <label><input type="radio" name="question-15" value="1"> Mark it decorative because it improves the layout</label>
+          <label><input type="radio" name="question-15" value="2"> Add alt text that explains its purpose and information</label>
+          <label><input type="radio" name="question-15" value="3"> Leave it undescribed if Accessibility Checker finds no error</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. You turned off Track Changes after making revisions. What is still required to finalize those existing revisions?</legend>
+          <label><input type="radio" name="question-16" value="0"> Delete the document&#x27;s comments to remove the revisions</label>
+          <label><input type="radio" name="question-16" value="1"> Save the file to automatically accept every change</label>
+          <label><input type="radio" name="question-16" value="2"> Close Word to automatically reject every change</label>
+          <label><input type="radio" name="question-16" value="3"> Review and accept or reject the recorded changes</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. You want to ask a reviewer about a phrase without replacing the phrase itself. Which tool fits?</legend>
+          <label><input type="radio" name="question-17" value="0"> Replace All for the selected phrase</label>
+          <label><input type="radio" name="question-17" value="1"> A comment attached to the selected phrase</label>
+          <label><input type="radio" name="question-17" value="2"> A new filename containing the question</label>
+          <label><input type="radio" name="question-17" value="3"> A page-wide alignment change</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Your final document looks organized, but its headings were made only with bold text. Has it met the structural requirement?</legend>
+          <label><input type="radio" name="question-18" value="0"> No; every paragraph must use Heading 1 before submission</label>
+          <label><input type="radio" name="question-18" value="1"> No; apply Heading 1 and Heading 2 styles and verify navigation</label>
+          <label><input type="radio" name="question-18" value="2"> Yes; saving as DOCX converts bold labels into headings</label>
+          <label><input type="radio" name="question-18" value="3"> Yes; bold text is enough whenever the document is one page</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. What is the strongest final review before submitting the Word project?</legend>
+          <label><input type="radio" name="question-19" value="0"> Inspect the document visually and assume all headings, lists, and headers have semantic structure</label>
+          <label><input type="radio" name="question-19" value="1"> Run spelling and grammar review, treating a clean result as proof that the structure is accessible</label>
+          <label><input type="radio" name="question-19" value="2"> Verify content, structure, accessibility, and saved output</label>
+          <label><input type="radio" name="question-19" value="3"> Export to PDF and treat successful conversion as evidence the original meets every requirement</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Microsoft Word","displayName":"Microsoft Word","slug":"word","passPercent":80,"questions":[{"answer":1,"explanation":"Built-in heading styles provide real structure.","options":["Bold text alone","Heading styles","Extra blank lines"],"question":"Which feature creates navigable document structure?"},{"answer":0,"explanation":"Headers help readers understand table relationships.","options":["Clear header cells","Merged decorative cells everywhere","Meaning only through color"],"question":"What should a table include?"},{"answer":2,"explanation":"Screen-reader users may review links as a list.","options":["It makes the link blue","It prevents saving","It explains the destination out of context"],"question":"Why should link text be descriptive?"},{"answer":0,"explanation":"Alternative text communicates the image's purpose.","options":["Accurate alternative text","A random filename","More blank lines"],"question":"What should be added to a meaningful image?"},{"answer":1,"explanation":"The Accessibility Checker identifies many common issues.","options":["Calculator","Accessibility Checker","Task Manager"],"question":"Which tool helps find common document accessibility problems?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Microsoft Word","displayName":"Microsoft Word","slug":"word","passPercent":85,"questions":[{"lesson":1,"question":"Word is open on an existing document. You need a separate blank document. Which command fits?","options":["Ctrl+W","Ctrl+O","Ctrl+N","Ctrl+S"],"answer":2,"explanation":"Ctrl+N creates a new document. Open, Save, and Close act on different parts of the document workflow."},{"lesson":1,"question":"You saved your first document, but only remember its title inside the page. What must you confirm to find it later?","options":["The last word spoken before closing Word","Its title's font, size, and alignment","Its saved filename, folder, and DOCX format","The number of paragraphs and blank lines"],"answer":2,"explanation":"Document content is not the same as its file identity. Verify the actual filename, location, and format when saving."},{"lesson":2,"question":"You want to replace one word without removing the surrounding sentence. What should you do?","options":["Copy the word, move to the end, and paste its replacement","Select the paragraph and type only the replacement word","Move beside the word, type the replacement, and save immediately","Select just that word, type the replacement, and review the sentence"],"answer":3,"explanation":"Typing replaces a selection. Selecting exactly the intended word prevents extra text from being removed or retained."},{"lesson":2,"question":"You undid an intentional paste and now want that paste restored. Which command fits?","options":["Ctrl+X","Ctrl+Y","Ctrl+C","Ctrl+F"],"answer":1,"explanation":"Redo restores an undone action when available. Cut, Copy, and Find do not redo the paste."},{"lesson":3,"question":"A word appears four times, but only one occurrence should change. Which approach fits the lesson?","options":["Change the search term without activating Replace","Delete every occurrence and type the replacement once","Find the intended occurrence and replace that occurrence only","Use Replace All, then reread only the first paragraph"],"answer":2,"explanation":"Replace All affects every match. A single targeted replacement preserves the other intended occurrences."},{"lesson":3,"question":"You need evidence that your edits survived closing Word. Which check is strongest?","options":["Reopen the saved file and read the changed passage","Confirm that the Save command was pressed once","Check that the filename still appears in a recent-files list","Confirm that the document window closed successfully"],"answer":0,"explanation":"Reopening and reviewing the contents verifies persistence. A recent-files entry or closed window does not prove the edits were saved."},{"lesson":4,"question":"The title should be centered while body paragraphs remain left aligned. Which method fits?","options":["Select the entire document and center all text","Apply alignment to the intended paragraphs and review each one","Apply bold to the title and assume alignment changes too","Use spaces before the title until it appears centered"],"answer":1,"explanation":"Paragraph alignment is separate from character emphasis. Apply it to the correct scope rather than using spaces or formatting the whole document."},{"lesson":4,"question":"Only the phrase increase independence should be italic. What must be checked before applying the command?","options":["That exactly that phrase is selected","That the document is at the end","That the entire paragraph is selected","That the paragraph is centered"],"answer":0,"explanation":"Character formatting affects the selection or subsequent typing. Confirm the intended phrase rather than formatting extra content."},{"lesson":5,"question":"A large bold section label is missing from Word's heading navigation. What is the most likely correction?","options":["Apply the appropriate built-in heading style","Increase the label's font size again","Add a blank paragraph before the label","Center the label and underline it"],"answer":0,"explanation":"Visual emphasis does not create a structural heading. Heading styles expose the document hierarchy to navigation tools."},{"lesson":5,"question":"Your document has a main Heading 1 and two sibling sections. Which structure matches the lesson?","options":["Use Normal for section labels and Heading 2 for body text","Use Heading 1 for every paragraph in both sections","Use Heading 2 for one section and Heading 4 for the other","Use Heading 2 for both sections and Normal for their body text"],"answer":3,"explanation":"Sibling sections belong at the same heading level. Body text should not be included in heading navigation."},{"lesson":6,"question":"You are writing five steps that must be performed in order. Which structure best conveys that sequence?","options":["A true numbered list","Five paragraphs beginning with typed dashes","One paragraph with repeated spaces","A table with no row or column labels"],"answer":0,"explanation":"A numbered list communicates an ordered process and exposes list structure to assistive technology."},{"lesson":6,"question":"Your checklist looks bulleted because you typed a symbol before each line. What should you improve?","options":["Make the first symbol bold","Increase the symbols' font size","Indent each line with more spaces","Use Word's actual list formatting for those items"],"answer":3,"explanation":"Typed symbols may look like bullets without creating an actual list. Use list formatting for recognizable item structure."},{"lesson":7,"question":"A schedule table has bold column names but no designated header row. What remains to be done?","options":["Convert the table into an image with the same text","Set the first row as a header row and verify the structure","Bold all data cells to match the first row","Merge the column names into one large title cell"],"answer":1,"explanation":"Bold appearance alone does not identify table headers. Preserve clear column relationships and verify the header setting."},{"lesson":7,"question":"A learner has difficulty following the schedule's row and column relationships. Which design is most appropriate?","options":["A simple table with clear headers and no merged or split cells","Separate text boxes placed to resemble a table","A table with merged cells wherever space is limited","A table whose meaning depends only on background colors"],"answer":0,"explanation":"Simple structure and explicit headers help preserve relationships during keyboard and screen-reader navigation."},{"lesson":8,"question":"Which link text best supports someone reviewing links out of context?","options":["Website","Read more","Click here","Microsoft Accessibility support"],"answer":3,"explanation":"Descriptive text identifies the destination even outside the surrounding paragraph. Generic phrases do not."},{"lesson":8,"question":"A picture communicates a step that is not explained in the document text. How should it be treated?","options":["Use the image's filename as its complete description","Mark it decorative because it improves the layout","Add alt text that explains its purpose and information","Leave it undescribed if Accessibility Checker finds no error"],"answer":2,"explanation":"An informative image needs an equivalent description. Automated checks cannot determine that every meaningful detail is adequately conveyed."},{"lesson":9,"question":"You turned off Track Changes after making revisions. What is still required to finalize those existing revisions?","options":["Delete the document's comments to remove the revisions","Save the file to automatically accept every change","Close Word to automatically reject every change","Review and accept or reject the recorded changes"],"answer":3,"explanation":"Turning tracking off stops recording new changes; it does not resolve changes already recorded."},{"lesson":9,"question":"You want to ask a reviewer about a phrase without replacing the phrase itself. Which tool fits?","options":["Replace All for the selected phrase","A comment attached to the selected phrase","A new filename containing the question","A page-wide alignment change"],"answer":1,"explanation":"Comments attach feedback to content while preserving the text. They serve a different purpose from directly editing it."},{"lesson":10,"question":"Your final document looks organized, but its headings were made only with bold text. Has it met the structural requirement?","options":["No; every paragraph must use Heading 1 before submission","No; apply Heading 1 and Heading 2 styles and verify navigation","Yes; saving as DOCX converts bold labels into headings","Yes; bold text is enough whenever the document is one page"],"answer":1,"explanation":"The project requires actual heading structure. Appearance and file format alone do not establish it."},{"lesson":10,"question":"What is the strongest final review before submitting the Word project?","options":["Inspect the document visually and assume all headings, lists, and headers have semantic structure","Run spelling and grammar review, treating a clean result as proof that the structure is accessible","Verify content, structure, accessibility, and saved output","Export to PDF and treat successful conversion as evidence the original meets every requirement"],"answer":2,"explanation":"The final task combines multiple skills. Automated checks and export are useful but do not replace reviewing the requirements and saved result."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for BrailleBlaster.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of BrailleBlaster. Score 85 percent to earn a course-completion certificate.">
   <title>BrailleBlaster Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>BrailleBlaster Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="BrailleBlaster quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. Which file type preserves a BrailleBlaster project for editing?</legend>
-          <label><input type="radio" name="question-0" value="0"> BBZ</label>
-          <label><input type="radio" name="question-0" value="1"> JPG</label>
-          <label><input type="radio" name="question-0" value="2"> MP3</label>
+          <legend>1. You need to preserve an editable BrailleBlaster working project. Which file serves that role?</legend>
+          <label><input type="radio" name="question-0" value="0"> A renamed image-only PDF</label>
+          <label><input type="radio" name="question-0" value="1"> BBZ</label>
+          <label><input type="radio" name="question-0" value="2"> A screenshot of the braille pane</label>
+          <label><input type="radio" name="question-0" value="3"> A browser bookmark to the source</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. Why apply real document styles?</legend>
-          <label><input type="radio" name="question-1" value="0"> They only change color</label>
-          <label><input type="radio" name="question-1" value="1"> They control consistent Braille structure and formatting</label>
-          <label><input type="radio" name="question-1" value="2"> They disable translation</label>
+          <legend>2. You opened an instructor&#x27;s source file and made formatting changes. Which save approach preserves the original?</legend>
+          <label><input type="radio" name="question-1" value="0"> Change the source&#x27;s filename extension without using Save As</label>
+          <label><input type="radio" name="question-1" value="1"> Close the program and assume all edits remain</label>
+          <label><input type="radio" name="question-1" value="2"> Save the working project as a separate BBZ and verify it reopens</label>
+          <label><input type="radio" name="question-1" value="3"> Overwrite the source immediately without keeping a copy</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What should be done before exporting BRF?</legend>
-          <label><input type="radio" name="question-2" value="0"> Delete headings</label>
-          <label><input type="radio" name="question-2" value="1"> Ignore page breaks</label>
-          <label><input type="radio" name="question-2" value="2"> Proofread both source and Braille views</label>
+          <legend>3. An edit changes an unexpected part of the document. What should you check first?</legend>
+          <label><input type="radio" name="question-2" value="0"> The braille translation table, without checking whether the edit targeted the right location</label>
+          <label><input type="radio" name="question-2" value="1"> The most recently applied style, without checking which text was active</label>
+          <label><input type="radio" name="question-2" value="2"> The active pane and corresponding document position</label>
+          <label><input type="radio" name="question-2" value="3"> The output file type, assuming the edit occurred in the intended paragraph</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What is a transcriber's note for?</legend>
-          <label><input type="radio" name="question-3" value="0"> Adding private comments</label>
-          <label><input type="radio" name="question-3" value="1"> Clarifying necessary information not represented directly</label>
-          <label><input type="radio" name="question-3" value="2"> Replacing all source text</label>
+          <legend>4. You are comparing a source heading with its translated braille. What should the review establish?</legend>
+          <label><input type="radio" name="question-3" value="0"> That the corresponding content and structure match across the views</label>
+          <label><input type="radio" name="question-3" value="1"> That the print and braille layouts look visually identical</label>
+          <label><input type="radio" name="question-3" value="2"> That the source file and project have identical byte sizes</label>
+          <label><input type="radio" name="question-3" value="3"> That both panes contain the same number of visible lines</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Why validate page numbers and running heads?</legend>
-          <label><input type="radio" name="question-4" value="0"> They change audio volume</label>
-          <label><input type="radio" name="question-4" value="1"> They enable Bluetooth</label>
-          <label><input type="radio" name="question-4" value="2"> They affect navigation and final Braille format</label>
+          <legend>5. A section title was positioned using manual spaces instead of a heading style. What should be corrected?</legend>
+          <label><input type="radio" name="question-4" value="0"> Change the project filename to include the heading</label>
+          <label><input type="radio" name="question-4" value="1"> Add more spaces until one display width looks right</label>
+          <label><input type="radio" name="question-4" value="2"> Apply the appropriate heading style and review the resulting structure</label>
+          <label><input type="radio" name="question-4" value="3"> Apply the same heading style to every paragraph</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. A policy has two main sections, each with a subsection. Which organization fits?</legend>
+          <label><input type="radio" name="question-5" value="0"> A different heading level for each label based only on length</label>
+          <label><input type="radio" name="question-5" value="1"> Random levels chosen to create visual variety</label>
+          <label><input type="radio" name="question-5" value="2"> Consistent main-heading and subordinate-heading levels</label>
+          <label><input type="radio" name="question-5" value="3"> All body paragraphs styled as headings</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. A list&#x27;s continuation lines are difficult to distinguish from new items. What should you inspect?</legend>
+          <label><input type="radio" name="question-6" value="0"> Only the project&#x27;s creation date</label>
+          <label><input type="radio" name="question-6" value="1"> Only the print text&#x27;s font color</label>
+          <label><input type="radio" name="question-6" value="2"> Only the number of pages in the source PDF</label>
+          <label><input type="radio" name="question-6" value="3"> The list style, indentation, and runovers in the braille view</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. One list item is a true subitem of the preceding point. How should it be represented?</legend>
+          <label><input type="radio" name="question-7" value="0"> Set the nested list level and check the braille</label>
+          <label><input type="radio" name="question-7" value="1"> Make the subitem a new heading at the same level as the preceding section</label>
+          <label><input type="radio" name="question-7" value="2"> Join the subitem to the parent as one continuous sentence without list structure</label>
+          <label><input type="radio" name="question-7" value="3"> Keep the same list level and use extra spaces to imply the relationship</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A three-column schedule has clear labels in print. What should guide the braille table format?</legend>
+          <label><input type="radio" name="question-8" value="0"> Preserving the relationship between each row&#x27;s values and its headers</label>
+          <label><input type="radio" name="question-8" value="1"> Matching the print table&#x27;s exact visual width at any cost</label>
+          <label><input type="radio" name="question-8" value="2"> Removing headers to reduce the number of cells</label>
+          <label><input type="radio" name="question-8" value="3"> Sorting each column independently before translation</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. A table contains merged cells that make relationships unclear. What is the best course response?</legend>
+          <label><input type="radio" name="question-9" value="0"> Guess which values belong together and omit the uncertain cells</label>
+          <label><input type="radio" name="question-9" value="1"> Remove every label and retain only the numbers</label>
+          <label><input type="radio" name="question-9" value="2"> Keep the print appearance without reading the braille result</label>
+          <label><input type="radio" name="question-9" value="3"> Review the structure and use a clear supported format, seeking guidance where needed</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. The braille page sequence looks correct, but print page indicators are misplaced. What should be checked?</legend>
+          <label><input type="radio" name="question-10" value="0"> Only the document&#x27;s first heading</label>
+          <label><input type="radio" name="question-10" value="1"> Both numbering systems and their intended placement</label>
+          <label><input type="radio" name="question-10" value="2"> Only whether every page contains the same number of words</label>
+          <label><input type="radio" name="question-10" value="3"> Only the final BRF filename</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. An unexpected blank page appears after a formatting change. What should you investigate?</legend>
+          <label><input type="radio" name="question-11" value="0"> The output filename, assuming a second export will remove the extra page</label>
+          <label><input type="radio" name="question-11" value="1"> The amount of source text, deleting a paragraph to force the next page upward</label>
+          <label><input type="radio" name="question-11" value="2"> The translation grade, changing it until the document fits the expected page count</label>
+          <label><input type="radio" name="question-11" value="3"> Breaks, pagination, and whether the blank is intended</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. The source uses repeated spaces to imitate an indented block. What should replace that approach?</legend>
+          <label><input type="radio" name="question-12" value="0"> A suitable block style, then check the output</label>
+          <label><input type="radio" name="question-12" value="1"> Manual spaces adjusted until the print view matches the desired indentation</label>
+          <label><input type="radio" name="question-12" value="2"> Tabs inserted at the start of each line without assigning a structural block style</label>
+          <label><input type="radio" name="question-12" value="3"> An image of the indented text accompanied by the same source text elsewhere</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. Emphasis appears inconsistent after translation, especially near punctuation. What should be reviewed?</legend>
+          <label><input type="radio" name="question-13" value="0"> Only the source&#x27;s filename extension</label>
+          <label><input type="radio" name="question-13" value="1"> The intended emphasis style and surrounding translated punctuation</label>
+          <label><input type="radio" name="question-13" value="2"> Only the total number of braille pages</label>
+          <label><input type="radio" name="question-13" value="3"> Only whether the print text is visually centered</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. You encounter unfamiliar mathematical notation in a transcription project. What should you do?</legend>
+          <label><input type="radio" name="question-14" value="0"> Guess a literary-text equivalent from its visual shape</label>
+          <label><input type="radio" name="question-14" value="1"> Omit it without noting that content was removed</label>
+          <label><input type="radio" name="question-14" value="2"> Flag it for qualified review under the required code and agency rules</label>
+          <label><input type="radio" name="question-14" value="3"> Use a code from an unrelated assignment without checking</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. A graphic requires a description. Which approach preserves the source&#x27;s meaning?</legend>
+          <label><input type="radio" name="question-15" value="0"> Replace the graphic with its filename</label>
+          <label><input type="radio" name="question-15" value="1"> Describe the relevant information without adding unsupported interpretation</label>
+          <label><input type="radio" name="question-15" value="2"> Invent a likely conclusion that the graphic does not show</label>
+          <label><input type="radio" name="question-15" value="3"> List only decorative colors without explaining the content</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. You exported BRF after proofreading the BBZ project. What check is still useful?</legend>
+          <label><input type="radio" name="question-16" value="0"> Assume export completion proves the final output is correct</label>
+          <label><input type="radio" name="question-16" value="1"> Open the BRF in an approved viewer and inspect structure, spacing, and key content</label>
+          <label><input type="radio" name="question-16" value="2"> Delete the BBZ once a BRF filename appears</label>
+          <label><input type="radio" name="question-16" value="3"> Rename the BBZ to BRF instead of checking the export</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. An available validation tool reports no errors. What should still be proofread?</legend>
+          <label><input type="radio" name="question-17" value="0"> The first page in each view, treating those pages as representative of the full document</label>
+          <label><input type="radio" name="question-17" value="1"> The saved filenames and file sizes, using those as evidence of correct transcription</label>
+          <label><input type="radio" name="question-17" value="2"> The source text, accepting the braille output once the automated report is clear</label>
+          <label><input type="radio" name="question-17" value="3"> Meaning, structure, translation, and reading order</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Why does the final project require both a working BBZ and BRF output?</legend>
+          <label><input type="radio" name="question-18" value="0"> They are two names for an identical file with no different purpose</label>
+          <label><input type="radio" name="question-18" value="1"> The BBZ should be empty once the BRF is created</label>
+          <label><input type="radio" name="question-18" value="2"> The BRF stores every editing feature of the BBZ automatically</label>
+          <label><input type="radio" name="question-18" value="3"> They support continued project editing and delivery of the reviewed braille output</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which final review best demonstrates a braille-ready workplace procedure?</legend>
+          <label><input type="radio" name="question-19" value="0"> Verify meaning, structure, pagination, and saved outputs</label>
+          <label><input type="radio" name="question-19" value="1"> Proofread the source and accept the braille output as soon as export completes</label>
+          <label><input type="radio" name="question-19" value="2"> Inspect every heading and assume the remaining body formatting is equivalent</label>
+          <label><input type="radio" name="question-19" value="3"> Check a successful validation report and use that instead of reviewing the document</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"BrailleBlaster","displayName":"BrailleBlaster","slug":"brailleblaster","passPercent":80,"questions":[{"answer":0,"explanation":"BBZ is the BrailleBlaster project format.","options":["BBZ","JPG","MP3"],"question":"Which file type preserves a BrailleBlaster project for editing?"},{"answer":1,"explanation":"Styles support structured transcription.","options":["They only change color","They control consistent Braille structure and formatting","They disable translation"],"question":"Why apply real document styles?"},{"answer":2,"explanation":"Parallel proofreading catches structural and translation issues.","options":["Delete headings","Ignore page breaks","Proofread both source and Braille views"],"question":"What should be done before exporting BRF?"},{"answer":1,"explanation":"Transcriber's notes provide required clarification.","options":["Adding private comments","Clarifying necessary information not represented directly","Replacing all source text"],"question":"What is a transcriber's note for?"},{"answer":2,"explanation":"Page structure is essential in a finished transcription.","options":["They change audio volume","They enable Bluetooth","They affect navigation and final Braille format"],"question":"Why validate page numbers and running heads?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"BrailleBlaster","displayName":"BrailleBlaster","slug":"brailleblaster","passPercent":85,"questions":[{"lesson":1,"question":"You need to preserve an editable BrailleBlaster working project. Which file serves that role?","options":["A renamed image-only PDF","BBZ","A screenshot of the braille pane","A browser bookmark to the source"],"answer":1,"explanation":"The BBZ project preserves the working document. A picture or bookmark is not an editable project substitute."},{"lesson":1,"question":"You opened an instructor's source file and made formatting changes. Which save approach preserves the original?","options":["Change the source's filename extension without using Save As","Close the program and assume all edits remain","Save the working project as a separate BBZ and verify it reopens","Overwrite the source immediately without keeping a copy"],"answer":2,"explanation":"A separate working project protects the source and gives you a verified editable file."},{"lesson":2,"question":"An edit changes an unexpected part of the document. What should you check first?","options":["The braille translation table, without checking whether the edit targeted the right location","The most recently applied style, without checking which text was active","The active pane and corresponding document position","The output file type, assuming the edit occurred in the intended paragraph"],"answer":2,"explanation":"Pane and position awareness help prevent edits in the wrong context. Confirm where the change is being made."},{"lesson":2,"question":"You are comparing a source heading with its translated braille. What should the review establish?","options":["That the corresponding content and structure match across the views","That the print and braille layouts look visually identical","That the source file and project have identical byte sizes","That both panes contain the same number of visible lines"],"answer":0,"explanation":"Print and braille layouts can differ. The important check is preserved meaning and appropriate structure."},{"lesson":3,"question":"A section title was positioned using manual spaces instead of a heading style. What should be corrected?","options":["Change the project filename to include the heading","Add more spaces until one display width looks right","Apply the appropriate heading style and review the resulting structure","Apply the same heading style to every paragraph"],"answer":2,"explanation":"Heading styles express structure; manual positioning does not reliably communicate the hierarchy."},{"lesson":3,"question":"A policy has two main sections, each with a subsection. Which organization fits?","options":["A different heading level for each label based only on length","Random levels chosen to create visual variety","Consistent main-heading and subordinate-heading levels","All body paragraphs styled as headings"],"answer":2,"explanation":"Levels should reflect the document's actual relationships and remain consistent across comparable sections."},{"lesson":4,"question":"A list's continuation lines are difficult to distinguish from new items. What should you inspect?","options":["Only the project's creation date","Only the print text's font color","Only the number of pages in the source PDF","The list style, indentation, and runovers in the braille view"],"answer":3,"explanation":"Braille list layout must communicate item boundaries and continuation. Review the translated output, not just the print appearance."},{"lesson":4,"question":"One list item is a true subitem of the preceding point. How should it be represented?","options":["Set the nested list level and check the braille","Make the subitem a new heading at the same level as the preceding section","Join the subitem to the parent as one continuous sentence without list structure","Keep the same list level and use extra spaces to imply the relationship"],"answer":0,"explanation":"Nesting should represent actual hierarchy. Check that the braille formatting communicates that relationship."},{"lesson":5,"question":"A three-column schedule has clear labels in print. What should guide the braille table format?","options":["Preserving the relationship between each row's values and its headers","Matching the print table's exact visual width at any cost","Removing headers to reduce the number of cells","Sorting each column independently before translation"],"answer":0,"explanation":"The purpose of table formatting is to retain meaning and relationships, even when braille layout differs from print."},{"lesson":5,"question":"A table contains merged cells that make relationships unclear. What is the best course response?","options":["Guess which values belong together and omit the uncertain cells","Remove every label and retain only the numbers","Keep the print appearance without reading the braille result","Review the structure and use a clear supported format, seeking guidance where needed"],"answer":3,"explanation":"Do not sacrifice or invent relationships. Use an appropriate representation and flag uncertainty for review."},{"lesson":6,"question":"The braille page sequence looks correct, but print page indicators are misplaced. What should be checked?","options":["Only the document's first heading","Both numbering systems and their intended placement","Only whether every page contains the same number of words","Only the final BRF filename"],"answer":1,"explanation":"Print indicators and braille page numbering have distinct roles. Review each against the assignment's requirements."},{"lesson":6,"question":"An unexpected blank page appears after a formatting change. What should you investigate?","options":["The output filename, assuming a second export will remove the extra page","The amount of source text, deleting a paragraph to force the next page upward","The translation grade, changing it until the document fits the expected page count","Breaks, pagination, and whether the blank is intended"],"answer":3,"explanation":"A blank page may result from layout rules or an accidental break. Establish the cause before removing content."},{"lesson":7,"question":"The source uses repeated spaces to imitate an indented block. What should replace that approach?","options":["A suitable block style, then check the output","Manual spaces adjusted until the print view matches the desired indentation","Tabs inserted at the start of each line without assigning a structural block style","An image of the indented text accompanied by the same source text elsewhere"],"answer":0,"explanation":"Styles express the kind of content and support appropriate braille layout more reliably than manual spacing."},{"lesson":7,"question":"Emphasis appears inconsistent after translation, especially near punctuation. What should be reviewed?","options":["Only the source's filename extension","The intended emphasis style and surrounding translated punctuation","Only the total number of braille pages","Only whether the print text is visually centered"],"answer":1,"explanation":"Translation around emphasis and punctuation needs contextual proofreading. File or page metadata does not establish correctness."},{"lesson":8,"question":"You encounter unfamiliar mathematical notation in a transcription project. What should you do?","options":["Guess a literary-text equivalent from its visual shape","Omit it without noting that content was removed","Flag it for qualified review under the required code and agency rules","Use a code from an unrelated assignment without checking"],"answer":2,"explanation":"Uncertain notation should not be guessed. Follow the applicable rules and obtain appropriate review."},{"lesson":8,"question":"A graphic requires a description. Which approach preserves the source's meaning?","options":["Replace the graphic with its filename","Describe the relevant information without adding unsupported interpretation","Invent a likely conclusion that the graphic does not show","List only decorative colors without explaining the content"],"answer":1,"explanation":"A description should communicate the graphic's relevant content accurately, not supply conclusions absent from the source."},{"lesson":9,"question":"You exported BRF after proofreading the BBZ project. What check is still useful?","options":["Assume export completion proves the final output is correct","Open the BRF in an approved viewer and inspect structure, spacing, and key content","Delete the BBZ once a BRF filename appears","Rename the BBZ to BRF instead of checking the export"],"answer":1,"explanation":"Review the actual output file. Saving the editable project and creating a usable BRF are separate steps."},{"lesson":9,"question":"An available validation tool reports no errors. What should still be proofread?","options":["The first page in each view, treating those pages as representative of the full document","The saved filenames and file sizes, using those as evidence of correct transcription","The source text, accepting the braille output once the automated report is clear","Meaning, structure, translation, and reading order"],"answer":3,"explanation":"Automated validation does not replace contextual braille proofreading or verify every meaningful formatting choice."},{"lesson":10,"question":"Why does the final project require both a working BBZ and BRF output?","options":["They are two names for an identical file with no different purpose","The BBZ should be empty once the BRF is created","The BRF stores every editing feature of the BBZ automatically","They support continued project editing and delivery of the reviewed braille output"],"answer":3,"explanation":"The files serve different parts of the workflow. Retain the editable project alongside the verified output."},{"lesson":10,"question":"Which final review best demonstrates a braille-ready workplace procedure?","options":["Verify meaning, structure, pagination, and saved outputs","Proofread the source and accept the braille output as soon as export completes","Inspect every heading and assume the remaining body formatting is equivalent","Check a successful validation report and use that instead of reviewing the document"],"answer":0,"explanation":"Braille readiness involves accurate content and usable formatting in the delivered file, not just completing an export command."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

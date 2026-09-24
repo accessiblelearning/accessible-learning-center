@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible ten-question final quiz and printable completion certificate for Thunderbird Email.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Thunderbird Email. Score 85 percent to earn a course-completion certificate.">
   <title>Thunderbird Email Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=five-courses-1" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Thunderbird Email Final Quiz</h1>
-    <p>Answer ten questions about the skills covered in this course. A score of 80 percent, or eight correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Thunderbird Email quiz navigation">
@@ -24,49 +24,149 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-<legend>1. Ctrl+S offers to save a message as a file instead of saving your draft. What should you check?</legend>
-<label><input type="radio" name="question-0" value="0"> Whether the message is unread</label><label><input type="radio" name="question-0" value="1"> Whether Bcc is visible</label><label><input type="radio" name="question-0" value="2"> Whether the composition window is active</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>2. Thunderbird is installed, but no mailbox is connected. What is the next account step?</legend>
-<label><input type="radio" name="question-1" value="0"> Create an address by naming a local folder</label><label><input type="radio" name="question-1" value="1"> Wait for the installer to generate an email address</label><label><input type="radio" name="question-1" value="2"> Connect an existing provider account and complete its verification</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>3. You opened a message and want to identify another in the same Inbox. What sequence fits?</legend>
-<label><input type="radio" name="question-2" value="0"> Close the message tab, confirm the mailbox, then choose in the message list</label><label><input type="radio" name="question-2" value="1"> Type the next sender into the message body</label><label><input type="radio" name="question-2" value="2"> Use Ctrl+N and enter the next subject</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>4. A draft has been saved. Which check best verifies that the work was retained?</legend>
-<label><input type="radio" name="question-3" value="0"> Check only that the composition window closed</label><label><input type="radio" name="question-3" value="1"> Reopen the same draft and read its subject and body</label><label><input type="radio" name="question-3" value="2"> Confirm the subject remains in browser history</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>5. You intend to reply only to the sender of a group message. Which is appropriate?</legend>
-<label><input type="radio" name="question-4" value="0"> Ctrl+Shift+R without reviewing the addresses</label><label><input type="radio" name="question-4" value="1"> Ctrl+L, leaving all quoted addresses as recipients</label><label><input type="radio" name="question-4" value="2"> Ctrl+R, followed by a recipient check</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>6. The attachment has the expected filename. What should you check before sending important material?</legend>
-<label><input type="radio" name="question-5" value="0"> That the original file contains the intended content</label><label><input type="radio" name="question-5" value="1"> That the file has been archived from Inbox</label><label><input type="radio" name="question-5" value="2"> That the email subject matches the filename exactly</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>7. You see a copy in Sent. What can you reasonably conclude?</legend>
-<label><input type="radio" name="question-6" value="0"> The recipient approved the contents</label><label><input type="radio" name="question-6" value="1"> A sent copy exists, but this does not prove the recipient read it</label><label><input type="radio" name="question-6" value="2"> The recipient opened the attachment</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>8. Quick Filter shows no messages after searching Inbox. What is a useful next check?</legend>
-<label><input type="radio" name="question-7" value="0"> Reconnect the entire account immediately</label><label><input type="radio" name="question-7" value="1"> Create a second Inbox folder</label><label><input type="radio" name="question-7" value="2"> Inspect selected filter fields and clear the filter before assuming mail is gone</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>9. You want to keep a message but remove it from Inbox. Which action fits?</legend>
-<label><input type="radio" name="question-8" value="0"> Archive it and verify its destination</label><label><input type="radio" name="question-8" value="1"> Use Shift+Delete and look for it in Drafts</label><label><input type="radio" name="question-8" value="2"> Mark it unread and assume it moved</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>10. Before sending a practice message with an attachment, which review is most complete?</legend>
-<label><input type="radio" name="question-9" value="0"> Subject and font size only</label><label><input type="radio" name="question-9" value="1"> Recipients, subject, body, and attachment name and contents</label><label><input type="radio" name="question-9" value="2"> Attachment extension and unread status only</label>
-</fieldset>
-<button type="submit">Grade my quiz</button>
+          <legend>1. Ctrl+S offers to save a received message as a file when you intended to save a draft. What should you check?</legend>
+          <label><input type="radio" name="question-0" value="0"> Whether the message has a short subject</label>
+          <label><input type="radio" name="question-0" value="1"> Whether the received message is marked unread</label>
+          <label><input type="radio" name="question-0" value="2"> Whether the composition window is actually active</label>
+          <label><input type="radio" name="question-0" value="3"> Whether the Inbox is sorted newest first</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. You are in the message list and want to choose a different message. What should be established before typing?</legend>
+          <label><input type="radio" name="question-1" value="0"> Only that Thunderbird is the active application</label>
+          <label><input type="radio" name="question-1" value="1"> Only that the account name is familiar</label>
+          <label><input type="radio" name="question-1" value="2"> Whether focus is in the message list, a search field, or a composition field</label>
+          <label><input type="radio" name="question-1" value="3"> Only that the previous message contained no attachment</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. Thunderbird is installed but shows no connected mailbox. What is needed next?</legend>
+          <label><input type="radio" name="question-2" value="0"> Create a local folder with the provider&#x27;s name and treat it as a newly registered mailbox</label>
+          <label><input type="radio" name="question-2" value="1"> Wait for the installation to create an account automatically with the computer username</label>
+          <label><input type="radio" name="question-2" value="2"> Add the authorized account using provider sign-in</label>
+          <label><input type="radio" name="question-2" value="3"> Enter a preferred email address without completing the provider&#x27;s authentication process</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. You connected a practice account. What verifies that the intended account is available without exposing secrets?</legend>
+          <label><input type="radio" name="question-3" value="0"> Confirm the account identity and accessible Inbox, recording no password</label>
+          <label><input type="radio" name="question-3" value="1"> Copy the password into the assignment as connection evidence</label>
+          <label><input type="radio" name="question-3" value="2"> Check only that Thunderbird&#x27;s desktop icon exists</label>
+          <label><input type="radio" name="question-3" value="3"> Record every recovery code displayed during sign-in</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. You opened a message in its own tab and want another message from the same Inbox. What sequence fits?</legend>
+          <label><input type="radio" name="question-4" value="0"> Open a new composition tab and type the desired subject into its Subject field</label>
+          <label><input type="radio" name="question-4" value="1"> Search within the displayed message body as though it were the full Inbox message list</label>
+          <label><input type="radio" name="question-4" value="2"> Use Save As in the open message tab to choose another message from the account</label>
+          <label><input type="radio" name="question-4" value="3"> Return to Inbox and choose from its message list</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. A message is marked unread after you deliberately changed its status. What does unread alone prove?</legend>
+          <label><input type="radio" name="question-5" value="0"> That no user has ever opened the message on any device connected to the account</label>
+          <label><input type="radio" name="question-5" value="1"> That an attachment was changed after the message was first delivered</label>
+          <label><input type="radio" name="question-5" value="2"> The current read-status flag</label>
+          <label><input type="radio" name="question-5" value="3"> That the server received a second copy of the original message from the sender</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. You wrote a practice message without a recipient and saved it as a draft. Which check verifies retention?</legend>
+          <label><input type="radio" name="question-6" value="0"> Search browser history for the subject</label>
+          <label><input type="radio" name="question-6" value="1"> Close and reopen the same draft, then review its subject and body</label>
+          <label><input type="radio" name="question-6" value="2"> Check the Sent folder for a delivery receipt</label>
+          <label><input type="radio" name="question-6" value="3"> Check only that the compose window disappeared</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. You reopen the draft and correct a sentence. What should happen before finishing?</legend>
+          <label><input type="radio" name="question-7" value="0"> Forward it to a real contact as a storage test</label>
+          <label><input type="radio" name="question-7" value="1"> Save the revised draft and verify the correction remains</label>
+          <label><input type="radio" name="question-7" value="2"> Assume reopening makes every later edit permanent</label>
+          <label><input type="radio" name="question-7" value="3"> Rename a local folder instead of saving the draft</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A message has several recipients, but your response should go only to the sender. Which approach fits?</legend>
+          <label><input type="radio" name="question-8" value="0"> Use Reply and verify the recipient list before sending</label>
+          <label><input type="radio" name="question-8" value="1"> Use Reply All and assume extra recipients are removed automatically</label>
+          <label><input type="radio" name="question-8" value="2"> Use Forward without entering or reviewing any recipient</label>
+          <label><input type="radio" name="question-8" value="3"> Keep all recipients because the original message was a group message</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. What does Bcc change compared with placing recipients in To or Cc?</legend>
+          <label><input type="radio" name="question-9" value="0"> Message encryption for Bcc recipients while To and Cc receive an unencrypted copy</label>
+          <label><input type="radio" name="question-9" value="1"> Forwarding permission, preventing Bcc recipients from sharing the message body</label>
+          <label><input type="radio" name="question-9" value="2"> Reply behavior, guaranteeing that Bcc recipients cannot reveal themselves to others</label>
+          <label><input type="radio" name="question-9" value="3"> Recipient visibility, not message encryption</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. An attachment has the expected filename, but several versions used that name. What should be verified?</legend>
+          <label><input type="radio" name="question-10" value="0"> The attachment icon, treating its presence as evidence that the correct version was selected</label>
+          <label><input type="radio" name="question-10" value="1"> The selected file&#x27;s actual contents and version</label>
+          <label><input type="radio" name="question-10" value="2"> The filename and extension, treating a match as proof it is the most recent intended draft</label>
+          <label><input type="radio" name="question-10" value="3"> The subject line and message text, without reopening or comparing the selected source file</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. You remove an attachment from an unsent draft. What should you expect to check?</legend>
+          <label><input type="radio" name="question-11" value="0"> The original file was necessarily deleted from the computer</label>
+          <label><input type="radio" name="question-11" value="1"> The draft&#x27;s subject is now the original file&#x27;s only copy</label>
+          <label><input type="radio" name="question-11" value="2"> The attachment was automatically moved to Trash with the email</label>
+          <label><input type="radio" name="question-11" value="3"> The draft no longer attaches it while the original file remains in storage</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. A copy appears in Sent after your test message. What can you reasonably conclude?</legend>
+          <label><input type="radio" name="question-12" value="0"> The recipient has read every word</label>
+          <label><input type="radio" name="question-12" value="1"> The recipient has opened all attachments</label>
+          <label><input type="radio" name="question-12" value="2"> The recipient has accepted every request in the message</label>
+          <label><input type="radio" name="question-12" value="3"> A sent copy exists, but it does not prove the recipient read or approved it</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. You prepare a forward of a received message. What requires review before a real send?</legend>
+          <label><input type="radio" name="question-13" value="0"> Only whether the message was marked unread</label>
+          <label><input type="radio" name="question-13" value="1"> The new recipients and all forwarded content and attachments</label>
+          <label><input type="radio" name="question-13" value="2"> Only the new subject&#x27;s spelling</label>
+          <label><input type="radio" name="question-13" value="3"> Only the original sender&#x27;s display name</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. Quick Filter shows no messages for a phrase you expected to find. What should you inspect?</legend>
+          <label><input type="radio" name="question-14" value="0"> The browser&#x27;s search engine, assuming Quick Filter sends the query to a web search</label>
+          <label><input type="radio" name="question-14" value="1"> Folder, query, and enabled filter fields</label>
+          <label><input type="radio" name="question-14" value="2"> The composition default font, assuming invisible matches are caused by display formatting</label>
+          <label><input type="radio" name="question-14" value="3"> The account&#x27;s outgoing-server settings, assuming they determine which stored messages match</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. After clearing Quick Filter, previously hidden messages return. What does that demonstrate?</legend>
+          <label><input type="radio" name="question-15" value="0"> The filter hid nonmatches rather than deleting those messages</label>
+          <label><input type="radio" name="question-15" value="1"> The account was recreated automatically</label>
+          <label><input type="radio" name="question-15" value="2"> The messages were restored from permanent deletion</label>
+          <label><input type="radio" name="question-15" value="3"> The server sent duplicate copies of every message</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. You want to retain a message while removing it from Inbox. Which action matches that purpose?</legend>
+          <label><input type="radio" name="question-16" value="0"> Permanently delete it and look for it in Drafts</label>
+          <label><input type="radio" name="question-16" value="1"> Mark it unread and assume it moved out of Inbox</label>
+          <label><input type="radio" name="question-16" value="2"> Remove the entire email account</label>
+          <label><input type="radio" name="question-16" value="3"> Archive it and verify the archive destination</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. You accidentally delete a disposable test message. Which recovery should be tried when available?</legend>
+          <label><input type="radio" name="question-17" value="0"> Undo or restore it from Trash before emptying Trash</label>
+          <label><input type="radio" name="question-17" value="1"> Edit a saved password entry in the browser</label>
+          <label><input type="radio" name="question-17" value="2"> Empty Trash first to refresh the mailbox</label>
+          <label><input type="radio" name="question-17" value="3"> Create a new account with the same display name</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Your self-addressed practice message contains an attachment. What should be reviewed before sending once?</legend>
+          <label><input type="radio" name="question-18" value="0"> Recipients, subject, body, attachment name, and the attachment&#x27;s actual content</label>
+          <label><input type="radio" name="question-18" value="1"> Only the address of the original source file</label>
+          <label><input type="radio" name="question-18" value="2"> Only the list of folders in the account</label>
+          <label><input type="radio" name="question-18" value="3"> The subject and attachment icon without inspecting their details</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. A saved draft seems missing after switching accounts. What should you check first?</legend>
+          <label><input type="radio" name="question-19" value="0"> The current account&#x27;s Sent folder, treating a missing draft as evidence that it was sent</label>
+          <label><input type="radio" name="question-19" value="1"> The other account&#x27;s Inbox, assuming switching accounts moves drafts into incoming mail</label>
+          <label><input type="radio" name="question-19" value="2"> The correct account&#x27;s Drafts folder</label>
+          <label><input type="radio" name="question-19" value="3"> The operating system Downloads folder, assuming unsent messages are saved as attachments</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
       </form>
       <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
       <div id="quizReview" class="quiz-review"></div>
@@ -95,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course": "Thunderbird Email", "displayName": "Thunderbird Email", "slug": "thunderbird", "passPercent": 80, "questions": [{"question": "Ctrl+S offers to save a message as a file instead of saving your draft. What should you check?", "options": ["Whether the message is unread", "Whether Bcc is visible", "Whether the composition window is active"], "answer": 2, "explanation": "Ctrl+S depends on focus: saving a draft requires the composition window. Review Thunderbird Email Lesson 1."}, {"question": "Thunderbird is installed, but no mailbox is connected. What is the next account step?", "options": ["Create an address by naming a local folder", "Wait for the installer to generate an email address", "Connect an existing provider account and complete its verification"], "answer": 2, "explanation": "Thunderbird accesses an existing email account; installation does not create one. Review Thunderbird Email Lesson 2."}, {"question": "You opened a message and want to identify another in the same Inbox. What sequence fits?", "options": ["Close the message tab, confirm the mailbox, then choose in the message list", "Type the next sender into the message body", "Use Ctrl+N and enter the next subject"], "answer": 0, "explanation": "Return to the message list before selecting another message. Review Thunderbird Email Lesson 3."}, {"question": "A draft has been saved. Which check best verifies that the work was retained?", "options": ["Check only that the composition window closed", "Reopen the same draft and read its subject and body", "Confirm the subject remains in browser history"], "answer": 1, "explanation": "Reopening verifies the saved content rather than merely a closed window. Review Thunderbird Email Lesson 4."}, {"question": "You intend to reply only to the sender of a group message. Which is appropriate?", "options": ["Ctrl+Shift+R without reviewing the addresses", "Ctrl+L, leaving all quoted addresses as recipients", "Ctrl+R, followed by a recipient check"], "answer": 2, "explanation": "Reply to sender and Reply All have different recipient scopes. Review Thunderbird Email Lesson 5."}, {"question": "The attachment has the expected filename. What should you check before sending important material?", "options": ["That the original file contains the intended content", "That the file has been archived from Inbox", "That the email subject matches the filename exactly"], "answer": 0, "explanation": "A familiar name alone does not verify the attached content. Review Thunderbird Email Lesson 6."}, {"question": "You see a copy in Sent. What can you reasonably conclude?", "options": ["The recipient approved the contents", "A sent copy exists, but this does not prove the recipient read it", "The recipient opened the attachment"], "answer": 1, "explanation": "Sent is not a read or approval confirmation. Review Thunderbird Email Lesson 7."}, {"question": "Quick Filter shows no messages after searching Inbox. What is a useful next check?", "options": ["Reconnect the entire account immediately", "Create a second Inbox folder", "Inspect selected filter fields and clear the filter before assuming mail is gone"], "answer": 2, "explanation": "Quick Filter can hide nonmatching messages without removing them. Review Thunderbird Email Lesson 8."}, {"question": "You want to keep a message but remove it from Inbox. Which action fits?", "options": ["Archive it and verify its destination", "Use Shift+Delete and look for it in Drafts", "Mark it unread and assume it moved"], "answer": 0, "explanation": "Archive retains a message in the configured archive location. Review Thunderbird Email Lesson 9."}, {"question": "Before sending a practice message with an attachment, which review is most complete?", "options": ["Subject and font size only", "Recipients, subject, body, and attachment name and contents", "Attachment extension and unread status only"], "answer": 1, "explanation": "A complete pre-send check covers both destinations and content. Review Thunderbird Email Lesson 10."}]}</script>
+  <script id="quizData" type="application/json">{"course":"Thunderbird Email","displayName":"Thunderbird Email","slug":"thunderbird","passPercent":85,"questions":[{"lesson":1,"question":"Ctrl+S offers to save a received message as a file when you intended to save a draft. What should you check?","options":["Whether the message has a short subject","Whether the received message is marked unread","Whether the composition window is actually active","Whether the Inbox is sorted newest first"],"answer":2,"explanation":"The same shortcut can have different effects in different contexts. Saving a draft requires the intended composition window."},{"lesson":1,"question":"You are in the message list and want to choose a different message. What should be established before typing?","options":["Only that Thunderbird is the active application","Only that the account name is familiar","Whether focus is in the message list, a search field, or a composition field","Only that the previous message contained no attachment"],"answer":2,"explanation":"Different Thunderbird areas interpret input differently. Identify the focused area, not just the application."},{"lesson":2,"question":"Thunderbird is installed but shows no connected mailbox. What is needed next?","options":["Create a local folder with the provider's name and treat it as a newly registered mailbox","Wait for the installation to create an account automatically with the computer username","Add the authorized account using provider sign-in","Enter a preferred email address without completing the provider's authentication process"],"answer":2,"explanation":"Thunderbird accesses a mail account; installing the application alone does not establish that account or its authorization."},{"lesson":2,"question":"You connected a practice account. What verifies that the intended account is available without exposing secrets?","options":["Confirm the account identity and accessible Inbox, recording no password","Copy the password into the assignment as connection evidence","Check only that Thunderbird's desktop icon exists","Record every recovery code displayed during sign-in"],"answer":0,"explanation":"The account and mailbox state demonstrate the connection. Credentials should not be part of learning notes."},{"lesson":3,"question":"You opened a message in its own tab and want another message from the same Inbox. What sequence fits?","options":["Open a new composition tab and type the desired subject into its Subject field","Search within the displayed message body as though it were the full Inbox message list","Use Save As in the open message tab to choose another message from the account","Return to Inbox and choose from its message list"],"answer":3,"explanation":"Message reading and list selection are different contexts. Return to the intended mailbox list before choosing another message."},{"lesson":3,"question":"A message is marked unread after you deliberately changed its status. What does unread alone prove?","options":["That no user has ever opened the message on any device connected to the account","That an attachment was changed after the message was first delivered","The current read-status flag","That the server received a second copy of the original message from the sender"],"answer":2,"explanation":"Read/unread is a status that can be changed. Do not infer delivery history or actual reading solely from that flag."},{"lesson":4,"question":"You wrote a practice message without a recipient and saved it as a draft. Which check verifies retention?","options":["Search browser history for the subject","Close and reopen the same draft, then review its subject and body","Check the Sent folder for a delivery receipt","Check only that the compose window disappeared"],"answer":1,"explanation":"Draft retrieval verifies saved content. Closing a window or looking in Sent does not establish that the unsent draft was retained."},{"lesson":4,"question":"You reopen the draft and correct a sentence. What should happen before finishing?","options":["Forward it to a real contact as a storage test","Save the revised draft and verify the correction remains","Assume reopening makes every later edit permanent","Rename a local folder instead of saving the draft"],"answer":1,"explanation":"The new edit needs to be retained too. A previous save does not prove that later changes were saved."},{"lesson":5,"question":"A message has several recipients, but your response should go only to the sender. Which approach fits?","options":["Use Reply and verify the recipient list before sending","Use Reply All and assume extra recipients are removed automatically","Use Forward without entering or reviewing any recipient","Keep all recipients because the original message was a group message"],"answer":0,"explanation":"Reply scope matters. Verify the final recipient list rather than relying solely on the button's name."},{"lesson":5,"question":"What does Bcc change compared with placing recipients in To or Cc?","options":["Message encryption for Bcc recipients while To and Cc receive an unencrypted copy","Forwarding permission, preventing Bcc recipients from sharing the message body","Reply behavior, guaranteeing that Bcc recipients cannot reveal themselves to others","Recipient visibility, not message encryption"],"answer":3,"explanation":"Bcc concerns recipient visibility, not content secrecy, encryption, or control over forwarding."},{"lesson":6,"question":"An attachment has the expected filename, but several versions used that name. What should be verified?","options":["The attachment icon, treating its presence as evidence that the correct version was selected","The selected file's actual contents and version","The filename and extension, treating a match as proof it is the most recent intended draft","The subject line and message text, without reopening or comparing the selected source file"],"answer":1,"explanation":"A matching name does not establish the right version. Inspect the intended source contents before a real send."},{"lesson":6,"question":"You remove an attachment from an unsent draft. What should you expect to check?","options":["The original file was necessarily deleted from the computer","The draft's subject is now the original file's only copy","The attachment was automatically moved to Trash with the email","The draft no longer attaches it while the original file remains in storage"],"answer":3,"explanation":"Removing an attachment from a draft is different from deleting the original file. Verify both states in practice."},{"lesson":7,"question":"A copy appears in Sent after your test message. What can you reasonably conclude?","options":["The recipient has read every word","The recipient has opened all attachments","The recipient has accepted every request in the message","A sent copy exists, but it does not prove the recipient read or approved it"],"answer":3,"explanation":"Sent is not a read or approval confirmation. Separate sending evidence from the recipient's actions."},{"lesson":7,"question":"You prepare a forward of a received message. What requires review before a real send?","options":["Only whether the message was marked unread","The new recipients and all forwarded content and attachments","Only the new subject's spelling","Only the original sender's display name"],"answer":1,"explanation":"Forwarding can disclose included content to a new audience. Review both destination and material."},{"lesson":8,"question":"Quick Filter shows no messages for a phrase you expected to find. What should you inspect?","options":["The browser's search engine, assuming Quick Filter sends the query to a web search","Folder, query, and enabled filter fields","The composition default font, assuming invisible matches are caused by display formatting","The account's outgoing-server settings, assuming they determine which stored messages match"],"answer":1,"explanation":"Quick Filter operates within a context and selected criteria. Check those before concluding that mail is missing."},{"lesson":8,"question":"After clearing Quick Filter, previously hidden messages return. What does that demonstrate?","options":["The filter hid nonmatches rather than deleting those messages","The account was recreated automatically","The messages were restored from permanent deletion","The server sent duplicate copies of every message"],"answer":0,"explanation":"A view filter changes visibility. Clearing it can reveal existing messages that never left the folder."},{"lesson":9,"question":"You want to retain a message while removing it from Inbox. Which action matches that purpose?","options":["Permanently delete it and look for it in Drafts","Mark it unread and assume it moved out of Inbox","Remove the entire email account","Archive it and verify the archive destination"],"answer":3,"explanation":"Archiving retains the message in the configured archive location; read status does not move it."},{"lesson":9,"question":"You accidentally delete a disposable test message. Which recovery should be tried when available?","options":["Undo or restore it from Trash before emptying Trash","Edit a saved password entry in the browser","Empty Trash first to refresh the mailbox","Create a new account with the same display name"],"answer":0,"explanation":"Available Undo or Trash recovery can restore a recently deleted message. Do not remove recoverable content before checking."},{"lesson":10,"question":"Your self-addressed practice message contains an attachment. What should be reviewed before sending once?","options":["Recipients, subject, body, attachment name, and the attachment's actual content","Only the address of the original source file","Only the list of folders in the account","The subject and attachment icon without inspecting their details"],"answer":0,"explanation":"A complete send check covers destinations and content. A filename or icon alone may conceal the wrong attachment."},{"lesson":10,"question":"A saved draft seems missing after switching accounts. What should you check first?","options":["The current account's Sent folder, treating a missing draft as evidence that it was sent","The other account's Inbox, assuming switching accounts moves drafts into incoming mail","The correct account's Drafts folder","The operating system Downloads folder, assuming unsent messages are saved as attachments"],"answer":2,"explanation":"Account context and folder location matter. Confirm where the draft was saved before attempting disruptive recovery."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for ChatGPT.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of ChatGPT. Score 85 percent to earn a course-completion certificate.">
   <title>ChatGPT Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>ChatGPT Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="ChatGPT quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. Where is a new request normally entered in ChatGPT?</legend>
-          <label><input type="radio" name="question-0" value="0"> The browser address bar</label>
-          <label><input type="radio" name="question-0" value="1"> The page title</label>
-          <label><input type="radio" name="question-0" value="2"> The prompt or message field</label>
+          <legend>1. You can read the response but cannot enter your next prompt. What should you locate?</legend>
+          <label><input type="radio" name="question-0" value="0"> The browser&#x27;s Find field as a substitute prompt</label>
+          <label><input type="radio" name="question-0" value="1"> The page&#x27;s first link regardless of its label</label>
+          <label><input type="radio" name="question-0" value="2"> The prompt edit field and its current focus state</label>
+          <label><input type="radio" name="question-0" value="3"> The conversation title as a substitute prompt</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What is a useful follow-up prompt?</legend>
-          <label><input type="radio" name="question-1" value="0"> Ignore all errors</label>
-          <label><input type="radio" name="question-1" value="1"> Explain step two and identify uncertainty</label>
-          <label><input type="radio" name="question-1" value="2"> Save my password</label>
+          <legend>2. An interface update moves a familiar button. Which navigation strategy remains useful?</legend>
+          <label><input type="radio" name="question-1" value="0"> Treat the first button as Send because it used to be there</label>
+          <label><input type="radio" name="question-1" value="1"> Use current accessible names, headings, and form controls to find the action</label>
+          <label><input type="radio" name="question-1" value="2"> Press the same number of Tabs regardless of the starting focus</label>
+          <label><input type="radio" name="question-1" value="3"> Rely on the old button&#x27;s screen position without checking its label</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What should you do with a citation provided by ChatGPT?</legend>
-          <label><input type="radio" name="question-2" value="0"> Open and verify the original source</label>
-          <label><input type="radio" name="question-2" value="1"> Assume it exists</label>
-          <label><input type="radio" name="question-2" value="2"> Copy it without checking</label>
+          <legend>3. You need a five-step checklist for a new employee using only a keyboard. Which prompt is most precise?</legend>
+          <label><input type="radio" name="question-2" value="0"> Write a five-section explanation of setup principles for a beginner keyboard user</label>
+          <label><input type="radio" name="question-2" value="1"> Write a beginner setup checklist with a separate explanation of every available setting</label>
+          <label><input type="radio" name="question-2" value="2"> Write five numbered setup steps for a beginner keyboard user; define unfamiliar terms</label>
+          <label><input type="radio" name="question-2" value="3"> Write five numbered setup steps for an experienced employee using a mouse and keyboard</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. Which output is usually easiest to navigate with a screen reader?</legend>
-          <label><input type="radio" name="question-3" value="0"> Meaning shown only by color</label>
-          <label><input type="radio" name="question-3" value="1"> Descriptive headings and numbered steps</label>
-          <label><input type="radio" name="question-3" value="2"> A picture with no description</label>
+          <legend>4. The first answer is technically detailed but too advanced for the intended audience. What missing prompt detail likely contributed?</legend>
+          <label><input type="radio" name="question-3" value="0"> The desired balance between short and long paragraphs</label>
+          <label><input type="radio" name="question-3" value="1"> The audience&#x27;s starting knowledge</label>
+          <label><input type="radio" name="question-3" value="2"> The expected file format for saving the response</label>
+          <label><input type="radio" name="question-3" value="3"> The preferred level of formality in the finished document</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. When may a workplace document be uploaded?</legend>
-          <label><input type="radio" name="question-4" value="0"> Only when policy and permissions allow it</label>
-          <label><input type="radio" name="question-4" value="1"> Whenever the account is free</label>
-          <label><input type="radio" name="question-4" value="2"> Whenever the filename is short</label>
+          <legend>5. The answer omits how to confirm a file was saved. Which follow-up is most effective?</legend>
+          <label><input type="radio" name="question-4" value="0"> Add a final check that the document title is still in the recent-files list</label>
+          <label><input type="radio" name="question-4" value="1"> Add a Save shortcut to every step; keep the existing requirements</label>
+          <label><input type="radio" name="question-4" value="2"> Add a reopen-and-check step; keep the existing requirements</label>
+          <label><input type="radio" name="question-4" value="3"> Add a reminder to save often; use that reminder as the completion check</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. A revision fixes tone but changes a verified date. What should you do?</legend>
+          <label><input type="radio" name="question-5" value="0"> Restore the verified date and recheck requirements</label>
+          <label><input type="radio" name="question-5" value="1"> Keep both dates in the draft and leave the recipient to choose between them</label>
+          <label><input type="radio" name="question-5" value="2"> Request another tone revision and rely on it to restore the earlier facts</label>
+          <label><input type="radio" name="question-5" value="3"> Use the revised date because the system has now processed the document twice</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. You are explaining a process whose order matters. Which requested format best communicates it?</legend>
+          <label><input type="radio" name="question-6" value="0"> An unordered list of disconnected fragments</label>
+          <label><input type="radio" name="question-6" value="1"> A numbered procedure with one action per step</label>
+          <label><input type="radio" name="question-6" value="2"> A wide table with every sentence in one cell</label>
+          <label><input type="radio" name="question-6" value="3"> A paragraph separated by repeated spaces</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. A comparison table is cumbersome with your screen reader. Which follow-up is useful?</legend>
+          <label><input type="radio" name="question-7" value="0"> Split the table into separate images with the original column headings</label>
+          <label><input type="radio" name="question-7" value="1"> Provide a prose summary that omits differences shared by most options</label>
+          <label><input type="radio" name="question-7" value="2"> Keep the table and shorten each cell by removing its qualifications</label>
+          <label><input type="radio" name="question-7" value="3"> Use labelled sections with the same information</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A summary gives a deadline that differs from the public source. What should take priority?</legend>
+          <label><input type="radio" name="question-8" value="0"> The generated deadline because the summary is easier to read</label>
+          <label><input type="radio" name="question-8" value="1"> Whichever deadline appears more often in the conversation</label>
+          <label><input type="radio" name="question-8" value="2"> The earlier deadline without checking either context</label>
+          <label><input type="radio" name="question-8" value="3"> The source&#x27;s actual deadline, after checking its date and context</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. The source includes an exception that the short summary omits. What should you do?</legend>
+          <label><input type="radio" name="question-9" value="0"> Keep the omission because every summary must remove all qualifications</label>
+          <label><input type="radio" name="question-9" value="1"> Include the exception if it changes how the information should be used</label>
+          <label><input type="radio" name="question-9" value="2"> Add more descriptive adjectives instead of the exception</label>
+          <label><input type="radio" name="question-9" value="3"> Treat the exception as false because it is absent from the summary</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. An email draft apologizes for a mistake you did not make. What is the appropriate edit?</legend>
+          <label><input type="radio" name="question-10" value="0"> Correct the claim and keep the intended message</label>
+          <label><input type="radio" name="question-10" value="1"> Remove the named mistake but retain the sentence accepting responsibility for it</label>
+          <label><input type="radio" name="question-10" value="2"> Ask for a more diplomatic tone and keep the revised factual account unchanged</label>
+          <label><input type="radio" name="question-10" value="3"> Keep the apology but make it conditional without checking the underlying account</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A revised email is polite but does not state what the recipient needs to do. What should be added?</legend>
+          <label><input type="radio" name="question-11" value="0"> More formal synonyms throughout the same text</label>
+          <label><input type="radio" name="question-11" value="1"> A longer greeting without changing the message</label>
+          <label><input type="radio" name="question-11" value="2"> An unrelated success story to make it engaging</label>
+          <label><input type="radio" name="question-11" value="3"> A clear, accurate action request suited to the purpose</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. Three suggested tools all exceed your stated budget. Which follow-up best addresses the failure?</legend>
+          <label><input type="radio" name="question-12" value="0"> Remove the budget requirement without considering its importance</label>
+          <label><input type="radio" name="question-12" value="1"> Ask which expensive tool has the nicest description</label>
+          <label><input type="radio" name="question-12" value="2"> Request alternatives within the budget and compare the same decision criteria</label>
+          <label><input type="radio" name="question-12" value="3"> Choose the first option because a ranking was provided</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. One option has the most benefits listed but a major unaddressed accessibility barrier. What should guide your choice?</legend>
+          <label><input type="radio" name="question-13" value="0"> How each option meets the essential requirements</label>
+          <label><input type="radio" name="question-13" value="1"> Which option receives the most positive language in the comparison</label>
+          <label><input type="radio" name="question-13" value="2"> How many advantages remain after counting each disadvantage once</label>
+          <label><input type="radio" name="question-13" value="3"> Which option has the largest number of features, including optional ones</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. You want help organizing a confidential workplace document during practice. Which approach follows the lesson?</legend>
+          <label><input type="radio" name="question-14" value="0"> Upload it after replacing the filename with a generic name</label>
+          <label><input type="radio" name="question-14" value="1"> Remove the first page while retaining the private details elsewhere</label>
+          <label><input type="radio" name="question-14" value="2"> Paste it in full and ask that it not be saved</label>
+          <label><input type="radio" name="question-14" value="3"> Describe its structure using fictional content instead of uploading the real document</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. A sample document has no names but contains exact dates and unique case details. Is it necessarily nonidentifying?</legend>
+          <label><input type="radio" name="question-15" value="0"> No; distinctive combinations can still reveal private information</label>
+          <label><input type="radio" name="question-15" value="1"> No; every public document is automatically confidential</label>
+          <label><input type="radio" name="question-15" value="2"> Yes; names are the only information that can identify someone</label>
+          <label><input type="radio" name="question-15" value="3"> Yes; text files cannot contain identifying information</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. The response is still being generated while your screen reader announces updates. What should you do before treating the answer as complete?</legend>
+          <label><input type="radio" name="question-16" value="0"> Start a new prompt after a pause to get the missing part of the current answer</label>
+          <label><input type="radio" name="question-16" value="1"> Treat the end of the current speech queue as evidence generation has finished</label>
+          <label><input type="radio" name="question-16" value="2"> Confirm completion, then review the whole answer</label>
+          <label><input type="radio" name="question-16" value="3"> Stop when the first useful paragraph has been announced and assess that paragraph</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. A keyboard command acts in the browser&#x27;s address bar instead of the conversation. What should you check?</legend>
+          <label><input type="radio" name="question-17" value="0"> Whether the conversation needs to be reopened in a new browser tab</label>
+          <label><input type="radio" name="question-17" value="1"> Current focus and reading or typing mode</label>
+          <label><input type="radio" name="question-17" value="2"> Whether the browser has a saved shortcut for that command</label>
+          <label><input type="radio" name="question-17" value="3"> The response language selected in the account preferences</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. The final project uses a generated plan with unsupported factual claims. What remains before completion?</legend>
+          <label><input type="radio" name="question-18" value="0"> Verify or correct the claims, revise the plan, and document the assistance</label>
+          <label><input type="radio" name="question-18" value="1"> Rename the plan and accept every statement</label>
+          <label><input type="radio" name="question-18" value="2"> Ask for a more confident tone without checking sources</label>
+          <label><input type="radio" name="question-18" value="3"> Copy the plan into another file and treat it as verified</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which record best explains how ChatGPT contributed to the finished work?</legend>
+          <label><input type="radio" name="question-19" value="0"> The original prompt and first response, without later corrections made in the document</label>
+          <label><input type="radio" name="question-19" value="1"> The final response and its citations, without a record of whether they support the claims</label>
+          <label><input type="radio" name="question-19" value="2"> The final document and its word count, without the decisions behind the revisions</label>
+          <label><input type="radio" name="question-19" value="3"> Prompts, source checks, edits, and unresolved limits</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"ChatGPT","displayName":"ChatGPT","slug":"chatgpt","passPercent":80,"questions":[{"answer":2,"explanation":"Requests are entered in the message field.","options":["The browser address bar","The page title","The prompt or message field"],"question":"Where is a new request normally entered in ChatGPT?"},{"answer":1,"explanation":"Specific follow-ups improve clarity and verification.","options":["Ignore all errors","Explain step two and identify uncertainty","Save my password"],"question":"What is a useful follow-up prompt?"},{"answer":0,"explanation":"AI-generated citations can be incomplete or incorrect.","options":["Open and verify the original source","Assume it exists","Copy it without checking"],"question":"What should you do with a citation provided by ChatGPT?"},{"answer":1,"explanation":"Semantic structure supports navigation.","options":["Meaning shown only by color","Descriptive headings and numbered steps","A picture with no description"],"question":"Which output is usually easiest to navigate with a screen reader?"},{"answer":0,"explanation":"Workplace policy and data permissions control uploads.","options":["Only when policy and permissions allow it","Whenever the account is free","Whenever the filename is short"],"question":"When may a workplace document be uploaded?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"ChatGPT","displayName":"ChatGPT","slug":"chatgpt","passPercent":85,"questions":[{"lesson":1,"question":"You can read the response but cannot enter your next prompt. What should you locate?","options":["The browser's Find field as a substitute prompt","The page's first link regardless of its label","The prompt edit field and its current focus state","The conversation title as a substitute prompt"],"answer":2,"explanation":"Reading a response and entering a prompt use different parts of the interface. Confirm the labelled input field before typing."},{"lesson":1,"question":"An interface update moves a familiar button. Which navigation strategy remains useful?","options":["Treat the first button as Send because it used to be there","Use current accessible names, headings, and form controls to find the action","Press the same number of Tabs regardless of the starting focus","Rely on the old button's screen position without checking its label"],"answer":1,"explanation":"Accessible labels and structure help identify the actual control when layout changes. Fixed positions and tab counts can become unreliable."},{"lesson":2,"question":"You need a five-step checklist for a new employee using only a keyboard. Which prompt is most precise?","options":["Write a five-section explanation of setup principles for a beginner keyboard user","Write a beginner setup checklist with a separate explanation of every available setting","Write five numbered setup steps for a beginner keyboard user; define unfamiliar terms","Write five numbered setup steps for an experienced employee using a mouse and keyboard"],"answer":2,"explanation":"The prompt specifies audience, task, format, and limits so the output can be checked against the need."},{"lesson":2,"question":"The first answer is technically detailed but too advanced for the intended audience. What missing prompt detail likely contributed?","options":["The desired balance between short and long paragraphs","The audience's starting knowledge","The expected file format for saving the response","The preferred level of formality in the finished document"],"answer":1,"explanation":"Context about the audience helps determine vocabulary, assumed knowledge, and level of explanation."},{"lesson":3,"question":"The answer omits how to confirm a file was saved. Which follow-up is most effective?","options":["Add a final check that the document title is still in the recent-files list","Add a Save shortcut to every step; keep the existing requirements","Add a reopen-and-check step; keep the existing requirements","Add a reminder to save often; use that reminder as the completion check"],"answer":2,"explanation":"A specific follow-up identifies the missing action and desired evidence instead of requesting an undefined improvement."},{"lesson":3,"question":"A revision fixes tone but changes a verified date. What should you do?","options":["Restore the verified date and recheck requirements","Keep both dates in the draft and leave the recipient to choose between them","Request another tone revision and rely on it to restore the earlier facts","Use the revised date because the system has now processed the document twice"],"answer":0,"explanation":"Revisions can alter facts unintentionally. Check both the requested improvement and previously correct content."},{"lesson":4,"question":"You are explaining a process whose order matters. Which requested format best communicates it?","options":["An unordered list of disconnected fragments","A numbered procedure with one action per step","A wide table with every sentence in one cell","A paragraph separated by repeated spaces"],"answer":1,"explanation":"Numbered steps expose sequence and support following the process. The format should match the information's purpose."},{"lesson":4,"question":"A comparison table is cumbersome with your screen reader. Which follow-up is useful?","options":["Split the table into separate images with the original column headings","Provide a prose summary that omits differences shared by most options","Keep the table and shorten each cell by removing its qualifications","Use labelled sections with the same information"],"answer":3,"explanation":"Choose a usable structure while preserving meaning. Simplification should not silently discard necessary information."},{"lesson":5,"question":"A summary gives a deadline that differs from the public source. What should take priority?","options":["The generated deadline because the summary is easier to read","Whichever deadline appears more often in the conversation","The earlier deadline without checking either context","The source's actual deadline, after checking its date and context"],"answer":3,"explanation":"Compare the summary with the original evidence. Repetition or readability does not resolve a factual conflict."},{"lesson":5,"question":"The source includes an exception that the short summary omits. What should you do?","options":["Keep the omission because every summary must remove all qualifications","Include the exception if it changes how the information should be used","Add more descriptive adjectives instead of the exception","Treat the exception as false because it is absent from the summary"],"answer":1,"explanation":"A good summary preserves qualifications that materially affect the conclusion or procedure."},{"lesson":6,"question":"An email draft apologizes for a mistake you did not make. What is the appropriate edit?","options":["Correct the claim and keep the intended message","Remove the named mistake but retain the sentence accepting responsibility for it","Ask for a more diplomatic tone and keep the revised factual account unchanged","Keep the apology but make it conditional without checking the underlying account"],"answer":0,"explanation":"Generated drafts can invent context. Human review should correct facts and commitments as well as tone."},{"lesson":6,"question":"A revised email is polite but does not state what the recipient needs to do. What should be added?","options":["More formal synonyms throughout the same text","A longer greeting without changing the message","An unrelated success story to make it engaging","A clear, accurate action request suited to the purpose"],"answer":3,"explanation":"Professional writing needs a clear purpose and next action, not merely a polite style."},{"lesson":7,"question":"Three suggested tools all exceed your stated budget. Which follow-up best addresses the failure?","options":["Remove the budget requirement without considering its importance","Ask which expensive tool has the nicest description","Request alternatives within the budget and compare the same decision criteria","Choose the first option because a ranking was provided"],"answer":2,"explanation":"Treat constraints as requirements. Revise the candidate set and compare options on relevant, verified criteria."},{"lesson":7,"question":"One option has the most benefits listed but a major unaddressed accessibility barrier. What should guide your choice?","options":["How each option meets the essential requirements","Which option receives the most positive language in the comparison","How many advantages remain after counting each disadvantage once","Which option has the largest number of features, including optional ones"],"answer":0,"explanation":"Benefits have different importance. A critical unmet requirement can outweigh many minor advantages."},{"lesson":8,"question":"You want help organizing a confidential workplace document during practice. Which approach follows the lesson?","options":["Upload it after replacing the filename with a generic name","Remove the first page while retaining the private details elsewhere","Paste it in full and ask that it not be saved","Describe its structure using fictional content instead of uploading the real document"],"answer":3,"explanation":"A filename change or request for secrecy does not remove sensitive content. Practice with fictional or public material."},{"lesson":8,"question":"A sample document has no names but contains exact dates and unique case details. Is it necessarily nonidentifying?","options":["No; distinctive combinations can still reveal private information","No; every public document is automatically confidential","Yes; names are the only information that can identify someone","Yes; text files cannot contain identifying information"],"answer":0,"explanation":"Privacy review must consider indirect identifiers and confidential content, not just obvious names."},{"lesson":9,"question":"The response is still being generated while your screen reader announces updates. What should you do before treating the answer as complete?","options":["Start a new prompt after a pause to get the missing part of the current answer","Treat the end of the current speech queue as evidence generation has finished","Confirm completion, then review the whole answer","Stop when the first useful paragraph has been announced and assess that paragraph"],"answer":2,"explanation":"Partial streaming output may omit later qualifications or steps. Review the completed answer deliberately."},{"lesson":9,"question":"A keyboard command acts in the browser's address bar instead of the conversation. What should you check?","options":["Whether the conversation needs to be reopened in a new browser tab","Current focus and reading or typing mode","Whether the browser has a saved shortcut for that command","The response language selected in the account preferences"],"answer":1,"explanation":"Browser chrome, page content, and input fields are different contexts. Reorient before retrying the command."},{"lesson":10,"question":"The final project uses a generated plan with unsupported factual claims. What remains before completion?","options":["Verify or correct the claims, revise the plan, and document the assistance","Rename the plan and accept every statement","Ask for a more confident tone without checking sources","Copy the plan into another file and treat it as verified"],"answer":0,"explanation":"Moving or polishing a draft does not validate it. The project includes evidence checks and human revision."},{"lesson":10,"question":"Which record best explains how ChatGPT contributed to the finished work?","options":["The original prompt and first response, without later corrections made in the document","The final response and its citations, without a record of whether they support the claims","The final document and its word count, without the decisions behind the revisions","Prompts, source checks, edits, and unresolved limits"],"answer":3,"explanation":"A process record distinguishes AI assistance from verification and decisions made by the learner."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

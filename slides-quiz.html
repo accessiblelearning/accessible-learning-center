@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Google Slides.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Google Slides. Score 85 percent to earn a course-completion certificate.">
   <title>Google Slides Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Google Slides Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Google Slides quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. What should each Google Slides slide have?</legend>
-          <label><input type="radio" name="question-0" value="0"> Only a number</label>
-          <label><input type="radio" name="question-0" value="1"> A decorative border</label>
-          <label><input type="radio" name="question-0" value="2"> A unique descriptive title</label>
+          <legend>1. The screen reader announces browser controls instead of slide content. What should you establish first?</legend>
+          <label><input type="radio" name="question-0" value="0"> Focus within Slides and the appropriate screen-reader support setting</label>
+          <label><input type="radio" name="question-0" value="1"> A new theme for every slide</label>
+          <label><input type="radio" name="question-0" value="2"> The presentation&#x27;s printing orientation only</label>
+          <label><input type="radio" name="question-0" value="3"> A different exported filename for the presentation</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What should be checked before sharing?</legend>
-          <label><input type="radio" name="question-1" value="0"> Only theme color</label>
-          <label><input type="radio" name="question-1" value="1"> Account, audience, and permission level</label>
-          <label><input type="radio" name="question-1" value="2"> Only animation speed</label>
+          <legend>2. A blank deck is open in the wrong account. What is the best next step before adding workplace material?</legend>
+          <label><input type="radio" name="question-1" value="0"> Keep working and rely on the deck&#x27;s title to identify ownership</label>
+          <label><input type="radio" name="question-1" value="1"> Export immediately and assume account context no longer matters</label>
+          <label><input type="radio" name="question-1" value="2"> Make the file public so the intended account can find it</label>
+          <label><input type="radio" name="question-1" value="3"> Switch to the intended account and confirm the correct file</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What supports accessible structure?</legend>
-          <label><input type="radio" name="question-2" value="0"> Built-in slide layouts</label>
-          <label><input type="radio" name="question-2" value="1"> Blank slides with random text boxes</label>
-          <label><input type="radio" name="question-2" value="2"> Color alone</label>
+          <legend>3. You want to select another slide rather than edit an object on the current slide. Which interface area is relevant?</legend>
+          <label><input type="radio" name="question-2" value="0"> The speaker-notes text area</label>
+          <label><input type="radio" name="question-2" value="1"> The browser&#x27;s address bar</label>
+          <label><input type="radio" name="question-2" value="2"> The current slide&#x27;s text box</label>
+          <label><input type="radio" name="question-2" value="3"> The filmstrip</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. Where can detailed presentation information go?</legend>
-          <label><input type="radio" name="question-3" value="0"> Only image filenames</label>
-          <label><input type="radio" name="question-3" value="1"> The browser history</label>
-          <label><input type="radio" name="question-3" value="2"> Speaker notes</label>
+          <legend>4. A keyboard command acts on text when you expected it to move a slide. What should you check?</legend>
+          <label><input type="radio" name="question-3" value="0"> Whether the chosen theme includes an image</label>
+          <label><input type="radio" name="question-3" value="1"> Whether focus is in text editing, the canvas, or the filmstrip</label>
+          <label><input type="radio" name="question-3" value="2"> Whether the document was created on a Monday</label>
+          <label><input type="radio" name="question-3" value="3"> Whether the slide title uses a short word</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. What should be reviewed after downloading PPTX or PDF?</legend>
-          <label><input type="radio" name="question-4" value="0"> Titles, order, notes, links, images, and layout</label>
-          <label><input type="radio" name="question-4" value="1"> Only the extension</label>
-          <label><input type="radio" name="question-4" value="2"> Only file size</label>
+          <legend>5. A five-slide deck has the same generic title on every slide. Which revision best supports navigation?</legend>
+          <label><input type="radio" name="question-4" value="0"> Remove titles and rely entirely on object positions</label>
+          <label><input type="radio" name="question-4" value="1"> Keep the title and distinguish slides only by background color</label>
+          <label><input type="radio" name="question-4" value="2"> Give each slide a distinct title matching its topic</label>
+          <label><input type="radio" name="question-4" value="3"> Move every title into the file&#x27;s name</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You need a title and a short content list on each slide. Which starting point supports consistent structure?</legend>
+          <label><input type="radio" name="question-5" value="0"> An appropriate built-in layout with its intended placeholders</label>
+          <label><input type="radio" name="question-5" value="1"> A decorative layout with no title area</label>
+          <label><input type="radio" name="question-5" value="2"> A blank slide with every line placed in a separate text box</label>
+          <label><input type="radio" name="question-5" value="3"> An image containing the title and list together</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. A slide is crowded with a full spoken explanation. Which revision best separates audience content from presenter detail?</legend>
+          <label><input type="radio" name="question-6" value="0"> Shrink all slide text until the entire explanation fits</label>
+          <label><input type="radio" name="question-6" value="1"> Divide the paragraph into unrelated floating text boxes</label>
+          <label><input type="radio" name="question-6" value="2"> Remove the explanation without recording presenter guidance</label>
+          <label><input type="radio" name="question-6" value="3"> Keep concise points on the slide and supporting detail in notes</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. Three lines begin with typed dashes but are intended as a list. What should you improve?</legend>
+          <label><input type="radio" name="question-7" value="0"> Use a smaller font for the second and third lines</label>
+          <label><input type="radio" name="question-7" value="1"> Add blank lines until the list looks evenly spaced</label>
+          <label><input type="radio" name="question-7" value="2"> Replace each dash with two typed dashes</label>
+          <label><input type="radio" name="question-7" value="3"> Apply actual list formatting and check item boundaries</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. An automatically supplied image description is inaccurate for the slide. What is the best correction?</legend>
+          <label><input type="radio" name="question-8" value="0"> Use the image dimensions as its full replacement</label>
+          <label><input type="radio" name="question-8" value="1"> Replace it with verified text conveying the relevant meaning</label>
+          <label><input type="radio" name="question-8" value="2"> Keep it because generated descriptions are always authoritative</label>
+          <label><input type="radio" name="question-8" value="3"> Delete all surrounding text so the description appears consistent</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. You cannot find a suitable image for the exercise. What does the lesson allow you to demonstrate?</legend>
+          <label><input type="radio" name="question-9" value="0"> An unrelated private image without checking its content</label>
+          <label><input type="radio" name="question-9" value="1"> An empty image placeholder presented as a finished description</label>
+          <label><input type="radio" name="question-9" value="2"> The accessible-image insertion and description process</label>
+          <label><input type="radio" name="question-9" value="3"> A screenshot of the slide with no text equivalent</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. A chart is the only source of important values on a slide. What should be added?</legend>
+          <label><input type="radio" name="question-10" value="0"> A larger chart with stronger colors, without an equivalent explanation of the data</label>
+          <label><input type="radio" name="question-10" value="1"> A text equivalent of the data and its meaning</label>
+          <label><input type="radio" name="question-10" value="2"> A source citation without the values needed to understand the slide itself</label>
+          <label><input type="radio" name="question-10" value="3"> A caption identifying the chart type without providing its values or conclusion</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A table contains three numeric columns with no headings. What should be addressed first?</legend>
+          <label><input type="radio" name="question-11" value="0"> Identify each column&#x27;s meaning with clear labels</label>
+          <label><input type="radio" name="question-11" value="1"> Sort the numbers within each column separately</label>
+          <label><input type="radio" name="question-11" value="2"> Remove gridlines to simplify the appearance</label>
+          <label><input type="radio" name="question-11" value="3"> Make the numbers larger without adding labels</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. A screen reader reaches an image before the slide&#x27;s explanatory title and text. What should you review?</legend>
+          <label><input type="radio" name="question-12" value="0"> Object order and the meaning of the sequence</label>
+          <label><input type="radio" name="question-12" value="1"> Slide transition order, treating it as the setting for objects within each slide</label>
+          <label><input type="radio" name="question-12" value="2"> The overall slide order, leaving the individual object sequence unchanged</label>
+          <label><input type="radio" name="question-12" value="3"> Speaker-note paragraph spacing, without reviewing the order of the slide objects</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. Two statuses are distinguished only by pale green and pale yellow text. Which improvement addresses both concerns?</legend>
+          <label><input type="radio" name="question-13" value="0"> Use a larger slide number without changing the statuses</label>
+          <label><input type="radio" name="question-13" value="1"> Add explicit status words and strengthen text-background contrast</label>
+          <label><input type="radio" name="question-13" value="2"> Make both colors more similar for consistency</label>
+          <label><input type="radio" name="question-13" value="3"> Keep the colors and add a decorative image</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. A collaborator needs to suggest improvements but should not directly edit slides. Which access fits?</legend>
+          <label><input type="radio" name="question-14" value="0"> Viewer</label>
+          <label><input type="radio" name="question-14" value="1"> Editor</label>
+          <label><input type="radio" name="question-14" value="2"> Commenter</label>
+          <label><input type="radio" name="question-14" value="3"> Owner</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. You resolved a comment about missing alt text. What confirms the issue is addressed?</legend>
+          <label><input type="radio" name="question-15" value="0"> Give the commenter editing access</label>
+          <label><input type="radio" name="question-15" value="1"> Check only that the comment is no longer open</label>
+          <label><input type="radio" name="question-15" value="2"> Inspect the image&#x27;s description and test the resulting presentation</label>
+          <label><input type="radio" name="question-15" value="3"> Rename the image to resolved</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. A PPTX export opens with text displaced from its intended placeholders. What should you do?</legend>
+          <label><input type="radio" name="question-16" value="0"> Deliver the copy because a successful export confirms compatibility with all placeholders</label>
+          <label><input type="radio" name="question-16" value="1"> Rename the PPTX extension to PDF and assume that preserves the intended arrangement</label>
+          <label><input type="radio" name="question-16" value="2"> Correct the copy and recheck layout and access</label>
+          <label><input type="radio" name="question-16" value="3"> Check the cloud original again and rely on its correct layout instead of inspecting the export</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. You can edit slides by keyboard but have not tried presenting them. What remains to be tested?</legend>
+          <label><input type="radio" name="question-17" value="0"> Check the browser zoom and infer that all presentation controls are reachable</label>
+          <label><input type="radio" name="question-17" value="1"> Use editing-mode shortcuts again and assume presentation mode has identical behavior</label>
+          <label><input type="radio" name="question-17" value="2"> Preview slide thumbnails and treat their availability as proof of keyboard delivery</label>
+          <label><input type="radio" name="question-17" value="3"> Start, advance, go back, and exit by keyboard</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. The final six-slide deck has notes and images but missing descriptions and unclear titles. What should take priority?</legend>
+          <label><input type="radio" name="question-18" value="0"> Correct the missing meaning and structure before final delivery</label>
+          <label><input type="radio" name="question-18" value="1"> Add more slides so the deck appears more complete</label>
+          <label><input type="radio" name="question-18" value="2"> Reduce the filename length and export again</label>
+          <label><input type="radio" name="question-18" value="3"> Apply the same transition to all six slides</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which handoff best demonstrates the final project is ready?</legend>
+          <label><input type="radio" name="question-19" value="0"> A download link with untested public editing enabled</label>
+          <label><input type="radio" name="question-19" value="1"> A reviewed deck, tested exchange copy, usable notes, and appropriate access</label>
+          <label><input type="radio" name="question-19" value="2"> The original deck without checking its final saved state</label>
+          <label><input type="radio" name="question-19" value="3"> A screenshot of all slide thumbnails with no editable file</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Slides","displayName":"Google Slides","slug":"slides","passPercent":80,"questions":[{"answer":2,"explanation":"Unique titles support navigation.","options":["Only a number","A decorative border","A unique descriptive title"],"question":"What should each Google Slides slide have?"},{"answer":1,"explanation":"Sharing settings protect the presentation.","options":["Only theme color","Account, audience, and permission level","Only animation speed"],"question":"What should be checked before sharing?"},{"answer":0,"explanation":"Built-in layouts provide more predictable order.","options":["Built-in slide layouts","Blank slides with random text boxes","Color alone"],"question":"What supports accessible structure?"},{"answer":2,"explanation":"Notes hold detail for the presenter.","options":["Only image filenames","The browser history","Speaker notes"],"question":"Where can detailed presentation information go?"},{"answer":0,"explanation":"Export can change structure or content.","options":["Titles, order, notes, links, images, and layout","Only the extension","Only file size"],"question":"What should be reviewed after downloading PPTX or PDF?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Slides","displayName":"Google Slides","slug":"slides","passPercent":85,"questions":[{"lesson":1,"question":"The screen reader announces browser controls instead of slide content. What should you establish first?","options":["Focus within Slides and the appropriate screen-reader support setting","A new theme for every slide","The presentation's printing orientation only","A different exported filename for the presentation"],"answer":0,"explanation":"The browser and editing surface are separate contexts. Confirm focus and application support before changing the content."},{"lesson":1,"question":"A blank deck is open in the wrong account. What is the best next step before adding workplace material?","options":["Keep working and rely on the deck's title to identify ownership","Export immediately and assume account context no longer matters","Make the file public so the intended account can find it","Switch to the intended account and confirm the correct file"],"answer":3,"explanation":"Account and file context affect where work is stored and who can access it. Confirm them before adding content."},{"lesson":2,"question":"You want to select another slide rather than edit an object on the current slide. Which interface area is relevant?","options":["The speaker-notes text area","The browser's address bar","The current slide's text box","The filmstrip"],"answer":3,"explanation":"The filmstrip represents the slide sequence. Canvas objects and notes belong to the current slide."},{"lesson":2,"question":"A keyboard command acts on text when you expected it to move a slide. What should you check?","options":["Whether the chosen theme includes an image","Whether focus is in text editing, the canvas, or the filmstrip","Whether the document was created on a Monday","Whether the slide title uses a short word"],"answer":1,"explanation":"Commands depend on focus and editing state. Identify the active region before repeating an operation."},{"lesson":3,"question":"A five-slide deck has the same generic title on every slide. Which revision best supports navigation?","options":["Remove titles and rely entirely on object positions","Keep the title and distinguish slides only by background color","Give each slide a distinct title matching its topic","Move every title into the file's name"],"answer":2,"explanation":"Distinct titles give structure and help learners identify slides without depending on appearance."},{"lesson":3,"question":"You need a title and a short content list on each slide. Which starting point supports consistent structure?","options":["An appropriate built-in layout with its intended placeholders","A decorative layout with no title area","A blank slide with every line placed in a separate text box","An image containing the title and list together"],"answer":0,"explanation":"Built-in layouts provide useful structure and placeholders, though the completed slides still need accessibility review."},{"lesson":4,"question":"A slide is crowded with a full spoken explanation. Which revision best separates audience content from presenter detail?","options":["Shrink all slide text until the entire explanation fits","Divide the paragraph into unrelated floating text boxes","Remove the explanation without recording presenter guidance","Keep concise points on the slide and supporting detail in notes"],"answer":3,"explanation":"Concise slide content supports comprehension, while notes preserve the detail needed for delivery."},{"lesson":4,"question":"Three lines begin with typed dashes but are intended as a list. What should you improve?","options":["Use a smaller font for the second and third lines","Add blank lines until the list looks evenly spaced","Replace each dash with two typed dashes","Apply actual list formatting and check item boundaries"],"answer":3,"explanation":"Real list structure communicates items and hierarchy. Typed symbols and spacing may provide only a visual imitation."},{"lesson":5,"question":"An automatically supplied image description is inaccurate for the slide. What is the best correction?","options":["Use the image dimensions as its full replacement","Replace it with verified text conveying the relevant meaning","Keep it because generated descriptions are always authoritative","Delete all surrounding text so the description appears consistent"],"answer":1,"explanation":"Alternative text needs review for accuracy and context. The fact that text was generated does not make it a correct description."},{"lesson":5,"question":"You cannot find a suitable image for the exercise. What does the lesson allow you to demonstrate?","options":["An unrelated private image without checking its content","An empty image placeholder presented as a finished description","The accessible-image insertion and description process","A screenshot of the slide with no text equivalent"],"answer":2,"explanation":"The lesson permits documenting the accessible-image process when a suitable image is unavailable; the skill still requires a meaningful description plan."},{"lesson":6,"question":"A chart is the only source of important values on a slide. What should be added?","options":["A larger chart with stronger colors, without an equivalent explanation of the data","A text equivalent of the data and its meaning","A source citation without the values needed to understand the slide itself","A caption identifying the chart type without providing its values or conclusion"],"answer":1,"explanation":"Readers need access to the information, not merely the object's existence. Provide meaning and the values needed for the task."},{"lesson":6,"question":"A table contains three numeric columns with no headings. What should be addressed first?","options":["Identify each column's meaning with clear labels","Sort the numbers within each column separately","Remove gridlines to simplify the appearance","Make the numbers larger without adding labels"],"answer":0,"explanation":"Without labels, numeric relationships can be ambiguous. Formatting cannot supply the missing meaning."},{"lesson":7,"question":"A screen reader reaches an image before the slide's explanatory title and text. What should you review?","options":["Object order and the meaning of the sequence","Slide transition order, treating it as the setting for objects within each slide","The overall slide order, leaving the individual object sequence unchanged","Speaker-note paragraph spacing, without reviewing the order of the slide objects"],"answer":0,"explanation":"The order in which objects are encountered matters independently of their visual arrangement."},{"lesson":7,"question":"Two statuses are distinguished only by pale green and pale yellow text. Which improvement addresses both concerns?","options":["Use a larger slide number without changing the statuses","Add explicit status words and strengthen text-background contrast","Make both colors more similar for consistency","Keep the colors and add a decorative image"],"answer":1,"explanation":"Meaning must not depend only on color, and the text must be readable against its background."},{"lesson":8,"question":"A collaborator needs to suggest improvements but should not directly edit slides. Which access fits?","options":["Viewer","Editor","Commenter","Owner"],"answer":2,"explanation":"Commenter supports feedback while limiting direct changes. The other roles are too restrictive or broader than the task needs."},{"lesson":8,"question":"You resolved a comment about missing alt text. What confirms the issue is addressed?","options":["Give the commenter editing access","Check only that the comment is no longer open","Inspect the image's description and test the resulting presentation","Rename the image to resolved"],"answer":2,"explanation":"Resolving feedback changes the discussion's status. Verify the underlying slide correction separately."},{"lesson":9,"question":"A PPTX export opens with text displaced from its intended placeholders. What should you do?","options":["Deliver the copy because a successful export confirms compatibility with all placeholders","Rename the PPTX extension to PDF and assume that preserves the intended arrangement","Correct the copy and recheck layout and access","Check the cloud original again and rely on its correct layout instead of inspecting the export"],"answer":2,"explanation":"Successful export is not proof of faithful conversion. The recipient's usable output must be checked."},{"lesson":9,"question":"You can edit slides by keyboard but have not tried presenting them. What remains to be tested?","options":["Check the browser zoom and infer that all presentation controls are reachable","Use editing-mode shortcuts again and assume presentation mode has identical behavior","Preview slide thumbnails and treat their availability as proof of keyboard delivery","Start, advance, go back, and exit by keyboard"],"answer":3,"explanation":"Editing and presenting are different workflows. Verify the actual delivery controls before treating the presentation task as complete."},{"lesson":10,"question":"The final six-slide deck has notes and images but missing descriptions and unclear titles. What should take priority?","options":["Correct the missing meaning and structure before final delivery","Add more slides so the deck appears more complete","Reduce the filename length and export again","Apply the same transition to all six slides"],"answer":0,"explanation":"Slide count and appearance do not replace meaningful titles, descriptions, and logical structure."},{"lesson":10,"question":"Which handoff best demonstrates the final project is ready?","options":["A download link with untested public editing enabled","A reviewed deck, tested exchange copy, usable notes, and appropriate access","The original deck without checking its final saved state","A screenshot of all slide thumbnails with no editable file"],"answer":1,"explanation":"The final project requires content, accessibility, delivery, compatibility, and sharing checks working together."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

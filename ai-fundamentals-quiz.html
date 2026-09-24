@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for AI Fundamentals and Responsible Use.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of AI Fundamentals and Responsible Use. Score 85 percent to earn a course-completion certificate.">
   <title>AI Fundamentals and Responsible Use Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>AI Fundamentals and Responsible Use Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="AI Fundamentals and Responsible Use quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. What is the safest way to treat an AI-generated answer?</legend>
-          <label><input type="radio" name="question-0" value="0"> As an authoritative final answer</label>
-          <label><input type="radio" name="question-0" value="1"> As private by default</label>
-          <label><input type="radio" name="question-0" value="2"> As a draft that requires verification</label>
+          <legend>1. An AI produces a polished workplace procedure with several specific factual claims. What does its polished style establish?</legend>
+          <label><input type="radio" name="question-0" value="0"> That the procedure was reviewed by a subject expert</label>
+          <label><input type="radio" name="question-0" value="1"> That the writing is fluent, while the claims still need checking</label>
+          <label><input type="radio" name="question-0" value="2"> That each factual claim came from an authoritative source</label>
+          <label><input type="radio" name="question-0" value="3"> That following the procedure will necessarily work on your setup</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. Which information should not be entered into a public AI tool?</legend>
-          <label><input type="radio" name="question-1" value="0"> Client records and passwords</label>
-          <label><input type="radio" name="question-1" value="1"> Public weather information</label>
-          <label><input type="radio" name="question-1" value="2"> A fictional practice name</label>
+          <legend>2. Which task is an appropriate starting use of generative AI in this course?</legend>
+          <label><input type="radio" name="question-1" value="0"> Draft a fictional checklist for a person to review and revise</label>
+          <label><input type="radio" name="question-1" value="1"> Make a final hiring decision without reviewing its reasoning</label>
+          <label><input type="radio" name="question-1" value="2"> Verify its own unsupported claim solely by repeating it</label>
+          <label><input type="radio" name="question-1" value="3"> Certify that an unseen workplace procedure is legally compliant</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What makes a prompt clearer?</legend>
-          <label><input type="radio" name="question-2" value="0"> Only one vague word</label>
-          <label><input type="radio" name="question-2" value="1"> Task, context, constraints, and format</label>
-          <label><input type="radio" name="question-2" value="2"> Private personal details</label>
+          <legend>3. Which prompt gives the clearest direction for a beginner-facing checklist?</legend>
+          <label><input type="radio" name="question-2" value="0"> Write five setup steps for a technician, explaining advanced settings in detail</label>
+          <label><input type="radio" name="question-2" value="1"> Write a beginner overview of setup benefits, organized under five headings</label>
+          <label><input type="radio" name="question-2" value="2"> Write five setup steps for a beginner keyboard user; define new terms</label>
+          <label><input type="radio" name="question-2" value="3"> Write a complete setup reference for keyboard users covering all optional settings</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. Which claims require especially careful checking?</legend>
-          <label><input type="radio" name="question-3" value="0"> Names, dates, quotations, calculations, and policies</label>
-          <label><input type="radio" name="question-3" value="1"> Only headings</label>
-          <label><input type="radio" name="question-3" value="2"> Only spelling</label>
+          <legend>4. A prompt includes a role and topic but no intended audience or output format. What is the most useful improvement?</legend>
+          <label><input type="radio" name="question-3" value="0"> Ask for a longer response without adding context</label>
+          <label><input type="radio" name="question-3" value="1"> Ask the AI to avoid every clarifying assumption without supplying missing details</label>
+          <label><input type="radio" name="question-3" value="2"> Repeat the topic several times in capital letters</label>
+          <label><input type="radio" name="question-3" value="3"> State who will use the response and what form the result should take</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Who is responsible for the final work?</legend>
-          <label><input type="radio" name="question-4" value="0"> The AI tool alone</label>
-          <label><input type="radio" name="question-4" value="1"> The person using the AI</label>
-          <label><input type="radio" name="question-4" value="2"> The web browser</label>
+          <legend>5. A first draft omits a required verification step. Which follow-up best addresses the gap?</legend>
+          <label><input type="radio" name="question-4" value="0"> Add a saved-file check; retain the required steps</label>
+          <label><input type="radio" name="question-4" value="1"> Add a final Save command without checking the destination or resulting file</label>
+          <label><input type="radio" name="question-4" value="2"> Add instructions for a second copy without checking the contents of either copy</label>
+          <label><input type="radio" name="question-4" value="3"> Add a reminder to save often and treat that reminder as proof of completion</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. After two refinements, the answer is shorter but has dropped an essential restriction. What should you do?</legend>
+          <label><input type="radio" name="question-5" value="0"> Discard the requirements and judge the response only by tone</label>
+          <label><input type="radio" name="question-5" value="1"> Use it because a shorter answer is always clearer</label>
+          <label><input type="radio" name="question-5" value="2"> Compare it with the original requirements and restore the missing restriction</label>
+          <label><input type="radio" name="question-5" value="3"> Assume later drafts always include every earlier constraint</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. An answer cites a page whose title looks relevant. What is the strongest verification step?</legend>
+          <label><input type="radio" name="question-6" value="0"> Accept the claim because a citation is present</label>
+          <label><input type="radio" name="question-6" value="1"> Check only that the URL contains a familiar organization name</label>
+          <label><input type="radio" name="question-6" value="2"> Open the source and check that it supports the specific claim in context</label>
+          <label><input type="radio" name="question-6" value="3"> Ask the same AI whether its citation is correct and stop there</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. Two AI answers agree on a date but provide no supporting evidence. What should you conclude?</legend>
+          <label><input type="radio" name="question-7" value="0"> Ask both tools again and treat repeated agreement as a substitute for a source</label>
+          <label><input type="radio" name="question-7" value="1"> Treat agreement between the two answers as independent verification of the date</label>
+          <label><input type="radio" name="question-7" value="2"> Choose the more detailed answer because extra detail indicates a stronger source</label>
+          <label><input type="radio" name="question-7" value="3"> Check the date against an authoritative source</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A practice prompt contains a client&#x27;s name, exact appointment date, and private notes. What is the safest revision for this course?</legend>
+          <label><input type="radio" name="question-8" value="0"> Use the real record in a new conversation and delete that conversation afterward</label>
+          <label><input type="radio" name="question-8" value="1"> Use a fictional case with the needed details</label>
+          <label><input type="radio" name="question-8" value="2"> Replace the name with initials while retaining the rest of the private record</label>
+          <label><input type="radio" name="question-8" value="3"> Remove the name but keep the exact appointment and distinctive private notes</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. A tool offers an upload feature. What does that mean about permission to upload workplace files?</legend>
+          <label><input type="radio" name="question-9" value="0"> The upload button guarantees the file contains no private information</label>
+          <label><input type="radio" name="question-9" value="1"> Renaming the file makes confidential content acceptable</label>
+          <label><input type="radio" name="question-9" value="2"> Every document on your computer is automatically approved for upload</label>
+          <label><input type="radio" name="question-9" value="3"> Availability does not establish authorization under workplace policy</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. An AI hiring draft treats a career gap as proof of low commitment. What is the main concern?</legend>
+          <label><input type="radio" name="question-10" value="0"> It makes an unsupported inference instead of assessing relevant evidence</label>
+          <label><input type="radio" name="question-10" value="1"> It needs more confident language to become objective</label>
+          <label><input type="radio" name="question-10" value="2"> It should make the same inference using a more formal tone</label>
+          <label><input type="radio" name="question-10" value="3"> It should remove all qualifications from the comparison</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A plan assumes every employee can drive and read small print. Which revision is most appropriate?</legend>
+          <label><input type="radio" name="question-11" value="0"> Replace employee with user while leaving the steps unchanged</label>
+          <label><input type="radio" name="question-11" value="1"> Identify those assumptions and add ways to meet the task across access needs</label>
+          <label><input type="radio" name="question-11" value="2"> Add a general inclusion statement without changing inaccessible steps</label>
+          <label><input type="radio" name="question-11" value="3"> Keep the assumptions because they simplify the instructions</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. A source says a feature may be available, but the summary says it is always available. What should be corrected?</legend>
+          <label><input type="radio" name="question-12" value="0"> Restore the source&#x27;s qualification and relevant conditions</label>
+          <label><input type="radio" name="question-12" value="1"> Keep always because summaries should sound decisive</label>
+          <label><input type="radio" name="question-12" value="2"> Replace the feature name with a more general term</label>
+          <label><input type="radio" name="question-12" value="3"> Delete the source link while retaining the stronger claim</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. An AI summary includes a useful-sounding detail absent from the source. What should happen?</legend>
+          <label><input type="radio" name="question-13" value="0"> Keep it because it improves the paragraph&#x27;s flow</label>
+          <label><input type="radio" name="question-13" value="1"> Check it independently or remove it from the source-based summary</label>
+          <label><input type="radio" name="question-13" value="2"> Treat it as verified if the rest of the summary is accurate</label>
+          <label><input type="radio" name="question-13" value="3"> Attribute it to the source without checking</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. An email draft promises delivery tomorrow, but you never supplied that commitment. What should you do?</legend>
+          <label><input type="radio" name="question-14" value="0"> Replace the promise with the accurate commitment</label>
+          <label><input type="radio" name="question-14" value="1"> Ask for a more professional tone and trust the revision to correct the schedule</label>
+          <label><input type="radio" name="question-14" value="2"> Keep the deadline and change the wording from a promise to a confident expectation</label>
+          <label><input type="radio" name="question-14" value="3"> Keep the date but add a general disclaimer that the message was AI-assisted</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. A draft is accurate but sounds unlike the person who will send it. What revision fits the lesson?</legend>
+          <label><input type="radio" name="question-15" value="0"> Remove all specific facts so the tone is generic</label>
+          <label><input type="radio" name="question-15" value="1"> Add jargon to make it sound more automated</label>
+          <label><input type="radio" name="question-15" value="2"> Adjust wording and tone while preserving verified facts and the intended message</label>
+          <label><input type="radio" name="question-15" value="3"> Accept it unchanged because accuracy prevents tone problems</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. You compare two AI tools using the same public-information task. Which evidence is most useful?</legend>
+          <label><input type="radio" name="question-16" value="0"> Response speed and length, with every additional paragraph counted as more useful</label>
+          <label><input type="radio" name="question-16" value="1"> Accuracy, access, usefulness, and needed corrections</label>
+          <label><input type="radio" name="question-16" value="2"> Number of sources listed, with each citation counted as a verified supporting source</label>
+          <label><input type="radio" name="question-16" value="3"> Number of features advertised, with all listed features assumed to work for the learner</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. What process note would allow another learner to understand your AI-assisted work?</legend>
+          <label><input type="radio" name="question-17" value="0"> The final response with its citations, without noting whether the citations were checked</label>
+          <label><input type="radio" name="question-17" value="1"> The finished document with a list of AI tools, without identifying their contribution</label>
+          <label><input type="radio" name="question-17" value="2"> Tool, prompts, source checks, revisions, and limits</label>
+          <label><input type="radio" name="question-17" value="3"> The first prompt and original answer, without changes made before using the work</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. You have a useful draft but one important claim remains unverified. What should happen before finalizing?</legend>
+          <label><input type="radio" name="question-18" value="0"> Assume the claim is true because most of the draft is correct</label>
+          <label><input type="radio" name="question-18" value="1"> Remove the word uncertain without changing the claim</label>
+          <label><input type="radio" name="question-18" value="2"> Replace the source with another unsupported AI answer</label>
+          <label><input type="radio" name="question-18" value="3"> Verify it, remove it, or clearly retain the relevant uncertainty</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which sequence best represents the complete responsible-AI project?</legend>
+          <label><input type="radio" name="question-19" value="0"> Prompt, copy the first answer, and mark every claim verified</label>
+          <label><input type="radio" name="question-19" value="1"> Generate several answers and select the longest without reviewing sources</label>
+          <label><input type="radio" name="question-19" value="2"> Choose a tool, add private data, and check only spelling</label>
+          <label><input type="radio" name="question-19" value="3"> Plan, prompt, verify, revise, and document the assistance and remaining limits</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"AI Fundamentals","displayName":"AI Fundamentals and Responsible Use","slug":"ai-fundamentals","passPercent":80,"questions":[{"answer":2,"explanation":"AI can produce confident but incorrect information.","options":["As an authoritative final answer","As private by default","As a draft that requires verification"],"question":"What is the safest way to treat an AI-generated answer?"},{"answer":0,"explanation":"Private and confidential information must be protected.","options":["Client records and passwords","Public weather information","A fictional practice name"],"question":"Which information should not be entered into a public AI tool?"},{"answer":1,"explanation":"Clear instructions improve the chance of a useful result.","options":["Only one vague word","Task, context, constraints, and format","Private personal details"],"question":"What makes a prompt clearer?"},{"answer":0,"explanation":"Important factual claims should be checked against authoritative sources.","options":["Names, dates, quotations, calculations, and policies","Only headings","Only spelling"],"question":"Which claims require especially careful checking?"},{"answer":1,"explanation":"Human review and judgment remain necessary.","options":["The AI tool alone","The person using the AI","The web browser"],"question":"Who is responsible for the final work?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"AI Fundamentals","displayName":"AI Fundamentals and Responsible Use","slug":"ai-fundamentals","passPercent":85,"questions":[{"lesson":1,"question":"An AI produces a polished workplace procedure with several specific factual claims. What does its polished style establish?","options":["That the procedure was reviewed by a subject expert","That the writing is fluent, while the claims still need checking","That each factual claim came from an authoritative source","That following the procedure will necessarily work on your setup"],"answer":1,"explanation":"Fluent writing can contain unsupported or incorrect claims. Judge evidence and applicability separately from style."},{"lesson":1,"question":"Which task is an appropriate starting use of generative AI in this course?","options":["Draft a fictional checklist for a person to review and revise","Make a final hiring decision without reviewing its reasoning","Verify its own unsupported claim solely by repeating it","Certify that an unseen workplace procedure is legally compliant"],"answer":0,"explanation":"Drafting supports human work. Consequential decisions and verification require appropriate evidence and human judgment."},{"lesson":2,"question":"Which prompt gives the clearest direction for a beginner-facing checklist?","options":["Write five setup steps for a technician, explaining advanced settings in detail","Write a beginner overview of setup benefits, organized under five headings","Write five setup steps for a beginner keyboard user; define new terms","Write a complete setup reference for keyboard users covering all optional settings"],"answer":2,"explanation":"The stronger prompt defines the audience, task, format, and constraints so the result can be evaluated against them."},{"lesson":2,"question":"A prompt includes a role and topic but no intended audience or output format. What is the most useful improvement?","options":["Ask for a longer response without adding context","Ask the AI to avoid every clarifying assumption without supplying missing details","Repeat the topic several times in capital letters","State who will use the response and what form the result should take"],"answer":3,"explanation":"Audience and format shape an actionable result. Emphasis and length do not supply the missing context."},{"lesson":3,"question":"A first draft omits a required verification step. Which follow-up best addresses the gap?","options":["Add a saved-file check; retain the required steps","Add a final Save command without checking the destination or resulting file","Add instructions for a second copy without checking the contents of either copy","Add a reminder to save often and treat that reminder as proof of completion"],"answer":0,"explanation":"A targeted follow-up identifies the missing requirement and what should be preserved, making revision more controlled."},{"lesson":3,"question":"After two refinements, the answer is shorter but has dropped an essential restriction. What should you do?","options":["Discard the requirements and judge the response only by tone","Use it because a shorter answer is always clearer","Compare it with the original requirements and restore the missing restriction","Assume later drafts always include every earlier constraint"],"answer":2,"explanation":"Refinement can introduce omissions. Recheck the complete task, not just the most recently requested change."},{"lesson":4,"question":"An answer cites a page whose title looks relevant. What is the strongest verification step?","options":["Accept the claim because a citation is present","Check only that the URL contains a familiar organization name","Open the source and check that it supports the specific claim in context","Ask the same AI whether its citation is correct and stop there"],"answer":2,"explanation":"A real citation may be irrelevant or misrepresented. Read the source and compare it with the exact claim."},{"lesson":4,"question":"Two AI answers agree on a date but provide no supporting evidence. What should you conclude?","options":["Ask both tools again and treat repeated agreement as a substitute for a source","Treat agreement between the two answers as independent verification of the date","Choose the more detailed answer because extra detail indicates a stronger source","Check the date against an authoritative source"],"answer":3,"explanation":"Repeated outputs can share errors. Verification requires evidence beyond agreement between generated responses."},{"lesson":5,"question":"A practice prompt contains a client's name, exact appointment date, and private notes. What is the safest revision for this course?","options":["Use the real record in a new conversation and delete that conversation afterward","Use a fictional case with the needed details","Replace the name with initials while retaining the rest of the private record","Remove the name but keep the exact appointment and distinctive private notes"],"answer":1,"explanation":"Removing a name alone may leave identifying or confidential information. Use fictional material and follow workplace policy."},{"lesson":5,"question":"A tool offers an upload feature. What does that mean about permission to upload workplace files?","options":["The upload button guarantees the file contains no private information","Renaming the file makes confidential content acceptable","Every document on your computer is automatically approved for upload","Availability does not establish authorization under workplace policy"],"answer":3,"explanation":"Technical capability and authorization are separate. Confirm policy and the data's appropriateness before using the feature."},{"lesson":6,"question":"An AI hiring draft treats a career gap as proof of low commitment. What is the main concern?","options":["It makes an unsupported inference instead of assessing relevant evidence","It needs more confident language to become objective","It should make the same inference using a more formal tone","It should remove all qualifications from the comparison"],"answer":0,"explanation":"A career gap alone does not justify that conclusion. Identify missing context and evaluate relevant evidence fairly."},{"lesson":6,"question":"A plan assumes every employee can drive and read small print. Which revision is most appropriate?","options":["Replace employee with user while leaving the steps unchanged","Identify those assumptions and add ways to meet the task across access needs","Add a general inclusion statement without changing inaccessible steps","Keep the assumptions because they simplify the instructions"],"answer":1,"explanation":"A meaningful bias review examines who the plan excludes and changes the actual workflow, not just its wording."},{"lesson":7,"question":"A source says a feature may be available, but the summary says it is always available. What should be corrected?","options":["Restore the source's qualification and relevant conditions","Keep always because summaries should sound decisive","Replace the feature name with a more general term","Delete the source link while retaining the stronger claim"],"answer":0,"explanation":"A summary must preserve important limits and uncertainty. Simplification should not strengthen the original claim."},{"lesson":7,"question":"An AI summary includes a useful-sounding detail absent from the source. What should happen?","options":["Keep it because it improves the paragraph's flow","Check it independently or remove it from the source-based summary","Treat it as verified if the rest of the summary is accurate","Attribute it to the source without checking"],"answer":1,"explanation":"A source-based summary should distinguish sourced content from additions. Plausibility does not establish support."},{"lesson":8,"question":"An email draft promises delivery tomorrow, but you never supplied that commitment. What should you do?","options":["Replace the promise with the accurate commitment","Ask for a more professional tone and trust the revision to correct the schedule","Keep the deadline and change the wording from a promise to a confident expectation","Keep the date but add a general disclaimer that the message was AI-assisted"],"answer":0,"explanation":"Human review must catch invented commitments. Tone changes do not repair inaccurate content."},{"lesson":8,"question":"A draft is accurate but sounds unlike the person who will send it. What revision fits the lesson?","options":["Remove all specific facts so the tone is generic","Add jargon to make it sound more automated","Adjust wording and tone while preserving verified facts and the intended message","Accept it unchanged because accuracy prevents tone problems"],"answer":2,"explanation":"Useful workplace writing should be accurate, appropriate to the audience, and consistent with the writer's voice."},{"lesson":9,"question":"You compare two AI tools using the same public-information task. Which evidence is most useful?","options":["Response speed and length, with every additional paragraph counted as more useful","Accuracy, access, usefulness, and needed corrections","Number of sources listed, with each citation counted as a verified supporting source","Number of features advertised, with all listed features assumed to work for the learner"],"answer":1,"explanation":"A controlled task comparison should evaluate outcomes and usability, not surface quantity or brand familiarity."},{"lesson":9,"question":"What process note would allow another learner to understand your AI-assisted work?","options":["The final response with its citations, without noting whether the citations were checked","The finished document with a list of AI tools, without identifying their contribution","Tool, prompts, source checks, revisions, and limits","The first prompt and original answer, without changes made before using the work"],"answer":2,"explanation":"A process note makes the role of prompting, evidence, and human revision visible and reproducible."},{"lesson":10,"question":"You have a useful draft but one important claim remains unverified. What should happen before finalizing?","options":["Assume the claim is true because most of the draft is correct","Remove the word uncertain without changing the claim","Replace the source with another unsupported AI answer","Verify it, remove it, or clearly retain the relevant uncertainty"],"answer":3,"explanation":"Uncertainty should be resolved or communicated appropriately. The rest of the draft cannot validate an unsupported important claim."},{"lesson":10,"question":"Which sequence best represents the complete responsible-AI project?","options":["Prompt, copy the first answer, and mark every claim verified","Generate several answers and select the longest without reviewing sources","Choose a tool, add private data, and check only spelling","Plan, prompt, verify, revise, and document the assistance and remaining limits"],"answer":3,"explanation":"The project combines useful assistance with evidence, human judgment, privacy, and a transparent account of the work."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

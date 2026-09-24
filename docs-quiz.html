@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Google Docs.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Google Docs. Score 85 percent to earn a course-completion certificate.">
   <title>Google Docs Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Google Docs Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Google Docs quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. Which structure supports document navigation in Google Docs?</legend>
-          <label><input type="radio" name="question-0" value="0"> Font size alone</label>
-          <label><input type="radio" name="question-0" value="1"> Heading styles</label>
-          <label><input type="radio" name="question-0" value="2"> Repeated spaces</label>
+          <legend>1. You typed a title into the document body, but Drive still lists Untitled document. What should you change?</legend>
+          <label><input type="radio" name="question-0" value="0"> The downloaded copy&#x27;s name only</label>
+          <label><input type="radio" name="question-0" value="1"> The document&#x27;s name using its title field</label>
+          <label><input type="radio" name="question-0" value="2"> The browser bookmark&#x27;s label</label>
+          <label><input type="radio" name="question-0" value="3"> The first paragraph&#x27;s alignment</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What should be checked before sharing a document?</legend>
-          <label><input type="radio" name="question-1" value="0"> The active account and permission level</label>
-          <label><input type="radio" name="question-1" value="1"> Only the page color</label>
-          <label><input type="radio" name="question-1" value="2"> Only the word count</label>
+          <legend>2. You need a DOCX copy of your saved Google document. What completes the task?</legend>
+          <label><input type="radio" name="question-1" value="0"> Rename the cloud document so its name ends in .docx</label>
+          <label><input type="radio" name="question-1" value="1"> Press Save and assume a DOCX appeared in Downloads</label>
+          <label><input type="radio" name="question-1" value="2"> Copy its sharing link into a file named document.docx</label>
+          <label><input type="radio" name="question-1" value="3"> Download as Microsoft Word and verify the resulting file</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. Which mode records proposed edits without immediately replacing text?</legend>
-          <label><input type="radio" name="question-2" value="0"> Full screen</label>
-          <label><input type="radio" name="question-2" value="1"> Offline mode</label>
-          <label><input type="radio" name="question-2" value="2"> Suggesting mode</label>
+          <legend>3. You want to move a paragraph while retaining all of its text. Which workflow fits?</legend>
+          <label><input type="radio" name="question-2" value="0"> Select its first word, copy, and paste at the destination</label>
+          <label><input type="radio" name="question-2" value="1"> Find a word in the paragraph and rename the document</label>
+          <label><input type="radio" name="question-2" value="2"> Select the paragraph, cut, paste at the destination, and review</label>
+          <label><input type="radio" name="question-2" value="3"> Move the cursor to the destination and press Save</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What should meaningful images have?</legend>
-          <label><input type="radio" name="question-3" value="0"> Only a caption color</label>
-          <label><input type="radio" name="question-3" value="1"> Alternative text</label>
-          <label><input type="radio" name="question-3" value="2"> No description</label>
+          <legend>4. A Find panel remains active and typing changes the search phrase. What should you do before editing the document?</legend>
+          <label><input type="radio" name="question-3" value="0"> Close Find and confirm focus is in the intended text</label>
+          <label><input type="radio" name="question-3" value="1"> Open another browser tab with the same document</label>
+          <label><input type="radio" name="question-3" value="2"> Keep typing until the panel stops matching results</label>
+          <label><input type="radio" name="question-3" value="3"> Rename the search phrase to match the desired paragraph</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Why download a DOCX copy?</legend>
-          <label><input type="radio" name="question-4" value="0"> To delete the Google file</label>
-          <label><input type="radio" name="question-4" value="1"> To remove headings</label>
-          <label><input type="radio" name="question-4" value="2"> To exchange and compatibility-test the document</label>
+          <legend>5. A notice uses repeated spaces to center its title. Which correction is more reliable?</legend>
+          <label><input type="radio" name="question-4" value="0"> Insert a separate blank paragraph for every space</label>
+          <label><input type="radio" name="question-4" value="1"> Use paragraph alignment on the title paragraph</label>
+          <label><input type="radio" name="question-4" value="2"> Use white text to conceal extra spaces</label>
+          <label><input type="radio" name="question-4" value="3"> Add more spaces until it appears centered at one zoom level</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. The main sections look bold but have no heading structure. What should you apply?</legend>
+          <label><input type="radio" name="question-5" value="0"> A larger font without changing paragraph style</label>
+          <label><input type="radio" name="question-5" value="1"> A different text color for every section</label>
+          <label><input type="radio" name="question-5" value="2"> Bold and underline together on every section label</label>
+          <label><input type="radio" name="question-5" value="3"> Appropriate heading styles, with emphasis used separately</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. Your outline jumps from Heading 1 directly to Heading 4 solely because you liked its size. What is the best correction?</legend>
+          <label><input type="radio" name="question-6" value="0"> Use the appropriate structural level and adjust appearance separately</label>
+          <label><input type="radio" name="question-6" value="1"> Delete the outline so the skipped levels are hidden</label>
+          <label><input type="radio" name="question-6" value="2"> Keep Heading 4 because appearance determines hierarchy</label>
+          <label><input type="radio" name="question-6" value="3"> Apply Heading 4 to every paragraph for consistency</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. You move a section heading but leave its paragraphs behind. What should you check and correct?</legend>
+          <label><input type="radio" name="question-7" value="0"> Move its content and recheck outline and reading order</label>
+          <label><input type="radio" name="question-7" value="1"> Keep the paragraphs in place and treat the moved heading as a cross-reference to them</label>
+          <label><input type="radio" name="question-7" value="2"> Duplicate the heading in both locations and leave the body text under the original</label>
+          <label><input type="radio" name="question-7" value="3"> Remove the heading style from the moved label so it no longer appears in the outline</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. One list names supplies; another gives opening steps that must occur in order. Which pairing fits?</legend>
+          <label><input type="radio" name="question-8" value="0"> One paragraph combining supplies and procedure steps</label>
+          <label><input type="radio" name="question-8" value="1"> Bullets for supplies and numbering for the ordered procedure</label>
+          <label><input type="radio" name="question-8" value="2"> Numbering for supplies and unstructured lines for the procedure</label>
+          <label><input type="radio" name="question-8" value="3"> Typed hyphens for both lists with no list formatting</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. A list item is indented because it supports the preceding item. What should be verified?</legend>
+          <label><input type="radio" name="question-9" value="0"> That it has a different font from every other item</label>
+          <label><input type="radio" name="question-9" value="1"> That it is a real nested list item at the intended level</label>
+          <label><input type="radio" name="question-9" value="2"> That its text uses the same number as the main item</label>
+          <label><input type="radio" name="question-9" value="3"> That it begins with several manually entered spaces</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. A contact schedule uses blank rows for spacing and merged cells for labels. Which redesign is clearer?</legend>
+          <label><input type="radio" name="question-10" value="0"> Put all contact details into one large merged cell</label>
+          <label><input type="radio" name="question-10" value="1"> Remove headings and rely on the first record as an example</label>
+          <label><input type="radio" name="question-10" value="2"> Add more merged rows to separate each contact</label>
+          <label><input type="radio" name="question-10" value="3"> Use a simple grid with clear column headings and consistent records</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. Before a reader encounters your table, what information helps establish its context?</legend>
+          <label><input type="radio" name="question-11" value="0"> A short explanation of the table&#x27;s purpose</label>
+          <label><input type="radio" name="question-11" value="1"> Only the number of blank lines above it</label>
+          <label><input type="radio" name="question-11" value="2"> A list of the table&#x27;s border colors</label>
+          <label><input type="radio" name="question-11" value="3"> Only the date the document was renamed</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. Your resource sheet has two links both labelled Click here. What should change?</legend>
+          <label><input type="radio" name="question-12" value="0"> Keep the labels and change their font colors</label>
+          <label><input type="radio" name="question-12" value="1"> Use distinct labels that identify each destination</label>
+          <label><input type="radio" name="question-12" value="2"> Put both links on the same word</label>
+          <label><input type="radio" name="question-12" value="3"> Replace both labels with the document&#x27;s title</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. An image contains information not stated nearby. What should its alternative text convey?</legend>
+          <label><input type="radio" name="question-13" value="0"> Only a statement that an image is present</label>
+          <label><input type="radio" name="question-13" value="1"> Only the image&#x27;s original filename</label>
+          <label><input type="radio" name="question-13" value="2"> The information and purpose it contributes to the document</label>
+          <label><input type="radio" name="question-13" value="3"> Only its width and height</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. You want to propose a sentence revision for another person to review before accepting. Which mode fits?</legend>
+          <label><input type="radio" name="question-14" value="0"> Suggesting</label>
+          <label><input type="radio" name="question-14" value="1"> Editing without tracked suggestions</label>
+          <label><input type="radio" name="question-14" value="2"> Viewing</label>
+          <label><input type="radio" name="question-14" value="3"> Print preview</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. A colleague resolved a comment. Does that alone prove the requested sentence was corrected?</legend>
+          <label><input type="radio" name="question-15" value="0"> Yes; resolving a comment automatically applies every suggestion</label>
+          <label><input type="radio" name="question-15" value="1"> No; every resolved comment must be recreated before editing</label>
+          <label><input type="radio" name="question-15" value="2"> No; inspect the text and any associated suggestion</label>
+          <label><input type="radio" name="question-15" value="3"> Yes; resolved comments guarantee the document is final</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. A reviewer should leave feedback but should not directly rewrite the document. Which permission best fits?</legend>
+          <label><input type="radio" name="question-16" value="0"> Editor</label>
+          <label><input type="radio" name="question-16" value="1"> Anyone with the link as Editor</label>
+          <label><input type="radio" name="question-16" value="2"> Commenter</label>
+          <label><input type="radio" name="question-16" value="3"> Viewer</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. You copied a Restricted document&#x27;s link. What does copying alone change about access?</legend>
+          <label><input type="radio" name="question-17" value="0"> It gives anyone who receives it editing access</label>
+          <label><input type="radio" name="question-17" value="1"> It makes all existing viewers into commenters</label>
+          <label><input type="radio" name="question-17" value="2"> It publishes a public copy with no restrictions</label>
+          <label><input type="radio" name="question-17" value="3"> Nothing; the link still follows the document&#x27;s permissions</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. The Google document reads correctly, but its downloaded DOCX has a damaged table. Which version requires correction or another export check?</legend>
+          <label><input type="radio" name="question-18" value="0"> The cloud document title, because a new title automatically repairs the exported table</label>
+          <label><input type="radio" name="question-18" value="1"> The browser bookmark, because reopening from a new bookmark changes the exported structure</label>
+          <label><input type="radio" name="question-18" value="2"> The DOCX copy and its export path</label>
+          <label><input type="radio" name="question-18" value="3"> The recipient permissions, because the table damage indicates an access restriction</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which final check best demonstrates the onboarding procedure is usable?</legend>
+          <label><input type="radio" name="question-19" value="0"> Read the cloud document once and assume the downloaded format preserves its structure</label>
+          <label><input type="radio" name="question-19" value="1"> Send the sharing link and use successful delivery as proof the recipient can access it</label>
+          <label><input type="radio" name="question-19" value="2"> Run spelling review and use its clean result as confirmation the document is accessible</label>
+          <label><input type="radio" name="question-19" value="3"> Test navigation, structure, and the downloaded copy</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Docs","displayName":"Google Docs","slug":"docs","passPercent":80,"questions":[{"answer":1,"explanation":"Heading styles create semantic structure.","options":["Font size alone","Heading styles","Repeated spaces"],"question":"Which structure supports document navigation in Google Docs?"},{"answer":0,"explanation":"Sharing permissions determine who can access the file.","options":["The active account and permission level","Only the page color","Only the word count"],"question":"What should be checked before sharing a document?"},{"answer":2,"explanation":"Suggesting mode supports review and collaboration.","options":["Full screen","Offline mode","Suggesting mode"],"question":"Which mode records proposed edits without immediately replacing text?"},{"answer":1,"explanation":"Alternative text conveys image purpose.","options":["Only a caption color","Alternative text","No description"],"question":"What should meaningful images have?"},{"answer":2,"explanation":"A separate copy supports Microsoft-compatible exchange.","options":["To delete the Google file","To remove headings","To exchange and compatibility-test the document"],"question":"Why download a DOCX copy?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Docs","displayName":"Google Docs","slug":"docs","passPercent":85,"questions":[{"lesson":1,"question":"You typed a title into the document body, but Drive still lists Untitled document. What should you change?","options":["The downloaded copy's name only","The document's name using its title field","The browser bookmark's label","The first paragraph's alignment"],"answer":1,"explanation":"The document name and text inside the document are separate. Rename the cloud document itself for reliable retrieval."},{"lesson":1,"question":"You need a DOCX copy of your saved Google document. What completes the task?","options":["Rename the cloud document so its name ends in .docx","Press Save and assume a DOCX appeared in Downloads","Copy its sharing link into a file named document.docx","Download as Microsoft Word and verify the resulting file"],"answer":3,"explanation":"A file export creates the exchange copy. Renaming or copying a link does not convert the document format."},{"lesson":2,"question":"You want to move a paragraph while retaining all of its text. Which workflow fits?","options":["Select its first word, copy, and paste at the destination","Find a word in the paragraph and rename the document","Select the paragraph, cut, paste at the destination, and review","Move the cursor to the destination and press Save"],"answer":2,"explanation":"The full paragraph must be selected and moved. Review both source and destination to verify the result."},{"lesson":2,"question":"A Find panel remains active and typing changes the search phrase. What should you do before editing the document?","options":["Close Find and confirm focus is in the intended text","Open another browser tab with the same document","Keep typing until the panel stops matching results","Rename the search phrase to match the desired paragraph"],"answer":0,"explanation":"Search fields and document text are different controls. Reestablish editing focus before entering content."},{"lesson":3,"question":"A notice uses repeated spaces to center its title. Which correction is more reliable?","options":["Insert a separate blank paragraph for every space","Use paragraph alignment on the title paragraph","Use white text to conceal extra spaces","Add more spaces until it appears centered at one zoom level"],"answer":1,"explanation":"Alignment is a paragraph property. Spaces depend on layout and can shift when the document is resized or exported."},{"lesson":3,"question":"The main sections look bold but have no heading structure. What should you apply?","options":["A larger font without changing paragraph style","A different text color for every section","Bold and underline together on every section label","Appropriate heading styles, with emphasis used separately"],"answer":3,"explanation":"Heading styles expose structure; visual emphasis alone does not reliably create navigable sections."},{"lesson":4,"question":"Your outline jumps from Heading 1 directly to Heading 4 solely because you liked its size. What is the best correction?","options":["Use the appropriate structural level and adjust appearance separately","Delete the outline so the skipped levels are hidden","Keep Heading 4 because appearance determines hierarchy","Apply Heading 4 to every paragraph for consistency"],"answer":0,"explanation":"Heading levels express hierarchy, not preferred font size. Keep structure meaningful and style its appearance separately."},{"lesson":4,"question":"You move a section heading but leave its paragraphs behind. What should you check and correct?","options":["Move its content and recheck outline and reading order","Keep the paragraphs in place and treat the moved heading as a cross-reference to them","Duplicate the heading in both locations and leave the body text under the original","Remove the heading style from the moved label so it no longer appears in the outline"],"answer":0,"explanation":"A section includes its heading and related content. Moving only the label can misrepresent the document's organization."},{"lesson":5,"question":"One list names supplies; another gives opening steps that must occur in order. Which pairing fits?","options":["One paragraph combining supplies and procedure steps","Bullets for supplies and numbering for the ordered procedure","Numbering for supplies and unstructured lines for the procedure","Typed hyphens for both lists with no list formatting"],"answer":1,"explanation":"Use list structure that matches meaning: unordered items versus an ordered sequence."},{"lesson":5,"question":"A list item is indented because it supports the preceding item. What should be verified?","options":["That it has a different font from every other item","That it is a real nested list item at the intended level","That its text uses the same number as the main item","That it begins with several manually entered spaces"],"answer":1,"explanation":"Nesting should reflect a meaningful relationship and use the list's structure, not just visual spacing."},{"lesson":6,"question":"A contact schedule uses blank rows for spacing and merged cells for labels. Which redesign is clearer?","options":["Put all contact details into one large merged cell","Remove headings and rely on the first record as an example","Add more merged rows to separate each contact","Use a simple grid with clear column headings and consistent records"],"answer":3,"explanation":"A simple table preserves row and column relationships and avoids navigation complications introduced by decorative structure."},{"lesson":6,"question":"Before a reader encounters your table, what information helps establish its context?","options":["A short explanation of the table's purpose","Only the number of blank lines above it","A list of the table's border colors","Only the date the document was renamed"],"answer":0,"explanation":"An introduction explains what the table represents. Header labels then establish the relationships within it."},{"lesson":7,"question":"Your resource sheet has two links both labelled Click here. What should change?","options":["Keep the labels and change their font colors","Use distinct labels that identify each destination","Put both links on the same word","Replace both labels with the document's title"],"answer":1,"explanation":"Meaningful labels let readers distinguish destinations, including when reviewing a list of links."},{"lesson":7,"question":"An image contains information not stated nearby. What should its alternative text convey?","options":["Only a statement that an image is present","Only the image's original filename","The information and purpose it contributes to the document","Only its width and height"],"answer":2,"explanation":"Alternative text should supply the meaningful equivalent, not merely announce that the object exists."},{"lesson":8,"question":"You want to propose a sentence revision for another person to review before accepting. Which mode fits?","options":["Suggesting","Editing without tracked suggestions","Viewing","Print preview"],"answer":0,"explanation":"Suggesting records a proposed change for review. Direct Editing changes the document itself rather than proposing the revision."},{"lesson":8,"question":"A colleague resolved a comment. Does that alone prove the requested sentence was corrected?","options":["Yes; resolving a comment automatically applies every suggestion","No; every resolved comment must be recreated before editing","No; inspect the text and any associated suggestion","Yes; resolved comments guarantee the document is final"],"answer":2,"explanation":"Comment status and document content are separate. Verify the actual change rather than inferring it from resolution."},{"lesson":9,"question":"A reviewer should leave feedback but should not directly rewrite the document. Which permission best fits?","options":["Editor","Anyone with the link as Editor","Commenter","Viewer"],"answer":2,"explanation":"Commenter supports feedback without granting direct editing. Viewer is too limited for comments; Editor grants more access than needed."},{"lesson":9,"question":"You copied a Restricted document's link. What does copying alone change about access?","options":["It gives anyone who receives it editing access","It makes all existing viewers into commenters","It publishes a public copy with no restrictions","Nothing; the link still follows the document's permissions"],"answer":3,"explanation":"Copying a link does not itself grant permissions. Confirm the intended recipient's access separately."},{"lesson":10,"question":"The Google document reads correctly, but its downloaded DOCX has a damaged table. Which version requires correction or another export check?","options":["The cloud document title, because a new title automatically repairs the exported table","The browser bookmark, because reopening from a new bookmark changes the exported structure","The DOCX copy and its export path","The recipient permissions, because the table damage indicates an access restriction"],"answer":2,"explanation":"The delivered file must work for its recipient. Review and fix conversion problems rather than relying solely on the original."},{"lesson":10,"question":"Which final check best demonstrates the onboarding procedure is usable?","options":["Read the cloud document once and assume the downloaded format preserves its structure","Send the sharing link and use successful delivery as proof the recipient can access it","Run spelling review and use its clean result as confirmation the document is accessible","Test navigation, structure, and the downloaded copy"],"answer":3,"explanation":"The final task combines structure, content, navigation, and a usable deliverable. Page count alone does not demonstrate those skills."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

@@ -575,7 +575,9 @@
       const quizResult = quizResults[course.name];
       quizLink.href = course.slug + "-quiz.html";
       quizLink.textContent = "Final quiz and certificate";
-      if (quizResult && Number(quizResult.score) >= 80) {
+      // Earlier course completions keep the passing standard in effect when earned.
+      const passingScore = quizResult?.passPercent ?? 80;
+      if (quizResult && Number(quizResult.score) >= Number(passingScore)) {
         const date = new Date(quizResult.completedAt);
         quizParagraph.append(
           document.createTextNode("Final quiz passed: " + quizResult.score + " percent" + (Number.isNaN(date.getTime()) ? ". " : " on " + date.toLocaleDateString() + ". ")),

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Microsoft Copilot.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Microsoft Copilot. Score 85 percent to earn a course-completion certificate.">
   <title>Microsoft Copilot Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Microsoft Copilot Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Microsoft Copilot quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. What should a Copilot workplace prompt include?</legend>
-          <label><input type="radio" name="question-0" value="0"> A clear task, audience, context, and format</label>
-          <label><input type="radio" name="question-0" value="1"> A client password</label>
-          <label><input type="radio" name="question-0" value="2"> Only the word help</label>
+          <legend>1. Copilot is open, but you are unsure which account is active. What should you confirm before entering work-related material?</legend>
+          <label><input type="radio" name="question-0" value="0"> The account context and applicable organizational rules</label>
+          <label><input type="radio" name="question-0" value="1"> Only that the page displays the Copilot name</label>
+          <label><input type="radio" name="question-0" value="2"> Only that a prompt field accepts typing</label>
+          <label><input type="radio" name="question-0" value="3"> Only that the browser is maximized</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What should you do with Copilot source links?</legend>
-          <label><input type="radio" name="question-1" value="0"> Assume every claim is supported</label>
-          <label><input type="radio" name="question-1" value="1"> Remove all sources</label>
-          <label><input type="radio" name="question-1" value="2"> Open and verify them</label>
+          <legend>2. You want to review an answer rather than send another prompt. Which region should you locate?</legend>
+          <label><input type="radio" name="question-1" value="0"> The browser&#x27;s address bar</label>
+          <label><input type="radio" name="question-1" value="1"> The response content and its related actions</label>
+          <label><input type="radio" name="question-1" value="2"> The prompt field without sending it</label>
+          <label><input type="radio" name="question-1" value="3"> The new-conversation control</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. Which data belongs in an unapproved personal Copilot account?</legend>
-          <label><input type="radio" name="question-2" value="0"> Confidential employee records</label>
-          <label><input type="radio" name="question-2" value="1"> Only public or fictional practice data</label>
-          <label><input type="radio" name="question-2" value="2"> Private medical records</label>
+          <legend>3. Which request gives useful constraints for a Microsoft 365 planning task?</legend>
+          <label><input type="radio" name="question-2" value="0"> Write a one-page overview comparing Word, Excel, and PowerPoint for new staff</label>
+          <label><input type="radio" name="question-2" value="1"> Outline a one-page Word memo for new staff using fictional details</label>
+          <label><input type="radio" name="question-2" value="2"> Draft a one-page Word memo using examples copied from confidential personnel files</label>
+          <label><input type="radio" name="question-2" value="3"> Outline a comprehensive Word reference for experienced staff covering every policy</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What is the purpose of a follow-up prompt?</legend>
-          <label><input type="radio" name="question-3" value="0"> To bypass policy</label>
-          <label><input type="radio" name="question-3" value="1"> To hide uncertainty</label>
-          <label><input type="radio" name="question-3" value="2"> To refine, correct, or clarify the response</label>
+          <legend>4. You need a presentation outline, but the response is a long email. What should the revised prompt specify?</legend>
+          <label><input type="radio" name="question-3" value="0"> Output format, audience, and scope</label>
+          <label><input type="radio" name="question-3" value="1"> Response length and spelling style, without identifying the intended deliverable</label>
+          <label><input type="radio" name="question-3" value="2"> Tone and greeting, keeping the email structure that was already produced</label>
+          <label><input type="radio" name="question-3" value="3"> The preferred browser and account type, without describing the presentation</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Who approves the final Microsoft 365 work product?</legend>
-          <label><input type="radio" name="question-4" value="0"> Copilot automatically</label>
-          <label><input type="radio" name="question-4" value="1"> A responsible person</label>
-          <label><input type="radio" name="question-4" value="2"> The browser</label>
+          <legend>5. A response is accurate but twice the requested length. Which follow-up preserves its useful content?</legend>
+          <label><input type="radio" name="question-4" value="0"> Keep the requested actions but use unexplained abbreviations to fit twice as much text</label>
+          <label><input type="radio" name="question-4" value="1"> Meet the length limit by deleting all qualifications, even those that limit the advice</label>
+          <label><input type="radio" name="question-4" value="2"> Meet the length limit while keeping facts and required actions</label>
+          <label><input type="radio" name="question-4" value="3"> Retain every sentence but remove headings and labels to reduce the displayed length</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. A follow-up adds a missing step but changes the project&#x27;s audience. What should you do?</legend>
+          <label><input type="radio" name="question-5" value="0"> Change only the filename to name the intended audience</label>
+          <label><input type="radio" name="question-5" value="1"> Recheck all original constraints and correct the new mismatch</label>
+          <label><input type="radio" name="question-5" value="2"> Discard the audience requirement because revision is complete</label>
+          <label><input type="radio" name="question-5" value="3"> Accept it because the missing step was added</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. A team update says all training is complete, but the source notes say two sessions remain. What should be corrected?</legend>
+          <label><input type="radio" name="question-6" value="0"> The way the remaining sessions are formatted in the source notes</label>
+          <label><input type="radio" name="question-6" value="1"> The choice of greeting and closing in the team update</label>
+          <label><input type="radio" name="question-6" value="2"> The claim about completed training</label>
+          <label><input type="radio" name="question-6" value="3"> The level of formality used to describe the training program</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. A draft uses unexplained jargon for new employees. Which revision best meets the lesson?</legend>
+          <label><input type="radio" name="question-7" value="0"> Keep the terminology but break the same text into shorter paragraphs</label>
+          <label><input type="radio" name="question-7" value="1"> Expand the jargon into more technical language to make the explanation precise</label>
+          <label><input type="radio" name="question-7" value="2"> Replace the action steps with a glossary, leaving readers to infer the procedure</label>
+          <label><input type="radio" name="question-7" value="3"> Use familiar wording and define necessary terms</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A summary lists five points from a public document. What verifies the summary?</legend>
+          <label><input type="radio" name="question-8" value="0"> Compare each point with the original document and record any corrections</label>
+          <label><input type="radio" name="question-8" value="1"> Count the five bullets and assume the requested task is complete</label>
+          <label><input type="radio" name="question-8" value="2"> Check the document&#x27;s title without reading the relevant passages</label>
+          <label><input type="radio" name="question-8" value="3"> Ask whether the model feels confident about all five points</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. A source says a recommendation applies only to one version, but the summary omits that limit. What should change?</legend>
+          <label><input type="radio" name="question-9" value="0"> Replace the version with whichever one sounds newest</label>
+          <label><input type="radio" name="question-9" value="1"> Remove the source citation to avoid the mismatch</label>
+          <label><input type="radio" name="question-9" value="2"> Keep the broader wording because it is easier to reuse</label>
+          <label><input type="radio" name="question-9" value="3"> Restore the version condition and check the applicable setup</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. An Excel planning outline includes a total but never identifies its input columns. What should you request?</legend>
+          <label><input type="radio" name="question-10" value="0"> A chart of the proposed total before the source columns have been established</label>
+          <label><input type="radio" name="question-10" value="1"> Input columns, formula logic, and a test case</label>
+          <label><input type="radio" name="question-10" value="2"> A total formatted as currency, with no change to the missing input definitions</label>
+          <label><input type="radio" name="question-10" value="3"> A sample final number, to enter as a fixed value instead of testing a calculation</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A PowerPoint outline covers every topic but omits titles, descriptions, and reading-order checks. What is missing?</legend>
+          <label><input type="radio" name="question-11" value="0"> A requirement to remove every chart</label>
+          <label><input type="radio" name="question-11" value="1"> A requirement to use the same transition everywhere</label>
+          <label><input type="radio" name="question-11" value="2"> A requirement to avoid all supporting notes</label>
+          <label><input type="radio" name="question-11" value="3"> Planning for accessible slide structure and meaningful content</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. A cited page exists but does not support the sentence attached to it. What should you conclude?</legend>
+          <label><input type="radio" name="question-12" value="0"> That claim remains unsupported by the cited page</label>
+          <label><input type="radio" name="question-12" value="1"> The source must be correct if the response used quotation marks</label>
+          <label><input type="radio" name="question-12" value="2"> The claim is verified because the link opens</label>
+          <label><input type="radio" name="question-12" value="3"> The claim is verified because the page title looks related</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. Two sources disagree about a procedure. What comparison is most useful?</legend>
+          <label><input type="radio" name="question-13" value="0"> Their authority, dates, applicable versions, and original evidence</label>
+          <label><input type="radio" name="question-13" value="1"> Their page lengths and decorative design</label>
+          <label><input type="radio" name="question-13" value="2"> The order in which Copilot listed them</label>
+          <label><input type="radio" name="question-13" value="3"> The confidence level of the generated wording alone</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. A sample is labelled Internal. Does having Copilot available automatically authorize entering it?</legend>
+          <label><input type="radio" name="question-14" value="0"> No; internal information can never be used by any approved organization tool</label>
+          <label><input type="radio" name="question-14" value="1"> Yes; any visible prompt field grants organizational permission</label>
+          <label><input type="radio" name="question-14" value="2"> No; follow the organization&#x27;s rules for that data and account context</label>
+          <label><input type="radio" name="question-14" value="3"> Yes; changing the document title makes internal data public</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. A prompt includes confidential client details that are unnecessary for the task. What should happen?</legend>
+          <label><input type="radio" name="question-15" value="0"> Send them first and ask for deletion afterward</label>
+          <label><input type="radio" name="question-15" value="1"> Replace the filename but leave the private text unchanged</label>
+          <label><input type="radio" name="question-15" value="2"> Keep them because extra detail always improves accuracy</label>
+          <label><input type="radio" name="question-15" value="3"> Remove them and use an approved fictional or public example</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. A command works with one screen reader but not another. What should you check?</legend>
+          <label><input type="radio" name="question-16" value="0"> Whether both readers have the same voice pitch</label>
+          <label><input type="radio" name="question-16" value="1"> Each reader&#x27;s mode, layout, focus, and current documented commands</label>
+          <label><input type="radio" name="question-16" value="2"> Whether the response contains the same number of words</label>
+          <label><input type="radio" name="question-16" value="3"> Whether the page uses the same accent color</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. After sending a prompt, you cannot find the new answer by keyboard. What is the best next approach?</legend>
+          <label><input type="radio" name="question-17" value="0"> Reload the page before checking whether generation has completed or the response exists</label>
+          <label><input type="radio" name="question-17" value="1"> Resend the prompt immediately and assume the first response will be replaced</label>
+          <label><input type="radio" name="question-17" value="2"> Find the response using headings, regions, and controls</label>
+          <label><input type="radio" name="question-17" value="3"> Use the browser address bar to enter the next prompt without checking page focus</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. A fictional project has a useful outline but unchecked sources and an unedited draft. What remains?</legend>
+          <label><input type="radio" name="question-18" value="0"> Only copying the draft into a different application</label>
+          <label><input type="radio" name="question-18" value="1"> Only making the draft sound more confident</label>
+          <label><input type="radio" name="question-18" value="2"> Only changing the outline&#x27;s title</label>
+          <label><input type="radio" name="question-18" value="3"> Source verification, human revision, and a record of the process</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which outcome best demonstrates responsible completion of the Copilot course project?</legend>
+          <label><input type="radio" name="question-19" value="0"> A polished result that uses real private records to make the examples more specific</label>
+          <label><input type="radio" name="question-19" value="1"> A readable final response that has not been checked against the project requirements</label>
+          <label><input type="radio" name="question-19" value="2"> A revised result with checked claims and recorded limits</label>
+          <label><input type="radio" name="question-19" value="3"> A complete draft with a reference list, treating every listed reference as already verified</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Microsoft Copilot","displayName":"Microsoft Copilot","slug":"copilot","passPercent":80,"questions":[{"answer":0,"explanation":"Specific nonprivate context improves results.","options":["A clear task, audience, context, and format","A client password","Only the word help"],"question":"What should a Copilot workplace prompt include?"},{"answer":2,"explanation":"Source links must be checked against original material.","options":["Assume every claim is supported","Remove all sources","Open and verify them"],"question":"What should you do with Copilot source links?"},{"answer":1,"explanation":"Unapproved tools must not receive protected workplace data.","options":["Confidential employee records","Only public or fictional practice data","Private medical records"],"question":"Which data belongs in an unapproved personal Copilot account?"},{"answer":2,"explanation":"Follow-ups improve the draft while preserving human oversight.","options":["To bypass policy","To hide uncertainty","To refine, correct, or clarify the response"],"question":"What is the purpose of a follow-up prompt?"},{"answer":1,"explanation":"A human remains responsible for final decisions.","options":["Copilot automatically","A responsible person","The browser"],"question":"Who approves the final Microsoft 365 work product?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Microsoft Copilot","displayName":"Microsoft Copilot","slug":"copilot","passPercent":85,"questions":[{"lesson":1,"question":"Copilot is open, but you are unsure which account is active. What should you confirm before entering work-related material?","options":["The account context and applicable organizational rules","Only that the page displays the Copilot name","Only that a prompt field accepts typing","Only that the browser is maximized"],"answer":0,"explanation":"A familiar interface does not establish the right account context or permission to enter organizational information."},{"lesson":1,"question":"You want to review an answer rather than send another prompt. Which region should you locate?","options":["The browser's address bar","The response content and its related actions","The prompt field without sending it","The new-conversation control"],"answer":1,"explanation":"The response area contains the generated material. Input and conversation controls serve different actions."},{"lesson":2,"question":"Which request gives useful constraints for a Microsoft 365 planning task?","options":["Write a one-page overview comparing Word, Excel, and PowerPoint for new staff","Outline a one-page Word memo for new staff using fictional details","Draft a one-page Word memo using examples copied from confidential personnel files","Outline a comprehensive Word reference for experienced staff covering every policy"],"answer":1,"explanation":"A specific task, audience, format, and limit make the result easier to evaluate and use."},{"lesson":2,"question":"You need a presentation outline, but the response is a long email. What should the revised prompt specify?","options":["Output format, audience, and scope","Response length and spelling style, without identifying the intended deliverable","Tone and greeting, keeping the email structure that was already produced","The preferred browser and account type, without describing the presentation"],"answer":0,"explanation":"A format mismatch should be addressed with clear output requirements, not unrelated tone or length requests."},{"lesson":3,"question":"A response is accurate but twice the requested length. Which follow-up preserves its useful content?","options":["Keep the requested actions but use unexplained abbreviations to fit twice as much text","Meet the length limit by deleting all qualifications, even those that limit the advice","Meet the length limit while keeping facts and required actions","Retain every sentence but remove headings and labels to reduce the displayed length"],"answer":2,"explanation":"A controlled revision states both the change and the information that must remain."},{"lesson":3,"question":"A follow-up adds a missing step but changes the project's audience. What should you do?","options":["Change only the filename to name the intended audience","Recheck all original constraints and correct the new mismatch","Discard the audience requirement because revision is complete","Accept it because the missing step was added"],"answer":1,"explanation":"A successful local change can introduce another error. Evaluate the whole revised output against the task."},{"lesson":4,"question":"A team update says all training is complete, but the source notes say two sessions remain. What should be corrected?","options":["The way the remaining sessions are formatted in the source notes","The choice of greeting and closing in the team update","The claim about completed training","The level of formality used to describe the training program"],"answer":2,"explanation":"Plain language and professional tone do not compensate for an inaccurate status claim."},{"lesson":4,"question":"A draft uses unexplained jargon for new employees. Which revision best meets the lesson?","options":["Keep the terminology but break the same text into shorter paragraphs","Expand the jargon into more technical language to make the explanation precise","Replace the action steps with a glossary, leaving readers to infer the procedure","Use familiar wording and define necessary terms"],"answer":3,"explanation":"Accessible writing should match the audience's knowledge. Short paragraphs alone do not explain unfamiliar language."},{"lesson":5,"question":"A summary lists five points from a public document. What verifies the summary?","options":["Compare each point with the original document and record any corrections","Count the five bullets and assume the requested task is complete","Check the document's title without reading the relevant passages","Ask whether the model feels confident about all five points"],"answer":0,"explanation":"The requested number of points does not establish accuracy. Check the actual support for each one."},{"lesson":5,"question":"A source says a recommendation applies only to one version, but the summary omits that limit. What should change?","options":["Replace the version with whichever one sounds newest","Remove the source citation to avoid the mismatch","Keep the broader wording because it is easier to reuse","Restore the version condition and check the applicable setup"],"answer":3,"explanation":"Version conditions can determine whether guidance applies. A summary should not expand a claim beyond its source."},{"lesson":6,"question":"An Excel planning outline includes a total but never identifies its input columns. What should you request?","options":["A chart of the proposed total before the source columns have been established","Input columns, formula logic, and a test case","A total formatted as currency, with no change to the missing input definitions","A sample final number, to enter as a fixed value instead of testing a calculation"],"answer":1,"explanation":"A usable spreadsheet plan needs defined inputs and calculations that can be checked."},{"lesson":6,"question":"A PowerPoint outline covers every topic but omits titles, descriptions, and reading-order checks. What is missing?","options":["A requirement to remove every chart","A requirement to use the same transition everywhere","A requirement to avoid all supporting notes","Planning for accessible slide structure and meaningful content"],"answer":3,"explanation":"Accessible planning includes how the information will be structured and conveyed, not merely which topics appear."},{"lesson":7,"question":"A cited page exists but does not support the sentence attached to it. What should you conclude?","options":["That claim remains unsupported by the cited page","The source must be correct if the response used quotation marks","The claim is verified because the link opens","The claim is verified because the page title looks related"],"answer":0,"explanation":"An accessible link is not sufficient evidence. The cited source must support the specific claim in context."},{"lesson":7,"question":"Two sources disagree about a procedure. What comparison is most useful?","options":["Their authority, dates, applicable versions, and original evidence","Their page lengths and decorative design","The order in which Copilot listed them","The confidence level of the generated wording alone"],"answer":0,"explanation":"Resolve conflicts using source quality and applicability rather than presentation or ordering."},{"lesson":8,"question":"A sample is labelled Internal. Does having Copilot available automatically authorize entering it?","options":["No; internal information can never be used by any approved organization tool","Yes; any visible prompt field grants organizational permission","No; follow the organization's rules for that data and account context","Yes; changing the document title makes internal data public"],"answer":2,"explanation":"Data handling depends on actual policy and configuration. Avoid both blanket permission and unsupported blanket prohibitions."},{"lesson":8,"question":"A prompt includes confidential client details that are unnecessary for the task. What should happen?","options":["Send them first and ask for deletion afterward","Replace the filename but leave the private text unchanged","Keep them because extra detail always improves accuracy","Remove them and use an approved fictional or public example"],"answer":3,"explanation":"Use only information appropriate to the task and allowed by policy. Unnecessary private detail should not be entered."},{"lesson":9,"question":"A command works with one screen reader but not another. What should you check?","options":["Whether both readers have the same voice pitch","Each reader's mode, layout, focus, and current documented commands","Whether the response contains the same number of words","Whether the page uses the same accent color"],"answer":1,"explanation":"Screen readers differ in command behavior and modes. Match guidance to the actual reader and context."},{"lesson":9,"question":"After sending a prompt, you cannot find the new answer by keyboard. What is the best next approach?","options":["Reload the page before checking whether generation has completed or the response exists","Resend the prompt immediately and assume the first response will be replaced","Find the response using headings, regions, and controls","Use the browser address bar to enter the next prompt without checking page focus"],"answer":2,"explanation":"Reorient using current structure and labels. Repeated sending or premature reload may make the situation less clear."},{"lesson":10,"question":"A fictional project has a useful outline but unchecked sources and an unedited draft. What remains?","options":["Only copying the draft into a different application","Only making the draft sound more confident","Only changing the outline's title","Source verification, human revision, and a record of the process"],"answer":3,"explanation":"The final task includes evidence and judgment, not just generating planning content."},{"lesson":10,"question":"Which outcome best demonstrates responsible completion of the Copilot course project?","options":["A polished result that uses real private records to make the examples more specific","A readable final response that has not been checked against the project requirements","A revised result with checked claims and recorded limits","A complete draft with a reference list, treating every listed reference as already verified"],"answer":2,"explanation":"Quality depends on the finished result and the checks supporting it, rather than output length or tone."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

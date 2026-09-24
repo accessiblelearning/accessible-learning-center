@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Cybersecurity for Screen Reader Users.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Cybersecurity for Screen Reader Users. Score 85 percent to earn a course-completion certificate.">
   <title>Cybersecurity for Screen Reader Users Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Cybersecurity for Screen Reader Users Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Cybersecurity for Screen Reader Users quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. What is the safest response to an unexpected urgent link?</legend>
-          <label><input type="radio" name="question-0" value="0"> Pause and verify through a trusted channel</label>
-          <label><input type="radio" name="question-0" value="1"> Open it immediately</label>
-          <label><input type="radio" name="question-0" value="2"> Forward it to everyone</label>
+          <legend>1. A message urgently asks you to change a payment destination and keep it secret. What is the best verification route?</legend>
+          <label><input type="radio" name="question-0" value="0"> Use the message&#x27;s sign-in link to confirm its request</label>
+          <label><input type="radio" name="question-0" value="1"> Call the new phone number provided in the message</label>
+          <label><input type="radio" name="question-0" value="2"> Contact the known organization through an independently trusted channel</label>
+          <label><input type="radio" name="question-0" value="3"> Reply to the same message and accept a matching explanation</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What makes a password stronger?</legend>
-          <label><input type="radio" name="question-1" value="0"> Reusing one short password</label>
-          <label><input type="radio" name="question-1" value="1"> Including your name</label>
-          <label><input type="radio" name="question-1" value="2"> A long unique password stored in an approved manager</label>
+          <legend>2. A message uses your manager&#x27;s display name. What does that establish?</legend>
+          <label><input type="radio" name="question-1" value="0"> The displayed name alone does not verify the sender&#x27;s identity</label>
+          <label><input type="radio" name="question-1" value="1"> The requested action has already been approved</label>
+          <label><input type="radio" name="question-1" value="2"> The message definitely came from your manager</label>
+          <label><input type="radio" name="question-1" value="3"> The attachments are safe to open without checking</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What does multifactor authentication add?</legend>
-          <label><input type="radio" name="question-2" value="0"> A public password</label>
-          <label><input type="radio" name="question-2" value="1"> Another verification factor</label>
-          <label><input type="radio" name="question-2" value="2"> Automatic file deletion</label>
+          <legend>3. One password is reused across several accounts and one account is compromised. What is the main added risk?</legend>
+          <label><input type="radio" name="question-2" value="0"> Only the original account can ever be affected</label>
+          <label><input type="radio" name="question-2" value="1"> Changing the display name protects all reused credentials</label>
+          <label><input type="radio" name="question-2" value="2"> The same credentials may be tried against the other accounts</label>
+          <label><input type="radio" name="question-2" value="3"> A longer version of the same password eliminates every reuse risk</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. Why install updates?</legend>
-          <label><input type="radio" name="question-3" value="0"> They often repair security weaknesses</label>
-          <label><input type="radio" name="question-3" value="1"> They reveal passwords</label>
-          <label><input type="radio" name="question-3" value="2"> They disable backups</label>
+          <legend>4. A password manager offers to fill a login on an unexpected site. What should you do?</legend>
+          <label><input type="radio" name="question-3" value="0"> Confirm the real site and intended account before approving autofill</label>
+          <label><input type="radio" name="question-3" value="1"> Disable all password checks so the form will submit</label>
+          <label><input type="radio" name="question-3" value="2"> Copy the password into the page&#x27;s support chat for verification</label>
+          <label><input type="radio" name="question-3" value="3"> Approve because an autofill suggestion proves the site is legitimate</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. What should happen after a suspected incident?</legend>
-          <label><input type="radio" name="question-4" value="0"> Hide it</label>
-          <label><input type="radio" name="question-4" value="1"> Report it through the approved process</label>
-          <label><input type="radio" name="question-4" value="2"> Delete all evidence</label>
+          <legend>5. You receive repeated MFA approval prompts while you are not signing in. What is the appropriate response?</legend>
+          <label><input type="radio" name="question-4" value="0"> Approve one to stop the notifications</label>
+          <label><input type="radio" name="question-4" value="1"> Reject unexpected requests and report them through the approved process</label>
+          <label><input type="radio" name="question-4" value="2"> Share a one-time code with the person who calls afterward</label>
+          <label><input type="radio" name="question-4" value="3"> Change the device&#x27;s volume and ignore the account activity</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You depend on one device for MFA. What should you prepare before losing access to it?</legend>
+          <label><input type="radio" name="question-5" value="0"> A public note containing all recovery codes</label>
+          <label><input type="radio" name="question-5" value="1"> A plan to disable MFA permanently whenever traveling</label>
+          <label><input type="radio" name="question-5" value="2"> One shared account password for every coworker</label>
+          <label><input type="radio" name="question-5" value="3"> Approved recovery options and securely stored recovery information</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. A link&#x27;s visible label names your employer, but its destination uses an unrelated domain. What should guide your decision?</legend>
+          <label><input type="radio" name="question-6" value="0"> The fact that the link was read aloud correctly</label>
+          <label><input type="radio" name="question-6" value="1"> The visible label alone</label>
+          <label><input type="radio" name="question-6" value="2"> The actual destination and independent verification of the request</label>
+          <label><input type="radio" name="question-6" value="3"> The message&#x27;s professional formatting alone</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. A caller&#x27;s ID shows a familiar organization and they ask for a one-time code. What should you do?</legend>
+          <label><input type="radio" name="question-7" value="0"> Share it because caller ID verifies identity</label>
+          <label><input type="radio" name="question-7" value="1"> Decline to share it and verify through a known official contact route</label>
+          <label><input type="radio" name="question-7" value="2"> Read half the code as a compromise</label>
+          <label><input type="radio" name="question-7" value="3"> Ask the caller to repeat your name and then share the code</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. You expect a PDF, but the downloaded file is identified as an executable. What is the safest response?</legend>
+          <label><input type="radio" name="question-8" value="0"> Use a private window to run the file without affecting the normal browser session</label>
+          <label><input type="radio" name="question-8" value="1"> Rely on the sender name matching the expected organization and proceed with the download</label>
+          <label><input type="radio" name="question-8" value="2"> Stop and verify the source and file type</label>
+          <label><input type="radio" name="question-8" value="3"> Rename the file to use the expected extension and open it from the trusted-looking folder</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. The browser warns that a download may be dangerous. What should you do?</legend>
+          <label><input type="radio" name="question-9" value="0"> Disable protection for this download and re-enable it before opening the saved file</label>
+          <label><input type="radio" name="question-9" value="1"> Ask the sender to rename the file and trust it if the same warning no longer appears</label>
+          <label><input type="radio" name="question-9" value="2"> Use another browser and accept the file if that browser displays no warning</label>
+          <label><input type="radio" name="question-9" value="3"> Keep protection on and follow approved verification</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. An app requests microphone access for a task that only displays text. What should you evaluate?</legend>
+          <label><input type="radio" name="question-10" value="0"> Whether another unrelated app already has microphone access</label>
+          <label><input type="radio" name="question-10" value="1"> Whether the app has an attractive interface</label>
+          <label><input type="radio" name="question-10" value="2"> Whether allowing it would dismiss the prompt faster</label>
+          <label><input type="radio" name="question-10" value="3"> Whether the permission is actually needed for the intended task</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. You accidentally shared a confidential file with the wrong person. What is the appropriate next step?</legend>
+          <label><input type="radio" name="question-11" value="0"> Rename the original file and assume the shared copy changes</label>
+          <label><input type="radio" name="question-11" value="1"> Delete your local copy and assume every shared copy disappears</label>
+          <label><input type="radio" name="question-11" value="2"> Wait to see whether the recipient mentions it</label>
+          <label><input type="radio" name="question-11" value="3"> Promptly follow the organization&#x27;s incident and access-recovery process</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. You step away from an unlocked work computer for a short break. Which action directly protects the active session?</legend>
+          <label><input type="radio" name="question-12" value="0"> Turn down the monitor&#x27;s brightness</label>
+          <label><input type="radio" name="question-12" value="1"> Minimize the current application</label>
+          <label><input type="radio" name="question-12" value="2"> Close only the browser&#x27;s current tab</label>
+          <label><input type="radio" name="question-12" value="3"> Lock it with Windows+L</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. Important files have been copied to an approved backup location. What additional check strengthens the plan?</legend>
+          <label><input type="radio" name="question-13" value="0"> Delete the originals before testing the backup</label>
+          <label><input type="radio" name="question-13" value="1"> Verify that the required files can actually be recovered</label>
+          <label><input type="radio" name="question-13" value="2"> Keep the only recovery instructions inside the failed device</label>
+          <label><input type="radio" name="question-13" value="3"> Assume every copied file is readable forever</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. Several public Wi-Fi names look like the venue&#x27;s network. How should you choose?</legend>
+          <label><input type="radio" name="question-14" value="0"> Join each network and enter credentials until one works</label>
+          <label><input type="radio" name="question-14" value="1"> Confirm the correct network with trusted venue staff or use an approved alternative</label>
+          <label><input type="radio" name="question-14" value="2"> Choose the one that requires the fewest checks</label>
+          <label><input type="radio" name="question-14" value="3"> Choose the one with the strongest signal regardless of its name</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. An approved VPN is required for a remote-work task. What does using it mean for other precautions?</legend>
+          <label><input type="radio" name="question-15" value="0"> It removes the need to lock the device in public</label>
+          <label><input type="radio" name="question-15" value="1"> You still need appropriate device, account, and data-handling protections</label>
+          <label><input type="radio" name="question-15" value="2"> It makes every website and attachment safe</label>
+          <label><input type="radio" name="question-15" value="3"> It authorizes any sensitive task on any shared computer</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. After a suspected incident, what information makes a useful report?</legend>
+          <label><input type="radio" name="question-16" value="0"> Time, actions, effects, and recovery steps already tried</label>
+          <label><input type="radio" name="question-16" value="1"> A list of recent emails, omitting which links were opened or attachments were run</label>
+          <label><input type="radio" name="question-16" value="2"> The error text with passwords and recovery codes included to help support reproduce it</label>
+          <label><input type="radio" name="question-16" value="3"> The likely attacker and suspected motive, presented as facts without observed evidence</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. You suspect active malware on a work device. What should guide immediate action?</legend>
+          <label><input type="radio" name="question-17" value="0"> The incident procedure and designated support team, while preserving relevant evidence</label>
+          <label><input type="radio" name="question-17" value="1"> Continuing sensitive work until the device stops responding</label>
+          <label><input type="radio" name="question-17" value="2"> Deleting logs before telling the support team</label>
+          <label><input type="radio" name="question-17" value="3"> An unknown cleanup tool advertised in a popup</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. An urgent payment email has a familiar logo but a changed bank destination and unusual secrecy. Which factor outweighs the logo?</legend>
+          <label><input type="radio" name="question-18" value="0"> The unverified change and suspicious request pattern</label>
+          <label><input type="radio" name="question-18" value="1"> The logo&#x27;s similarity to previous messages</label>
+          <label><input type="radio" name="question-18" value="2"> The fact that the email arrived during business hours</label>
+          <label><input type="radio" name="question-18" value="3"> The message&#x27;s correct spelling</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which response best combines the protections covered in the course?</legend>
+          <label><input type="radio" name="question-19" value="0"> Change the password, then approve pending sign-in prompts so legitimate work can continue</label>
+          <label><input type="radio" name="question-19" value="1"> Use the contact number in the suspicious message to confirm its request before acting</label>
+          <label><input type="radio" name="question-19" value="2"> Verify independently, report, and protect recovery access</label>
+          <label><input type="radio" name="question-19" value="3"> Forward the message to colleagues for confirmation and open its attachment while waiting</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Cybersecurity for Screen Reader Users","displayName":"Cybersecurity for Screen Reader Users","slug":"cybersecurity","passPercent":80,"questions":[{"answer":0,"explanation":"Urgency is a common phishing tactic.","options":["Pause and verify through a trusted channel","Open it immediately","Forward it to everyone"],"question":"What is the safest response to an unexpected urgent link?"},{"answer":2,"explanation":"Unique long passwords reduce reuse risk.","options":["Reusing one short password","Including your name","A long unique password stored in an approved manager"],"question":"What makes a password stronger?"},{"answer":1,"explanation":"MFA adds protection beyond the password.","options":["A public password","Another verification factor","Automatic file deletion"],"question":"What does multifactor authentication add?"},{"answer":0,"explanation":"Updates frequently include security fixes.","options":["They often repair security weaknesses","They reveal passwords","They disable backups"],"question":"Why install updates?"},{"answer":1,"explanation":"Prompt reporting supports containment and recovery.","options":["Hide it","Report it through the approved process","Delete all evidence"],"question":"What should happen after a suspected incident?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Cybersecurity for Screen Reader Users","displayName":"Cybersecurity for Screen Reader Users","slug":"cybersecurity","passPercent":85,"questions":[{"lesson":1,"question":"A message urgently asks you to change a payment destination and keep it secret. What is the best verification route?","options":["Use the message's sign-in link to confirm its request","Call the new phone number provided in the message","Contact the known organization through an independently trusted channel","Reply to the same message and accept a matching explanation"],"answer":2,"explanation":"Urgency and secrecy are warning signs. Independent contact avoids relying on potentially attacker-controlled details."},{"lesson":1,"question":"A message uses your manager's display name. What does that establish?","options":["The displayed name alone does not verify the sender's identity","The requested action has already been approved","The message definitely came from your manager","The attachments are safe to open without checking"],"answer":0,"explanation":"Display names can be misleading. Review the actual sender, context, and requested action before trusting the message."},{"lesson":2,"question":"One password is reused across several accounts and one account is compromised. What is the main added risk?","options":["Only the original account can ever be affected","Changing the display name protects all reused credentials","The same credentials may be tried against the other accounts","A longer version of the same password eliminates every reuse risk"],"answer":2,"explanation":"Unique passwords limit the spread of a stolen credential. Reuse can connect otherwise separate accounts."},{"lesson":2,"question":"A password manager offers to fill a login on an unexpected site. What should you do?","options":["Confirm the real site and intended account before approving autofill","Disable all password checks so the form will submit","Copy the password into the page's support chat for verification","Approve because an autofill suggestion proves the site is legitimate"],"answer":0,"explanation":"Autofill still requires attention to context. Do not treat a prompt or suggestion as proof of the site's legitimacy."},{"lesson":3,"question":"You receive repeated MFA approval prompts while you are not signing in. What is the appropriate response?","options":["Approve one to stop the notifications","Reject unexpected requests and report them through the approved process","Share a one-time code with the person who calls afterward","Change the device's volume and ignore the account activity"],"answer":1,"explanation":"Unexpected prompts may indicate an attempted sign-in. Approving them or sharing codes can enable unauthorized access."},{"lesson":3,"question":"You depend on one device for MFA. What should you prepare before losing access to it?","options":["A public note containing all recovery codes","A plan to disable MFA permanently whenever traveling","One shared account password for every coworker","Approved recovery options and securely stored recovery information"],"answer":3,"explanation":"Recovery planning helps preserve legitimate access without exposing the factors that protect the account."},{"lesson":4,"question":"A link's visible label names your employer, but its destination uses an unrelated domain. What should guide your decision?","options":["The fact that the link was read aloud correctly","The visible label alone","The actual destination and independent verification of the request","The message's professional formatting alone"],"answer":2,"explanation":"Link text can conceal a different destination. Check the actual address and context without relying on presentation."},{"lesson":4,"question":"A caller's ID shows a familiar organization and they ask for a one-time code. What should you do?","options":["Share it because caller ID verifies identity","Decline to share it and verify through a known official contact route","Read half the code as a compromise","Ask the caller to repeat your name and then share the code"],"answer":1,"explanation":"Caller ID and personal details are not sufficient verification. One-time codes should not be disclosed to another person."},{"lesson":5,"question":"You expect a PDF, but the downloaded file is identified as an executable. What is the safest response?","options":["Use a private window to run the file without affecting the normal browser session","Rely on the sender name matching the expected organization and proceed with the download","Stop and verify the source and file type","Rename the file to use the expected extension and open it from the trusted-looking folder"],"answer":2,"explanation":"A changed extension or location does not change the file's behavior. An unexpected executable requires verification."},{"lesson":5,"question":"The browser warns that a download may be dangerous. What should you do?","options":["Disable protection for this download and re-enable it before opening the saved file","Ask the sender to rename the file and trust it if the same warning no longer appears","Use another browser and accept the file if that browser displays no warning","Keep protection on and follow approved verification"],"answer":3,"explanation":"Bypassing a warning does not resolve its cause. Use trusted sources and approved security procedures."},{"lesson":6,"question":"An app requests microphone access for a task that only displays text. What should you evaluate?","options":["Whether another unrelated app already has microphone access","Whether the app has an attractive interface","Whether allowing it would dismiss the prompt faster","Whether the permission is actually needed for the intended task"],"answer":3,"explanation":"Permissions should match a legitimate need. Existing access elsewhere or convenience does not justify additional access."},{"lesson":6,"question":"You accidentally shared a confidential file with the wrong person. What is the appropriate next step?","options":["Rename the original file and assume the shared copy changes","Delete your local copy and assume every shared copy disappears","Wait to see whether the recipient mentions it","Promptly follow the organization's incident and access-recovery process"],"answer":3,"explanation":"Prompt reporting supports containment. Renaming or deleting a local file may not undo disclosure elsewhere."},{"lesson":7,"question":"You step away from an unlocked work computer for a short break. Which action directly protects the active session?","options":["Turn down the monitor's brightness","Minimize the current application","Close only the browser's current tab","Lock it with Windows+L"],"answer":3,"explanation":"Locking requires authentication to return to the session. Minimizing or changing the display does not provide that protection."},{"lesson":7,"question":"Important files have been copied to an approved backup location. What additional check strengthens the plan?","options":["Delete the originals before testing the backup","Verify that the required files can actually be recovered","Keep the only recovery instructions inside the failed device","Assume every copied file is readable forever"],"answer":1,"explanation":"A backup's value depends on recovery. Periodically verify the process and relevant files under approved procedures."},{"lesson":8,"question":"Several public Wi-Fi names look like the venue's network. How should you choose?","options":["Join each network and enter credentials until one works","Confirm the correct network with trusted venue staff or use an approved alternative","Choose the one that requires the fewest checks","Choose the one with the strongest signal regardless of its name"],"answer":1,"explanation":"A familiar-looking name or strong signal does not verify a network. Confirm it through a trusted source."},{"lesson":8,"question":"An approved VPN is required for a remote-work task. What does using it mean for other precautions?","options":["It removes the need to lock the device in public","You still need appropriate device, account, and data-handling protections","It makes every website and attachment safe","It authorizes any sensitive task on any shared computer"],"answer":1,"explanation":"A VPN addresses part of the connection risk. It does not replace other security controls or workplace rules."},{"lesson":9,"question":"After a suspected incident, what information makes a useful report?","options":["Time, actions, effects, and recovery steps already tried","A list of recent emails, omitting which links were opened or attachments were run","The error text with passwords and recovery codes included to help support reproduce it","The likely attacker and suspected motive, presented as facts without observed evidence"],"answer":0,"explanation":"Specific observations help the authorized team respond. Do not include secrets such as passwords or recovery codes."},{"lesson":9,"question":"You suspect active malware on a work device. What should guide immediate action?","options":["The incident procedure and designated support team, while preserving relevant evidence","Continuing sensitive work until the device stops responding","Deleting logs before telling the support team","An unknown cleanup tool advertised in a popup"],"answer":0,"explanation":"Follow approved containment and reporting steps. Random tools or evidence destruction can complicate recovery."},{"lesson":10,"question":"An urgent payment email has a familiar logo but a changed bank destination and unusual secrecy. Which factor outweighs the logo?","options":["The unverified change and suspicious request pattern","The logo's similarity to previous messages","The fact that the email arrived during business hours","The message's correct spelling"],"answer":0,"explanation":"Presentation can be copied. A sensitive change needs independent verification despite familiar branding or timing."},{"lesson":10,"question":"Which response best combines the protections covered in the course?","options":["Change the password, then approve pending sign-in prompts so legitimate work can continue","Use the contact number in the suspicious message to confirm its request before acting","Verify independently, report, and protect recovery access","Forward the message to colleagues for confirmation and open its attachment while waiting"],"answer":2,"explanation":"Layered protection combines careful verification with safe handling, reporting, and account resilience."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

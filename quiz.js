@@ -47,6 +47,7 @@
   const answered = document.createElement("p");
   const retakeButton = document.createElement("button");
   let latestScore = 0;
+  let latestCorrect = 0;
   let questionOrder = data.questions.map((question, index) => index);
   let quizReady = false;
   let graded = false;
@@ -200,13 +201,20 @@
       : "accessibleLearningQuizResults";
   }
 
-  function saveResult(score) {
+  function saveResult(score, correct) {
     try {
       const key = resultStorageKey();
       const savedResults = localStorage.getItem(key);
       const parsed = JSON.parse(savedResults || "{}");
       const results = parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
-      results[data.course] = { score, completedAt: new Date().toISOString() };
+      results[data.course] = {
+        score,
+        correct,
+        total: data.questions.length,
+        passPercent: data.passPercent,
+        assessmentVersion: data.assessmentVersion || "legacy",
+        completedAt: new Date().toISOString()
+      };
       localStorage.setItem(key, JSON.stringify(results));
       return true;
     } catch (error) {
@@ -256,8 +264,9 @@
       total + Number(answer === data.questions[index].answer), 0
     );
     latestScore = Math.round((correct / data.questions.length) * 100);
-    const passed = latestScore >= data.passPercent;
-    const resultSaved = passed && saveResult(latestScore);
+    latestCorrect = correct;
+    const passed = correct >= requiredCorrect;
+    const resultSaved = passed && saveResult(latestScore, correct);
     graded = true;
     setQuizControls(false);
     retakeButton.hidden = false;
@@ -283,6 +292,8 @@
     questionOrder.forEach(index => {
       const question = data.questions[index];
       const item = document.createElement("li");
+      const questionText = document.createElement("p");
+      questionText.textContent = question.question;
       const result = document.createElement("p");
       const explanation = document.createElement("p");
       const isCorrect = answers[index] === question.answer;
@@ -294,7 +305,15 @@
         result.append(document.createTextNode(" Correct answer: " + question.options[question.answer] + "."));
       }
       explanation.textContent = question.explanation;
-      item.append(result, explanation);
+      item.append(questionText, result, explanation);
+      if (Number.isInteger(question.lesson) && question.lesson >= 1 && question.lesson <= REQUIRED_LESSONS) {
+        const lessonReview = document.createElement("p");
+        const lessonLink = document.createElement("a");
+        lessonLink.href = data.slug + "-lesson-" + question.lesson + ".html";
+        lessonLink.textContent = "Review Lesson " + question.lesson + " for " + data.displayName;
+        lessonReview.append(lessonLink);
+        item.append(lessonReview);
+      }
       list.appendChild(item);
     });
     review.append(reviewHeading, list);
@@ -309,6 +328,7 @@
     form.reset();
     graded = false;
     latestScore = 0;
+    latestCorrect = 0;
     status.replaceChildren();
     review.replaceChildren();
     setup.hidden = true;
@@ -326,7 +346,7 @@
 
   certificateForm.addEventListener("submit", event => {
     event.preventDefault();
-    if (!quizReady || !graded || latestScore < data.passPercent) {
+    if (!quizReady || !graded || latestCorrect < requiredCorrect) {
       certificateStatus.textContent = "Complete all ten lessons and pass this quiz before creating a certificate.";
       return;
     }

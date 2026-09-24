@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Google Sheets.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Google Sheets. Score 85 percent to earn a course-completion certificate.">
   <title>Google Sheets Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Google Sheets Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Google Sheets quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. How does a Google Sheets formula begin?</legend>
-          <label><input type="radio" name="question-0" value="0"> With a quotation mark</label>
-          <label><input type="radio" name="question-0" value="1"> With an equals sign</label>
-          <label><input type="radio" name="question-0" value="2"> With a slash</label>
+          <legend>1. A spreadsheet is open, but the screen reader is not identifying cells as expected. What is the best initial check?</legend>
+          <label><input type="radio" name="question-0" value="0"> Change all cell formats before checking accessibility settings</label>
+          <label><input type="radio" name="question-0" value="1"> Confirm the active editing area and Sheets&#x27; screen-reader support setting</label>
+          <label><input type="radio" name="question-0" value="2"> Export the file immediately and assume the browser version is unusable</label>
+          <label><input type="radio" name="question-0" value="3"> Rename the sheet and retry the same keystroke without checking focus</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What should be confirmed before sharing a sheet?</legend>
-          <label><input type="radio" name="question-1" value="0"> Only cell color</label>
-          <label><input type="radio" name="question-1" value="1"> Only row height</label>
-          <label><input type="radio" name="question-1" value="2"> The active account and permission level</label>
+          <legend>2. Two similarly named spreadsheets are open in different accounts. What should you confirm before entering work data?</legend>
+          <label><input type="radio" name="question-1" value="0"> The active account, file, worksheet, and cell</label>
+          <label><input type="radio" name="question-1" value="1"> Only the visible spreadsheet title</label>
+          <label><input type="radio" name="question-1" value="2"> Only the most recent download&#x27;s filename</label>
+          <label><input type="radio" name="question-1" value="3"> Only the browser&#x27;s product name</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What can CSV preserve well?</legend>
-          <label><input type="radio" name="question-2" value="0"> Plain tabular values</label>
-          <label><input type="radio" name="question-2" value="1"> Multiple sheets and charts</label>
-          <label><input type="radio" name="question-2" value="2"> All formulas and formatting</label>
+          <legend>3. You intend to format B2:B6, but only B2 is active. What must happen before applying the change?</legend>
+          <label><input type="radio" name="question-2" value="0"> Switch worksheets and apply the format there</label>
+          <label><input type="radio" name="question-2" value="1"> Select and verify the full intended range</label>
+          <label><input type="radio" name="question-2" value="2"> Format B2 and assume the remaining cells follow</label>
+          <label><input type="radio" name="question-2" value="3"> Move to B6 without selecting the intervening cells</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What should accompany a chart?</legend>
-          <label><input type="radio" name="question-3" value="0"> Only color</label>
-          <label><input type="radio" name="question-3" value="1"> A text summary of important values and trends</label>
-          <label><input type="radio" name="question-3" value="2"> An empty title</label>
+          <legend>4. A command changes the wrong worksheet. What context check would have prevented this?</legend>
+          <label><input type="radio" name="question-3" value="0"> Confirm only that autosave is available</label>
+          <label><input type="radio" name="question-3" value="1"> Confirm only the selected cell&#x27;s text color</label>
+          <label><input type="radio" name="question-3" value="2"> Confirm only the spreadsheet&#x27;s title</label>
+          <label><input type="radio" name="question-3" value="3"> Confirm the active sheet before selecting the range</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Why use clear sheet and column names?</legend>
-          <label><input type="radio" name="question-4" value="0"> They make structure understandable</label>
-          <label><input type="radio" name="question-4" value="1"> They replace data</label>
-          <label><input type="radio" name="question-4" value="2"> They prevent saving</label>
+          <legend>5. A filled series was expected to increase, but every destination repeats the same value. What should you inspect?</legend>
+          <label><input type="radio" name="question-4" value="0"> Only the spreadsheet&#x27;s sharing setting</label>
+          <label><input type="radio" name="question-4" value="1"> Only the workbook&#x27;s download format</label>
+          <label><input type="radio" name="question-4" value="2"> Only the browser&#x27;s page zoom</label>
+          <label><input type="radio" name="question-4" value="3"> The seed values, fill method, and resulting cells</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You found a misspelled department name in several unrelated records. What should guide replacement?</legend>
+          <label><input type="radio" name="question-5" value="0"> Review the intended matches and replacement scope before applying it</label>
+          <label><input type="radio" name="question-5" value="1"> Replace every similar-looking word across all sheets immediately</label>
+          <label><input type="radio" name="question-5" value="2"> Apply bold to matching cells instead of correcting their values</label>
+          <label><input type="radio" name="question-5" value="3"> Change the column heading and assume existing entries update</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. B2:B4 contains 4, 6, and 8. Which result should =AVERAGE(B2:B4) return?</legend>
+          <label><input type="radio" name="question-6" value="0"> 4</label>
+          <label><input type="radio" name="question-6" value="1"> 6</label>
+          <label><input type="radio" name="question-6" value="2"> 18</label>
+          <label><input type="radio" name="question-6" value="3"> 8</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. A total should include B2 through B6, but the formula uses B2:B5. What must be corrected?</legend>
+          <label><input type="radio" name="question-7" value="0"> Rename the result cell&#x27;s label to Grand Total</label>
+          <label><input type="radio" name="question-7" value="1"> Change the cell&#x27;s format to Currency</label>
+          <label><input type="radio" name="question-7" value="2"> Extend the formula&#x27;s range to include B6</label>
+          <label><input type="radio" name="question-7" value="3"> Round the existing total to fewer decimals</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A sheet has columns labelled Value, Value, and Value. What would most improve interpretation?</legend>
+          <label><input type="radio" name="question-8" value="0"> A different background color for each Value column</label>
+          <label><input type="radio" name="question-8" value="1"> A larger font for the first repeated label</label>
+          <label><input type="radio" name="question-8" value="2"> Wider columns with the same three labels</label>
+          <label><input type="radio" name="question-8" value="3"> Specific headers identifying each measure and its units where needed</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. A cost of 12.5 should display as money with two decimals. Which change preserves its numeric usefulness?</legend>
+          <label><input type="radio" name="question-9" value="0"> Apply an appropriate currency number format</label>
+          <label><input type="radio" name="question-9" value="1"> Merge the cost with the item description</label>
+          <label><input type="radio" name="question-9" value="2"> Put the currency amount only in the sheet name</label>
+          <label><input type="radio" name="question-9" value="3"> Replace it with the text twelve dollars fifty</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. You sort only the Names column of a table containing names and phone extensions. What can go wrong?</legend>
+          <label><input type="radio" name="question-10" value="0"> Every phone extension will be recalculated automatically</label>
+          <label><input type="radio" name="question-10" value="1"> Names may become paired with the wrong extensions</label>
+          <label><input type="radio" name="question-10" value="2"> The table will be converted into a chart</label>
+          <label><input type="radio" name="question-10" value="3"> All records will necessarily be removed</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A filter shows three of ten records. Which conclusion is justified?</legend>
+          <label><input type="radio" name="question-11" value="0"> Seven records were permanently deleted by filtering</label>
+          <label><input type="radio" name="question-11" value="1"> The visible rows necessarily have the highest values</label>
+          <label><input type="radio" name="question-11" value="2"> The spreadsheet now contains exactly three records in total</label>
+          <label><input type="radio" name="question-11" value="3"> Seven records are currently hidden by the filter, if no other changes occurred</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. You want new Status entries chosen from New, Waiting, and Closed. Which approach fits?</legend>
+          <label><input type="radio" name="question-12" value="0"> A formula that totals an unrelated numeric column</label>
+          <label><input type="radio" name="question-12" value="1"> A comment listing the values with no entry rule</label>
+          <label><input type="radio" name="question-12" value="2"> A different font for each manually typed variant</label>
+          <label><input type="radio" name="question-12" value="3"> A validation rule offering those allowed values</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. A status formula should mark a target as met when completed work equals the requirement. Which boundary case must you test?</legend>
+          <label><input type="radio" name="question-13" value="0"> Only a blank row outside the formula&#x27;s range</label>
+          <label><input type="radio" name="question-13" value="1"> Only a record with a different text label</label>
+          <label><input type="radio" name="question-13" value="2"> A value exactly equal to the requirement</label>
+          <label><input type="radio" name="question-13" value="3"> Only a value far above the requirement</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. Monthly totals are 10, 15, and 20. Which chart summary best conveys the trend and values?</legend>
+          <label><input type="radio" name="question-14" value="0"> The last bar is on the right side of the chart</label>
+          <label><input type="radio" name="question-14" value="1"> The chart contains three bars in different colors</label>
+          <label><input type="radio" name="question-14" value="2"> The total rose from 10 to 20, increasing by 5 each month</label>
+          <label><input type="radio" name="question-14" value="3"> The chart was created from three spreadsheet rows</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. A chart&#x27;s bars look reasonable, but its selected source range omits the last month. What should happen?</legend>
+          <label><input type="radio" name="question-15" value="0"> Remove the final month from the table to match the chart</label>
+          <label><input type="radio" name="question-15" value="1"> Change the chart colors and retain the existing range</label>
+          <label><input type="radio" name="question-15" value="2"> Correct the range and verify the chart and summary against the data</label>
+          <label><input type="radio" name="question-15" value="3"> Keep the chart because its visual trend appears plausible</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. A recipient needs editable formulas and multiple worksheets. Which export is a better starting point than CSV or PDF?</legend>
+          <label><input type="radio" name="question-16" value="0"> A screenshot renamed with an XLSX extension</label>
+          <label><input type="radio" name="question-16" value="1"> XLSX, followed by a compatibility check</label>
+          <label><input type="radio" name="question-16" value="2"> CSV, with the expectation that every sheet and formula survives</label>
+          <label><input type="radio" name="question-16" value="3"> PDF, with the expectation that formulas remain editable</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. A teammate only needs to inspect the tracker. Which permission is the least needed for that task?</legend>
+          <label><input type="radio" name="question-17" value="0"> Ownership transfer</label>
+          <label><input type="radio" name="question-17" value="1"> Editor</label>
+          <label><input type="radio" name="question-17" value="2"> Viewer</label>
+          <label><input type="radio" name="question-17" value="3"> Public editing access</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Your exported tracker opens, but a status formula differs from the original. What should you do before delivery?</legend>
+          <label><input type="radio" name="question-18" value="0"> Compare and correct the formula, then retest representative records</label>
+          <label><input type="radio" name="question-18" value="1"> Replace every result with an unverified typed value</label>
+          <label><input type="radio" name="question-18" value="2"> Change the filename and leave the formula unchanged</label>
+          <label><input type="radio" name="question-18" value="3"> Treat successful opening as proof of full compatibility</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which review best supports a usable shared-work tracker?</legend>
+          <label><input type="radio" name="question-19" value="0"> Check data, formulas, labels, instructions, permissions, and the exchange copy</label>
+          <label><input type="radio" name="question-19" value="1"> Check only that all columns have equal width</label>
+          <label><input type="radio" name="question-19" value="2"> Check only that the first record is complete</label>
+          <label><input type="radio" name="question-19" value="3"> Check only that a download was created</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Google Sheets","displayName":"Google Sheets","slug":"sheets","passPercent":80,"questions":[{"answer":1,"explanation":"Formulas begin with =.","options":["With a quotation mark","With an equals sign","With a slash"],"question":"How does a Google Sheets formula begin?"},{"answer":2,"explanation":"Permissions control data access.","options":["Only cell color","Only row height","The active account and permission level"],"question":"What should be confirmed before sharing a sheet?"},{"answer":0,"explanation":"CSV is designed for plain table data.","options":["Plain tabular values","Multiple sheets and charts","All formulas and formatting"],"question":"What can CSV preserve well?"},{"answer":1,"explanation":"A summary provides an accessible equivalent.","options":["Only color","A text summary of important values and trends","An empty title"],"question":"What should accompany a chart?"},{"answer":0,"explanation":"Descriptive names support navigation and interpretation.","options":["They make structure understandable","They replace data","They prevent saving"],"question":"Why use clear sheet and column names?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Google Sheets","displayName":"Google Sheets","slug":"sheets","passPercent":85,"questions":[{"lesson":1,"question":"A spreadsheet is open, but the screen reader is not identifying cells as expected. What is the best initial check?","options":["Change all cell formats before checking accessibility settings","Confirm the active editing area and Sheets' screen-reader support setting","Export the file immediately and assume the browser version is unusable","Rename the sheet and retry the same keystroke without checking focus"],"answer":1,"explanation":"First establish focus and the application's accessibility support. File conversion or formatting may not address the cause."},{"lesson":1,"question":"Two similarly named spreadsheets are open in different accounts. What should you confirm before entering work data?","options":["The active account, file, worksheet, and cell","Only the visible spreadsheet title","Only the most recent download's filename","Only the browser's product name"],"answer":0,"explanation":"Similar titles can hide a context mistake. Confirm the account and editing location before entering or changing information."},{"lesson":2,"question":"You intend to format B2:B6, but only B2 is active. What must happen before applying the change?","options":["Switch worksheets and apply the format there","Select and verify the full intended range","Format B2 and assume the remaining cells follow","Move to B6 without selecting the intervening cells"],"answer":1,"explanation":"A range operation affects the selection. The active cell alone does not establish that every intended cell is selected."},{"lesson":2,"question":"A command changes the wrong worksheet. What context check would have prevented this?","options":["Confirm only that autosave is available","Confirm only the selected cell's text color","Confirm only the spreadsheet's title","Confirm the active sheet before selecting the range"],"answer":3,"explanation":"Several worksheets can share cell addresses. The sheet name is part of the location, not just the cell reference."},{"lesson":3,"question":"A filled series was expected to increase, but every destination repeats the same value. What should you inspect?","options":["Only the spreadsheet's sharing setting","Only the workbook's download format","Only the browser's page zoom","The seed values, fill method, and resulting cells"],"answer":3,"explanation":"Fill behavior depends on the starting pattern and operation. Verify the series instead of assuming filling always increments values."},{"lesson":3,"question":"You found a misspelled department name in several unrelated records. What should guide replacement?","options":["Review the intended matches and replacement scope before applying it","Replace every similar-looking word across all sheets immediately","Apply bold to matching cells instead of correcting their values","Change the column heading and assume existing entries update"],"answer":0,"explanation":"Find and Replace requires a deliberate scope. Similar text can appear in records that should not all change."},{"lesson":4,"question":"B2:B4 contains 4, 6, and 8. Which result should =AVERAGE(B2:B4) return?","options":["4","6","18","8"],"answer":1,"explanation":"Average divides the sum, 18, by three values. SUM, MIN, and MAX answer different questions."},{"lesson":4,"question":"A total should include B2 through B6, but the formula uses B2:B5. What must be corrected?","options":["Rename the result cell's label to Grand Total","Change the cell's format to Currency","Extend the formula's range to include B6","Round the existing total to fewer decimals"],"answer":2,"explanation":"A correct-looking label or format cannot repair an omitted input. Check the formula's range against the intended records."},{"lesson":5,"question":"A sheet has columns labelled Value, Value, and Value. What would most improve interpretation?","options":["A different background color for each Value column","A larger font for the first repeated label","Wider columns with the same three labels","Specific headers identifying each measure and its units where needed"],"answer":3,"explanation":"Clear headers explain meaning independently of position or color, particularly during screen-reader navigation."},{"lesson":5,"question":"A cost of 12.5 should display as money with two decimals. Which change preserves its numeric usefulness?","options":["Apply an appropriate currency number format","Merge the cost with the item description","Put the currency amount only in the sheet name","Replace it with the text twelve dollars fifty"],"answer":0,"explanation":"Number formatting can clarify the display while retaining a numeric value for calculations."},{"lesson":6,"question":"You sort only the Names column of a table containing names and phone extensions. What can go wrong?","options":["Every phone extension will be recalculated automatically","Names may become paired with the wrong extensions","The table will be converted into a chart","All records will necessarily be removed"],"answer":1,"explanation":"Sorting part of a record range can separate related fields. Include the complete records and handle headers correctly."},{"lesson":6,"question":"A filter shows three of ten records. Which conclusion is justified?","options":["Seven records were permanently deleted by filtering","The visible rows necessarily have the highest values","The spreadsheet now contains exactly three records in total","Seven records are currently hidden by the filter, if no other changes occurred"],"answer":3,"explanation":"A filter changes the visible subset. It does not by itself delete nonmatching records or establish a numeric ranking."},{"lesson":7,"question":"You want new Status entries chosen from New, Waiting, and Closed. Which approach fits?","options":["A formula that totals an unrelated numeric column","A comment listing the values with no entry rule","A different font for each manually typed variant","A validation rule offering those allowed values"],"answer":3,"explanation":"A controlled-entry rule helps standardize the intended cells. Documentation alone does not provide the same entry guidance."},{"lesson":7,"question":"A status formula should mark a target as met when completed work equals the requirement. Which boundary case must you test?","options":["Only a blank row outside the formula's range","Only a record with a different text label","A value exactly equal to the requirement","Only a value far above the requirement"],"answer":2,"explanation":"Equality distinguishes greater-than from greater-than-or-equal logic. Test boundaries as well as clear pass and fail cases."},{"lesson":8,"question":"Monthly totals are 10, 15, and 20. Which chart summary best conveys the trend and values?","options":["The last bar is on the right side of the chart","The chart contains three bars in different colors","The total rose from 10 to 20, increasing by 5 each month","The chart was created from three spreadsheet rows"],"answer":2,"explanation":"A useful summary communicates data meaning and change, not just visual arrangement or object count."},{"lesson":8,"question":"A chart's bars look reasonable, but its selected source range omits the last month. What should happen?","options":["Remove the final month from the table to match the chart","Change the chart colors and retain the existing range","Correct the range and verify the chart and summary against the data","Keep the chart because its visual trend appears plausible"],"answer":2,"explanation":"The chart must represent the intended data. Visual plausibility is not a substitute for checking source selection."},{"lesson":9,"question":"A recipient needs editable formulas and multiple worksheets. Which export is a better starting point than CSV or PDF?","options":["A screenshot renamed with an XLSX extension","XLSX, followed by a compatibility check","CSV, with the expectation that every sheet and formula survives","PDF, with the expectation that formulas remain editable"],"answer":1,"explanation":"XLSX supports workbook structure, though conversion still needs checking. CSV and PDF serve different exchange purposes."},{"lesson":9,"question":"A teammate only needs to inspect the tracker. Which permission is the least needed for that task?","options":["Ownership transfer","Editor","Viewer","Public editing access"],"answer":2,"explanation":"Viewing does not require editing or ownership. Match access to the specific collaboration task."},{"lesson":10,"question":"Your exported tracker opens, but a status formula differs from the original. What should you do before delivery?","options":["Compare and correct the formula, then retest representative records","Replace every result with an unverified typed value","Change the filename and leave the formula unchanged","Treat successful opening as proof of full compatibility"],"answer":0,"explanation":"Opening establishes only basic readability. Formula behavior and meaningful results require their own compatibility checks."},{"lesson":10,"question":"Which review best supports a usable shared-work tracker?","options":["Check data, formulas, labels, instructions, permissions, and the exchange copy","Check only that all columns have equal width","Check only that the first record is complete","Check only that a download was created"],"answer":0,"explanation":"A complete tracker must calculate correctly, explain its structure, and reach the right people with appropriate access."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible ten-question final quiz and printable completion certificate for ZoomText and Fusion.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of ZoomText and Fusion. Score 85 percent to earn a course-completion certificate.">
   <title>ZoomText and Fusion Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=five-courses-1" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>ZoomText and Fusion Final Quiz</h1>
-    <p>Answer ten questions about the skills covered in this course. A score of 80 percent, or eight correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="ZoomText and Fusion quiz navigation">
@@ -24,49 +24,149 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-<legend>1. A computer is physically a laptop. Which command layout should you assume?</legend>
-<label><input type="radio" name="question-0" value="0"> Always ZoomText Magnifier/Reader layout</label><label><input type="radio" name="question-0" value="1"> None; check the configured product and JAWS layout</label><label><input type="radio" name="question-0" value="2"> Always Fusion Laptop layout</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>2. Before changing several access settings, what gives you a recoverable baseline?</legend>
-<label><input type="radio" name="question-1" value="0"> Close all access tools first</label><label><input type="radio" name="question-1" value="1"> Maximize every visual enhancement</label><label><input type="radio" name="question-1" value="2"> Record product, layout, magnification, and speech settings</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>3. In the ZoomText Zoom Level control, Up changes zoom. How do you move to an adjacent toolbar item?</legend>
-<label><input type="radio" name="question-2" value="0"> Use the document text-selection command</label><label><input type="radio" name="question-2" value="1"> Use Left or Right</label><label><input type="radio" name="question-2" value="2"> Keep pressing Up until focus moves</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>4. Which magnification comparison command matches Fusion Laptop layout?</legend>
-<label><input type="radio" name="question-3" value="0"> Caps Lock+Alt+Enter</label><label><input type="radio" name="question-3" value="1"> Insert+Enter</label><label><input type="radio" name="question-3" value="2"> Caps Lock+Enter</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>5. Typing appears at a location different from the mouse pointer. Which indicator identifies the insertion point?</legend>
-<label><input type="radio" name="question-4" value="0"> The enhanced mouse pointer</label><label><input type="radio" name="question-4" value="1"> The window border</label><label><input type="radio" name="question-4" value="2"> The text cursor</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>6. How should you evaluate a color enhancement?</legend>
-<label><input type="radio" name="question-5" value="0"> Compare familiar text and selected controls before and after the change</label><label><input type="radio" name="question-5" value="1"> Change zoom, contrast, and speech at the same time</label><label><input type="radio" name="question-5" value="2"> Choose the brightest setting without reading</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>7. Fusion is running. Which component supplies its screen-reading speech?</legend>
-<label><input type="radio" name="question-6" value="0"> The Windows display-resolution setting</label><label><input type="radio" name="question-6" value="1"> JAWS</label><label><input type="radio" name="question-6" value="2"> ZoomText Magnifier-only speech</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>8. The magnified view moves while you edit. What should you identify first?</legend>
-<label><input type="radio" name="question-7" value="0"> The maximum available zoom factor</label><label><input type="radio" name="question-7" value="1"> Whether the browser has a saved login</label><label><input type="radio" name="question-7" value="2"> The cursor and the content receiving typing</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>9. A book player and screen reader speak together. What is a useful first step?</legend>
-<label><input type="radio" name="question-8" value="0"> Increase both voices to maximum speed</label><label><input type="radio" name="question-8" value="1"> Disable the access tool needed to navigate</label><label><input type="radio" name="question-8" value="2"> Pause the book player through its labeled control</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>10. A scanned document is recognized with OCR. What should you do before relying on an important number?</legend>
-<label><input type="radio" name="question-9" value="0"> Increase magnification and skip verification</label><label><input type="radio" name="question-9" value="1"> Check the recognized number against the source</label><label><input type="radio" name="question-9" value="2"> Assume recognition guarantees accuracy</label>
-</fieldset>
-<button type="submit">Grade my quiz</button>
+          <legend>1. The computer is physically a laptop. Which command layout should you assume is configured?</legend>
+          <label><input type="radio" name="question-0" value="0"> Whichever layout a different learner used previously</label>
+          <label><input type="radio" name="question-0" value="1"> Laptop layout in every installed access product</label>
+          <label><input type="radio" name="question-0" value="2"> None; check the product and configured keyboard layout</label>
+          <label><input type="radio" name="question-0" value="3"> Desktop layout because Windows is running</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. A speech command from a Fusion guide does not work in ZoomText Magnifier-only. What should you check?</legend>
+          <label><input type="radio" name="question-1" value="0"> Whether that edition includes the feature</label>
+          <label><input type="radio" name="question-1" value="1"> Whether saving the document to PDF will add the command to the installed edition</label>
+          <label><input type="radio" name="question-1" value="2"> Whether assigning the same key in a browser will supply the missing product capability</label>
+          <label><input type="radio" name="question-1" value="3"> Whether changing text contrast will enable the speech capability described in the guide</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. Before changing magnification and speech settings, what provides a useful recovery baseline?</legend>
+          <label><input type="radio" name="question-2" value="0"> Reset all settings before identifying the learner&#x27;s current preferences</label>
+          <label><input type="radio" name="question-2" value="1"> Change several settings and remember whichever result feels best</label>
+          <label><input type="radio" name="question-2" value="2"> Record only the document&#x27;s filename</label>
+          <label><input type="radio" name="question-2" value="3"> Record the product, layout, current settings, and how to restore them</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. You leave the document to adjust the access tool. What should you verify when returning?</legend>
+          <label><input type="radio" name="question-3" value="0"> Only that some application is visible</label>
+          <label><input type="radio" name="question-3" value="1"> Only that the document&#x27;s filename is unchanged on disk</label>
+          <label><input type="radio" name="question-3" value="2"> Only that the taskbar has not moved</label>
+          <label><input type="radio" name="question-3" value="3"> The same document, current location, and usable focus</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. In the ZoomText Zoom Level control, Up Arrow changes the value. How do you move to an adjacent toolbar item in the taught layout?</legend>
+          <label><input type="radio" name="question-4" value="0"> Use Left or Right Arrow</label>
+          <label><input type="radio" name="question-4" value="1"> Change the document&#x27;s font size instead</label>
+          <label><input type="radio" name="question-4" value="2"> Use Delete to leave the control</label>
+          <label><input type="radio" name="question-4" value="3"> Keep pressing Up until the next item is reached</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You increase zoom one step to compare a paragraph. What should complete the controlled trial?</legend>
+          <label><input type="radio" name="question-5" value="0"> Compare a different document without recording the old setting</label>
+          <label><input type="radio" name="question-5" value="1"> Read the same material, evaluate usability, and restore or record the chosen setting</label>
+          <label><input type="radio" name="question-5" value="2"> Change the document, voice, and contrast at the same time</label>
+          <label><input type="radio" name="question-5" value="3"> Close the app before checking the result</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. At high magnification, you can read a label but lose the surrounding layout. Which strategy fits the lesson?</legend>
+          <label><input type="radio" name="question-6" value="0"> Briefly compare with the broader 1x view</label>
+          <label><input type="radio" name="question-6" value="1"> Treat the hidden surroundings as missing content and restore an older version of the document</label>
+          <label><input type="radio" name="question-6" value="2"> Increase magnification further and infer the surrounding arrangement from the enlarged label</label>
+          <label><input type="radio" name="question-6" value="3"> Keep the same magnification and change the document layout before checking the wider view</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. A Fusion magnification shortcut from a Desktop-layout guide does not match Laptop layout. What should you do?</legend>
+          <label><input type="radio" name="question-7" value="0"> Use a ZoomText speech shortcut because it has a similar name</label>
+          <label><input type="radio" name="question-7" value="1"> Change the physical keyboard before checking the configured layout</label>
+          <label><input type="radio" name="question-7" value="2"> Check the matching Fusion layout command before retrying</label>
+          <label><input type="radio" name="question-7" value="3"> Assume all Caps Lock shortcuts are interchangeable</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. The mouse pointer is at one place while typed characters appear elsewhere. Which indicator identifies where text is inserted?</legend>
+          <label><input type="radio" name="question-8" value="0"> The mouse pointer regardless of focus</label>
+          <label><input type="radio" name="question-8" value="1"> The edge of the magnified viewport</label>
+          <label><input type="radio" name="question-8" value="2"> The first visible toolbar icon</label>
+          <label><input type="radio" name="question-8" value="3"> The text cursor in the active edit area</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. Tab highlights a button while the text cursor remains visible in the document. Where will button-activation keys act?</legend>
+          <label><input type="radio" name="question-9" value="0"> At whichever object is visually largest</label>
+          <label><input type="radio" name="question-9" value="1"> On the control that currently has keyboard focus</label>
+          <label><input type="radio" name="question-9" value="2"> At the old text cursor merely because it is visible</label>
+          <label><input type="radio" name="question-9" value="3"> At the mouse pointer regardless of focus</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. A color enhancement makes ordinary text clearer but hides selected text. What should you conclude?</legend>
+          <label><input type="radio" name="question-10" value="0"> The setting needs further adjustment because selection must remain distinguishable</label>
+          <label><input type="radio" name="question-10" value="1"> It is fully successful because most text is clearer</label>
+          <label><input type="radio" name="question-10" value="2"> The document must be rewritten before comparing another setting</label>
+          <label><input type="radio" name="question-10" value="3"> Selection visibility is irrelevant when text is enlarged</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. How should two contrast settings be compared meaningfully?</legend>
+          <label><input type="radio" name="question-11" value="0"> Judge only the product&#x27;s settings window and skip actual work</label>
+          <label><input type="radio" name="question-11" value="1"> Change contrast, zoom, and voice speed together</label>
+          <label><input type="radio" name="question-11" value="2"> Use the same familiar content and controls, changing one setting at a time</label>
+          <label><input type="radio" name="question-11" value="3"> Compare different documents with unrelated colors</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. Fusion is running. Which component supplies its screen-reading speech?</legend>
+          <label><input type="radio" name="question-12" value="0"> The Windows text-size setting</label>
+          <label><input type="radio" name="question-12" value="1"> JAWS</label>
+          <label><input type="radio" name="question-12" value="2"> The browser&#x27;s page zoom</label>
+          <label><input type="radio" name="question-12" value="3"> ZoomText Magnifier-only</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. You interrupt continuous reading to inspect a passage. What should you do before resuming?</legend>
+          <label><input type="radio" name="question-13" value="0"> Change the keyboard layout without recording it</label>
+          <label><input type="radio" name="question-13" value="1"> Assume stopping speech always moves to the next paragraph</label>
+          <label><input type="radio" name="question-13" value="2"> Disable all future speech feedback</label>
+          <label><input type="radio" name="question-13" value="3"> Confirm the reading or editing position and use the matching product&#x27;s reading command</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. The magnified view moves while you edit. What should you identify before making another change?</legend>
+          <label><input type="radio" name="question-14" value="0"> Only the mouse pointer&#x27;s color</label>
+          <label><input type="radio" name="question-14" value="1"> Only the desktop wallpaper</label>
+          <label><input type="radio" name="question-14" value="2"> Only the title of a different window</label>
+          <label><input type="radio" name="question-14" value="3"> The insertion cursor and the content receiving typing</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. You corrected a short sentence under magnification. What verifies the edit?</legend>
+          <label><input type="radio" name="question-15" value="0"> Assume all edits are correct if the text remains large</label>
+          <label><input type="radio" name="question-15" value="1"> Read the corrected sentence in context and confirm the saved result</label>
+          <label><input type="radio" name="question-15" value="2"> Check only that a keypress made a sound</label>
+          <label><input type="radio" name="question-15" value="3"> Check only that the viewport moved</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. Book narration and screen-reader control announcements overlap. What is a useful first action?</legend>
+          <label><input type="radio" name="question-16" value="0"> Mute the system and locate the controls without any remaining navigation speech</label>
+          <label><input type="radio" name="question-16" value="1"> Silence all screen-reader feedback while leaving narration playing during the control search</label>
+          <label><input type="radio" name="question-16" value="2"> Pause the book using its playback control</label>
+          <label><input type="radio" name="question-16" value="3"> Raise the screen-reader volume over the narration without separating the two audio sources</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. You switch from the browser back to a document. What confirms successful context recovery?</legend>
+          <label><input type="radio" name="question-17" value="0"> Assume Alt+Tab always returns to the correct paragraph</label>
+          <label><input type="radio" name="question-17" value="1"> Identify the document and return to the intended paragraph or control</label>
+          <label><input type="radio" name="question-17" value="2"> Check only that both applications remain open</label>
+          <label><input type="radio" name="question-17" value="3"> Check only that the same zoom value is displayed</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Your final routine works, but you cannot explain which commands depend on Fusion&#x27;s layout. What remains to be demonstrated?</legend>
+          <label><input type="radio" name="question-18" value="0"> Identify the product-specific and layout-specific parts of the workflow</label>
+          <label><input type="radio" name="question-18" value="1"> Memorize every command from unrelated products</label>
+          <label><input type="radio" name="question-18" value="2"> Replace every keyboard action with a guessed key combination</label>
+          <label><input type="radio" name="question-18" value="3"> Use one unverified shortcut list for all editions</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. After practice on a shared workstation, what completes the final routine?</legend>
+          <label><input type="radio" name="question-19" value="0"> Leave every experimental setting active without explanation</label>
+          <label><input type="radio" name="question-19" value="1"> Reset every system preference to an unknown default</label>
+          <label><input type="radio" name="question-19" value="2"> Save the work, verify the result, and restore the recorded starting access settings</label>
+          <label><input type="radio" name="question-19" value="3"> Close the document without checking whether changes were saved</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
       </form>
       <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
       <div id="quizReview" class="quiz-review"></div>
@@ -95,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course": "ZoomText and Fusion", "displayName": "ZoomText and Fusion", "slug": "zoomtext-fusion", "passPercent": 80, "questions": [{"question": "A computer is physically a laptop. Which command layout should you assume?", "options": ["Always ZoomText Magnifier/Reader layout", "None; check the configured product and JAWS layout", "Always Fusion Laptop layout"], "answer": 1, "explanation": "Physical hardware does not establish the configured command layout. Review ZoomText and Fusion Lesson 1."}, {"question": "Before changing several access settings, what gives you a recoverable baseline?", "options": ["Close all access tools first", "Maximize every visual enhancement", "Record product, layout, magnification, and speech settings"], "answer": 2, "explanation": "A baseline lets you identify and reverse individual changes. Review ZoomText and Fusion Lesson 2."}, {"question": "In the ZoomText Zoom Level control, Up changes zoom. How do you move to an adjacent toolbar item?", "options": ["Use the document text-selection command", "Use Left or Right", "Keep pressing Up until focus moves"], "answer": 1, "explanation": "The Zoom Level control uses Up/Down for value and Left/Right for adjacent controls. Review ZoomText and Fusion Lesson 3."}, {"question": "Which magnification comparison command matches Fusion Laptop layout?", "options": ["Caps Lock+Alt+Enter", "Insert+Enter", "Caps Lock+Enter"], "answer": 0, "explanation": "Fusion Laptop adds Alt for this magnification toggle. Review ZoomText and Fusion Lesson 4."}, {"question": "Typing appears at a location different from the mouse pointer. Which indicator identifies the insertion point?", "options": ["The enhanced mouse pointer", "The window border", "The text cursor"], "answer": 2, "explanation": "The pointer, cursor, and keyboard focus can be in different places. Review ZoomText and Fusion Lesson 5."}, {"question": "How should you evaluate a color enhancement?", "options": ["Compare familiar text and selected controls before and after the change", "Change zoom, contrast, and speech at the same time", "Choose the brightest setting without reading"], "answer": 0, "explanation": "One change at a time makes its effect easier to assess. Review ZoomText and Fusion Lesson 6."}, {"question": "Fusion is running. Which component supplies its screen-reading speech?", "options": ["The Windows display-resolution setting", "JAWS", "ZoomText Magnifier-only speech"], "answer": 1, "explanation": "Fusion uses JAWS speech, not ZoomText reader hotkeys. Review ZoomText and Fusion Lesson 7."}, {"question": "The magnified view moves while you edit. What should you identify first?", "options": ["The maximum available zoom factor", "Whether the browser has a saved login", "The cursor and the content receiving typing"], "answer": 2, "explanation": "Tracking can follow focus or editing; identify the target before further edits. Review ZoomText and Fusion Lesson 8."}, {"question": "A book player and screen reader speak together. What is a useful first step?", "options": ["Increase both voices to maximum speed", "Disable the access tool needed to navigate", "Pause the book player through its labeled control"], "answer": 2, "explanation": "Pausing media preserves navigation feedback while reducing competing speech. Review ZoomText and Fusion Lesson 9."}, {"question": "A scanned document is recognized with OCR. What should you do before relying on an important number?", "options": ["Increase magnification and skip verification", "Check the recognized number against the source", "Assume recognition guarantees accuracy"], "answer": 1, "explanation": "Recognition can misread text, especially numbers and names. Review ZoomText and Fusion Lesson 10."}]}</script>
+  <script id="quizData" type="application/json">{"course":"ZoomText and Fusion","displayName":"ZoomText and Fusion","slug":"zoomtext-fusion","passPercent":85,"questions":[{"lesson":1,"question":"The computer is physically a laptop. Which command layout should you assume is configured?","options":["Whichever layout a different learner used previously","Laptop layout in every installed access product","None; check the product and configured keyboard layout","Desktop layout because Windows is running"],"answer":2,"explanation":"Physical hardware does not determine the configured command layout. Verify the actual setup before choosing commands."},{"lesson":1,"question":"A speech command from a Fusion guide does not work in ZoomText Magnifier-only. What should you check?","options":["Whether that edition includes the feature","Whether saving the document to PDF will add the command to the installed edition","Whether assigning the same key in a browser will supply the missing product capability","Whether changing text contrast will enable the speech capability described in the guide"],"answer":0,"explanation":"Product editions differ. An unavailable feature is not necessarily a broken shortcut or a reading error."},{"lesson":2,"question":"Before changing magnification and speech settings, what provides a useful recovery baseline?","options":["Reset all settings before identifying the learner's current preferences","Change several settings and remember whichever result feels best","Record only the document's filename","Record the product, layout, current settings, and how to restore them"],"answer":3,"explanation":"A known baseline supports targeted comparison and recovery rather than uncontrolled changes."},{"lesson":2,"question":"You leave the document to adjust the access tool. What should you verify when returning?","options":["Only that some application is visible","Only that the document's filename is unchanged on disk","Only that the taskbar has not moved","The same document, current location, and usable focus"],"answer":3,"explanation":"Switching controls can change focus or context. Return deliberately to the task and location being evaluated."},{"lesson":3,"question":"In the ZoomText Zoom Level control, Up Arrow changes the value. How do you move to an adjacent toolbar item in the taught layout?","options":["Use Left or Right Arrow","Change the document's font size instead","Use Delete to leave the control","Keep pressing Up until the next item is reached"],"answer":0,"explanation":"The control uses Up/Down for its value and Left/Right for neighboring controls. Identify whether you are adjusting or navigating."},{"lesson":3,"question":"You increase zoom one step to compare a paragraph. What should complete the controlled trial?","options":["Compare a different document without recording the old setting","Read the same material, evaluate usability, and restore or record the chosen setting","Change the document, voice, and contrast at the same time","Close the app before checking the result"],"answer":1,"explanation":"Testing the same content after one change makes the effect interpretable and reversible."},{"lesson":4,"question":"At high magnification, you can read a label but lose the surrounding layout. Which strategy fits the lesson?","options":["Briefly compare with the broader 1x view","Treat the hidden surroundings as missing content and restore an older version of the document","Increase magnification further and infer the surrounding arrangement from the enlarged label","Keep the same magnification and change the document layout before checking the wider view"],"answer":0,"explanation":"Different zoom levels support detail and context. Use the documented comparison for the actual setup."},{"lesson":4,"question":"A Fusion magnification shortcut from a Desktop-layout guide does not match Laptop layout. What should you do?","options":["Use a ZoomText speech shortcut because it has a similar name","Change the physical keyboard before checking the configured layout","Check the matching Fusion layout command before retrying","Assume all Caps Lock shortcuts are interchangeable"],"answer":2,"explanation":"Product and layout both matter. Similar-looking key combinations can perform different actions."},{"lesson":5,"question":"The mouse pointer is at one place while typed characters appear elsewhere. Which indicator identifies where text is inserted?","options":["The mouse pointer regardless of focus","The edge of the magnified viewport","The first visible toolbar icon","The text cursor in the active edit area"],"answer":3,"explanation":"Pointer, insertion cursor, and keyboard focus are distinct. Identify the insertion position before typing."},{"lesson":5,"question":"Tab highlights a button while the text cursor remains visible in the document. Where will button-activation keys act?","options":["At whichever object is visually largest","On the control that currently has keyboard focus","At the old text cursor merely because it is visible","At the mouse pointer regardless of focus"],"answer":1,"explanation":"Keyboard focus identifies the active control. A visible cursor elsewhere does not guarantee that control receives input."},{"lesson":6,"question":"A color enhancement makes ordinary text clearer but hides selected text. What should you conclude?","options":["The setting needs further adjustment because selection must remain distinguishable","It is fully successful because most text is clearer","The document must be rewritten before comparing another setting","Selection visibility is irrelevant when text is enlarged"],"answer":0,"explanation":"Evaluate both readable content and interactive states. A useful enhancement should preserve selection and focus cues."},{"lesson":6,"question":"How should two contrast settings be compared meaningfully?","options":["Judge only the product's settings window and skip actual work","Change contrast, zoom, and voice speed together","Use the same familiar content and controls, changing one setting at a time","Compare different documents with unrelated colors"],"answer":2,"explanation":"A controlled comparison separates the setting's effect and checks its usefulness in the real task."},{"lesson":7,"question":"Fusion is running. Which component supplies its screen-reading speech?","options":["The Windows text-size setting","JAWS","The browser's page zoom","ZoomText Magnifier-only"],"answer":1,"explanation":"Fusion uses JAWS for screen-reading speech. Do not assume standalone ZoomText reader commands apply unchanged."},{"lesson":7,"question":"You interrupt continuous reading to inspect a passage. What should you do before resuming?","options":["Change the keyboard layout without recording it","Assume stopping speech always moves to the next paragraph","Disable all future speech feedback","Confirm the reading or editing position and use the matching product's reading command"],"answer":3,"explanation":"Stopping the current utterance does not establish a new location or disable every speech function. Reorient before resuming."},{"lesson":8,"question":"The magnified view moves while you edit. What should you identify before making another change?","options":["Only the mouse pointer's color","Only the desktop wallpaper","Only the title of a different window","The insertion cursor and the content receiving typing"],"answer":3,"explanation":"Tracking can follow editing or focus. Establish what moved and where input will go before continuing."},{"lesson":8,"question":"You corrected a short sentence under magnification. What verifies the edit?","options":["Assume all edits are correct if the text remains large","Read the corrected sentence in context and confirm the saved result","Check only that a keypress made a sound","Check only that the viewport moved"],"answer":1,"explanation":"Enlargement supports access but does not itself validate the content or persistence of an edit."},{"lesson":9,"question":"Book narration and screen-reader control announcements overlap. What is a useful first action?","options":["Mute the system and locate the controls without any remaining navigation speech","Silence all screen-reader feedback while leaving narration playing during the control search","Pause the book using its playback control","Raise the screen-reader volume over the narration without separating the two audio sources"],"answer":2,"explanation":"Pausing media reduces competing speech without removing the feedback needed to navigate the interface."},{"lesson":9,"question":"You switch from the browser back to a document. What confirms successful context recovery?","options":["Assume Alt+Tab always returns to the correct paragraph","Identify the document and return to the intended paragraph or control","Check only that both applications remain open","Check only that the same zoom value is displayed"],"answer":1,"explanation":"Window switching and location recovery are separate. Confirm the actual task position."},{"lesson":10,"question":"Your final routine works, but you cannot explain which commands depend on Fusion's layout. What remains to be demonstrated?","options":["Identify the product-specific and layout-specific parts of the workflow","Memorize every command from unrelated products","Replace every keyboard action with a guessed key combination","Use one unverified shortcut list for all editions"],"answer":0,"explanation":"The project requires a workflow matched to the learner's setup, including an understanding of command context."},{"lesson":10,"question":"After practice on a shared workstation, what completes the final routine?","options":["Leave every experimental setting active without explanation","Reset every system preference to an unknown default","Save the work, verify the result, and restore the recorded starting access settings","Close the document without checking whether changes were saved"],"answer":2,"explanation":"Finish with protected work and a known usable configuration, rather than leaving unexplained changes behind."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

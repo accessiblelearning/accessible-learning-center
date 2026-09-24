@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible ten-question final quiz and printable completion certificate for Bookshare.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Bookshare. Score 85 percent to earn a course-completion certificate.">
   <title>Bookshare Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=five-courses-1" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Bookshare Final Quiz</h1>
-    <p>Answer ten questions about the skills covered in this course. A score of 80 percent, or eight correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Bookshare quiz navigation">
@@ -24,49 +24,149 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-<legend>1. A reader app is installed, but a book reports an access restriction. What should you check?</legend>
-<label><input type="radio" name="question-0" value="0"> Membership and the correct reading account</label><label><input type="radio" name="question-0" value="1"> Only the speaker volume</label><label><input type="radio" name="question-0" value="2"> Only the font size</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>2. Two results have the same short title. What best identifies the assignment?</legend>
-<label><input type="radio" name="question-1" value="0"> The first result regardless of author</label><label><input type="radio" name="question-1" value="1"> Author and edition information, with ISBN when supplied</label><label><input type="radio" name="question-1" value="2"> The shortest download time</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>3. You hear book narration and control announcements together. What should you do while exploring settings?</legend>
-<label><input type="radio" name="question-2" value="0"> Delete the book from every device</label><label><input type="radio" name="question-2" value="1"> Sign out of the reading account</label><label><input type="radio" name="question-2" value="2"> Pause book playback first</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>4. You navigate to a chapter. Which check verifies the intended passage?</legend>
-<label><input type="radio" name="question-3" value="0"> Read its heading or opening words</label><label><input type="radio" name="question-3" value="1"> Check only that the app is open</label><label><input type="radio" name="question-3" value="2"> Assume any changed page number is correct</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>5. You typed a study note but have not saved it. What completes the task?</legend>
-<label><input type="radio" name="question-4" value="0"> Close the note and assume it synchronized</label><label><input type="radio" name="question-4" value="1"> Activate Save, then retrieve and verify the note</label><label><input type="radio" name="question-4" value="2"> Change the playback speed</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>6. A partner reading app uses different controls from the web reader. Which instruction is appropriate?</legend>
-<label><input type="radio" name="question-5" value="0"> Replace the account solely because labels differ</label><label><input type="radio" name="question-5" value="1"> Use Alt+R on every device and app</label><label><input type="radio" name="question-5" value="2"> Use the partner app controls rather than assuming web shortcuts apply</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>7. With VoiceOver on, one tap announces a button. How do you normally activate the selected item?</legend>
-<label><input type="radio" name="question-6" value="0"> One-finger double-tap</label><label><input type="radio" name="question-6" value="1"> Another unrelated single tap elsewhere</label><label><input type="radio" name="question-6" value="2"> Two-finger scrolling</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>8. With TalkBack on, what normally moves focus to the next item?</legend>
-<label><input type="radio" name="question-7" value="0"> Two-finger scrolling</label><label><input type="radio" name="question-7" value="1"> One-finger swipe right</label><label><input type="radio" name="question-7" value="2"> One-finger double-tap</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>9. A book is downloaded on a tablet. What ensures offline access on a different phone?</legend>
-<label><input type="radio" name="question-8" value="0"> Download and test it on that phone</label><label><input type="radio" name="question-8" value="1"> Sign in and assume the tablet download transferred</label><label><input type="radio" name="question-8" value="2"> Create a bookmark on the tablet only</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>10. Which support report is most useful for a failed reading session?</legend>
-<label><input type="radio" name="question-9" value="0"> Only a statement that reading does not work</label><label><input type="radio" name="question-9" value="1"> The account password and nothing else</label><label><input type="radio" name="question-9" value="2"> Book edition, device, app, exact error, and last successful action</label>
-</fieldset>
-<button type="submit">Grade my quiz</button>
+          <legend>1. The reader app is installed, but the assigned book reports an access restriction. What should you check?</legend>
+          <label><input type="radio" name="question-0" value="0"> The correct reading account, membership status, and authorized access to the title</label>
+          <label><input type="radio" name="question-0" value="1"> Only the device&#x27;s default font size</label>
+          <label><input type="radio" name="question-0" value="2"> Only whether the app icon is on the home screen</label>
+          <label><input type="radio" name="question-0" value="3"> Only whether the book cover appears in search results</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. A school manages the learner&#x27;s Bookshare access. What should guide sign-in?</legend>
+          <label><input type="radio" name="question-1" value="0"> The approved school-managed route and the intended learner account</label>
+          <label><input type="radio" name="question-1" value="1"> The assumption that any educator account is the learner&#x27;s reading account</label>
+          <label><input type="radio" name="question-1" value="2"> A newly invented account name based on the school title</label>
+          <label><input type="radio" name="question-1" value="3"> A different student&#x27;s saved credentials</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. Two search results share a title but have different authors or editions. How should you choose?</legend>
+          <label><input type="radio" name="question-2" value="0"> Choose the one with the most decorative cover</label>
+          <label><input type="radio" name="question-2" value="1"> Match the assignment&#x27;s author, edition, and ISBN when supplied</label>
+          <label><input type="radio" name="question-2" value="2"> Choose whichever result appears first</label>
+          <label><input type="radio" name="question-2" value="3"> Choose the shortest title regardless of edition</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. The expected edition is unavailable, but a similar one is listed. What is the best next step?</legend>
+          <label><input type="radio" name="question-3" value="0"> Confirm with the instructor before substituting and using its locations</label>
+          <label><input type="radio" name="question-3" value="1"> Rename the alternative to the requested edition</label>
+          <label><input type="radio" name="question-3" value="2"> Record the requested ISBN while reading the different edition</label>
+          <label><input type="radio" name="question-3" value="3"> Assume every chapter and page reference will match</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. You hear narration and screen-reader control labels at the same time. What helps you explore the player?</legend>
+          <label><input type="radio" name="question-4" value="0"> Mute all navigation feedback and guess the controls</label>
+          <label><input type="radio" name="question-4" value="1"> Start narration on a second device</label>
+          <label><input type="radio" name="question-4" value="2"> Pause narration, then inspect the labelled controls</label>
+          <label><input type="radio" name="question-4" value="3"> Increase both voices until one becomes clearer</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. The book title is selected on a shelf, but you cannot find playback controls. What should you verify?</legend>
+          <label><input type="radio" name="question-5" value="0"> That the account has automatically been deleted</label>
+          <label><input type="radio" name="question-5" value="1"> That all device settings should be reset</label>
+          <label><input type="radio" name="question-5" value="2"> That the book has already been fully read</label>
+          <label><input type="radio" name="question-5" value="3"> That the book has actually opened in the reader</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. You navigate to a chapter. What check best confirms you reached the intended passage?</legend>
+          <label><input type="radio" name="question-6" value="0"> Check only that narration is audible</label>
+          <label><input type="radio" name="question-6" value="1"> Read the chapter heading or opening text and compare it with the task</label>
+          <label><input type="radio" name="question-6" value="2"> Assume any movement means the chapter command succeeded</label>
+          <label><input type="radio" name="question-6" value="3"> Check only that the progress indicator changed</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. A print page reference does not line up as expected in the reader. What should help you recover the passage?</legend>
+          <label><input type="radio" name="question-7" value="0"> Use available chapter or location information and verify the surrounding text</label>
+          <label><input type="radio" name="question-7" value="1"> Delete and redownload every title immediately</label>
+          <label><input type="radio" name="question-7" value="2"> Assume the same numeric position always means the same passage</label>
+          <label><input type="radio" name="question-7" value="3"> Change the book&#x27;s display font until the page number matches</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. You typed a study note in the web reader but have not saved it. What completes the note task?</legend>
+          <label><input type="radio" name="question-8" value="0"> Close the browser and assume every unsaved note is retained</label>
+          <label><input type="radio" name="question-8" value="1"> Create a bookmark without saving the note text</label>
+          <label><input type="radio" name="question-8" value="2"> Choose Save, leave the passage, then retrieve and verify the note and location</label>
+          <label><input type="radio" name="question-8" value="3"> Choose Cancel and assume the text remains available</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. A saved marker opens a passage, but your note describes a different section. What should be corrected?</legend>
+          <label><input type="radio" name="question-9" value="0"> Verify the passage and repair the note-marker link</label>
+          <label><input type="radio" name="question-9" value="1"> Keep the association because any marker in the same chapter identifies the intended passage</label>
+          <label><input type="radio" name="question-9" value="2"> Rename the note to match the book title without checking the passage it describes</label>
+          <label><input type="radio" name="question-9" value="3"> Create another marker at the current position and assume it now matches the existing note</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. A partner app uses different controls from Bookshare Reader on the website. Which instructions should you follow?</legend>
+          <label><input type="radio" name="question-10" value="0"> Web-reader shortcuts regardless of platform</label>
+          <label><input type="radio" name="question-10" value="1"> Phone gestures while using a desktop keyboard</label>
+          <label><input type="radio" name="question-10" value="2"> Commands from a different reading app without checking</label>
+          <label><input type="radio" name="question-10" value="3"> The commands and labelled controls for the active app and device</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. You change audio speed to evaluate comprehension. What is a meaningful test?</legend>
+          <label><input type="radio" name="question-11" value="0"> Choose the fastest rate that produces sound</label>
+          <label><input type="radio" name="question-11" value="1"> Use a different unrelated book at each rate without comparison</label>
+          <label><input type="radio" name="question-11" value="2"> Read the same short passage at both rates and summarize it</label>
+          <label><input type="radio" name="question-11" value="3"> Check only that the rate slider changed</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. With standard VoiceOver gestures, one tap selects and announces a button. What normally activates the selected button?</legend>
+          <label><input type="radio" name="question-12" value="0"> Turning off VoiceOver before every activation</label>
+          <label><input type="radio" name="question-12" value="1"> A one-finger double-tap</label>
+          <label><input type="radio" name="question-12" value="2"> Another single tap somewhere unrelated</label>
+          <label><input type="radio" name="question-12" value="3"> A two-finger swipe used to read continuously</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. Text entry on an iPhone behaves differently from the example in the lesson. What should you check?</legend>
+          <label><input type="radio" name="question-13" value="0"> The web reader&#x27;s desktop shortcut table only</label>
+          <label><input type="radio" name="question-13" value="1"> The active input field and VoiceOver typing setting</label>
+          <label><input type="radio" name="question-13" value="2"> The book&#x27;s print publication year</label>
+          <label><input type="radio" name="question-13" value="3"> The number of items on another device&#x27;s shelf</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. With standard TalkBack gestures, you want to move focus to the next item. Which action fits?</legend>
+          <label><input type="radio" name="question-14" value="0"> A one-finger double-tap</label>
+          <label><input type="radio" name="question-14" value="1"> A two-finger scroll gesture</label>
+          <label><input type="radio" name="question-14" value="2"> A long press on the power button</label>
+          <label><input type="radio" name="question-14" value="3"> A one-finger swipe right</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. TalkBack focus is on the intended playback control. What normally activates it?</legend>
+          <label><input type="radio" name="question-15" value="0"> Scroll the page with two fingers</label>
+          <label><input type="radio" name="question-15" value="1"> Return to the device&#x27;s home screen</label>
+          <label><input type="radio" name="question-15" value="2"> Swipe right to move focus elsewhere</label>
+          <label><input type="radio" name="question-15" value="3"> Double-tap</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. A book is downloaded on a tablet. What establishes offline reading on a separate phone?</legend>
+          <label><input type="radio" name="question-16" value="0"> Open the app icon while the phone is online</label>
+          <label><input type="radio" name="question-16" value="1"> Assume a synced reading position includes all local book files</label>
+          <label><input type="radio" name="question-16" value="2"> Copy only the title into the phone&#x27;s notes app</label>
+          <label><input type="radio" name="question-16" value="3"> Download and test the permitted title on that phone</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. You plan to read without internet. What is the most useful preparation check?</legend>
+          <label><input type="radio" name="question-17" value="0"> Check only that the account signed in last week</label>
+          <label><input type="radio" name="question-17" value="1"> Confirm the download completed and perform a brief offline test on the intended device</label>
+          <label><input type="radio" name="question-17" value="2"> Check only that the reading position has a percentage</label>
+          <label><input type="radio" name="question-17" value="3"> Check only that the title appears on the shelf</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Which support report best helps diagnose a reading failure?</legend>
+          <label><input type="radio" name="question-18" value="0"> Only the preferred voice and font size</label>
+          <label><input type="radio" name="question-18" value="1"> Only a statement that the app is bad</label>
+          <label><input type="radio" name="question-18" value="2"> Title and edition, device, app, exact error, and last successful action, without credentials</label>
+          <label><input type="radio" name="question-18" value="3"> The account password and a copy of the protected book</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. What demonstrates the final independent reading task?</legend>
+          <label><input type="radio" name="question-19" value="0"> Create a note without testing its saved location</label>
+          <label><input type="radio" name="question-19" value="1"> Play any book without checking the assigned passage</label>
+          <label><input type="radio" name="question-19" value="2"> Find the correct edition, reach the passage, summarize it, save a marker, and return to it</label>
+          <label><input type="radio" name="question-19" value="3"> Open the first search result and report only the title</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
       </form>
       <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
       <div id="quizReview" class="quiz-review"></div>
@@ -95,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course": "Bookshare", "displayName": "Bookshare", "slug": "bookshare", "passPercent": 80, "questions": [{"question": "A reader app is installed, but a book reports an access restriction. What should you check?", "options": ["Membership and the correct reading account", "Only the speaker volume", "Only the font size"], "answer": 0, "explanation": "Installing an app does not establish active membership or book access. Review Bookshare Lesson 1."}, {"question": "Two results have the same short title. What best identifies the assignment?", "options": ["The first result regardless of author", "Author and edition information, with ISBN when supplied", "The shortest download time"], "answer": 1, "explanation": "Title alone may not distinguish editions or authors. Review Bookshare Lesson 2."}, {"question": "You hear book narration and control announcements together. What should you do while exploring settings?", "options": ["Delete the book from every device", "Sign out of the reading account", "Pause book playback first"], "answer": 2, "explanation": "Pausing playback helps you hear the control labels. Review Bookshare Lesson 3."}, {"question": "You navigate to a chapter. Which check verifies the intended passage?", "options": ["Read its heading or opening words", "Check only that the app is open", "Assume any changed page number is correct"], "answer": 0, "explanation": "Verify content and context after moving. Review Bookshare Lesson 4."}, {"question": "You typed a study note but have not saved it. What completes the task?", "options": ["Close the note and assume it synchronized", "Activate Save, then retrieve and verify the note", "Change the playback speed"], "answer": 1, "explanation": "A note needs saving and verification. Review Bookshare Lesson 5."}, {"question": "A partner reading app uses different controls from the web reader. Which instruction is appropriate?", "options": ["Replace the account solely because labels differ", "Use Alt+R on every device and app", "Use the partner app controls rather than assuming web shortcuts apply"], "answer": 2, "explanation": "Commands are scoped to the reading environment. Review Bookshare Lesson 6."}, {"question": "With VoiceOver on, one tap announces a button. How do you normally activate the selected item?", "options": ["One-finger double-tap", "Another unrelated single tap elsewhere", "Two-finger scrolling"], "answer": 0, "explanation": "VoiceOver selection and activation are separate actions. Review Bookshare Lesson 7."}, {"question": "With TalkBack on, what normally moves focus to the next item?", "options": ["Two-finger scrolling", "One-finger swipe right", "One-finger double-tap"], "answer": 1, "explanation": "Swipe changes focus; double-tap activates the focused item. Review Bookshare Lesson 8."}, {"question": "A book is downloaded on a tablet. What ensures offline access on a different phone?", "options": ["Download and test it on that phone", "Sign in and assume the tablet download transferred", "Create a bookmark on the tablet only"], "answer": 0, "explanation": "Downloads are device-specific; synchronized position is not a local book file. Review Bookshare Lesson 9."}, {"question": "Which support report is most useful for a failed reading session?", "options": ["Only a statement that reading does not work", "The account password and nothing else", "Book edition, device, app, exact error, and last successful action"], "answer": 2, "explanation": "Specific non-secret context helps distinguish access, navigation, and playback problems. Review Bookshare Lesson 10."}]}</script>
+  <script id="quizData" type="application/json">{"course":"Bookshare","displayName":"Bookshare","slug":"bookshare","passPercent":85,"questions":[{"lesson":1,"question":"The reader app is installed, but the assigned book reports an access restriction. What should you check?","options":["The correct reading account, membership status, and authorized access to the title","Only the device's default font size","Only whether the app icon is on the home screen","Only whether the book cover appears in search results"],"answer":0,"explanation":"Installation and search visibility do not establish active membership or permission to read a particular title."},{"lesson":1,"question":"A school manages the learner's Bookshare access. What should guide sign-in?","options":["The approved school-managed route and the intended learner account","The assumption that any educator account is the learner's reading account","A newly invented account name based on the school title","A different student's saved credentials"],"answer":0,"explanation":"Use the authorized route for that account arrangement. Do not assume all account roles or sign-in methods are interchangeable."},{"lesson":2,"question":"Two search results share a title but have different authors or editions. How should you choose?","options":["Choose the one with the most decorative cover","Match the assignment's author, edition, and ISBN when supplied","Choose whichever result appears first","Choose the shortest title regardless of edition"],"answer":1,"explanation":"Title alone may be ambiguous. Edition and author details establish whether the result matches the reading task."},{"lesson":2,"question":"The expected edition is unavailable, but a similar one is listed. What is the best next step?","options":["Confirm with the instructor before substituting and using its locations","Rename the alternative to the requested edition","Record the requested ISBN while reading the different edition","Assume every chapter and page reference will match"],"answer":0,"explanation":"Edition differences can affect content and references. Make any substitution explicit and approved."},{"lesson":3,"question":"You hear narration and screen-reader control labels at the same time. What helps you explore the player?","options":["Mute all navigation feedback and guess the controls","Start narration on a second device","Pause narration, then inspect the labelled controls","Increase both voices until one becomes clearer"],"answer":2,"explanation":"Pausing the book separates media playback from screen-reader feedback used for navigation."},{"lesson":3,"question":"The book title is selected on a shelf, but you cannot find playback controls. What should you verify?","options":["That the account has automatically been deleted","That all device settings should be reset","That the book has already been fully read","That the book has actually opened in the reader"],"answer":3,"explanation":"Selecting a shelf entry and opening its reader are different states. Confirm the current interface before troubleshooting playback."},{"lesson":4,"question":"You navigate to a chapter. What check best confirms you reached the intended passage?","options":["Check only that narration is audible","Read the chapter heading or opening text and compare it with the task","Assume any movement means the chapter command succeeded","Check only that the progress indicator changed"],"answer":1,"explanation":"A changed position is not necessarily the right position. Verify the content and context after navigation."},{"lesson":4,"question":"A print page reference does not line up as expected in the reader. What should help you recover the passage?","options":["Use available chapter or location information and verify the surrounding text","Delete and redownload every title immediately","Assume the same numeric position always means the same passage","Change the book's display font until the page number matches"],"answer":0,"explanation":"Reading locations can be represented differently. Use meaningful section information and content checks rather than number assumptions alone."},{"lesson":5,"question":"You typed a study note in the web reader but have not saved it. What completes the note task?","options":["Close the browser and assume every unsaved note is retained","Create a bookmark without saving the note text","Choose Save, leave the passage, then retrieve and verify the note and location","Choose Cancel and assume the text remains available"],"answer":2,"explanation":"A bookmark and an unsaved note are different. Save the note and verify that both its content and location can be recovered."},{"lesson":5,"question":"A saved marker opens a passage, but your note describes a different section. What should be corrected?","options":["Verify the passage and repair the note-marker link","Keep the association because any marker in the same chapter identifies the intended passage","Rename the note to match the book title without checking the passage it describes","Create another marker at the current position and assume it now matches the existing note"],"answer":0,"explanation":"A study note is useful when its text and location agree. Playback or display settings do not repair a mismatched marker."},{"lesson":6,"question":"A partner app uses different controls from Bookshare Reader on the website. Which instructions should you follow?","options":["Web-reader shortcuts regardless of platform","Phone gestures while using a desktop keyboard","Commands from a different reading app without checking","The commands and labelled controls for the active app and device"],"answer":3,"explanation":"Reading environments have different interfaces. Match instructions to the actual app and platform."},{"lesson":6,"question":"You change audio speed to evaluate comprehension. What is a meaningful test?","options":["Choose the fastest rate that produces sound","Use a different unrelated book at each rate without comparison","Read the same short passage at both rates and summarize it","Check only that the rate slider changed"],"answer":2,"explanation":"The useful setting supports understanding and navigation. A changed control value is not itself evidence of comprehension."},{"lesson":7,"question":"With standard VoiceOver gestures, one tap selects and announces a button. What normally activates the selected button?","options":["Turning off VoiceOver before every activation","A one-finger double-tap","Another single tap somewhere unrelated","A two-finger swipe used to read continuously"],"answer":1,"explanation":"VoiceOver separates selection from activation. Use the appropriate gesture for the selected control."},{"lesson":7,"question":"Text entry on an iPhone behaves differently from the example in the lesson. What should you check?","options":["The web reader's desktop shortcut table only","The active input field and VoiceOver typing setting","The book's print publication year","The number of items on another device's shelf"],"answer":1,"explanation":"Typing methods can depend on VoiceOver settings. Confirm the field and configured method rather than assuming every device behaves identically."},{"lesson":8,"question":"With standard TalkBack gestures, you want to move focus to the next item. Which action fits?","options":["A one-finger double-tap","A two-finger scroll gesture","A long press on the power button","A one-finger swipe right"],"answer":3,"explanation":"Focus movement, activation, scrolling, and device power are distinct actions. Swipe right normally moves to the next item."},{"lesson":8,"question":"TalkBack focus is on the intended playback control. What normally activates it?","options":["Scroll the page with two fingers","Return to the device's home screen","Swipe right to move focus elsewhere","Double-tap"],"answer":3,"explanation":"Activation applies to the focused item. Moving focus or scrolling does not perform the selected control's action."},{"lesson":9,"question":"A book is downloaded on a tablet. What establishes offline reading on a separate phone?","options":["Open the app icon while the phone is online","Assume a synced reading position includes all local book files","Copy only the title into the phone's notes app","Download and test the permitted title on that phone"],"answer":3,"explanation":"Local downloads are device-specific. Position synchronization does not prove the file is available offline on another device."},{"lesson":9,"question":"You plan to read without internet. What is the most useful preparation check?","options":["Check only that the account signed in last week","Confirm the download completed and perform a brief offline test on the intended device","Check only that the reading position has a percentage","Check only that the title appears on the shelf"],"answer":1,"explanation":"A shelf listing or saved position is not proof of usable local content. Test the actual offline workflow."},{"lesson":10,"question":"Which support report best helps diagnose a reading failure?","options":["Only the preferred voice and font size","Only a statement that the app is bad","Title and edition, device, app, exact error, and last successful action, without credentials","The account password and a copy of the protected book"],"answer":2,"explanation":"Specific nonsecret context helps separate access, navigation, download, and playback problems."},{"lesson":10,"question":"What demonstrates the final independent reading task?","options":["Create a note without testing its saved location","Play any book without checking the assigned passage","Find the correct edition, reach the passage, summarize it, save a marker, and return to it","Open the first search result and report only the title"],"answer":2,"explanation":"The task combines selection, navigation, comprehension, and recovery of a saved study location."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

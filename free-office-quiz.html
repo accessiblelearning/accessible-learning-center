@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Choosing a Free Office Suite.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Choosing a Free Office Suite. Score 85 percent to earn a course-completion certificate.">
   <title>Choosing a Free Office Suite Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Choosing a Free Office Suite Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Choosing a Free Office Suite quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. Which suite is a free desktop alternative to Microsoft 365?</legend>
-          <label><input type="radio" name="question-0" value="0"> A paid-only trial</label>
-          <label><input type="radio" name="question-0" value="1"> LibreOffice</label>
-          <label><input type="radio" name="question-0" value="2"> Task Manager</label>
+          <legend>1. An employee needs to work without a reliable internet connection. Which comparison matters most?</legend>
+          <label><input type="radio" name="question-0" value="0"> Offline task support and required setup</label>
+          <label><input type="radio" name="question-0" value="1"> Whether the application can open a sign-in page whenever a network is available</label>
+          <label><input type="radio" name="question-0" value="2"> Whether the installation is free, treating that as evidence no connection is needed</label>
+          <label><input type="radio" name="question-0" value="3"> Whether files appear in a recent-items list even when their contents remain online</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. Which are LibreOffice native formats?</legend>
-          <label><input type="radio" name="question-1" value="0"> DOCX, MP3, and JPG</label>
-          <label><input type="radio" name="question-1" value="1"> EXE, ZIP, and WAV</label>
-          <label><input type="radio" name="question-1" value="2"> ODT, ODS, and ODP</label>
+          <legend>2. Two tools are free for basic use. What additional factors should guide the choice?</legend>
+          <label><input type="radio" name="question-1" value="0"> The number of templates before checking keyboard access</label>
+          <label><input type="radio" name="question-1" value="1"> Price alone, because both tools must otherwise be equivalent</label>
+          <label><input type="radio" name="question-1" value="2"> Popularity alone, without testing the employee&#x27;s tasks</label>
+          <label><input type="radio" name="question-1" value="3"> Accessibility, account needs, privacy, required features, and file exchange</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What is the safest compatibility workflow?</legend>
-          <label><input type="radio" name="question-2" value="0"> Keep the native file, export a copy, and review it</label>
-          <label><input type="radio" name="question-2" value="1"> Overwrite the only copy repeatedly</label>
-          <label><input type="radio" name="question-2" value="2"> Assume conversion is perfect</label>
+          <legend>3. A program opens successfully with a screen reader. What further test is needed before recommending it?</legend>
+          <label><input type="radio" name="question-2" value="0"> Compare the accessibility claims in the product descriptions without trying the required workflow</label>
+          <label><input type="radio" name="question-2" value="1"> Test real tasks, focus, labels, and navigation</label>
+          <label><input type="radio" name="question-2" value="2"> Use the announced program title as evidence that the application supports the screen reader fully</label>
+          <label><input type="radio" name="question-2" value="3"> Verify that launch and sign-in are accessible and infer that editing will work the same way</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What should be tested before choosing a free suite?</legend>
-          <label><input type="radio" name="question-3" value="0"> Only the logo</label>
-          <label><input type="radio" name="question-3" value="1"> Actual keyboard, screen-reader, zoom, and file tasks</label>
-          <label><input type="radio" name="question-3" value="2"> Only the download size</label>
+          <legend>4. One app has labelled controls but loses keyboard focus in a needed dialog. How should that affect your recommendation?</legend>
+          <label><input type="radio" name="question-3" value="0"> Assume a different file extension will repair keyboard focus</label>
+          <label><input type="radio" name="question-3" value="1"> Ignore it because other controls have good labels</label>
+          <label><input type="radio" name="question-3" value="2"> Recommend it based only on its advertised accessibility</label>
+          <label><input type="radio" name="question-3" value="3"> Record the barrier and test a dependable recovery or alternative workflow</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Which free web option requires an account and internet access?</legend>
-          <label><input type="radio" name="question-4" value="0"> A local text file</label>
-          <label><input type="radio" name="question-4" value="1"> Windows Calculator</label>
-          <label><input type="radio" name="question-4" value="2"> Browser-based office editors</label>
+          <legend>5. A colleague needs an editable presentation in Microsoft PowerPoint. Which exchange format fits best?</legend>
+          <label><input type="radio" name="question-4" value="0"> CSV</label>
+          <label><input type="radio" name="question-4" value="1"> PPTX</label>
+          <label><input type="radio" name="question-4" value="2"> XLSX</label>
+          <label><input type="radio" name="question-4" value="3"> ODT</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. A multi-sheet workbook must retain formulas for further editing. Which exchange choice is most appropriate to test?</legend>
+          <label><input type="radio" name="question-5" value="0"> CSV</label>
+          <label><input type="radio" name="question-5" value="1"> XLSX</label>
+          <label><input type="radio" name="question-5" value="2"> A PDF of the first sheet</label>
+          <label><input type="radio" name="question-5" value="3"> A screenshot of the summary</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. You created an ODT document and need to send a DOCX copy. Which workflow best protects your work?</legend>
+          <label><input type="radio" name="question-6" value="0"> Send a PDF alongside the ODT and assume that satisfies the request for editable DOCX</label>
+          <label><input type="radio" name="question-6" value="1"> Rename the original extension to DOCX and use the new name as evidence of conversion</label>
+          <label><input type="radio" name="question-6" value="2"> Keep the ODT; export and reopen a DOCX copy</label>
+          <label><input type="radio" name="question-6" value="3"> Overwrite the ODT with DOCX and rely on the export confirmation instead of reopening it</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. The DOCX copy opens, but heading navigation differs from the original. What should be checked?</legend>
+          <label><input type="radio" name="question-7" value="0"> Only whether the visible title still looks large</label>
+          <label><input type="radio" name="question-7" value="1"> Only whether the document has the same page count</label>
+          <label><input type="radio" name="question-7" value="2"> The converted heading styles and document structure</label>
+          <label><input type="radio" name="question-7" value="3"> Only whether the filename contains the word final</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A spreadsheet copy displays the same totals as the original. What still needs checking for an editable handoff?</legend>
+          <label><input type="radio" name="question-8" value="0"> Only that the totals have the same font</label>
+          <label><input type="radio" name="question-8" value="1"> Only that the download completed without a warning</label>
+          <label><input type="radio" name="question-8" value="2"> Only that the first sheet has the same color</label>
+          <label><input type="radio" name="question-8" value="3"> That formulas, references, sheets, and numeric formats survived</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. A recipient requests CSV for importing one data table. What should you verify?</legend>
+          <label><input type="radio" name="question-9" value="0"> The selected sheet, column labels, exported values, and import result</label>
+          <label><input type="radio" name="question-9" value="1"> That every worksheet and chart is embedded in the CSV</label>
+          <label><input type="radio" name="question-9" value="2"> That CSV will preserve the workbook&#x27;s full formatting</label>
+          <label><input type="radio" name="question-9" value="3"> That changing the filename alone creates a CSV export</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. Your exported PPTX looks similar but announces objects in the wrong order. What is the appropriate response?</legend>
+          <label><input type="radio" name="question-10" value="0"> Check and correct the exported reading order before delivery</label>
+          <label><input type="radio" name="question-10" value="1"> Remove all object descriptions to reduce speech</label>
+          <label><input type="radio" name="question-10" value="2"> Replace the original with the untested export</label>
+          <label><input type="radio" name="question-10" value="3"> Deliver it because the visual layout matches</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A three-slide presentation meets the slide count but uses generic titles and undescribed images. What remains incomplete?</legend>
+          <label><input type="radio" name="question-11" value="0"> Only the selection of a decorative theme</label>
+          <label><input type="radio" name="question-11" value="1"> Its meaningful structure and accessible image information</label>
+          <label><input type="radio" name="question-11" value="2"> Only the length of the exported filename</label>
+          <label><input type="radio" name="question-11" value="3"> Only the number of transitions between slides</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. You compare LibreOffice with a browser tool using entirely different tasks. Why is the comparison weak?</legend>
+          <label><input type="radio" name="question-12" value="0"> Only the tool with more menus can be assessed</label>
+          <label><input type="radio" name="question-12" value="1"> A comparison is valid whenever both files have the same name</label>
+          <label><input type="radio" name="question-12" value="2"> Desktop and browser tools can never be compared at all</label>
+          <label><input type="radio" name="question-12" value="3"> Task differences make usability and reliability results hard to compare</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. One tool finishes the task faster but cannot export a usable required format. How should you weigh that result?</legend>
+          <label><input type="radio" name="question-13" value="0"> Assume any exported file is acceptable if it opens</label>
+          <label><input type="radio" name="question-13" value="1"> Treat the export limitation as a key requirement issue, alongside speed</label>
+          <label><input type="radio" name="question-13" value="2"> Recommend the faster tool without mentioning the export problem</label>
+          <label><input type="radio" name="question-13" value="3"> Compare only startup times and disregard the finished work</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. A cloud file&#x27;s link is easy to copy. What should be checked before sharing it?</legend>
+          <label><input type="radio" name="question-14" value="0"> Only whether the document title contains a date</label>
+          <label><input type="radio" name="question-14" value="1"> Only whether the file was created in a free program</label>
+          <label><input type="radio" name="question-14" value="2"> Who can access the file and what they can do</label>
+          <label><input type="radio" name="question-14" value="3"> Only whether the link is short enough for an email</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. You saved the only copy locally and the device fails. Which planning gap does this reveal?</legend>
+          <label><input type="radio" name="question-15" value="0"> A separate, verified backup and recovery plan was missing</label>
+          <label><input type="radio" name="question-15" value="1"> The program needed a different toolbar layout</label>
+          <label><input type="radio" name="question-15" value="2"> The document should have had a longer filename</label>
+          <label><input type="radio" name="question-15" value="3"> The file should have used a larger font</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. A fictional employee uses magnification and needs editable spreadsheets from colleagues. Which setup proposal is strongest?</legend>
+          <label><input type="radio" name="question-16" value="0"> Test access, spreadsheet work, and exchanged files</label>
+          <label><input type="radio" name="question-16" value="1"> Choose the suite with the largest default controls before testing spreadsheet exchange</label>
+          <label><input type="radio" name="question-16" value="2"> Choose any suite that opens XLSX, treating successful opening as proof formulas are preserved</label>
+          <label><input type="radio" name="question-16" value="3"> Choose the suite colleagues use without trying the employee&#x27;s magnification workflow</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. A no-cost setup depends on a feature available only through a paid trial. What should the recommendation do?</legend>
+          <label><input type="radio" name="question-17" value="0"> Recommend the trial as the permanent setup because no payment is required at installation</label>
+          <label><input type="radio" name="question-17" value="1"> Leave the limitation out of the recommendation and address it after the trial expires</label>
+          <label><input type="radio" name="question-17" value="2"> Find a free alternative or disclose the unmet need</label>
+          <label><input type="radio" name="question-17" value="3"> Assume the employee can recreate the expired feature by reinstalling the free application</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Which final recommendation is most defensible?</legend>
+          <label><input type="radio" name="question-18" value="0"> A choice supported by free installation, treating trial features as permanently available</label>
+          <label><input type="radio" name="question-18" value="1"> A choice supported by a feature list, treating advertised support as proof of the workflow</label>
+          <label><input type="radio" name="question-18" value="2"> A choice supported by task and compatibility tests</label>
+          <label><input type="radio" name="question-18" value="3"> A choice supported by a large user base, treating popularity as proof of accessibility</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. A recommended suite later receives an update. Which follow-up best supports reliability?</legend>
+          <label><input type="radio" name="question-19" value="0"> Test only that the new version displays its logo</label>
+          <label><input type="radio" name="question-19" value="1"> Switch suites after every update without retesting</label>
+          <label><input type="radio" name="question-19" value="2"> Assume every previous result remains true indefinitely</label>
+          <label><input type="radio" name="question-19" value="3"> Retest the critical accessible workflows and required exchange formats</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Choosing a Free Office Suite","displayName":"Choosing a Free Office Suite","slug":"free-office","passPercent":80,"questions":[{"answer":1,"explanation":"LibreOffice is free and open source.","options":["A paid-only trial","LibreOffice","Task Manager"],"question":"Which suite is a free desktop alternative to Microsoft 365?"},{"answer":2,"explanation":"Writer, Calc, and Impress use ODT, ODS, and ODP.","options":["DOCX, MP3, and JPG","EXE, ZIP, and WAV","ODT, ODS, and ODP"],"question":"Which are LibreOffice native formats?"},{"answer":0,"explanation":"Separate copies protect the original and support checking.","options":["Keep the native file, export a copy, and review it","Overwrite the only copy repeatedly","Assume conversion is perfect"],"question":"What is the safest compatibility workflow?"},{"answer":1,"explanation":"Real task testing determines whether the tool fits.","options":["Only the logo","Actual keyboard, screen-reader, zoom, and file tasks","Only the download size"],"question":"What should be tested before choosing a free suite?"},{"answer":2,"explanation":"Web editors depend on accounts and connectivity.","options":["A local text file","Windows Calculator","Browser-based office editors"],"question":"Which free web option requires an account and internet access?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Choosing a Free Office Suite","displayName":"Choosing a Free Office Suite","slug":"free-office","passPercent":85,"questions":[{"lesson":1,"question":"An employee needs to work without a reliable internet connection. Which comparison matters most?","options":["Offline task support and required setup","Whether the application can open a sign-in page whenever a network is available","Whether the installation is free, treating that as evidence no connection is needed","Whether files appear in a recent-items list even when their contents remain online"],"answer":0,"explanation":"A useful comparison follows the employee's constraints. Offline capability and preparation matter more than appearance or branding."},{"lesson":1,"question":"Two tools are free for basic use. What additional factors should guide the choice?","options":["The number of templates before checking keyboard access","Price alone, because both tools must otherwise be equivalent","Popularity alone, without testing the employee's tasks","Accessibility, account needs, privacy, required features, and file exchange"],"answer":3,"explanation":"No purchase price does not imply equal suitability. Evaluate the actual work, access requirements, and limitations."},{"lesson":2,"question":"A program opens successfully with a screen reader. What further test is needed before recommending it?","options":["Compare the accessibility claims in the product descriptions without trying the required workflow","Test real tasks, focus, labels, and navigation","Use the announced program title as evidence that the application supports the screen reader fully","Verify that launch and sign-in are accessible and infer that editing will work the same way"],"answer":1,"explanation":"Starting an app does not establish task accessibility. Test creation, editing, saving, and navigation in the learner's setup."},{"lesson":2,"question":"One app has labelled controls but loses keyboard focus in a needed dialog. How should that affect your recommendation?","options":["Assume a different file extension will repair keyboard focus","Ignore it because other controls have good labels","Recommend it based only on its advertised accessibility","Record the barrier and test a dependable recovery or alternative workflow"],"answer":3,"explanation":"A barrier in a required task is material evidence. Test whether the workflow is reliably usable before recommending it."},{"lesson":3,"question":"A colleague needs an editable presentation in Microsoft PowerPoint. Which exchange format fits best?","options":["CSV","PPTX","XLSX","ODT"],"answer":1,"explanation":"PPTX is a presentation exchange format. ODT is word processing, CSV is tabular text, and XLSX is a workbook format."},{"lesson":3,"question":"A multi-sheet workbook must retain formulas for further editing. Which exchange choice is most appropriate to test?","options":["CSV","XLSX","A PDF of the first sheet","A screenshot of the summary"],"answer":1,"explanation":"XLSX can retain workbook structure and formulas. CSV, images, and PDFs cannot serve as equivalent editable multi-sheet workbooks."},{"lesson":4,"question":"You created an ODT document and need to send a DOCX copy. Which workflow best protects your work?","options":["Send a PDF alongside the ODT and assume that satisfies the request for editable DOCX","Rename the original extension to DOCX and use the new name as evidence of conversion","Keep the ODT; export and reopen a DOCX copy","Overwrite the ODT with DOCX and rely on the export confirmation instead of reopening it"],"answer":2,"explanation":"Create an actual format conversion and verify it while preserving the original. Renaming an extension does not convert the file."},{"lesson":4,"question":"The DOCX copy opens, but heading navigation differs from the original. What should be checked?","options":["Only whether the visible title still looks large","Only whether the document has the same page count","The converted heading styles and document structure","Only whether the filename contains the word final"],"answer":2,"explanation":"Visual resemblance and page count do not prove preserved structure. Inspect the features that support navigation."},{"lesson":5,"question":"A spreadsheet copy displays the same totals as the original. What still needs checking for an editable handoff?","options":["Only that the totals have the same font","Only that the download completed without a warning","Only that the first sheet has the same color","That formulas, references, sheets, and numeric formats survived"],"answer":3,"explanation":"Matching results could be static values. Verify the calculations and structure needed for future editing."},{"lesson":5,"question":"A recipient requests CSV for importing one data table. What should you verify?","options":["The selected sheet, column labels, exported values, and import result","That every worksheet and chart is embedded in the CSV","That CSV will preserve the workbook's full formatting","That changing the filename alone creates a CSV export"],"answer":0,"explanation":"CSV is for tabular text exchange. Check the relevant table and import behavior, rather than expecting a complete workbook."},{"lesson":6,"question":"Your exported PPTX looks similar but announces objects in the wrong order. What is the appropriate response?","options":["Check and correct the exported reading order before delivery","Remove all object descriptions to reduce speech","Replace the original with the untested export","Deliver it because the visual layout matches"],"answer":0,"explanation":"A presentation can look correct while losing accessible structure. Test the delivered copy with the intended navigation method."},{"lesson":6,"question":"A three-slide presentation meets the slide count but uses generic titles and undescribed images. What remains incomplete?","options":["Only the selection of a decorative theme","Its meaningful structure and accessible image information","Only the length of the exported filename","Only the number of transitions between slides"],"answer":1,"explanation":"Slide count alone does not demonstrate accessible content. Titles and descriptions help communicate and navigate meaning."},{"lesson":7,"question":"You compare LibreOffice with a browser tool using entirely different tasks. Why is the comparison weak?","options":["Only the tool with more menus can be assessed","A comparison is valid whenever both files have the same name","Desktop and browser tools can never be compared at all","Task differences make usability and reliability results hard to compare"],"answer":3,"explanation":"Use the same representative task and criteria to distinguish tool differences from differences in the work itself."},{"lesson":7,"question":"One tool finishes the task faster but cannot export a usable required format. How should you weigh that result?","options":["Assume any exported file is acceptable if it opens","Treat the export limitation as a key requirement issue, alongside speed","Recommend the faster tool without mentioning the export problem","Compare only startup times and disregard the finished work"],"answer":1,"explanation":"A recommendation must account for the recipient's requirements. Speed does not compensate for an unusable required deliverable."},{"lesson":8,"question":"A cloud file's link is easy to copy. What should be checked before sharing it?","options":["Only whether the document title contains a date","Only whether the file was created in a free program","Who can access the file and what they can do","Only whether the link is short enough for an email"],"answer":2,"explanation":"Convenient links still follow access permissions. Verify recipients and roles before a real sharing action."},{"lesson":8,"question":"You saved the only copy locally and the device fails. Which planning gap does this reveal?","options":["A separate, verified backup and recovery plan was missing","The program needed a different toolbar layout","The document should have had a longer filename","The file should have used a larger font"],"answer":0,"explanation":"Saving a working file and maintaining a recoverable backup are different protections. Plan and verify recovery."},{"lesson":9,"question":"A fictional employee uses magnification and needs editable spreadsheets from colleagues. Which setup proposal is strongest?","options":["Test access, spreadsheet work, and exchanged files","Choose the suite with the largest default controls before testing spreadsheet exchange","Choose any suite that opens XLSX, treating successful opening as proof formulas are preserved","Choose the suite colleagues use without trying the employee's magnification workflow"],"answer":0,"explanation":"The setup must fit the person's access needs and actual workflow, including the files they receive and send."},{"lesson":9,"question":"A no-cost setup depends on a feature available only through a paid trial. What should the recommendation do?","options":["Recommend the trial as the permanent setup because no payment is required at installation","Leave the limitation out of the recommendation and address it after the trial expires","Find a free alternative or disclose the unmet need","Assume the employee can recreate the expired feature by reinstalling the free application"],"answer":2,"explanation":"A temporary trial does not satisfy an ongoing no-cost requirement. State limitations and evaluate a sustainable option."},{"lesson":10,"question":"Which final recommendation is most defensible?","options":["A choice supported by free installation, treating trial features as permanently available","A choice supported by a feature list, treating advertised support as proof of the workflow","A choice supported by task and compatibility tests","A choice supported by a large user base, treating popularity as proof of accessibility"],"answer":2,"explanation":"A justified recommendation explains both evidence and limits for the intended workplace."},{"lesson":10,"question":"A recommended suite later receives an update. Which follow-up best supports reliability?","options":["Test only that the new version displays its logo","Switch suites after every update without retesting","Assume every previous result remains true indefinitely","Retest the critical accessible workflows and required exchange formats"],"answer":3,"explanation":"Updates can affect behavior. Recheck the tasks that matter rather than assuming unchanged compatibility or replacing tools without evidence."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

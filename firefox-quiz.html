@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible ten-question final quiz and printable completion certificate for Firefox.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Firefox. Score 85 percent to earn a course-completion certificate.">
   <title>Firefox Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=five-courses-1" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Firefox Final Quiz</h1>
-    <p>Answer ten questions about the skills covered in this course. A score of 80 percent, or eight correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Firefox quiz navigation">
@@ -24,49 +24,149 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-<legend>1. Typing should enter an address, but a website field receives it. What should you do?</legend>
-<label><input type="radio" name="question-0" value="0"> Press Ctrl+D to move to the address bar</label><label><input type="radio" name="question-0" value="1"> Focus the address bar with Ctrl+L and verify it</label><label><input type="radio" name="question-0" value="2"> Open the download list and type again</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>2. You want a word on the current page, not a new web search. Which command fits?</legend>
-<label><input type="radio" name="question-1" value="0"> Ctrl+F</label><label><input type="radio" name="question-1" value="1"> Ctrl+Shift+O</label><label><input type="radio" name="question-1" value="2"> Ctrl+T</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>3. You accidentally closed a useful tab. Which command restores the last closed tab?</legend>
-<label><input type="radio" name="question-2" value="0"> Ctrl+T</label><label><input type="radio" name="question-2" value="1"> Ctrl+Page Down</label><label><input type="radio" name="question-2" value="2"> Ctrl+Shift+T</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>4. You bookmarked a manual. What has normally been saved?</legend>
-<label><input type="radio" name="question-3" value="0"> A guaranteed offline copy of the whole manual</label><label><input type="radio" name="question-3" value="1"> A link for returning to that page</label><label><input type="radio" name="question-3" value="2"> An editable document in Downloads</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>5. A download appears in the history but will not open. What should you inspect first?</legend>
-<label><input type="radio" name="question-4" value="0"> The browser account password</label><label><input type="radio" name="question-4" value="1"> The bookmark folder name</label><label><input type="radio" name="question-4" value="2"> Its completion status and saved file location</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>6. Reader View is unavailable on an interactive account page. What is a sensible response?</legend>
-<label><input type="radio" name="question-5" value="0"> Use ordinary page navigation and zoom; Reader View is not universal</label><label><input type="radio" name="question-5" value="1"> Reset the entire Firefox profile</label><label><input type="radio" name="question-5" value="2"> Assume Firefox is not installed correctly</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>7. A letter moves to a heading instead of entering a form field. What should you check?</legend>
-<label><input type="radio" name="question-6" value="0"> Whether Downloads is empty</label><label><input type="radio" name="question-6" value="1"> The focused field and screen-reader interaction mode</label><label><input type="radio" name="question-6" value="2"> Whether the page is bookmarked</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>8. You edit a saved password entry in Firefox. What does that change?</legend>
-<label><input type="radio" name="question-7" value="0"> The stored browser copy, not the website account password</label><label><input type="radio" name="question-7" value="1"> The email address registered with the website</label><label><input type="radio" name="question-7" value="2"> The website password on every device automatically</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>9. The display becomes difficult after changing zoom. What is the best first diagnosis?</legend>
-<label><input type="radio" name="question-8" value="0"> Reinstall the screen reader</label><label><input type="radio" name="question-8" value="1"> Delete saved bookmarks</label><label><input type="radio" name="question-8" value="2"> Identify whether browser zoom or screen magnification changed</label>
-</fieldset>
-<fieldset class="quiz-question">
-<legend>10. Which result best demonstrates independent recovery of saved research?</legend>
-<label><input type="radio" name="question-9" value="0"> Reopen the bookmark and find the downloaded file in its folder</label><label><input type="radio" name="question-9" value="1"> Leave the browser open and remember the tab order</label><label><input type="radio" name="question-9" value="2"> Confirm only that the download link was activated</label>
-</fieldset>
-<button type="submit">Grade my quiz</button>
+          <legend>1. You type a URL, but it appears in a website form. What should you do?</legend>
+          <label><input type="radio" name="question-0" value="0"> Open Downloads and enter the URL as a filename</label>
+          <label><input type="radio" name="question-0" value="1"> Press Ctrl+F and enter the URL in page Find</label>
+          <label><input type="radio" name="question-0" value="2"> Continue typing until the website recognizes it as an address</label>
+          <label><input type="radio" name="question-0" value="3"> Focus the address bar with Ctrl+L and verify it before entering the address</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>2. Two Firefox tabs show similar pages. What should you confirm before entering information?</legend>
+          <label><input type="radio" name="question-1" value="0"> The active tab&#x27;s title, address, and focused field</label>
+          <label><input type="radio" name="question-1" value="1"> Only the title of the first bookmark</label>
+          <label><input type="radio" name="question-1" value="2"> Only the browser application&#x27;s name</label>
+          <label><input type="radio" name="question-1" value="3"> Only the total number of open tabs</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>3. You need the word Firefox on the current Manuals page, not web search results. Which action fits?</legend>
+          <label><input type="radio" name="question-2" value="0"> Open a new window and repeat the site&#x27;s address</label>
+          <label><input type="radio" name="question-2" value="1"> Use Ctrl+F and review matches on the current page</label>
+          <label><input type="radio" name="question-2" value="2"> Open the bookmark Library and search all bookmarks</label>
+          <label><input type="radio" name="question-2" value="3"> Use Ctrl+L and search the web for Firefox</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>4. Page Find reports a match, but you are unsure it is the desired manual entry. What should you review?</legend>
+          <label><input type="radio" name="question-3" value="0"> The matched text and surrounding heading or link context</label>
+          <label><input type="radio" name="question-3" value="1"> Only the current zoom percentage</label>
+          <label><input type="radio" name="question-3" value="2"> Only the count of open browser windows</label>
+          <label><input type="radio" name="question-3" value="3"> Only the browser&#x27;s saved-password list</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>5. You accidentally closed a useful tab. Which shortcut attempts to reopen the most recently closed tab?</legend>
+          <label><input type="radio" name="question-4" value="0"> Ctrl+Shift+T</label>
+          <label><input type="radio" name="question-4" value="1"> Ctrl+T</label>
+          <label><input type="radio" name="question-4" value="2"> Ctrl+N</label>
+          <label><input type="radio" name="question-4" value="3"> Ctrl+Shift+Tab</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You want to close one practice tab while keeping another tab in the same window. What should you verify?</legend>
+          <label><input type="radio" name="question-5" value="0"> That the mouse pointer is over any part of the desktop</label>
+          <label><input type="radio" name="question-5" value="1"> That the intended tab is active before using the close-tab action</label>
+          <label><input type="radio" name="question-5" value="2"> That the practice page is bookmarked before closing every window</label>
+          <label><input type="radio" name="question-5" value="3"> That the whole browser window is active before using its close-window action</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. You bookmarked a manual page. What has normally been retained?</legend>
+          <label><input type="radio" name="question-6" value="0"> A complete offline version of every linked manual</label>
+          <label><input type="radio" name="question-6" value="1"> The website account password together with the page</label>
+          <label><input type="radio" name="question-6" value="2"> A destination for returning to the page, not a guaranteed offline copy</label>
+          <label><input type="radio" name="question-6" value="3"> An editable copy of the website&#x27;s source project</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. Two bookmarks have identical names. What improvement best supports independent retrieval?</legend>
+          <label><input type="radio" name="question-7" value="0"> Delete both without recording their destinations</label>
+          <label><input type="radio" name="question-7" value="1"> Rename them distinctly to identify their different destinations</label>
+          <label><input type="radio" name="question-7" value="2"> Keep identical names and distinguish them only by when they were created</label>
+          <label><input type="radio" name="question-7" value="3"> Move them into the same folder and assume the ambiguity is resolved</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A file appears in the Downloads list but cannot be opened. What should you inspect first?</legend>
+          <label><input type="radio" name="question-8" value="0"> Whether the website title matches the filename shown in the download history</label>
+          <label><input type="radio" name="question-8" value="1"> Whether the page is still open in the same tab used to start the download</label>
+          <label><input type="radio" name="question-8" value="2"> Whether the file appears in recent history, treating any entry as a completed transfer</label>
+          <label><input type="radio" name="question-8" value="3"> Download status and saved location</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. A download completed, but you need to find it later without using Firefox. What should be recorded and tested?</legend>
+          <label><input type="radio" name="question-9" value="0"> The filename and folder, followed by locating it in File Explorer</label>
+          <label><input type="radio" name="question-9" value="1"> Only the time the browser was opened</label>
+          <label><input type="radio" name="question-9" value="2"> Only the number of items in Downloads</label>
+          <label><input type="radio" name="question-9" value="3"> Only the text of the original download link</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. Reader View is unavailable on an interactive account page. Which response is appropriate?</legend>
+          <label><input type="radio" name="question-10" value="0"> Download the entire account page as a book</label>
+          <label><input type="radio" name="question-10" value="1"> Assume Firefox is broken and erase its settings</label>
+          <label><input type="radio" name="question-10" value="2"> Disable the screen reader to force Reader View to appear</label>
+          <label><input type="radio" name="question-10" value="3"> Use ordinary page navigation and zoom; Reader View is not available on every page</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. You compare a passage at two zoom levels. What should determine the useful setting?</legend>
+          <label><input type="radio" name="question-11" value="0"> The highest level at which any text remains visible, even if controls become difficult to reach</label>
+          <label><input type="radio" name="question-11" value="1"> The smallest level that shows the entire page at once, even if reading becomes uncomfortable</label>
+          <label><input type="radio" name="question-11" value="2"> Readability and navigation through the same content</label>
+          <label><input type="radio" name="question-11" value="3"> The level used by another learner with the same diagnosis, without trying it on the task</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. Typing into a search form triggers heading navigation instead. What should you check?</legend>
+          <label><input type="radio" name="question-12" value="0"> Whether the browser address bar has the same query as the form field</label>
+          <label><input type="radio" name="question-12" value="1"> Whether Find in Page should be used in place of the website&#x27;s search form</label>
+          <label><input type="radio" name="question-12" value="2"> Whether the page needs to be bookmarked before its form controls are editable</label>
+          <label><input type="radio" name="question-12" value="3"> Focus and the reader&#x27;s interaction mode</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. You want to replace a search query with a different phrase. What should you verify?</legend>
+          <label><input type="radio" name="question-13" value="0"> That the page reloaded, without checking whether it accepted or rejected the new search</label>
+          <label><input type="radio" name="question-13" value="1"> That the new phrase was typed, even if part of the previous query remained selected incorrectly</label>
+          <label><input type="radio" name="question-13" value="2"> Replacement text and the resulting search</label>
+          <label><input type="radio" name="question-13" value="3"> That focus reached Submit, treating keyboard focus as proof the new query was sent</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. You edit a password saved in Firefox&#x27;s login manager. What does that action change?</legend>
+          <label><input type="radio" name="question-14" value="0"> Firefox&#x27;s stored credential, not the website&#x27;s actual account password</label>
+          <label><input type="radio" name="question-14" value="1"> The account password on every device automatically</label>
+          <label><input type="radio" name="question-14" value="2"> The site&#x27;s access permissions for all users</label>
+          <label><input type="radio" name="question-14" value="3"> The website&#x27;s account-recovery email address</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. A saved login is rejected. What should be checked before repeated guesses or recovery attempts?</legend>
+          <label><input type="radio" name="question-15" value="0"> Only that another unrelated account signed in successfully</label>
+          <label><input type="radio" name="question-15" value="1"> Only that the login entry is at the top of the saved list</label>
+          <label><input type="radio" name="question-15" value="2"> The real site address, intended username, and whether the saved credential is current</label>
+          <label><input type="radio" name="question-15" value="3"> Only that Firefox offers an autofill suggestion</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. The webpage is enlarged but browser controls are unchanged. Which distinction is useful when recovering your view?</legend>
+          <label><input type="radio" name="question-16" value="0"> Every enlargement control always changes the same part of the display</label>
+          <label><input type="radio" name="question-16" value="1"> Page zoom automatically changes the account password</label>
+          <label><input type="radio" name="question-16" value="2"> The browser&#x27;s bookmark order determines magnification</label>
+          <label><input type="radio" name="question-16" value="3"> Browser page zoom and whole-screen magnification affect different areas</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. A shortcut opens a browser menu instead of performing a webpage action. What should you establish?</legend>
+          <label><input type="radio" name="question-17" value="0"> Whether the page has enough headings to make the browser shortcut available</label>
+          <label><input type="radio" name="question-17" value="1"> Current focus and the layer handling the shortcut</label>
+          <label><input type="radio" name="question-17" value="2"> Whether reopening the same site in a private window will change all shortcut assignments</label>
+          <label><input type="radio" name="question-17" value="3"> Whether Firefox needs a new bookmark before the website can receive commands</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Which result demonstrates retrieval of both kinds of saved research items?</legend>
+          <label><input type="radio" name="question-18" value="0"> Show only the browser&#x27;s title bar</label>
+          <label><input type="radio" name="question-18" value="1"> Reopen the bookmarked page and locate the downloaded file in its folder</label>
+          <label><input type="radio" name="question-18" value="2"> Show the two names in a written list without opening either</label>
+          <label><input type="radio" name="question-18" value="3"> Keep the original tabs open and assume retrieval will work later</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. You close the research tab while keeping the instructions tab. What recovery best preserves the task?</legend>
+          <label><input type="radio" name="question-19" value="0"> Close every tab and start the research with an unrelated search</label>
+          <label><input type="radio" name="question-19" value="1"> Clear all browser history before returning to the instructions</label>
+          <label><input type="radio" name="question-19" value="2"> Reopen the closed tab, verify its title, and continue from the intended page</label>
+          <label><input type="radio" name="question-19" value="3"> Delete the bookmark to force Firefox to recreate the tab</label>
+        </fieldset>
+        <button type="submit">Grade my quiz</button>
       </form>
       <div id="quizStatus" class="quiz-status" role="status" aria-live="polite"></div>
       <div id="quizReview" class="quiz-review"></div>
@@ -95,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course": "Firefox", "displayName": "Firefox", "slug": "firefox", "passPercent": 80, "questions": [{"question": "Typing should enter an address, but a website field receives it. What should you do?", "options": ["Press Ctrl+D to move to the address bar", "Focus the address bar with Ctrl+L and verify it", "Open the download list and type again"], "answer": 1, "explanation": "Ctrl+L targets the browser address bar. Review Firefox Lesson 1."}, {"question": "You want a word on the current page, not a new web search. Which command fits?", "options": ["Ctrl+F", "Ctrl+Shift+O", "Ctrl+T"], "answer": 0, "explanation": "Find searches the active page. Review Firefox Lesson 2."}, {"question": "You accidentally closed a useful tab. Which command restores the last closed tab?", "options": ["Ctrl+T", "Ctrl+Page Down", "Ctrl+Shift+T"], "answer": 2, "explanation": "Reopen closed tab differs from creating or switching tabs. Review Firefox Lesson 3."}, {"question": "You bookmarked a manual. What has normally been saved?", "options": ["A guaranteed offline copy of the whole manual", "A link for returning to that page", "An editable document in Downloads"], "answer": 1, "explanation": "A bookmark saves a destination, not normally the page content offline. Review Firefox Lesson 4."}, {"question": "A download appears in the history but will not open. What should you inspect first?", "options": ["The browser account password", "The bookmark folder name", "Its completion status and saved file location"], "answer": 2, "explanation": "A listed transfer may be unfinished or failed. Review Firefox Lesson 5."}, {"question": "Reader View is unavailable on an interactive account page. What is a sensible response?", "options": ["Use ordinary page navigation and zoom; Reader View is not universal", "Reset the entire Firefox profile", "Assume Firefox is not installed correctly"], "answer": 0, "explanation": "Reader View is offered for supported reading pages, not every interface. Review Firefox Lesson 6."}, {"question": "A letter moves to a heading instead of entering a form field. What should you check?", "options": ["Whether Downloads is empty", "The focused field and screen-reader interaction mode", "Whether the page is bookmarked"], "answer": 1, "explanation": "Browse navigation and text entry have different contexts. Review Firefox Lesson 7."}, {"question": "You edit a saved password entry in Firefox. What does that change?", "options": ["The stored browser copy, not the website account password", "The email address registered with the website", "The website password on every device automatically"], "answer": 0, "explanation": "Changing an actual account password requires the website account process. Review Firefox Lesson 8."}, {"question": "The display becomes difficult after changing zoom. What is the best first diagnosis?", "options": ["Reinstall the screen reader", "Delete saved bookmarks", "Identify whether browser zoom or screen magnification changed"], "answer": 2, "explanation": "Different enlargement systems affect different parts of the display. Review Firefox Lesson 9."}, {"question": "Which result best demonstrates independent recovery of saved research?", "options": ["Reopen the bookmark and find the downloaded file in its folder", "Leave the browser open and remember the tab order", "Confirm only that the download link was activated"], "answer": 0, "explanation": "Retrieving both saved items verifies their locations and purpose. Review Firefox Lesson 10."}]}</script>
+  <script id="quizData" type="application/json">{"course":"Firefox","displayName":"Firefox","slug":"firefox","passPercent":85,"questions":[{"lesson":1,"question":"You type a URL, but it appears in a website form. What should you do?","options":["Open Downloads and enter the URL as a filename","Press Ctrl+F and enter the URL in page Find","Continue typing until the website recognizes it as an address","Focus the address bar with Ctrl+L and verify it before entering the address"],"answer":3,"explanation":"The address bar and website form are different controls. Confirm browser focus before navigating to an address."},{"lesson":1,"question":"Two Firefox tabs show similar pages. What should you confirm before entering information?","options":["The active tab's title, address, and focused field","Only the title of the first bookmark","Only the browser application's name","Only the total number of open tabs"],"answer":0,"explanation":"Application identity alone does not establish the current website or field. Verify the actual context."},{"lesson":2,"question":"You need the word Firefox on the current Manuals page, not web search results. Which action fits?","options":["Open a new window and repeat the site's address","Use Ctrl+F and review matches on the current page","Open the bookmark Library and search all bookmarks","Use Ctrl+L and search the web for Firefox"],"answer":1,"explanation":"Page Find searches the current document. The address bar and Library search different collections."},{"lesson":2,"question":"Page Find reports a match, but you are unsure it is the desired manual entry. What should you review?","options":["The matched text and surrounding heading or link context","Only the current zoom percentage","Only the count of open browser windows","Only the browser's saved-password list"],"answer":0,"explanation":"A text match needs contextual confirmation, particularly when the same word appears in several places."},{"lesson":3,"question":"You accidentally closed a useful tab. Which shortcut attempts to reopen the most recently closed tab?","options":["Ctrl+Shift+T","Ctrl+T","Ctrl+N","Ctrl+Shift+Tab"],"answer":0,"explanation":"Reopen Closed Tab restores a previous tab. The other shortcuts create a tab, switch tabs, or open a window."},{"lesson":3,"question":"You want to close one practice tab while keeping another tab in the same window. What should you verify?","options":["That the mouse pointer is over any part of the desktop","That the intended tab is active before using the close-tab action","That the practice page is bookmarked before closing every window","That the whole browser window is active before using its close-window action"],"answer":1,"explanation":"Tab and window operations have different scopes. Identify the active tab and use the intended close action."},{"lesson":4,"question":"You bookmarked a manual page. What has normally been retained?","options":["A complete offline version of every linked manual","The website account password together with the page","A destination for returning to the page, not a guaranteed offline copy","An editable copy of the website's source project"],"answer":2,"explanation":"A bookmark is primarily a saved address. Offline availability requires a separate supported download or saved-copy workflow."},{"lesson":4,"question":"Two bookmarks have identical names. What improvement best supports independent retrieval?","options":["Delete both without recording their destinations","Rename them distinctly to identify their different destinations","Keep identical names and distinguish them only by when they were created","Move them into the same folder and assume the ambiguity is resolved"],"answer":1,"explanation":"Meaningful bookmark names let learners choose the intended page without guessing."},{"lesson":5,"question":"A file appears in the Downloads list but cannot be opened. What should you inspect first?","options":["Whether the website title matches the filename shown in the download history","Whether the page is still open in the same tab used to start the download","Whether the file appears in recent history, treating any entry as a completed transfer","Download status and saved location"],"answer":3,"explanation":"A downloads entry can describe an incomplete, failed, moved, or missing file. Inspect the transfer and destination."},{"lesson":5,"question":"A download completed, but you need to find it later without using Firefox. What should be recorded and tested?","options":["The filename and folder, followed by locating it in File Explorer","Only the time the browser was opened","Only the number of items in Downloads","Only the text of the original download link"],"answer":0,"explanation":"A browser record is not a substitute for knowing the actual file's identity and location."},{"lesson":6,"question":"Reader View is unavailable on an interactive account page. Which response is appropriate?","options":["Download the entire account page as a book","Assume Firefox is broken and erase its settings","Disable the screen reader to force Reader View to appear","Use ordinary page navigation and zoom; Reader View is not available on every page"],"answer":3,"explanation":"Reader View applies to supported reading content, not every interactive interface. Use the available accessible controls."},{"lesson":6,"question":"You compare a passage at two zoom levels. What should determine the useful setting?","options":["The highest level at which any text remains visible, even if controls become difficult to reach","The smallest level that shows the entire page at once, even if reading becomes uncomfortable","Readability and navigation through the same content","The level used by another learner with the same diagnosis, without trying it on the task"],"answer":2,"explanation":"A useful adjustment supports the learner's actual reading and navigation, not merely greater enlargement."},{"lesson":7,"question":"Typing into a search form triggers heading navigation instead. What should you check?","options":["Whether the browser address bar has the same query as the form field","Whether Find in Page should be used in place of the website's search form","Whether the page needs to be bookmarked before its form controls are editable","Focus and the reader's interaction mode"],"answer":3,"explanation":"Form entry and browse navigation use different contexts. Verify the field and input mode before typing."},{"lesson":7,"question":"You want to replace a search query with a different phrase. What should you verify?","options":["That the page reloaded, without checking whether it accepted or rejected the new search","That the new phrase was typed, even if part of the previous query remained selected incorrectly","Replacement text and the resulting search","That focus reached Submit, treating keyboard focus as proof the new query was sent"],"answer":2,"explanation":"A second search can accidentally combine old and new text. Check the entered query and resulting state."},{"lesson":8,"question":"You edit a password saved in Firefox's login manager. What does that action change?","options":["Firefox's stored credential, not the website's actual account password","The account password on every device automatically","The site's access permissions for all users","The website's account-recovery email address"],"answer":0,"explanation":"The browser stores a copy. Actual account-password changes must use the website's authorized process."},{"lesson":8,"question":"A saved login is rejected. What should be checked before repeated guesses or recovery attempts?","options":["Only that another unrelated account signed in successfully","Only that the login entry is at the top of the saved list","The real site address, intended username, and whether the saved credential is current","Only that Firefox offers an autofill suggestion"],"answer":2,"explanation":"An outdated credential or different account can explain failure. Confirm identity and context before taking recovery action."},{"lesson":9,"question":"The webpage is enlarged but browser controls are unchanged. Which distinction is useful when recovering your view?","options":["Every enlargement control always changes the same part of the display","Page zoom automatically changes the account password","The browser's bookmark order determines magnification","Browser page zoom and whole-screen magnification affect different areas"],"answer":3,"explanation":"Identify which layer changed so you can adjust the relevant setting rather than changing unrelated access tools."},{"lesson":9,"question":"A shortcut opens a browser menu instead of performing a webpage action. What should you establish?","options":["Whether the page has enough headings to make the browser shortcut available","Current focus and the layer handling the shortcut","Whether reopening the same site in a private window will change all shortcut assignments","Whether Firefox needs a new bookmark before the website can receive commands"],"answer":1,"explanation":"Browser, website, and screen-reader commands can compete. Reorient to the context before retrying or using a labelled control."},{"lesson":10,"question":"Which result demonstrates retrieval of both kinds of saved research items?","options":["Show only the browser's title bar","Reopen the bookmarked page and locate the downloaded file in its folder","Show the two names in a written list without opening either","Keep the original tabs open and assume retrieval will work later"],"answer":1,"explanation":"Independent retrieval checks the saved web destination and the local file, which are distinct resources."},{"lesson":10,"question":"You close the research tab while keeping the instructions tab. What recovery best preserves the task?","options":["Close every tab and start the research with an unrelated search","Clear all browser history before returning to the instructions","Reopen the closed tab, verify its title, and continue from the intended page","Delete the bookmark to force Firefox to recreate the tab"],"answer":2,"explanation":"Use targeted tab recovery and verify the restored context instead of discarding unrelated work."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

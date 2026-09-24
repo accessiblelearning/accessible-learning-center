@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for LibreOffice Impress.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of LibreOffice Impress. Score 85 percent to earn a course-completion certificate.">
   <title>LibreOffice Impress Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>LibreOffice Impress Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="LibreOffice Impress quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. What is Impress's native presentation format?</legend>
-          <label><input type="radio" name="question-0" value="0"> ODP</label>
-          <label><input type="radio" name="question-0" value="1"> ODT</label>
-          <label><input type="radio" name="question-0" value="2"> ODS</label>
+          <legend>1. You need to move to another slide, but typing is editing the current text box. What should you check?</legend>
+          <label><input type="radio" name="question-0" value="0"> The presentation&#x27;s export filename</label>
+          <label><input type="radio" name="question-0" value="1"> The number of installed templates</label>
+          <label><input type="radio" name="question-0" value="2"> The active pane and editing focus</label>
+          <label><input type="radio" name="question-0" value="3"> The current slide&#x27;s background color</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What supports predictable slide structure?</legend>
-          <label><input type="radio" name="question-1" value="0"> Random text boxes</label>
-          <label><input type="radio" name="question-1" value="1"> Color alone</label>
-          <label><input type="radio" name="question-1" value="2"> Built-in layouts and unique titles</label>
+          <legend>2. What distinguishes speaker notes from the main slide workspace?</legend>
+          <label><input type="radio" name="question-1" value="0"> Notes replace the need for slide titles</label>
+          <label><input type="radio" name="question-1" value="1"> Notes support the presenter; the workspace contains the audience-facing slide</label>
+          <label><input type="radio" name="question-1" value="2"> The workspace stores comments but not slide content</label>
+          <label><input type="radio" name="question-1" value="3"> Notes are the presentation&#x27;s saved filename</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. Where should detailed speaking information go?</legend>
-          <label><input type="radio" name="question-2" value="0"> Speaker notes</label>
-          <label><input type="radio" name="question-2" value="1"> Only the filename</label>
-          <label><input type="radio" name="question-2" value="2"> A decorative image</label>
+          <legend>3. You need Impress&#x27;s native editable presentation file. Which format fits?</legend>
+          <label><input type="radio" name="question-2" value="0"> CSV</label>
+          <label><input type="radio" name="question-2" value="1"> ODP</label>
+          <label><input type="radio" name="question-2" value="2"> ODS</label>
+          <label><input type="radio" name="question-2" value="3"> ODT</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What should accompany a chart?</legend>
-          <label><input type="radio" name="question-3" value="0"> Only a color legend</label>
-          <label><input type="radio" name="question-3" value="1"> An equivalent text explanation</label>
-          <label><input type="radio" name="question-3" value="2"> An animation</label>
+          <legend>4. You saved an ODP deck. Which check demonstrates the file can be retrieved correctly?</legend>
+          <label><input type="radio" name="question-3" value="0"> Check that the last slide uses a built-in theme</label>
+          <label><input type="radio" name="question-3" value="1"> Reopen it and verify the filename, location, slide count, and content</label>
+          <label><input type="radio" name="question-3" value="2"> Check that the Save dialog disappeared</label>
+          <label><input type="radio" name="question-3" value="3"> Check that the desktop still shows an Impress shortcut</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. What should be checked in a PPTX copy?</legend>
-          <label><input type="radio" name="question-4" value="0"> Only file size</label>
-          <label><input type="radio" name="question-4" value="1"> Only transitions</label>
-          <label><input type="radio" name="question-4" value="2"> Titles, object order, notes, images, and layout</label>
+          <legend>5. All five slides are titled Information. What improvement best supports orientation?</legend>
+          <label><input type="radio" name="question-4" value="0"> Identify slides solely by decorative images</label>
+          <label><input type="radio" name="question-4" value="1"> Use a distinct descriptive title for each slide</label>
+          <label><input type="radio" name="question-4" value="2"> Remove the title from every slide except the first</label>
+          <label><input type="radio" name="question-4" value="3"> Keep the title and vary only the font color</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You are building a title-and-content slide. Which starting approach supports consistent structure?</legend>
+          <label><input type="radio" name="question-5" value="0"> Insert a screenshot of text from another document</label>
+          <label><input type="radio" name="question-5" value="1"> Place each word in an independent text box</label>
+          <label><input type="radio" name="question-5" value="2"> Use a decorative background in place of a content area</label>
+          <label><input type="radio" name="question-5" value="3"> Use a suitable built-in layout and its placeholders</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. A slide contains an entire page of explanation in tiny text. What revision is most appropriate?</legend>
+          <label><input type="radio" name="question-6" value="0"> Split every sentence into overlapping objects</label>
+          <label><input type="radio" name="question-6" value="1"> Reduce the font further to create more space</label>
+          <label><input type="radio" name="question-6" value="2"> Add animation to make all text appear at once</label>
+          <label><input type="radio" name="question-6" value="3"> Keep essential points on the slide and move delivery detail into notes</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. An ordered procedure is formatted as an unordered set of fragments. What structure should be considered?</legend>
+          <label><input type="radio" name="question-7" value="0"> The same fragments in a random order</label>
+          <label><input type="radio" name="question-7" value="1"> A larger title without changing the procedure</label>
+          <label><input type="radio" name="question-7" value="2"> A true numbered list reflecting the required sequence</label>
+          <label><input type="radio" name="question-7" value="3"> Typed spaces to suggest item hierarchy</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. A meaningful image&#x27;s description contains only its filename. What should replace it?</legend>
+          <label><input type="radio" name="question-8" value="0"> The presentation&#x27;s title on every image</label>
+          <label><input type="radio" name="question-8" value="1"> The filename repeated twice for clarity</label>
+          <label><input type="radio" name="question-8" value="2"> Its pixel dimensions with no explanation</label>
+          <label><input type="radio" name="question-8" value="3"> A description of the information it adds in this slide&#x27;s context</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. You add alt text and later replace the image with a different diagram. What must be reviewed?</legend>
+          <label><input type="radio" name="question-9" value="0"> Only whether the slide&#x27;s notes contain any text</label>
+          <label><input type="radio" name="question-9" value="1"> Only whether the new image is the same file type</label>
+          <label><input type="radio" name="question-9" value="2"> Only whether the diagram occupies the same position</label>
+          <label><input type="radio" name="question-9" value="3"> Whether the existing alt text still describes the new information</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. A chart shows an important comparison, but its exact values are unavailable elsewhere. What should be added?</legend>
+          <label><input type="radio" name="question-10" value="0"> A more detailed decorative legend alone</label>
+          <label><input type="radio" name="question-10" value="1"> An additional slide transition</label>
+          <label><input type="radio" name="question-10" value="2"> Accessible labelled values and an equivalent explanation</label>
+          <label><input type="radio" name="question-10" value="3"> A second image of the same chart</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A table shows dates and completion counts with no headers. What needs to be clarified?</legend>
+          <label><input type="radio" name="question-11" value="0"> The table&#x27;s border thickness before any labels are added</label>
+          <label><input type="radio" name="question-11" value="1"> The presentation&#x27;s theme name</label>
+          <label><input type="radio" name="question-11" value="2"> The meaning of each column and each row&#x27;s relationships</label>
+          <label><input type="radio" name="question-11" value="3"> The position of the notes pane</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. Objects appear visually ordered but are announced in a confusing sequence. What should you investigate?</legend>
+          <label><input type="radio" name="question-12" value="0"> The file&#x27;s location on the computer only</label>
+          <label><input type="radio" name="question-12" value="1"> The font list installed on the device only</label>
+          <label><input type="radio" name="question-12" value="2"> The sequence of slide transitions only</label>
+          <label><input type="radio" name="question-12" value="3"> Object reading order and meaningful identification</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. A slide communicates approval only with a green symbol. Which revision best supplies the missing meaning?</legend>
+          <label><input type="radio" name="question-13" value="0"> Add an explicit approval label or equivalent text</label>
+          <label><input type="radio" name="question-13" value="1"> Move the symbol closer to the slide number</label>
+          <label><input type="radio" name="question-13" value="2"> Make the green symbol slightly larger</label>
+          <label><input type="radio" name="question-13" value="3"> Choose a darker green symbol without a label</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. Your notes repeat every slide word but omit a key chart explanation. What should be improved?</legend>
+          <label><input type="radio" name="question-14" value="0"> Remove all notes because the slide already contains text</label>
+          <label><input type="radio" name="question-14" value="1"> Read only the slide&#x27;s title during delivery</label>
+          <label><input type="radio" name="question-14" value="2"> Add useful delivery prompts, including the chart&#x27;s meaningful finding</label>
+          <label><input type="radio" name="question-14" value="3"> Replace the chart with the word chart</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. You can start the show but cannot reliably end it or return to editing. What remains to be practiced?</legend>
+          <label><input type="radio" name="question-15" value="0"> The full keyboard presentation workflow, including exit and recovery</label>
+          <label><input type="radio" name="question-15" value="1"> Only inserting an additional opening slide</label>
+          <label><input type="radio" name="question-15" value="2"> Only selecting a new visual theme</label>
+          <label><input type="radio" name="question-15" value="3"> Only saving the file under another name</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. A recipient asks for an editable PowerPoint copy. Which output should you create and test?</legend>
+          <label><input type="radio" name="question-16" value="0"> PPTX while retaining the ODP original</label>
+          <label><input type="radio" name="question-16" value="1"> An image of each slide with no editable structure</label>
+          <label><input type="radio" name="question-16" value="2"> A PDF renamed to end in .pptx</label>
+          <label><input type="radio" name="question-16" value="3"> A CSV containing slide titles</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. The exported PDF has selectable text but an incorrect reading order. What does this show?</legend>
+          <label><input type="radio" name="question-17" value="0"> Text availability alone does not establish accessible output</label>
+          <label><input type="radio" name="question-17" value="1"> The original ODP must contain no text at all</label>
+          <label><input type="radio" name="question-17" value="2"> The PDF is fully accessible because some text can be selected</label>
+          <label><input type="radio" name="question-17" value="3"> A different PDF filename will correct the order</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. Your final deck includes six slides but no usable notes or compatibility review. Has it met the whole assignment?</legend>
+          <label><input type="radio" name="question-18" value="0"> No; complete the delivery support and output checks as well</label>
+          <label><input type="radio" name="question-18" value="1"> No; the assignment requires six separate presentation files</label>
+          <label><input type="radio" name="question-18" value="2"> Yes; six slides are the only requirement</label>
+          <label><input type="radio" name="question-18" value="3"> Yes; ODP saving automatically validates every exchange format</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which final review best checks the presentation as a complete workflow?</legend>
+          <label><input type="radio" name="question-19" value="0"> Check editing navigation and infer that presentation mode uses exactly the same controls</label>
+          <label><input type="radio" name="question-19" value="1"> Test keyboard delivery, content order, and supplied copies</label>
+          <label><input type="radio" name="question-19" value="2"> Review the source slides and assume the exchange copy preserves the same order and layout</label>
+          <label><input type="radio" name="question-19" value="3"> Inspect every slide visually and treat that as proof screen-reader reading order is correct</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"LibreOffice Impress","displayName":"LibreOffice Impress","slug":"libreoffice-impress","passPercent":80,"questions":[{"answer":0,"explanation":"Impress uses ODP.","options":["ODP","ODT","ODS"],"question":"What is Impress's native presentation format?"},{"answer":2,"explanation":"Layouts and titles support navigation.","options":["Random text boxes","Color alone","Built-in layouts and unique titles"],"question":"What supports predictable slide structure?"},{"answer":0,"explanation":"Notes preserve detail without overcrowding slides.","options":["Speaker notes","Only the filename","A decorative image"],"question":"Where should detailed speaking information go?"},{"answer":1,"explanation":"Text communicates the chart's meaning accessibly.","options":["Only a color legend","An equivalent text explanation","An animation"],"question":"What should accompany a chart?"},{"answer":2,"explanation":"Conversion can affect content and structure.","options":["Only file size","Only transitions","Titles, object order, notes, images, and layout"],"question":"What should be checked in a PPTX copy?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"LibreOffice Impress","displayName":"LibreOffice Impress","slug":"libreoffice-impress","passPercent":85,"questions":[{"lesson":1,"question":"You need to move to another slide, but typing is editing the current text box. What should you check?","options":["The presentation's export filename","The number of installed templates","The active pane and editing focus","The current slide's background color"],"answer":2,"explanation":"Slide selection and text editing are different contexts. Reestablish the intended pane before using navigation commands."},{"lesson":1,"question":"What distinguishes speaker notes from the main slide workspace?","options":["Notes replace the need for slide titles","Notes support the presenter; the workspace contains the audience-facing slide","The workspace stores comments but not slide content","Notes are the presentation's saved filename"],"answer":1,"explanation":"Notes and slide content have different roles. Identify both areas before entering information intended for one audience."},{"lesson":2,"question":"You need Impress's native editable presentation file. Which format fits?","options":["CSV","ODP","ODS","ODT"],"answer":1,"explanation":"ODP is the presentation format. ODS and ODT serve spreadsheet and word-processing tasks."},{"lesson":2,"question":"You saved an ODP deck. Which check demonstrates the file can be retrieved correctly?","options":["Check that the last slide uses a built-in theme","Reopen it and verify the filename, location, slide count, and content","Check that the Save dialog disappeared","Check that the desktop still shows an Impress shortcut"],"answer":1,"explanation":"Reopening verifies the actual saved work. Interface changes alone do not establish file contents or retrievability."},{"lesson":3,"question":"All five slides are titled Information. What improvement best supports orientation?","options":["Identify slides solely by decorative images","Use a distinct descriptive title for each slide","Remove the title from every slide except the first","Keep the title and vary only the font color"],"answer":1,"explanation":"Distinct titles identify each slide's purpose during visual and screen-reader navigation."},{"lesson":3,"question":"You are building a title-and-content slide. Which starting approach supports consistent structure?","options":["Insert a screenshot of text from another document","Place each word in an independent text box","Use a decorative background in place of a content area","Use a suitable built-in layout and its placeholders"],"answer":3,"explanation":"A suitable layout provides useful structural starting points, which still need review after adding content."},{"lesson":4,"question":"A slide contains an entire page of explanation in tiny text. What revision is most appropriate?","options":["Split every sentence into overlapping objects","Reduce the font further to create more space","Add animation to make all text appear at once","Keep essential points on the slide and move delivery detail into notes"],"answer":3,"explanation":"Concise slides and supporting notes serve different needs without sacrificing the explanation required for delivery."},{"lesson":4,"question":"An ordered procedure is formatted as an unordered set of fragments. What structure should be considered?","options":["The same fragments in a random order","A larger title without changing the procedure","A true numbered list reflecting the required sequence","Typed spaces to suggest item hierarchy"],"answer":2,"explanation":"When sequence matters, list structure should communicate the order explicitly."},{"lesson":5,"question":"A meaningful image's description contains only its filename. What should replace it?","options":["The presentation's title on every image","The filename repeated twice for clarity","Its pixel dimensions with no explanation","A description of the information it adds in this slide's context"],"answer":3,"explanation":"Alternative text should communicate relevant meaning rather than incidental file information."},{"lesson":5,"question":"You add alt text and later replace the image with a different diagram. What must be reviewed?","options":["Only whether the slide's notes contain any text","Only whether the new image is the same file type","Only whether the diagram occupies the same position","Whether the existing alt text still describes the new information"],"answer":3,"explanation":"Descriptions can become inaccurate when content changes. Review the image and its text equivalent together."},{"lesson":6,"question":"A chart shows an important comparison, but its exact values are unavailable elsewhere. What should be added?","options":["A more detailed decorative legend alone","An additional slide transition","Accessible labelled values and an equivalent explanation","A second image of the same chart"],"answer":2,"explanation":"The audience needs access to both the comparison's meaning and any values necessary to understand it."},{"lesson":6,"question":"A table shows dates and completion counts with no headers. What needs to be clarified?","options":["The table's border thickness before any labels are added","The presentation's theme name","The meaning of each column and each row's relationships","The position of the notes pane"],"answer":2,"explanation":"Numeric and date values need context. Clear labels and simple structure support accurate interpretation."},{"lesson":7,"question":"Objects appear visually ordered but are announced in a confusing sequence. What should you investigate?","options":["The file's location on the computer only","The font list installed on the device only","The sequence of slide transitions only","Object reading order and meaningful identification"],"answer":3,"explanation":"Visual position alone does not establish the order experienced through assistive technology."},{"lesson":7,"question":"A slide communicates approval only with a green symbol. Which revision best supplies the missing meaning?","options":["Add an explicit approval label or equivalent text","Move the symbol closer to the slide number","Make the green symbol slightly larger","Choose a darker green symbol without a label"],"answer":0,"explanation":"Color and shape may reinforce a message, but explicit text makes its meaning available independently."},{"lesson":8,"question":"Your notes repeat every slide word but omit a key chart explanation. What should be improved?","options":["Remove all notes because the slide already contains text","Read only the slide's title during delivery","Add useful delivery prompts, including the chart's meaningful finding","Replace the chart with the word chart"],"answer":2,"explanation":"Notes should support the presentation, including descriptions and context that an audience needs to hear."},{"lesson":8,"question":"You can start the show but cannot reliably end it or return to editing. What remains to be practiced?","options":["The full keyboard presentation workflow, including exit and recovery","Only inserting an additional opening slide","Only selecting a new visual theme","Only saving the file under another name"],"answer":0,"explanation":"Independent presenting includes entering, navigating, pausing, ending, and recovering the editing context."},{"lesson":9,"question":"A recipient asks for an editable PowerPoint copy. Which output should you create and test?","options":["PPTX while retaining the ODP original","An image of each slide with no editable structure","A PDF renamed to end in .pptx","A CSV containing slide titles"],"answer":0,"explanation":"PPTX is the relevant exchange format. Preserve the original and review conversion rather than merely changing an extension."},{"lesson":9,"question":"The exported PDF has selectable text but an incorrect reading order. What does this show?","options":["Text availability alone does not establish accessible output","The original ODP must contain no text at all","The PDF is fully accessible because some text can be selected","A different PDF filename will correct the order"],"answer":0,"explanation":"Accessible output includes structure and sequence as well as text. Review the exported file itself."},{"lesson":10,"question":"Your final deck includes six slides but no usable notes or compatibility review. Has it met the whole assignment?","options":["No; complete the delivery support and output checks as well","No; the assignment requires six separate presentation files","Yes; six slides are the only requirement","Yes; ODP saving automatically validates every exchange format"],"answer":0,"explanation":"The final task combines content, accessibility, presenting support, and compatibility, not just a slide count."},{"lesson":10,"question":"Which final review best checks the presentation as a complete workflow?","options":["Check editing navigation and infer that presentation mode uses exactly the same controls","Test keyboard delivery, content order, and supplied copies","Review the source slides and assume the exchange copy preserves the same order and layout","Inspect every slide visually and treat that as proof screen-reader reading order is correct"],"answer":1,"explanation":"Test both the learner's operation and the recipient's output. A file's existence is not proof of usability."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

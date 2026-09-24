@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for LibreOffice Calc.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of LibreOffice Calc. Score 85 percent to earn a course-completion certificate.">
   <title>LibreOffice Calc Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>LibreOffice Calc Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="LibreOffice Calc quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. What is Calc's native workbook format?</legend>
-          <label><input type="radio" name="question-0" value="0"> ODS</label>
-          <label><input type="radio" name="question-0" value="1"> ODT</label>
-          <label><input type="radio" name="question-0" value="2"> ODP</label>
+          <legend>1. Calc announces D5. What does that cell address identify?</legend>
+          <label><input type="radio" name="question-0" value="0"> Row D, column 5</label>
+          <label><input type="radio" name="question-0" value="1"> The fourth value in worksheet 5</label>
+          <label><input type="radio" name="question-0" value="2"> Column D, row 5</label>
+          <label><input type="radio" name="question-0" value="3"> The fifth worksheet in workbook D</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. How does a formula begin?</legend>
-          <label><input type="radio" name="question-1" value="0"> With a semicolon only</label>
-          <label><input type="radio" name="question-1" value="1"> With an equals sign</label>
-          <label><input type="radio" name="question-1" value="2"> With a space</label>
+          <legend>2. A result cell displays 24, but you need to inspect how it was calculated. Which information is relevant?</legend>
+          <label><input type="radio" name="question-1" value="0"> Its formula through the editing controls or Formula Bar</label>
+          <label><input type="radio" name="question-1" value="1"> Its displayed number format alone</label>
+          <label><input type="radio" name="question-1" value="2"> The sheet tab&#x27;s position alone</label>
+          <label><input type="radio" name="question-1" value="3"> The workbook&#x27;s saved filename alone</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What is lost in CSV?</legend>
-          <label><input type="radio" name="question-2" value="0"> Most formatting, formulas, and multiple sheets</label>
-          <label><input type="radio" name="question-2" value="1"> Plain cell values</label>
-          <label><input type="radio" name="question-2" value="2"> Comma-separated data</label>
+          <legend>3. You fill a department value down several rows. What should you verify?</legend>
+          <label><input type="radio" name="question-2" value="0"> That the workbook has an ODS extension</label>
+          <label><input type="radio" name="question-2" value="1"> The destination range and each affected record</label>
+          <label><input type="radio" name="question-2" value="2"> That the source cell still contains the department</label>
+          <label><input type="radio" name="question-2" value="3"> That the selected font is readable</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What should be checked after saving XLSX?</legend>
-          <label><input type="radio" name="question-3" value="0"> Only filename length</label>
-          <label><input type="radio" name="question-3" value="1"> Only chart color</label>
-          <label><input type="radio" name="question-3" value="2"> Formulas, formats, sheet names, and accessibility</label>
+          <legend>4. You need a saved editable Calc original after entering your data. Which format fits the course?</legend>
+          <label><input type="radio" name="question-3" value="0"> ODT</label>
+          <label><input type="radio" name="question-3" value="1"> ODP</label>
+          <label><input type="radio" name="question-3" value="2"> PDF</label>
+          <label><input type="radio" name="question-3" value="3"> ODS</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Why use clear row and column headers?</legend>
-          <label><input type="radio" name="question-4" value="0"> They replace formulas</label>
-          <label><input type="radio" name="question-4" value="1"> They describe data relationships</label>
-          <label><input type="radio" name="question-4" value="2"> They hide empty cells</label>
+          <legend>5. B2:B5 contains 5, 10, 15, and 20. What should =SUM(B2:B5) return?</legend>
+          <label><input type="radio" name="question-4" value="0"> 15</label>
+          <label><input type="radio" name="question-4" value="1"> 12.5</label>
+          <label><input type="radio" name="question-4" value="2"> 50</label>
+          <label><input type="radio" name="question-4" value="3"> 20</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. An AutoSum proposal leaves out a final expense row. What should you do before accepting it?</legend>
+          <label><input type="radio" name="question-5" value="0"> Adjust and verify the range so all intended expenses are included</label>
+          <label><input type="radio" name="question-5" value="1"> Accept it because AutoSum always identifies the complete data set</label>
+          <label><input type="radio" name="question-5" value="2"> Apply currency formatting to make the missing value appear</label>
+          <label><input type="radio" name="question-5" value="3"> Move the total label without changing the formula</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. The stored decimal 0.25 represents a quarter of the budget. Which display is appropriate?</legend>
+          <label><input type="radio" name="question-6" value="0"> 25 dollars using currency formatting</label>
+          <label><input type="radio" name="question-6" value="1"> 0.25 percent by appending a percent sign to its meaning</label>
+          <label><input type="radio" name="question-6" value="2"> 25 percent using percentage formatting</label>
+          <label><input type="radio" name="question-6" value="3"> A date generated from the stored number</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. A tracker highlights overdue work in red but provides no textual status. What should be added?</legend>
+          <label><input type="radio" name="question-7" value="0"> Another red shade for alternate rows</label>
+          <label><input type="radio" name="question-7" value="1"> A larger blank area beside the colored cells</label>
+          <label><input type="radio" name="question-7" value="2"> A different file name for the tracker</label>
+          <label><input type="radio" name="question-7" value="3"> An explicit overdue label or equivalent text status</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. You sort quantities without including the corresponding item names. What is the main risk?</legend>
+          <label><input type="radio" name="question-8" value="0"> The table is automatically duplicated on a new sheet</label>
+          <label><input type="radio" name="question-8" value="1"> Quantities can become associated with the wrong items</label>
+          <label><input type="radio" name="question-8" value="2"> The workbook necessarily loses all formulas</label>
+          <label><input type="radio" name="question-8" value="3"> Every quantity is automatically converted to text</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. After applying a filter, fewer records are visible. How should you check whether the others are still present?</legend>
+          <label><input type="radio" name="question-9" value="0"> Clear the filter and review the full range</label>
+          <label><input type="radio" name="question-9" value="1"> Re-enter the hidden records immediately</label>
+          <label><input type="radio" name="question-9" value="2"> Replace the filter formula with zero</label>
+          <label><input type="radio" name="question-9" value="3"> Save as CSV to force the hidden records to be deleted</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. An IF rule should show Complete at 10 or more hours. Which test set checks the threshold well?</legend>
+          <label><input type="radio" name="question-10" value="0"> Three blank records outside the formula range</label>
+          <label><input type="radio" name="question-10" value="1"> 9, 10, and 11 hours</label>
+          <label><input type="radio" name="question-10" value="2"> Three records each containing 10 hours</label>
+          <label><input type="radio" name="question-10" value="3"> 20, 30, and 40 hours</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A status range contains Closed in four cells and Open in two. A COUNTIF rule counts Closed. What result is expected?</legend>
+          <label><input type="radio" name="question-11" value="0"> 4</label>
+          <label><input type="radio" name="question-11" value="1"> 1</label>
+          <label><input type="radio" name="question-11" value="2"> 2</label>
+          <label><input type="radio" name="question-11" value="3"> 6</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. A Summary sheet needs to reflect changes in a source total on another sheet. Which approach fits?</legend>
+          <label><input type="radio" name="question-12" value="0"> Type the current total into Summary once</label>
+          <label><input type="radio" name="question-12" value="1"> Copy the total as an image into Summary</label>
+          <label><input type="radio" name="question-12" value="2"> Use a cross-sheet formula reference and test an input change</label>
+          <label><input type="radio" name="question-12" value="3"> Rename Summary to match the source total</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. Two sheets both contain B8, but only one holds the intended source total. What must a cross-sheet formula identify?</legend>
+          <label><input type="radio" name="question-13" value="0"> The workbook&#x27;s title instead of the cell</label>
+          <label><input type="radio" name="question-13" value="1"> The correct sheet as well as the cell address</label>
+          <label><input type="radio" name="question-13" value="2"> The last worksheet visited before saving</label>
+          <label><input type="radio" name="question-13" value="3"> The cell&#x27;s font size instead of the sheet</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. A chart shows 12, 18, and 24 completed tasks over three months. Which summary conveys the useful pattern?</legend>
+          <label><input type="radio" name="question-14" value="0"> The chart has three colored columns</label>
+          <label><input type="radio" name="question-14" value="1"> Completions rose by 6 each month, from 12 to 24</label>
+          <label><input type="radio" name="question-14" value="2"> The chart occupies half the worksheet</label>
+          <label><input type="radio" name="question-14" value="3"> The rightmost column is taller on the screen</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. Your chart summary says completions fell, but its source table shows increasing values. What needs correction?</legend>
+          <label><input type="radio" name="question-15" value="0"> Compare both representations and correct the inconsistent interpretation</label>
+          <label><input type="radio" name="question-15" value="1"> Keep the summary because it is easier to read</label>
+          <label><input type="radio" name="question-15" value="2"> Hide the table so it cannot conflict with the chart</label>
+          <label><input type="radio" name="question-15" value="3"> Change the chart&#x27;s colors to match the word fell</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. You export one sheet as CSV. Which features should you not expect CSV to preserve as a complete workbook?</legend>
+          <label><input type="radio" name="question-16" value="0"> The intended table&#x27;s text and numeric values</label>
+          <label><input type="radio" name="question-16" value="1"> The chosen CSV delimiter and import behavior</label>
+          <label><input type="radio" name="question-16" value="2"> The column order of the exported table</label>
+          <label><input type="radio" name="question-16" value="3"> Other worksheets, formulas, and workbook formatting</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. An XLSX copy opens in another program but shows a different calculated result. What is the best next step?</legend>
+          <label><input type="radio" name="question-17" value="0"> Change its file extension back and forth until the number matches</label>
+          <label><input type="radio" name="question-17" value="1"> Remove the original workbook before investigating</label>
+          <label><input type="radio" name="question-17" value="2"> Compare formulas, references, data types, and calculation behavior</label>
+          <label><input type="radio" name="question-17" value="3"> Assume the larger result is correct</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. A final tracker has a correct grand total but one incorrect record-level formula. Is the calculation review complete?</legend>
+          <label><input type="radio" name="question-18" value="0"> Yes; one correct total proves every contributing formula is correct</label>
+          <label><input type="radio" name="question-18" value="1"> Yes; saving as ODS validates every formula automatically</label>
+          <label><input type="radio" name="question-18" value="2"> No; the workbook must first contain a chart on every sheet</label>
+          <label><input type="radio" name="question-18" value="3"> No; individual formulas and representative records still require checking</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which final package best supports another person&#x27;s use of the tracker?</legend>
+          <label><input type="radio" name="question-19" value="0"> A workbook containing results with no explanation of their inputs</label>
+          <label><input type="radio" name="question-19" value="1"> An untested exchange copy with the original discarded</label>
+          <label><input type="radio" name="question-19" value="2"> A chart image without the underlying data</label>
+          <label><input type="radio" name="question-19" value="3"> A reviewed workbook, clear labels, tested formulas, and a plain-language summary</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"LibreOffice Calc","displayName":"LibreOffice Calc","slug":"libreoffice-calc","passPercent":80,"questions":[{"answer":0,"explanation":"Calc uses ODS.","options":["ODS","ODT","ODP"],"question":"What is Calc's native workbook format?"},{"answer":1,"explanation":"Spreadsheet formulas begin with =.","options":["With a semicolon only","With an equals sign","With a space"],"question":"How does a formula begin?"},{"answer":0,"explanation":"CSV mainly preserves plain tabular values.","options":["Most formatting, formulas, and multiple sheets","Plain cell values","Comma-separated data"],"question":"What is lost in CSV?"},{"answer":2,"explanation":"Compatibility review identifies conversion changes.","options":["Only filename length","Only chart color","Formulas, formats, sheet names, and accessibility"],"question":"What should be checked after saving XLSX?"},{"answer":1,"explanation":"Headers make data understandable.","options":["They replace formulas","They describe data relationships","They hide empty cells"],"question":"Why use clear row and column headers?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"LibreOffice Calc","displayName":"LibreOffice Calc","slug":"libreoffice-calc","passPercent":85,"questions":[{"lesson":1,"question":"Calc announces D5. What does that cell address identify?","options":["Row D, column 5","The fourth value in worksheet 5","Column D, row 5","The fifth worksheet in workbook D"],"answer":2,"explanation":"Cell addresses combine a column letter with a row number. The sheet name is a separate part of the location."},{"lesson":1,"question":"A result cell displays 24, but you need to inspect how it was calculated. Which information is relevant?","options":["Its formula through the editing controls or Formula Bar","Its displayed number format alone","The sheet tab's position alone","The workbook's saved filename alone"],"answer":0,"explanation":"A displayed value does not reveal the calculation. Inspect the underlying formula and referenced cells."},{"lesson":2,"question":"You fill a department value down several rows. What should you verify?","options":["That the workbook has an ODS extension","The destination range and each affected record","That the source cell still contains the department","That the selected font is readable"],"answer":1,"explanation":"The source can remain correct while the destination range is wrong. Check the actual affected cells."},{"lesson":2,"question":"You need a saved editable Calc original after entering your data. Which format fits the course?","options":["ODT","ODP","PDF","ODS"],"answer":3,"explanation":"ODS is Calc's native spreadsheet format. ODP is presentation, ODT is word processing, and PDF is an output format."},{"lesson":3,"question":"B2:B5 contains 5, 10, 15, and 20. What should =SUM(B2:B5) return?","options":["15","12.5","50","20"],"answer":2,"explanation":"SUM adds the four values. Average, maximum, and the difference between endpoints answer different questions."},{"lesson":3,"question":"An AutoSum proposal leaves out a final expense row. What should you do before accepting it?","options":["Adjust and verify the range so all intended expenses are included","Accept it because AutoSum always identifies the complete data set","Apply currency formatting to make the missing value appear","Move the total label without changing the formula"],"answer":0,"explanation":"Suggested ranges require review. Correct formatting or labels cannot compensate for omitted inputs."},{"lesson":4,"question":"The stored decimal 0.25 represents a quarter of the budget. Which display is appropriate?","options":["25 dollars using currency formatting","0.25 percent by appending a percent sign to its meaning","25 percent using percentage formatting","A date generated from the stored number"],"answer":2,"explanation":"A percentage format expresses 0.25 as 25 percent. Match the format to the value's meaning."},{"lesson":4,"question":"A tracker highlights overdue work in red but provides no textual status. What should be added?","options":["Another red shade for alternate rows","A larger blank area beside the colored cells","A different file name for the tracker","An explicit overdue label or equivalent text status"],"answer":3,"explanation":"Text communicates the status independently of color and remains available to screen-reader users."},{"lesson":5,"question":"You sort quantities without including the corresponding item names. What is the main risk?","options":["The table is automatically duplicated on a new sheet","Quantities can become associated with the wrong items","The workbook necessarily loses all formulas","Every quantity is automatically converted to text"],"answer":1,"explanation":"Sort complete records together. Sorting one field independently can corrupt the relationship between columns."},{"lesson":5,"question":"After applying a filter, fewer records are visible. How should you check whether the others are still present?","options":["Clear the filter and review the full range","Re-enter the hidden records immediately","Replace the filter formula with zero","Save as CSV to force the hidden records to be deleted"],"answer":0,"explanation":"A filter changes visibility. Clear it before concluding that nonmatching records have been lost."},{"lesson":6,"question":"An IF rule should show Complete at 10 or more hours. Which test set checks the threshold well?","options":["Three blank records outside the formula range","9, 10, and 11 hours","Three records each containing 10 hours","20, 30, and 40 hours"],"answer":1,"explanation":"Values below, at, and above the boundary reveal errors such as using greater-than instead of greater-than-or-equal."},{"lesson":6,"question":"A status range contains Closed in four cells and Open in two. A COUNTIF rule counts Closed. What result is expected?","options":["4","1","2","6"],"answer":0,"explanation":"COUNTIF counts matching cells. It does not count all entries, nonmatching entries, or distinct category names."},{"lesson":7,"question":"A Summary sheet needs to reflect changes in a source total on another sheet. Which approach fits?","options":["Type the current total into Summary once","Copy the total as an image into Summary","Use a cross-sheet formula reference and test an input change","Rename Summary to match the source total"],"answer":2,"explanation":"A reference links the result to its source. Typed values and images do not update as calculations change."},{"lesson":7,"question":"Two sheets both contain B8, but only one holds the intended source total. What must a cross-sheet formula identify?","options":["The workbook's title instead of the cell","The correct sheet as well as the cell address","The last worksheet visited before saving","The cell's font size instead of the sheet"],"answer":1,"explanation":"Cell addresses repeat across worksheets. The sheet identity is essential to an unambiguous cross-sheet reference."},{"lesson":8,"question":"A chart shows 12, 18, and 24 completed tasks over three months. Which summary conveys the useful pattern?","options":["The chart has three colored columns","Completions rose by 6 each month, from 12 to 24","The chart occupies half the worksheet","The rightmost column is taller on the screen"],"answer":1,"explanation":"A text equivalent should communicate the data's meaning, not just its visual appearance."},{"lesson":8,"question":"Your chart summary says completions fell, but its source table shows increasing values. What needs correction?","options":["Compare both representations and correct the inconsistent interpretation","Keep the summary because it is easier to read","Hide the table so it cannot conflict with the chart","Change the chart's colors to match the word fell"],"answer":0,"explanation":"The chart, source values, and description should agree. Verify the data rather than hiding the inconsistency."},{"lesson":9,"question":"You export one sheet as CSV. Which features should you not expect CSV to preserve as a complete workbook?","options":["The intended table's text and numeric values","The chosen CSV delimiter and import behavior","The column order of the exported table","Other worksheets, formulas, and workbook formatting"],"answer":3,"explanation":"CSV represents tabular text rather than the complete workbook. Preserve the original and inspect the exported values and import settings."},{"lesson":9,"question":"An XLSX copy opens in another program but shows a different calculated result. What is the best next step?","options":["Change its file extension back and forth until the number matches","Remove the original workbook before investigating","Compare formulas, references, data types, and calculation behavior","Assume the larger result is correct"],"answer":2,"explanation":"Compatibility review must include behavior and data, not just successful opening or familiar formatting."},{"lesson":10,"question":"A final tracker has a correct grand total but one incorrect record-level formula. Is the calculation review complete?","options":["Yes; one correct total proves every contributing formula is correct","Yes; saving as ODS validates every formula automatically","No; the workbook must first contain a chart on every sheet","No; individual formulas and representative records still require checking"],"answer":3,"explanation":"Errors can offset or leave a plausible overall total. Check the calculations that produce individual results."},{"lesson":10,"question":"Which final package best supports another person's use of the tracker?","options":["A workbook containing results with no explanation of their inputs","An untested exchange copy with the original discarded","A chart image without the underlying data","A reviewed workbook, clear labels, tested formulas, and a plain-language summary"],"answer":3,"explanation":"A usable handoff preserves inspectable data, dependable calculations, and an explanation of the important results."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

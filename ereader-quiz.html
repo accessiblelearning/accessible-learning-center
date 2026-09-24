@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for NLS Braille eReader.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of NLS Braille eReader. Score 85 percent to earn a course-completion certificate.">
   <title>NLS Braille eReader Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>NLS Braille eReader Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="NLS Braille eReader quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. What is the NLS Braille eReader primarily designed to access?</legend>
-          <label><input type="radio" name="question-0" value="0"> Braille reading materials and files</label>
-          <label><input type="radio" name="question-0" value="1"> Visual-only games</label>
-          <label><input type="radio" name="question-0" value="2"> Ink printing</label>
+          <legend>1. A command from another NLS eReader does not match your controls. What should you check?</legend>
+          <label><input type="radio" name="question-0" value="0"> Only whether both devices have braille cells</label>
+          <label><input type="radio" name="question-0" value="1"> Only the title of the currently open book</label>
+          <label><input type="radio" name="question-0" value="2"> Only the battery percentage on the other device</label>
+          <label><input type="radio" name="question-0" value="3"> The assigned model and its official command guide</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What helps return to an important reading location?</legend>
-          <label><input type="radio" name="question-1" value="0"> A deleted folder</label>
-          <label><input type="radio" name="question-1" value="1"> A bookmark</label>
-          <label><input type="radio" name="question-1" value="2"> Airplane mode</label>
+          <legend>2. You power on and see a menu instead of the expected book. What should you establish before pressing commands?</legend>
+          <label><input type="radio" name="question-1" value="0"> That the book has definitely been deleted</label>
+          <label><input type="radio" name="question-1" value="1"> That the previous reading position is permanently lost</label>
+          <label><input type="radio" name="question-1" value="2"> That every setting must be reset</label>
+          <label><input type="radio" name="question-1" value="3"> The current menu location and available labelled actions</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What should be checked before transferring a BRF file?</legend>
-          <label><input type="radio" name="question-2" value="0"> Only capitalization</label>
-          <label><input type="radio" name="question-2" value="1"> Only battery color</label>
-          <label><input type="radio" name="question-2" value="2"> Filename, folder, file type, and safe connection</label>
+          <legend>3. Two copies of a book appear in different locations. What should your navigation log identify?</legend>
+          <label><input type="radio" name="question-2" value="0"> The exact title and storage location of the copy used</label>
+          <label><input type="radio" name="question-2" value="1"> Only the book&#x27;s first displayed word</label>
+          <label><input type="radio" name="question-2" value="2"> Only the number of folders in the menu</label>
+          <label><input type="radio" name="question-2" value="3"> Only the eReader&#x27;s power status</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. What is Terminal Mode used for?</legend>
-          <label><input type="radio" name="question-3" value="0"> Using the eReader as a display with another device</label>
-          <label><input type="radio" name="question-3" value="1"> Erasing all books</label>
-          <label><input type="radio" name="question-3" value="2"> Printing labels</label>
+          <legend>4. You want to leave a book and choose another without removing the first. Which action fits?</legend>
+          <label><input type="radio" name="question-3" value="0"> Rename the current book to the next title</label>
+          <label><input type="radio" name="question-3" value="1"> Delete the current book to reveal the next title</label>
+          <label><input type="radio" name="question-3" value="2"> Format the storage so the Bookshelf refreshes</label>
+          <label><input type="radio" name="question-3" value="3"> Return to the Bookshelf using the documented navigation command</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. Where should device updates come from?</legend>
-          <label><input type="radio" name="question-4" value="0"> Unknown email links</label>
-          <label><input type="radio" name="question-4" value="1"> A random file-sharing site</label>
-          <label><input type="radio" name="question-4" value="2"> Official NLS or device instructions</label>
+          <legend>5. You need to continue across text that exceeds the display&#x27;s width. What should you use?</legend>
+          <label><input type="radio" name="question-4" value="0"> The delete-file control</label>
+          <label><input type="radio" name="question-4" value="1"> The documented panning controls</label>
+          <label><input type="radio" name="question-4" value="2"> The account-recovery process</label>
+          <label><input type="radio" name="question-4" value="3"> The software-update menu</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You close a book after reading a section. How should you verify reading-position behavior?</legend>
+          <label><input type="radio" name="question-5" value="0"> Compare only the book&#x27;s file size</label>
+          <label><input type="radio" name="question-5" value="1"> Check only that the title remains in the Bookshelf</label>
+          <label><input type="radio" name="question-5" value="2"> Reopen the book and check where reading resumes</label>
+          <label><input type="radio" name="question-5" value="3"> Assume every model always resumes at the same place</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. You need to return repeatedly to a specific passage. Which feature best supports that task?</legend>
+          <label><input type="radio" name="question-6" value="0"> Changing the device&#x27;s display language</label>
+          <label><input type="radio" name="question-6" value="1"> Renaming the whole book after the passage</label>
+          <label><input type="radio" name="question-6" value="2"> A bookmark at the verified passage</label>
+          <label><input type="radio" name="question-6" value="3"> Deleting earlier chapters from the file</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. A search finds a phrase in several places. What should you do before adding a bookmark?</legend>
+          <label><input type="radio" name="question-7" value="0"> Change the search word until only an unrelated result remains</label>
+          <label><input type="radio" name="question-7" value="1"> Bookmark the first result regardless of its context</label>
+          <label><input type="radio" name="question-7" value="2"> Read each relevant result in context and choose the intended passage</label>
+          <label><input type="radio" name="question-7" value="3"> Assume every match refers to the same section</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. The assigned model&#x27;s notes feature differs from a tutorial. What should guide your workflow?</legend>
+          <label><input type="radio" name="question-8" value="0"> The assumption that every eReader uses the same menu labels</label>
+          <label><input type="radio" name="question-8" value="1"> The model&#x27;s available editor or notes capability and official instructions</label>
+          <label><input type="radio" name="question-8" value="2"> A command copied from an unrelated device without checking</label>
+          <label><input type="radio" name="question-8" value="3"> The book&#x27;s copyright date</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. You entered a summary, but it is still only open in the editor. What completes the saved-note check?</legend>
+          <label><input type="radio" name="question-9" value="0"> Return to the main menu and assume it was saved</label>
+          <label><input type="radio" name="question-9" value="1"> Save with a known filename and location, reopen, and proofread</label>
+          <label><input type="radio" name="question-9" value="2"> Rename the book instead of saving the note</label>
+          <label><input type="radio" name="question-9" value="3"> Record the number of characters typed without checking the file</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. You are documenting a BARD transfer for the assignment. Which information belongs in the report?</legend>
+          <label><input type="radio" name="question-10" value="0"> The downloaded book in full as proof of access</label>
+          <label><input type="radio" name="question-10" value="1"> The account password so the instructor can reproduce the login</label>
+          <label><input type="radio" name="question-10" value="2"> The authorized process and verification steps, without credentials or protected book content</label>
+          <label><input type="radio" name="question-10" value="3"> Recovery codes and device identifiers copied from account settings</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. A transfer reports success. What check confirms the reading task can proceed?</legend>
+          <label><input type="radio" name="question-11" value="0"> Confirm only that the account page is still open</label>
+          <label><input type="radio" name="question-11" value="1"> Confirm only that the browser download button was pressed</label>
+          <label><input type="radio" name="question-11" value="2"> Find the intended title in the Bookshelf and open it</label>
+          <label><input type="radio" name="question-11" value="3"> Confirm only that the USB cable fits</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. You want to use the eReader with a computer screen reader. What should be confirmed before following terminal commands?</legend>
+          <label><input type="radio" name="question-12" value="0"> That the device has a familiar-looking keyboard</label>
+          <label><input type="radio" name="question-12" value="1"> That the model can read a local book</label>
+          <label><input type="radio" name="question-12" value="2"> That a different eReader supports the feature</label>
+          <label><input type="radio" name="question-12" value="3"> Whether the assigned model supports the required terminal connection</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. The eReader is connected but host text is not displayed. Which additional check is relevant?</legend>
+          <label><input type="radio" name="question-13" value="0"> The host reader&#x27;s braille connection settings</label>
+          <label><input type="radio" name="question-13" value="1"> The device language, because host text is unavailable until both interfaces use one language</label>
+          <label><input type="radio" name="question-13" value="2"> The most recent reading bookmark, because connecting resumes the corresponding host file</label>
+          <label><input type="radio" name="question-13" value="3"> The local library position, because that controls which host application is displayed</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. Braille output changes after an approved language or code setting trial. What should happen at the end?</legend>
+          <label><input type="radio" name="question-14" value="0"> Reset all device settings to an unknown default</label>
+          <label><input type="radio" name="question-14" value="1"> Restore the original value and confirm the expected output returns</label>
+          <label><input type="radio" name="question-14" value="2"> Delete books whose output looks different</label>
+          <label><input type="radio" name="question-14" value="3"> Leave the new value without documenting it</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. Which settings inventory is useful without exposing unnecessary device identifiers?</legend>
+          <label><input type="radio" name="question-15" value="0"> Available braille, language, display, battery, storage, and software information</label>
+          <label><input type="radio" name="question-15" value="1"> A complete list of another learner&#x27;s private book notes</label>
+          <label><input type="radio" name="question-15" value="2"> Account passwords and recovery codes</label>
+          <label><input type="radio" name="question-15" value="3"> The device&#x27;s serial number as the only recorded detail</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. A note is unsaved and the device behaves unexpectedly. What should be considered before restarting?</legend>
+          <label><input type="radio" name="question-16" value="0"> Protect the note, then follow documented recovery</label>
+          <label><input type="radio" name="question-16" value="1"> Install an update before saving because updates are intended to correct unexpected behavior</label>
+          <label><input type="radio" name="question-16" value="2"> Restart immediately because every note is saved automatically when the screen changes</label>
+          <label><input type="radio" name="question-16" value="3"> Reset the device first and restore the note later from its current on-screen text</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. A hardware or authorized-account problem remains after basic checks. Who is the appropriate next support route in this course?</legend>
+          <label><input type="radio" name="question-17" value="0"> An unknown caller asking for the account password</label>
+          <label><input type="radio" name="question-17" value="1"> Another learner&#x27;s unrelated account</label>
+          <label><input type="radio" name="question-17" value="2"> A general file-sharing site offering replacement credentials</label>
+          <label><input type="radio" name="question-17" value="3"> The network library or designated official support</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. The final assignment asks for an original summary of an NLS title. What should be submitted?</legend>
+          <label><input type="radio" name="question-18" value="0"> The whole book with only its filename changed</label>
+          <label><input type="radio" name="question-18" value="1"> The learner&#x27;s own summary in the verified saved file</label>
+          <label><input type="radio" name="question-18" value="2"> The account credentials needed to download the title</label>
+          <label><input type="radio" name="question-18" value="3"> The complete protected book as an attachment</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. Which result demonstrates the independent reading workflow?</legend>
+          <label><input type="radio" name="question-19" value="0"> Find sections, verify bookmarks, and reopen the summary</label>
+          <label><input type="radio" name="question-19" value="1"> Find the correct title and list the available navigation commands without reaching the assigned sections</label>
+          <label><input type="radio" name="question-19" value="2"> Read from the start and rely on the last reading position instead of verifying the assigned bookmarks</label>
+          <label><input type="radio" name="question-19" value="3"> Create a summary during reading and finish when its text appears, without checking that it was saved</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"NLS Braille eReader","displayName":"NLS Braille eReader","slug":"ereader","passPercent":80,"questions":[{"answer":0,"explanation":"The device supports Braille reading and file access.","options":["Braille reading materials and files","Visual-only games","Ink printing"],"question":"What is the NLS Braille eReader primarily designed to access?"},{"answer":1,"explanation":"Bookmarks preserve useful positions.","options":["A deleted folder","A bookmark","Airplane mode"],"question":"What helps return to an important reading location?"},{"answer":2,"explanation":"File checks support reliable transfer.","options":["Only capitalization","Only battery color","Filename, folder, file type, and safe connection"],"question":"What should be checked before transferring a BRF file?"},{"answer":0,"explanation":"Terminal Mode supports connected-device Braille access.","options":["Using the eReader as a display with another device","Erasing all books","Printing labels"],"question":"What is Terminal Mode used for?"},{"answer":2,"explanation":"Official sources reduce device and security risks.","options":["Unknown email links","A random file-sharing site","Official NLS or device instructions"],"question":"Where should device updates come from?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"NLS Braille eReader","displayName":"NLS Braille eReader","slug":"ereader","passPercent":85,"questions":[{"lesson":1,"question":"A command from another NLS eReader does not match your controls. What should you check?","options":["Only whether both devices have braille cells","Only the title of the currently open book","Only the battery percentage on the other device","The assigned model and its official command guide"],"answer":3,"explanation":"NLS eReaders can differ by model. Use the matching controls and documentation instead of assuming identical commands."},{"lesson":1,"question":"You power on and see a menu instead of the expected book. What should you establish before pressing commands?","options":["That the book has definitely been deleted","That the previous reading position is permanently lost","That every setting must be reset","The current menu location and available labelled actions"],"answer":3,"explanation":"Startup at a menu does not prove lost content. Orient to the device state before navigating to the book."},{"lesson":2,"question":"Two copies of a book appear in different locations. What should your navigation log identify?","options":["The exact title and storage location of the copy used","Only the book's first displayed word","Only the number of folders in the menu","Only the eReader's power status"],"answer":0,"explanation":"Title and location distinguish copies and make the reading workflow retrievable."},{"lesson":2,"question":"You want to leave a book and choose another without removing the first. Which action fits?","options":["Rename the current book to the next title","Delete the current book to reveal the next title","Format the storage so the Bookshelf refreshes","Return to the Bookshelf using the documented navigation command"],"answer":3,"explanation":"Returning to the Bookshelf is a navigation action. Deleting, formatting, or renaming is unnecessary for choosing another book."},{"lesson":3,"question":"You need to continue across text that exceeds the display's width. What should you use?","options":["The delete-file control","The documented panning controls","The account-recovery process","The software-update menu"],"answer":1,"explanation":"Panning reveals the next or previous segment of braille text. It is distinct from file and device management."},{"lesson":3,"question":"You close a book after reading a section. How should you verify reading-position behavior?","options":["Compare only the book's file size","Check only that the title remains in the Bookshelf","Reopen the book and check where reading resumes","Assume every model always resumes at the same place"],"answer":2,"explanation":"The practical test establishes what was retained on the assigned model and reading app."},{"lesson":4,"question":"You need to return repeatedly to a specific passage. Which feature best supports that task?","options":["Changing the device's display language","Renaming the whole book after the passage","A bookmark at the verified passage","Deleting earlier chapters from the file"],"answer":2,"explanation":"A bookmark records a useful location without changing the source book's contents."},{"lesson":4,"question":"A search finds a phrase in several places. What should you do before adding a bookmark?","options":["Change the search word until only an unrelated result remains","Bookmark the first result regardless of its context","Read each relevant result in context and choose the intended passage","Assume every match refers to the same section"],"answer":2,"explanation":"A phrase match may not identify the needed passage. Verify context before saving the location."},{"lesson":5,"question":"The assigned model's notes feature differs from a tutorial. What should guide your workflow?","options":["The assumption that every eReader uses the same menu labels","The model's available editor or notes capability and official instructions","A command copied from an unrelated device without checking","The book's copyright date"],"answer":1,"explanation":"Use the supported feature and matching documentation. The lesson allows model-specific workflows."},{"lesson":5,"question":"You entered a summary, but it is still only open in the editor. What completes the saved-note check?","options":["Return to the main menu and assume it was saved","Save with a known filename and location, reopen, and proofread","Rename the book instead of saving the note","Record the number of characters typed without checking the file"],"answer":1,"explanation":"A completed note must be retained and retrievable. Verify the actual saved output."},{"lesson":6,"question":"You are documenting a BARD transfer for the assignment. Which information belongs in the report?","options":["The downloaded book in full as proof of access","The account password so the instructor can reproduce the login","The authorized process and verification steps, without credentials or protected book content","Recovery codes and device identifiers copied from account settings"],"answer":2,"explanation":"Describe the workflow without exposing secrets or redistributing protected content."},{"lesson":6,"question":"A transfer reports success. What check confirms the reading task can proceed?","options":["Confirm only that the account page is still open","Confirm only that the browser download button was pressed","Find the intended title in the Bookshelf and open it","Confirm only that the USB cable fits"],"answer":2,"explanation":"The title must be present and usable on the eReader. A transfer message alone does not verify the destination experience."},{"lesson":7,"question":"You want to use the eReader with a computer screen reader. What should be confirmed before following terminal commands?","options":["That the device has a familiar-looking keyboard","That the model can read a local book","That a different eReader supports the feature","Whether the assigned model supports the required terminal connection"],"answer":3,"explanation":"Local reading capability does not prove a particular terminal feature. Verify the assigned model's supported connections."},{"lesson":7,"question":"The eReader is connected but host text is not displayed. Which additional check is relevant?","options":["The host reader's braille connection settings","The device language, because host text is unavailable until both interfaces use one language","The most recent reading bookmark, because connecting resumes the corresponding host file","The local library position, because that controls which host application is displayed"],"answer":0,"explanation":"The host screen reader must use the intended display through a working connection, not merely a physically attached device."},{"lesson":8,"question":"Braille output changes after an approved language or code setting trial. What should happen at the end?","options":["Reset all device settings to an unknown default","Restore the original value and confirm the expected output returns","Delete books whose output looks different","Leave the new value without documenting it"],"answer":1,"explanation":"A reversible test includes restoring and checking the known configuration."},{"lesson":8,"question":"Which settings inventory is useful without exposing unnecessary device identifiers?","options":["Available braille, language, display, battery, storage, and software information","A complete list of another learner's private book notes","Account passwords and recovery codes","The device's serial number as the only recorded detail"],"answer":0,"explanation":"The inventory should describe relevant capabilities and status without including secrets or unnecessary identifiers."},{"lesson":9,"question":"A note is unsaved and the device behaves unexpectedly. What should be considered before restarting?","options":["Protect the note, then follow documented recovery","Install an update before saving because updates are intended to correct unexpected behavior","Restart immediately because every note is saved automatically when the screen changes","Reset the device first and restore the note later from its current on-screen text"],"answer":0,"explanation":"Protect work and use targeted checks. Restarting or changing storage can lose unsaved content."},{"lesson":9,"question":"A hardware or authorized-account problem remains after basic checks. Who is the appropriate next support route in this course?","options":["An unknown caller asking for the account password","Another learner's unrelated account","A general file-sharing site offering replacement credentials","The network library or designated official support"],"answer":3,"explanation":"Use the official library or support process for unresolved NLS device and account issues."},{"lesson":10,"question":"The final assignment asks for an original summary of an NLS title. What should be submitted?","options":["The whole book with only its filename changed","The learner's own summary in the verified saved file","The account credentials needed to download the title","The complete protected book as an attachment"],"answer":1,"explanation":"The task assesses the learner's reading and original summary, not redistribution of protected content or account access."},{"lesson":10,"question":"Which result demonstrates the independent reading workflow?","options":["Find sections, verify bookmarks, and reopen the summary","Find the correct title and list the available navigation commands without reaching the assigned sections","Read from the start and rely on the last reading position instead of verifying the assigned bookmarks","Create a summary during reading and finish when its text appears, without checking that it was saved"],"answer":0,"explanation":"The final project combines navigation, retained locations, comprehension, and a retrievable original output."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>

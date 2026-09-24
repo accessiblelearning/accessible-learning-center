@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible five-question final quiz and printable completion certificate for Microsoft Excel.">
+  <meta name="description" content="Accessible 20-question final assessment covering all ten lessons of Microsoft Excel. Score 85 percent to earn a course-completion certificate.">
   <title>Microsoft Excel Final Quiz - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <script src="accessibility.js?v=nav-quizzes-1" defer></script>
-  <script src="quiz.js?v=quiz-quality-2" defer></script>
+  <script src="quiz.js?v=assessment-20260924" defer></script>
 </head>
 <body>
   <header>
     <p class="eyebrow">Course completion quiz</p>
     <h1>Microsoft Excel Final Quiz</h1>
-    <p>Answer five questions about the skills covered in this course. A score of 80 percent, or four correct answers, earns a printable course-completion certificate.</p>
+    <p>Answer 20 questions covering all ten lessons, including practical scenarios, troubleshooting, and choosing the right steps. Complete all ten lessons and score at least 85 percent (17 of 20 correct) to earn a printable course-completion certificate.</p>
   </header>
   <main id="main-content">
     <nav class="lesson-nav" aria-label="Microsoft Excel quiz navigation">
@@ -24,37 +24,147 @@
     </nav>
     <section aria-labelledby="quiz-heading">
       <h2 id="quiz-heading">Final quiz</h2>
-      <p>Choose the best answer based on the course material. Question and answer order changes each time. You may review the lessons and retake the quiz as many times as needed.</p>
+      <p>Choose one best answer for each question based on the course material. There are two questions from each lesson and four choices per question. Question and answer order changes each time. There is no time limit. After grading, read the explanations and use the lesson links to review before retaking the quiz.</p>
       <form id="courseQuiz" novalidate>
         <fieldset class="quiz-question">
-          <legend>1. How does an Excel formula normally begin?</legend>
-          <label><input type="radio" name="question-0" value="0"> With an equals sign</label>
-          <label><input type="radio" name="question-0" value="1"> With a quotation mark</label>
-          <label><input type="radio" name="question-0" value="2"> With a space</label>
+          <legend>1. Your contact list has Name in A1, Department in B1, and Extension in C1. Where does the second person&#x27;s department belong?</legend>
+          <label><input type="radio" name="question-0" value="0"> C2</label>
+          <label><input type="radio" name="question-0" value="1"> B3</label>
+          <label><input type="radio" name="question-0" value="2"> A3</label>
+          <label><input type="radio" name="question-0" value="3"> B1</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>2. What identifies a cell?</legend>
-          <label><input type="radio" name="question-1" value="0"> Filename and date</label>
-          <label><input type="radio" name="question-1" value="1"> Column letter and row number</label>
-          <label><input type="radio" name="question-1" value="2"> Font and color</label>
+          <legend>2. A colleague asks for the workbook, but you have only described the active worksheet. What distinction matters?</legend>
+          <label><input type="radio" name="question-1" value="0"> Each cell is saved as a separate workbook automatically</label>
+          <label><input type="radio" name="question-1" value="1"> A workbook is the saved file and can contain several worksheets</label>
+          <label><input type="radio" name="question-1" value="2"> A worksheet is the saved file and contains several workbooks</label>
+          <label><input type="radio" name="question-1" value="3"> Only the active worksheet is included when saving an XLSX file</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>3. What should be done before sorting a table?</legend>
-          <label><input type="radio" name="question-2" value="0"> Select one unrelated cell only</label>
-          <label><input type="radio" name="question-2" value="1"> Delete the headers</label>
-          <label><input type="radio" name="question-2" value="2"> Confirm the entire related data range</label>
+          <legend>3. You need to change part of B3&#x27;s existing text while preserving the rest. Which sequence fits?</legend>
+          <label><input type="radio" name="question-2" value="0"> Go to B3, press Ctrl+F, and close Find</label>
+          <label><input type="radio" name="question-2" value="1"> Go to B3, press Ctrl+C, and move away</label>
+          <label><input type="radio" name="question-2" value="2"> Go to B3, press F2, edit, and confirm</label>
+          <label><input type="radio" name="question-2" value="3"> Go to B3, press Delete, and press Save</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>4. Why are clear column headers important?</legend>
-          <label><input type="radio" name="question-3" value="0"> They describe each field</label>
-          <label><input type="radio" name="question-3" value="1"> They make formulas unnecessary</label>
-          <label><input type="radio" name="question-3" value="2"> They hide data</label>
+          <legend>4. You copied Active from D2 to several rows. Which review checks the intended result?</legend>
+          <label><input type="radio" name="question-3" value="0"> Check that the workbook opened without an error</label>
+          <label><input type="radio" name="question-3" value="1"> Check that D2 still says Active and stop there</label>
+          <label><input type="radio" name="question-3" value="2"> Confirm that the worksheet name stayed the same</label>
+          <label><input type="radio" name="question-3" value="3"> Read the destination cells and confirm only the intended rows changed</label>
         </fieldset>
         <fieldset class="quiz-question">
-          <legend>5. What should accompany an important chart?</legend>
-          <label><input type="radio" name="question-4" value="0"> Color alone</label>
-          <label><input type="radio" name="question-4" value="1"> A text summary of the key data</label>
-          <label><input type="radio" name="question-4" value="2"> An empty title</label>
+          <legend>5. B2 contains 3 and C2 contains 12. What result should =B2*C2 produce?</legend>
+          <label><input type="radio" name="question-4" value="0"> 36</label>
+          <label><input type="radio" name="question-4" value="1"> 4</label>
+          <label><input type="radio" name="question-4" value="2"> 9</label>
+          <label><input type="radio" name="question-4" value="3"> 15</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>6. You copy =B2*C2 from D2 to D3 using ordinary relative references. What formula should D3 contain?</legend>
+          <label><input type="radio" name="question-5" value="0"> =B2*C2</label>
+          <label><input type="radio" name="question-5" value="1"> =B3*C3</label>
+          <label><input type="radio" name="question-5" value="2"> =B2+C2</label>
+          <label><input type="radio" name="question-5" value="3"> =C2*D2</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>7. A cell stores 0.1 and should display as 10 percent. What should you change?</legend>
+          <label><input type="radio" name="question-6" value="0"> Apply Currency number format</label>
+          <label><input type="radio" name="question-6" value="1"> Replace the value with 10 and apply Percentage</label>
+          <label><input type="radio" name="question-6" value="2"> Merge it with the neighboring label</label>
+          <label><input type="radio" name="question-6" value="3"> Apply Percentage number format</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>8. Red cells mean Needs Review, but no status words are present. What is the best improvement?</legend>
+          <label><input type="radio" name="question-7" value="0"> Place the meaning only in the workbook filename</label>
+          <label><input type="radio" name="question-7" value="1"> Make every cell the same red color</label>
+          <label><input type="radio" name="question-7" value="2"> Use a brighter shade of red without adding text</label>
+          <label><input type="radio" name="question-7" value="3"> Add explicit status text while keeping useful color cues</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>9. After filtering Training Status to Not Started, several employees disappear. How should you restore the full list?</legend>
+          <label><input type="radio" name="question-8" value="0"> Clear that filter and verify the rows return</label>
+          <label><input type="radio" name="question-8" value="1"> Change the worksheet name to All Employees</label>
+          <label><input type="radio" name="question-8" value="2"> Re-enter the missing employees as new records</label>
+          <label><input type="radio" name="question-8" value="3"> Undo every edit made since opening the workbook</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>10. You are converting a list with column labels into a table. What must be verified in the creation dialog?</legend>
+          <label><input type="radio" name="question-9" value="0"> That every numeric column is formatted as currency</label>
+          <label><input type="radio" name="question-9" value="1"> Only the active cell&#x27;s font and background color</label>
+          <label><input type="radio" name="question-9" value="2"> The full data range and the My table has headers setting</label>
+          <label><input type="radio" name="question-9" value="3"> That the workbook contains exactly one worksheet</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>11. B2 is 8 and C2 is 8. What does =IF(B2&gt;=C2,&quot;Complete&quot;,&quot;Needs Training&quot;) return?</legend>
+          <label><input type="radio" name="question-10" value="0"> Complete</label>
+          <label><input type="radio" name="question-10" value="1"> 8</label>
+          <label><input type="radio" name="question-10" value="2"> 0</label>
+          <label><input type="radio" name="question-10" value="3"> Needs Training</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>12. D2:D7 contains Complete three times and Needs Training three times. What does =COUNTIF(D2:D7,&quot;Complete&quot;) return?</legend>
+          <label><input type="radio" name="question-11" value="0"> 0</label>
+          <label><input type="radio" name="question-11" value="1"> 2</label>
+          <label><input type="radio" name="question-11" value="2"> 3</label>
+          <label><input type="radio" name="question-11" value="3"> 6</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>13. Summary!B1 contains =January!B8. January!B8 changes from 50 to 65. Under normal automatic calculation, what should Summary!B1 show?</legend>
+          <label><input type="radio" name="question-12" value="0"> 65</label>
+          <label><input type="radio" name="question-12" value="1"> 0</label>
+          <label><input type="radio" name="question-12" value="2"> 50</label>
+          <label><input type="radio" name="question-12" value="3"> 115</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>14. You want January, February, and Summary in one saved file. Which organization fits?</legend>
+          <label><input type="radio" name="question-13" value="0"> One worksheet with every monthly total typed over the previous one</label>
+          <label><input type="radio" name="question-13" value="1"> Three workbooks renamed to the same filename</label>
+          <label><input type="radio" name="question-13" value="2"> Three named worksheets within one workbook</label>
+          <label><input type="radio" name="question-13" value="3"> Three unrelated files with no summary formulas</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>15. A chart has good alt text, but a reader needs the exact monthly values. What should remain available?</legend>
+          <label><input type="radio" name="question-14" value="0"> Only the highest monthly value</label>
+          <label><input type="radio" name="question-14" value="1"> The source data table with clear labels</label>
+          <label><input type="radio" name="question-14" value="2"> Only a larger image of the chart</label>
+          <label><input type="radio" name="question-14" value="3"> Only the chart&#x27;s title and legend</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>16. Which chart description is most useful for the training report?</legend>
+          <label><input type="radio" name="question-15" value="0"> What the chart compares and its main trend</label>
+          <label><input type="radio" name="question-15" value="1"> Every decorative color without naming the data</label>
+          <label><input type="radio" name="question-15" value="2"> A statement that the chart is a picture</label>
+          <label><input type="radio" name="question-15" value="3"> The chart&#x27;s filename and creation time</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>17. Users enter Closed, closed-out, and Finished for the same status. Which feature can guide consistent new entries?</legend>
+          <label><input type="radio" name="question-16" value="0"> A chart showing the existing status values</label>
+          <label><input type="radio" name="question-16" value="1"> A data-validation list of allowed status values</label>
+          <label><input type="radio" name="question-16" value="2"> A larger font for the Status column</label>
+          <label><input type="radio" name="question-16" value="3"> A renamed workbook without changing entry controls</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>18. You added a validation list for Status. What practical check should follow?</legend>
+          <label><input type="radio" name="question-17" value="0"> Sort the sheet without testing any entry cells</label>
+          <label><input type="radio" name="question-17" value="1"> Confirm the workbook has an Instructions sheet and stop</label>
+          <label><input type="radio" name="question-17" value="2"> Check only that the worksheet contains the word Status</label>
+          <label><input type="radio" name="question-17" value="3"> Open the list in a target cell and verify its choices and behavior</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>19. One copied line-total formula uses the previous row&#x27;s quantity. Which review would reveal the cause?</legend>
+          <label><input type="radio" name="question-18" value="0"> Change the total&#x27;s currency format</label>
+          <label><input type="radio" name="question-18" value="1"> Increase the chart&#x27;s size</label>
+          <label><input type="radio" name="question-18" value="2"> Inspect that row&#x27;s formula and compare its references with its inputs</label>
+          <label><input type="radio" name="question-18" value="3"> Rename the Summary worksheet</label>
+        </fieldset>
+        <fieldset class="quiz-question">
+          <legend>20. The final budget has totals and a chart but no source values accessible to readers. What is missing?</legend>
+          <label><input type="radio" name="question-19" value="0"> A more decorative chart theme</label>
+          <label><input type="radio" name="question-19" value="1"> A second chart using the same inaccessible picture</label>
+          <label><input type="radio" name="question-19" value="2"> A shorter workbook filename</label>
+          <label><input type="radio" name="question-19" value="3"> Reviewable data and a text explanation supporting the results</label>
         </fieldset>
         <button type="submit">Grade my quiz</button>
       </form>
@@ -85,6 +195,6 @@
       <button id="printCertificate" type="button">Print or Save Certificate</button>
     </section>
   </main>
-  <script id="quizData" type="application/json">{"course":"Microsoft Excel","displayName":"Microsoft Excel","slug":"excel","passPercent":80,"questions":[{"answer":0,"explanation":"Excel formulas begin with =.","options":["With an equals sign","With a quotation mark","With a space"],"question":"How does an Excel formula normally begin?"},{"answer":1,"explanation":"A cell reference combines column and row, such as B4.","options":["Filename and date","Column letter and row number","Font and color"],"question":"What identifies a cell?"},{"answer":2,"explanation":"Keeping related rows together prevents data corruption.","options":["Select one unrelated cell only","Delete the headers","Confirm the entire related data range"],"question":"What should be done before sorting a table?"},{"answer":0,"explanation":"Headers make spreadsheet structure understandable.","options":["They describe each field","They make formulas unnecessary","They hide data"],"question":"Why are clear column headers important?"},{"answer":1,"explanation":"A text equivalent makes chart meaning accessible.","options":["Color alone","A text summary of the key data","An empty title"],"question":"What should accompany an important chart?"}]}</script>
+  <script id="quizData" type="application/json">{"course":"Microsoft Excel","displayName":"Microsoft Excel","slug":"excel","passPercent":85,"questions":[{"lesson":1,"question":"Your contact list has Name in A1, Department in B1, and Extension in C1. Where does the second person's department belong?","options":["C2","B3","A3","B1"],"answer":1,"explanation":"Row 1 holds headers, row 2 holds the first record, and row 3 holds the second. Department is column B."},{"lesson":1,"question":"A colleague asks for the workbook, but you have only described the active worksheet. What distinction matters?","options":["Each cell is saved as a separate workbook automatically","A workbook is the saved file and can contain several worksheets","A worksheet is the saved file and contains several workbooks","Only the active worksheet is included when saving an XLSX file"],"answer":1,"explanation":"The workbook contains its worksheets. Saving the workbook preserves more than just the currently active sheet."},{"lesson":2,"question":"You need to change part of B3's existing text while preserving the rest. Which sequence fits?","options":["Go to B3, press Ctrl+F, and close Find","Go to B3, press Ctrl+C, and move away","Go to B3, press F2, edit, and confirm","Go to B3, press Delete, and press Save"],"answer":2,"explanation":"F2 enters cell editing. Typing directly over a selected cell or deleting it can replace the whole value."},{"lesson":2,"question":"You copied Active from D2 to several rows. Which review checks the intended result?","options":["Check that the workbook opened without an error","Check that D2 still says Active and stop there","Confirm that the worksheet name stayed the same","Read the destination cells and confirm only the intended rows changed"],"answer":3,"explanation":"The source remaining correct does not prove the target range is correct. Review the pasted values and scope."},{"lesson":3,"question":"B2 contains 3 and C2 contains 12. What result should =B2*C2 produce?","options":["36","4","9","15"],"answer":0,"explanation":"Multiplication calculates quantity times unit cost. Addition, subtraction, and division produce different results."},{"lesson":3,"question":"You copy =B2*C2 from D2 to D3 using ordinary relative references. What formula should D3 contain?","options":["=B2*C2","=B3*C3","=B2+C2","=C2*D2"],"answer":1,"explanation":"Copying down one row adjusts relative row references by one. Verify the copied formula rather than assuming all totals use the right row."},{"lesson":4,"question":"A cell stores 0.1 and should display as 10 percent. What should you change?","options":["Apply Currency number format","Replace the value with 10 and apply Percentage","Merge it with the neighboring label","Apply Percentage number format"],"answer":3,"explanation":"Percentage formatting displays the stored decimal as a percent. Entering 10 and formatting it as a percentage would show 1000 percent."},{"lesson":4,"question":"Red cells mean Needs Review, but no status words are present. What is the best improvement?","options":["Place the meaning only in the workbook filename","Make every cell the same red color","Use a brighter shade of red without adding text","Add explicit status text while keeping useful color cues"],"answer":3,"explanation":"Color alone does not communicate the status to everyone. Text labels make the meaning available independently of color perception."},{"lesson":5,"question":"After filtering Training Status to Not Started, several employees disappear. How should you restore the full list?","options":["Clear that filter and verify the rows return","Change the worksheet name to All Employees","Re-enter the missing employees as new records","Undo every edit made since opening the workbook"],"answer":0,"explanation":"Filtering hides nonmatching rows without deleting them. Clearing the filter restores the broader view."},{"lesson":5,"question":"You are converting a list with column labels into a table. What must be verified in the creation dialog?","options":["That every numeric column is formatted as currency","Only the active cell's font and background color","The full data range and the My table has headers setting","That the workbook contains exactly one worksheet"],"answer":2,"explanation":"The correct range and header setting define the table's records and column names. Appearance alone does not establish either."},{"lesson":6,"question":"B2 is 8 and C2 is 8. What does =IF(B2>=C2,\"Complete\",\"Needs Training\") return?","options":["Complete","8","0","Needs Training"],"answer":0,"explanation":"The greater-than-or-equal comparison is true when both values are equal, so IF returns its first text result."},{"lesson":6,"question":"D2:D7 contains Complete three times and Needs Training three times. What does =COUNTIF(D2:D7,\"Complete\") return?","options":["0","2","3","6"],"answer":2,"explanation":"COUNTIF counts cells matching its criterion, not every nonblank cell or the number of distinct labels."},{"lesson":7,"question":"Summary!B1 contains =January!B8. January!B8 changes from 50 to 65. Under normal automatic calculation, what should Summary!B1 show?","options":["65","0","50","115"],"answer":0,"explanation":"The cross-sheet formula refers to the source cell and updates with it. A manually typed copy would not provide that relationship."},{"lesson":7,"question":"You want January, February, and Summary in one saved file. Which organization fits?","options":["One worksheet with every monthly total typed over the previous one","Three workbooks renamed to the same filename","Three named worksheets within one workbook","Three unrelated files with no summary formulas"],"answer":2,"explanation":"Multiple worksheets keep related data in one workbook and support a separate linked summary."},{"lesson":8,"question":"A chart has good alt text, but a reader needs the exact monthly values. What should remain available?","options":["Only the highest monthly value","The source data table with clear labels","Only a larger image of the chart","Only the chart's title and legend"],"answer":1,"explanation":"Alt text summarizes purpose and trends; an accessible data table supports inspection of exact values."},{"lesson":8,"question":"Which chart description is most useful for the training report?","options":["What the chart compares and its main trend","Every decorative color without naming the data","A statement that the chart is a picture","The chart's filename and creation time"],"answer":0,"explanation":"Useful alternative text conveys the information the chart contributes, rather than incidental visual or file details."},{"lesson":9,"question":"Users enter Closed, closed-out, and Finished for the same status. Which feature can guide consistent new entries?","options":["A chart showing the existing status values","A data-validation list of allowed status values","A larger font for the Status column","A renamed workbook without changing entry controls"],"answer":1,"explanation":"A validation list guides entry toward defined choices. Formatting or charting does not standardize the values users enter."},{"lesson":9,"question":"You added a validation list for Status. What practical check should follow?","options":["Sort the sheet without testing any entry cells","Confirm the workbook has an Instructions sheet and stop","Check only that the worksheet contains the word Status","Open the list in a target cell and verify its choices and behavior"],"answer":3,"explanation":"Validation must apply to the intended cells and offer the intended values. Test the actual entry workflow."},{"lesson":10,"question":"One copied line-total formula uses the previous row's quantity. Which review would reveal the cause?","options":["Change the total's currency format","Increase the chart's size","Inspect that row's formula and compare its references with its inputs","Rename the Summary worksheet"],"answer":2,"explanation":"A plausible-looking result can still use the wrong cells. Formula inspection checks the calculation's actual inputs."},{"lesson":10,"question":"The final budget has totals and a chart but no source values accessible to readers. What is missing?","options":["A more decorative chart theme","A second chart using the same inaccessible picture","A shorter workbook filename","Reviewable data and a text explanation supporting the results"],"answer":3,"explanation":"The project must communicate both conclusions and the data behind them. Visual presentation alone does not establish accessible understanding."}],"assessmentVersion":"2026-09-24"}</script>
 </body>
 </html>
