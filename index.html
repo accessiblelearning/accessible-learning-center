@@ -6,7 +6,7 @@
   <meta name="description" content="Free technology lessons for blind and low-vision learners. Learn JAWS, NVDA, Narrator, Windows, Microsoft Office, Google tools, and braille technology.">
   <title>Free Screen Reader &amp; Technology Lessons | Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
-  <script src="accessibility.js?v=accessibility-20260920" defer></script>
+  <script src="accessibility.js?v=combined-home-20260924" defer></script>
   <link rel="canonical" href="https://accessiblelearningcenter.org/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Accessible Learning Center">
@@ -14,63 +14,55 @@
   <meta property="og:description" content="Free technology lessons for blind and low-vision learners. Learn JAWS, NVDA, Narrator, Windows, Microsoft Office, Google tools, and braille technology.">
   <meta property="og:url" content="https://accessiblelearningcenter.org/">
   <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="home.css?v=combined-1">
 </head>
-<body>
-  <header class="home-hero">
-    <div>
-      <p class="eyebrow">Accessible technology learning</p>
-      <h1>Accessible Learning Center</h1>
-      <p>Free, step-by-step technology manuals and lessons for blind and low-vision learners. Build everyday computer skills with JAWS, NVDA, Narrator, Windows, Microsoft Office, Google tools, and braille technology.</p>
-    </div>
-    <img class="home-hero__art" src="assets/accessible-tech-hero.webp" alt="" aria-hidden="true" width="1400" height="788">
+<body class="combined-home">
+  <header class="home-intro">
+    <h1>Accessible Learning Center</h1>
+    <p>Free, step-by-step technology lessons for blind and low-vision learners.</p>
+    <p>Choose a starting point below. Read the manuals and lessons without creating an account.</p>
   </header>
-
   <main id="main-content">
-    <section aria-labelledby="beginner-heading">
-      <h2 id="beginner-heading">Choose your first free lesson</h2>
-      <p>New to a screen reader or learning to use your computer without a mouse? Start with one practical skill. You can read the manuals and lessons without creating an account.</p>
-      <ul class="card-list">
-        <li><a href="jaws-lesson-1.html">Get started with JAWS, NVDA, or Windows Narrator</a></li>
-        <li><a href="windows-lesson-1.html">Learn Windows and keyboard navigation</a></li>
-        <li><a href="word-lesson-1.html">Start learning Microsoft Word</a></li>
-        <li><a href="start-here.html">Find the learning path that fits your goal</a></li>
+    <section aria-labelledby="learning-paths-heading">
+      <h2 id="learning-paths-heading">Start learning</h2>
+      <ul class="learning-path-list home-paths">
+        <li><h3><a href="windows-lesson-1.html">Computer basics</a></h3><p>Start with Windows, keyboard navigation, files, and folders.</p></li>
+        <li><h3><a href="jaws-lesson-1.html">Screen readers</a></h3><p>Get started with JAWS, NVDA, or Windows Narrator.</p></li>
+        <li><h3><a href="word-lesson-1.html">Workplace skills</a></h3><p>Begin with Word, then explore spreadsheets, email, and teamwork.</p></li>
+        <li><h3><a href="chrome-lesson-1.html">Google tools</a></h3><p>Begin with Chrome, then explore Docs, Drive, and Gmail.</p></li>
+        <li><h3><a href="focus-lesson-1.html">Braille technology</a></h3><p>Start with Focus 40 Blue, or <a href="manuals.html">find a guide for another device</a>.</p></li>
+        <li><h3><a href="ai-fundamentals-lesson-1.html">AI skills</a></h3><p>Learn AI basics and responsible use before exploring individual tools.</p></li>
       </ul>
     </section>
-    <nav aria-labelledby="start-learning-heading">
-      <h2 id="start-learning-heading">Start learning</h2>
-      <ul class="card-list">
-        <li><a href="start-here.html">Start here: choose the learning path that fits you</a></li>
-        <li><a href="manuals.html">Read accessible manuals</a></li>
-        <li><a href="lessons.html">Practice AI, office tools, web tools, braille technology, cybersecurity, PDFs, and employment lessons</a></li>
-        <li><a href="student-id.html">Enter or change Student ID</a></li>
-        <li><a href="student-progress.html">Review my progress</a></li>
-        <li><a href="resources.html">Search help and resources</a></li>
-        <li><a href="troubleshooting-lab.html">Mission Control — coming soon (testing preview)</a></li>
+    <nav aria-labelledby="explore-heading">
+      <h2 id="explore-heading">Browse or find help</h2>
+      <ul class="home-links">
+        <li><a href="manuals.html">All manuals</a></li>
+        <li><a href="lessons.html">All lessons</a></li>
+        <li><a href="resources.html">Search resources</a></li>
       </ul>
     </nav>
-
-    <section aria-labelledby="how-it-works-heading">
-      <h2 id="how-it-works-heading">How it works</h2>
-      <ol>
-        <li>Choose a manual or guided lesson.</li>
-        <li>Complete the assignment using your preferred assistive technology.</li>
-        <li>Mark the lesson complete using your anonymous Student ID, then return to review your saved progress.</li>
-      </ol>
+    <section aria-labelledby="returning-heading">
+      <h2 id="returning-heading">Continue learning</h2>
+      <ul class="home-links">
+        <li><a href="student-progress.html">Review progress</a></li>
+        <li><a href="student-id.html">Enter Student ID</a></li>
+        <li><a href="quizzes.html">Quizzes and certificates</a></li>
+      </ul>
+      <details>
+        <summary>How progress works</summary>
+        <p>Choose a lesson, complete its activities using your preferred assistive technology, and mark it complete. Use the same anonymous Student ID when you return to review saved progress.</p>
+      </details>
+      <details>
+        <summary>For instructors, families, and support groups</summary>
+        <p>Share a direct link to a manual or lesson that matches a learner’s goal. The public materials are free to read and can support practice between teaching sessions.</p>
+      </details>
     </section>
-    <section aria-labelledby="instructor-heading">
-      <h2 id="instructor-heading">For instructors, families, and support groups</h2>
-      <p>Looking for a resource to share with a learner? Choose a manual or lesson that matches their goal and send them its link. The public materials are free to read and can support independent practice between teaching sessions.</p>
-      <p><a href="manuals.html">Browse manuals and instructor resources</a></p>
-    </section>
-    <section aria-labelledby="coming-soon-heading">
-      <h2 id="coming-soon-heading">Mission Control is coming soon</h2>
-      <p>Our interactive command practice and troubleshooting missions are currently being tested and refined. In the meantime, explore the free manuals and guided lessons available now.</p>
-      <p><a href="troubleshooting-lab.html">Read about Mission Control and its testing preview</a></p>
-    </section>
+    <aside class="home-coming-soon" aria-labelledby="coming-soon-heading">
+      <h2 id="coming-soon-heading">Mission Control — coming soon</h2>
+      <p>Interactive command practice and troubleshooting missions are being tested. <a href="troubleshooting-lab.html">View the testing preview</a>.</p>
+    </aside>
   </main>
-
-  <footer>
-    <p>&copy; 2026 Accessible Learning Center</p>
-  </footer>
+  <footer><p>&copy; 2026 Accessible Learning Center</p></footer>
 </body>
 </html>

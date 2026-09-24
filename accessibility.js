@@ -63,7 +63,8 @@
   applyPreferences();
 
   function recordAnonymousPageView() {
-    const currentPage = location.pathname.split("/").pop() || "index.html";
+    const requestedPage = location.pathname.split("/").pop() || "index.html";
+    const currentPage = requestedPage === "start-here.html" ? "index.html" : requestedPage;
 
     if (
       !analyticsHosts.has(location.hostname) ||
@@ -154,7 +155,6 @@
     nav.innerHTML = `
       <div class="site-nav__inner">
         <a href="index.html">Home</a>
-        <a href="start-here.html">Start here</a>
         <a href="manuals.html">Manuals</a>
         <a href="lessons.html">Lessons</a>
         <a href="quizzes.html">Quizzes</a>
@@ -163,7 +163,8 @@
       </div>
     `;
 
-    const currentPage = location.pathname.split("/").pop() || "index.html";
+    const requestedPage = location.pathname.split("/").pop() || "index.html";
+    const currentPage = requestedPage === "start-here.html" ? "index.html" : requestedPage;
     if (currentPage.endsWith("-manual.html")) {
       const reviewNote = document.createElement("p");
       reviewNote.className = "manual-review-date";

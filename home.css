@@ -1,0 +1,17 @@
+/* Compact combined homepage; colors follow the shared accessibility theme. */
+.combined-home .home-intro { display: block; max-width: 70rem; margin-inline: auto; }
+.combined-home .home-intro p { max-width: 65ch; }
+.combined-home .home-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); list-style: none; padding: 0; gap: 1rem; }
+.combined-home .home-paths li { margin: 0; padding: 1rem; min-width: 0; }
+.combined-home .home-paths h3 { margin: 0 0 .4rem; }
+.combined-home .home-paths p { margin: 0; }
+.combined-home .home-links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; list-style: none; padding: 0; }
+.combined-home .home-links li { margin: 0; }
+.combined-home .home-links a { display: inline-block; padding-block: .45rem; }
+.combined-home details { margin-block: .75rem; }
+.combined-home .home-coming-soon { margin-top: 1.5rem; padding-block: 1rem; border-top: 1px solid currentColor; }
+.combined-home .home-coming-soon h2 { font-size: 1.2em; margin-block: 0 .5rem; }
+.combined-home .site-nav a[href="start-here.html"] { display: none; }
+@media (max-width: 42rem) {
+  .combined-home .home-paths { grid-template-columns: minmax(0, 1fr); }
+}
