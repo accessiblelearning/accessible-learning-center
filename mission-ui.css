@@ -35,6 +35,10 @@ body.mission-website-controls-hidden > .site-nav { display: none; }
   padding: clamp(1rem, 3vw, 2rem);
 }
 .mission-center-page .mission-center-panel h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+/* Keep the launch notice readable on Mission Control's blue and black panels. */
+.mission-center-page .mission-center-panel .mission-launch-notice :is(h2, p, a) {
+  color: #fff;
+}
 .mission-center-page .mission-center-summary { font-size: 1rem; margin: .5rem auto 1rem; }
 .mission-center-page .mission-center-menu { margin: 1rem auto; gap: .7rem; }
 .mission-center-page .mission-center-menu--simple { grid-template-columns: minmax(0, 1fr); max-width: 58rem; }
