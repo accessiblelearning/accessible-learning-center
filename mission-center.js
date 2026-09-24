@@ -64,7 +64,7 @@
     const selected = items.find(item => item.getAttribute("href") === remembered) || items[0];
     selected?.focus();
     openingAnnouncement = false;
-    speak("Mission Control Center. " + selected.textContent.trim() + ". Press Enter to open. Use Up or Down Arrow to choose Topic Missions, Command Practice, or Settings.");
+    speak("Mission Control is coming soon and is currently being tested. These activities are a development preview. " + selected.textContent.trim() + ". Press Enter to open. Use Up or Down Arrow to choose Topic Missions, Command Practice, or Settings.");
   });
   window.addEventListener("pagehide", stopVoice);
 })();

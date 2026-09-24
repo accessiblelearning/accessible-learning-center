@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Choose an independently available troubleshooting mission based on Accessible Learning Center manuals.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Coming soon: Mission Control is currently being tested. Choose an independently available troubleshooting mission based on Accessible Learning Center manuals.">
   <title>Topic Missions - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
   <link rel="stylesheet" href="mission-ui.css?v=keyboard-match-2">
@@ -16,9 +17,14 @@
   <main id="main-content" class="mission-center-shell">
     <section class="mission-center-panel" aria-labelledby="topicMissionsHeading">
       <h1 id="topicMissionsHeading">Topic Missions</h1>
+      <section aria-labelledby="missionLaunchHeading">
+        <h2 id="missionLaunchHeading">Coming soon: Mission Control</h2>
+        <p id="missionLaunchNotice">Mission Control is currently being tested and refined. The activities below are a development preview and may still have issues.</p>
+        <p>Ready to learn today? <a href="manuals.html">Browse free manuals</a> or <a href="lessons.html">start a guided lesson</a>.</p>
+      </section>
       <p class="mission-center-summary">Welcome to Topic Missions. Use the arrow keys to choose a manual.</p>
       <p id="topicMissionsInstructions" class="visually-hidden">Use Down Arrow and Up Arrow to move through topic missions. Press Enter to start the highlighted mission. Press Escape to return to Mission Control Center.</p>
-      <div id="topicMissionsMenu" class="mission-center-menu" role="application" aria-label="Topic Missions" aria-describedby="topicMissionsInstructions"></div>
+      <div id="topicMissionsMenu" class="mission-center-menu" role="application" aria-label="Topic Missions" aria-describedby="missionLaunchNotice topicMissionsInstructions"></div>
       <p id="missionSelectionDescription" class="mission-selection-detail"></p>
       <p id="topicMissionsStatus" class="visually-hidden" role="status" aria-live="polite"></p>
       <p class="mission-center-help"><strong>Up or Down:</strong> move through missions. <strong>Enter:</strong> start. <strong>Escape:</strong> return to Mission Control Center.</p>
