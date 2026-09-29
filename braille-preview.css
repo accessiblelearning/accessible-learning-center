@@ -176,6 +176,7 @@ body[data-braille-large=true] .kb-result-primary { max-width: 28rem; justify-sel
 .braille-dot.active { background: #ffe37a; color: #06142d; border-color: #fff; }
 #entryFeedback { margin: .2rem 0; font-weight: 800; }
 #entryFeedback:empty { display: none; }
+#warmupNavigation { margin: .65rem 0 0; font-size: .8em; }
 #warmupResultsPanel { min-height: calc(100dvh - 7rem); }
 #warmupFullCell { margin: 1.5rem auto; }
 .braille-keys { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; }
