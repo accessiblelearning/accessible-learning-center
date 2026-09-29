@@ -170,9 +170,14 @@ body[data-braille-large=true] .kb-result-primary { max-width: 28rem; justify-sel
 #writingProgress::-moz-progress-bar { background: #8cabc6; }
 #practicePanel #progressText { margin: 0; font-size: .85em; }
 #visualGuide { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.5rem; padding: .45rem; border: 2px solid #65aef5; border-radius: .7rem; background: #071a35; }
-.braille-cell { display: grid; grid-template-columns: repeat(2, 1.65em); gap: .2em; justify-content: center; }
-.braille-dot { border: 2px solid #93b5da; border-radius: 50%; width: 1.65em; height: 1.65em; display: grid; place-items: center; background: #102044; color: #fff; font-size: .9em; }
+.braille-cell-preview p { margin: 0 0 .4rem; font-weight: 800; }
+.braille-cell { display: grid; grid-template-columns: repeat(2, 2em); gap: .2em; justify-content: center; }
+.braille-dot { border: 2px solid #93b5da; border-radius: 50%; width: 2em; height: 2em; display: grid; place-items: center; background: #102044; color: #fff; font-size: 1em; }
 .braille-dot.active { background: #ffe37a; color: #06142d; border-color: #fff; }
+#entryFeedback { margin: .2rem 0; font-weight: 800; }
+#entryFeedback:empty { display: none; }
+#warmupResultsPanel { min-height: calc(100dvh - 7rem); }
+#warmupFullCell { margin: 1.5rem auto; }
 .braille-keys { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; }
 .braille-hand { display: grid; gap: .25rem; font-weight: 700; }
 .braille-key-row { display: flex; gap: .3rem; }
