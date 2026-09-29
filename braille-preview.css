@@ -195,7 +195,8 @@ body[data-braille-large=true] .kb-result-primary { max-width: 28rem; justify-sel
 .kb-panel h1, .kb-panel h2 { font-size: calc(clamp(2rem, 4vw, 3.3rem) * var(--kb-scale)); overflow-wrap: anywhere; }
 .kb-brand { margin: 0 0 .6rem; color: #b5ddff; text-align: center; font-size: .85em; font-weight: 800; letter-spacing: .06em; }
 .kb-summary { max-width: 50rem; margin: 0 auto 1.5rem; font-size: 1em; }
-#setupPanel { padding-top: 1.5rem; }
+#setupPanel { padding-top: .5rem; }
+#setupPanel #menuProgress { margin: .5rem auto; font-size: .85em; }
 .kb-menu-option { min-width: 0; grid-template-columns: minmax(8rem, .65fr) minmax(0, 1.6fr); overflow-wrap: anywhere; }
 .kb-menu-option .kb-menu-label { font-size: 1.25em; }
 .kb-shell .kb-menu-value { font-size: 1em; line-height: 1.4; }
@@ -264,12 +265,13 @@ html[data-contrast=high], html[data-contrast=high] body { background: #000; colo
 
 /* Screenshot-guided layout: brief prompt, a clear target, and a full keyboard. */
 .kb-shell > .kb-panel { margin: 0; }
-#setupPanel .kb-menu { max-width: 52rem; gap: .7rem; margin: 1.5rem auto 1rem; }
-#setupPanel .kb-menu-option { grid-template-columns: 1fr; justify-items: center; text-align: center; min-height: 5rem; gap: .2rem; padding: .8rem 1.2rem; }
-#setupPanel .kb-menu-label { font-size: 1.5em; }
+#setupPanel .kb-menu { max-width: 52rem; gap: .4rem; margin: 0 auto .75rem; }
+#setupPanel .kb-menu-option { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; min-height: 3.5rem; gap: .35rem; padding: .5rem 1rem; }
+#setupPanel .kb-menu-option--start { min-height: 5rem; }
+#setupPanel :is(.kb-menu-label, .kb-menu-value) { line-height: 1.25; }
+#setupPanel .kb-menu-label { font-size: 1.25em; }
 #setupPanel #currentLesson .kb-menu-label { font-size: 1em; }
-#setupPanel #currentLessonValue { font-size: 1.6em; }
-#setupPanel .kb-actions { margin-top: 1rem; }
+#setupPanel #currentLessonValue { font-size: 1.35em; }
 #menuProgress { font-size: .8em; margin: 1rem auto .25rem; }
 html body[data-braille-screen=learnPanel] > main.kb-shell { padding-top: .6rem; padding-bottom: .6rem; }
 body[data-braille-screen=learnPanel] .kb-toolbar { margin-bottom: .4rem; }
@@ -345,6 +347,7 @@ body[data-braille-screen=learnPanel] .kb-toolbar button { padding-top: .35rem; p
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #targetSymbol { background: #fff; color: #000; border-color: #fff; }
 /* Retain a clear selection even after a pointer click moves focus to page text. */
 /* Match Keyboarding's setting rows, values, and separate adjustment buttons. */
+#settingsHeading { font-size: calc(clamp(2.25rem, 7vw, 4.75rem) * var(--kb-scale)); }
 #settingsMenu .kb-menu-option { min-height: 6.5rem; grid-template-columns: minmax(9rem, .8fr) minmax(0, 1.5fr); padding: 1rem 1.5rem; }
 #settingsMenu .kb-menu-label { font-size: 1.05em; }
 #settingsMenu .kb-menu-value { min-width: 0; font-size: calc(clamp(1.45rem, 4vw, 2.7rem) * var(--kb-scale)); line-height: 1.15; overflow-wrap: anywhere; }
