@@ -3,7 +3,7 @@
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
     html body > main.kb-shell { width: 100%; max-width: 72rem; min-height: 100vh; margin: 0 auto; padding: clamp(.75rem, 2vw, 1.5rem); box-sizing: border-box; background: #06142d; border: 0; border-radius: 0; box-shadow: none; font-size: calc(1.2rem * var(--kb-scale)); }
     .kb-panel { min-height: calc(100vh - 7rem); box-sizing: border-box; background: #0b2147; color: #fff; border: 3px solid #65aef5; border-radius: 1rem; padding: clamp(1.25rem, 4vw, 3rem); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
-    .kb-panel h1, .kb-panel h2 { margin-top: 0; color: #fff !important; line-height: 1.15; }
+    .kb-panel h1, .kb-panel h2, .kb-panel h3, .kb-panel h4 { margin-top: 0; color: #fff !important; line-height: 1.15; }
     .kb-panel h1, .kb-panel h2 { text-align: center; font-size: clamp(2.25rem, 7vw, 4.75rem); }
     .kb-form { display: grid; gap: 1rem; }
     .kb-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
@@ -119,6 +119,7 @@ html { background: #06142d; }
 .kb-shell :is(button, select, input, a, summary, [tabindex]):focus-visible { outline: 4px solid #ffe37a; outline-offset: 4px; }
 .kb-shell a { color: #a3d9ff; }
 .kb-shell p { overflow-wrap: anywhere; }
+.kb-shell .kb-form { color: #fff; background: #0b2147; border-color: #65aef5; }
 .kb-shell .kb-menu-value { font-size: 1.2em; }
 .kb-menu-option:disabled { opacity: .65; cursor: default; }
 .kb-menu-option:not(:has(.kb-menu-label)) { grid-template-columns: 1fr; }
@@ -188,7 +189,7 @@ body[data-braille-large=true] .kb-result-primary { max-width: 28rem; justify-sel
 body[data-braille-dark=true],
 html[data-theme=dark], html[data-theme=dark] body,
 html[data-contrast=high], html[data-contrast=high] body { background: #000; color: #fff; }
-:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.kb-shell, .kb-panel, .kb-menu-help, .kb-menu-option, .kb-result, .kb-finish-row, #capture, #visualGuide, .braille-dot, .braille-key, .kb-help, .kb-settings select, .kb-toolbar button, .kb-action, .kb-result-primary, th, td) { background: #000 !important; color: #fff !important; border-color: #fff; box-shadow: none; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.kb-shell, .kb-panel, .kb-form, .kb-menu-help, .kb-menu-option, .kb-result, .kb-finish-row, #capture, #visualGuide, .braille-dot, .braille-key, .kb-help, .kb-settings select, .kb-toolbar button, .kb-action, .kb-result-primary, th, td) { background: #000 !important; color: #fff !important; border-color: #fff; box-shadow: none; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .kb-menu-option:focus { border-color: #ffe37a; outline: 4px solid #ffe37a; outline-offset: 3px; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #targetCells .current-cell { background: #000; color: #fff; outline: 3px solid #ffe37a; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.braille-dot.active, .braille-key[data-active=true]) { background: #ffe37a !important; color: #000 !important; border-color: #ffe37a; }
