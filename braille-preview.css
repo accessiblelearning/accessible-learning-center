@@ -289,6 +289,19 @@ body[data-braille-screen=learnPanel] .kb-toolbar button { padding-top: .35rem; p
 #capture { min-height: 0; flex: 0 0 auto; padding: .5rem; border: 0; border-radius: .5rem; }
 #dotHint { max-width: 42rem; margin: 0 auto .5rem; font-size: calc(clamp(1.15rem, 2.1vw, 1.55rem) * var(--kb-scale)); font-weight: 800; line-height: 1.35; }
 .braille-target-group { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .7rem 1.25rem; width: fit-content; max-width: 100%; margin: 0 auto; }
+.braille-word-workspace { min-width: 0; max-width: 100%; }
+#capture[data-word-writing=true] .braille-word-workspace { max-width: min(32rem, 100%); }
+#writtenWordPanel { margin: .4rem 0 0; }
+#writtenWordLabel { margin: 0 0 .25rem; font-size: .8em; font-weight: 700; }
+#writtenWord { display: flex; flex-wrap: wrap; justify-content: center; gap: .2rem; }
+.written-letter { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 0 0 auto; width: 1.3em; min-height: 2.35em; padding: .08em; border: 2px solid #698aad; border-radius: .18em; font-size: calc(clamp(1.7rem, 2.8vw, 2.2rem) * var(--kb-scale)); line-height: 1; color: #fff; background: #10233d; }
+.written-letter-print { font-weight: 800; white-space: pre; }
+.written-letter-braille { display: block; min-height: 1.1em; font-family: 'DejaVu Sans', 'Segoe UI Symbol', sans-serif; font-size: 1.4em; line-height: 1.1; margin-top: .08em; }
+.written-letter[data-space=true] .written-letter-braille { font: 700 .42em/1.1 system-ui, sans-serif; min-height: 3.67em; display: flex; align-items: center; }
+.written-letter[data-state=current] { border-color: #ffe37a; outline: 2px solid #ffe37a; outline-offset: -2px; }
+.written-letter[data-state=incorrect] { border: 3px dashed #ffb2bd; color: #fff; }
+#writtenWordRetry { margin: .25rem 0 0; font-size: .85em; font-weight: 800; color: #ffb2bd; }
+#capture[data-word-writing=true] #entryFeedback:empty { display: none; }
 #targetSymbol { align-self: center; max-width: 100%; min-width: 1.5em; box-sizing: border-box; padding: .08em .3em; margin: .25rem 0; border: 2px solid #8cd7ff; border-radius: .15em; background: #d9efff; color: #06142d; font-size: calc(clamp(2rem, 3.3vw, 2.7rem) * var(--kb-scale)); font-weight: 900; line-height: 1.2; overflow-wrap: anywhere; }
 #targetSymbol[data-long=true] { font-size: calc(clamp(1.25rem, 2.5vw, 1.8rem) * var(--kb-scale)); }
 #cellPreview { flex: 0 0 auto; font-size: calc(1rem * var(--kb-scale)); }
@@ -297,6 +310,9 @@ body[data-braille-screen=learnPanel] .kb-toolbar button { padding-top: .35rem; p
 #cellPreview .braille-dot { width: 2.2em; height: 2.2em; }
 #targetCells { font-size: calc(1.6rem * var(--kb-scale)); }
 #writtenCells { font-size: calc(1.4rem * var(--kb-scale)); }
+#capture[data-word-writing=true] #cellPreview .braille-cell { grid-template-columns: repeat(2, 3em); gap: .3em; }
+#capture[data-word-writing=true] #cellPreview .braille-dot { width: 3em; height: 3em; font-weight: 800; }
+#capture[data-word-writing=true] #targetCells { font-size: calc(2.5rem * var(--kb-scale)); line-height: 1.2; }
 #visualGuide { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; width: 100%; gap: .5rem; margin: .25rem 0 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
 #visualGuide .braille-cell-preview { font-size: .8em; }
 #visualGuide .braille-cell-preview p { font-size: .8em; }
