@@ -78,22 +78,102 @@ function chord(p, command, id = "keyCapture") {
   if (parts.includes("Insert")) p.get(id).fire("keydown", { key: "Insert" });
   if (parts.includes("Caps Lock")) p.key(id, "CapsLock");
   const event = p.key(id, aliases[parts.at(-1)] || parts.at(-1), {
-    ctrlKey: parts.includes("Control"), altKey: parts.includes("Alt"), shiftKey: parts.includes("Shift") });
+    ctrlKey: parts.includes("Control") || parts.includes("VO"), altKey: parts.includes("Alt") || parts.includes("Option") || parts.includes("VO"),
+    shiftKey: parts.includes("Shift"), metaKey: parts.includes("Command") });
   if (parts.includes("Insert")) p.get(id).fire("keyup", { key: "Insert" });
   return event;
+}
+
+function buildMacCommand(p, command, caps = false) {
+  const parts = command.split("+");
+  p.get("macVOModifier").value = parts.includes("VO") ? (caps ? "caps" : "vo") : "none";
+  p.get("macShift").checked = parts.includes("Shift");
+  p.get("macCommand").checked = parts.includes("Command");
+  p.get("macFn").checked = parts.includes("Fn");
+  p.get("macFinalKey").value = parts.at(-1).toLowerCase();
+  p.get("macCommandBuilder").fire("submit");
 }
 
 test("every catalog command scores and advances to results", () => {
   const catalog = vm.runInNewContext("(" + source("command-practice.js").match(/const categories = (\{[\s\S]*?\n  \});/)[1] + ")");
   for (const [category, commands] of Object.entries(catalog)) {
     const p = practice(category);
-    commands.forEach(([command], index) => {
-      chord(p, command);
+    commands.forEach(([command, , , mode], index) => {
+      if (mode === "builder") buildMacCommand(p, command);
+      else chord(p, command);
       assert.equal(p.get("practiceScore").textContent, `Correct: ${index + 1} · Attempts: ${index + 1}`, category + ": " + command);
       p.advance();
     });
     assert.equal(p.get("commandResults").hidden, false, category + " results");
   }
+});
+
+test("all Mac sets finish using accessible controls with either VO modifier and manual review links", () => {
+  const catalog = vm.runInNewContext("(" + source("command-practice.js").match(/const categories = (\{[\s\S]*?\n  \});/)[1] + ")");
+  for (const [category, commands] of Object.entries(catalog).filter(([name]) => name.startsWith("Mac VoiceOver "))) {
+    const p = practice(category);
+    assert.equal(p.get("macCommandPanel").hidden, false);
+    assert.equal(p.document.activeElement, p.get("macVOModifier"));
+    for (const [index, [command]] of commands.entries()) {
+      buildMacCommand(p, command, index % 2 === 1);
+      assert.equal(p.get("practiceScore").textContent, `Correct: ${index + 1} · Attempts: ${index + 1}`);
+      assert.match(p.get("practiceStatus").textContent, /Correct combination. You built/);
+      // Repeated submission during feedback must not score twice.
+      p.get("macCommandBuilder").fire("submit");
+      assert.equal(p.get("practiceScore").textContent, `Correct: ${index + 1} · Attempts: ${index + 1}`);
+      p.advance();
+    }
+    assert.equal(p.get("macCommandPanel").hidden, true);
+    assert.equal(p.get("commandResults").hidden, false);
+    assert.match(p.get("commandSuggestedReview").href, /^mac-voiceover-manual.html#/);
+    assert.equal(p.get("commandMasteredHeading").textContent, "Commands practiced");
+  }
+});
+
+test("Mac builder rejects wrong modifiers, preserves attempts, and retries only missed commands", () => {
+  const p = practice("Mac VoiceOver basics");
+  buildMacCommand(p, "VO+Shift+Right Arrow");
+  assert.equal(p.get("practiceScore").textContent, "Correct: 0 · Attempts: 1");
+  assert.equal(p.get("commandProgress").value, 0);
+  buildMacCommand(p, "Right Arrow");
+  assert.equal(p.get("practiceScore").textContent, "Correct: 0 · Attempts: 2");
+  for (const command of ["VO+Right Arrow", "VO+Left Arrow", "VO+Down Arrow", "VO+Up Arrow", "VO+Space",
+    "VO+Shift+Down Arrow", "VO+Shift+Up Arrow", "VO+K", "VO+H", "VO+A"]) {
+    buildMacCommand(p, command); p.advance();
+  }
+  assert.equal(p.get("commandAttemptResult").textContent, "12");
+  p.get("practiceMissed").click();
+  assert.equal(p.get("commandPosition").textContent, "Command 1 of 1");
+  buildMacCommand(p, "VO+Right Arrow"); p.advance();
+  assert.equal(p.get("commandAccuracyResult").textContent, "100%");
+});
+
+test("Mac physical commands use Option and Command correctly and do not score a plain final key", () => {
+  const p = practice("Mac VoiceOver navigation and web");
+  p.key("keyCapture", "d");
+  assert.equal(p.get("practiceScore").textContent, "Correct: 0 · Attempts: 1");
+  p.key("keyCapture", "∂", { code: "KeyD", ctrlKey: true, altKey: true }); p.advance();
+  chord(p, "VO+M"); p.advance(); chord(p, "VO+Shift+M"); p.advance();
+  chord(p, "VO+U"); p.advance(); chord(p, "VO+I"); p.advance();
+  chord(p, "VO+Right Arrow");
+  assert.equal(p.get("practiceScore").textContent, "Correct: 5 · Attempts: 7");
+  chord(p, "VO+Command+Right Arrow");
+  assert.equal(p.get("practiceScore").textContent, "Correct: 6 · Attempts: 8");
+  assert.match(p.get("detectedKeys").textContent, /Option plus Command/);
+});
+
+test("Mac system commands are builder-only and accept documented Fn variations", () => {
+  const p = practice("Mac VoiceOver reading and settings");
+  for (const command of ["VO+P", "VO+L", "VO+S", "VO+W", "VO+C", "VO+V", "VO+Q", "VO+Shift+Q"]) {
+    buildMacCommand(p, command); p.advance();
+  }
+  chord(p, "Command+F5");
+  assert.equal(p.get("practiceScore").textContent, "Correct: 8 · Attempts: 8");
+  assert.match(p.get("practiceStatus").textContent, /builder/);
+  buildMacCommand(p, "Command+Fn+F5"); p.advance();
+  buildMacCommand(p, "VO+F8"); p.advance();
+  assert.equal(p.get("commandResults").hidden, false);
+  assert.equal(p.get("commandCorrectResult").textContent, "10");
 });
 
 test("Insert release, missing release, focus loss, and retry do not leave a modifier stuck", () => {

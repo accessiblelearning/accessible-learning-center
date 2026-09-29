@@ -53,7 +53,7 @@ const entries = files.map(file => {
     type,
     course: courseFrom(html, title),
     snippet: body.slice(0, 260),
-    text: `${title} ${["thunderbird-manual.html", "firefox-manual.html", "zoomtext-fusion-manual.html", "bookshare-manual.html", "learning-ally-manual.html"].includes(file) ? body : body.slice(0, 1800)}`.toLowerCase()
+    text: `${title} ${["mac-voiceover-manual.html", "thunderbird-manual.html", "firefox-manual.html", "zoomtext-fusion-manual.html", "bookshare-manual.html", "learning-ally-manual.html"].includes(file) ? body : body.slice(0, 1800)}`.toLowerCase()
   };
 });
 

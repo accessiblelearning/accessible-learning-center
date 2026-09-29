@@ -48,6 +48,7 @@
       const name = document.createElement("strong");
       name.textContent = set.menuLabel || set.label.split(":")[0];
       link.dataset.choice = set.id;
+      link.id = set.id;
       link.dataset.description = set.label;
       const source = document.createElement("span");
       source.textContent = "From " + manual.label;
@@ -94,6 +95,7 @@
   });
 
   menu.addEventListener("keydown", event => {
+    if (event.ctrlKey || event.altKey || event.metaKey) return;
     if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
     const activeIndex = Math.max(0, choices.indexOf(document.activeElement));
@@ -116,7 +118,8 @@
   window.addEventListener("DOMContentLoaded", () => {
     let remembered = "";
     try { remembered = sessionStorage.getItem(focusKey) || ""; } catch (error) {}
-    const selected = choices.find(item => item.dataset.choice === remembered) || choices[0];
+    const requested = new URLSearchParams(window.location.search).get("topic");
+    const selected = choices.find(item => item.dataset.choice === requested) || choices.find(item => item.dataset.choice === remembered) || choices[0];
     selected?.focus();
     openingAnnouncement = false;
     const first = selected?.dataset.description || "";

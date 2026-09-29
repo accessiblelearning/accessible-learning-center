@@ -2,6 +2,42 @@
   "use strict";
 
   const categories = {
+    "Mac VoiceOver basics": [
+      ["VO+Right Arrow", "Move to the next item.", "Hold Control and Option, press Right Arrow once, then release. Listen to the next item before activating anything."],
+      ["VO+Left Arrow", "Move to the previous item.", "Control+Option+Left Arrow moves the VoiceOver cursor back one item."],
+      ["VO+Down Arrow", "Move the VoiceOver cursor down.", "Within an appropriate list, menu, or table, move down and listen to the new item."],
+      ["VO+Up Arrow", "Move the VoiceOver cursor up.", "Within an appropriate list, menu, or table, move up and listen to the new item."],
+      ["VO+Space", "Activate the current control.", "Confirm the name of the button or link, then use Control+Option+Space for its default action."],
+      ["VO+Shift+Down Arrow", "Start interacting with a group.", "Hold Control, Option, and Shift, then press Down Arrow to explore the contents of the current group."],
+      ["VO+Shift+Up Arrow", "Stop interacting with a group.", "Move out one level so you can reach controls outside the current group."],
+      ["VO+K", "Start Keyboard Help.", "On a Mac, Keyboard Help describes keys without performing their usual actions. Escape leaves Keyboard Help."],
+      ["VO+H", "Open the VoiceOver Help menu.", "Explore available help with the arrow keys. Escape closes the menu without choosing an item."],
+      ["VO+A", "Read from the current webpage position.", "With the VoiceOver cursor in webpage content, read from the current position toward the end. Control pauses or resumes speech."]
+    ],
+    "Mac VoiceOver navigation and web": [
+      ["VO+D", "Move to the Dock.", "After reaching the Dock, use VoiceOver navigation to find an app and activate it with VO+Space."],
+      ["VO+M", "Move to the menu bar.", "Use VO+Left or Right Arrow to find a menu, then VO+Space to open it. Escape closes a menu."],
+      ["VO+Shift+M", "Open the current item's shortcut menu.", "This is the contextual menu for the current item. It is different from moving to the menu bar with VO+M."],
+      ["VO+U", "Open the rotor menus.", "Choose a list such as Headings with Left or Right Arrow, choose an item with Up or Down Arrow, then press Return to jump to it."],
+      ["VO+I", "Open the Item Chooser.", "Type part of an item's name, use Up or Down Arrow to select a match, and press Return to move to it."],
+      ["VO+Command+Right Arrow", "Choose the next rotor navigation mode.", "Keep the VoiceOver modifier and Command held while pressing Right Arrow. Available modes depend on the current content."],
+      ["VO+Command+Left Arrow", "Choose the previous rotor navigation mode.", "Move backward through rotor modes such as headings, links, or characters, depending on the current app or page."],
+      ["VO+Command+Down Arrow", "Move to the next item using the chosen rotor mode.", "First choose a rotor mode. With Headings selected, this moves to the next heading."],
+      ["VO+Command+Up Arrow", "Move to the previous item using the chosen rotor mode.", "First choose a rotor mode. With Headings selected, this moves to the previous heading."],
+      ["VO+Shift+U", "Read a link's address.", "Move to a link first. VoiceOver reads its destination so you can inspect it before opening it."]
+    ],
+    "Mac VoiceOver reading and settings": [
+      ["VO+P", "Read the current paragraph.", "In document text, ask VoiceOver to read the paragraph at the current position."],
+      ["VO+L", "Read the current line.", "With the VoiceOver cursor in text, read the current line."],
+      ["VO+S", "Read the current sentence.", "With the VoiceOver cursor in text, read the current sentence."],
+      ["VO+W", "Read the current word.", "In text, read the word at the current position. Repeating this command can spell it."],
+      ["VO+C", "Read the current character in text.", "Use this while reviewing text. In a table, VO+C instead describes the column header; context matters."],
+      ["VO+V", "Open the Verbosity rotor.", "Choose a setting with Left or Right Arrow, change its level with Up or Down Arrow, and close the rotor with Escape."],
+      ["VO+Q", "Toggle single-key Quick Nav.", "On your Mac, listen for whether it is on or off. Turn it off if letter keys navigate instead of typing into an editable field."],
+      ["VO+Shift+Q", "Toggle arrow-key Quick Nav.", "On your Mac, listen for the new state. Arrow-key Quick Nav changes how the arrow keys navigate."],
+      ["Command+F5", "Turn VoiceOver on or off.", "Use the command builder here. The real shortcut changes your Mac's screen reader, so do not press it just to answer this exercise. Some keyboards also need Fn.", "builder"],
+      ["VO+Fn+F8", "Open VoiceOver Utility.", "Use the command builder here. Apple's default shortcut includes Fn; if function keys are configured as standard keys, VO+F8 may work on your Mac.", "builder"]
+    ],
     "Thunderbird email": [
         [
             "Control+N",
@@ -347,6 +383,14 @@
   const practiceShortcuts = document.querySelector(".practice-session-shortcuts");
   const practiceTopbar = document.querySelector(".training-stage__topbar");
   const focusedSession = document.body.dataset.practiceSession === "true";
+  const macPanel = document.getElementById("macCommandPanel");
+  const macBuilder = document.getElementById("macCommandBuilder");
+  const macVO = document.getElementById("macVOModifier");
+  const macKey = document.getElementById("macFinalKey");
+  const macCheck = document.getElementById("macCheckCommand");
+  const macCategories = new Set(["Mac VoiceOver basics", "Mac VoiceOver navigation and web", "Mac VoiceOver reading and settings"]);
+  const isMacPractice = () => macCategories.has(category.value);
+  let usingMacBuilder = true;
 
   let active = false;
   let command = null;
@@ -408,6 +452,9 @@
   };
 
   const reviewLinks = {
+    "Mac VoiceOver basics": ["mac-voiceover-manual.html#part-3---voiceover-modifier-and-keyboard-help", "Review Mac VoiceOver basics"],
+    "Mac VoiceOver navigation and web": ["mac-voiceover-manual.html#part-10---voiceover-rotor-and-item-chooser", "Review the Mac VoiceOver rotor and navigation guide"],
+    "Mac VoiceOver reading and settings": ["mac-voiceover-manual.html#part-13---read-and-edit-text", "Review reading and settings in the Mac VoiceOver manual"],
     "Thunderbird email": ["thunderbird-manual.html", "Review the Thunderbird email manual"],
     "Firefox browser": ["firefox-manual.html", "Review the Firefox browser manual"],
     "ZoomText and Fusion Desktop magnification": ["zoomtext-fusion-manual.html", "Review the ZoomText and Fusion Desktop magnification manual"],
@@ -505,7 +552,7 @@
   });
 
   function spokenKeys(value) {
-    return value.replaceAll("+", " plus ").replace("Ctrl", "Control").replace("Arrow", " Arrow").replace("Grave", "grave accent");
+    return value.replace(/^VO\+/, "Control+Option+").replaceAll("+", " plus ").replace("Ctrl", "Control").replace("Grave", "grave accent");
   }
 
   function lowerFirst(value) {
@@ -526,6 +573,12 @@
 
   function describe() {
     if (!command) return "";
+    if (isMacPractice()) {
+      const input = command[3] === "builder"
+        ? "Use the command builder for this system shortcut. "
+        : "Use the command builder, or press the combination in the keyboard practice area if your screen reader passes it through. ";
+      return command[1] + " The command is " + command[0] + ", " + spokenKeys(command[0]) + ". " + input + commandExplanation();
+    }
     const context = practiceContexts[category.value] || "You are working in a supported application.";
     const goal = command[1].replace(/\.$/, "");
     const protectedSequence = protectedSequences[normalizeExpected(command[0])];
@@ -550,9 +603,21 @@
     awaitingAdvance = false;
     command = order[position];
     resetModifiers();
+    if (macPanel) {
+      macPanel.hidden = !isMacPractice();
+      if (isMacPractice()) {
+        macVO.value = "none";
+        macKey.value = "";
+        for (const id of ["macShift", "macCommand", "macFn"]) document.getElementById(id).checked = false;
+        macCheck.disabled = false;
+        if (command[3] === "builder") usingMacBuilder = true;
+      }
+    }
     const heading = document.createElement("h3");
     const protectedSequence = protectedSequences[normalizeExpected(command[0])];
-    heading.textContent = protectedSequence
+    heading.textContent = isMacPractice() && usingMacBuilder
+        ? "Build " + spokenKeys(command[0])
+        : protectedSequence
         ? "Protected practice: " + spokenKeys(command[0])
         : practiceStyle.value === "guided"
         ? "Guided task " + (position + 1) + " of " + order.length
@@ -579,14 +644,21 @@
     next.disabled = true;
     speak(describe());
     updateScore();
-    capture.focus();
+    focusPracticeInput();
   }
 
   function normalizeExpected(value) {
-    return value.split("+").map(part => part.trim().toLowerCase()).join("+");
+    const aliases = { vo: "control+alt", option: "alt", command: "windows" };
+    return value.split("+").map(part => {
+      const key = part.trim().toLowerCase();
+      return aliases[key] || key;
+    }).join("+");
   }
 
   function keyName(event) {
+    // Option can change event.key to an accented character on a Mac. The
+    // physical letter still identifies a VoiceOver chord in these exercises.
+    if (isMacPractice() && /^Key[A-Z]$/.test(event.code || "")) return event.code.slice(3).toLowerCase();
     const names = {
       " ": "space", "ArrowLeft": "left arrow", "ArrowRight": "right arrow",
       "ArrowUp": "up arrow", "ArrowDown": "down arrow", "Control": "control",
@@ -609,8 +681,56 @@
   }
 
   function displaySignature(value) {
-    return value.split("+").map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(" plus ");
+    return value.split("+").map(part => {
+      if (isMacPractice() && part === "alt") return "Option";
+      if (isMacPractice() && part === "windows") return "Command";
+      return part.charAt(0).toUpperCase() + part.slice(1);
+    }).join(" plus ");
   }
+
+  function focusPracticeInput() {
+    if (isMacPractice() && usingMacBuilder && macVO) macVO.focus();
+    else capture.focus();
+  }
+
+  macBuilder?.addEventListener("submit", event => {
+    event.preventDefault();
+    if (!active || awaitingAdvance || !isMacPractice()) return;
+    usingMacBuilder = true;
+    if (!macKey.value) {
+      status.textContent = "Choose the final key before checking the command.";
+      speak(status.textContent);
+      macKey.focus();
+      return;
+    }
+    const parts = [];
+    if (macVO.value === "vo" || macVO.value === "caps") parts.push("control", "alt");
+    if (document.getElementById("macShift").checked) parts.push("shift");
+    if (document.getElementById("macCommand").checked) parts.push("windows");
+    if (document.getElementById("macFn").checked) parts.push("fn");
+    parts.push(macKey.value);
+    recordAttempt(parts.join("+"), true);
+  });
+
+  document.getElementById("macRepeatCommand")?.addEventListener("click", () => {
+    if (!active) return;
+    status.textContent = describe();
+    speak(describe());
+  });
+
+  document.getElementById("macPressKeys")?.addEventListener("click", () => {
+    if (!active || awaitingAdvance) return;
+    if (command[3] === "builder") {
+      status.textContent = "Use the command builder for this system shortcut. Keep your screen reader running.";
+      speak(status.textContent);
+      macVO.focus();
+      return;
+    }
+    usingMacBuilder = false;
+    status.textContent = "Keyboard practice. VO means hold Control and Option together. If VoiceOver handles the shortcut, return to the command builder with Tab.";
+    speak(status.textContent);
+    capture.focus();
+  });
 
   function updateScore() {
     score.textContent = focusedSession
@@ -629,6 +749,7 @@
     prompt.hidden = show;
     capture.hidden = show;
     status.hidden = show;
+    if (macPanel) macPanel.hidden = show || !isMacPractice();
     if (practiceShortcuts) practiceShortcuts.hidden = show;
     for (const id of ["commandProgress", "commandPosition"]) {
       const element = document.getElementById(id);
@@ -670,6 +791,7 @@
 
   start.addEventListener("click", () => {
     active = true;
+    usingMacBuilder = true;
     resetModifiers();
     correctCount = 0;
     attempts = 0;
@@ -692,6 +814,11 @@
       status.setAttribute("aria-live", "assertive");
     }
     updateScore();
+    if (isMacPractice()) {
+      document.getElementById("captureInstructions").textContent = "VO means Control plus Option. Build the combination using the labeled controls below, or focus this area for physical key practice. VoiceOver may handle a shortcut before this page can detect it; no response is not a failed attempt. System shortcuts use the command builder only. Tab leaves this area. Control alone repeats. Escape returns to Command Practice.";
+      const resultLabel = document.getElementById("commandMasteredHeading");
+      if (resultLabel) resultLabel.textContent = "Commands practiced";
+    }
     showCommand();
   });
 
@@ -753,6 +880,8 @@
 
   document.addEventListener("keydown", event => {
     if (!focusedSession || !["Escape", "Esc"].includes(event.key) || event.ctrlKey || event.altKey || event.shiftKey || event.metaKey) return;
+    // Escape belongs to the native key-choice menu while a select has focus.
+    if (event.defaultPrevented || (isMacPractice() && event.target.tagName === "SELECT")) return;
     if (event.target === capture && active) return;
     event.preventDefault();
     if ("speechSynthesis" in window) speechSynthesis.cancel();
@@ -807,6 +936,11 @@
       return;
     }
     if (awaitingAdvance) return;
+    if (isMacPractice() && command[3] === "builder") {
+      status.textContent = "Use the command builder for this system shortcut.";
+      return;
+    }
+    if (event.repeat) return;
     const protectedSequence = protectedSequences[expected];
     const pressedKey = keyName(event);
     const isProtectedModifier = protectedSequence &&
@@ -862,41 +996,49 @@
       pressed = expected;
     }
     protectedModifierArmed = "";
+    usingMacBuilder = false;
+    recordAttempt(pressed);
+  }, true);
+
+  function recordAttempt(pressed, built = false) {
+    if (!active || awaitingAdvance) return;
+    const expected = normalizeExpected(command[0]);
     attempts += 1;
     detected.textContent = displaySignature(pressed);
-    const normalizedExpected = expected
-      .replace("ctrl", "control")
-      .replace("arrow", "arrow")
-      .replace("grave", "grave")
-      .replace("greater than", "greater than")
-      .replace("less than", "less than");
+    const normalizedExpected = expected.replace("ctrl", "control");
+    // Function-key settings vary. Both documented versions of these system
+    // shortcuts can be rehearsed without changing the real screen reader.
+    const functionVariant = built && isMacPractice() && command[3] === "builder" &&
+      pressed.replace("fn+", "") === normalizedExpected.replace("fn+", "");
 
-    if (pressed === normalizedExpected) {
+    if (pressed === normalizedExpected || functionVariant) {
       correctCount += 1;
       awaitingAdvance = true;
+      if (isMacPractice() && macCheck) macCheck.disabled = true;
       capture.classList.remove("is-incorrect");
       capture.classList.add("is-correct");
       tone(true);
-      status.textContent = "Correct. You pressed " + displaySignature(pressed) + ". Moving to the next task.";
+      const feedback = built ? "Correct combination. You built " : "Correct. You pressed ";
+      status.textContent = feedback + displaySignature(pressed) + ". Moving to the next task.";
       next.disabled = false;
       speak(
-        "Correct. You pressed " + displaySignature(pressed) + ". " + briefExplanation(command[1]),
+        feedback + displaySignature(pressed) + ". " + briefExplanation(command[1]),
         () => {
           if (active && awaitingAdvance) next.click();
         }
       );
-      capture.focus();
+      if (!built) capture.focus();
     } else {
       missedCommands.set(command[0], command);
       capture.classList.remove("is-correct");
       capture.classList.add("is-incorrect");
       tone(false);
-      status.textContent = "Not quite. You pressed " + displaySignature(pressed) + ". Try " + spokenKeys(command[0]) + ".";
+      status.textContent = "Not quite. You " + (built ? "built " : "pressed ") + displaySignature(pressed) + ". Try " + spokenKeys(command[0]) + ".";
       speak(status.textContent);
-      capture.focus();
+      if (!built) capture.focus();
     }
     updateScore();
-  }, true);
+  }
 
   capture.addEventListener("keyup", event => {
     if (event.key === "Insert") {

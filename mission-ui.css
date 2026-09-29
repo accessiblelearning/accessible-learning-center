@@ -143,3 +143,29 @@ html[data-contrast="high"] .mission-center-page .command-focus-area.is-incorrect
   .mission-center-page .mission-setting-toggle { grid-template-columns: 1fr; text-align: left; }
   .mission-center-page .mission-ready-prompt { min-height: 10rem; }
 }
+.mac-command-panel {
+  text-align: left;
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 44rem;
+  min-width: 0;
+}
+.mission-center-page .mac-command-panel :is(h2, p, a, summary, label, legend),
+.mission-center-page .mac-practice-intro a,
+.mission-center-page #macReadyHelp a { color: #fff; }
+.mission-center-page .mac-command-panel form { color: #fff; background: transparent; border-color: #65aef5; }
+.mac-command-panel p { font-size: 1rem; line-height: 1.6; }
+.mac-command-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+.mac-command-fields select { width: 100%; min-width: 0; min-height: 2.75rem; }
+.mac-extra-keys { display: flex; flex-wrap: wrap; min-width: 0; gap: 1rem; margin: .5rem 0; padding: .75rem; }
+.mac-extra-keys label { display: inline-flex; align-items: center; gap: .4rem; }
+.mac-extra-keys input { width: 1.25rem; height: 1.25rem; }
+.mac-command-panel button { margin: .5rem .5rem .5rem 0; min-height: 2.75rem; }
+.mac-command-panel summary { cursor: pointer; padding: .75rem 0; }
+.mission-center-page.practice-session-page[data-mac-practice="true"] .training-stage .command-focus-area .training-stage__prompt {
+  min-height: 0;
+  padding: 1rem;
+}
+.mission-center-page.practice-session-page[data-mac-practice="true"] .command-focus-area .training-stage__prompt h3 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}

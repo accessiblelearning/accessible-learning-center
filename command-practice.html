@@ -7,22 +7,23 @@
   <meta name="description" content="Coming soon: Mission Control is currently being tested. Choose an independently available keyboard-command topic based on Accessible Learning Center manuals.">
   <title>Command Practice Topics - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
-  <link rel="stylesheet" href="mission-ui.css?v=keyboard-match-2">
+  <link rel="stylesheet" href="mission-ui.css?v=mac-voiceover-20260928">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
   <script src="mission-ui.js?v=keyboard-match-2" defer></script>
-  <script src="mission-catalog.js?v=manual-topics-1" defer></script>
-  <script src="command-practice-setup.js?v=keyboard-match-1" defer></script>
+  <script src="mission-catalog.js?v=mac-voiceover-20260928" defer></script>
+  <script src="command-practice-setup.js?v=mac-voiceover-20260928" defer></script>
 </head>
 <body class="command-setup-page mission-center-page" data-mission-back="troubleshooting-lab.html" data-mission-back-label="Back to Mission Control Center">
   <main id="main-content" class="mission-center-shell">
     <section class="mission-center-panel" aria-labelledby="commandTopicsHeading">
       <h1 id="commandTopicsHeading">Command Practice</h1>
-      <section aria-labelledby="missionLaunchHeading">
+      <section class="mission-launch-notice" aria-labelledby="missionLaunchHeading">
         <h2 id="missionLaunchHeading">Coming soon: Mission Control</h2>
         <p id="missionLaunchNotice">Mission Control is currently being tested and refined. The activities below are a development preview and may still have issues.</p>
         <p>Ready to learn today? <a href="manuals.html">Browse free manuals</a> or <a href="lessons.html">start a guided lesson</a>.</p>
       </section>
       <p class="mission-center-summary">Welcome to Command Practice. Use the arrow keys to choose a manual.</p>
+      <p class="mac-practice-intro">Mac learners: practice <a href="command-practice.html?topic=mac-voiceover-basics">Mac VoiceOver commands</a> or read the <a href="mac-voiceover-manual.html">VoiceOver Manual for Mac</a>. The Mac topics include an accessible command builder so you can keep your screen reader running.</p>
       <p id="commandTopicsInstructions" class="visually-hidden">Use Down Arrow and Up Arrow to move through command topics. Press Enter to start the highlighted topic. Press Escape to return to Mission Control Center.</p>
       <div id="commandTopicsMenu" class="mission-center-menu" role="application" aria-label="Command Practice topics" aria-describedby="missionLaunchNotice commandTopicsInstructions"></div>
       <p id="missionSelectionDescription" class="mission-selection-detail"></p>

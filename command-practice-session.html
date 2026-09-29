@@ -6,11 +6,11 @@
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
-  <link rel="stylesheet" href="mission-ui.css?v=keyboard-match-2">
+  <link rel="stylesheet" href="mission-ui.css?v=mac-voiceover-20260928">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
   <script src="mission-ui.js?v=keyboard-match-2" defer></script>
-  <script src="command-practice-session.js?v=mission-sections-1" defer></script>
-  <script src="command-practice.js?v=manual-topics-1" defer></script>
+  <script src="command-practice-session.js?v=mac-voiceover-20260928" defer></script>
+  <script src="command-practice.js?v=mac-voiceover-20260928" defer></script>
 </head>
 <body class="practice-session-page mission-center-page" data-practice-session="true" data-mission-back="command-practice.html" data-mission-back-label="Back to Command Practice">
   <main id="main-content" class="mission-center-shell">
@@ -19,6 +19,7 @@
       <div class="mission-ready-prompt">
         <p id="commandReadyInstructions">Press any key to start.</p>
       </div>
+      <p id="macReadyHelp" hidden>VO means Control+Option, or Caps Lock when enabled as your VoiceOver modifier. Mac practice starts with a command builder: choose the modifier and final key, then select Check command. You can keep VoiceOver running. <a href="mac-voiceover-manual.html#mac-command-practice">Read the Mac practice instructions</a>.</p>
       <button id="commandReadyStart" class="mission-result-primary" type="button">Start Command Practice</button>
       <p class="mission-result-exit">Escape returns to the Command Practice topics.</p>
     </section>
@@ -34,6 +35,51 @@
         <p id="captureInstructions" class="visually-hidden">Press the requested key combination. For a screen-reader command such as Insert plus T, let your screen reader handle the command, then press the final key once to confirm it here. For a protected browser command, press and release the named modifier, then press the final key by itself. A correct command advances automatically. Press Control by itself to repeat when it is not part of a protected command. Tab or Shift plus Tab moves through the page controls when it is not the requested command. Press Escape to exit.</p>
         <p class="training-stage__detected visually-hidden"><span class="training-stage__input-label">Keys pressed</span><strong id="detectedKeys">None yet</strong></p>
       </div>
+      <section id="macCommandPanel" class="mac-command-panel" aria-labelledby="macCommandHeading" hidden>
+        <h2 id="macCommandHeading">Build the command</h2>
+        <p id="macBuilderHelp">Choose the keys in the requested combination, then check it. These controls do not run a command on your Mac. Use Tab, or VoiceOver navigation, to reach each control.</p>
+        <form id="macCommandBuilder" aria-describedby="macBuilderHelp">
+          <div class="mac-command-fields">
+            <label for="macVOModifier">VoiceOver modifier</label>
+            <select id="macVOModifier">
+              <option value="none">No VoiceOver modifier</option>
+              <option value="vo">Control+Option (VO)</option>
+              <option value="caps">Caps Lock (VO alternative)</option>
+            </select>
+            <fieldset class="mac-extra-keys">
+              <legend>Additional keys to hold</legend>
+              <label><input id="macShift" type="checkbox"> Shift</label>
+              <label><input id="macCommand" type="checkbox"> Command</label>
+              <label><input id="macFn" type="checkbox"> Fn</label>
+            </fieldset>
+            <label for="macFinalKey">Final key</label>
+            <select id="macFinalKey" required>
+              <option value="">Choose a key</option>
+              <option value="right arrow">Right Arrow</option><option value="left arrow">Left Arrow</option>
+              <option value="down arrow">Down Arrow</option><option value="up arrow">Up Arrow</option>
+              <option value="space">Space</option>
+              <option value="a">A</option><option value="b">B</option><option value="c">C</option>
+              <option value="d">D</option><option value="e">E</option><option value="f">F</option>
+              <option value="g">G</option><option value="h">H</option><option value="i">I</option>
+              <option value="j">J</option><option value="k">K</option><option value="l">L</option>
+              <option value="m">M</option><option value="n">N</option><option value="o">O</option>
+              <option value="p">P</option><option value="q">Q</option><option value="r">R</option>
+              <option value="s">S</option><option value="t">T</option><option value="u">U</option>
+              <option value="v">V</option><option value="w">W</option><option value="x">X</option>
+              <option value="y">Y</option><option value="z">Z</option>
+              <option value="f5">F5</option><option value="f8">F8</option>
+            </select>
+          </div>
+          <button id="macCheckCommand" type="submit">Check command</button>
+          <button id="macRepeatCommand" type="button">Repeat instructions</button>
+        </form>
+        <details>
+          <summary>Practice by pressing the keys</summary>
+          <p>VoiceOver may use a shortcut before this page receives it. For a VoiceOver chord, VO+Tab tells VoiceOver to ignore the next combination; then press the requested chord. If it is still not detected, use the command builder. Keep your screen reader running. System shortcuts use the builder only.</p>
+          <button id="macPressKeys" type="button">Focus keyboard practice area</button>
+        </details>
+        <p>Practice checks the combination you enter here. Follow the <a href="mac-voiceover-manual.html">Mac VoiceOver manual</a> to check its real result on your Mac.</p>
+      </section>
       <progress id="commandProgress" class="mission-training-progress" max="1" value="0" aria-label="Command practice progress"></progress>
       <p id="commandPosition" class="mission-training-position"></p>
       <div id="practiceStatus" class="practice-status training-stage__feedback" role="status" aria-live="assertive"></div>
@@ -55,7 +101,7 @@
         <p class="mission-result-exit">Escape returns to the Command Practice topics.</p>
         <details class="mission-result-details">
           <summary>Review practice details</summary>
-          <h3>Commands mastered</h3>
+          <h3 id="commandMasteredHeading">Commands mastered</h3>
           <ul id="commandMasteredList"></ul>
           <h3>Commands to review</h3>
           <div id="commandReviewList"></div>

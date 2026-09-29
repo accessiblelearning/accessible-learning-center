@@ -12,6 +12,14 @@
     }
 
     category.value = requestedCategory;
+    const macPractice = requestedCategory.startsWith("Mac VoiceOver ");
+    document.body.dataset.macPractice = String(macPractice);
+    const macHelp = document.getElementById("macReadyHelp");
+    if (macHelp) macHelp.hidden = !macPractice;
+    if (macPractice) {
+      document.getElementById("commandReadyHeading").textContent = requestedCategory;
+      document.getElementById("commandReadyScreen").removeAttribute("role");
+    }
     document.getElementById("practiceStyle").value = params.get("style") === "guided" ? "guided" : "quick";
     document.getElementById("sessionLength").value = params.get("length") === "all" ? "all" : "5";
     document.getElementById("explanationLevel").value = params.get("level") === "detailed" ? "detailed" : "brief";
@@ -40,6 +48,7 @@
     }
 
     function startFromKey(event) {
+      if (event.target.closest("a, select, input, summary") || event.ctrlKey || event.altKey || event.metaKey) return;
       if (started || ["Escape", "Esc", "Tab", "Shift", "Control", "Alt", "Meta"].includes(event.key)) return;
       event.preventDefault();
       beginPractice();

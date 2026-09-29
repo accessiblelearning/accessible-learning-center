@@ -5,6 +5,16 @@
      independently available; no completion or passing requirement is used. */
   window.MissionControlCatalog = [
     {
+      id: "mac-voiceover",
+      label: "Mac VoiceOver",
+      commandSets: [
+        { id: "mac-voiceover-basics", menuLabel: "Mac VoiceOver — Basics", label: "Mac VoiceOver: movement, controls, groups, and help", category: "Mac VoiceOver basics" },
+        { id: "mac-voiceover-navigation", menuLabel: "Mac VoiceOver — Navigation and Web", label: "Mac VoiceOver: Dock, menus, rotor, links, and Item Chooser", category: "Mac VoiceOver navigation and web" },
+        { id: "mac-voiceover-reading", menuLabel: "Mac VoiceOver — Reading and Settings", label: "Mac VoiceOver: reading text, Quick Nav, speech settings, and setup", category: "Mac VoiceOver reading and settings" }
+      ],
+      missionSets: []
+    },
+    {
       id: "screen-readers",
       label: "Screen Readers: JAWS, Narrator, and NVDA",
       commandSets: [
