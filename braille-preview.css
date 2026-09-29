@@ -260,3 +260,86 @@ html[data-contrast=high], html[data-contrast=high] body { background: #000; colo
   #learnNext { min-width: 0; }
   .kb-instruction { padding: 1rem; }
 }
+
+/* Screenshot-guided layout: brief prompt, a clear target, and a full keyboard. */
+.kb-shell > .kb-panel { margin: 0; }
+#setupPanel .kb-menu { max-width: 52rem; gap: .7rem; margin: 1.5rem auto 1rem; }
+#setupPanel .kb-menu-option { grid-template-columns: 1fr; justify-items: center; text-align: center; min-height: 5rem; gap: .2rem; padding: .8rem 1.2rem; }
+#setupPanel .kb-menu-label { font-size: 1.5em; }
+#setupPanel #currentLesson .kb-menu-label { font-size: 1em; }
+#setupPanel #currentLessonValue { font-size: 1.6em; }
+#setupPanel .kb-actions { margin-top: 1rem; }
+#menuProgress { font-size: .8em; margin: 1rem auto .25rem; }
+#learnPanel:not([hidden]) { display: flex; flex-direction: column; align-items: stretch; gap: .7rem; min-height: calc(100dvh - 8rem); background: #06142d; padding: clamp(1rem, 2.5vw, 2rem); }
+#learnPanel .kb-brand { margin-bottom: 0; font-size: .8em; }
+#learnPanel .kb-instruction { width: 100%; min-height: 9rem; padding: .5rem; margin: 0 auto; border: 0; border-radius: 0; background: transparent; text-align: center; }
+#learnText { max-width: 58rem; margin: auto; font-size: calc(clamp(1.7rem, 3.5vw, 2.8rem) * var(--kb-scale)); line-height: 1.3; font-weight: 800; }
+#learnPosition { font-size: .75em; }
+#learnNext { background: #bdeaff; border: 2px solid #65aef5; color: #06142d; font-size: 1.25em; min-height: 3rem; padding: .4rem 1rem; }
+#learnPanel .kb-actions { margin: 0; }
+#learnPanel .kb-small-actions { margin-top: .5rem; }
+.kb-small-actions .kb-action { font-size: .8em; min-height: 2.5rem; padding: .4rem .7rem; }
+#learnPanel .kb-reference { width: 100%; margin: .5rem auto 0; border: 0; border-top: 1px solid #65aef5; border-radius: 0; padding: .75rem 0 0; font-size: .85em; }
+#practicePanel:not([hidden]) { min-height: calc(100dvh - 8rem); background: #06142d; gap: .45rem; }
+#phaseLabel { font-size: .8em; }
+#capture { min-height: 11rem; flex: 0 0 auto; padding: .6rem; border: 0; border-radius: .5rem; }
+#dotHint { max-width: 58rem; margin: 0 auto .3rem; font-size: calc(clamp(1.4rem, 3vw, 2.4rem) * var(--kb-scale)); font-weight: 800; line-height: 1.3; }
+#targetSymbol { align-self: center; max-width: 100%; min-width: 1.5em; padding: .08em .3em; margin: .25rem 0; border: 2px solid #8cd7ff; border-radius: .15em; background: #d9efff; color: #06142d; font-size: calc(clamp(2.5rem, 5vw, 4rem) * var(--kb-scale)); font-weight: 900; line-height: 1.2; overflow-wrap: anywhere; }
+#targetSymbol[data-long=true] { font-size: calc(clamp(1.5rem, 3.5vw, 2.6rem) * var(--kb-scale)); }
+#targetCells { font-size: calc(1.6rem * var(--kb-scale)); }
+#writtenCells { font-size: calc(1.4rem * var(--kb-scale)); }
+#visualGuide { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; width: 100%; gap: 1rem; margin: auto 0 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+#visualGuide .braille-cell-preview { font-size: .8em; }
+#visualGuide .braille-cell-preview p { font-size: .8em; }
+.braille-keyboard-board { position: relative; width: 100%; max-width: 56rem; aspect-ratio: 960 / 350; margin: .25rem auto 0; }
+#lessonGuide { aspect-ratio: 960 / 280; }
+.braille-keyboard { position: absolute; top: 0; left: 0; width: 100%; height: 80%; display: grid; grid-template-rows: repeat(5, minmax(0, 1fr)); }
+#lessonKeyboard { height: 100%; }
+.braille-keyboard-row { display: grid; grid-template-columns: repeat(60, minmax(0, 1fr)); min-height: 0; }
+.braille-board-key { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; min-height: 0; margin: 2px; padding: 2px; border: 1px solid #304964; border-radius: .2rem; background: #10233d; color: #91a3b9; font-size: calc(clamp(.65rem, 1.4vw, 1rem) * var(--kb-scale)); font-weight: 700; line-height: 1.1; overflow: hidden; }
+.braille-board-key[data-dot] { border: 2px solid #b4cdeb; background: #d9e9fc; color: #06142d; font-size: calc(clamp(.9rem, 2vw, 1.3rem) * var(--kb-scale)); font-weight: 900; }
+.braille-board-key small { display: none; margin-top: .15rem; font-size: .55em; line-height: 1; }
+.braille-board-key[data-cue=true] { outline: 3px solid #54c9ff; outline-offset: -3px; background: #b6e4ff; }
+.braille-board-key[data-active=true] { background: #ffe37a; color: #06142d; border-color: #ffe37a; outline-color: #ffe37a; }
+.braille-finger-guide { position: absolute; inset: 0; pointer-events: none; }
+.braille-finger-guide svg { display: block; width: 100%; height: 100%; }
+.braille-hand-shape { fill: #1265a9; fill-opacity: .85; stroke: #75c9f5; stroke-width: 2; }
+.braille-finger { fill: #247dbe; }
+.braille-finger[data-cue=true] { fill: #56bee9; stroke: #e3f6ff; stroke-width: 4; }
+.braille-finger[data-active=true] { fill: #ffe37a; stroke: #ffe37a; stroke-width: 4; }
+#keyLegend { font-size: .7em; text-align: center; margin: 0; color: #c2d6ee; }
+#entryFeedback { text-align: center; font-size: .9em; }
+#practicePanel #progressText { font-size: .7em; }
+#writingProgress { height: .25rem; }
+#practicePanel .kb-actions .kb-action { font-size: .8em; min-height: 2.3rem; padding: .3rem .55rem; }
+#practicePanel .kb-help { font-size: .7em; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .braille-board-key { background: #101010; color: #a6a6a6; border-color: #555; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .braille-board-key[data-dot] { background: #efefef; color: #000; border-color: #fff; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .braille-board-key[data-cue=true] { background: #b6e4ff; outline-color: #54c9ff; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .braille-board-key[data-active=true] { background: #ffe37a; color: #000; border-color: #ffe37a; outline-color: #ffe37a; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #targetSymbol { background: #fff; color: #000; border-color: #fff; }
+@media (max-width: 42rem) {
+  #setupPanel .kb-menu-label { font-size: 1.2em; }
+  #setupPanel #currentLessonValue { font-size: 1.25em; }
+  #visualGuide { grid-template-columns: minmax(0, 1fr); }
+  .braille-keyboard-board, #lessonGuide { aspect-ratio: auto; max-width: 24rem; }
+  .braille-keyboard, #lessonKeyboard { position: static; height: auto; display: block; }
+  .braille-keyboard-row[data-row=context], .braille-board-key:not([data-dot]), .braille-finger-guide { display: none; }
+  .braille-keyboard-row[data-row=home] { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
+  .braille-board-key[data-dot] { grid-column: auto !important; min-height: 3em; margin: 0; padding: .3rem; font-size: 1.1em; }
+  .braille-board-key small { display: block; font-size: .7em; }
+  #visualGuide .braille-cell-preview { justify-self: center; }
+  #learnNext { min-width: 0; }
+}
+@media (max-width: 65rem) {
+  body[data-braille-large=true] #visualGuide { grid-template-columns: minmax(0, 1fr); }
+  body[data-braille-large=true] .braille-keyboard-board, body[data-braille-large=true] #lessonGuide { aspect-ratio: auto; max-width: 38rem; }
+  body[data-braille-large=true] .braille-keyboard { position: static; height: auto; display: block; }
+  body[data-braille-large=true] .braille-keyboard-row[data-row=context], body[data-braille-large=true] .braille-board-key:not([data-dot]), body[data-braille-large=true] .braille-finger-guide { display: none; }
+  body[data-braille-large=true] .braille-keyboard-row[data-row=home] { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
+  body[data-braille-large=true] .braille-board-key[data-dot] { grid-column: auto !important; min-height: 3em; margin: 0; padding: .3rem; font-size: 1em; }
+  body[data-braille-large=true] .braille-board-key small { display: block; font-size: .7em; }
+}
+@media (min-width: 42.01rem) and (max-height: 53rem) {
+  body[data-braille-large=false] #visualGuide .braille-keyboard-board { max-width: min(56rem, max(28rem, calc((100dvh - 33rem) * 2.74))); }
+}
