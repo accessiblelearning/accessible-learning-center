@@ -282,13 +282,18 @@ html[data-contrast=high], html[data-contrast=high] body { background: #000; colo
 #learnPanel .kb-reference { width: 100%; margin: .5rem auto 0; border: 0; border-top: 1px solid #65aef5; border-radius: 0; padding: .75rem 0 0; font-size: .85em; }
 #practicePanel:not([hidden]) { min-height: calc(100dvh - 8rem); background: #06142d; gap: .45rem; }
 #phaseLabel { font-size: .8em; }
-#capture { min-height: 11rem; flex: 0 0 auto; padding: .6rem; border: 0; border-radius: .5rem; }
-#dotHint { max-width: 58rem; margin: 0 auto .3rem; font-size: calc(clamp(1.4rem, 3vw, 2.4rem) * var(--kb-scale)); font-weight: 800; line-height: 1.3; }
-#targetSymbol { align-self: center; max-width: 100%; min-width: 1.5em; padding: .08em .3em; margin: .25rem 0; border: 2px solid #8cd7ff; border-radius: .15em; background: #d9efff; color: #06142d; font-size: calc(clamp(2.5rem, 5vw, 4rem) * var(--kb-scale)); font-weight: 900; line-height: 1.2; overflow-wrap: anywhere; }
-#targetSymbol[data-long=true] { font-size: calc(clamp(1.5rem, 3.5vw, 2.6rem) * var(--kb-scale)); }
+#capture { min-height: 0; flex: 0 0 auto; padding: .5rem; border: 0; border-radius: .5rem; }
+#dotHint { max-width: 42rem; margin: 0 auto .5rem; font-size: calc(clamp(1.15rem, 2.1vw, 1.55rem) * var(--kb-scale)); font-weight: 800; line-height: 1.35; }
+.braille-target-group { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .7rem 1.25rem; width: fit-content; max-width: 100%; margin: 0 auto; }
+#targetSymbol { align-self: center; max-width: 100%; min-width: 1.5em; box-sizing: border-box; padding: .08em .3em; margin: .25rem 0; border: 2px solid #8cd7ff; border-radius: .15em; background: #d9efff; color: #06142d; font-size: calc(clamp(2rem, 3.3vw, 2.7rem) * var(--kb-scale)); font-weight: 900; line-height: 1.2; overflow-wrap: anywhere; }
+#targetSymbol[data-long=true] { font-size: calc(clamp(1.25rem, 2.5vw, 1.8rem) * var(--kb-scale)); }
+#cellPreview { flex: 0 0 auto; font-size: calc(1rem * var(--kb-scale)); }
+#cellPreview p { font-size: .9em; margin-bottom: .25rem; }
+#cellPreview .braille-cell { grid-template-columns: repeat(2, 2.2em); gap: .25em; }
+#cellPreview .braille-dot { width: 2.2em; height: 2.2em; }
 #targetCells { font-size: calc(1.6rem * var(--kb-scale)); }
 #writtenCells { font-size: calc(1.4rem * var(--kb-scale)); }
-#visualGuide { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; width: 100%; gap: 1rem; margin: auto 0 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+#visualGuide { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; width: 100%; gap: .5rem; margin: .25rem 0 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
 #visualGuide .braille-cell-preview { font-size: .8em; }
 #visualGuide .braille-cell-preview p { font-size: .8em; }
 .braille-keyboard-board { position: relative; width: 100%; max-width: 56rem; aspect-ratio: 960 / 350; margin: .25rem auto 0; }
@@ -296,8 +301,8 @@ html[data-contrast=high], html[data-contrast=high] body { background: #000; colo
 .braille-keyboard { position: absolute; top: 0; left: 0; width: 100%; height: 80%; display: grid; grid-template-rows: repeat(5, minmax(0, 1fr)); }
 #lessonKeyboard { height: 100%; }
 .braille-keyboard-row { display: grid; grid-template-columns: repeat(60, minmax(0, 1fr)); min-height: 0; }
-.braille-board-key { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; min-height: 0; margin: 2px; padding: 2px; border: 1px solid #304964; border-radius: .2rem; background: #10233d; color: #91a3b9; font-size: calc(clamp(.65rem, 1.4vw, 1rem) * var(--kb-scale)); font-weight: 700; line-height: 1.1; overflow: hidden; }
-.braille-board-key[data-dot] { border: 2px solid #b4cdeb; background: #d9e9fc; color: #06142d; font-size: calc(clamp(.9rem, 2vw, 1.3rem) * var(--kb-scale)); font-weight: 900; }
+.braille-board-key { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; min-height: 0; margin: 2px; padding: 2px; border: 1px solid #597794; border-radius: .2rem; background: #10233d; color: #c7d7e8; font-size: calc(clamp(.8rem, 1.65vw, 1.2rem) * var(--kb-scale)); font-weight: 700; line-height: 1.1; overflow: hidden; }
+.braille-board-key[data-dot] { border: 2px solid #b4cdeb; background: #d9e9fc; color: #06142d; font-size: calc(clamp(1.1rem, 2.2vw, 1.6rem) * var(--kb-scale)); font-weight: 900; }
 .braille-board-key small { display: none; margin-top: .15rem; font-size: .55em; line-height: 1; }
 .braille-board-key[data-cue=true] { outline: 3px solid #54c9ff; outline-offset: -3px; background: #b6e4ff; }
 .braille-board-key[data-active=true] { background: #ffe37a; color: #06142d; border-color: #ffe37a; outline-color: #ffe37a; }
@@ -308,7 +313,7 @@ html[data-contrast=high], html[data-contrast=high] body { background: #000; colo
 .braille-finger[data-cue=true] { fill: #56bee9; stroke: #e3f6ff; stroke-width: 4; }
 .braille-finger[data-active=true] { fill: #ffe37a; stroke: #ffe37a; stroke-width: 4; }
 #keyLegend { font-size: .7em; text-align: center; margin: 0; color: #c2d6ee; }
-#entryFeedback { text-align: center; font-size: .9em; }
+#entryFeedback { text-align: center; font-size: .9em; max-width: 42rem; margin: .45rem auto 0; }
 #practicePanel #progressText { font-size: .7em; }
 #writingProgress { height: .25rem; }
 #practicePanel .kb-actions .kb-action { font-size: .8em; min-height: 2.3rem; padding: .3rem .55rem; }
@@ -339,7 +344,4 @@ html[data-contrast=high], html[data-contrast=high] body { background: #000; colo
   body[data-braille-large=true] .braille-keyboard-row[data-row=home] { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
   body[data-braille-large=true] .braille-board-key[data-dot] { grid-column: auto !important; min-height: 3em; margin: 0; padding: .3rem; font-size: 1em; }
   body[data-braille-large=true] .braille-board-key small { display: block; font-size: .7em; }
-}
-@media (min-width: 42.01rem) and (max-height: 53rem) {
-  body[data-braille-large=false] #visualGuide .braille-keyboard-board { max-width: min(56rem, max(28rem, calc((100dvh - 33rem) * 2.74))); }
 }
