@@ -190,11 +190,45 @@ body[data-braille-large=true] .kb-result-primary { max-width: 28rem; justify-sel
 #practicePanel .kb-action { min-height: 2.75rem; padding: .4rem .65rem; font-size: .9em; }
 #practicePanel .kb-help { font-size: .85em; }
 
+/* Focused learning workspace, with the Accessible Learning Center palette. */
+.kb-panel h1, .kb-panel h2 { font-size: calc(clamp(2rem, 4vw, 3.3rem) * var(--kb-scale)); overflow-wrap: anywhere; }
+.kb-brand { margin: 0 0 .6rem; color: #b5ddff; text-align: center; font-size: .85em; font-weight: 800; letter-spacing: .06em; }
+.kb-summary { max-width: 50rem; margin: 0 auto 1.5rem; font-size: 1em; }
+#setupPanel { padding-top: 1.5rem; }
+.kb-menu-option { min-width: 0; grid-template-columns: minmax(8rem, .65fr) minmax(0, 1.6fr); overflow-wrap: anywhere; }
+.kb-menu-option .kb-menu-label { font-size: 1.25em; }
+.kb-shell .kb-menu-value { font-size: 1em; line-height: 1.4; }
+.kb-menu-option--start { text-align: left; min-height: 7rem; background: #075fc1; border-color: #b5ddff; }
+.kb-shell .kb-menu-option--start .kb-menu-value { font-size: 1.2em; }
+.kb-menu-option:disabled { opacity: 1; background: #0b2147; color: #bbcee4; border-color: #526d91; }
+.kb-menu-option[aria-current=true] { border-left-width: .6rem; }
+.kb-lesson-list .kb-menu-option { min-height: 4rem; }
+.kb-menu-help { font-size: .85em; font-weight: 600; line-height: 1.6; }
+.kb-action { min-height: 3.25rem; font-size: 1em; overflow-wrap: anywhere; }
+.kb-secondary { background: #12396f; border-color: #65aef5; }
+.kb-action:disabled { background: #0b2147; color: #bbcee4; border-color: #526d91; cursor: default; }
+.kb-instruction { display: grid; align-content: center; gap: .8rem; min-height: 14rem; max-width: 58rem; margin: 1.5rem auto; padding: clamp(1rem, 3vw, 2rem); border: 2px solid #65aef5; border-radius: .8rem; background: #06142d; }
+#learnPosition { margin: 0; color: #b5ddff; font-size: .9em; font-weight: 800; }
+#learnText { margin: 0; font-size: 1.4em; line-height: 1.55; overflow-wrap: anywhere; }
+#lessonObjective { max-width: 58rem; margin: 0 auto; text-align: center; }
+#learnNext { min-width: 12rem; }
+.kb-reference { max-width: 58rem; margin: 2rem auto 0; padding: 1rem; border: 1px solid #65aef5; border-radius: .6rem; }
+#practicePanel:not([hidden]) { padding: clamp(.8rem, 2vw, 1.4rem); gap: .65rem; }
+#phaseLabel { text-align: center; color: #b5ddff; }
+#capture { min-height: 12rem; padding: 1rem; background: #06142d; text-align: center; }
+#targetPrint { font-size: calc(clamp(2.1rem, 5vw, 4rem) * var(--kb-scale)); }
+#dotHint { font-size: 1.05em; line-height: 1.5; margin: .4rem 0; }
+#progressText { text-align: center; }
+#visualGuide { padding: .75rem; border-width: 1px; }
+.braille-cell-preview p, .braille-hand { text-align: center; }
+.braille-key { border-bottom-width: 5px; }
+#practicePanel .kb-help span { white-space: normal; overflow-wrap: anywhere; }
+
 /* Braille's black background stays local to this program. */
 body[data-braille-dark=true],
 html[data-theme=dark], html[data-theme=dark] body,
 html[data-contrast=high], html[data-contrast=high] body { background: #000; color: #fff; }
-:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.kb-shell, .kb-panel, .kb-form, .kb-menu-help, .kb-menu-option, .kb-result, .kb-finish-row, #capture, #visualGuide, .braille-dot, .braille-key, .kb-help, .kb-settings select, .kb-toolbar button, .kb-action, .kb-result-primary, th, td) { background: #000 !important; color: #fff !important; border-color: #fff; box-shadow: none; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.kb-shell, .kb-panel, .kb-form, .kb-instruction, .kb-menu-help, .kb-menu-option, .kb-result, .kb-finish-row, #capture, #visualGuide, .braille-dot, .braille-key, .kb-help, .kb-settings select, .kb-toolbar button, .kb-action, .kb-result-primary, th, td) { background: #000 !important; color: #fff !important; border-color: #fff; box-shadow: none; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .kb-menu-option:focus { border-color: #ffe37a; outline: 4px solid #ffe37a; outline-offset: 3px; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #targetCells .current-cell { background: #000; color: #fff; outline: 3px solid #ffe37a; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.braille-dot.active, .braille-key[data-active=true]) { background: #ffe37a !important; color: #000 !important; border-color: #ffe37a; }
@@ -219,5 +253,10 @@ html[data-contrast=high], html[data-contrast=high] body { background: #000; colo
   #visualGuide { gap: .5rem; }
   .braille-keys { gap: .5rem; }
   .braille-key { min-width: 2.4em; }
-  .kb-actions > * { width: 100%; }
+  .braille-keys, .braille-hand { min-width: 0; max-width: 100%; }
+  .braille-key-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .braille-key { min-width: 0; overflow-wrap: anywhere; }
+  .kb-actions > * { width: 100%; min-width: 0; }
+  #learnNext { min-width: 0; }
+  .kb-instruction { padding: 1rem; }
 }
