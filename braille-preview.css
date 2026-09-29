@@ -229,7 +229,7 @@ body[data-braille-large=true] .kb-result-primary { max-width: 28rem; justify-sel
 body[data-braille-dark=true],
 html[data-theme=dark], html[data-theme=dark] body,
 html[data-contrast=high], html[data-contrast=high] body { background: #000; color: #fff; }
-:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.kb-shell, .kb-panel, .kb-form, .kb-instruction, .kb-menu-help, .kb-menu-option, .kb-result, .kb-finish-row, #capture, #visualGuide, .braille-dot, .braille-key, .kb-help, .kb-settings select, .kb-toolbar button, .kb-action, .kb-result-primary, th, td) { background: #000 !important; color: #fff !important; border-color: #fff; box-shadow: none; }
+:is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.kb-shell, .kb-panel, .kb-form, .kb-instruction, .kb-menu-help, .kb-menu-option, .kb-step-adjust, .kb-result, .kb-finish-row, #capture, #visualGuide, .braille-dot, .braille-key, .kb-help, .kb-settings select, .kb-toolbar button, .kb-action, .kb-result-primary, th, td) { background: #000 !important; color: #fff !important; border-color: #fff; box-shadow: none; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .kb-menu-option:focus { border-color: #ffe37a; outline: 4px solid #ffe37a; outline-offset: 3px; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #targetCells .current-cell { background: #000; color: #fff; outline: 3px solid #ffe37a; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) :is(.braille-dot.active, .braille-key[data-active=true]) { background: #ffe37a !important; color: #000 !important; border-color: #ffe37a; }
@@ -344,6 +344,19 @@ body[data-braille-screen=learnPanel] .kb-toolbar button { padding-top: .35rem; p
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .braille-board-key[data-active=true] { background: #ffe37a; color: #000; border-color: #ffe37a; outline-color: #ffe37a; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #targetSymbol { background: #fff; color: #000; border-color: #fff; }
 /* Retain a clear selection even after a pointer click moves focus to page text. */
+/* Match Keyboarding's setting rows, values, and separate adjustment buttons. */
+#settingsMenu .kb-menu-option { min-height: 6.5rem; grid-template-columns: minmax(9rem, .8fr) minmax(0, 1.5fr); padding: 1rem 1.5rem; }
+#settingsMenu .kb-menu-label { font-size: 1.05em; }
+#settingsMenu .kb-menu-value { min-width: 0; font-size: calc(clamp(1.45rem, 4vw, 2.7rem) * var(--kb-scale)); line-height: 1.15; overflow-wrap: anywhere; }
+#settingsMenu .kb-back { grid-template-columns: minmax(0, 1fr); text-align: center; }
+#settingsMenu .kb-step-adjust { min-width: 0; }
+body[data-braille-large=true] #settingsMenu .kb-menu-option { grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+@media (max-width: 42rem) {
+  #settingsMenu .kb-stepper-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #settingsMenu .kb-stepper-row .kb-menu-option { grid-column: 1 / -1; }
+  #settingsMenu .kb-menu-option { grid-template-columns: minmax(0, 1fr); gap: .5rem; padding: 1rem; }
+  #settingsMenu .kb-step-adjust { min-height: 3.5rem; }
+}
 .kb-shell :is(.kb-arrow-menu, .kb-actions) :is(button, summary) { transition: none; }
 .kb-shell [data-kb-selected=true] { outline: 4px solid #ffe37a !important; outline-offset: 4px; }
 .kb-shell#main-content :is(button, summary)[data-kb-selected=true] { background: #ffe37a !important; color: #071a35 !important; border-color: #ffe37a !important; }
