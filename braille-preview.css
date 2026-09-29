@@ -327,6 +327,11 @@ body[data-braille-screen=learnPanel] .kb-toolbar button { padding-top: .35rem; p
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .braille-board-key[data-cue=true] { background: #b6e4ff; outline-color: #54c9ff; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) .braille-board-key[data-active=true] { background: #ffe37a; color: #000; border-color: #ffe37a; outline-color: #ffe37a; }
 :is(body[data-braille-dark=true], html[data-theme=dark], html[data-contrast=high]) #targetSymbol { background: #fff; color: #000; border-color: #fff; }
+/* Retain a clear selection even after a pointer click moves focus to page text. */
+.kb-shell :is(.kb-arrow-menu, .kb-actions) :is(button, summary) { transition: none; }
+.kb-shell [data-kb-selected=true] { outline: 4px solid #ffe37a !important; outline-offset: 4px; }
+.kb-shell#main-content :is(button, summary)[data-kb-selected=true] { background: #ffe37a !important; color: #071a35 !important; border-color: #ffe37a !important; }
+.kb-shell :is(button, summary)[data-kb-selected=true] * { color: #071a35 !important; }
 @media (max-width: 42rem) {
   #setupPanel .kb-menu-label { font-size: 1.2em; }
   #setupPanel #currentLessonValue { font-size: 1.25em; }
