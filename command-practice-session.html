@@ -6,23 +6,18 @@
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
-  <link rel="stylesheet" href="mission-ui.css?v=command-depth-1">
+  <link rel="stylesheet" href="mission-ui.css?v=command-intro-2">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
   <script src="mission-ui.js?v=keyboard-match-2" defer></script>
-  <script src="command-practice-session.js?v=command-depth-1" defer></script>
+  <script src="command-practice-session.js?v=command-intro-2" defer></script>
   <script src="command-courses.js?v=command-depth-1" defer></script>
   <script src="command-practice.js?v=command-depth-1" defer></script>
 </head>
 <body class="practice-session-page mission-center-page" data-practice-session="true" data-mission-back="command-practice.html" data-mission-back-label="Back to Command Practice">
   <main id="main-content" class="mission-center-shell">
-    <section id="commandReadyScreen" class="mission-center-panel mission-ready-screen" aria-labelledby="commandReadyHeading" tabindex="0" role="application" aria-describedby="commandReadyInstructions">
+    <section id="commandReadyScreen" class="mission-center-panel mission-ready-screen" aria-labelledby="commandReadyHeading" tabindex="0" role="application" aria-describedby="commandReadyStart">
       <h1 id="commandReadyHeading">Command Practice</h1>
-      <div class="mission-ready-prompt">
-        <p id="commandReadyInstructions">Start with basic commands, then continue to intermediate and advanced commands in this topic. Press any key to start.</p>
-      </div>
-      <p id="macReadyHelp" hidden>VO means Control+Option, or Caps Lock when enabled as your VoiceOver modifier. Mac practice starts with a command builder: choose the modifier and final key, then select Check command. You can keep VoiceOver running. <a href="mac-voiceover-manual.html#mac-command-practice">Read the Mac practice instructions</a>.</p>
-      <button id="commandReadyStart" class="mission-result-primary" type="button">Start Command Practice</button>
-      <p class="mission-result-exit">Escape returns to the Command Practice topics.</p>
+      <button id="commandReadyStart" class="mission-result-primary" type="button">Press any key to start.</button>
     </section>
     <section class="practice-session-shell training-stage mission-center-panel mission-training-panel" aria-labelledby="practice-heading" hidden>
       <div class="training-stage__topbar visually-hidden">

@@ -3,6 +3,24 @@
 
   const params = new URLSearchParams(window.location.search);
   const requestedCategory = params.get("category");
+  const introHeadings = {
+    "Google Docs and applications": "Google Docs commands",
+    "Microsoft Word and documents": "Microsoft Word commands",
+    "General editing": "Microsoft Word commands",
+    "Microsoft Excel and spreadsheets": "Microsoft Excel commands",
+    "Presentations": "PowerPoint commands",
+    "Windows and File Explorer": "Windows and File Explorer commands",
+    "Web and screen-reader navigation": "Web navigation commands",
+    "Firefox browser": "Firefox commands",
+    "Thunderbird email": "Thunderbird commands",
+    "ZoomText and Fusion Desktop magnification": "ZoomText and Fusion commands",
+    "Bookshare Reader on the web": "Bookshare commands",
+    "Learning Ally control navigation": "Learning Ally commands",
+    "Braille display keyboard practice": "Braille display commands",
+    "Mac VoiceOver basics": "Mac VoiceOver commands",
+    "Mac VoiceOver navigation and web": "Mac VoiceOver commands",
+    "Mac VoiceOver reading and settings": "Mac VoiceOver commands"
+  };
 
   window.addEventListener("DOMContentLoaded", () => {
     const category = document.getElementById("commandCategory");
@@ -12,15 +30,10 @@
     }
 
     category.value = requestedCategory;
-    document.getElementById("commandReadyHeading").textContent = requestedCategory;
-    const courseNotes = window.CommandPracticeCourseNotes?.[requestedCategory];
-    if (courseNotes) document.getElementById("commandReadyInstructions").textContent = courseNotes + " Start with basic commands, then continue to intermediate and advanced commands in this topic. Press any key to start.";
+    document.getElementById("commandReadyHeading").textContent = introHeadings[requestedCategory] || requestedCategory;
     const macPractice = requestedCategory.startsWith("Mac VoiceOver ");
     document.body.dataset.macPractice = String(macPractice);
-    const macHelp = document.getElementById("macReadyHelp");
-    if (macHelp) macHelp.hidden = !macPractice;
     if (macPractice) {
-      document.getElementById("commandReadyHeading").textContent = requestedCategory;
       document.getElementById("commandReadyScreen").removeAttribute("role");
     }
     document.getElementById("practiceStyle").value = params.get("style") === "guided" ? "guided" : "quick";

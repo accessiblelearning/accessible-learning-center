@@ -63,6 +63,7 @@ body.mission-website-controls-hidden > .site-nav { display: none; }
 .mission-center-page .mission-ready-screen { display: grid; align-content: center; gap: 1rem; }
 .mission-center-page .mission-ready-prompt { min-height: 12rem; padding: 1.5rem; margin: 0; font-size: clamp(2.25rem, 6vw, 4rem); }
 .mission-center-page .mission-ready-screen > button { min-height: 3.5rem; width: auto; justify-self: center; font-size: 1.25rem; padding: .6rem 1.5rem; }
+.mission-center-page #commandReadyStart { min-height: 4.5rem; max-width: 100%; font-size: clamp(1.5rem, 4vw, 2.5rem); }
 .mission-center-page.mission-session-page .mission-training-panel:not([hidden]),
 .mission-center-page.practice-session-page .mission-training-panel:not([hidden]) {
   min-height: calc(100svh - 7rem);
