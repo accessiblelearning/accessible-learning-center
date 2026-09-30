@@ -577,21 +577,52 @@
   }
 
   function commandExplanation() {
-    if (hasCourse()) return command[2];
     if (!command) return "";
+    if (hasCourse()) {
+      const shortGoals = {
+        "Copy.": "Copies selected text without removing it.",
+        "Cut.": "Removes selected text and puts it on the clipboard.",
+        "Paste.": "Inserts the text or item you copied or cut.",
+        "Paste without formatting.": "Paste text without its original formatting.",
+        "Undo.": "Reverse the last action.",
+        "Redo.": "Restore the action you just undid.",
+        "Bold.": "Turn bold text on or off.",
+        "Strikethrough.": "Draw a line through the selected text.",
+        "Superscript.": "Format text above the normal text line.",
+        "Subscript.": "Format text below the normal text line.",
+        "Small caps.": "Format text as small capital letters.",
+        "Numbered list.": "Create a numbered list.",
+        "Bulleted list.": "Create a bulleted list.",
+        "Checklist.": "Create a checklist.",
+        "Alt text.": "Add or edit an image's text description.",
+        "Word count.": "Show the document's word count.",
+        "Zoom 100%.": "Set document zoom to 100 percent.",
+        "Move paragraph up/down up.": "Move the paragraph up.",
+        "Move paragraph up/down down.": "Move the paragraph down."
+      };
+      const goal = shortGoals[command[1]] || command[1];
+      return /^[A-Z][a-z]+ menu\.$/.test(goal) ? "Open the " + lowerFirst(goal) : goal;
+    }
     if (level.value === "detailed") {
       return "Here is what this command does. " + command[2];
     }
     return briefExplanation(command[1]);
   }
 
+  function courseInstruction() {
+    const steps = commandSteps();
+    const keys = steps.map(spokenKeys).join(". Then ");
+    const instruction = useCourseBuilder() ? "Use Build the command: " + keys + "." : "Press " + keys + ".";
+    const sequenceHelp = steps.length > 1
+      ? (useCourseBuilder() ? " Check each step in order." : " Release the keys between steps.")
+      : "";
+    return instruction + sequenceHelp + (sequencePosition ? " Now enter step " + (sequencePosition + 1) + ": " + spokenKeys(expectedStep()) + "." : "");
+  }
+
   function describe() {
     if (!command) return "";
     if (hasCourse()) {
-      const steps = commandSteps();
-      const sequence = steps.length > 1 ? " This is a sequence of " + steps.length + " steps. " + steps.map((k,i)=>"Step " + (i+1) + ": " + spokenKeys(k) + ".").join(" ") + " Enter the steps in order." : " The command is " + spokenKeys(command[0]) + ".";
-      const input = useCourseBuilder() ? " Use Build the command below; these controls rehearse the keys without running the real command." : " Press the keys in the practice area, or use Build the command if your screen reader handles them.";
-      return command[1] + sequence + " " + commandExplanation() + input + (sequencePosition ? " Now enter step " + (sequencePosition+1) + ": " + spokenKeys(expectedStep()) + "." : "");
+      return courseInstruction() + " " + commandExplanation();
     }
     if (isMacPractice()) {
       const input = command[3] === "builder"
@@ -640,6 +671,12 @@
     }
     const reference = document.getElementById("commandOfficialReference");
     if (reference && hasCourse()) { reference.href = command[4].source; reference.textContent = "Official command reference"; }
+    const explanationDetails = document.getElementById("commandExplanationDetails");
+    if (explanationDetails) {
+      explanationDetails.hidden = !hasCourse();
+      explanationDetails.open = false;
+      document.getElementById("commandDetailedExplanation").textContent = hasCourse() ? command[2] : "";
+    }
     resetModifiers();
     if (macPanel) {
       macPanel.hidden = !isMacPractice() || hasCourse();
@@ -653,7 +690,9 @@
     }
     const heading = document.createElement("h3");
     const protectedSequence = protectedSequences[normalizeExpected(command[0])];
-    heading.textContent = hasCourse() ? command[1] : isMacPractice() && usingMacBuilder
+    heading.textContent = hasCourse()
+        ? commandSteps().length > 1 ? command[1] : (useCourseBuilder() ? "Build " : "Press ") + spokenKeys(command[0])
+        : isMacPractice() && usingMacBuilder
         ? "Build " + spokenKeys(command[0])
         : protectedSequence
         ? "Protected practice: " + spokenKeys(command[0])
@@ -661,7 +700,9 @@
         ? "Guided task " + (position + 1) + " of " + order.length
         : "Press " + spokenKeys(command[0]);
     const explanation = document.createElement("p");
-    explanation.textContent = hasCourse() ? describe() : !protectedSequence && practiceStyle.value !== "guided"
+    explanation.textContent = hasCourse()
+      ? commandExplanation() + (commandSteps().length > 1 ? " " + courseInstruction() : useCourseBuilder() ? " Use Build the command below." : "")
+      : !protectedSequence && practiceStyle.value !== "guided"
       ? commandExplanation()
       : describe();
     prompt.replaceChildren(heading, explanation);
@@ -805,6 +846,8 @@
 
   function showPracticeResults(show) {
     if (coursePanel && show) coursePanel.hidden = true;
+    const explanationDetails = document.getElementById("commandExplanationDetails");
+    if (explanationDetails && show) explanationDetails.hidden = true;
     if (!commandResults) return;
     commandResults.hidden = !show;
     if (practiceTopbar) practiceTopbar.hidden = show;

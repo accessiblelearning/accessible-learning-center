@@ -172,6 +172,10 @@ html[data-contrast="high"] .mission-center-page .command-focus-area.is-incorrect
 }
 
 /* Full-topic command courses */
+.mission-center-page #commandExplanationDetails { color: #fff; background: #06142d; border-color: #9bcfff; }
+.mission-center-page #commandExplanationDetails :is(summary, p) { color: inherit; }
+html[data-theme="dark"] .mission-center-page #commandExplanationDetails,
+html[data-contrast="high"] .mission-center-page #commandExplanationDetails { background: #000; border-color: #fff; }
 .command-level { font-weight:700; font-size:1.15rem; margin:.4rem 0; }
 .course-builder { border:2px solid #9bcfff; border-radius:12px; padding:1rem; margin:1rem 0; }
 .course-builder summary { font-weight:700; cursor:pointer; min-height:44px; }

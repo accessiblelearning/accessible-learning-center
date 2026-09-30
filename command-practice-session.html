@@ -6,12 +6,12 @@
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
-  <link rel="stylesheet" href="mission-ui.css?v=command-intro-2">
+  <link rel="stylesheet" href="mission-ui.css?v=command-explanations-1">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
   <script src="mission-ui.js?v=keyboard-match-2" defer></script>
   <script src="command-practice-session.js?v=command-intro-2" defer></script>
   <script src="command-courses.js?v=command-depth-1" defer></script>
-  <script src="command-practice.js?v=command-depth-1" defer></script>
+  <script src="command-practice.js?v=command-explanations-1" defer></script>
 </head>
 <body class="practice-session-page mission-center-page" data-practice-session="true" data-mission-back="command-practice.html" data-mission-back-label="Back to Command Practice">
   <main id="main-content" class="mission-center-shell">
@@ -32,6 +32,10 @@
         <p id="captureInstructions" class="visually-hidden">Press the requested key combination. For a screen-reader command such as Insert plus T, let your screen reader handle the command, then press the final key once to confirm it here. For a protected browser command, press and release the named modifier, then press the final key by itself. A correct command advances automatically. Press Control by itself to repeat when it is not part of a protected command. Tab or Shift plus Tab moves through the page controls when it is not the requested command. Press Escape to exit.</p>
         <p class="training-stage__detected visually-hidden"><span class="training-stage__input-label">Keys pressed</span><strong id="detectedKeys">None yet</strong></p>
       </div>
+      <details id="commandExplanationDetails" class="mission-support" hidden>
+        <summary>More explanation</summary>
+        <div><p id="commandDetailedExplanation"></p></div>
+      </details>
       <details id="courseBuilderPanel" class="course-builder" hidden>
         <summary>Build the command</summary>
         <p id="courseBuilderCue" class="course-builder-cue"></p>
