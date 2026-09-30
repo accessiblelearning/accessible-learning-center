@@ -68,12 +68,12 @@
     const settings = readSettings();
     const params = new URLSearchParams({
       category: item.dataset.category,
-      style: settings.style,
-      length: settings.length,
-      level: settings.level,
+      style: "guided",
+      length: "all",
+      level: "detailed",
       spoken: siteVoiceEnabled() ? "1" : "0",
       sounds: settings.sounds,
-      random: settings.order
+      random: "0"
     });
     window.location.href = "command-practice-session.html?" + params.toString();
   }

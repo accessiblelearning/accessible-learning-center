@@ -70,7 +70,7 @@
       id: "google-applications",
       label: "Google Applications",
       commandSets: [
-        { id: "google-docs", label: "Google Docs: Editing and Formatting Commands", category: "Google Docs and applications" }
+        { id: "google-docs", label: "Google Docs: basic editing through advanced menus, accessibility and navigation", category: "Google Docs and applications" }
       ],
       missionSets: [
         { id: "letters-navigate", label: "Google Applications: Letters Navigate Instead of Typing", mission: "1" }
@@ -213,4 +213,8 @@
     ]
 }
   ].sort((a, b) => a.label.localeCompare(b.label));
+  for (const topic of window.MissionControlCatalog) {
+    if (topic.id === "mac-voiceover") topic.commandSets = [{id:"mac-voiceover-basics", menuLabel:"Mac VoiceOver", label:"Mac VoiceOver: basic through advanced commands", category:"Mac VoiceOver basics"}];
+    if (topic.id === "microsoft-word") topic.commandSets = [{id:"word-documents", menuLabel:"Microsoft Word", label:"Microsoft Word: editing, navigation, formatting and advanced ribbon commands", category:"Microsoft Word and documents"}];
+  }
 })();

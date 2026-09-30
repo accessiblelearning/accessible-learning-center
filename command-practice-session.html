@@ -6,18 +6,19 @@
   <meta name="description" content="A focused keyboard command practice session with spoken instructions and immediate feedback.">
   <title>Command Practice Session - Accessible Learning Center</title>
   <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
-  <link rel="stylesheet" href="mission-ui.css?v=mac-voiceover-20260928">
+  <link rel="stylesheet" href="mission-ui.css?v=command-depth-1">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
   <script src="mission-ui.js?v=keyboard-match-2" defer></script>
-  <script src="command-practice-session.js?v=mac-voiceover-20260928" defer></script>
-  <script src="command-practice.js?v=mac-voiceover-20260928" defer></script>
+  <script src="command-practice-session.js?v=command-depth-1" defer></script>
+  <script src="command-courses.js?v=command-depth-1" defer></script>
+  <script src="command-practice.js?v=command-depth-1" defer></script>
 </head>
 <body class="practice-session-page mission-center-page" data-practice-session="true" data-mission-back="command-practice.html" data-mission-back-label="Back to Command Practice">
   <main id="main-content" class="mission-center-shell">
     <section id="commandReadyScreen" class="mission-center-panel mission-ready-screen" aria-labelledby="commandReadyHeading" tabindex="0" role="application" aria-describedby="commandReadyInstructions">
       <h1 id="commandReadyHeading">Command Practice</h1>
       <div class="mission-ready-prompt">
-        <p id="commandReadyInstructions">Press any key to start.</p>
+        <p id="commandReadyInstructions">Start with basic commands, then continue to intermediate and advanced commands in this topic. Press any key to start.</p>
       </div>
       <p id="macReadyHelp" hidden>VO means Control+Option, or Caps Lock when enabled as your VoiceOver modifier. Mac practice starts with a command builder: choose the modifier and final key, then select Check command. You can keep VoiceOver running. <a href="mac-voiceover-manual.html#mac-command-practice">Read the Mac practice instructions</a>.</p>
       <button id="commandReadyStart" class="mission-result-primary" type="button">Start Command Practice</button>
@@ -28,6 +29,7 @@
         <h2 id="practice-heading">Current command</h2>
         <p id="practiceScore">Correct: 0 · Attempts: 0</p>
       </div>
+      <p id="commandLevel" class="command-level" hidden></p>
       <div id="keyCapture" class="key-capture training-stage__input command-focus-area" tabindex="0" role="application" aria-describedby="commandPrompt captureInstructions practiceStatus" aria-label="Keyboard command practice area">
         <div id="commandPrompt" class="command-prompt training-stage__prompt">
           <p>Preparing your command practice.</p>
@@ -35,6 +37,20 @@
         <p id="captureInstructions" class="visually-hidden">Press the requested key combination. For a screen-reader command such as Insert plus T, let your screen reader handle the command, then press the final key once to confirm it here. For a protected browser command, press and release the named modifier, then press the final key by itself. A correct command advances automatically. Press Control by itself to repeat when it is not part of a protected command. Tab or Shift plus Tab moves through the page controls when it is not the requested command. Press Escape to exit.</p>
         <p class="training-stage__detected visually-hidden"><span class="training-stage__input-label">Keys pressed</span><strong id="detectedKeys">None yet</strong></p>
       </div>
+      <details id="courseBuilderPanel" class="course-builder" hidden>
+        <summary>Build the command</summary>
+        <p id="courseBuilderCue" class="course-builder-cue"></p>
+        <p>Choose the keys, then check the step. This rehearses the command without running it. VO means Control+Option.</p>
+        <form id="courseCommandBuilder">
+          <fieldset><legend>Keys to hold</legend><label><input type="checkbox" id="courseModControl"> Control</label><label><input type="checkbox" id="courseModAlt"> Alt</label><label><input type="checkbox" id="courseModShift"> Shift</label><label><input type="checkbox" id="courseModWindows"> Windows</label><label><input type="checkbox" id="courseModInsert"> Insert</label><label><input type="checkbox" id="courseModCapsLock"> Caps Lock</label><label><input type="checkbox" id="courseModVO"> VO</label><label><input type="checkbox" id="courseModCommand"> Command</label><label><input type="checkbox" id="courseModOption"> Option</label><label><input type="checkbox" id="courseModFn"> Fn</label></fieldset>
+          <label for="courseFinalKey">Final key</label>
+          <select id="courseFinalKey"><option value="">Choose a key</option></select>
+          <p id="courseStep">Step 1 of 1</p>
+          <button type="submit">Check this step</button>
+          <button type="button" id="courseRepeat">Repeat instructions</button>
+        </form>
+        <p><a id="commandOfficialReference" href="https://support.google.com/docs/answer/179738">Official command reference</a></p>
+      </details>
       <section id="macCommandPanel" class="mac-command-panel" aria-labelledby="macCommandHeading" hidden>
         <h2 id="macCommandHeading">Build the command</h2>
         <p id="macBuilderHelp">Choose the keys in the requested combination, then check it. These controls do not run a command on your Mac. Use Tab, or VoiceOver navigation, to reach each control.</p>
@@ -101,7 +117,7 @@
         <p class="mission-result-exit">Escape returns to the Command Practice topics.</p>
         <details class="mission-result-details">
           <summary>Review practice details</summary>
-          <h3 id="commandMasteredHeading">Commands mastered</h3>
+          <h3 id="commandMasteredHeading">Commands practiced</h3>
           <ul id="commandMasteredList"></ul>
           <h3>Commands to review</h3>
           <div id="commandReviewList"></div>

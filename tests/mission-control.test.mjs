@@ -412,3 +412,57 @@ test("shared skip navigation reuses the existing link and focuses main on full a
     assert.equal(p.document.activeElement, main);
   }
 });
+
+const courseWindow={};vm.runInNewContext(source('command-courses.js'),{window:courseWindow});
+const courses=courseWindow.CommandPracticeCourses;
+function coursePage(category,spoken=false){
+ const p=page({commandCategory:{value:category},practiceStyle:{value:'guided'},sessionLength:{value:'5'},explanationLevel:{value:'brief'},randomOrder:{checked:true},spokenInstructions:{checked:spoken},soundFeedback:{checked:false}});
+ p.load('command-courses.js');p.load('command-practice.js');p.get('startPractice').click();return p;
+}
+function buildStep(p,step){
+ const modifiers=['Control','Alt','Shift','Windows','Insert','Caps Lock','VO','Command','Option','Fn'];
+ const parts=step.split('+');for(const m of modifiers)p.get('courseMod'+m.replaceAll(' ','')).checked=parts.slice(0,-1).includes(m);
+ p.get('courseFinalKey').value=parts.at(-1);p.get('courseCommandBuilder').fire('submit');
+}
+test('every expanded topic reaches all three levels and completes through the accessible builder',()=>{
+ const aliases=new Set(['General editing','Mac VoiceOver navigation and web','Mac VoiceOver reading and settings']);
+ for(const [category,items] of Object.entries(courses)){
+  if(aliases.has(category))continue;
+  const p=coursePage(category);let last='';
+  items.forEach((item,i)=>{
+   assert.equal(p.get('commandLevel').textContent,item[4].level[0].toUpperCase()+item[4].level.slice(1)+' commands · '+category);
+   if(item[4].level!==last){const text=p.get('practiceStatus').children.map(x=>x.textContent).join(' ');assert.match(text,item[4].level==='basic'?/Starting with basic commands/:new RegExp('Moving to '+item[4].level+' level commands'));last=item[4].level;}
+   for(const step of item[4].steps)buildStep(p,step);
+   assert.equal(p.get('practiceScore').textContent,`Correct: ${i+1} · Attempts: ${i+1}`,category+': '+item[0]);
+   p.advance();
+  });
+  assert.equal(p.get('commandResults').hidden,false,category);assert.equal(p.get('courseBuilderPanel').hidden,true);
+ }
+});
+test('Google Docs covers menus, heading depths, table navigation and accurate redo semantics',()=>{
+ const c=courses['Google Docs and applications'];assert.ok(c.length>150);
+ for(const keys of ['Alt+F','Alt+Shift+F','Control+Alt+N then Control+Alt+H','Control+Alt+Shift+T then Control+Alt+Shift+M','Control+Alt+N then Control+Alt+6','Control+Alt+M'])assert.ok(c.some(x=>x[0]===keys),keys);
+ assert.match(c.find(x=>x[0]==='Control+Shift+Z')[1],/Redo/);assert.match(c.find(x=>x[0]==='Control+Y')[1],/Repeat/);
+ assert.ok(Object.values(courses).every(items=>items.every(item=>item[2].length>40&&item[4].source.startsWith('https://')&&item[4].steps.length)));
+});
+test('multi-step commands require each step, preserve the current step after a mistake, and count one completed command',()=>{
+ const name='Google Docs and applications',items=courses[name],index=items.findIndex(x=>x[4].steps.length>1),p=coursePage(name);
+ for(const item of items.slice(0,index)){for(const step of item[4].steps)buildStep(p,step);p.advance();}
+ const steps=items[index][4].steps;buildStep(p,steps[0]);assert.match(p.get('courseStep').textContent,/Step 2/);
+ buildStep(p,'F2');assert.match(p.get('practiceStatus').textContent,/Not quite/);assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index+1}`);
+ for(const step of steps.slice(1))buildStep(p,step);
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+2}`);
+});
+test('expanded direct commands accept real chords and protected commands direct users to the builder',()=>{
+ const p=coursePage('Google Docs and applications');chord(p,'Control+C');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');p.advance();
+ const q=coursePage('Windows and File Explorer');q.key('keyCapture','e',{metaKey:true});assert.equal(q.get('practiceScore').textContent,'Correct: 0 · Attempts: 0');assert.match(q.get('practiceStatus').textContent,/Build the command/);
+ buildStep(q,'Windows+E');assert.equal(q.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');
+});
+test('course data stays ordered, preserves all old categories, and avoids unsupported keys or legacy Narrator collisions',()=>{
+ const levels=['basic','intermediate','advanced'];
+ for(const [name,items] of Object.entries(courses)){
+  assert.deepEqual([...new Set(items.map(x=>x[4].level))],levels,name);
+  for(const item of items){assert.equal(item[0],item[4].steps.join(' then '));assert.ok(item[4].steps.every(step=>step.split('+').at(-1)));}
+ }
+ const f12=courses['Narrator commands'].filter(x=>x[0]==='Insert+F12');assert.equal(f12.length,1);assert.match(f12[0][1],/time and date/);
+});

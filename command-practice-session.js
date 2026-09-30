@@ -12,6 +12,9 @@
     }
 
     category.value = requestedCategory;
+    document.getElementById("commandReadyHeading").textContent = requestedCategory;
+    const courseNotes = window.CommandPracticeCourseNotes?.[requestedCategory];
+    if (courseNotes) document.getElementById("commandReadyInstructions").textContent = courseNotes + " Start with basic commands, then continue to intermediate and advanced commands in this topic. Press any key to start.";
     const macPractice = requestedCategory.startsWith("Mac VoiceOver ");
     document.body.dataset.macPractice = String(macPractice);
     const macHelp = document.getElementById("macReadyHelp");

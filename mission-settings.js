@@ -16,7 +16,7 @@
     level: { options: [{ value: "brief", label: "General explanation" }, { value: "detailed", label: "More detailed explanation" }], valueElement: document.getElementById("levelValue"), index: 0 },
     order: { options: [{ value: "0", label: "In manual order" }, { value: "1", label: "Random order" }], valueElement: document.getElementById("orderValue"), index: 0 }
   };
-  const items = [...menu.querySelectorAll("button")];
+  const items = [...menu.querySelectorAll("button")].filter(item => !item.hidden);
   let openingAnnouncement = true;
 
   function current(key) { return settings[key].options[settings[key].index]; }
@@ -57,7 +57,7 @@
   }
 
   function updateStatus() {
-    status.textContent = "Settings saved: " + Object.keys(settings).map(key => current(key).label).join(", ") + ".";
+    status.textContent = "Settings saved: " + items.map(item => current(item.dataset.setting).label).join(", ") + ".";
     // Keep a live fallback even when site voice is selected. This prevents a
     // silent Settings page if the browser delays or blocks speech synthesis.
     status.setAttribute("aria-live", "polite");
