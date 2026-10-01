@@ -531,4 +531,10 @@ test('Control repeats unless it is requested; unrelated Tab exits capture and Es
  const tab=p.key('keyCapture','Tab');assert.equal(tab.defaultPrevented,false);
  tapCourseKey(p,'Escape');assert.equal(p.window.location.href,'command-practice.html');
  const q=coursePage('NVDA commands');tapCourseKey(q,'Control');assert.equal(q.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');
+ const {p:r,index:ri}=courseAt('Firefox browser','Control+Shift+T');
+ tapCourseKey(r,'Control');tapCourseKey(r,'Control');
+ assert.equal(r.get('commandPrompt').children[0].textContent,'Press and release Shift');
+ assert.match(r.get('practiceStatus').textContent,/Next: press and release Shift/);
+ tapCourseKey(r,'Shift');tapCourseKey(r,'T');
+ assert.equal(r.get('practiceScore').textContent,`Correct: ${ri+1} · Attempts: ${ri+1}`);
 });

@@ -1076,7 +1076,11 @@
   function releasedKeyDown(event) {
     const key = keyName(event);
     if (key === "control" && !heldPracticeKeys.size &&
-        !releaseBlocked && practiceKeyName(currentPracticeKey()) !== "control") return false;
+        !releaseBlocked && practiceKeyName(currentPracticeKey()) !== "control") {
+      controlTapPending = true;
+      detected.textContent = "Control";
+      return true;
+    }
     controlTapPending = false;
     if (event.repeat || heldPracticeKeys.has(key)) return true;
     const otherModifierHeld = (event.ctrlKey && key !== "control") || (event.altKey && key !== "alt") ||
