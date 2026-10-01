@@ -525,6 +525,9 @@ test('Control repeats unless it is requested; unrelated Tab exits capture and Es
  const {p,index}=courseAt('Google Docs and applications','Alt+Enter');
  tapCourseKey(p,'Control');assert.match(p.get('practiceStatus').textContent,/Normally, hold Alt/);
  assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index}`);
+ tapCourseKey(p,'Alt');tapCourseKey(p,'Control');
+ assert.equal(p.get('commandPrompt').children[0].textContent,'Press and release Enter');
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index}`);
  const tab=p.key('keyCapture','Tab');assert.equal(tab.defaultPrevented,false);
  tapCourseKey(p,'Escape');assert.equal(p.window.location.href,'command-practice.html');
  const q=coursePage('NVDA commands');tapCourseKey(q,'Control');assert.equal(q.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');

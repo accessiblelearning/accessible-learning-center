@@ -1075,7 +1075,7 @@
 
   function releasedKeyDown(event) {
     const key = keyName(event);
-    if (key === "control" && releasedKeyPosition === 0 && !heldPracticeKeys.size &&
+    if (key === "control" && !heldPracticeKeys.size &&
         !releaseBlocked && practiceKeyName(currentPracticeKey()) !== "control") return false;
     controlTapPending = false;
     if (event.repeat || heldPracticeKeys.has(key)) return true;
@@ -1291,7 +1291,7 @@
         ? "Repeating the current command aloud."
         : describe();
       speak(describe());
-      capture.focus();
+      if (document.activeElement !== capture) capture.focus();
     }
     if (event.key === "Alt" && protectedModifierArmed === "alt") {
       event.preventDefault();
