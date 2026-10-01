@@ -491,7 +491,7 @@ test('course data stays ordered, preserves all old categories, and avoids unsupp
 function tapCourseKey(p,key) {
  const aliases={Option:'Alt',Command:'Meta',Windows:'Meta',VO:'Control',Space:' ',Escape:'Escape',
   'Caps Lock':'CapsLock','Left Arrow':'ArrowLeft','Right Arrow':'ArrowRight','Up Arrow':'ArrowUp','Down Arrow':'ArrowDown',
-  'Page Up':'PageUp','Page Down':'PageDown'};
+  'Page Up':'PageUp','Page Down':'PageDown','Less Than':',','Greater Than':'.'};
  p.key('keyCapture',aliases[key]||key);
 }
 function courseAt(category,keys) {
@@ -607,4 +607,37 @@ test('menu focus and toolbar fallback survive speech failures', () => {
   assert.equal(p.get('practiceStatus').getAttribute('aria-live'),'polite');
   assert.equal(p.document.activeElement,p.get('keyCapture'));
   chord(p,'Control+C');assert.match(p.get('practiceScore').textContent,/Correct: 1/);
+});
+
+test('square bracket prompts locate the key and reject the comma/less-than key',()=>{
+ const {p,index}=courseAt('Microsoft Word and documents','Control+['),speech=[];
+ p.get('spokenInstructions').checked=true;p.window.speechSynthesis.speak=u=>speech.push(u.text);
+ assert.equal(p.get('commandPrompt').children[0].textContent,'Press Control plus left square bracket');
+ p.key('keyCapture',',',{code:'Comma',ctrlKey:true});
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index+1}`);
+ assert.match(speech.at(-1),/left square bracket/);assert.match(speech.at(-1),/right of P/);
+ p.key('keyCapture','<',{code:'Comma',ctrlKey:true,shiftKey:true});
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index+2}`);
+ p.key('keyCapture','[',{code:'BracketLeft',ctrlKey:true});
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+3}`);
+});
+
+test('font-size shortcuts recognize shifted comma and period while requiring Shift',()=>{
+ for(const category of ['Microsoft Word and documents','Presentations'])for(const [name,code,base,symbol] of [['Less Than','Comma',',','<'],['Greater Than','Period','.','>']])for(const key of [base,symbol]){
+  const {p,index}=courseAt(category,'Control+Shift+'+name);
+  p.key('keyCapture',base,{code,ctrlKey:true});
+  assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index+1}`);
+  p.key('keyCapture',key,{code,ctrlKey:true,shiftKey:true});
+  assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+2}`,category+' '+name+' '+key);
+ }
+});
+
+test('separated-key angle-symbol practice uses the shared unshifted key after the Shift step',()=>{
+ for(const [name,code,base] of [['Less Than','Comma',','],['Greater Than','Period','.']]){
+  const {p,index}=courseAt('Microsoft Word and documents','Alt+Shift+'+name);
+  tapCourseKey(p,'Alt');p.key('keyCapture',base,{code});
+  assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index+1}`);
+  tapCourseKey(p,'Alt');tapCourseKey(p,'Shift');p.key('keyCapture',base,{code});
+  assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+2}`);
+ }
 });

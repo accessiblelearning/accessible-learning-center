@@ -596,7 +596,7 @@
     const punctuation = {
       "/": "slash", "\\": "backslash", ".": "period", ",": "comma",
       ";": "semicolon", ":": "colon", "'": "apostrophe", '"': "quotation mark",
-      "[": "left bracket", "]": "right bracket", "-": "minus", "=": "equals",
+      "[": "left square bracket", "]": "right square bracket", "-": "minus", "=": "equals",
       "`": "grave accent", "<": "less than", ">": "greater than", "?": "question mark"
     };
     return punctuation[key] || (key === "Ctrl" ? "Control" : key === "Grave" ? "grave accent" : key);
@@ -653,7 +653,8 @@
   }
 
   function practiceStepKeys() {
-    return expectedStep().split("+").flatMap(key => key === "VO" ? ["Control", "Option"] : [key]);
+    return expectedStep().split("+").flatMap(key => key === "VO" ? ["Control", "Option"] : [key])
+      .map(key => ({"Less Than": ",", "Greater Than": ".", "<": ",", ">": "."})[key] || key);
   }
 
   function currentPracticeKey() {
@@ -687,13 +688,26 @@
       (sequencePosition ? " Now enter step " + (sequencePosition + 1) + ": " + spokenKeys(expectedStep()) + "." : "");
   }
 
+  function keyLocationHint() {
+    const key = expectedStep().split("+").at(-1);
+    return ({
+      "[": "Left square bracket is just to the right of P.",
+      "]": "Right square bracket is two keys to the right of P.",
+      "Less Than": "Less than shares the comma key.",
+      "<": "Less than shares the comma key.",
+      "Greater Than": "Greater than shares the period key.",
+      ">": "Greater than shares the period key."
+    })[key] || "";
+  }
+
   function renderCoursePrompt() {
     const heading = document.createElement("h3");
     heading.textContent = usesReleasedKeys() ? "Press and release " + spokenKeyName(currentPracticeKey())
       : commandSteps().length > 1 ? command[1] : "Press " + spokenKeys(command[0]);
     const explanation = document.createElement("p");
     explanation.textContent = commandExplanation() + (usesReleasedKeys() ? " " + normalStepInstruction()
-      : commandSteps().length > 1 ? " " + courseInstruction() : "");
+      : commandSteps().length > 1 ? " " + courseInstruction() : "") +
+      (keyLocationHint() ? " " + keyLocationHint() : "");
     prompt.replaceChildren(heading, explanation);
     if (usesReleasedKeys()) {
       const instruction = document.createElement("p");
@@ -705,7 +719,7 @@
   function describe() {
     if (!command) return "";
     if (hasCourse()) {
-      return courseInstruction() + " " + commandExplanation();
+      return courseInstruction() + " " + commandExplanation() + (keyLocationHint() ? " " + keyLocationHint() : "");
     }
     if (isMacPractice()) {
       const input = command[3] === "builder"
@@ -806,7 +820,7 @@
   }
 
   function normalizeExpected(value) {
-    const aliases = { vo: "control+alt", option: "alt", command: "windows", ctrl: "control", ";":"semicolon", "=":"equals", "`":"grave", ">":"greater than", "<":"less than" };
+    const aliases = { vo: "control+alt", option: "alt", command: "windows", ctrl: "control", ";":"semicolon", "=":"equals", "`":"grave", ">":".", "<":",", "greater than":".", "less than":"," };
     if (hasCourse() && isMacPractice()) aliases["caps lock"] = "control+alt";
     const parts = value.split("+").flatMap(part => (aliases[part.trim().toLowerCase()] || part.trim().toLowerCase()).split("+"));
     const key = parts.pop();
@@ -829,7 +843,7 @@
       "ArrowUp": "up arrow", "ArrowDown": "down arrow", "Control": "control",
       "Shift": "shift", "Alt": "alt", "Meta": "windows", "Insert": "insert", "CapsLock": "caps lock",
       "Enter": "enter", "PageDown": "page down", "PageUp": "page up",
-      ";": "semicolon", "`": "grave", "=": "equals", ">": "greater than", "<": "less than"
+      ";": "semicolon", "`": "grave", "=": "equals", ">": ".", "<": ","
     };
     return names[event.key] || (event.key.length === 1 ? event.key.toLowerCase() : event.key.toLowerCase());
   }
@@ -1308,6 +1322,7 @@
       tone(false);
       status.textContent = "Not quite. You " + (built ? "built " : "pressed ") + displaySignature(pressed) + ". Try " + spokenKeys(expectedStep()) + ".";
       if (usesReleasedKeys() && !built) status.textContent = "Not quite. Start this step again. " + releasedKeyInstruction();
+      if (hasCourse() && keyLocationHint()) status.textContent += " " + keyLocationHint();
       speak(status.textContent);
       if (!built) capture.focus();
     }
