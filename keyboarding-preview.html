@@ -6,10 +6,10 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="description" content="Private preview of the Accessible Learning Center Keyboarding Center.">
   <title>Keyboarding Center Preview - Accessible Learning Center</title>
-  <link rel="stylesheet" href="styles.css?v=dark-mode-20260920-2">
+  <link rel="stylesheet" href="styles.css?v=qa-20261001">
   <script src="accessibility.js?v=accessibility-20260920" defer></script>
   <script src="keyboarding-one-hand.js?v=2" defer></script>
-  <script src="keyboarding-preview.js?v=keyboarding-preview-43" defer></script>
+  <script src="keyboarding-preview.js?v=keyboarding-preview-44" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -17,7 +17,9 @@
     .kb-panel { min-height: calc(100vh - 7rem); box-sizing: border-box; background: #0b2147; color: #fff; border: 3px solid #65aef5; border-radius: 1rem; padding: clamp(1.25rem, 4vw, 3rem); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
     .kb-panel h1, .kb-panel h2 { margin-top: 0; color: #fff !important; line-height: 1.15; }
     .kb-panel h1, .kb-panel h2 { text-align: center; font-size: clamp(2.25rem, 7vw, 4.75rem); }
-    .kb-form { display: grid; gap: 1rem; }
+    .kb-form { display: grid; gap: 1rem; background: transparent; color: #fff; }
+    .kb-panel a { color: #fff; }
+    .kb-prompt-line:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
     .kb-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
     .kb-field { display: grid; gap: .4rem; }
     .kb-field label, .kb-field legend { font-weight: 700; }
@@ -598,8 +600,8 @@
             <label for="handSetting">Learning path</label>
             <select id="handSetting">
               <option value="both">Both hands</option>
-              <option value="left">Left hand only</option>
-              <option value="right">Right hand only</option>
+              <option value="left">Left hand only — whole keyboard</option>
+              <option value="right">Right hand only — whole keyboard</option>
             </select>
           </div>
           <div class="kb-field">

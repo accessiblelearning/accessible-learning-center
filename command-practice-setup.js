@@ -95,7 +95,7 @@
   });
 
   menu.addEventListener("keydown", event => {
-    if (event.ctrlKey || event.altKey || event.metaKey) return;
+    if (event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
     if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
     const activeIndex = Math.max(0, choices.indexOf(document.activeElement));

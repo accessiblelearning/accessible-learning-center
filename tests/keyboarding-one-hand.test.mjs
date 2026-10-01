@@ -70,7 +70,8 @@ function page({ saved = {}, blocked = false, typingDelay = 700 } = {}) {
   const storage = { getItem(k) { if (blocked) throw Error('blocked'); return data.get(k) ?? null; },
     setItem(k, v) { if (blocked) throw Error('blocked'); data.set(k, v); } };
   const window = { setTimeout(fn) { timers.push(fn); }, clearInterval() {}, setInterval() {}, requestAnimationFrame(fn) { fn(); } };
-  const context = vm.createContext({ document, window, localStorage: storage, sessionStorage: { getItem: () => null }, Date: { now: () => clock } });
+  const sessionStorage = { getItem() { if (blocked) throw Error('blocked'); return null; }, setItem() { if (blocked) throw Error('blocked'); } };
+  const context = vm.createContext({ document, window, localStorage: storage, sessionStorage, Date: { now: () => clock } });
   vm.runInContext(source('keyboarding-one-hand.js'), context);
   // Expose pure curriculum/prompt helpers only within this test context.
   vm.runInContext(source('keyboarding-preview.js').replace(/\}\)\(\);\s*$/, 'globalThis.testApi = {lessonFor, buildPrompt}; })();'), context);
@@ -96,6 +97,35 @@ function page({ saved = {}, blocked = false, typingDelay = 700 } = {}) {
   };
   return api;
 }
+
+test('the shared Keys access code opens the preview with or without browser storage', () => {
+  for (const blocked of [false, true]) {
+    const p = page({blocked});
+    p.get('previewCode').value = 'wrong'; p.get('unlockForm').fire('submit');
+    assert.match(p.get('unlockMessage').textContent, /not correct/);
+    assert.equal(p.get('unlockPanel').hidden, false);
+    p.get('previewCode').value = 'Keys'; p.get('unlockForm').fire('submit');
+    assert.equal(p.get('unlockPanel').hidden, true);
+    assert.equal(p.get('setupPanel').hidden, false);
+  }
+  const legacy = page(); legacy.get('previewCode').value = 'KEYS2026'; legacy.get('unlockForm').fire('submit');
+  assert.equal(legacy.get('setupPanel').hidden, false);
+});
+
+test('menu navigation leaves modified screen-reader keys and Escape combinations alone', () => {
+  const p = page(); p.get('previewCode').value = 'Keys'; p.get('unlockForm').fire('submit');
+  for (const id of ['setupMenu', 'settingsMenu']) {
+    const menu = p.get(id), first = menu.querySelectorAll('.kb-menu-option')[0];
+    first.focus();
+    for (const modifiers of [{ctrlKey:true,altKey:true},{metaKey:true},{shiftKey:true}]) {
+      let prevented = false;
+      menu.fire('keydown', {key:'ArrowDown',...modifiers,preventDefault(){prevented=true;}});
+      assert.equal(prevented,false);
+    }
+  }
+  p.menu('settings'); p.key('Escape');
+  assert.equal(p.get('setupPanel').hidden,false);
+});
 
 test('both one-hand curricula teach the complete alphabet and never introduce untaught practice characters', () => {
   const p = page();

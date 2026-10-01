@@ -385,6 +385,24 @@ test("toolbar and Settings voice stay synchronized; Left and Right change values
   assert.equal(p.get("readerValue").textContent, "JAWS");
 });
 
+test('Mission Control menus preserve modified screen-reader navigation keys', () => {
+  for (const [file,id] of [['mission-center.js','missionCenterMenu'],['command-practice-setup.js','commandTopicsMenu'],['topic-missions-setup.js','topicMissionsMenu'],['mission-settings.js','missionSettingsMenu']]) {
+    const p=page(),menu=p.get(id);
+    if (id==='missionCenterMenu') for(const key of ['topics','commands']) {const item=p.get(key);item.textContent=key;menu.append(item);}
+    if (id==='missionSettingsMenu') for(const key of ['speech','sounds','reader']) {const item=p.get(key+'Setting');item.dataset.setting=key;menu.append(item);}
+    p.load('mission-catalog.js');p.load(file);menu.children[0].focus();
+    const focused=p.document.activeElement,previous=p.get('speechValue').textContent;
+    for(const modifiers of [{ctrlKey:true,altKey:true},{metaKey:true},{shiftKey:true}]) for(const key of ['ArrowDown','ArrowRight','Home','End']) {
+      const event=menu.fire('keydown',{key,...modifiers});
+      assert.equal(event.defaultPrevented,false,file+': '+key);
+      assert.equal(p.document.activeElement,focused);
+      assert.equal(p.get('speechValue').textContent,previous);
+    }
+    menu.fire('keydown',{key:'ArrowDown'});
+    assert.notEqual(p.document.activeElement,focused,file+' still allows ordinary arrows');
+  }
+});
+
 test("progress tracks the current command set and the current mission's steps", () => {
   const p = practice();
   assert.equal(p.get("commandPosition").textContent, "Command 1 of 10");

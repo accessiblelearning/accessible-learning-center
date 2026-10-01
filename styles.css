@@ -45,6 +45,7 @@ html {
 
 body {
   margin: 0;
+  overflow-wrap: anywhere;
   min-height: 100vh;
   color: var(--ink);
   background-color: #ffffff;
@@ -816,7 +817,7 @@ html[data-reduce-motion="true"] *::after {
 @media (max-width: 28rem) {
   .site-nav__inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .site-nav a {
@@ -3270,4 +3271,27 @@ html[data-contrast="high"] .mission-center-page.mission-session-page .command-fo
     background: #000000;
     border-color: var(--focus);
   }
+}
+
+/* Large text must reflow without pushing controls outside a narrow screen. */
+fieldset { min-inline-size: 0; }
+.mission-center-menu > *, .mission-center-option > * { min-inline-size: 0; }
+
+/* Keep the complete certificate on one landscape sheet, independent of screen zoom. */
+@media print {
+  html:root body.print-certificate #certificateSection {
+    min-height: 0;
+    padding: .3in;
+    font-size: 12pt;
+    line-height: 1.35;
+    break-inside: avoid;
+    color: #000;
+    background: #fff;
+  }
+  html:root body.print-certificate #certificateSection * { color: #000; }
+  body.print-certificate #certificateSection p { margin-block: 8pt; }
+  body.print-certificate #certificate-heading { font-size: 20pt; margin-block: 10pt; }
+  body.print-certificate #certificateStudentName { font-size: 30pt; }
+  body.print-certificate #certificateCourse { font-size: 22pt; }
+  body.print-certificate .certificate__details { display: flex; margin-block: 10pt; gap: 8pt 24pt; }
 }

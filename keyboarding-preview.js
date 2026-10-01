@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  const PREVIEW_CODE = "KEYS2026";
+  const PREVIEW_CODE = "Keys";
+  const LEGACY_PREVIEW_CODE = "KEYS2026";
   const STORAGE_KEY = "alcKeyboardingProgressV1";
   const EARLY_WORDS = new Set(["sad", "dad", "fad", "add", "ads", "dads", "fads", "had", "has", "gas", "gag", "half", "hall", "dash", "hash"]);
   const oneHand = globalThis.ALCOneHandCurriculum;
@@ -1076,8 +1077,12 @@
       }
     }
 
-    const line = document.createElement("span");
+    const line = targetPrompt.querySelector(".kb-prompt-line") || document.createElement("span");
+    line.replaceChildren();
     line.className = "kb-prompt-line" + (useReadingWindow ? " kb-prompt-window" : "");
+    line.tabIndex = 0;
+    line.setAttribute("role", "group");
+    line.setAttribute("aria-label", "Typing text. Use Left and Right Arrow to scroll if needed.");
     for (let index = start; index < end; index += 1) {
       const character = session.prompt[index];
       const marker = document.createElement("span");
@@ -1088,7 +1093,7 @@
       marker.textContent = character === " " ? "\u00a0" : character;
       line.appendChild(marker);
     }
-    targetPrompt.replaceChildren(line);
+    if (line.parentElement !== targetPrompt) targetPrompt.replaceChildren(line);
     const currentMarker = line.querySelector(".kb-char-current");
     if (currentMarker && !useReadingWindow) {
       window.requestAnimationFrame(() => {
@@ -1317,12 +1322,14 @@
 
   document.getElementById("unlockForm").addEventListener("submit", event => {
     event.preventDefault();
-    const entry = document.getElementById("previewCode").value.trim().toUpperCase();
-    if (entry !== PREVIEW_CODE) {
+    const entry = document.getElementById("previewCode").value.trim();
+    if (entry !== PREVIEW_CODE && entry.toUpperCase() !== LEGACY_PREVIEW_CODE) {
       document.getElementById("unlockMessage").textContent = "That testing code is not correct.";
       return;
     }
-    sessionStorage.setItem("alcKeyboardingPreview", "open");
+    try { sessionStorage.setItem("alcKeyboardingPreview", "open"); } catch (error) {
+      // The preview still opens for this visit when browser storage is blocked.
+    }
     previewToolbar.hidden = false;
     setVoice(true, false);
     setWebsiteControlsMinimized(true);
@@ -1337,6 +1344,7 @@
   document.querySelectorAll(".kb-arrow-menu").forEach(menu => {
     const controls = Array.from(menu.querySelectorAll(".kb-menu-option, .kb-step-adjust"));
     menu.addEventListener("keydown", event => {
+      if (event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
       if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
       const availableControls = controls.filter(control => !control.hidden && !control.disabled);
       const currentIndex = Math.max(0, availableControls.indexOf(document.activeElement));
@@ -1451,7 +1459,7 @@
   }
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && document.getElementById("unlockPanel").hidden && document.getElementById("setupPanel").hidden) {
+    if (event.key === "Escape" && !event.ctrlKey && !event.altKey && !event.metaKey && !event.shiftKey && document.getElementById("unlockPanel").hidden && document.getElementById("setupPanel").hidden) {
       event.preventDefault();
       if (!document.getElementById("copyTestMenuPanel").hidden || !document.getElementById("freeTestMenuPanel").hidden) {
         show("practiceMenuPanel");
@@ -1557,7 +1565,9 @@
   applyKeyboardDarkMode();
   updateSetupMenu();
   setVoice(true, false);
-  if (sessionStorage.getItem("alcKeyboardingPreview") === "open") {
+  let previewWasOpened = false;
+  try { previewWasOpened = sessionStorage.getItem("alcKeyboardingPreview") === "open"; } catch (error) {}
+  if (previewWasOpened) {
     previewToolbar.hidden = false;
     setWebsiteControlsMinimized(true);
     show("setupPanel");

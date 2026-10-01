@@ -93,6 +93,7 @@
   });
 
   menu.addEventListener("keydown", event => {
+    if (event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
     if (["ArrowLeft", "ArrowRight"].includes(event.key)) {
       const item = document.activeElement;
       if (!items.includes(item)) return;

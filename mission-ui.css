@@ -184,6 +184,7 @@ html[data-contrast="high"] .mission-center-page #commandExplanationDetails { bac
 .course-builder select, .course-builder button { min-height:44px; margin:.4rem; max-width:100%; }
 .course-builder input { width:1.2rem; height:1.2rem; }
 .course-builder a { color:inherit; text-decoration:underline; }
+.mission-center-page .mission-support :is(summary, a) { color: #fff; }
 .command-focus-area p { line-height:1.5; }
 
 .mission-center-page .course-builder form { background:#0d2241; color:#fff; padding:.7rem; border:1px solid #9bcfff; }
