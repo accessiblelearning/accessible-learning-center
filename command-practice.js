@@ -573,8 +573,20 @@
     if (active) capture.focus({ preventScroll: true });
   });
 
+  function spokenKeyName(key) {
+    const punctuation = {
+      "/": "slash", "\\": "backslash", ".": "period", ",": "comma",
+      ";": "semicolon", ":": "colon", "'": "apostrophe", '"': "quotation mark",
+      "[": "left bracket", "]": "right bracket", "-": "minus", "=": "equals",
+      "`": "grave accent", "<": "less than", ">": "greater than", "?": "question mark"
+    };
+    return punctuation[key] || (key === "Ctrl" ? "Control" : key === "Grave" ? "grave accent" : key);
+  }
+
   function spokenKeys(value) {
-    return value.replace(/^VO\+/, "Control+Option+").replaceAll("+", " plus ").replace("Ctrl", "Control").replace("Grave", "grave accent");
+    return value.split(" then ").map(step => step.split("+")
+      .flatMap(key => key === "VO" ? ["Control", "Option"] : [key])
+      .map(spokenKeyName).join(" plus ")).join(" then ");
   }
 
   function lowerFirst(value) {
@@ -631,14 +643,14 @@
   }
 
   function normalStepInstruction() {
-    const keys = practiceStepKeys();
+    const keys = practiceStepKeys().map(spokenKeyName);
     if (keys.length === 1) return "Normally, press and release " + keys[0] + ".";
     return "Normally, hold " + keys.slice(0, -1).join(" and ") + ", press " + keys.at(-1) +
       ", then release " + (keys.length === 2 ? "both keys." : "all keys.");
   }
 
   function releasedKeyInstruction() {
-    return "Here, press and release one key at a time: " + practiceStepKeys().join(", then ") + ".";
+    return "Here, press and release one key at a time: " + practiceStepKeys().map(spokenKeyName).join(", then ") + ".";
   }
 
   function courseInstruction() {
@@ -646,7 +658,7 @@
     if (usesReleasedKeys()) {
       return releasedKeyInstruction() + " " + normalStepInstruction() +
         (steps.length > 1 ? " Step " + (sequencePosition + 1) + " of " + steps.length + "." : "") +
-        (releasedKeyPosition ? " Next: press and release " + currentPracticeKey() + "." : "");
+        (releasedKeyPosition ? " Next: press and release " + spokenKeyName(currentPracticeKey()) + "." : "");
     }
     const keys = steps.map(spokenKeys).join(". Then ");
     return "Press " + keys + "." + (steps.length > 1 ? " Release the keys between steps." : "") +
@@ -655,7 +667,7 @@
 
   function renderCoursePrompt() {
     const heading = document.createElement("h3");
-    heading.textContent = usesReleasedKeys() ? "Press and release " + currentPracticeKey()
+    heading.textContent = usesReleasedKeys() ? "Press and release " + spokenKeyName(currentPracticeKey())
       : commandSteps().length > 1 ? command[1] : "Press " + spokenKeys(command[0]);
     const explanation = document.createElement("p");
     explanation.textContent = commandExplanation() + (usesReleasedKeys() ? " " + normalStepInstruction()
@@ -815,7 +827,7 @@
     return value.split("+").map(part => {
       if (isMacPractice() && part === "alt") return "Option";
       if (isMacPractice() && part === "windows") return "Command";
-      return part.charAt(0).toUpperCase() + part.slice(1);
+      return spokenKeyName(part.charAt(0).toUpperCase() + part.slice(1));
     }).join(" plus ");
   }
 
@@ -827,7 +839,7 @@
   if (courseKey && window.CommandPracticeCourses) {
     const keys = new Set();
     Object.values(window.CommandPracticeCourses).flat().forEach(item=>item[4].steps.forEach(step=>keys.add(step.split("+").at(-1))));
-    [...keys].sort().forEach(key=>{ const option=document.createElement("option"); option.value=key; option.textContent=key; courseKey.appendChild(option); });
+    [...keys].sort().forEach(key=>{ const option=document.createElement("option"); option.value=key; option.textContent=spokenKeyName(key); courseKey.appendChild(option); });
   }
   courseBuilder?.addEventListener("submit", event => {
     event.preventDefault();
@@ -1111,7 +1123,7 @@
     if (releaseBlocked) {
       if (!heldPracticeKeys.size && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
         releaseBlocked = false;
-        status.textContent = "Now press and release " + currentPracticeKey() + ".";
+        status.textContent = "Now press and release " + spokenKeyName(currentPracticeKey()) + ".";
         speak(status.textContent);
       }
       return true;
@@ -1130,7 +1142,7 @@
       recordAttempt(normalizeExpected(expectedStep()));
     } else {
       renderCoursePrompt();
-      status.textContent = displaySignature(key) + " entered. Now press and release " + currentPracticeKey() + ".";
+      status.textContent = displaySignature(key) + " entered. Now press and release " + spokenKeyName(currentPracticeKey()) + ".";
       speak(status.textContent);
     }
     return true;
@@ -1241,7 +1253,7 @@
         releasedKeyPosition = 0;
         if (hasCourse()) renderCoursePrompt();
         status.textContent = "Step " + sequencePosition + " correct. " + (usesReleasedKeys() && !built
-          ? "Now press and release " + currentPracticeKey() + ". " + normalStepInstruction()
+          ? "Now press and release " + spokenKeyName(currentPracticeKey()) + ". " + normalStepInstruction()
           : "Now " + spokenKeys(expectedStep()) + ".");
         if (coursePanel) {
           document.getElementById("courseStep").textContent = "Step " + (sequencePosition+1) + " of " + commandSteps().length;

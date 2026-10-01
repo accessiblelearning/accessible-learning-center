@@ -479,6 +479,20 @@ function courseAt(category,keys) {
  for(const item of items.slice(0,index)){for(const step of item[4].steps)buildStep(p,step);p.advance();}
  return {p,index};
 }
+test('slash is named explicitly in prompts, speech, feedback and the picker, and remains distinct from period',()=>{
+ const {p,index}=courseAt('Google Docs and applications','Control+/'),speech=[];
+ p.get('spokenInstructions').checked=true;
+ p.window.speechSynthesis.speak=utterance=>speech.push(utterance.text);
+ assert.equal(p.get('commandPrompt').children[0].textContent,'Press Control plus slash');
+ assert.equal(p.get('courseFinalKey').children.find(option=>option.value==='/').textContent,'slash');
+ p.key('keyCapture','Control');assert.match(speech.at(-1),/Press Control plus slash\./);
+ p.key('keyCapture','.',{code:'Period',ctrlKey:true});
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index+1}`);
+ assert.match(speech.at(-1),/Control plus period\. Try Control plus slash\./);
+ p.key('keyCapture','/',{code:'Slash',ctrlKey:true});
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+2}`);
+ assert.match(speech.at(-1),/Control plus slash\./);
+});
 test('all protected exercises finish using separate key presses with the picker closed',()=>{
  const aliases=new Set(['General editing','Mac VoiceOver navigation and web','Mac VoiceOver reading and settings']);
  for(const [category,items] of Object.entries(courses)){
