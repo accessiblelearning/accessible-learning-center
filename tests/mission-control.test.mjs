@@ -573,3 +573,38 @@ test('Control repeats unless it is requested; unrelated Tab exits capture and Es
  tapCourseKey(r,'Shift');tapCourseKey(r,'T');
  assert.equal(r.get('practiceScore').textContent,`Correct: ${ri+1} · Attempts: ${ri+1}`);
 });
+
+
+test('speech service exceptions do not block practice, automatic advance, or stopping', () => {
+  for (const failure of ['speak', 'cancel']) {
+    const p = page({commandCategory:{value:'General editing'},practiceStyle:{value:'quick'},sessionLength:{value:'all'},spokenInstructions:{checked:true}});
+    p.window.speechSynthesis[failure] = () => { throw Error('Speech unavailable'); };
+    p.load('command-practice.js');p.get('startPractice').click();
+    chord(p,'Control+C');assert.match(p.get('practiceScore').textContent,/Correct: 1/);
+    p.advance();chord(p,'Control+X');assert.match(p.get('practiceScore').textContent,/Correct: 2/);
+    p.get('stopPractice').click();assert.equal(p.window.location.href,'command-practice.html');
+  }
+});
+
+test('menu focus and toolbar fallback survive speech failures', () => {
+  for (const failure of ['speak','cancel']) {
+    for (const [file,id] of [['mission-center.js','missionCenterMenu'],['command-practice-setup.js','commandTopicsMenu'],['topic-missions-setup.js','topicMissionsMenu'],['mission-settings.js','missionSettingsMenu']]) {
+      const p=page(),menu=p.get(id);
+      p.storage.setItem('accessibleLearningPreferences',JSON.stringify({trainingSpeech:'voice'}));
+      p.window.speechSynthesis[failure]=()=>{throw Error('Speech unavailable');};
+      if(id==='missionCenterMenu')for(const key of ['topics','commands']){const item=p.get(key);item.textContent=key;menu.append(item);}
+      if(id==='missionSettingsMenu')for(const key of ['speech','sounds','reader']){const item=p.get(key+'Setting');item.dataset.setting=key;menu.append(item);}
+      p.load('mission-catalog.js');p.load(file);p.advance();
+      menu.children[0].focus();menu.fire('keydown',{key:'ArrowDown'});
+      assert.equal(p.document.activeElement,menu.children[1],file);
+    }
+  }
+  const p=practice();p.load('mission-ui.js');p.window.fire('DOMContentLoaded');p.advance();
+  p.window.speechSynthesis.speak=()=>{throw Error('Speech unavailable');};
+  const voice=p.get('main.mission-center-shell').children[0].children[2];voice.click();
+  assert.equal(p.get('spokenInstructions').checked,false);
+  assert.equal(JSON.parse(p.storage.getItem('accessibleLearningPreferences')).trainingSpeech,'own');
+  assert.equal(p.get('practiceStatus').getAttribute('aria-live'),'polite');
+  assert.equal(p.document.activeElement,p.get('keyCapture'));
+  chord(p,'Control+C');assert.match(p.get('practiceScore').textContent,/Correct: 1/);
+});

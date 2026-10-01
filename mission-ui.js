@@ -28,6 +28,16 @@
     catch (error) { return {}; }
   }
 
+  function speechFailed() {
+    const preferences = readPreferences();
+    preferences.trainingSpeech = "own";
+    try { localStorage.setItem(preferenceKey, JSON.stringify(preferences)); } catch (error) {}
+    window.dispatchEvent(new CustomEvent("missionvoicechange", { detail: { enabled: false } }));
+    status.setAttribute("aria-live", "polite");
+    status.textContent = "Mission Control voice is unavailable. Use your screen reader or the written instructions.";
+  }
+  window.addEventListener("missionspeecherror", speechFailed);
+
   function enabled() {
     if (document.body.dataset.practiceSession === "true") return document.getElementById("spokenInstructions").checked;
     if (document.body.dataset.missionSession === "true") return document.getElementById("simulatedVoice").checked;
@@ -63,8 +73,12 @@
     window.dispatchEvent(new CustomEvent("missionvoicechange", { detail: { enabled: on } }));
     status.textContent = on ? "Mission Control voice on. Control repeats instructions during practice." : "Use your own screen reader. Mission Control voice off.";
     if (supported) {
-      speechSynthesis.cancel();
-      if (on) speechSynthesis.speak(new SpeechSynthesisUtterance(status.textContent));
+      try { speechSynthesis.cancel(); } catch (error) {}
+      try {
+        if (on) speechSynthesis.speak(new SpeechSynthesisUtterance(status.textContent));
+      } catch (error) {
+        speechFailed();
+      }
     }
     const capture = document.getElementById("keyCapture") || document.getElementById("missionControlStation");
     if (capture && !capture.closest("[hidden]")) capture.focus({ preventScroll: true });
@@ -79,6 +93,6 @@
   });
   window.addEventListener("DOMContentLoaded", () => window.setTimeout(refreshVoice, 0));
   window.addEventListener("pagehide", () => {
-    if (supported) speechSynthesis.cancel();
+    try { if (supported) speechSynthesis.cancel(); } catch (error) {}
   });
 })();

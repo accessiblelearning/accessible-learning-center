@@ -9,7 +9,7 @@ const storageKey = 'alcKeyboardingProgressV1';
 
 // Event/DOM fixture for the real controller. Browser checks cover rendering,
 // focus, and native keyboard interaction separately.
-function page({ saved = {}, blocked = false, typingDelay = 700 } = {}) {
+function page({ saved = {}, blocked = false, typingDelay = 700, speechFault } = {}) {
   const nodes = new Map(), timers = [], data = new Map(Object.entries(saved));
   let document, clock = 1000;
   class Element {
@@ -70,15 +70,22 @@ function page({ saved = {}, blocked = false, typingDelay = 700 } = {}) {
   const storage = { getItem(k) { if (blocked) throw Error('blocked'); return data.get(k) ?? null; },
     setItem(k, v) { if (blocked) throw Error('blocked'); data.set(k, v); } };
   const window = { setTimeout(fn) { timers.push(fn); }, clearInterval() {}, setInterval() {}, requestAnimationFrame(fn) { fn(); } };
+  class Utterance { constructor(text) { this.text = text; } }
+  if (speechFault) window.speechSynthesis = {
+    getVoices() { if (speechFault === 'getVoices') throw Error('Speech unavailable'); return []; },
+    speak() { if (speechFault === 'speak') throw Error('Speech unavailable'); },
+    cancel() { if (speechFault === 'cancel') throw Error('Speech unavailable'); },
+    addEventListener() {}
+  };
   const sessionStorage = { getItem() { if (blocked) throw Error('blocked'); return null; }, setItem() { if (blocked) throw Error('blocked'); } };
-  const context = vm.createContext({ document, window, localStorage: storage, sessionStorage, Date: { now: () => clock } });
+  const context = vm.createContext({ document, window, localStorage: storage, sessionStorage, SpeechSynthesisUtterance: Utterance, Date: { now: () => clock } });
   vm.runInContext(source('keyboarding-one-hand.js'), context);
   // Expose pure curriculum/prompt helpers only within this test context.
   vm.runInContext(source('keyboarding-preview.js').replace(/\}\)\(\);\s*$/, 'globalThis.testApi = {lessonFor, buildPrompt}; })();'), context);
   function advance() { while (timers.length) timers.shift()(); }
   function key(character) { clock += typingDelay; document.fire('keydown', { key: character }); document.fire('keyup', { key: character }); advance(); }
   const api = {
-    get, data, helpers: context.testApi, oneHand: context.ALCOneHandCurriculum,
+    get, data, document, helpers: context.testApi, oneHand: context.ALCOneHandCurriculum,
     changeHand(hand) { get('handSetting').value = hand; get('handSetting').fire('change'); },
     setting(name) { settings.find(e => e.dataset.setting === name).click(); },
     menu(name) { mainButtons.find(e => e.dataset.mainAction === name).click(); advance(); },
@@ -270,5 +277,29 @@ test('completed first 20 one-hand lessons carry forward to lesson 21 after expan
     assert.equal(p.get('lessonSetting').options[21].disabled, true);
     p.menu('stats');
     assert.equal(p.get('statsLessons').textContent, '20 of 50');
+  }
+});
+
+
+test('unavailable speech services do not prevent opening or completing a one-hand lesson', () => {
+  for (const speechFault of ['getVoices', 'speak', 'cancel']) {
+    const p = page({speechFault});
+    p.get('previewCode').value = 'Keys';
+    p.get('unlockForm').fire('submit');
+    assert.equal(p.get('setupPanel').hidden, false);
+    p.changeHand('left');p.completeLesson('left', 0);
+    p.key('Escape');assert.equal(p.get('setupPanel').hidden, false);
+  }
+});
+
+test('waiting lessons preserve Tab and modified navigation without starting or scoring', () => {
+  for (const details of [{key:'Tab'},{key:'Tab',shiftKey:true},{key:'ArrowRight',ctrlKey:true,altKey:true},{key:'f',metaKey:true},{key:' ',target:{closest:()=>({tagName:'BUTTON'})}}]) {
+    const p=page();p.changeHand('left');p.start(0);
+    const before=p.get('targetPrompt').getAttribute('aria-label');let prevented=false;
+    // Use the same real document handler as ordinary typing in this fixture.
+    p.document.fire('keydown',{...details,preventDefault(){prevented=true;}});
+    assert.equal(prevented,false);
+    assert.equal(p.get('targetPrompt').getAttribute('aria-label'),before);
+    p.key('f');assert.match(p.get('progressText').textContent,/Part 1 of 3/);
   }
 });

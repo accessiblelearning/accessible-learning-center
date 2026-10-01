@@ -241,11 +241,14 @@
   function speak(text) {
     if (!simulatedVoice.checked || !("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return;
     stopVoice();
-    speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+    try { speechSynthesis.speak(new SpeechSynthesisUtterance(text)); } catch (error) {
+      window.dispatchEvent(new CustomEvent("missionspeecherror"));
+      document.getElementById("transcript").setAttribute("aria-live", "polite");
+    }
   }
 
   function stopVoice() {
-    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    try { window.speechSynthesis?.cancel(); } catch (error) { /* Keep keyboard controls usable. */ }
   }
 
   function tone(correct) {

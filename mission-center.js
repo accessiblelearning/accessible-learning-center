@@ -15,15 +15,19 @@
   }
 
   function stopVoice() {
-    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    try { window.speechSynthesis?.cancel(); } catch (error) { /* Keep keyboard controls usable. */ }
   }
 
   function speak(text) {
     if (!voiceEnabled() || !voiceSupported) return;
     stopVoice();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 0.95;
-    speechSynthesis.speak(utterance);
+    try {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.95;
+      speechSynthesis.speak(utterance);
+    } catch (error) {
+      window.dispatchEvent(new CustomEvent("missionspeecherror"));
+    }
   }
 
   function setActive(item) {

@@ -244,7 +244,8 @@
 
   function getSiteVoices() {
     if (!("speechSynthesis" in window)) return [];
-    const allVoices = window.speechSynthesis.getVoices();
+    let allVoices;
+    try { allVoices = window.speechSynthesis.getVoices(); } catch (error) { return []; }
     const englishVoices = allVoices.filter(voice => /^en(?:-|_)/i.test(voice.lang || ""));
     return englishVoices.length ? englishVoices : allVoices;
   }
@@ -295,6 +296,10 @@
     updateSetupMenu();
   }
 
+  function stopVoice() {
+    try { window.speechSynthesis?.cancel(); } catch (error) { /* Speech must not block practice. */ }
+  }
+
   function speak(message, onComplete) {
     let finished = false;
     const complete = () => {
@@ -302,22 +307,27 @@
       finished = true;
       if (onComplete) onComplete();
     };
-    if (!useSiteVoice || !("speechSynthesis" in window)) {
+    if (!useSiteVoice || !("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
       complete();
       return;
     }
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(message);
-    const selectedVoice = getSiteVoices().find(voice =>
-      (voice.voiceURI || voice.name) === selectedVoiceURI
-    );
-    if (selectedVoice) utterance.voice = selectedVoice;
-    utterance.rate = voiceRatePercent <= 50
-      ? 0.4 + ((voiceRatePercent - 10) / 40) * 0.6
-      : 1 + ((voiceRatePercent - 50) / 50) * 2;
-    utterance.onend = complete;
-    utterance.onerror = complete;
-    window.speechSynthesis.speak(utterance);
+    stopVoice();
+    try {
+      const utterance = new SpeechSynthesisUtterance(message);
+      const selectedVoice = getSiteVoices().find(voice =>
+        (voice.voiceURI || voice.name) === selectedVoiceURI
+      );
+      if (selectedVoice) utterance.voice = selectedVoice;
+      utterance.rate = voiceRatePercent <= 50
+        ? 0.4 + ((voiceRatePercent - 10) / 40) * 0.6
+        : 1 + ((voiceRatePercent - 50) / 50) * 2;
+      utterance.onend = complete;
+      utterance.onerror = complete;
+      window.speechSynthesis.speak(utterance);
+    } catch (error) {
+      setVoice(false, false);
+      complete();
+    }
   }
 
   function setVoice(enabled, announce) {
@@ -328,7 +338,7 @@
     voiceToggle.textContent = enabled ? "Voice: On" : "Voice: Off";
     const menuVoice = document.getElementById("menuVoiceValue");
     if (menuVoice) menuVoice.textContent = enabled ? "Site voice" : "My screen reader";
-    if (!enabled && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    if (!enabled) stopVoice();
     if (enabled && announce) speak("Site voice on.");
   }
 
@@ -1215,7 +1225,7 @@
 
   function beginPractice() {
     if (!session || session.started || session.finished) return;
-    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    stopVoice();
     session.started = true;
     renderPractice();
     if (session.promptGroups) {
@@ -1315,7 +1325,7 @@
     if (timerId) window.clearInterval(timerId);
     timerId = null;
     session = null;
-    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    stopVoice();
     updateLessonSummary();
     show("setupPanel");
   }
@@ -1415,7 +1425,7 @@
       if (!session.startedAt) session.startedAt = session.segmentStartedAt;
     }
     if (typedKey === expected) {
-      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      stopVoice();
       session.correct += 1;
       session.position += 1;
       const completedGroup = session.promptGroups && session.position >= currentPromptGroupStart() + currentPromptGroup().length;
@@ -1469,8 +1479,9 @@
       return;
     }
     if (document.getElementById("practicePanel").hidden || !session) return;
-    const isLargerPrint = event.ctrlKey && (event.key === "+" || event.key === "=" || event.code === "NumpadAdd");
-    const isSmallerPrint = event.ctrlKey && (event.key === "-" || event.code === "NumpadSubtract");
+    if (event.target !== freeTypeInput && event.target.closest?.("button,a,input,select,textarea,summary,[contenteditable]")) return;
+    const isLargerPrint = event.ctrlKey && !event.altKey && !event.metaKey && (event.key === "+" || event.key === "=" || event.code === "NumpadAdd");
+    const isSmallerPrint = event.ctrlKey && !event.altKey && !event.metaKey && (event.key === "-" || event.code === "NumpadSubtract");
     if (isLargerPrint || isSmallerPrint) {
       event.preventDefault();
       controlUsedAsModifier = true;
@@ -1478,6 +1489,8 @@
       return;
     }
     if (event.ctrlKey && event.key !== "Control") controlUsedAsModifier = true;
+    // Tab and assistive-technology/browser shortcuts must not start a waiting lesson.
+    if (event.key === "Tab" || event.altKey || event.metaKey || (event.ctrlKey && event.key !== "Control")) return;
     if (!session.started) {
       if (event.key === "Control") {
         event.preventDefault();

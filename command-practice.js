@@ -505,27 +505,44 @@
     autoAdvanceTimer = 0;
   }
 
+  function stopVoice() {
+    try { window.speechSynthesis?.cancel(); } catch (error) { /* Speech must not block navigation. */ }
+  }
+
   function speak(text, afterSpeech) {
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      clearAutoAdvance();
+      if (afterSpeech) afterSpeech();
+    };
+    const fallback = () => {
+      if (afterSpeech) {
+        clearAutoAdvance();
+        autoAdvanceTimer = window.setTimeout(finish, AUTO_ADVANCE_DELAY);
+      }
+    };
     if (!spoken.checked || !("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-      if (afterSpeech) autoAdvanceTimer = window.setTimeout(afterSpeech, AUTO_ADVANCE_DELAY);
+      fallback();
       return;
     }
-    speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 0.95;
-    if (afterSpeech) {
-      let finished = false;
-      const finish = () => {
-        if (finished) return;
-        finished = true;
-        clearAutoAdvance();
-        afterSpeech();
-      };
-      utterance.addEventListener("end", finish, { once: true });
-      utterance.addEventListener("error", finish, { once: true });
-      autoAdvanceTimer = window.setTimeout(finish, Math.max(4000, text.length * 75));
+    stopVoice();
+    try {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.95;
+      if (afterSpeech) {
+        utterance.addEventListener("end", finish, { once: true });
+        utterance.addEventListener("error", finish, { once: true });
+        autoAdvanceTimer = window.setTimeout(finish, Math.max(4000, text.length * 75));
+      }
+      speechSynthesis.speak(utterance);
+    } catch (error) {
+      window.dispatchEvent(new CustomEvent("missionspeecherror"));
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "polite");
+      fallback();
     }
-    speechSynthesis.speak(utterance);
   }
 
   function tone(correct) {
@@ -1058,7 +1075,7 @@
     if (event.defaultPrevented || (isMacPractice() && event.target.tagName === "SELECT")) return;
     if (event.target === capture && active) return;
     event.preventDefault();
-    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    stopVoice();
     window.location.href = "command-practice.html";
   });
 
@@ -1067,7 +1084,7 @@
     awaitingAdvance = false;
     clearAutoAdvance();
     resetModifiers();
-    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    stopVoice();
     if (focusedSession) {
       window.location.href = "command-practice.html";
       return;
