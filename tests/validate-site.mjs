@@ -320,7 +320,7 @@ for (const categoryName of ["Windows and File Explorer", "Microsoft Word and doc
 check(commandPractice.includes('return "Press " + spokenKeys(command[0]) + ". " + commandExplanation();'), "Spoken command and explanation are not clearly separated.");
 check(commandPractice.includes('return "This command lets you "'), "General command explanations are missing clear wording.");
 check(commandPractice.includes('return "Here is what this command does. "'), "Detailed command explanations are missing clear wording.");
-check(readFileSync(resolve(root, "command-practice.html"), "utf8").includes("System and browser commands"), "System-shortcut safety warning is missing.");
+check(readFileSync(resolve(root, "troubleshooting-lab.html"), "utf8").includes("System and browser commands"), "Mission Control command-practice information is missing.");
 const quizScript = readFileSync(resolve(root, "quiz.js"), "utf8");
 check(quizScript.includes("data.passPercent"), "Quiz passing-score behavior is missing.");
 check(quizScript.includes("print-certificate"), "Printable certificate behavior is missing.");
