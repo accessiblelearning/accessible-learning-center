@@ -453,9 +453,9 @@ test('multi-step commands require each step, preserve the current step after a m
  for(const step of steps.slice(1))buildStep(p,step);
  assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+2}`);
 });
-test('expanded direct commands accept real chords and protected commands direct users to the builder',()=>{
+test('expanded direct commands accept chords and protected commands require separated key presses',()=>{
  const p=coursePage('Google Docs and applications');chord(p,'Control+C');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');p.advance();
- const q=coursePage('Windows and File Explorer');q.key('keyCapture','e',{metaKey:true});assert.equal(q.get('practiceScore').textContent,'Correct: 0 · Attempts: 0');assert.match(q.get('practiceStatus').textContent,/Build the command/);
+ const q=coursePage('Windows and File Explorer');q.key('keyCapture','e',{metaKey:true});assert.equal(q.get('practiceScore').textContent,'Correct: 0 · Attempts: 0');assert.match(q.get('practiceStatus').textContent,/one key at a time/);
  buildStep(q,'Windows+E');assert.equal(q.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');
 });
 test('course data stays ordered, preserves all old categories, and avoids unsupported keys or legacy Narrator collisions',()=>{
@@ -465,4 +465,67 @@ test('course data stays ordered, preserves all old categories, and avoids unsupp
   for(const item of items){assert.equal(item[0],item[4].steps.join(' then '));assert.ok(item[4].steps.every(step=>step.split('+').at(-1)));}
  }
  const f12=courses['Narrator commands'].filter(x=>x[0]==='Insert+F12');assert.equal(f12.length,1);assert.match(f12[0][1],/time and date/);
+});
+
+function tapCourseKey(p,key) {
+ const aliases={Option:'Alt',Command:'Meta',Windows:'Meta',VO:'Control',Space:' ',Escape:'Escape',
+  'Caps Lock':'CapsLock','Left Arrow':'ArrowLeft','Right Arrow':'ArrowRight','Up Arrow':'ArrowUp','Down Arrow':'ArrowDown',
+  'Page Up':'PageUp','Page Down':'PageDown'};
+ p.key('keyCapture',aliases[key]||key);
+}
+function courseAt(category,keys) {
+ const p=coursePage(category),items=courses[category],index=items.findIndex(x=>x[0]===keys);
+ assert.ok(index>=0);
+ for(const item of items.slice(0,index)){for(const step of item[4].steps)buildStep(p,step);p.advance();}
+ return {p,index};
+}
+test('all protected exercises finish using separate key presses with the picker closed',()=>{
+ const aliases=new Set(['General editing','Mac VoiceOver navigation and web','Mac VoiceOver reading and settings']);
+ for(const [category,items] of Object.entries(courses)){
+  if(aliases.has(category))continue;
+  const p=coursePage(category);
+  items.forEach((item,i)=>{
+   if(item[3]==='safe'){
+    assert.equal(p.get('courseBuilderPanel').open,false);
+    assert.equal(p.document.activeElement,p.get('keyCapture'));
+    for(const step of item[4].steps)for(const key of step.split('+').flatMap(k=>k==='VO'?['Control','Option']:[k]))tapCourseKey(p,key);
+   }else for(const step of item[4].steps)buildStep(p,step);
+   assert.equal(p.get('practiceScore').textContent,`Correct: ${i+1} · Attempts: ${i+1}`,category+': '+item[0]);
+   p.advance();
+  });
+ }
+});
+test('Alt Enter waits for releases, ignores held-key repeats, and teaches the real chord',()=>{
+ const {p,index}=courseAt('Google Docs and applications','Alt+Enter');
+ assert.match(p.get('commandPrompt').children.map(e=>e.textContent).join(' '),/Normally, hold Alt, press Enter, then release both keys/);
+ p.get('keyCapture').fire('keydown',{key:'Alt',altKey:true});
+ p.get('keyCapture').fire('keydown',{key:'Alt',altKey:true,repeat:true});
+ assert.equal(p.get('commandPrompt').children[0].textContent,'Press and release Alt');
+ p.get('keyCapture').fire('keyup',{key:'Alt'});
+ assert.equal(p.get('commandPrompt').children[0].textContent,'Press and release Enter');
+ p.get('keyCapture').fire('keydown',{key:'Enter'});
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index}`);
+ p.get('keyCapture').fire('keyup',{key:'Enter'});
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+1}`);
+});
+test('protected input resets on overlap or focus loss and never accepts an omitted modifier',()=>{
+ const {p,index}=courseAt('Google Docs and applications','Alt+Shift+F');
+ tapCourseKey(p,'Alt');tapCourseKey(p,'F');
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index+1}`);
+ assert.equal(p.get('commandPrompt').children[0].textContent,'Press and release Alt');
+ p.get('keyCapture').fire('keydown',{key:'Alt',altKey:true});
+ p.get('keyCapture').fire('keydown',{key:'Shift',altKey:true,shiftKey:true});
+ p.get('keyCapture').fire('keyup',{key:'Shift',altKey:true});p.get('keyCapture').fire('keyup',{key:'Alt'});
+ assert.equal(p.get('commandPrompt').children[0].textContent,'Press and release Alt');
+ tapCourseKey(p,'Alt');p.window.fire('blur');assert.equal(p.get('commandPrompt').children[0].textContent,'Press and release Alt');
+ for(const key of ['Alt','Shift','F'])tapCourseKey(p,key);
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+2}`);
+});
+test('Control repeats unless it is requested; unrelated Tab exits capture and Escape exits practice',()=>{
+ const {p,index}=courseAt('Google Docs and applications','Alt+Enter');
+ tapCourseKey(p,'Control');assert.match(p.get('practiceStatus').textContent,/Normally, hold Alt/);
+ assert.equal(p.get('practiceScore').textContent,`Correct: ${index} · Attempts: ${index}`);
+ const tab=p.key('keyCapture','Tab');assert.equal(tab.defaultPrevented,false);
+ tapCourseKey(p,'Escape');assert.equal(p.window.location.href,'command-practice.html');
+ const q=coursePage('NVDA commands');tapCourseKey(q,'Control');assert.equal(q.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');
 });

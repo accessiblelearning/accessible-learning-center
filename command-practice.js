@@ -406,7 +406,11 @@
   const hasCourse = () => Boolean(command?.[4]);
   const commandSteps = () => command?.[4]?.steps || [command?.[0] || ""];
   const expectedStep = () => commandSteps()[sequencePosition];
-  const useCourseBuilder = () => hasCourse() && command[3] === "safe";
+  const usesReleasedKeys = () => hasCourse() && command[3] === "safe";
+  let releasedKeyPosition = 0;
+  let releasePendingKey = "";
+  let releaseBlocked = false;
+  const heldPracticeKeys = new Set();
   let order = [];
   let position = 0;
   let correctCount = 0;
@@ -553,6 +557,11 @@
     insertHeld = false;
     controlTapPending = false;
     protectedModifierArmed = "";
+    releasedKeyPosition = 0;
+    releasePendingKey = "";
+    releaseBlocked = false;
+    heldPracticeKeys.clear();
+    if (active && !awaitingAdvance && usesReleasedKeys()) renderCoursePrompt();
   }
 
   capture.addEventListener("blur", resetModifiers);
@@ -609,14 +618,54 @@
     return briefExplanation(command[1]);
   }
 
+  function practiceStepKeys() {
+    return expectedStep().split("+").flatMap(key => key === "VO" ? ["Control", "Option"] : [key]);
+  }
+
+  function currentPracticeKey() {
+    return practiceStepKeys()[releasedKeyPosition];
+  }
+
+  function practiceKeyName(key) {
+    return ({Option: "alt", Command: "windows", Windows: "windows", Ctrl: "control"})[key] || key.toLowerCase();
+  }
+
+  function normalStepInstruction() {
+    const keys = practiceStepKeys();
+    if (keys.length === 1) return "Normally, press and release " + keys[0] + ".";
+    return "Normally, hold " + keys.slice(0, -1).join(" and ") + ", press " + keys.at(-1) +
+      ", then release " + (keys.length === 2 ? "both keys." : "all keys.");
+  }
+
+  function releasedKeyInstruction() {
+    return "Here, press and release one key at a time: " + practiceStepKeys().join(", then ") + ".";
+  }
+
   function courseInstruction() {
     const steps = commandSteps();
+    if (usesReleasedKeys()) {
+      return releasedKeyInstruction() + " " + normalStepInstruction() +
+        (steps.length > 1 ? " Step " + (sequencePosition + 1) + " of " + steps.length + "." : "") +
+        (releasedKeyPosition ? " Next: press and release " + currentPracticeKey() + "." : "");
+    }
     const keys = steps.map(spokenKeys).join(". Then ");
-    const instruction = useCourseBuilder() ? "Use Build the command: " + keys + "." : "Press " + keys + ".";
-    const sequenceHelp = steps.length > 1
-      ? (useCourseBuilder() ? " Check each step in order." : " Release the keys between steps.")
-      : "";
-    return instruction + sequenceHelp + (sequencePosition ? " Now enter step " + (sequencePosition + 1) + ": " + spokenKeys(expectedStep()) + "." : "");
+    return "Press " + keys + "." + (steps.length > 1 ? " Release the keys between steps." : "") +
+      (sequencePosition ? " Now enter step " + (sequencePosition + 1) + ": " + spokenKeys(expectedStep()) + "." : "");
+  }
+
+  function renderCoursePrompt() {
+    const heading = document.createElement("h3");
+    heading.textContent = usesReleasedKeys() ? "Press and release " + currentPracticeKey()
+      : commandSteps().length > 1 ? command[1] : "Press " + spokenKeys(command[0]);
+    const explanation = document.createElement("p");
+    explanation.textContent = commandExplanation() + (usesReleasedKeys() ? " " + normalStepInstruction()
+      : commandSteps().length > 1 ? " " + courseInstruction() : "");
+    prompt.replaceChildren(heading, explanation);
+    if (usesReleasedKeys()) {
+      const instruction = document.createElement("p");
+      instruction.textContent = (commandSteps().length > 1 ? "Step " + (sequencePosition + 1) + " of " + commandSteps().length + ". " : "") + releasedKeyInstruction();
+      prompt.append(instruction);
+    }
   }
 
   function describe() {
@@ -661,7 +710,7 @@
     if (badge) { badge.hidden = !currentLevel; badge.textContent = currentLevel ? currentLevel[0].toUpperCase()+currentLevel.slice(1)+" commands · "+category.value : ""; }
     if (coursePanel) {
       coursePanel.hidden = !hasCourse();
-      coursePanel.open = useCourseBuilder();
+      coursePanel.open = false;
       const allowedModifiers = isMacPractice() ? ["Control", "Shift", "VO", "Command", "Option", "Fn", "Caps Lock"] : ["Control", "Alt", "Shift", "Windows", "Insert", "Caps Lock"];
       for(const modifier of courseModifiers) document.getElementById("courseMod"+modifier.replaceAll(" ", "")).closest("label").hidden = !allowedModifiers.includes(modifier);
       document.getElementById("courseBuilderCue").textContent = command[1]+" Step 1: "+spokenKeys(expectedStep())+".";
@@ -688,24 +737,20 @@
         if (command[3] === "builder") usingMacBuilder = true;
       }
     }
-    const heading = document.createElement("h3");
-    const protectedSequence = protectedSequences[normalizeExpected(command[0])];
-    heading.textContent = hasCourse()
-        ? commandSteps().length > 1 ? command[1] : (useCourseBuilder() ? "Build " : "Press ") + spokenKeys(command[0])
-        : isMacPractice() && usingMacBuilder
+    if (hasCourse()) {
+      renderCoursePrompt();
+    } else {
+      const heading = document.createElement("h3");
+      const protectedSequence = protectedSequences[normalizeExpected(command[0])];
+      heading.textContent = isMacPractice() && usingMacBuilder
         ? "Build " + spokenKeys(command[0])
-        : protectedSequence
-        ? "Protected practice: " + spokenKeys(command[0])
-        : practiceStyle.value === "guided"
-        ? "Guided task " + (position + 1) + " of " + order.length
+        : protectedSequence ? "Protected practice: " + spokenKeys(command[0])
+        : practiceStyle.value === "guided" ? "Guided task " + (position + 1) + " of " + order.length
         : "Press " + spokenKeys(command[0]);
-    const explanation = document.createElement("p");
-    explanation.textContent = hasCourse()
-      ? commandExplanation() + (commandSteps().length > 1 ? " " + courseInstruction() : useCourseBuilder() ? " Use Build the command below." : "")
-      : !protectedSequence && practiceStyle.value !== "guided"
-      ? commandExplanation()
-      : describe();
-    prompt.replaceChildren(heading, explanation);
+      const explanation = document.createElement("p");
+      explanation.textContent = !protectedSequence && practiceStyle.value !== "guided" ? commandExplanation() : describe();
+      prompt.replaceChildren(heading, explanation);
+    }
     const waiting = document.createElement("span");
     waiting.textContent = "Waiting for your command.";
     if (spoken.checked) {
@@ -775,8 +820,7 @@
   }
 
   function focusPracticeInput() {
-    if (useCourseBuilder() && courseKey) courseKey.focus();
-    else if (isMacPractice() && !hasCourse() && usingMacBuilder && macVO) macVO.focus();
+    if (isMacPractice() && !hasCourse() && usingMacBuilder && macVO) macVO.focus();
     else capture.focus();
   }
 
@@ -927,7 +971,7 @@
     }
     if (window.CommandPracticeCourses?.[category.value]) {
       capture.setAttribute("aria-describedby", "captureInstructions");
-      document.getElementById("captureInstructions").textContent = "Press the requested keys here, or use Build the command. Protected commands use the builder. Enter sequence steps in order. Correct commands advance automatically. Control alone repeats instructions here. Tab moves to the page controls when it is not the requested command. Escape returns to Command Practice.";
+      document.getElementById("captureInstructions").textContent = "Press the requested keys here, or use Build the command. For protected commands, press and release each named key separately. The prompt explains how the real shortcut is held. Build the command is an optional alternative if a key is not detected. Enter sequence steps in order. Correct commands advance automatically. Control alone repeats unless Control is the next practice key. Tab moves to the page controls when it is not the requested command. Escape returns to Command Practice unless Escape is the requested key.";
       const resultLabel=document.getElementById("commandMasteredHeading");
       if (resultLabel) resultLabel.textContent="Commands practiced";
     }
@@ -1029,13 +1073,73 @@
     if (active) showCommand();
   });
 
+  function releasedKeyDown(event) {
+    const key = keyName(event);
+    if (key === "control" && releasedKeyPosition === 0 && !heldPracticeKeys.size &&
+        !releaseBlocked && practiceKeyName(currentPracticeKey()) !== "control") return false;
+    controlTapPending = false;
+    if (event.repeat || heldPracticeKeys.has(key)) return true;
+    const otherModifierHeld = (event.ctrlKey && key !== "control") || (event.altKey && key !== "alt") ||
+      (event.shiftKey && key !== "shift") || (event.metaKey && key !== "windows");
+    const overlap = heldPracticeKeys.size > 0 || otherModifierHeld;
+    heldPracticeKeys.add(key);
+    if (releaseBlocked || overlap) {
+      releasedKeyPosition = 0;
+      releasePendingKey = "";
+      releaseBlocked = true;
+      renderCoursePrompt();
+      status.textContent = "Release all keys. In this practice, press and release one key at a time.";
+      speak(status.textContent);
+      return true;
+    }
+    releasePendingKey = key;
+    detected.textContent = displaySignature(key);
+    status.textContent = "Release " + displaySignature(key) + ".";
+    return true;
+  }
+
+  function releasedKeyUp(event) {
+    const key = keyName(event);
+    if (!heldPracticeKeys.has(key) && !releaseBlocked) return false;
+    event.preventDefault();
+    event.stopPropagation();
+    heldPracticeKeys.delete(key);
+    if (releaseBlocked) {
+      if (!heldPracticeKeys.size && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
+        releaseBlocked = false;
+        status.textContent = "Now press and release " + currentPracticeKey() + ".";
+        speak(status.textContent);
+      }
+      return true;
+    }
+    if (awaitingAdvance || key !== releasePendingKey) return true;
+    releasePendingKey = "";
+    if (key !== practiceKeyName(currentPracticeKey())) {
+      releasedKeyPosition = 0;
+      recordAttempt(key);
+      renderCoursePrompt();
+      return true;
+    }
+    releasedKeyPosition += 1;
+    if (releasedKeyPosition === practiceStepKeys().length) {
+      releasedKeyPosition = 0;
+      recordAttempt(normalizeExpected(expectedStep()));
+    } else {
+      renderCoursePrompt();
+      status.textContent = displaySignature(key) + " entered. Now press and release " + currentPracticeKey() + ".";
+      speak(status.textContent);
+    }
+    return true;
+  }
+
   capture.addEventListener("keydown", event => {
     if (!active) return;
     const expected = normalizeExpected(expectedStep());
     // Keep keyboard navigation available unless Tab is the requested command.
     if (event.key === "Tab" && !event.ctrlKey && !event.altKey && !event.metaKey) {
-      const tabCommand = event.shiftKey ? expected === "shift+tab"
-        : expected === "tab" || expected === "insert+tab";
+      const tabCommand = usesReleasedKeys()
+        ? practiceKeyName(currentPracticeKey()) === "tab"
+        : event.shiftKey ? expected === "shift+tab" : expected === "tab" || expected === "insert+tab";
       if (awaitingAdvance || !tabCommand) {
         resetModifiers();
         return;
@@ -1044,16 +1148,13 @@
     event.preventDefault();
     event.stopPropagation();
 
-    if (event.key === "Escape" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
+    if (event.key === "Escape" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey &&
+        !(usesReleasedKeys() && !awaitingAdvance && practiceKeyName(currentPracticeKey()) === "escape")) {
       stop.click();
       return;
     }
     if (awaitingAdvance) return;
-    if (useCourseBuilder() && event.key !== "Control") {
-      status.textContent = "Use Build the command for this shortcut.";
-      speak(status.textContent);
-      return;
-    }
+    if (usesReleasedKeys() && releasedKeyDown(event)) return;
     if (isMacPractice() && command[3] === "builder") {
       status.textContent = "Use the command builder for this system shortcut.";
       return;
@@ -1133,7 +1234,11 @@
       if (sequencePosition + 1 < commandSteps().length) {
         attempts -= 1; // Count complete-command attempts, not successful prefix keys.
         sequencePosition += 1;
-        status.textContent = "Step " + sequencePosition + " correct. Now " + spokenKeys(expectedStep()) + ".";
+        releasedKeyPosition = 0;
+        if (hasCourse()) renderCoursePrompt();
+        status.textContent = "Step " + sequencePosition + " correct. " + (usesReleasedKeys() && !built
+          ? "Now press and release " + currentPracticeKey() + ". " + normalStepInstruction()
+          : "Now " + spokenKeys(expectedStep()) + ".");
         if (coursePanel) {
           document.getElementById("courseStep").textContent = "Step " + (sequencePosition+1) + " of " + commandSteps().length;
           document.getElementById("courseBuilderCue").textContent = command[1]+" Step "+(sequencePosition+1)+": "+spokenKeys(expectedStep())+".";
@@ -1148,11 +1253,11 @@
       capture.classList.remove("is-incorrect");
       capture.classList.add("is-correct");
       tone(true);
-      const feedback = built ? "Correct combination. You built " : "Correct. You pressed ";
+      const feedback = built ? "Correct combination. You built " : usesReleasedKeys() ? "Correct. You practiced " : "Correct. You pressed ";
       status.textContent = feedback + displaySignature(pressed) + ". Moving to the next task.";
       next.disabled = false;
       speak(
-        feedback + spokenKeys(command[0]) + ". " + briefExplanation(command[1]),
+        feedback + spokenKeys(command[0]) + ". " + (hasCourse() ? commandExplanation() : briefExplanation(command[1])),
         () => {
           if (active && awaitingAdvance) next.click();
         }
@@ -1164,6 +1269,7 @@
       capture.classList.add("is-incorrect");
       tone(false);
       status.textContent = "Not quite. You " + (built ? "built " : "pressed ") + displaySignature(pressed) + ". Try " + spokenKeys(expectedStep()) + ".";
+      if (usesReleasedKeys() && !built) status.textContent = "Not quite. Start this step again. " + releasedKeyInstruction();
       speak(status.textContent);
       if (!built) capture.focus();
     }
@@ -1171,6 +1277,7 @@
   }
 
   capture.addEventListener("keyup", event => {
+    if (active && usesReleasedKeys() && releasedKeyUp(event)) return;
     if (event.key === "Insert") {
       event.preventDefault();
       insertHeld = false;
