@@ -580,7 +580,7 @@
     if (!command) return "";
     if (hasCourse()) {
       const shortGoals = {
-        "Copy.": "Copies selected text without removing it.",
+        "Copy.": "This command copies highlighted text.",
         "Cut.": "Removes selected text and puts it on the clipboard.",
         "Paste.": "Inserts the text or item you copied or cut.",
         "Paste without formatting.": "Paste text without its original formatting.",
