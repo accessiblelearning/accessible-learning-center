@@ -451,6 +451,7 @@
   const practiceContexts = {
     "Thunderbird email": "This is simulated Thunderbird email practice. No real application or account is being controlled.",
     "Firefox browser": "This is simulated Firefox browser practice. No real application or account is being controlled.",
+    "Google Chrome browser": "Google Chrome on Windows. Practice address-bar, tab, navigation, menu, and advanced browser commands.",
     "ZoomText and Fusion Desktop magnification": "This is simulated ZoomText and Fusion Desktop magnification practice. No real application or account is being controlled.",
     "Bookshare Reader on the web": "This is simulated Bookshare Reader on the web practice. No real application or account is being controlled.",
     "Learning Ally control navigation": "This is simulated Learning Ally control navigation practice. No real application or account is being controlled.",
@@ -474,6 +475,7 @@
     "Mac VoiceOver reading and settings": ["mac-voiceover-manual.html#part-13---read-and-edit-text", "Review reading and settings in the Mac VoiceOver manual"],
     "Thunderbird email": ["thunderbird-manual.html", "Review the Thunderbird email manual"],
     "Firefox browser": ["firefox-manual.html", "Review the Firefox browser manual"],
+    "Google Chrome browser": ["chrome-manual.html", "Review the Google Chrome manual"],
     "ZoomText and Fusion Desktop magnification": ["zoomtext-fusion-manual.html", "Review the ZoomText and Fusion Desktop magnification manual"],
     "Bookshare Reader on the web": ["bookshare-manual.html", "Review the Bookshare Reader on the web manual"],
     "Learning Ally control navigation": ["learning-ally-manual.html", "Review the Learning Ally control navigation manual"],

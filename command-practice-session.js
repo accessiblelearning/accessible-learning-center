@@ -12,6 +12,7 @@
     "Windows and File Explorer": "Windows and File Explorer commands",
     "Web and screen-reader navigation": "Web navigation commands",
     "Firefox browser": "Firefox commands",
+    "Google Chrome browser": "Google Chrome commands",
     "Thunderbird email": "Thunderbird commands",
     "ZoomText and Fusion Desktop magnification": "ZoomText and Fusion commands",
     "Bookshare Reader on the web": "Bookshare commands",

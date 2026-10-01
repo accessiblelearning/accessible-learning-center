@@ -248,6 +248,8 @@ test("new browser commands complete through protected input without opening brow
 test("every manual menu entry resolves to an existing command set and mission", () => {
   const p = page(); p.load("mission-catalog.js"); p.load("troubleshooting-lab.js");
   const categories = vm.runInNewContext("(" + source("command-practice.js").match(/const categories = (\{[\s\S]*?\n  \});/)[1] + ")");
+  p.load("command-courses.js"); p.load("chrome-command-course.js");
+  Object.assign(categories, p.window.CommandPracticeCourses);
   const ids = new Set();
   for (const manual of p.window.MissionControlCatalog) {
     for (const set of [...manual.commandSets, ...manual.missionSets]) {
@@ -414,10 +416,11 @@ test("shared skip navigation reuses the existing link and focuses main on full a
 });
 
 const courseWindow={};vm.runInNewContext(source('command-courses.js'),{window:courseWindow});
+vm.runInNewContext(source('chrome-command-course.js'),{window:courseWindow});
 const courses=courseWindow.CommandPracticeCourses;
 function coursePage(category,spoken=false){
  const p=page({commandCategory:{value:category},practiceStyle:{value:'guided'},sessionLength:{value:'5'},explanationLevel:{value:'brief'},randomOrder:{checked:true},spokenInstructions:{checked:spoken},soundFeedback:{checked:false}});
- p.load('command-courses.js');p.load('command-practice.js');p.get('startPractice').click();return p;
+ p.load('command-courses.js');p.load('chrome-command-course.js');p.load('command-practice.js');p.get('startPractice').click();return p;
 }
 function buildStep(p,step){
  const modifiers=['Control','Alt','Shift','Windows','Insert','Caps Lock','VO','Command','Option','Fn'];

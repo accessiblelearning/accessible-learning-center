@@ -67,6 +67,14 @@
       missionSets: []
     },
     {
+      id: "google-chrome",
+      label: "Google Chrome",
+      commandSets: [
+        { id: "chrome-commands", menuLabel: "Google Chrome", label: "Google Chrome: Windows browser commands, from basic through advanced", category: "Google Chrome browser" }
+      ],
+      missionSets: []
+    },
+    {
       id: "google-applications",
       label: "Google Applications",
       commandSets: [
