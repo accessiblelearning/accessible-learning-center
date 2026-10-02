@@ -12,9 +12,9 @@
       category: "Screen-reader recovery", title: "The unexpected window",
       problem: "You were editing a report, but your keys stopped behaving as expected. You are not sure which window has focus. Find out before changing anything.",
       steps: [
-        { command: "TITLE", success: "Window title: Downloads — File Explorer. You are not in the report.", why: "You identified the active window without changing it." },
-        { command: "ALT+TAB", success: "Quarterly Report — Microsoft Word. Editing area.", why: "You returned to the document after confirming where focus was." },
-        { command: "CTRL+S", success: "Document saved.", why: "You protected the report after safely returning to it." }
+        { command: "TITLE", prompt: "Identify the active window before making changes.", hint: "Ask your screen reader for the window title.", success: "Window title: Downloads — File Explorer. You are not in the report.", why: "You identified the active window without changing it." },
+        { command: "ALT+TAB", prompt: "Return to the Microsoft Word report.", hint: "Use Alt plus Tab to switch back to the report.", success: "Quarterly Report — Microsoft Word. Editing area.", why: "You returned to the document after confirming where focus was." },
+        { command: "CTRL+S", prompt: "Save the report now that you are back in Microsoft Word.", hint: "Press Control plus S to save.", success: "Document saved.", why: "You protected the report after safely returning to it." }
       ],
       hint: "Begin by asking the screen reader to announce the active window title."
     },
@@ -22,8 +22,8 @@
       category: "Google applications", title: "Letters navigate instead of typing",
       problem: "On a web form, pressing H moves to a heading instead of typing. Locate the edit field and enter interaction mode without using the mouse.",
       steps: [
-        { command: "E", success: "Email address, edit box.", why: "Browse-mode edit-field navigation located the intended field." },
-        { command: "ENTER", success: "Forms mode on. Email address, edit.", why: "Enter placed the screen reader in the field’s interaction mode." }
+        { command: "E", prompt: "Locate the email address edit field.", hint: "Press E to find the next edit field.", success: "Email address, edit box.", why: "Browse-mode edit-field navigation located the intended field." },
+        { command: "ENTER", prompt: "Enter interaction mode in the email address field.", hint: "Press Enter on the edit field.", success: "Forms mode on. Email address, edit.", why: "Enter placed the screen reader in the field’s interaction mode." }
       ],
       hint: "Use a screen-reader navigation key to find the next edit field before changing modes."
     },
@@ -31,8 +31,8 @@
       category: "Email and calendar", title: "Protect the unsent Outlook message",
       problem: "An Outlook message contains important unsent work. You need to protect the draft before leaving the message.",
       steps: [
-        { command: "CTRL+S", success: "Draft saved.", why: "You saved the message before attempting to leave it." },
-        { command: "ALT+F4", success: "Inbox — Outlook. Draft retained.", why: "You closed the protected message and returned to the Inbox." }
+        { command: "CTRL+S", prompt: "Save the unsent Outlook draft.", hint: "Press Control plus S to save the draft.", success: "Draft saved.", why: "You saved the message before attempting to leave it." },
+        { command: "ALT+F4", prompt: "Close the saved message and return to the Outlook Inbox.", hint: "Use Alt plus F4 to close the saved message.", success: "Inbox — Outlook. Draft retained.", why: "You closed the protected message and returned to the Inbox." }
       ],
       hint: "Protect the draft before trying to leave the message."
     },
@@ -40,8 +40,8 @@
       category: "Microsoft applications", title: "The risky Word edit",
       problem: "A large block of text disappeared in Microsoft Word. Do not retype it. Recover the edit and save the corrected document.",
       steps: [
-        { command: "CTRL+Z", success: "Undo. Selected text restored.", why: "Undo reversed the most recent destructive edit." },
-        { command: "CTRL+S", success: "Document saved.", why: "You saved immediately after verifying the recovery." }
+        { command: "CTRL+Z", prompt: "Recover the missing text in Microsoft Word.", hint: "Press Control plus Z to undo the last edit.", success: "Undo. Selected text restored.", why: "Undo reversed the most recent destructive edit." },
+        { command: "CTRL+S", prompt: "The text is restored. Now save the corrected document.", hint: "Press Control plus S to save the corrected document.", success: "Document saved.", why: "You saved immediately after verifying the recovery." }
       ],
       hint: "Use the standard command that reverses the most recent action."
     },
@@ -49,8 +49,8 @@
       category: "Cloud storage", title: "Move without losing the original",
       problem: "A practice file is selected in a synchronized OneDrive folder. The original must remain where it is while you place a copy in the open destination folder.",
       steps: [
-        { command: "CTRL+C", success: "Copied: Interview Notes.docx.", why: "Copy preserves the original; Cut would move it." },
-        { command: "CTRL+V", success: "Pasted: Interview Notes.docx. Synchronization pending.", why: "You created one copy in the verified destination." }
+        { command: "CTRL+C", prompt: "Copy the selected file, keeping the original in place.", hint: "Press Control plus C to copy.", success: "Copied: Interview Notes.docx.", why: "Copy preserves the original; Cut would move it." },
+        { command: "CTRL+V", prompt: "Paste the copied file into the open destination folder.", hint: "Press Control plus V to paste.", success: "Pasted: Interview Notes.docx. Synchronization pending.", why: "You created one copy in the verified destination." }
       ],
       hint: "Choose the clipboard command that preserves the original file."
     },
@@ -58,8 +58,8 @@
       category: "Online meetings", title: "The live microphone",
       problem: "You are in a Zoom meeting and hear private conversation nearby. Mute immediately, then open the participant list to confirm who is present.",
       steps: [
-        { command: "ALT+A", success: "Audio muted.", why: "You used Zoom’s microphone command immediately." },
-        { command: "ALT+U", success: "Participants panel. Twelve participants.", why: "You opened the participant list after protecting the microphone." }
+        { command: "ALT+A", prompt: "Mute your Zoom microphone.", hint: "Use Alt plus A to mute.", success: "Audio muted.", why: "You used Zoom’s microphone command immediately." },
+        { command: "ALT+U", prompt: "Open the Zoom participant list to check who is present.", hint: "Use Alt plus U to open the participant list.", success: "Participants panel. Twelve participants.", why: "You opened the participant list after protecting the microphone." }
       ],
       hint: "Use Zoom’s Windows command for mute before inspecting anything else."
     },
@@ -67,7 +67,7 @@
       category: "Privacy and cybersecurity", title: "The suspicious pop-up",
       problem: "A pop-up says your computer is infected and tells you to press Enter to call support. Close only the suspicious window without activating its button.",
       steps: [
-        { command: "ALT+F4", success: "Suspicious pop-up closed. Browser remains open.", why: "You closed the active pop-up without activating its fraudulent control." }
+        { command: "ALT+F4", prompt: "Close the suspicious pop-up without activating its button.", hint: "Use Alt plus F4 to close the active window.", success: "Suspicious pop-up closed. Browser remains open.", why: "You closed the active pop-up without activating its fraudulent control." }
       ],
       hint: "Do not press Enter. Use the command that closes the active window."
     },
@@ -75,8 +75,8 @@
       category: "Files and folders", title: "Rename the correct file",
       problem: "Resume Final Copy.docx is selected in File Explorer. Start renaming it without opening it, then confirm the supplied name Professional Resume.docx.",
       steps: [
-        { command: "F2", success: "Resume Final Copy, filename edit. The name is selected and the .docx extension remains protected.", why: "F2 opened rename mode without opening the file." },
-        { command: "ENTER", success: "Renamed: Professional Resume.docx.", why: "The simulator supplied the practice name and Enter confirmed it." }
+        { command: "F2", prompt: "Begin renaming the selected file without opening it.", hint: "Press F2 to start renaming.", success: "Resume Final Copy, filename edit. The name is selected and the .docx extension remains protected.", why: "F2 opened rename mode without opening the file." },
+        { command: "ENTER", prompt: "Confirm the supplied name Professional Resume.docx.", hint: "Press Enter to confirm the supplied name.", success: "Renamed: Professional Resume.docx.", why: "The simulator supplied the practice name and Enter confirmed it." }
       ],
       hint: "Use File Explorer’s rename command on the selected file."
     }
@@ -89,11 +89,15 @@
     "steps": [
         {
             "command": "CTRL+S",
+            "prompt": "Save the unfinished Thunderbird draft.",
+            "hint": "Press Control plus S to save the draft.",
             "success": "Practice draft saved. The composition window remains active.",
             "why": "Saving protects the unfinished message without sending it."
         },
         {
             "command": "CTRL+SHIFT+A",
+            "prompt": "Open the attachment file picker for the saved Thunderbird draft.",
+            "hint": "In this protected practice, press and release Control, then press A by itself. This simulates Control plus Shift plus A.",
             "success": "Simulated attachment file picker opened.",
             "why": "You reached the attachment action from the composition window, where this shortcut applies."
         }
@@ -107,11 +111,15 @@
     "steps": [
         {
             "command": "CTRL+SHIFT+T",
+            "prompt": "Reopen the accidentally closed Firefox article tab.",
+            "hint": "In this protected practice, press and release Control, then press T by itself. This simulates Control plus Shift plus T.",
             "success": "Simulated article reopened. The title matches your reading task.",
             "why": "You recovered the closed page instead of starting another search."
         },
         {
             "command": "CTRL+D",
+            "prompt": "Bookmark the recovered Firefox article.",
+            "hint": "In this protected practice, press and release Control, then press D by itself. This simulates Control plus D.",
             "success": "Simulated bookmark editor opened.",
             "why": "You can now review the bookmark name and location before saving it."
         }
@@ -125,11 +133,15 @@
     "steps": [
         {
             "command": "CAPSLOCK+ARROWUP",
+            "prompt": "Increase magnification once in the practice document.",
+            "hint": "Press and release Caps Lock, then press Up Arrow.",
             "success": "Simulated magnification increased. The text is larger.",
             "why": "You changed one level before checking readability."
         },
         {
             "command": "CAPSLOCK+ENTER",
+            "prompt": "Compare the magnified view with the whole screen.",
+            "hint": "Press and release Caps Lock, then press Enter.",
             "success": "Simulated 1x view. The whole window is visible.",
             "why": "You regained surrounding context. In the application, the same toggle returns to your working level."
         }
@@ -143,11 +155,15 @@
     "steps": [
         {
             "command": "ALT+B",
+            "prompt": "Bookmark the current Bookshare passage.",
+            "hint": "Press and release Alt, then press B.",
             "success": "Simulated bookmark added at the current passage.",
             "why": "A saved marker helps you return deliberately."
         },
         {
             "command": "ALT+SHIFT+B",
+            "prompt": "Open the Bookshare bookmarks list to find the saved passage.",
+            "hint": "Press and release Alt, then press Shift plus B. This simulates Alt plus Shift plus B.",
             "success": "Simulated bookmarks list opened with your passage listed.",
             "why": "You can verify the saved location instead of assuming the current playback position is a bookmark."
         }
@@ -161,11 +177,15 @@
     "steps": [
         {
             "command": "ENTER",
+            "prompt": "Activate the focused Pause button in Learning Ally.",
+            "hint": "Press Enter on the Pause button.",
             "success": "Narration paused. The simulator now places focus on the chapter navigation button.",
             "why": "Pausing makes spoken control labels easier to hear."
         },
         {
             "command": "ENTER",
+            "prompt": "Open the chapter list using the focused chapter navigation button.",
+            "hint": "Press Enter on the chapter navigation button.",
             "success": "Simulated chapter list opened. You can now review chapter names.",
             "why": "You activated the identified navigation control instead of guessing an unlabeled shortcut."
         }
@@ -364,7 +384,7 @@
       altModifierArmed = false;
       controlModifierArmed = false;
       lastCommand.textContent = "F1: hint provided";
-      announce("Strategy hint: " + missions[current].hint);
+      announce("Strategy hint: " + missions[current].steps[step].hint);
       return;
     }
     if (event.key === "Alt" && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
@@ -383,7 +403,7 @@
       altModifierArmed = false;
       lastCommand.textContent = "Control ready; press the remaining key";
       if (protectedControlCommands.has(expectedCommand)) {
-        announce("Protected practice. Release Control, then press " + finalKeyFor(expectedCommand) + " by itself. The simulator will count this as " + displayedCommand(expectedCommand) + ".");
+        announce(currentStepPrompt() + " Protected practice. Release Control, then press " + finalKeyFor(expectedCommand) + " by itself. The simulator will count this as " + displayedCommand(expectedCommand) + ".");
       }
       return;
     }
@@ -433,9 +453,13 @@
     event.preventDefault();
     if (protectedControlCommands.has(missions[current].steps[step].command)) return;
     controlModifierArmed = false;
-    lastCommand.textContent = "Control: repeated mission problem";
-    announce("Mission problem. " + problem.textContent);
+    lastCommand.textContent = "Control: repeated current step";
+    announce(currentStepPrompt());
   });
+
+  function currentStepPrompt() {
+    return "Step " + (step + 1) + " of " + missions[current].steps.length + ". " + missions[current].steps[step].prompt;
+  }
 
   function processCommand(command) {
     const mission = missions[current];
@@ -457,14 +481,17 @@
       step += 1;
       updateProgress();
       if (step === mission.steps.length) finishMission(expected.success + " " + expected.why);
-      else announce(expected.success + " " + expected.why, "correct");
+      else {
+        problem.textContent = missions[current].steps[step].prompt;
+        announce(expected.success + " " + expected.why + " " + currentStepPrompt(), "correct");
+      }
     } else {
       tone(false);
       missionCommandsToReview.set(expected.command, expected);
       const response = wrongResponse(command, expected.command);
       item.textContent = displayedCommand(command) + ": " + response;
       log.append(item);
-      announce(response + " That did not solve the problem. Use the response as evidence and keep working.", "incorrect");
+      announce(response + " " + currentStepPrompt() + " Press F1 for a hint.", "incorrect");
     }
   }
 

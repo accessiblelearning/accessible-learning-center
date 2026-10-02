@@ -314,7 +314,18 @@ test("missions show hints, retain focus, allow Tab, and complete despite sound f
     p.get("missionProblem").closestMatch = false;
     p.get(".focused-mission").fire("click", { target: p.get("missionProblem") });
     assert.equal(p.document.activeElement, control);
-    for (const command of solution) chord(p, command, control.id);
+    for (const [index, command] of solution.entries()) {
+      const oldPrompt = p.get("missionProblem").textContent;
+      chord(p, command, control.id);
+      if (index < solution.length - 1) {
+        const prompt = p.get("missionProblem").textContent;
+        assert.notEqual(prompt, oldPrompt);
+        assert.ok(p.get("transcript").textContent.includes(prompt));
+        assert.ok(p.get("transcript").textContent.includes(`Step ${index + 2} of ${solution.length}`));
+        p.key(control.id, "Control");
+        assert.ok(p.get("transcript").textContent.includes(prompt));
+      }
+    }
     assert.equal(p.get("missionResults").hidden, false, `${reader} mission ${index}`);
     assert.equal(p.get("missionAttemptResult").textContent, String(solution.length));
     p.get("retryMissionResult").click();
@@ -640,4 +651,29 @@ test('separated-key angle-symbol practice uses the shared unshifted key after th
   tapCourseKey(p,'Alt');tapCourseKey(p,'Shift');p.key('keyCapture',base,{code});
   assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+2}`);
  }
+});
+
+
+test("Word mission announces the save step, repeats it, and gives a current hint", () => {
+  const p = page({ atPerspective: { value: "jaws" }, missionSelect: { value: "3" }, simulatedVoice: { checked: true } });
+  const spoken = [];
+  p.window.speechSynthesis.speak = utterance => spoken.push(utterance.text);
+  p.load("troubleshooting-lab.js"); p.get("startMission").click();
+  const id = "missionControlStation";
+  p.get(id).fire("keydown", { key: "Control", ctrlKey: true });
+  chord(p, "Control+Z", id);
+  p.get(id).fire("keyup", { key: "Control" });
+  assert.match(spoken.at(-1), /Selected text restored.*Step 2 of 2.*save the corrected document/);
+  assert.match(p.get("missionProblem").textContent, /Now save/);
+  p.key(id, "Control");
+  assert.match(spoken.at(-1), /^Step 2 of 2.*save/);
+  chord(p, "Control+Z", id);
+  assert.match(spoken.at(-1), /Step 2 of 2.*save/);
+  assert.equal(p.get("missionProgress").value, 1);
+  p.key(id, "F1");
+  assert.match(spoken.at(-1), /Control plus S/);
+  chord(p, "Control+S", id);
+  assert.match(spoken.at(-1), /Document saved.*Mission complete/);
+  assert.equal(p.get("missionResults").hidden, false);
+  assert.equal(p.document.activeElement, p.get("nextMission"));
 });
