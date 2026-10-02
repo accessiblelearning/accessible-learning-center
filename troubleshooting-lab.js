@@ -378,6 +378,11 @@
         return;
       }
     }
+    // A held key belongs to the original attempt, not the next mission step.
+    if (event.repeat) {
+      event.preventDefault();
+      return;
+    }
     if (event.key === "F1" && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && expectedCommand !== "F1") {
       event.preventDefault();
       modifierHeld = false;
@@ -422,6 +427,12 @@
       event.preventDefault();
       lastCommand.textContent = screenReaders[perspective.value].name + " key ready; press the remaining key";
       announce(screenReaders[perspective.value].name + " key ready. Press the remaining key for " + displayedCommand(expectedCommand) + ".");
+      return;
+    }
+    // Modifier keydown events are parts of a chord, never answers themselves.
+    // Keep the armed Alt / reader modifier while Shift is being held.
+    if (["Shift", "Control", "Alt", "Meta"].includes(event.key)) {
+      if (event.key === "Meta") resetModifiers();
       return;
     }
     let command = normalizedKey(event);

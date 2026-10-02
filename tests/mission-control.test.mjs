@@ -677,3 +677,30 @@ test("Word mission announces the save step, repeats it, and gives a current hint
   assert.equal(p.get("missionResults").hidden, false);
   assert.equal(p.document.activeElement, p.get("nextMission"));
 });
+
+test("holding a mission key does not complete or penalize another step", () => {
+  const p = page({ atPerspective: { value: "jaws" }, missionSelect: { value: "12" } });
+  p.load("troubleshooting-lab.js"); p.get("startMission").click();
+  const control = p.get("missionControlStation");
+  control.fire("keydown", { key: "Enter" });
+  control.fire("keydown", { key: "Enter", repeat: true });
+  assert.equal(p.get("missionProgress").value, 1);
+  assert.equal(p.get("missionResults").hidden, true);
+  control.fire("keyup", { key: "Enter" });
+  p.key(control.id, "Enter");
+  assert.equal(p.get("missionAttemptResult").textContent, "2");
+});
+
+test("a Shift press within a protected Alt chord does not count as an incorrect answer", () => {
+  const p = page({ atPerspective: { value: "jaws" }, missionSelect: { value: "11" } });
+  p.load("troubleshooting-lab.js"); p.get("startMission").click();
+  const control = p.get("missionControlStation");
+  p.key(control.id, "Alt"); p.key(control.id, "b");
+  p.key(control.id, "Alt");
+  control.fire("keydown", { key: "Shift", shiftKey: true });
+  p.key(control.id, "b", { shiftKey: true });
+  control.fire("keyup", { key: "Shift" });
+  assert.equal(p.get("missionResults").hidden, false);
+  assert.equal(p.get("missionAttemptResult").textContent, "2");
+  assert.equal(p.get("missionReviewResult").textContent, "0");
+});

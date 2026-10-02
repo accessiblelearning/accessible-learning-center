@@ -4,7 +4,7 @@ window.CommandPracticeCourses = {
     [
       "Control+C",
       "Copy.",
-      "In Google Docs on Windows, with document editing focused. Use this during everyday document work. Check the cursor or selected text first; the command affects the active document or selection.",
+      "In Google Docs on Windows. Highlight the text you want to reuse, then copy it. For example, copy a name so you can paste it elsewhere.",
       "",
       {
         "level": "basic",
@@ -30,7 +30,7 @@ window.CommandPracticeCourses = {
     [
       "Control+V",
       "Paste.",
-      "In Google Docs on Windows, with document editing focused. Use this during everyday document work. Check the cursor or selected text first; the command affects the active document or selection.",
+      "In Google Docs on Windows. Place the cursor where you want the copied text, then paste. If text is highlighted, pasting replaces that selection.",
       "",
       {
         "level": "basic",
@@ -56,7 +56,7 @@ window.CommandPracticeCourses = {
     [
       "Control+Z",
       "Undo.",
-      "In Google Docs on Windows, with document editing focused. Use this during everyday document work. Check the cursor or selected text first; the command affects the active document or selection.",
+      "In Google Docs on Windows. Undo the most recent edit. For example, recover a sentence you accidentally deleted, then check that the intended text returned.",
       "",
       {
         "level": "basic",
@@ -160,7 +160,7 @@ window.CommandPracticeCourses = {
     [
       "Control+F",
       "Find.",
-      "In Google Docs on Windows, with document editing focused. Use this during everyday document work. Check the cursor or selected text first; the command affects the active document or selection.",
+      "In Google Docs on Windows. Find a word or phrase in the document. Enter the search text and review the matches before choosing the occurrence you need.",
       "",
       {
         "level": "basic",
@@ -329,7 +329,7 @@ window.CommandPracticeCourses = {
     [
       "Control+B",
       "Bold.",
-      "In Google Docs on Windows, with document editing focused. Select the text to change first. With no selection, formatting may affect what you type next. Check the result before continuing.",
+      "In Google Docs on Windows. Highlight the text, then apply bold. Press the command again to remove bold. With no selection, it changes the formatting of what you type next.",
       "",
       {
         "level": "basic",
@@ -368,7 +368,7 @@ window.CommandPracticeCourses = {
     [
       "Control+A",
       "Select all.",
-      "In Google Docs on Windows, with document editing focused. Begin with the cursor at one edge of the text you want. Selection extends without deleting anything; then you can copy, replace, or format the selected text.",
+      "In Google Docs on Windows. With the document editing area focused, select all its content. Use this before copying the whole document; typing now would replace the selection.",
       "",
       {
         "level": "basic",
@@ -2715,7 +2715,7 @@ window.CommandPracticeCourses = {
     [
       "Control+C",
       "Copy the selected content to the Clipboard.",
-      "In Word for Windows desktop. First select the content named in the task. Check your selection so the command affects only the intended content. ",
+      "In Word for Windows desktop. Highlight the text you want to reuse, then copy it. For example, copy a name so you can paste it elsewhere.",
       "",
       {
         "level": "basic",
@@ -2728,7 +2728,7 @@ window.CommandPracticeCourses = {
     [
       "Control+V",
       "Paste the contents of the Clipboard.",
-      "In Word for Windows desktop. Put focus in the working document or worksheet, rather than a search box. Check the changed selection, position, or setting before continuing. ",
+      "In Word for Windows desktop. Place the cursor where you want the copied text, then paste. If text is highlighted, pasting replaces that selection.",
       "",
       {
         "level": "basic",
@@ -2754,7 +2754,7 @@ window.CommandPracticeCourses = {
     [
       "Control+A",
       "Select all document content.",
-      "In Word for Windows desktop. Put focus in the working document or worksheet, rather than a search box. Check the changed selection, position, or setting before continuing. ",
+      "In Word for Windows desktop. With the document editing area focused, select all its content. Use this before copying the whole document; typing now would replace the selection.",
       "",
       {
         "level": "basic",
@@ -2767,7 +2767,7 @@ window.CommandPracticeCourses = {
     [
       "Control+B",
       "Apply bold formatting to text.",
-      "In Word for Windows desktop. Put focus in the working document or worksheet, rather than a search box. Check the changed selection, position, or setting before continuing. ",
+      "In Word for Windows desktop. Highlight the text, then apply bold. Press the command again to remove bold. With no selection, it changes the formatting of what you type next.",
       "",
       {
         "level": "basic",
@@ -2806,7 +2806,7 @@ window.CommandPracticeCourses = {
     [
       "Control+Z",
       "Undo the previous action.",
-      "In Word for Windows desktop. Put focus in the working document or worksheet, rather than a search box. Check the changed selection, position, or setting before continuing. ",
+      "In Word for Windows desktop. Undo the most recent edit. For example, recover a sentence you accidentally deleted, then check that the intended text returned.",
       "",
       {
         "level": "basic",
@@ -2897,7 +2897,7 @@ window.CommandPracticeCourses = {
     [
       "Control+B",
       "Apply bold formatting.",
-      "In Word for Windows desktop. Put focus in the working document or worksheet, rather than a search box. Check the changed selection, position, or setting before continuing. ",
+      "In Word for Windows desktop. Highlight the text, then apply bold. Press the command again to remove bold. With no selection, it changes the formatting of what you type next.",
       "",
       {
         "level": "basic",
@@ -3456,7 +3456,7 @@ window.CommandPracticeCourses = {
     [
       "Control+F",
       "Display the Navigation task pane, to search within the document content.",
-      "In Word for Windows desktop. Listen for the named dialog or pane. Use Tab to reach its fields and buttons; confirm your choices before returning to the document. ",
+      "In Word for Windows desktop. Find a word or phrase in the document. Enter the search text and review the matches before choosing the occurrence you need.",
       "",
       {
         "level": "intermediate",
