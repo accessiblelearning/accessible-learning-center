@@ -501,6 +501,56 @@ function buildStep(p,step){
  const parts=step.split('+');for(const m of modifiers)p.get('courseMod'+m.replaceAll(' ','')).checked=parts.slice(0,-1).includes(m);
  p.get('courseFinalKey').value=parts.at(-1);p.get('courseCommandBuilder').fire('submit');
 }
+
+test('Narrator keypad tasks name and require the keypad while preserving their course identities',()=>{
+ const p=page({commandCategory:{value:'Narrator commands'},spokenInstructions:{checked:true}}),heard=[];
+ p.window.speechSynthesis.speak=u=>heard.push(u.text);
+ p.load('command-courses.js');p.load('command-teaching.js');
+ const items=p.window.CommandPracticeCourses['Narrator commands'].filter(e=>['Insert+5','Control+Insert+5'].includes(e[0]));
+ assert.deepEqual([...items].map(e=>e[0]),['Insert+5','Control+Insert+5']);
+ p.window.CommandPracticeCourses['Narrator commands']=items;p.load('command-practice.js');p.get('startPractice').click();
+ p.key('keyCapture','Insert');p.key('keyCapture','5',{code:'Digit5'});
+ assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+ assert.match(heard[0],/numeric keypad 5/);
+ assert.ok(p.get('courseFinalKey').children.some(e=>e.value==='Numpad5'&&e.textContent==='numeric keypad 5'));
+ assert.match(p.get('practiceStatus').textContent,/numeric keypad.*Build the command/);
+ p.key('keyCapture','Insert');p.key('keyCapture','Control');assert.match(heard.at(-1),/Next: press and release numeric keypad 5/);
+ // With Num Lock off, browsers can call this Clear; the physical keypad code still identifies it.
+ p.key('keyCapture','Clear',{code:'Numpad5',location:3});
+ assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2');assert.match(heard.at(-1),/Insert plus numeric keypad 5/);p.advance();
+ buildStep(p,'Control+Insert+5');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 3');
+ buildStep(p,'Control+Insert+Numpad5');assert.equal(p.get('practiceScore').textContent,'Correct: 2 · Attempts: 4');p.advance();
+ assert.equal(p.get('commandResults').hidden,false);
+ assert.ok(p.get('commandMasteredList').children.every(e=>e.textContent.includes('numeric keypad 5')));
+});
+
+test('Narrator keypad location fallback works and ordinary number-row practice is unchanged',()=>{
+ const p=page({commandCategory:{value:'Narrator commands'}});
+ p.load('command-courses.js');p.load('command-teaching.js');
+ const items=p.window.CommandPracticeCourses['Narrator commands'].filter(e=>['Insert+1','Insert+5'].includes(e[0]));
+ p.window.CommandPracticeCourses['Narrator commands']=items;p.load('command-practice.js');p.get('startPractice').click();
+ p.key('keyCapture','Insert');p.key('keyCapture','1',{code:'Digit1'});p.advance();
+ p.key('keyCapture','Insert');p.key('keyCapture','5',{location:3});p.advance();
+ assert.equal(p.get('commandResults').hidden,false);assert.equal(p.get('commandAccuracyResult').textContent,'100%');
+});
+
+test('Narrator review preserves all 73 task identities and stages and teaches distinct advanced outcomes',()=>{
+ const w={};vm.runInNewContext(source('command-courses.js'),{window:w});
+ const original=JSON.parse(JSON.stringify(w.CommandPracticeCourses['Narrator commands']));
+ vm.runInNewContext(source('command-teaching.js'),{window:w});
+ const reviewed=JSON.parse(JSON.stringify(w.CommandPracticeCourses['Narrator commands']));
+ assert.equal(reviewed.length,73);
+ assert.deepEqual(reviewed.map(e=>[e[0],e[1],e[3],e[4].level,e[4].steps]),original.map(e=>[e[0],e[1],e[3],e[4].level,e[4].steps]));
+ assert.equal(reviewed.filter((e,i)=>e[2]!==original[i][2]).length,21);
+ const advanced=reviewed.filter(e=>e[4].level==='advanced');assert.equal(advanced.length,5);
+ assert.equal(new Set(advanced.map(e=>e[2])).size,5);
+ for(const entry of advanced)assert.doesNotMatch(entry[2],/In the real app, check the new mode/);
+ const note=key=>reviewed.find(e=>e[0]===key)[2];
+ assert.match(note('Alt+Insert+B'),/on-screen braille viewer.*braille output to be configured/);
+ assert.match(note('Insert+H'),/In Outlook/);assert.match(note('Insert+V'),/not the voice's volume or speed/);
+ assert.match(note('Insert+5'),/numeric keypad.*not the number row/);
+ assert.match(note('Control+Insert+5'),/Narrator plus K/);
+});
 test('every expanded topic reaches all three levels and completes through the accessible builder',()=>{
  const aliases=new Set(['General editing','Mac VoiceOver navigation and web','Mac VoiceOver reading and settings']);
  for(const [category,items] of Object.entries(courses)){

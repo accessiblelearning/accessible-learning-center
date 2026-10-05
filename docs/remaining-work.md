@@ -47,6 +47,8 @@ The learner-progress follow-up corrects In progress labels, rejects malformed pr
 
 ## Needs targeted human/device feedback
 
+The Narrator follow-up corrects two numeric-keypad tasks that accepted number-row 5, improves **21** explanations including all five advanced tasks, and preserves all **73** task identities/stages. See [the Narrator keypad checkpoint](qa-2026-10-05-narrator-keypad.md). **186 public tests pass**, plus the full Narrator course in Chromium with site voice on/off and missed-task retry. Its other 52 teaching notes and uneven existing stage distribution remain a separate review. Prior keyboarding/mission fixes and all private work are unchanged.
+
 The session-progress follow-up prevents an old keyboard completion callback from finishing a new session after a quick restart, preserves newer Topic Mission completions saved by another open tab, and reports failed mission saves visibly and through speech requests. See [the session-progress checkpoint](qa-2026-10-05-session-progress.md). **183 public tests pass**, plus three-path keyboard restart and two-tab mission browser checks. All curricula, stable IDs and private work are unchanged. Browser-local history is still separate from future account synchronization.
 
 The lesson-record follow-up rejects malformed values that previously counted as lesson 1, could falsely mark a course started, and could unlock a final quiz alongside nine valid lessons. See [the lesson-record checkpoint](qa-2026-10-05-lesson-records.md). **179 public tests pass**, with fictional-response browser checks. Valid numeric-string records and existing saved history are preserved; no private, curriculum or backend changes.

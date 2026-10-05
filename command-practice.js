@@ -404,7 +404,8 @@
   const courseKey = document.getElementById("courseFinalKey");
   const courseModifiers = ["Control", "Alt", "Shift", "Windows", "Insert", "Caps Lock", "VO", "Command", "Option", "Fn"];
   const hasCourse = () => Boolean(command?.[4]);
-  const commandSteps = () => command?.[4]?.steps || [command?.[0] || ""];
+  const practiceStepsFor = item => item?.[4]?.practiceSteps || item?.[4]?.steps || [item?.[0] || ""];
+  const commandSteps = () => practiceStepsFor(command);
   const expectedStep = () => commandSteps()[sequencePosition];
   const usesReleasedKeys = () => hasCourse() && command[3] === "safe";
   let releasedKeyPosition = 0;
@@ -593,6 +594,7 @@
   });
 
   function spokenKeyName(key) {
+    if (/^numpad5$/i.test(key)) return "numeric keypad 5";
     const punctuation = {
       "/": "slash", "\\": "backslash", ".": "period", ",": "comma",
       ";": "semicolon", ":": "colon", "'": "apostrophe", '"': "quotation mark",
@@ -699,6 +701,7 @@
   function keyLocationHint() {
     const key = expectedStep().split("+").at(-1);
     return ({
+      "Numpad5": "No numeric keypad? Use Build the command below.",
       "[": "Left square bracket is just to the right of P.",
       "]": "Right square bracket is two keys to the right of P.",
       "Less Than": "Less than shares the comma key.",
@@ -838,6 +841,10 @@
   }
 
   function keyName(event) {
+    // Keypad 5 reports Clear with Num Lock off in some browsers. Keep it
+    // distinct from number-row 5 only in tasks that explicitly need the keypad.
+    if (hasCourse() && expectedStep().split("+").at(-1) === "Numpad5" &&
+        (event.code === "Numpad5" || (event.location === 3 && ["5", "Clear"].includes(event.key)))) return "numpad5";
     if (hasCourse() && event.code) {
       if (/^Key[A-Z]$/.test(event.code)) return event.code.slice(3).toLowerCase();
       if (/^Digit[0-9]$/.test(event.code)) return event.code.slice(5);
@@ -883,7 +890,7 @@
 
   if (courseKey && window.CommandPracticeCourses) {
     const keys = new Set();
-    Object.values(window.CommandPracticeCourses).flat().forEach(item=>item[4].steps.forEach(step=>keys.add(step.split("+").at(-1))));
+    Object.values(window.CommandPracticeCourses).flat().forEach(item=>practiceStepsFor(item).forEach(step=>keys.add(step.split("+").at(-1))));
     [...keys].sort().forEach(key=>{ const option=document.createElement("option"); option.value=key; option.textContent=spokenKeyName(key); courseKey.appendChild(option); });
   }
   courseBuilder?.addEventListener("submit", event => {
@@ -973,7 +980,7 @@
     commandMasteredList.replaceChildren();
     uniqueCommands.forEach(item => {
       const listItem = document.createElement("li");
-      listItem.textContent = spokenKeys(item[0]) + ": " + item[1];
+      listItem.textContent = spokenKeys(practiceStepsFor(item).join(" then ")) + ": " + item[1];
       commandMasteredList.append(listItem);
     });
     commandReviewList.replaceChildren();
@@ -981,7 +988,7 @@
       const list = document.createElement("ul");
       missedCommands.forEach(item => {
         const listItem = document.createElement("li");
-        listItem.textContent = spokenKeys(item[0]) + ": " + item[1];
+        listItem.textContent = spokenKeys(practiceStepsFor(item).join(" then ")) + ": " + item[1];
         list.append(listItem);
       });
       commandReviewList.append(list);
@@ -1318,7 +1325,7 @@
       status.textContent = feedback + displaySignature(pressed) + ". Moving to the next task.";
       next.disabled = false;
       speak(
-        feedback + spokenKeys(command[0]) + ". " + (hasCourse() ? commandExplanation() : briefExplanation(command[1])),
+        feedback + spokenKeys(commandSteps().join(" then ")) + ". " + (hasCourse() ? commandExplanation() : briefExplanation(command[1])),
         () => {
           if (active && awaitingAdvance) next.click();
         }

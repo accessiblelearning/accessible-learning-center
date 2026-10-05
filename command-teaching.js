@@ -3,6 +3,29 @@
   const courses = window.CommandPracticeCourses;
   if (!courses) return;
   const teaching = {
+  "Narrator commands": {
+    "Insert+1": "Turn Input Learning on to explore unfamiliar keys and hear their Narrator actions. Try it when locating function keys on a different keyboard, then turn it off before returning to work. This course rehearses the shortcut with Insert as your Narrator key.",
+    "Insert+F2": "Ask which actions are available for the current item. For example, inspect an unfamiliar control before choosing what to do. Establish which item Narrator is on first; this help is tied to that item.",
+    "Insert+T": "Confirm the active window before entering a command. For example, after switching between your document and a reference page, listen for the title you intended. Reading the title does not move you to a different window.",
+    "Insert+F12": "Check the time and date while staying with your task. For example, confirm how much practice time remains before a meeting. This course uses Narrator's Standard layout; a shortcut remembered from its Legacy layout can have a different meaning.",
+    "Shift+Insert+B": "Check the computer's battery and network status before continuing a task. For example, find out whether you need power before a longer practice session. A status announcement gives information; it does not connect you to another network.",
+    "Control+Insert+C": "Screen curtain hides the visible display while Narrator remains available. For example, a speech user may choose it while working near other people. Rehearse the keys separately here; the simulator leaves your screen visible.",
+    "Shift+Insert+S": "Turn Narrator's speech off, such as when using an already configured braille setup. This is different from stopping one spoken passage with Control. Use the separate-key rehearsal here so your real speech remains available throughout practice.",
+    "Insert+Z": "Lock the Narrator modifier for commands that would otherwise require holding it. For example, use the lock during a supported keyboard exercise, then unlock it when finished. This practice checks the key sequence without changing the real modifier lock.",
+    "Insert+3": "Pass a shortcut through to the application when Narrator would otherwise handle it. For example, use this while following instructions for a conflicting app shortcut. Check the active application first; the following action belongs to that application.",
+    "Insert+4": "Change how Narrator signals capital letters. For example, compare the announcement of a name's initial with a lowercase letter. This changes spoken capitalization cues; it does not capitalize, select or rewrite the text.",
+    "Insert+2": "Toggle character feedback as you type. For example, turn it on while checking the letters in an unfamiliar word. This affects what you hear during typing; it does not change the letters entered or turn on Input Learning.",
+    "Insert+X": "Hear the last spoken phrase again when you missed part of it. For example, repeat a control label before proceeding. This repeats Narrator's recent speech; it does not repeat the application's last action.",
+    "Control+Insert+X": "Copy Narrator's last spoken phrase so you can paste it into a note. For example, keep a label for later review. Check the phrase before copying; this takes spoken output rather than a selection in your document.",
+    "Alt+Insert+X": "Open speech recap when one repeated phrase is not enough. For example, review several recent announcements to retrace your navigation. On supported Windows versions, this window also shows ongoing speech as text; opening it changes which window you are reviewing.",
+    "Insert+5": "Read the current item using 5 on the numeric keypad, not the number row. For example, confirm a button's name before activating it. Narrator plus Tab is a documented alternative on a keyboard without a keypad; use the builder for this keypad exercise.",
+    "Control+Insert+5": "Review the current word using numeric keypad 5. For example, check a word before correcting it. Narrator plus K is the documented alternative without a keypad. Here, choose numeric keypad 5 in the builder if your keyboard does not have that key.",
+    "Alt+Insert+B": "Show or hide Narrator's on-screen braille viewer, which can help a teacher follow braille output. Supported Windows versions require Narrator's braille output to be configured. This viewer is separate from operating physical display buttons; this rehearsal does not configure a device.",
+    "Control+Insert+F12": "Toggle Narrator's developer mode during an accessibility investigation. For example, use it as part of a developer's planned check of a test control. It is separate from ordinary reading verbosity; this rehearsal leaves your real Narrator settings alone.",
+    "Insert+H": "In Outlook, change whether Narrator announces column headers. For example, compare how easily you can identify fields while reviewing messages. The application context matters: this is not a general command for headings on a webpage.",
+    "Insert+V": "Increase the detail Narrator announces about controls and text. For example, choose more detail when checking a formatted notice. Listen for the chosen verbosity level; this changes the amount of information, not the voice's volume or speed.",
+    "Shift+Insert+V": "Reduce reading detail when extra announcements interrupt your flow. For example, compare a familiar article at a lower verbosity level. Raise it again when you need formatting or control details; the document itself remains unchanged."
+  },
   "Firefox browser": {
     "Control+L": "In Firefox on Windows, select the address bar before entering a website address or search. For example, enter the address of your course, then press Enter to load it. Check the address before submitting; the shortcut alone only moves focus.",
     "Control+T": "Keep your current page available while opening a blank tab for another task. For example, leave your lesson open and research a word in the new tab. Enter an address or search after the tab opens.",
@@ -150,6 +173,13 @@
   for (const [name, notes] of Object.entries(teaching)) {
     for (const entry of courses[name]) {
       if (notes[entry[0]]) entry[2] = notes[entry[0]];
+    }
+  }
+  // Keep the original task identities/order while specifying the physical keys
+  // for these numeric-keypad shortcuts. Number-row 5 is not an equivalent key.
+  for (const entry of courses["Narrator commands"]) {
+    if (["Insert+5", "Control+Insert+5"].includes(entry[0])) {
+      entry[4].practiceSteps = [entry[0].replace(/5$/, "Numpad5")];
     }
   }
   // Keep application/focus requirements in the short task, with examples in
