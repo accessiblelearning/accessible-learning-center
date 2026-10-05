@@ -12,3 +12,13 @@
 .preview-panel h2, .preview-panel h3 {color:inherit;}
 .preview-record {padding:.8rem; border:1px solid #a9dbff; margin:.75rem 0;}
 .preview-status {min-height:2.5rem;}
+
+.sample-typing {margin:1.5rem 0; padding-block:1rem; border-block:2px solid var(--border);}
+.sample-metrics {display:grid; grid-template-columns:repeat(auto-fit,minmax(10rem,1fr)); gap:.75rem;}
+.sample-metrics > div {padding:.8rem; border:2px solid var(--border); border-radius:.5rem;}
+.sample-metrics dt {font-weight:700;}
+.sample-metrics dd {margin:0; font-size:1.7rem; font-weight:800;}
+.sample-history-region {max-width:100%; overflow-x:auto; margin-block:1rem;}
+.preview-panel #sample-history {width:100%; min-width:28rem; margin:0; color:inherit; background:var(--surface); border-collapse:collapse;}
+.preview-panel #sample-history caption {text-align:left; color:inherit; font-weight:700; padding-block:.5rem;}
+.preview-panel #sample-history th, .preview-panel #sample-history td {text-align:left; color:inherit; background:var(--surface); padding:.6rem; border:1px solid var(--border);}

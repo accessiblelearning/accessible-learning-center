@@ -28,7 +28,7 @@ Progress responses currently cap at 200 records; account search caps at 50. Pagi
 
 ## Previews
 
-`account-preview.html` and `admin-preview.html` are noindex design previews with fictional data, omitted from public navigation. They are public files, not a security boundary. Credential inputs are disabled. The sample administrator page supports search, reviewing fictional progress and in-memory sample status/audit changes. It never calls the account API or reads browser learning history; reloading resets it.
+`account-preview.html` and `admin-preview.html` are noindex design previews with fictional data, omitted from public navigation. They are public files, not a security boundary. Credential inputs are disabled. The sample administrator page supports search, reviewing fictional progress, separate hand-path WPM/accuracy history and trends, and in-memory sample status/audit changes. It never calls the account API or reads browser learning history; reloading resets it.
 
 ## Validation and launch blockers
 
