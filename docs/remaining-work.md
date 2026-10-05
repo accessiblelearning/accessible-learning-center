@@ -8,6 +8,10 @@ Owner constraints: $0 additional spending; no new service provisioning or billin
 
 Completed a targeted batch of 47 Excel/PowerPoint explanations, 11 complete Paste Special sequences, two deeper missions (IDs 18–19), private Braille word/recall hints and one-handed Shift guidance. See [the curriculum checkpoint](qa-2026-10-05-curriculum.md) for tests, exact scope and remaining gaps. Next independent work is broader advanced-command review, deeper Chrome/VoiceOver/display scenarios and further curriculum refinement. Physical comfort and real screen-reader audio still need short device checks.
 
+## Further curriculum continuation — October 5, 2026
+
+Completed 35 Windows/File Explorer teaching notes, three deeper missions (20–22), the Meta-modifier scoring fix, narrower-screen mission spacing, and private Braille preview 23 with separated recall phase boundaries. See [the continuation checkpoint](qa-2026-10-05-night.md). Public tests now total 139; private Braille tests total 68. Remaining priorities are other advanced course explanations, branching/alternate mission solutions, longer-term Braille review spacing and the private account registry/import/reporting work. The account registry must include stable missions 18–22 and corrected command sequences before future account imports; account functionality remains private and off.
+
 ## Can continue without waiting for full-site hands-on testing
 
 1. **Command Practice teaching.** Continue replacing generic advanced explanations with command-specific examples. Check application/OS context and official shortcut mappings. Review remaining repeated actions for intentional recall versus duplication. Keep the concise main prompt and optional explanation.

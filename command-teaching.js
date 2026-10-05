@@ -3,6 +3,43 @@
   const courses = window.CommandPracticeCourses;
   if (!courses) return;
   const teaching = {
+  "Windows and File Explorer": {
+    "Windows+E": "Open a file-management window before choosing a document. For example, find a practice letter in Documents; opening Explorer alone does not open the letter.",
+    "Tab": "Move between Explorer regions such as the navigation pane, file list and search controls. Listen to the region name before using arrows: the same arrow can navigate a folder tree or a list of files.",
+    "Shift+Tab": "Return to the previous Explorer control when Tab has moved past the region you need. For example, leave the search controls and find the file list again before selecting a document.",
+    "Enter": "Open the selected folder or launch the selected file in its associated app. Read the selected name first; selecting a file and opening it are separate actions.",
+    "F2": "Edit the selected item’s name. For example, change Draft to Practice letter, then confirm with Enter. Preserve the file extension when it is shown; Escape cancels the rename.",
+    "Control+C": "Copy the selected file for reuse elsewhere. Next open the destination folder and paste. Copying does not change which folder you are viewing.",
+    "Control+X": "Mark the selected file for moving. Open the destination and paste to finish the move; the file has not moved merely because you pressed Cut.",
+    "Control+V": "Paste the copied or cut item into the folder currently open. Check the destination path first. A name-conflict dialog requires a separate decision; pasting is not always the final step.",
+    "Control+Z": "Reverse the latest file operation if Explorer supports undoing it. For example, undo an accidental rename promptly. Check the result; this is not a backup or a guarantee that every deletion is recoverable.",
+    "Control+A": "Select all items in the active file list before a batch action. Check the selection count and folder first. With focus in a text field, this selects that field’s text instead.",
+    "Alt+Left Arrow": "Retrace the last location you visited in this Explorer window. If you jumped from Documents to Downloads, Back returns to Documents; it does not necessarily go up one folder level.",
+    "Alt+Right Arrow": "Return along forward history after using Back. For example, revisit Downloads after backing out to Documents. Forward is unavailable when there is no later location in this window’s history.",
+    "Alt+Up Arrow": "Leave the current folder for its containing folder. From Documents/Practice, this takes you to Documents regardless of which location you visited previously.",
+    "Alt+D": "Select Explorer’s address field so you can inspect or replace the current path. For example, enter a known folder path and confirm with Enter instead of searching through unrelated folders.",
+    "Control+E": "Focus the search field for the current Explorer location. Start in the folder you want to search, then enter a useful part of the filename. This is different from searching the web.",
+    "Control+Shift+N": "Create a new folder in the location currently open. Name it, then confirm with Enter. For example, make a Practice folder before organizing this week’s documents.",
+    "F5": "Ask Explorer to update the current listing. Use it when a newly created file has not appeared. Refreshing does not restore a missing file or undo a change.",
+    "Alt+Enter": "Inspect the selected item’s Properties dialog, for example its type, size or location. Opening Properties does not open the document for editing; close the dialog to return to the file list.",
+    "Shift+F10": "Open actions for the selected item. Check its name first, then inspect the menu choices before activating one. Escape dismisses the menu without choosing an action.",
+    "Alt+P": "Show or hide a preview alongside the file list. Choose a supported document to inspect it without opening its editing app. A blank preview can reflect the file type or preview support.",
+    "Alt+Shift+P": "Show or hide information about the selected item in the Details pane. Use it to compare file information while keeping the file list available; it is separate from the contents shown in Preview.",
+    "Control+Shift+E": "Expand the navigation tree to help inspect folder relationships. For example, identify the parent of your current practice folder. Expanding tree entries does not open every file inside them.",
+    "Control+N": "Open another Explorer window so two folder locations can remain available. For example, keep the source folder in one window while checking the destination in another.",
+    "Control+W": "Close the active Explorer tab; if it is the only tab, close that window. Check which location is active before closing it. This does not delete the folder or its files.",
+    "Windows+D": "Reveal the desktop, then use the same command to restore the windows. Use it to reach a desktop shortcut without closing the document you were editing.",
+    "Windows+I": "Open Windows Settings to adjust device preferences. Opening Settings does not change anything by itself; choose the relevant category before changing a setting.",
+    "Windows+R": "Open the Run dialog for a known application name or path. For example, enter notepad and confirm to start a blank text editor. Enter only commands you understand.",
+    "Windows+L": "Lock your Windows session when stepping away from a shared computer. Your apps remain open, but signing back in is required. Practice the separated keys here so your real session stays available.",
+    "Alt+Tab": "Choose another open window. Hold Alt while pressing Tab to cycle, then release Alt on the window you want. Check the announced title before typing into it.",
+    "Alt+F4": "Close the active application window. An unsaved document may ask whether to save; review that prompt before answering. Closing a window is different from switching away from it.",
+    "Control+Shift+Escape": "Open Task Manager to inspect running apps and resource use. Opening it does not end an app. Ending a task is a separate action that can discard unsaved work.",
+    "Windows+Tab": "Open Task View to inspect open windows and virtual desktops. Choose the workspace you need; opening this overview does not close your existing work.",
+    "Control+Windows+D": "Create another virtual desktop for a separate group of windows. For example, keep research separate from writing. This is a workspace in the same account, not another user account.",
+    "Control+Windows+Right Arrow": "Switch to the virtual desktop on the right when one exists. Apps on the desktop you leave remain open. Confirm the new workspace before continuing your task.",
+    "Control+Windows+Left Arrow": "Return to the virtual desktop on the left when one exists. Use it to return from a research workspace to your writing workspace without closing either set of windows."
+},
   "Microsoft Word and documents": {
     "Control+O": "Choose an existing document to work on. For example, open yesterday’s letter before making corrections; this does not create a new blank document.",
     "Control+N": "Start a blank document. Use this when beginning a new letter rather than replacing the contents of the document already open.",
@@ -73,6 +110,11 @@
     for (const entry of courses[name]) {
       if (notes[entry[0]]) entry[2] = notes[entry[0]];
     }
+  }
+  const explorer = courses["Windows and File Explorer"];
+  for (const entry of explorer) {
+    entry[4].source = "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows";
+    if (entry[0] === "Control+Shift+E") entry[1] = "Expand the folder tree in the navigation pane.";
   }
   // These lessons depend on the active pane or dialog. Keep that context in
   // the short prompt too; the learner should not have to expand an explanation.

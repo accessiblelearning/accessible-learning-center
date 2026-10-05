@@ -231,6 +231,9 @@
   for (const topic of window.MissionControlCatalog) {
     const entry = addedMissions[topic.id];
     if (entry) topic.missionSets.push({id:entry[0],label:entry[1],mission:entry[2]});
+    if (topic.id === "google-chrome") topic.missionSets.push({id:"chrome-find-source",label:"Google Chrome: Recover a Find result and copy its address",mission:"20"});
+    if (topic.id === "mac-voiceover") topic.missionSets.push({id:"mac-group-save",label:"Mac VoiceOver: Leave a group to reach Save",mission:"21"});
+    if (topic.id === "braille-displays") topic.missionSets.push({id:"focus-check-correct",label:"Braille Displays: Check a Focus word before correcting it",mission:"22"});
     if (topic.id === "microsoft-excel") topic.missionSets.push({id:"excel-paste-values",label:"Microsoft Excel: Keep a fixed total instead of a formula",mission:"18"});
     if (topic.id === "microsoft-powerpoint") topic.missionSets.push({id:"powerpoint-uncover-title",label:"Microsoft PowerPoint: Uncover a title with the Selection pane",mission:"19"});
   }

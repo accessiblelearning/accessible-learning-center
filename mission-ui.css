@@ -194,3 +194,15 @@ html[data-contrast="high"] .mission-center-page #commandExplanationDetails { bac
 .mission-center-page .course-builder label[hidden] { display:none; }
 .mission-center-page .course-builder-cue { font-size:1.2rem; font-weight:700; margin:.5rem 0; }
 html[data-theme="dark"] .mission-center-page .course-builder form, html[data-contrast="high"] .mission-center-page .course-builder form { background:#000; color:#fff; }
+
+/* On small screens the stacked toolbar already uses vertical space. Let the
+   mission fit its content so a short prompt does not push feedback off-screen. */
+@media (max-width: 42rem), (max-height: 40rem) {
+  .mission-center-page.mission-session-page .mission-training-panel:not([hidden]) {
+    min-height: 0;
+  }
+  .mission-center-page.mission-session-page .training-stage .command-focus-area .training-stage__prompt {
+    min-height: 12rem;
+    flex-grow: 0;
+  }
+}

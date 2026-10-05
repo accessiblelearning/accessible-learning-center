@@ -361,6 +361,172 @@
       {command:"CTRL+S",prompt:"The title is visible in front of the rectangle. Save the presentation.",hint:"Press Control plus S.",success:"Presentation saved with the title visible.",why:"You used the object list to select an obscured object and correct its stacking order.",recovery:"The title is visible, but the presentation is not saved yet."}
     ]
   });
+  // Append only: saved mission numbers are permanent identifiers.
+  missions.push(...[
+  {
+    "category": "Google Chrome",
+    "title": "Recover the right Find result and copy its address",
+    "problem": "Chrome on Windows. The Find bar already contains class and is at match 3 of 3 in a training article. The date you need is at match 2. Return to that match, leave the Find bar for the page, and copy the page address for your notes. This fixed simulation supplies the search text and results. Press the final key alone for Control commands here; do not run real browser shortcuts.",
+    "source": "https://support.google.com/chrome/answer/157179?hl=en",
+    "steps": [
+      {
+        "command": "CTRL+SHIFT+G",
+        "prompt": "Find bar: class, match 3 of 3. Return to the previous match. Press G alone here.",
+        "hint": "Normally Control plus Shift plus G. Press G alone in this simulator.",
+        "success": "Find bar: class, match 2 of 3. The article says: The class starts October 12.",
+        "why": "Previous match lets you recover from passing the result you need.",
+        "recovery": "The search is still at match 3. Choose the previous match, not the next one."
+      },
+      {
+        "command": "CTRL+F6",
+        "prompt": "Match 2 gives the class date. Move from the Find bar to the web contents. Press F6 alone here.",
+        "hint": "Normally Control plus F6 skips to web contents. Press F6 alone here.",
+        "success": "Simulated focus: article content at the matching class date.",
+        "why": "The Find bar and the article are different focus regions.",
+        "recovery": "The Find bar still has focus. Move to web contents before continuing."
+      },
+      {
+        "command": "CTRL+L",
+        "prompt": "The article has focus. Select its address bar to copy the source address. Press L alone here.",
+        "hint": "Normally Control plus L. Press L alone here.",
+        "success": "Address bar focused; the complete page address is selected.",
+        "why": "Selecting the address prepares the source link for copying.",
+        "recovery": "Article content still has focus. Select the address bar first."
+      },
+      {
+        "command": "CTRL+C",
+        "prompt": "The full page address is selected. Copy it. Press C alone here.",
+        "hint": "Normally Control plus C. Press C alone here.",
+        "success": "The simulated Clipboard contains the article address. Address bar focus is unchanged.",
+        "why": "You copied a link to the article, not the text of the matching sentence.",
+        "recovery": "The address is selected but has not been copied yet."
+      },
+      {
+        "command": "CTRL+F6",
+        "prompt": "The source address is copied. Return to the article. Press F6 alone here.",
+        "hint": "Normally Control plus F6. Press F6 alone here.",
+        "success": "Simulated focus: article content. The source address remains copied.",
+        "why": "You recovered the date and prepared its source for your notes. No real Clipboard content changed.",
+        "recovery": "The address bar still has focus. Return to web contents to finish."
+      }
+    ]
+  },
+  {
+    "category": "Mac VoiceOver",
+    "title": "Leave a group to reach Save",
+    "problem": "A simulated Mac lesson-player settings window has a Playback group followed by Save. VoiceOver starts on the group. Turn on Repeat inside it, then leave the group and save. This models standard group interaction with Quick Nav off; apps and interaction settings can differ. VO means your VoiceOver modifier. Use plain arrow keys and Space here instead of real VO chords.",
+    "source": "https://support.apple.com/guide/voiceover/interaction-commands-cpvokys07/mac",
+    "steps": [
+      {
+        "command": "VO+SHIFT+ARROWDOWN",
+        "prompt": "VoiceOver cursor: Playback group. Begin interacting. Press Down Arrow alone here.",
+        "hint": "Normally VO plus Shift plus Down Arrow. Use Down Arrow alone in this simulation.",
+        "success": "Inside Playback. VoiceOver cursor: Play button. Repeat checkbox is next.",
+        "why": "Interacting gives access to controls inside this group.",
+        "recovery": "The cursor remains on the Playback group. Begin interacting before looking for Repeat."
+      },
+      {
+        "command": "VO+ARROWRIGHT",
+        "prompt": "Inside Playback, Play is focused. Move to Repeat. Press Right Arrow alone here.",
+        "hint": "Normally VO plus Right Arrow. Use Right Arrow alone here.",
+        "success": "VoiceOver cursor: Repeat checkbox, unchecked.",
+        "why": "Moving to a control does not change its setting.",
+        "recovery": "Play is still focused. Move right to Repeat before activating a control."
+      },
+      {
+        "command": "VO+SPACE",
+        "prompt": "Repeat is unchecked. Turn it on. Press Space alone here.",
+        "hint": "Normally VO plus Space activates the current item. Use Space alone here.",
+        "success": "Repeat checked. VoiceOver cursor stays on Repeat inside Playback.",
+        "why": "Activation changed the checkbox; it did not leave the group.",
+        "recovery": "Repeat is still unchecked. Activate it before leaving Playback."
+      },
+      {
+        "command": "VO+SHIFT+ARROWUP",
+        "prompt": "Repeat is checked. Stop interacting with Playback to reach the outer controls. Press Up Arrow alone here.",
+        "hint": "Normally VO plus Shift plus Up Arrow. Use Up Arrow alone here.",
+        "success": "VoiceOver cursor: Playback group at the outer window level.",
+        "why": "Leaving the group makes the following Save button reachable in this modeled window.",
+        "recovery": "You are still inside Playback. Stop interacting before moving to Save."
+      },
+      {
+        "command": "VO+ARROWRIGHT",
+        "prompt": "At the outer level, Playback is focused. Move to Save. Press Right Arrow alone here.",
+        "hint": "Normally VO plus Right Arrow. Use Right Arrow alone here.",
+        "success": "VoiceOver cursor: Save button. The Repeat change is not saved yet.",
+        "why": "Focus on Save is separate from activating Save.",
+        "recovery": "Playback is still focused at the outer level. Move right to Save."
+      },
+      {
+        "command": "VO+SPACE",
+        "prompt": "Save has focus. Save the Repeat setting. Press Space alone here.",
+        "hint": "Normally VO plus Space. Use Space alone here.",
+        "success": "Simulated settings saved. Repeat is on.",
+        "why": "You entered a group, changed a control, left the group and saved. No Mac setting changed.",
+        "recovery": "Save remains focused; activate it to finish."
+      }
+    ]
+  },
+  {
+    "category": "Braille displays",
+    "title": "Check a Focus word before correcting it",
+    "problem": "Focus 40 Blue, fifth generation, with JAWS, uncontracted output and Braille Study Mode off. A simulated text editor contains cot but should say cat. Display cells 1, 2 and 3 show c, o and t. Check cell 2 and its word, route the cursor there, correct the letter, then save. C, W and R below are simulator substitutes for hardware controls, not Focus keyboard shortcuts.",
+    "source": "https://www.freedomscientific.com/Content/Documents/Manuals/Focus/Focus-Blue-Online-Users-Guide.htm",
+    "steps": [
+      {
+        "command": "FOCUS_CHARACTER",
+        "prompt": "Display cell 2 is o. Ask JAWS to identify that cell. Press C here.",
+        "hint": "On Focus, press either NAV Mode button with the Cursor Router above cell 2. Press C only in this simulator.",
+        "success": "Simulated JAWS response: o. The editing cursor has not moved.",
+        "why": "A character check helps identify a cell without changing the text.",
+        "recovery": "Cell 2 is still waiting for a character check. Use the NAV Mode and router combination; C simulates it.",
+        "inputKey": "C"
+      },
+      {
+        "command": "FOCUS_WORD",
+        "prompt": "JAWS identified o. Ask it to read and spell the word at that cell. Press W here.",
+        "hint": "On Focus, press either Selector button with that Cursor Router. Press W only here.",
+        "success": "Simulated JAWS response: cot, c o t. The text is unchanged.",
+        "why": "The word check confirms the context before making a correction.",
+        "recovery": "The word has not been checked. Use Selector with the router; W simulates it.",
+        "inputKey": "W"
+      },
+      {
+        "command": "FOCUS_ROUTE",
+        "prompt": "The word is cot. Route the editing cursor to o in cell 2. Press R here.",
+        "hint": "With Study Mode off in this text editor, press the Cursor Router above cell 2 by itself. Press R only here.",
+        "success": "Editing cursor: immediately before o in cot.",
+        "why": "Routing positions the cursor; it does not replace the character.",
+        "recovery": "The editing cursor has not been routed. Press the router by itself; R simulates it.",
+        "inputKey": "R"
+      },
+      {
+        "command": "DELETE",
+        "prompt": "The cursor is before o. Remove this wrong letter with the computer Delete key.",
+        "hint": "Press Delete, not Backspace. Delete removes the character after the cursor.",
+        "success": "Simulated text: ct. Cursor is between c and t.",
+        "why": "Delete removed the wrong letter; Backspace at the earlier position would target c.",
+        "recovery": "The text is still cot with the cursor before o. Use Delete to remove o."
+      },
+      {
+        "command": "A",
+        "prompt": "The text is ct with the cursor between c and t. Type a on the computer keyboard.",
+        "hint": "Press the letter A without Shift. This step uses the computer keyboard, not Braille input.",
+        "success": "Simulated text: cat. Cursor is after a.",
+        "why": "The replacement letter completes the intended word.",
+        "recovery": "The text is still ct. Insert a between c and t."
+      },
+      {
+        "command": "CTRL+S",
+        "prompt": "The word is now cat. Save the simulated document.",
+        "hint": "Press Control plus S, or S alone here.",
+        "success": "Simulated document saved with cat.",
+        "why": "You checked the cell and word, routed, corrected and saved. No real document or display changed.",
+        "recovery": "The word is corrected but the document has not been saved."
+      }
+    ]
+  }
+]);
   window.MissionControlMissionCount = missions.length;
 
   const perspective = document.getElementById("atPerspective");
@@ -490,7 +656,12 @@
 
   function displayedCommand(command) {
     const sr = screenReaders[perspective.value];
-    if (command.startsWith("VO+")) return command.replace("VO+", "VoiceOver plus ").replace("ARROWRIGHT", "Right Arrow").replace("SPACE", "Space");
+    const hardwareLabels = {FOCUS_CHARACTER:"Focus NAV Mode plus Cursor Router", FOCUS_WORD:"Focus Selector plus Cursor Router", FOCUS_ROUTE:"Focus Cursor Router"};
+    if (hardwareLabels[command]) return hardwareLabels[command];
+    if (command.startsWith("VO+")) {
+      const names = {VO:"VoiceOver", SHIFT:"Shift", ARROWRIGHT:"Right Arrow", ARROWLEFT:"Left Arrow", ARROWUP:"Up Arrow", ARROWDOWN:"Down Arrow", SPACE:"Space"};
+      return command.split("+").map(key => names[key] || key).join(" plus ");
+    }
     if (command.startsWith("CAPSLOCK+")) return command.replace("CAPSLOCK", "Caps Lock").replace("ARROWUP", "Up Arrow").replace("ENTER", "Enter");
     return command === "TITLE" ? sr.title : command === "FOCUS" ? sr.focus : command === "MODE" ? sr.mode : command;
   }
@@ -504,6 +675,7 @@
 
   function normalizedKey(event) {
     const parts = [];
+    if (event.metaKey) parts.push("META");
     if (event.ctrlKey) parts.push("CTRL");
     if (event.altKey) parts.push("ALT");
     if (event.shiftKey) parts.push("SHIFT");
@@ -629,6 +801,8 @@
       command === finalKeyFor(expectedCommand)) {
       command = expectedCommand;
     }
+    const inputKey = missions[current].steps[step].inputKey;
+    if (inputKey && command === inputKey) command = expectedCommand;
     if (!command || command.endsWith("+")) return;
     if (!command.includes("+") && command === finalKeyFor(expectedCommand)) command = expectedCommand;
     event.preventDefault();

@@ -196,7 +196,7 @@ test("Insert release, missing release, focus loss, and retry do not leave a modi
 });
 
 test("new topic routes wait for the mission catalog and reject invalid mission numbers", () => {
-  for (const [mission, valid] of [["8", true], ["12", true], ["19", true], ["20", false], ["", false], ["-1", false], ["1.5", false]]) {
+  for (const [mission, valid] of [["8", true], ["12", true], ["19", true], ["20", true], ["21", true], ["22", true], ["23", false], ["", false], ["-1", false], ["1.5", false]]) {
     const p = page();
     p.window.location.search = `?reader=jaws&mission=${mission}`;
     p.load("topic-mission-session.js");
@@ -206,7 +206,7 @@ test("new topic routes wait for the mission catalog and reject invalid mission n
     if (valid) {
       assert.equal(p.get("missionSelect").value, mission);
       p.get("missionReadyStart").click();
-      assert.match(p.get("missionProblem").textContent, /Thunderbird|Learning Ally|PowerPoint/);
+      assert.match(p.get("missionProblem").textContent, /Thunderbird|Learning Ally|PowerPoint|Chrome|Mac lesson-player|Focus 40/);
     }
   }
 });
@@ -824,4 +824,50 @@ test('the reviewed Excel and PowerPoint courses complete with production sequenc
   });
   assert.equal(p.get('practiceResults').hidden,false,category);
  }
+});
+
+test('new Chrome, VoiceOver and Focus missions explain each state, recover, and preserve saved IDs',()=>{
+ const cases=[
+  [20,['g','F6','l','c','F6'],[/match 3 of 3/i,/Match 2 gives/,/article has focus/,/full page address/,/source address is copied/]],
+  [21,['ArrowDown','ArrowRight',' ','ArrowUp','ArrowRight',' '],[/Playback group/,/Play is focused/,/Repeat is unchecked/,/Repeat is checked/,/outer level/,/Save has focus/]],
+  [22,['c','w','r','Delete','a','s'],[/cell 2/i,/JAWS identified o/,/word is cot/,/cursor is before o/,/text is ct/,/word is now cat/]]
+ ];
+ for(const [id,keys,states] of cases){
+  const p=page({atPerspective:{value:'jaws'},missionSelect:{value:String(id)},simulatedVoice:{checked:true}}),heard=[];
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);
+  p.storage.setItem('missionControlCompleted','[3,13,19]');p.load('troubleshooting-lab.js');p.get('startMission').click();
+  keys.forEach((key,i)=>{
+   p.key('missionControlStation','q');assert.equal(p.get('missionProgress').value,i);
+   assert.match(p.get('transcript').textContent,/That command did not complete this step/);
+   p.key('missionControlStation','Control');assert.match(p.get('transcript').textContent,states[i]);
+   p.key('missionControlStation','F1');assert.match(p.get('transcript').textContent,/Strategy hint/);
+   p.key('missionControlStation',key);
+   if(i<keys.length-1){assert.match(p.get('missionProblem').textContent,states[i+1]);assert.match(heard.at(-1),states[i+1]);}
+  });
+  assert.equal(p.get('missionResults').hidden,false);assert.equal(p.document.activeElement,p.get('nextMission'));
+  assert.deepEqual(JSON.parse(p.storage.getItem('missionControlCompleted')),[3,13,19,id]);
+  assert.equal(p.get('missionAttemptResult').textContent,String(keys.length*2));
+  if(id===21)assert.match(p.get('missionMasteredList').children[0].textContent,/VoiceOver plus Shift plus Down Arrow/);
+  if(id===22)assert.match(p.get('missionMasteredList').children[0].textContent,/Focus NAV Mode plus Cursor Router/);
+ }
+});
+
+test('unrelated Meta-modified keys cannot masquerade as a mission answer',()=>{
+ for(const [id,key] of [[3,'z'],[20,'g'],[21,'ArrowDown'],[22,'c']]){
+  const p=page({atPerspective:{value:'jaws'},missionSelect:{value:String(id)}});
+  p.load('troubleshooting-lab.js');p.get('startMission').click();
+  p.key('missionControlStation',key,{metaKey:true});assert.equal(p.get('missionProgress').value,0);
+  p.key('missionControlStation',key);assert.equal(p.get('missionProgress').value,1);
+ }
+});
+
+test('Windows teaching retains every command and all stages with concrete context',()=>{
+ const p=page();p.load('command-courses.js');const before=p.window.CommandPracticeCourses['Windows and File Explorer'].map(e=>e[0]);
+ p.load('command-teaching.js');const entries=p.window.CommandPracticeCourses['Windows and File Explorer'];
+ assert.deepEqual(entries.map(e=>e[0]),before);assert.equal(entries.length,35);
+ assert.deepEqual([...new Set(entries.map(e=>e[4].level))],['basic','intermediate','advanced']);
+ for(const entry of entries){assert.doesNotMatch(entry[2],/Use this during|Check the current focus before|Use the command for/);assert.ok(entry[2].length>100);}
+ const note=key=>entries.find(e=>e[0]===key)[2];
+ assert.match(note('Control+X'),/has not moved/);assert.match(note('Control+W'),/only tab/);
+ assert.match(note('Alt+Left Arrow'),/not necessarily go up/);assert.match(note('Control+Windows+D'),/not another user/);
 });

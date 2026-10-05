@@ -82,6 +82,40 @@ try{
    assert.match(await page.evaluate(()=>testSpeech.at(-1)),/Mission complete/);
    console.log('New mission '+id+': native keys, hint, recovery, completion and speech request passed.');
  }
+ for(const [id,keys] of [[20,['g','F6','l','c','F6']],[21,['ArrowDown','ArrowRight','Space','ArrowUp','ArrowRight','Space']],[22,['c','w','r','Delete','a','s']]]) {
+  await page.goto(base+'/topic-mission-session.html?reader=jaws&mission='+id+'&voice=1&sounds=0');
+  await page.keyboard.press('Space');
+  for(let i=0;i<keys.length;i++) {
+   await page.keyboard.press('q');
+   assert.equal(await page.locator('#missionProgress').getAttribute('value'),String(i));
+   assert.match(await page.locator('#transcript').textContent(),/That command did not complete this step/);
+   await page.keyboard.press('Control');
+   assert.match(await page.locator('#transcript').textContent(),new RegExp('Step '+(i+1)+' of '+keys.length));
+   await page.keyboard.press('F1');
+   assert.match(await page.locator('#transcript').textContent(),/Strategy hint/);
+   if(i===1) {
+    await page.keyboard.press('Tab');assert.notEqual(await page.evaluate(()=>document.activeElement.id),'missionControlStation');
+    await page.locator('#missionControlStation').focus();
+    await page.setViewportSize({width:390,height:844});
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
+    assert.ok(await page.locator('#transcript').evaluate(e=>e.getBoundingClientRect().bottom<=innerHeight),'Short mission feedback stays in the first narrow screen');
+    if(process.env.AXE_PATH) {
+     await page.addScriptTag({path:process.env.AXE_PATH});
+     const violations=await page.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)})));
+     assert.deepEqual(violations,[],'Mission '+id+' accessibility scan');
+    }
+    await page.screenshot({path:b+'/mission-'+id+'-narrow.png'});
+    await page.setViewportSize({width:1100,height:850});
+   }
+   await page.keyboard.press(keys[i]);
+   if(i<keys.length-1)assert.match(await page.evaluate(()=>testSpeech.at(-1)),new RegExp('Step '+(i+2)+' of '+keys.length));
+  }
+  assert.equal(await page.locator('#missionResults').isVisible(),true);
+  assert.equal(await page.evaluate(()=>document.activeElement.id),'nextMission');
+  assert.equal(await page.locator('#missionAttemptResult').textContent(),String(keys.length*2));
+  assert.match(await page.evaluate(()=>testSpeech.at(-1)),/Mission complete/);
+  console.log('Mission '+id+': all state transitions, errors, repeat, hints, native Tab, narrow layout and completion passed.');
+ }
  await page.clock.install();
  await page.goto(base+'/command-practice-session.html?category=Microsoft%20Excel%20and%20spreadsheets&style=guided&length=all&spoken=0&sounds=0');
  await page.keyboard.press('Space');
