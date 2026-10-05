@@ -583,6 +583,65 @@ test('Google Docs covers menus, heading depths, table navigation and accurate re
  assert.match(c.find(x=>x[0]==='Control+Shift+Z')[1],/Redo/);assert.match(c.find(x=>x[0]==='Control+Y')[1],/Repeat/);
  assert.ok(Object.values(courses).every(items=>items.every(item=>item[2].length>40&&item[4].source.startsWith('https://')&&item[4].steps.length)));
 });
+test('Docs object and review teaching preserves task identities and distinguishes focus-dependent actions',()=>{
+ const w={};vm.runInNewContext(source('command-courses.js'),{window:w});
+ const original=JSON.parse(JSON.stringify(w.CommandPracticeCourses['Google Docs and applications']));
+ vm.runInNewContext(source('command-teaching.js'),{window:w});
+ const items=JSON.parse(JSON.stringify(w.CommandPracticeCourses['Google Docs and applications']));
+ assert.equal(items.length,199);
+ assert.deepEqual(items.map(e=>[e[0],e[1],e[4].steps,e[4].level]),original.map(e=>[e[0],e[1],e[4].steps,e[4].level]));
+ const reviewed=[...items.slice(83,113),...items.slice(124,126)];
+ assert.equal(reviewed.length,32);
+ for(const item of reviewed){
+  assert.equal(item[4].stepGoals.length,item[4].steps.length,item[0]);
+  assert.ok(item[4].stepGoals.every(goal=>goal.length<125));
+  assert.doesNotMatch(item[2],/In Google Docs on Windows, with document editing focused/);
+ }
+ const task=(key,goal)=>items.find(e=>e[0]===key&&(!goal||e[1]===goal));
+ assert.match(task('R')[4].stepGoals[0],/comment selected/);
+ assert.match(task('R')[2],/reply field.*does not send/);
+ assert.match(task('E')[2],/suggested edit.*accept/);
+ assert.match(task('Control+Alt+N then Control+Alt+C')[2],/commented passage.*enter the comment/);
+ assert.match(task('J')[2],/comment selected.*not.*typing/);
+ assert.match(task('Control+Alt+A then Control+Alt+A')[2],/anchor.*document.*not.*reply/);
+ assert.match(task('Control+Alt+F')[2],/pageless.*end of the document/);
+ const rotations=items.filter(e=>e[0]==='Alt+Right Arrow');assert.equal(rotations.length,2);
+ assert.match(rotations[0][2],/selected.*15 degrees/);
+ assert.doesNotMatch(rotations[1][2],/15 degrees/);
+ assert.equal(task('Shift+Escape')[3],'safe');
+ assert.deepEqual(items.filter((e,i)=>e[3]!==original[i][3]).map(e=>e[0]),['Shift+Escape']);
+});
+test('Docs drawing exit uses separated keys, requires Shift and retains Escape navigation afterward',()=>{
+ const name='Google Docs and applications',p=page({commandCategory:{value:name},spokenInstructions:{checked:true}}),heard=[];
+ p.window.speechSynthesis.speak=u=>heard.push(u.text);p.load('command-courses.js');p.load('command-teaching.js');
+ p.window.CommandPracticeCourses[name]=p.window.CommandPracticeCourses[name].filter(e=>e[0]==='Shift+Escape');
+ p.load('command-practice.js');p.get('startPractice').click();
+ assert.match(p.get('commandPrompt').children[0].textContent,/Press and release Shift/);
+ p.key('keyCapture','Control');assert.match(heard.at(-1),/Shift.*Escape/);
+ buildStep(p,'Escape');assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+ p.key('keyCapture','Shift');p.key('keyCapture','Control');assert.match(heard.at(-1),/Next: press and release Escape/);
+ const escape=p.key('keyCapture','Escape');assert.equal(escape.defaultPrevented,true);
+ assert.equal(p.window.location.href,'');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2');
+ p.advance();assert.equal(p.get('commandResults').hidden,false);
+ p.document.fire('keydown',{key:'Escape',target:p.document.activeElement});assert.equal(p.window.location.href,'command-practice.html');
+});
+test('Docs layered review directions repeat the current step and recover without premature credit',()=>{
+ const name='Google Docs and applications',p=page({commandCategory:{value:name},spokenInstructions:{checked:true}}),heard=[];
+ p.window.speechSynthesis.speak=u=>heard.push(u.text);p.load('command-courses.js');p.load('command-teaching.js');
+ const entries=p.window.CommandPracticeCourses[name].filter(e=>e[4].stepGoals?.length===2);
+ assert.equal(entries.length,11);p.window.CommandPracticeCourses[name]=entries;
+ p.load('command-practice.js');p.get('startPractice').click();
+ entries.forEach((entry,i)=>{
+  assert.ok(p.get('commandPrompt').children[1].textContent.startsWith(entry[4].stepGoals[0]));
+  chord(p,entry[4].steps[0]);assert.ok(p.get('commandPrompt').children[1].textContent.startsWith(entry[4].stepGoals[1]));
+  assert.ok(heard.at(-1).includes(entry[4].stepGoals[1]),'Announce the new step purpose without requiring repeat');
+  p.key('keyCapture','Control');assert.ok(heard.at(-1).includes(entry[4].stepGoals[1]));
+  chord(p,'F2');assert.match(p.get('practiceStatus').textContent,/Not quite/);
+  assert.equal(p.get('practiceScore').textContent,`Correct: ${i} · Attempts: ${2*i+1}`);
+  chord(p,entry[4].steps[1]);assert.equal(p.get('practiceScore').textContent,`Correct: ${i+1} · Attempts: ${2*i+2}`);p.advance();
+ });
+ assert.equal(p.get('commandResults').hidden,false);assert.equal(p.get('commandCorrectResult').textContent,'11');
+});
 test('multi-step commands require each step, preserve the current step after a mistake, and count one completed command',()=>{
  const name='Google Docs and applications',items=courses[name],index=items.findIndex(x=>x[4].steps.length>1),p=coursePage(name);
  for(const item of items.slice(0,index)){for(const step of item[4].steps)buildStep(p,step);p.advance();}

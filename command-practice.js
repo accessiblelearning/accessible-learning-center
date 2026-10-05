@@ -1314,6 +1314,9 @@
         status.textContent = "Step " + sequencePosition + " correct. " + (usesReleasedKeys() && !built
           ? "Now press and release " + spokenKeyName(currentPracticeKey()) + ". " + normalStepInstruction()
           : "Now " + spokenKeys(expectedStep()) + ".");
+        // Carry the new step's concise purpose into speech as well as the
+        // visual prompt. Expanded teaching stays optional in More explanation.
+        if (command[4]?.stepGoals?.[sequencePosition]) status.textContent += " " + commandExplanation();
         if (coursePanel) {
           document.getElementById("courseStep").textContent = "Step " + (sequencePosition+1) + " of " + commandSteps().length;
           document.getElementById("courseBuilderCue").textContent = command[1]+" Step "+(sequencePosition+1)+": "+spokenKeys(expectedStep())+".";
