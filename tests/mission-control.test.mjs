@@ -1147,6 +1147,54 @@ test('Mac separated-key practice offers a builder escape at Fn and preserves rep
  assert.equal(p.get('practiceScore').textContent,'Correct: 2 · Attempts: 2');p.advance();assert.equal(p.get('practiceResults').hidden,false);
 });
 
+test('Firefox review preserves all command identities and stages with distinct focus-aware teaching',()=>{
+ const p=page();p.load('command-courses.js');
+ const identity=()=>p.window.CommandPracticeCourses['Firefox browser'].map(e=>[e[0],e[4].level,[...e[4].steps]]);
+ const before=identity();p.load('command-teaching.js');assert.deepEqual(identity(),before);
+ const entries=p.window.CommandPracticeCourses['Firefox browser'];assert.equal(entries.length,39);
+ assert.equal(new Set(entries.map(e=>e[2])).size,39);
+ assert.deepEqual([...new Set(entries.map(e=>e[4].level))],['basic','intermediate','advanced']);
+ const note=key=>entries.find(e=>e[0]===key);
+ assert.match(note('Control+Shift+D')[2],/Focus matters.*docking/);
+ assert.match(note('Control+Shift+Page Up')[2],/without Shift.*selects another tab/);
+ assert.match(note('Control+Shift+K')[2],/command line.*do not close/);
+ assert.match(note('Control+Shift+C')[1],/element picker/);
+ assert.match(note('F6')[2],/frames or popups/);
+ assert.match(note('Control+Equals')[2],/equals key.*plus/);
+ for(const entry of entries)assert.equal(entry[3],['Tab','Shift+Tab'].includes(entry[0])?'':'safe',entry[0]);
+});
+
+test('Firefox tab reordering requires every released key and recovers from missing Shift and focus loss',()=>{
+ for(const finalKey of ['Page Up','Page Down']){
+  const name='Firefox browser',p=page({commandCategory:{value:name},practiceStyle:{value:'guided'},sessionLength:{value:'all'},spokenInstructions:{checked:true}}),heard=[];
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);p.load('command-courses.js');p.load('command-teaching.js');
+  p.window.CommandPracticeCourses[name]=p.window.CommandPracticeCourses[name].filter(e=>e[0]===`Control+Shift+${finalKey}`);
+  p.load('command-practice.js');p.get('startPractice').click();
+  tapCourseKey(p,'Control');tapCourseKey(p,finalKey);
+  assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+  tapCourseKey(p,'Control');tapCourseKey(p,'Control');assert.match(heard.at(-1),/Next: press and release Shift/);
+  tapCourseKey(p,'Shift');p.window.fire('blur');
+  assert.equal(p.get('commandPrompt').children[0].textContent,'Press and release Control');
+  assert.equal(p.key('keyCapture','Tab').defaultPrevented,false);
+  for(const key of ['Control','Shift',finalKey])tapCourseKey(p,key);
+  assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2');
+  p.advance();assert.equal(p.get('commandResults').hidden,false);
+ }
+});
+
+test('Firefox bookmark and add-on shortcuts cannot earn credit after omitting Shift',()=>{
+ for(const finalKey of ['O','A']){
+  const name='Firefox browser',p=page({commandCategory:{value:name},practiceStyle:{value:'guided'},sessionLength:{value:'all'}});
+  p.load('command-courses.js');p.load('command-teaching.js');
+  p.window.CommandPracticeCourses[name]=p.window.CommandPracticeCourses[name].filter(e=>e[0]===`Control+Shift+${finalKey}`);
+  p.load('command-practice.js');p.get('startPractice').click();
+  tapCourseKey(p,'Control');tapCourseKey(p,finalKey);
+  assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+  for(const key of ['Control','Shift',finalKey])tapCourseKey(p,key);
+  assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2');
+ }
+});
+
 test('JAWS teaching preserves coverage and explains OCR scope and layered commands',()=>{
  const p=page();p.load('command-courses.js');
  const identity=()=>p.window.CommandPracticeCourses['JAWS commands'].map(e=>[e[0],e[3],e[4].level,[...e[4].steps]]);

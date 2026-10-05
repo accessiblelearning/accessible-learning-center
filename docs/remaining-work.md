@@ -47,6 +47,8 @@ The learner-progress follow-up corrects In progress labels, rejects malformed pr
 
 ## Needs targeted human/device feedback
 
+The Firefox follow-up reviews all **39 explanations**, aligns 17 inconsistent browser shortcuts with separated-key rehearsal, and fixes false credit when Shift is omitted from bookmark-library/Add-ons shortcuts. See [the Firefox checkpoint](qa-2026-10-05-firefox.md). **176 public tests pass**; Chromium completes all 39 tasks with site voice on/off, recovery, focus and narrow-layout checks. Command identities/stages, missions 0–24, typing paths and all private work are preserved. Actual Firefox/assistive-technology behavior remains a targeted device check, not a claimed test result.
+
 - JAWS/NVDA and Mac VoiceOver/Safari: spoken feedback, focus and real shortcut conflicts.
 - Physical left-hand-only and right-hand-only reach/cues on the full keyboard.
 - Braille: six-key rollover, dot readability, narration pace, recall spacing and whether the instructions are understandable.

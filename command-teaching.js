@@ -3,6 +3,47 @@
   const courses = window.CommandPracticeCourses;
   if (!courses) return;
   const teaching = {
+  "Firefox browser": {
+    "Control+L": "In Firefox on Windows, select the address bar before entering a website address or search. For example, enter the address of your course, then press Enter to load it. Check the address before submitting; the shortcut alone only moves focus.",
+    "Control+T": "Keep your current page available while opening a blank tab for another task. For example, leave your lesson open and research a word in the new tab. Enter an address or search after the tab opens.",
+    "Control+F": "Search the page already open for a word such as registration. Type the word in Firefox’s Find bar, then check whether matches were found. This is useful for locating one detail in a long page.",
+    "Control+G": "After starting a page search, move to the next occurrence of the same search text. For example, inspect each mention of a meeting date. Read the surrounding sentence to decide whether this is the occurrence you need.",
+    "Control+Shift+G": "Return to an earlier occurrence of your current page-search text. Use this when you moved past a useful match. The search term stays the same; this changes which occurrence you are reviewing.",
+    "Tab": "With the webpage active, move keyboard focus to the next available control, such as a link, field or button. Listen to its name before activating it. A screen reader may provide separate reading commands for ordinary text between controls.",
+    "Shift+Tab": "Move keyboard focus back one control when you have passed the link or field you need. For example, return from a Submit button to the last form field. Check the focused control before typing or pressing Enter.",
+    "Control+D": "Save the current page as a bookmark so you can return later. For example, bookmark a course reference page with a name you will recognize. Review the bookmark name and folder in the dialog before finishing.",
+    "Control+Equals": "Increase Firefox’s page zoom when text or controls are too small. On a US keyboard this exercise uses the equals key, which shares a key with plus. Try a comfortable level and check that you can still reach the page controls.",
+    "Control+-": "Reduce the current page’s zoom by one step when enlarged content makes navigation awkward. Check readability after each change. This adjusts the page view rather than changing the document’s saved font size.",
+    "Control+0": "Return the current page’s zoom to its default size after experimenting. Use the number-row zero key. This gives you a familiar starting point before choosing another zoom level.",
+    "Alt+Left Arrow": "Return to the previous page visited in this tab. For example, go back to search results after reading one result. Browser history belongs to the tab; this does not select the tab on its left.",
+    "Alt+Right Arrow": "Revisit a later page after using Back. For example, return to the result you just left. Forward needs an available later history entry in this tab; it does not choose the next link on the page.",
+    "Alt+Home": "Load the home page configured in Firefox. Use it to return to your chosen starting page. This is different from moving to the beginning of a long webpage, and the destination depends on your browser settings.",
+    "F5": "Reload the page currently open when you want to check for an update. For example, refresh an event listing. Finish or save any unfinished form work first because reloading may discard entries the page has not saved.",
+    "Control+Shift+T": "Recover a recently closed tab or window, such as a reference page closed by mistake. Firefox follows the order in which items were closed; if none remain, it can restore the previous session. Check the restored title before continuing.",
+    "Control+Page Down": "Select the tab immediately to the right in the tab order. For example, switch from your lesson to a reference tab beside it. This leaves the tabs in their existing order; adding Shift is the separate command for moving a tab.",
+    "Control+Page Up": "Select the tab immediately to the left in the tab order. For example, return from your reference page to the lesson beside it. Confirm the page title before typing; you are now working in a different tab.",
+    "Control+W": "Close the active unpinned tab when you have finished with it. Check the title first so you keep your lesson available. Here, follow the separate key prompts to rehearse the shortcut while keeping the practice page open.",
+    "Control+H": "Open Firefox’s history sidebar to look for a page you visited earlier. For example, search for a reference whose address you forgot. Select the matching visit before opening it; showing the sidebar alone does not navigate there.",
+    "Control+Shift+O": "Open the bookmarks Library when you want to find or organize saved pages. For example, locate your course folder and choose a saved reference. Bookmarks are pages you chose to keep; browsing history records visits instead.",
+    "Control+J": "Open Firefox’s downloads view to check a file you requested. For example, find a downloaded course handout and inspect its name and status. Opening the downloads view does not itself download or open another file.",
+    "Control+Shift+A": "Open the Add-ons Manager to review extensions and themes installed in Firefox. For example, inspect whether a reading extension is enabled. Review the selected item before changing it; this practice does not install or remove extensions.",
+    "F6": "Move between Firefox’s page and browser focus areas. From the page, one press can reach the address bar; frames or popups can affect the cycle. Listen for the new area before using Tab or typing so you know where your next action will go.",
+    "Shift+F6": "Move backward through Firefox’s focus areas when you have passed the region you need. For example, return toward the webpage after exploring browser controls. The exact cycle depends on the page’s frames and any open popups, so check the announced focus.",
+    "Control+F5": "Request a fresh reload instead of relying on cached page content. Try this when a recently corrected page still appears out of date. Save unfinished form work before reloading; a refresh cannot repair a server that is unavailable.",
+    "Control+Shift+P": "Open a separate private-browsing window for a temporary browsing session. For example, compare a page outside your normal signed-in session. Private browsing changes what Firefox retains locally; it does not make your internet activity anonymous.",
+    "Control+Shift+D": "With the webpage active, save the window’s open tabs together as bookmarks. For example, keep several research references in a named folder before ending a session. Focus matters: inside Developer Tools these keys change the toolbox docking instead.",
+    "Control+Shift+H": "Open the history Library when you need to search and review earlier visits in a separate window. For example, locate a reference from yesterday by its title. Check the chosen result before opening it; this is separate from the history sidebar.",
+    "Control+Shift+Delete": "Open Firefox’s history-clearing options. Choose the time range and data categories deliberately before confirming; opening the dialog alone does not remove them. For practice, rehearse the keys here without deleting your real browsing data.",
+    "Control+M": "Toggle audio for the active tab, for example when a background video is distracting you from reading. Use the command again to unmute that tab. This is separate from the computer’s master volume and the learning site’s instruction-voice setting.",
+    "Control+Shift+Page Up": "Move the active tab one position to the left to organize your workspace. For example, place a reference beside your lesson. Keep Shift in this shortcut: without Shift, Control plus Page Up selects another tab instead of moving the current one.",
+    "Control+Shift+Page Down": "Move the active tab one position to the right. For example, place supporting references after the main document tab. You remain with the tab you moved; this is a change to tab order rather than a visit to the next tab.",
+    "Control+U": "Open a view of the current page’s HTML source. For example, inspect how a page title is written in the markup. Source is different from the rendered reading view and from the live element tree in the Inspector; viewing it does not edit the published site.",
+    "F12": "Open or close Firefox’s Developer Tools toolbox to investigate a page. For example, inspect why a layout is not behaving as expected. The toolbox has its own controls and keyboard focus, so check which panel is active before entering another command.",
+    "Control+Shift+K": "Open the Web Console for messages and errors from the current webpage. For example, review an error when a page control fails. If already open, these keys focus its command line; they do not close it. Use the toolbox toggle to close Developer Tools. No code entry is required here.",
+    "Control+Shift+C": "Toggle the Inspector’s element picker, opening the toolbox when necessary. Use it to identify the page element you want to inspect, such as a heading or button. The picker and Inspector examine the live page structure; opening them is not an accessibility test by itself.",
+    "Control+Shift+E": "Open the Network Monitor to inspect requests made by the current page. For example, investigate a resource that failed to load. Requests are recorded while the tool is open, so reproducing the page action or reloading can provide the evidence you need.",
+    "Control+Shift+M": "Toggle Responsive Design Mode to inspect a webpage at a different viewport size. For example, try a narrow width and look for clipped controls. This simulates display conditions inside Firefox; it does not replace testing on a real phone or with assistive technology."
+  },
   "Windows and File Explorer": {
     "Windows+E": "Open a file-management window before choosing a document. For example, find a practice letter in Documents; opening Explorer alone does not open the letter.",
     "Tab": "Move between Explorer regions such as the navigation pane, file list and search controls. Listen to the region name before using arrows: the same arrow can navigate a folder tree or a list of files.",
@@ -205,6 +246,17 @@
       if (note) [entry[1], entry[2]] = note;
     }
   }
+  // Browser-owned shortcuts must not require a live browser chord. Match the
+  // Chrome course's separated-key rehearsal, retaining ordinary Tab navigation.
+  for (const entry of courses["Firefox browser"]) {
+    if (!["Tab", "Shift+Tab"].includes(entry[0])) entry[3] = "safe";
+    if (["F12", "Control+Shift+K", "Control+Shift+C", "Control+Shift+E", "Control+Shift+M"].includes(entry[0])) {
+      entry[4].source = "https://firefox-source-docs.mozilla.org/devtools-user/keyboard_shortcuts/index.html";
+    }
+    if (entry[0] === "Control+Shift+C") entry[1] = "Toggle the Inspector’s element picker.";
+    if (entry[0] === "Control+Shift+M") entry[1] = "Toggle Responsive Design Mode.";
+  }
+  window.CommandPracticeCourseNotes["Firefox browser"] = "Firefox on Windows. Browser shortcuts are rehearsed one key at a time, with instructions for holding the real shortcut. Tab navigation remains available.";
   const jawsAdvanced = {
     "Insert+Space then J": "Search by purpose when you remember the task but not its keys. For example, search for speech history, then review the matching command before practicing it.",
     "Insert+Space then H": "Recover an announcement you missed, such as a dialog message. Read back through recent speech; this is a history of announcements, not Undo for your document.",
