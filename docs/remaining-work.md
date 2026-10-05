@@ -41,6 +41,8 @@ The timer follow-up fixes delayed browser callbacks extending timed keyboard pra
 
 The progress-recovery follow-up fixes delayed lesson responses overwriting newer saves, quiz readiness after a Student ID switch, malformed saved Settings/Stats data, and misleading save-success feedback when storage is full. See [the progress recovery checkpoint](qa-2026-10-05-progress-recovery.md). **164 public tests pass**, with fictional-response Chromium checks and scoped Axe checks. No curriculum, mission IDs, private sources or account services changed. Continue with other reproducible preference/progress failures and remaining curriculum teaching; do not repeat the completed timing, stats, or recovery batches.
 
+The menu-recovery follow-up keeps courses browsable during failed/invalid progress loading, excludes a late response after a Student ID change, and makes all three Mission Control menus honor voice toggles with unwritable storage. See [the menu recovery checkpoint](qa-2026-10-05-menu-recovery.md). **168 public tests pass** plus fictional-response Chromium checks. Curriculum, stable IDs, all typing paths and private sources are unchanged. The remaining curriculum and device-verification work above is still open.
+
 ## Needs targeted human/device feedback
 
 - JAWS/NVDA and Mac VoiceOver/Safari: spoken feedback, focus and real shortcut conflicts.

@@ -17,12 +17,17 @@
     catch (error) { return defaults; }
   }
 
-  function siteVoiceEnabled() {
+  function readVoicePreference() {
     try {
       const preferences = JSON.parse(localStorage.getItem(preferenceKey) || "{}");
       return preferences.trainingSpeech === "voice";
     } catch (error) { return false; }
   }
+  let useSiteVoice = voiceSupported && readVoicePreference();
+  function siteVoiceEnabled() { return useSiteVoice; }
+  window.addEventListener("missionvoicechange", event => {
+    useSiteVoice = Boolean(event.detail.enabled && voiceSupported);
+  });
 
   function stopVoice() {
     try { window.speechSynthesis?.cancel(); } catch (error) { /* Keep keyboard controls usable. */ }

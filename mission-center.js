@@ -7,12 +7,17 @@
   const voiceSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
   let openingAnnouncement = true;
 
-  function voiceEnabled() {
+  function readVoicePreference() {
     try {
       const preferences = JSON.parse(localStorage.getItem("accessibleLearningPreferences") || "{}");
       return preferences.trainingSpeech === "voice";
     } catch (error) { return false; }
   }
+  let useSiteVoice = voiceSupported && readVoicePreference();
+  function voiceEnabled() { return useSiteVoice; }
+  window.addEventListener("missionvoicechange", event => {
+    useSiteVoice = Boolean(event.detail.enabled && voiceSupported);
+  });
 
   function stopVoice() {
     try { window.speechSynthesis?.cancel(); } catch (error) { /* Keep keyboard controls usable. */ }

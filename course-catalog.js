@@ -8,6 +8,14 @@
   const sections = [...document.querySelectorAll('main > section[id$="-lessons"]')];
   if (!filter || !topicFilter || !startedOnly || !status || !sections.length) return;
 
+  startedOnly.disabled = true;
+  startedOnly.checked = false;
+  const progressNotice = document.createElement("span");
+  progressNotice.id = "courseProgressNotice";
+  progressNotice.setAttribute("role", "status");
+  startedOnly.setAttribute("aria-describedby", progressNotice.id);
+  startedOnly.closest("p").append(" ", progressNotice);
+
   const API_URL = "https://accessible-learning-api.aaccessabilitylearningcenter.workers.dev";
   let studentId = "";
   try { studentId = localStorage.getItem("accessibleLearningStudentId") || ""; } catch (error) {}
@@ -105,23 +113,37 @@
   window.addEventListener("hashchange", revealLinkedCourse);
 
   if (!studentId) {
-    startedOnly.disabled = true;
-    startedOnly.closest("p").append(" Enter a Student ID to use this filter.");
+    progressNotice.textContent = "Enter a Student ID to use this filter.";
     return;
   }
 
+  function progressUnavailable(message) {
+    startedOnly.disabled = true;
+    startedOnly.checked = false;
+    progressNotice.textContent = message;
+    applyFilter();
+  }
+
+  progressNotice.textContent = "Checking saved course progress...";
   fetch(API_URL + "/progress?student_id=" + encodeURIComponent(studentId))
     .then(response => response.ok ? response.json() : Promise.reject())
     .then(records => {
-      if (!Array.isArray(records)) return;
+      if (!Array.isArray(records)) throw new Error("Invalid progress response");
+      let currentId = "";
+      try { currentId = localStorage.getItem("accessibleLearningStudentId") || ""; } catch (error) {}
+      if (currentId !== studentId) {
+        progressUnavailable("The Student ID changed or could not be checked. Reload to show the current learner's saved progress. You can still browse all courses.");
+        return;
+      }
+      const validRecords = records.filter(record => record && typeof record === "object" && !Array.isArray(record));
       sections.forEach(section => {
         const slug = section.dataset.slug;
         const courseName = courseData[slug]?.name;
-        const completed = records.filter(record =>
+        const completed = validRecords.filter(record =>
           record.course === courseName &&
           ["completed", "submitted"].includes(record.status)
         );
-        section.dataset.started = String(records.some(record => record.course === courseName &&
+        section.dataset.started = String(validRecords.some(record => record.course === courseName &&
           ["in_progress", "completed", "submitted"].includes(record.status)));
         const details = section.querySelector("details");
         const summary = details.querySelector("summary");
@@ -141,10 +163,11 @@
           section.insertBefore(continueParagraph, details);
         }
       });
+      startedOnly.disabled = false;
+      progressNotice.textContent = "";
       applyFilter();
     })
     .catch(() => {
-      startedOnly.disabled = true;
-      startedOnly.closest("p").append(" Started-course filtering is temporarily unavailable.");
+      progressUnavailable("Saved course progress is temporarily unavailable. You can still browse courses. Reload to try the progress check again.");
     });
 })();

@@ -425,6 +425,22 @@ test('blocked settings storage reports the failure and keeps voice and keyboard 
  voice.click();assert.equal(p.get('speechValue').textContent,'Use my own screen reader');assert.equal(voice.textContent,'Voice: My screen reader');
 });
 
+test('all Mission Control menus honor the voice toggle without relying on writable storage', () => {
+ for(const [file,id] of [['mission-center.js','missionCenterMenu'],['command-practice-setup.js','commandTopicsMenu'],['topic-missions-setup.js','topicMissionsMenu']]){
+  const p=page();p.document.body.dataset={};const menu=p.get(id),spoken=[];
+  if(id==='missionCenterMenu')for(const key of ['topics','commands']){const item=p.get(key);item.textContent=key;menu.append(item);}
+  p.load('mission-catalog.js');p.load('mission-ui.js');p.load(file);p.window.fire('DOMContentLoaded');p.advance();
+  p.window.speechSynthesis.speak=u=>spoken.push(u.text);p.storage.setItem=()=>{throw Error('Storage full');};
+  const voice=p.get('main.mission-center-shell').children[0].children[2];voice.click();spoken.length=0;
+  menu.fire('keydown',{key:'ArrowDown'});assert.equal(spoken.length,1,file);assert.match(spoken[0],/Press Enter/);
+  if(id!=='missionCenterMenu'){
+   p.document.activeElement.click();const url=new URL(p.window.location.href,'https://local.test');
+   assert.equal(url.searchParams.get(id==='commandTopicsMenu'?'spoken':'voice'),'1',file);
+  }
+  voice.click();spoken.length=0;menu.fire('keydown',{key:'ArrowUp'});assert.equal(spoken.length,0,file+' off');
+ }
+});
+
 test('Mission Control menus preserve modified screen-reader navigation keys', () => {
   for (const [file,id] of [['mission-center.js','missionCenterMenu'],['command-practice-setup.js','commandTopicsMenu'],['topic-missions-setup.js','topicMissionsMenu'],['mission-settings.js','missionSettingsMenu']]) {
     const p=page(),menu=p.get(id);

@@ -83,5 +83,49 @@ try{
  assert.match(await settings.locator('#missionSettingsStatus').textContent(),/Settings saved/);
  await settings.keyboard.press('Escape');await settings.waitForURL('**/troubleshooting-lab.html');
  console.log('Settings: malformed-data recovery, arrow/Enter controls, visible unsaved warning, voice synchronization, persistence retry, narrow layout, Axe and Escape passed.');
+
+ const catalogRead=deferred(),catalogStarted=deferred();
+ const courses=await pageWithProgress(async()=>{catalogStarted.resolve();return catalogRead.promise;});
+ await courses.goto(base+'/lessons.html');await catalogStarted.promise;
+ assert.equal(await courses.locator('#startedCoursesOnly').isDisabled(),true);
+ assert.equal(await courses.locator('main > section[id$="-lessons"]:visible').count(),30);
+ await courses.locator('#courseFilter').fill('Firefox');
+ assert.equal(await courses.locator('#firefox-lessons').isVisible(),true);
+ catalogRead.resolve(null);await courses.waitForFunction(()=>document.querySelector('#courseProgressNotice').textContent.includes('temporarily unavailable'));
+ assert.equal(await courses.locator('#startedCoursesOnly').isDisabled(),true);
+ assert.equal(await courses.locator('#courseFilterStatus').textContent(),'1 course shown.');
+ assert.equal(await courses.locator('#firefox-lessons').isVisible(),true);
+ const otherRead=deferred(),otherStarted=deferred();
+ const otherCourses=await pageWithProgress(async()=>{otherStarted.resolve();return otherRead.promise;});
+ await otherCourses.goto(base+'/lessons.html');await otherStarted.promise;
+ await otherCourses.evaluate(()=>localStorage.setItem('accessibleLearningStudentId','fictional_test_two'));
+ otherRead.resolve([record]);await otherCourses.waitForFunction(()=>document.querySelector('#courseProgressNotice').textContent.includes('Student ID changed'));
+ assert.equal(await otherCourses.locator('#startedCoursesOnly').isDisabled(),true);
+ assert.doesNotMatch(await otherCourses.locator('#firefox-lessons summary').textContent(),/lessons complete/);
+ const validCourses=await pageWithProgress(async()=>[null,[],false,record]);await validCourses.goto(base+'/lessons.html');
+ await validCourses.waitForFunction(()=>!document.querySelector('#startedCoursesOnly').disabled);
+ assert.match(await validCourses.locator('#firefox-lessons summary').textContent(),/1 of 10/);
+ assert.equal(await validCourses.locator('#firefox-lessons .course-continue a').getAttribute('href'),'firefox-lesson-2.html');
+ await validCourses.locator('#startedCoursesOnly').check();assert.equal(await validCourses.locator('#courseFilterStatus').textContent(),'1 course shown.');
+ await validCourses.evaluate(()=>{location.hash='bookshare-lessons';});await validCourses.waitForFunction(()=>!document.querySelector('#startedCoursesOnly').checked);
+ assert.equal(await validCourses.locator('#bookshare-lessons details').getAttribute('open'),'');
+ console.log('Course catalog: loading/invalid-response browsing, late-ID guard, mixed-record recovery, next-lesson link, started filter and hash navigation passed.');
+
+ for(const [file,menuId,param] of [['troubleshooting-lab.html','missionCenterMenu',''],['command-practice.html','commandTopicsMenu','spoken'],['topic-missions.html','topicMissionsMenu','voice']]){
+  const menuPage=await pageWithProgress(async()=>[]);await menuPage.goto(base+'/'+file);
+  await menuPage.evaluate(()=>{Storage.prototype.setItem=function(){throw new DOMException('Storage full','QuotaExceededError');};});
+  await menuPage.locator('#missionVoiceToggle').click();
+  await menuPage.locator('#'+menuId+' a').first().focus();await menuPage.evaluate(()=>{testSpeech.length=0;});
+  await menuPage.keyboard.press('ArrowDown');assert.equal(await menuPage.evaluate(()=>testSpeech.length),1,file);
+  assert.match(await menuPage.evaluate(()=>testSpeech.at(-1)),/Press Enter/);
+  await menuPage.locator('#missionVoiceToggle').click();
+  await menuPage.locator('#'+menuId+' a').first().focus();await menuPage.evaluate(()=>{testSpeech.length=0;});
+  await menuPage.keyboard.press('ArrowDown');assert.equal(await menuPage.evaluate(()=>testSpeech.length),0,file+' off');
+  if(param){
+   await menuPage.locator('#missionVoiceToggle').click();await menuPage.locator('#'+menuId+' a').first().focus();await menuPage.keyboard.press('Enter');
+   await menuPage.waitForURL(url=>url.searchParams.get(param)==='1');
+  }
+ }
+ console.log('All three menus speak arrow-key choices with storage blocked, stop when voice is off, and carry the current voice choice into practice.');
  assert.deepEqual(errors,[]);
 }finally{await browser?.close();await new Promise(r=>server.close(r));}
