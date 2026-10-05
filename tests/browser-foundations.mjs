@@ -24,7 +24,7 @@ try{
  const page=await browser.newPage({viewport:{width:1100,height:850}}),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
 
- await page.addInitScript(()=>{window.testSpeech=[];speechSynthesis.speak=u=>window.testSpeech.push(u.text);speechSynthesis.cancel=()=>{};});
+ await page.addInitScript(()=>{window.testSpeech=[];window.testSpeechUtterances=[];speechSynthesis.speak=u=>{window.testSpeech.push(u.text);window.testSpeechUtterances.push(u);};speechSynthesis.cancel=()=>{};});
 
  for(const voice of [1,0]) {
   await page.goto(base+'/topic-mission-session.html?reader=jaws&mission=3&voice='+voice+'&sounds=0');
@@ -140,5 +140,43 @@ try{
  await page.setViewportSize({width:390,height:844});
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
  await page.screenshot({path:b+'/excel-paste-special-narrow.png'});
+ for(const [name,detailKey] of [['Thunderbird email','Control+Shift+O'],['ZoomText and Fusion Desktop magnification','Caps Lock+Space then Y then W']]) {
+  await page.setViewportSize({width:1100,height:850});
+  await page.goto(base+'/command-practice-session.html?category='+encodeURIComponent(name)+'&style=guided&length=all&spoken=1&sounds=0');
+  await page.keyboard.press('Space');
+  const items=await page.evaluate(name=>CommandPracticeCourses[name],name);
+  for(let i=0;i<items.length;i++) {
+   const entry=items[i];
+   assert.equal(await page.locator('#commandExplanationDetails').evaluate(e=>e.open),false);
+   assert.equal(await page.locator('#commandDetailedExplanation').textContent(),entry[2]);
+   if(entry[0]===detailKey) {
+    await page.locator('#commandExplanationDetails summary').click();
+    assert.equal(await page.locator('#commandDetailedExplanation').isVisible(),true);
+    await page.setViewportSize({width:390,height:844});
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,name);
+    if(process.env.AXE_PATH) {
+     await page.addScriptTag({path:process.env.AXE_PATH});
+     const violations=await page.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)})));
+     assert.deepEqual(violations,[],name+' expanded explanation');
+    }
+    await page.screenshot({path:b+'/'+(name.startsWith('Thunderbird')?'email':'magnification')+'-teaching-narrow.png',fullPage:true});
+    await page.locator('#commandExplanationDetails summary').click();
+    await page.setViewportSize({width:1100,height:850});
+    await page.locator('#keyCapture').focus();
+   }
+   for(const step of entry[4].steps) {
+    const keys=step.split('+').map(k=>k==='Caps Lock'?'CapsLock':aliases[k]||k);
+    if(entry[3]==='safe')for(const key of keys)await page.keyboard.press(key);
+    else await page.keyboard.press(keys.join('+'));
+   }
+   assert.equal(await page.locator('#practiceScore').textContent(),`Correct: ${i+1} · Attempts: ${i+1}`,name+': '+entry[0]);
+   // Finish the mocked spoken confirmation; a spoken session waits for end.
+   await page.evaluate(()=>testSpeechUtterances.at(-1).dispatchEvent(new Event('end')));
+  }
+  assert.equal(await page.locator('#commandResults').isVisible(),true,name);
+  assert.equal(await page.evaluate(()=>document.activeElement.id),'practiceMissed');
+  assert.match(await page.evaluate(()=>testSpeech.at(-1)),new RegExp(`practiced ${items.length} commands correctly`));
+  console.log(name+': all '+items.length+' commands, speech requests, optional explanations, narrow layout and completion passed.');
+ }
  assert.deepEqual(errors,[]); console.log('No browser JavaScript errors.');
 }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

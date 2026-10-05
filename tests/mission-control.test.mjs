@@ -871,3 +871,63 @@ test('Windows teaching retains every command and all stages with concrete contex
  assert.match(note('Control+X'),/has not moved/);assert.match(note('Control+W'),/only tab/);
  assert.match(note('Alt+Left Arrow'),/not necessarily go up/);assert.match(note('Control+Windows+D'),/not another user/);
 });
+
+test('email and magnification teaching keeps coverage and exposes necessary application context',()=>{
+ const p=page();p.load('command-courses.js');
+ const names=['Thunderbird email','ZoomText and Fusion Desktop magnification'];
+ const identities=name=>p.window.CommandPracticeCourses[name].map(e=>[e[0],e[3],e[4].level,[...e[4].steps]]);
+ const before=names.map(identities);p.load('command-teaching.js');
+ names.forEach((name,i)=>assert.deepEqual(identities(name),before[i],name));
+ const mail=p.window.CommandPracticeCourses[names[0]],zoom=p.window.CommandPracticeCourses[names[1]];
+ assert.equal(mail.length,36);assert.equal(zoom.length,23);
+ for(const entries of [mail,zoom])assert.equal(new Set(entries.map(e=>e[2])).size,entries.length,'Each command has its own teaching');
+ const note=key=>mail.find(e=>e[0]===key);
+ assert.match(note('Control+S')[1],/compose window/);assert.match(note('Control+S')[2],/as a file/);
+ assert.match(note('Control+Shift+A')[2],/select a thread/);assert.match(note('Control+K')[2],/insert a link/);
+ assert.match(note('Control+Shift+O')[2],/paste a quotation/);
+ for(const entry of zoom.filter(e=>e[4].level==='advanced'))assert.match(entry[1],/In ZoomText Reader/);
+ assert.match(zoom.find(e=>e[0]==='Caps Lock+I')[1],/inversion is active/);
+ assert.match(p.window.CommandPracticeCourseNotes[names[1]],/Fusion uses JAWS/);
+});
+
+test('reviewed mail and magnification courses finish with native or separated keys and spoken stages',()=>{
+ for(const name of ['Thunderbird email','ZoomText and Fusion Desktop magnification']){
+  const p=page({commandCategory:{value:name},practiceStyle:{value:'guided'},sessionLength:{value:'all'},spokenInstructions:{checked:true}}),heard=[];
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);
+  p.load('command-courses.js');p.load('command-teaching.js');p.load('command-practice.js');p.get('startPractice').click();
+  const entries=p.window.CommandPracticeCourses[name];
+  entries.forEach((entry,i)=>{
+   assert.equal(p.get('commandExplanationDetails').open,false);
+   assert.equal(p.get('commandDetailedExplanation').textContent,entry[2]);
+   for(const step of entry[4].steps){
+    if(entry[3]==='safe')for(const key of step.split('+'))tapCourseKey(p,key);
+    else chord(p,step);
+   }
+   assert.equal(p.get('practiceScore').textContent,`Correct: ${i+1} · Attempts: ${i+1}`,name+': '+entry[0]);p.advance();
+  });
+  for(const level of ['basic','intermediate','advanced'])assert.ok(heard.some(s=>s.includes(level+(level==='basic'?' commands':' level commands'))),name+': '+level);
+  assert.equal(p.get('commandResults').hidden,false);
+  assert.match(heard.at(-1),new RegExp(`practiced ${entries.length} commands correctly`));
+  assert.equal(p.document.activeElement,p.get('practiceMissed'));
+ }
+});
+
+test('ZoomText Say sequences repeat the current layer and recover without restarting or early credit',()=>{
+ const name='ZoomText and Fusion Desktop magnification';
+ for(const finalKey of ['D','T','F','S','W','P','U']){
+  const p=page({commandCategory:{value:name},practiceStyle:{value:'guided'},sessionLength:{value:'all'},spokenInstructions:{checked:true}}),heard=[];
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);
+  p.load('command-courses.js');p.load('command-teaching.js');
+  const entry=p.window.CommandPracticeCourses[name].find(e=>e[0]===`Caps Lock+Space then Y then ${finalKey}`);
+  p.window.CommandPracticeCourses[name]=[entry];p.load('command-practice.js');p.get('startPractice').click();
+  p.key('keyCapture','Control');assert.match(heard.at(-1),/enter layered commands/);
+  tapCourseKey(p,'Caps Lock');tapCourseKey(p,'Space');
+  p.key('keyCapture','Control');assert.match(heard.at(-1),/Say command group/);
+  tapCourseKey(p,'X');assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+  p.key('keyCapture','Control');assert.match(heard.at(-1),/Say command group/);
+  tapCourseKey(p,'Y');p.key('keyCapture','Control');assert.ok(heard.at(-1).includes(entry[1]));
+  assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+  tapCourseKey(p,finalKey);assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2');
+  p.advance();assert.equal(p.get('commandResults').hidden,false);
+ }
+});
