@@ -1,8 +1,12 @@
 # Optional learner account pilot
 
-Prepared October 2, 2026 from current repository code. This is an implementation plan, not a deployed account system. Working target: a limited November pilot, with a broader December release subject to the checks below.
+Prepared October 2, 2026; updated October 5 with an inactive implementation. This is not a deployed account system. Working target: a limited November pilot, with a broader December release subject to the checks below.
 
-## Current state
+## October 5 implementation checkpoint
+
+The disabled account boundary, separate schema, authorization and import foundation, local SQL tests, and fictional learner/admin previews now exist. See `accounts/README.md` and `docs/account-no-cost-options.md` for implemented behavior and launch blockers. Public login remains OFF. No provider was configured, production migration run, Worker deployed or additional service provisioned. All additional spending remains $0.
+
+## Existing learning/progress state
 
 - `student-id.html` registers an anonymous identifier through the Worker API. It does not authenticate a learner.
 - `worker.js` accepts the supplied Student ID for progress reads/writes. Knowledge of that identifier is not proof of ownership. Do not turn those identifiers into authenticated account claims.
@@ -22,7 +26,7 @@ Suggested progress identity: account ID + activity type + stable curriculum ID +
 
 ## Implementation order
 
-1. Select and configure the authentication provider, site/API domains, allowed redirects and recovery delivery. Confirm ongoing costs and service ownership before committing to paid infrastructure.
+1. Select and configure the authentication provider, site/API domains, allowed redirects and recovery delivery. Keep additional costs at $0; paid infrastructure, trials, billing and automatic overages are not authorized.
 2. Implement a separate test environment for sign-up, login, logout, session expiry and recovery. Support password managers, paste, accessible field errors and a readable show-password control. Avoid timed tasks and inaccessible challenges.
 3. Add account-scoped progress endpoints and an explicit data schema, with authorization tests using two synthetic accounts. Do not test cross-account reads against real learners.
 4. Add one pilot progress adapter for Keyboarding, preserving all three paths and existing opt-in local saving. Handle offline work and retries without duplicate completion records or erased history.
@@ -38,6 +42,6 @@ Suggested progress identity: account ID + activity type + stable curriculum ID +
 - Existing local progress and private-preview behavior survive rollout and rollback.
 - Provider configuration and recovery delivery work on production domains.
 
-## Not yet implemented
+## Still not implemented
 
-No provider has been selected/configured, no password accounts are live, and no data migration has run. This pass introduces no account collection, server schema change or access restriction.
+A real provider adapter, active login/recovery, cross-device client sync, detailed-history import, production account database, retention/deletion workflows and private Braille integration remain outstanding. The code foundation is not a finished secure login system. No password accounts are live and no production migration has run.

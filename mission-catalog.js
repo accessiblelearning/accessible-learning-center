@@ -221,6 +221,17 @@
     ]
 }
   ].sort((a, b) => a.label.localeCompare(b.label));
+  const addedMissions = {
+    "google-chrome": ["chrome-recover-resource", "Google Chrome: Recover and keep a resource", "13"],
+    "microsoft-excel": ["excel-repair-total", "Microsoft Excel: Repair a worksheet total", "14"],
+    "microsoft-powerpoint": ["powerpoint-extra-slide", "Microsoft PowerPoint: Recover from an extra slide", "15"],
+    "mac-voiceover": ["mac-menu-bar", "Mac VoiceOver: Find the app menu", "16"],
+    "braille-displays": ["focus-pan-line", "Braille Displays: Read beyond a Focus display width", "17"]
+  };
+  for (const topic of window.MissionControlCatalog) {
+    const entry = addedMissions[topic.id];
+    if (entry) topic.missionSets.push({id:entry[0],label:entry[1],mission:entry[2]});
+  }
   for (const topic of window.MissionControlCatalog) {
     if (topic.id === "mac-voiceover") topic.commandSets = [{id:"mac-voiceover-basics", menuLabel:"Mac VoiceOver", label:"Mac VoiceOver: basic through advanced commands", category:"Mac VoiceOver basics"}];
     if (topic.id === "microsoft-word") topic.commandSets = [{id:"word-documents", menuLabel:"Microsoft Word", label:"Microsoft Word: editing, navigation, formatting and advanced ribbon commands", category:"Microsoft Word and documents"}];

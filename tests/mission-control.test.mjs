@@ -196,7 +196,7 @@ test("Insert release, missing release, focus loss, and retry do not leave a modi
 });
 
 test("new topic routes wait for the mission catalog and reject invalid mission numbers", () => {
-  for (const [mission, valid] of [["8", true], ["12", true], ["13", false], ["", false], ["-1", false], ["1.5", false]]) {
+  for (const [mission, valid] of [["8", true], ["12", true], ["18", false], ["", false], ["-1", false], ["1.5", false]]) {
     const p = page();
     p.window.location.search = `?reader=jaws&mission=${mission}`;
     p.load("topic-mission-session.js");
@@ -703,4 +703,49 @@ test("a Shift press within a protected Alt chord does not count as an incorrect 
   assert.equal(p.get("missionResults").hidden, false);
   assert.equal(p.get("missionAttemptResult").textContent, "2");
   assert.equal(p.get("missionReviewResult").textContent, "0");
+});
+
+
+test("new topic missions finish with safe inputs and preserve old numeric progress", () => {
+  const solutions = [[13,["t","d"]],[14,["F2","Enter","s"]],[15,["m","z","s"]],[16,["m","ArrowRight"," "]],[17,["ArrowRight","ArrowLeft"]]];
+  for (const [index,keys] of solutions) {
+    const p=page({atPerspective:{value:"jaws"},missionSelect:{value:String(index)}});
+    p.storage.setItem("missionControlCompleted", "[3,12]");
+    p.load("troubleshooting-lab.js");p.get("startMission").click();
+    for(const key of keys) p.key("missionControlStation",key);
+    assert.equal(p.get("missionResults").hidden,false,String(index));
+    assert.deepEqual(JSON.parse(p.storage.getItem("missionControlCompleted")),[3,12,index]);
+  }
+});
+
+test('focused legacy courses have distinct outcomes while full topics retain contextual commands',()=>{
+  const p=page();p.load('command-courses.js');
+  const before=p.window.CommandPracticeCourses;
+  const wordCoverage=new Set(before['Microsoft Word and documents'].map(e=>e[0]));
+  const macCoverage=new Set(before['Mac VoiceOver basics'].map(e=>e[0]));
+  p.load('command-teaching.js');const c=p.window.CommandPracticeCourses;
+  assert.deepEqual(new Set(c['Microsoft Word and documents'].map(e=>e[0])),wordCoverage);
+  assert.deepEqual(new Set(c['Mac VoiceOver basics'].map(e=>e[0])),macCoverage);
+  assert.ok(c['General editing'].length<c['Microsoft Word and documents'].length);
+  assert.notDeepEqual(c['Mac VoiceOver reading and settings'],c['Mac VoiceOver navigation and web']);
+  assert.ok(c['Mac VoiceOver basics'].filter(e=>e[0]==='VO+Right Arrow').length>=2,'Different item/text contexts retained');
+  for(const [name,key] of [['Microsoft Word and documents','Control+B'],['Mac VoiceOver basics','VO+K']]) assert.equal(c[name].filter(e=>e[0]===key).length,1);
+  for(const name of ['General editing','Mac VoiceOver reading and settings','Mac VoiceOver navigation and web']) assert.deepEqual([...new Set(c[name].map(e=>e[4].level))],['basic','intermediate','advanced']);
+  assert.match(c['Microsoft Word and documents'].find(e=>e[0]==='Control+[')[2],/different key from comma/);
+  assert.match(c['Google Docs and applications'].find(e=>e[0]==='Control+\/')[2],/forward slash/);
+});
+
+test('all focused legacy routes complete with the production teaching layer',()=>{
+  for(const category of ['General editing','Mac VoiceOver reading and settings','Mac VoiceOver navigation and web']) {
+    const p=page({commandCategory:{value:category},practiceStyle:{value:'guided'},sessionLength:{value:'all'},explanationLevel:{value:'detailed'},soundFeedback:{checked:false}});
+    p.load('command-courses.js');p.load('command-teaching.js');p.load('command-practice.js');p.get('startPractice').click();
+    for(const entry of p.window.CommandPracticeCourses[category]) {
+      for(const command of entry[4].steps) {
+        if(category.startsWith('Mac'))buildMacCommand(p,command);
+        else chord(p,command);
+      }
+      p.advance();
+    }
+    assert.equal(p.get('practiceResults').hidden,false,category);
+  }
 });

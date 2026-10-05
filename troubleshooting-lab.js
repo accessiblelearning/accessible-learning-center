@@ -49,7 +49,7 @@
       category: "Cloud storage", title: "Move without losing the original",
       problem: "A practice file is selected in a synchronized OneDrive folder. The original must remain where it is while you place a copy in the open destination folder.",
       steps: [
-        { command: "CTRL+C", prompt: "Copy the selected file, keeping the original in place.", hint: "Press Control plus C to copy.", success: "Copied: Interview Notes.docx.", why: "Copy preserves the original; Cut would move it." },
+        { command: "CTRL+C", prompt: "Copy the selected file, keeping the original in place.", hint: "Press Control plus C to copy.", success: "Copied: Interview Notes.docx. The simulator now places focus in the destination folder; Copy alone does not switch folders.", why: "Copy preserves the original; Cut would move it." },
         { command: "CTRL+V", prompt: "Paste the copied file into the open destination folder.", hint: "Press Control plus V to paste.", success: "Pasted: Interview Notes.docx. Synchronization pending.", why: "You created one copy in the verified destination." }
       ],
       hint: "Choose the clipboard command that preserves the original file."
@@ -192,6 +192,145 @@
     ]
 }
   ];
+  // Append only: numeric IDs 0–12 remain compatible with saved progress.
+  missions.push(...[
+  {
+    "category": "Google Chrome",
+    "title": "Recover and keep a Chrome resource",
+    "problem": "In Chrome on Windows, a useful training tab was accidentally closed. Reopen it, then bookmark it. Protected practice: release Control before pressing T or D by itself; do not run the real browser shortcuts here.",
+    "hint": "Press and release Control, then T. This simulates Control plus Shift plus T.",
+    "source": "https://support.google.com/chrome/answer/157179?hl=en",
+    "steps": [
+      {
+        "command": "CTRL+SHIFT+T",
+        "prompt": "Recover the closed training tab.",
+        "hint": "Press and release Control, then T. This simulates Control plus Shift plus T.",
+        "success": "Training resource reopened. Focus is on the recovered page.",
+        "why": "The most recently closed tab is available again."
+      },
+      {
+        "command": "CTRL+D",
+        "prompt": "Bookmark the recovered training resource.",
+        "hint": "Press and release Control, then D. This simulates Control plus D.",
+        "success": "Bookmark dialog opened for the recovered resource.",
+        "why": "In Chrome, review the name and folder before confirming the bookmark. This mission ends at the dialog."
+      }
+    ]
+  },
+  {
+    "category": "Microsoft Excel",
+    "title": "Repair a worksheet total",
+    "problem": "In Excel for Windows, cell B4 has the incorrect formula =SUM(B1:B2). Start editing that cell, confirm the supplied correction =SUM(B1:B3), then save. The simulator supplies the corrected formula; you are practicing edit, confirm, and save.",
+    "hint": "Press F2 to edit the active cell.",
+    "source": "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel",
+    "steps": [
+      {
+        "command": "F2",
+        "prompt": "Start editing the selected total cell B4.",
+        "hint": "Press F2 to edit the active cell.",
+        "success": "Editing B4. The simulator supplies =SUM(B1:B3).",
+        "why": "The formula is being edited in the selected cell."
+      },
+      {
+        "command": "ENTER",
+        "prompt": "Confirm the supplied formula =SUM(B1:B3).",
+        "hint": "Press Enter to finish the cell entry.",
+        "success": "Formula accepted. In this simulation, selection moves to B5.",
+        "why": "The corrected total includes all three rows."
+      },
+      {
+        "command": "CTRL+S",
+        "prompt": "Save the corrected workbook.",
+        "hint": "Press Control plus S.",
+        "success": "Workbook saved.",
+        "why": "The worksheet correction is now saved."
+      }
+    ]
+  },
+  {
+    "category": "Microsoft PowerPoint",
+    "title": "Recover from an extra slide",
+    "problem": "In PowerPoint for Windows, slide 2 is selected in the thumbnail pane. Practice adding a slide, undoing that unwanted addition, then saving the restored presentation.",
+    "hint": "Press Control plus M.",
+    "source": "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-create-powerpoint-presentations",
+    "steps": [
+      {
+        "command": "CTRL+M",
+        "prompt": "Add a slide after slide 2.",
+        "hint": "Press Control plus M.",
+        "success": "New slide 3 added and selected in the simulated thumbnail pane.",
+        "why": "A new slide follows the selected slide."
+      },
+      {
+        "command": "CTRL+Z",
+        "prompt": "Remove the accidental addition using Undo.",
+        "hint": "Press Control plus Z.",
+        "success": "The extra slide is removed. Slide 2 is selected again.",
+        "why": "Undo reverses the most recent change."
+      },
+      {
+        "command": "CTRL+S",
+        "prompt": "Save the restored presentation.",
+        "hint": "Press Control plus S.",
+        "success": "Presentation saved.",
+        "why": "The original slide sequence is preserved."
+      }
+    ]
+  },
+  {
+    "category": "Mac VoiceOver",
+    "title": "Find the app menu on a Mac",
+    "problem": "Practice navigating the Mac menu bar with VoiceOver. Here, press M, Right Arrow, and Space by themselves to simulate the VO commands, so your real screen reader can stay running. VO normally means Control and Option held together, or your configured VoiceOver modifier.",
+    "hint": "The real command is VO plus M. Press M alone here.",
+    "source": "https://support.apple.com/en-ca/guide/voiceover/mchlp2748/mac",
+    "steps": [
+      {
+        "command": "VO+M",
+        "prompt": "Move to the menu bar. Press M by itself in this simulator.",
+        "hint": "The real command is VO plus M. Press M alone here.",
+        "success": "Simulated menu bar: Apple menu.",
+        "why": "VoiceOver has moved from the application into the menu bar."
+      },
+      {
+        "command": "VO+ARROWRIGHT",
+        "prompt": "Move to the app menu. Press Right Arrow alone here.",
+        "hint": "The real command is VO plus Right Arrow.",
+        "success": "Simulated menu bar: TextEdit menu.",
+        "why": "You moved to the next menu without opening it."
+      },
+      {
+        "command": "VO+SPACE",
+        "prompt": "Open the TextEdit menu. Press Space alone here.",
+        "hint": "The real command is VO plus Space.",
+        "success": "Simulated TextEdit menu opened. About TextEdit is the first item.",
+        "why": "The menu is open. In real VoiceOver, navigate its items before activating one."
+      }
+    ]
+  },
+  {
+    "category": "Braille displays",
+    "title": "Read beyond a Focus display width",
+    "problem": "This models a Focus 40 Blue, fifth generation, with JAWS and default panning assignments. The first 40 simulated cells read: Please bring your braille display to the. The line continues. Right and Left Arrow on your computer are simulator substitutes for the hardware panning buttons, not real display shortcuts.",
+    "hint": "On the Focus, use the right panning button. Use Right Arrow only for this simulation.",
+    "source": "https://www.freedomscientific.com/Content/Documents/Manuals/Focus/Focus-Blue-Online-Users-Guide.htm",
+    "steps": [
+      {
+        "command": "ARROWRIGHT",
+        "prompt": "Read the continuation. Press Right Arrow here to simulate the right panning button.",
+        "hint": "On the Focus, use the right panning button. Use Right Arrow only for this simulation.",
+        "success": "The simulated display now reads: lesson on Friday at ten.",
+        "why": "Panning changes the displayed portion without editing the document."
+      },
+      {
+        "command": "ARROWLEFT",
+        "prompt": "Return to the earlier portion. Press Left Arrow here to simulate the left panning button.",
+        "hint": "On the Focus, use the left panning button. Use Left Arrow only here.",
+        "success": "The display returns to: Please bring your braille display to the.",
+        "why": "You returned to the earlier text. Custom JAWS button assignments can differ."
+      }
+    ]
+  }
+]);
   window.MissionControlMissionCount = missions.length;
 
   const perspective = document.getElementById("atPerspective");
@@ -232,6 +371,11 @@
   const soundFeedbackEnabled = new URLSearchParams(window.location.search).get("sounds") !== "0";
 
   const missionReviewLinks = {
+    "Google Chrome": ["chrome-manual.html", "Review Chrome"],
+    "Microsoft Excel": ["excel-manual.html", "Review Excel"],
+    "Microsoft PowerPoint": ["powerpoint-manual.html", "Review PowerPoint"],
+    "Mac VoiceOver": ["mac-voiceover-manual.html", "Review Mac VoiceOver"],
+    "Braille displays": ["focus-manual.html", "Review the Focus display"],
     "Thunderbird": ["thunderbird-manual.html", "Review Thunderbird"],
     "Firefox": ["firefox-manual.html", "Review Firefox"],
     "ZoomText and Fusion Desktop": ["zoomtext-fusion-manual.html", "Review ZoomText and Fusion layouts"],
@@ -316,6 +460,7 @@
 
   function displayedCommand(command) {
     const sr = screenReaders[perspective.value];
+    if (command.startsWith("VO+")) return command.replace("VO+", "VoiceOver plus ").replace("ARROWRIGHT", "Right Arrow").replace("SPACE", "Space");
     if (command.startsWith("CAPSLOCK+")) return command.replace("CAPSLOCK", "Caps Lock").replace("ARROWUP", "Up Arrow").replace("ENTER", "Enter");
     return command === "TITLE" ? sr.title : command === "FOCUS" ? sr.focus : command === "MODE" ? sr.mode : command;
   }
