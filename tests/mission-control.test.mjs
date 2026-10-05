@@ -1004,6 +1004,67 @@ test('advanced NVDA teaching distinguishes review markers, existing selection, a
  assert.match(note('Control+Insert+R')[2],/three times.*factory defaults/);
 });
 
+test('advanced VoiceOver teaching keeps text and interface contexts distinct without losing course coverage',()=>{
+ const p=page();p.load('command-courses.js');
+ const raw=p.window.CommandPracticeCourses['Mac VoiceOver basics'];
+ const duplicateKeys=new Set(['VO+K','VO+Q','Shift+VO+Q','VO+P','VO+L','VO+S','VO+W','VO+C']),seen=new Set();
+ const before=raw.filter(e=>{if(!duplicateKeys.has(e[0]))return true;if(seen.has(e[0]))return false;seen.add(e[0]);return true;}).map(e=>[e[0],e[3],e[4].level,[...e[4].steps]]);
+ p.load('command-teaching.js');const entries=p.window.CommandPracticeCourses['Mac VoiceOver basics'];
+ assert.deepEqual(entries.map(e=>[e[0],e[3],e[4].level,[...e[4].steps]]),before);
+ assert.equal(entries.length,60);const advanced=entries.filter(e=>e[4].level==='advanced');assert.equal(advanced.length,40);
+ for(const entry of advanced)assert.doesNotMatch(entry[2],/Use this to review or select text at the stated level|VoiceOver on Mac\. VO means/);
+ assert.equal(new Set(advanced.map(e=>e[2])).size,40);
+ const note=key=>advanced.find(e=>e[0]===key);
+ assert.match(note('VO+Right Arrow')[1],/text/);
+ assert.match(note('VO+Right Arrow')[2],/interact.*text/i);
+ assert.match(entries.find(e=>e[0]==='VO+Right Arrow'&&e[4].level==='basic')[1],/next item/);
+ assert.match(note('VO+N')[2],/currently.*screen/);
+ assert.match(note('VO+Enter')[2],/tracking.*on.*Return.*again/s);
+ assert.match(note('VO+Command+Fn+F9')[2],/on-screen.*physical/i);
+ assert.match(note('Shift+VO+Fn+F10')[2],/Escape/);
+ assert.match(note('Shift+VO+Fn+F11')[2],/black.*same command/s);
+ const aliases=['Mac VoiceOver reading and settings','Mac VoiceOver navigation and web'];
+ assert.deepEqual(aliases.map(n=>p.window.CommandPracticeCourses[n].length),[24,36]);
+ assert.equal(aliases.flatMap(n=>p.window.CommandPracticeCourses[n]).length,60);
+});
+
+test('reviewed Mac function-key builder accepts the documented Fn setting but rejects other wrong modifiers',()=>{
+ const review=page();review.load('command-courses.js');review.load('command-teaching.js');
+ const name='Mac VoiceOver basics',items=review.window.CommandPracticeCourses[name].filter(e=>e[0].includes('Fn+'));
+ assert.ok(items.length>=10);
+ for(const entry of items)for(const omitFn of [false,true]){
+  const p=page({commandCategory:{value:name},practiceStyle:{value:'guided'},sessionLength:{value:'all'},spokenInstructions:{checked:true}}),heard=[];
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);p.load('command-courses.js');p.load('command-teaching.js');
+  p.window.CommandPracticeCourses[name]=[p.window.CommandPracticeCourses[name].find(e=>e[0]===entry[0])];
+  p.load('command-practice.js');p.get('startPractice').click();
+  const variant=omitFn?entry[0].replace('Fn+',''):entry[0];
+  const wrong=variant.includes('Shift+')?variant.replace('Shift+',''):'Shift+'+variant;
+  buildStep(p,wrong);assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1',entry[0]);
+  buildStep(p,variant.replace('VO+','Caps Lock+'));assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2',variant);
+  p.advance();assert.equal(p.get('practiceResults').hidden,false);
+  assert.match(heard.at(-1),/Practice complete/);
+ }
+ const p=page({commandCategory:{value:name},sessionLength:{value:'all'}});p.load('command-courses.js');p.load('command-teaching.js');
+ p.window.CommandPracticeCourses[name]=[p.window.CommandPracticeCourses[name].find(e=>e[0]==='VO+N')];p.load('command-practice.js');p.get('startPractice').click();
+ buildStep(p,'VO+Fn+N');assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+ buildStep(p,'VO+N');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2');
+});
+
+test('Mac separated-key practice offers a builder escape at Fn and preserves repeat, Tab and punctuation',()=>{
+ const name='Mac VoiceOver basics',p=page({commandCategory:{value:name},sessionLength:{value:'all'},spokenInstructions:{checked:true}}),heard=[];
+ p.window.speechSynthesis.speak=u=>heard.push(u.text);p.load('command-courses.js');p.load('command-teaching.js');
+ const items=p.window.CommandPracticeCourses[name];p.window.CommandPracticeCourses[name]=[items.find(e=>e[0]==='VO+Fn+F8'),items.find(e=>e[0]==='VO+Semicolon')];
+ p.load('command-practice.js');p.get('startPractice').click();
+ tapCourseKey(p,'Control');tapCourseKey(p,'Option');
+ assert.equal(p.get('commandPrompt').children[0].textContent,'Press and release Fn');
+ assert.match(p.get('practiceStatus').textContent,/Fn.*Build the command/);
+ p.key('keyCapture','Control');assert.match(heard.at(-1),/Fn.*Build the command/);
+ assert.equal(p.key('keyCapture','Tab').defaultPrevented,false);
+ p.get('courseBuilderPanel').focus();buildStep(p,'VO+F8');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');p.advance();
+ tapCourseKey(p,'Control');tapCourseKey(p,'Option');p.key('keyCapture',';',{code:'Semicolon'});
+ assert.equal(p.get('practiceScore').textContent,'Correct: 2 · Attempts: 2');p.advance();assert.equal(p.get('practiceResults').hidden,false);
+});
+
 test('ZoomText Say sequences repeat the current layer and recover without restarting or early credit',()=>{
  const name='ZoomText and Fusion Desktop magnification';
  for(const finalKey of ['D','T','F','S','W','P','U']){

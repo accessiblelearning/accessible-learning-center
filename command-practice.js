@@ -674,7 +674,12 @@
   }
 
   function releasedKeyInstruction() {
-    return "Here, press and release one key at a time: " + practiceStepKeys().map(spokenKeyName).join(", then ") + ".";
+    return "Here, press and release one key at a time: " + practiceStepKeys().map(spokenKeyName).join(", then ") + "." + fnInputHelp();
+  }
+
+  function fnInputHelp() {
+    return usesReleasedKeys() && currentPracticeKey() === "Fn"
+      ? " If Fn is not detected, use Build the command below." : "";
   }
 
   function courseInstruction() {
@@ -1182,7 +1187,7 @@
       recordAttempt(normalizeExpected(expectedStep()));
     } else {
       renderCoursePrompt();
-      status.textContent = displaySignature(key) + " entered. Now press and release " + spokenKeyName(currentPracticeKey()) + ".";
+      status.textContent = displaySignature(key) + " entered. Now press and release " + spokenKeyName(currentPracticeKey()) + "." + fnInputHelp();
       speak(status.textContent);
     }
     return true;
@@ -1283,7 +1288,7 @@
     const normalizedExpected = expected.replace("ctrl", "control");
     // Function-key settings vary. Both documented versions of these system
     // shortcuts can be rehearsed without changing the real screen reader.
-    const functionVariant = built && isMacPractice() && command[3] === "builder" &&
+    const functionVariant = built && isMacPractice() && (command[3] === "builder" || command[4]?.fnOptional === true) &&
       pressed.replace("fn+", "") === normalizedExpected.replace("fn+", "");
 
     if (pressed === normalizedExpected || functionVariant) {

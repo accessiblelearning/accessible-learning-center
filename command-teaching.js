@@ -324,14 +324,79 @@
     });
   }
   const mac = courses["Mac VoiceOver basics"];
-  const malformed = mac.find(entry => entry[0] === "Shift+VO+H");
-  if (malformed) malformed[1] = "Read the help tag for the current item.";
+  const macSources = {
+    general: "https://support.apple.com/guide/voiceover/general-commands-cpvokys01/mac",
+    text: "https://support.apple.com/guide/voiceover/text-commands-cpvokys06/mac",
+    reading: "https://support.apple.com/guide/voiceover/vo2706/mac",
+    selection: "https://support.apple.com/guide/voiceover/mchlp2741/mac",
+    help: "https://support.apple.com/guide/voiceover/mchlp2687/mac",
+    panels: "https://support.apple.com/guide/voiceover/unac078/mac",
+    quickNav: "https://support.apple.com/guide/voiceover/vo27943/mac",
+    verbosity: "https://support.apple.com/guide/voiceover/mchlp2703/mac",
+    notifications: "https://support.apple.com/guide/voiceover/vo082d92ca69/mac",
+    commands: "https://support.apple.com/guide/voiceover/vo14096/mac",
+    curtain: "https://support.apple.com/guide/voiceover/vo2726/mac",
+    visuals: "https://support.apple.com/guide/voiceover/vo15626/mac"
+  };
+  // The same arrows mean different things while interacting with text. Apply
+  // these tasks only to the advanced entries, preserving basic item navigation.
+  const macAdvanced = {
+    "VO+P": ["In text, read the current paragraph.", "First interact with the document's text. Read the paragraph around your current position to hear a complete thought, such as a delivery instruction. This reviews the paragraph without highlighting it.", "reading"],
+    "VO+L": ["In text, read the current line.", "While interacting with text, check the line at your current position. For example, listen to the address line you just reached before moving farther down the document. This reads the current line rather than the next one.", "reading"],
+    "VO+S": ["In text, read the current sentence.", "While interacting with a draft, reread the sentence containing a correction. This can help you judge whether the whole sentence still makes sense after changing a word; it does not select the sentence for editing.", "reading"],
+    "VO+W": ["In text, read the current word.", "While interacting with text, check one word, such as a surname in an appointment note. One press reads it; repeat the command to hear its spelling, then again for phonetic spelling. This exercise rehearses the first press.", "reading"],
+    "VO+C": ["In text, read the current character.", "While interacting with text, inspect one character in a short reference code. For example, check a letter or punctuation mark before changing it. This task concerns text, not a table header or an interface control.", "text"],
+    "VO+V": ["Open the Verbosity rotor.", "Choose how much detail VoiceOver speaks. For example, use Left or Right Arrow to find Punctuation, then Up or Down Arrow to choose a level and Space to select it. Escape closes the rotor. This changes spoken detail, not the document's punctuation.", "verbosity"],
+    "VO+Q": ["Toggle single-key Quick Nav.", "Single-key Quick Nav makes letter keys navigate, such as B for a button, instead of acting as ordinary typing. Listen for the new on/off state. Turn it off before a task that needs those letters as input; this practice page does not change the setting for you.", "quickNav"],
+    "Shift+VO+Q": ["Toggle arrow-key Quick Nav.", "Arrow-key Quick Nav lets arrows navigate without holding the VoiceOver modifier. Listen for whether it is on or off before continuing. For example, turn it off when you need plain arrows to reach an application's own controls rather than use Quick Nav navigation.", "quickNav"],
+    "Command+F5": ["Turn VoiceOver on or off.", "This system shortcut changes whether VoiceOver is running. Rehearse the separate keys or use Build the command here so your screen reader stays available. Completing the exercise changes only the practice score, not your Mac's accessibility settings.", "general"],
+    "VO+Fn+F8": ["Open VoiceOver Utility.", "Open the place where you review VoiceOver preferences, such as navigation or spoken detail. Opening the utility does not itself change a setting. Use Build the command here; it accepts the version without Fn when your Mac uses standard function keys.", "general"],
+    "VO+Semicolon": ["Lock or unlock the VoiceOver modifier.", "Lock the modifier when you want to enter several VoiceOver commands without holding it each time. Unlock it before ordinary typing. For example, a letter you intend to type could otherwise be interpreted as a command. This exercise only rehearses the shortcut.", "general"],
+    "VO+Command+Fn+F8": ["Open the VoiceOver Tutorial.", "Start Apple's interactive tutorial to learn and rehearse essential VoiceOver skills on your Mac. This opens the learning tutorial, while VO plus Fn plus F8 opens settings. Use this when you want guided practice rather than to change a preference.", "help"],
+    "Shift+VO+H": ["Read the current item's help tag.", "Put the VoiceOver cursor on an unfamiliar control before asking for its help tag. For example, learn what a toolbar button does before activating it. If the app provides no help tag, VoiceOver tells you that; the command does not press the button.", "help"],
+    "Shift+VO+N": ["Hear how to use the current item.", "Ask for VoiceOver's usage hint while the cursor is on the item you need. For example, find out how to work with an unfamiliar control before trying to change its value. This requests a hint about using the item, rather than the app's help tag.", "help"],
+    "Shift+VO+F": ["Open Find Commands.", "Use the Find Commands menu when you remember an action you need but not its keyboard shortcut. For example, look for a reading action before returning to your document. Finding a command is different from searching the words in the document itself.", "general"],
+    "VO+N": ["Open the Notifications menu.", "Review notifications currently displayed on the screen. Use VO plus Up or Down Arrow to choose one, then VO plus Space to open it. For example, inspect an alert without assuming its arrival placed the cursor there. Older missed notifications may require Notification Center instead.", "notifications"],
+    "VO+Fn+F7": ["Read the current date and time.", "Check the Mac's date and time without navigating away to look for a clock. For example, check whether it is nearly time for a lesson. This exercise uses one press; repeated presses of this command have other status-reporting functions.", "general"],
+    "VO+Tab": ["Pass the next keypress to the application.", "Tell VoiceOver to let the next key or combination go to the application. Use this for one application command that VoiceOver would otherwise intercept. It does not turn VoiceOver off or permanently change its shortcuts. Here, rehearse using separate keys or the builder.", "general"],
+    "VO+Command+Fn+F11": ["Show or hide VoiceOver's visual aids.", "Temporarily hide or restore the VoiceOver cursor and caption or braille panels together. For example, clear these overlays while a sighted colleague views a page, then restore them for a lesson. This controls the visual aids, not whether VoiceOver is running.", "panels"],
+    "VO+Command+Fn+F10": ["Show or hide the caption panel.", "Display VoiceOver's spoken words on screen, or hide that caption panel again. This can help a sighted instructor follow what the learner hears. The panel is a visual aid; hiding it does not mean the screen reader has stopped speaking.", "panels"],
+    "Shift+VO+Fn+F10": ["Move or resize the caption panel.", "Show the caption panel first. Repeat this command to choose moving or resizing, then use the VoiceOver modifier with arrows to adjust it. Press Escape when finished. For example, move the panel away from a control it covers without changing the page itself.", "panels"],
+    "VO+Command+Fn+F9": ["Show or hide the braille panel.", "Show an on-screen representation of Braille with its text translation. It can help an instructor follow Braille output; it is not a physical braille display. This shortcut switches the panel setting on or off rather than connecting a device.", "panels"],
+    "Shift+VO+Fn+F9": ["Move or resize the braille panel.", "With the braille panel shown, choose moving or resizing by repeating the command. Adjust it with the VoiceOver modifier and arrows; press Escape to finish. For example, reposition the panel while keeping the learner's working area visible.", "panels"],
+    "VO+Fn+F10": ["Center the current item with tile visuals.", "Tile visuals brings the item under the VoiceOver cursor to the center and dims the surrounding screen. It can help a learner or instructor follow the current item while navigating. Use the same command again to restore the normal view.", "visuals"],
+    "Shift+VO+K": ["Toggle VoiceOver Option-key commands.", "Enable or disable the additional method of controlling VoiceOver with Option-key assignments. These assignments can be customized, so check what is assigned on your Mac before relying on a particular letter. This differs from single-key Quick Nav and from holding Control plus Option as VO.", "commands"],
+    "Shift+VO+Fn+F11": ["Toggle the screen curtain.", "The screen curtain makes the Mac's screen black while you use VoiceOver. Use the same command again to reveal the screen. In this simulator, use separated keys or the builder so the actual display stays available; practicing does not turn on the real curtain.", "curtain"],
+    "VO+A": ["In text, read from the current position.", "First interact with the document's text to read from the VoiceOver cursor toward the end. For example, resume reading a letter from the paragraph you reached. Without interacting, Read All can begin from the top instead, so check your text context first.", "reading"],
+    "Shift+VO+A": ["Select the text in the VoiceOver cursor.", "Use this with text in the VoiceOver cursor, for example a passage you want to reuse. Check which text is highlighted before copying or replacing it. This creates a selection; the plain VO plus A command reads text instead.", "text"],
+    "VO+Enter": ["In a text field, start or stop selection.", "Text selection tracking must be on. Put the VoiceOver cursor at the start, press VO plus Return, navigate through the text to select, then press VO plus Return again. For example, mark a short phrase before copying it. Return is the Mac key called Enter in this practice.", "selection"],
+    "VO+T": ["In text, describe the formatting.", "Inspect the formatting at the VoiceOver cursor before making a change. For example, check the emphasis on a title in your draft. This reports text attributes; it does not apply bold, italics or a new style.", "text"],
+    "Shift+VO+Page Down": ["In text, read the next paragraph.", "While interacting with text, move forward one paragraph rather than reading a line at a time. For example, continue from an introduction to the next instruction. This is paragraph review, not a command to turn a document page.", "text"],
+    "Shift+VO+Page Up": ["In text, read the previous paragraph.", "While interacting with text, return to the preceding paragraph. For example, revisit the delivery details after reading a closing sentence. The unit is a paragraph, even though the shortcut uses the Page Up key.", "text"],
+    "VO+Command+Page Down": ["In text, read the next sentence.", "While interacting with text, advance by one sentence. For example, review the next step of a written procedure without starting another full paragraph. Command distinguishes sentence movement from the paragraph shortcut that uses Shift.", "text"],
+    "VO+Command+Page Up": ["In text, read the previous sentence.", "While interacting with text, reread the sentence just before your current position. For example, check the condition that applies to the instruction you are reading. This reviews the earlier sentence without highlighting it.", "text"],
+    "VO+Down Arrow": ["In text, read the next line.", "First interact with the text area, then move forward line by line. For example, review the next line of an address. Outside text, the same keys can navigate interface items, so listen to the current context before using them.", "reading"],
+    "VO+Up Arrow": ["In text, read the previous line.", "While interacting with text, revisit the preceding line. For example, check the street name above a city and postal code. This is line review in a text area, rather than moving up through an unrelated menu.", "reading"],
+    "VO+Right Arrow": ["In text, read the next word.", "First interact with the text area, then review one word at a time. For example, check the words following a name in a note. Outside text, these keys move between interface items; they do not always mean next word.", "reading"],
+    "VO+Left Arrow": ["In text, read the previous word.", "While interacting with text, return to the word just before your current position. For example, reread an amount's label before correcting it. This text-review task is separate from the earlier command for the previous interface item.", "reading"],
+    "VO+Delete": ["In the TextEdit ruler, delete a tab stop.", "The VoiceOver cursor must be on a tab stop in TextEdit's ruler. Remove that layout marker, for example after deciding a custom text alignment is unnecessary. This is not a general command to delete the current word or paragraph.", "text"],
+    "VO+Fn+F3": ["In text, report the current word and character.", "Use one press to report the word and character at the VoiceOver cursor while reviewing text. For example, confirm your position within a reference code. The text context matters: elsewhere this command describes the current item, and repeated presses provide different information.", "text"]
+  };
+  for (const entry of mac) {
+    if (entry[4].level !== "advanced" || !macAdvanced[entry[0]]) continue;
+    const [goal, note, source] = macAdvanced[entry[0]];
+    entry[1] = goal; entry[2] = note;
+    entry[4] = {...entry[4], source: macSources[source]};
+    if (/\+Fn\+F(?:[1-9]|1[0-2])$/.test(entry[0])) entry[4].fnOptional = true;
+  }
   // Legacy links remain useful focused practice. The main topic still contains the full course.
   const copy = entry => [entry[0], entry[1], entry[2], entry[3], {...entry[4]}];
   const editingKeys = new Set(["Control+X", "Control+C", "Control+V", "Control+A", "Control+Z", "Control+Y", "Control+Shift+V", "Control+B", "Control+I", "Control+U", "Control+[", "Control+]", "Control+E", "Control+L", "Control+R", "Control+Alt+C", "Control+Alt+V"]);
   courses["General editing"] = courses["Microsoft Word and documents"].filter(e => editingKeys.has(e[0])).map(copy);
-  const textKeys = new Set(["VO+P", "VO+L", "VO+S", "VO+W", "VO+C", "VO+V", "VO+T", "VO+Fn+F8", "VO+Delete", "VO+Fn+F3", "Shift+VO+A", "VO+Enter"]);
-  courses["Mac VoiceOver reading and settings"] = mac.filter(e => textKeys.has(e[0]) || /paragraph|sentence|text-commands/.test(e[1] + ' ' + e[4].source)).map(copy);
+  // Preserve the existing 24-task reading/settings route by task identity,
+  // rather than making its coverage depend on wording or a reference URL.
+  const textKeys = new Set(["VO+P", "VO+L", "VO+S", "VO+W", "VO+C", "VO+V", "VO+T", "VO+Fn+F8", "VO+Delete", "VO+Fn+F3", "Shift+VO+A", "VO+Enter", "VO+Q", "Shift+VO+Q", "Command+F5", "VO+A", "Shift+VO+Page Down", "Shift+VO+Page Up", "VO+Command+Page Down", "VO+Command+Page Up", "VO+Down Arrow", "VO+Up Arrow", "VO+Right Arrow", "VO+Left Arrow"]);
+  courses["Mac VoiceOver reading and settings"] = mac.filter(e => e[4].level === "advanced" && textKeys.has(e[0])).map(copy);
   const reading = new Set(courses["Mac VoiceOver reading and settings"].map(e => e[1]));
   courses["Mac VoiceOver navigation and web"] = mac.filter(e => !reading.has(e[1])).map(copy);
   for (const name of ["General editing", "Mac VoiceOver reading and settings", "Mac VoiceOver navigation and web"]) {
