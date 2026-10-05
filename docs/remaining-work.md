@@ -35,6 +35,8 @@ The JAWS follow-up improves all **11 advanced explanations** and adds current-st
 
 The slideshow follow-up appends **PowerPoint mission 24** with five simulated steps, shortcut alternatives and explicit slide/focus changes. It also clarifies repeated-Undo feedback in Word mission 3. See [the slideshow checkpoint](qa-2026-10-05-slideshow.md). **154 public tests pass** and Chromium checks pass. Preserve IDs 0–24; append at 25 onward. The private account registry must eventually include mission 24 before imports. Private sources and typing paths remain unchanged.
 
+The keyboarding stats follow-up exposes the latest 10 existing saved sessions per hand path with date, mode, lesson, speed, accuracy and duration, and separates copy speed from gross free-typing speed. See [the stats checkpoint](qa-2026-10-05-keyboard-stats.md). **155 public tests pass** and a fictional-data Chromium check passes. This is browser-local reporting; private account trends, synchronization and import remain unfinished. Existing retention and opt-in behavior are unchanged.
+
 ## Needs targeted human/device feedback
 
 - JAWS/NVDA and Mac VoiceOver/Safari: spoken feedback, focus and real shortcut conflicts.

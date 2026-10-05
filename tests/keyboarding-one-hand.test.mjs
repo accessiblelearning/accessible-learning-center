@@ -78,7 +78,7 @@ function page({ saved = {}, blocked = false, typingDelay = 700, speechFault } = 
     addEventListener() {}
   };
   const sessionStorage = { getItem() { if (blocked) throw Error('blocked'); return null; }, setItem() { if (blocked) throw Error('blocked'); } };
-  const context = vm.createContext({ document, window, localStorage: storage, sessionStorage, SpeechSynthesisUtterance: Utterance, Date: { now: () => clock } });
+  const context = vm.createContext({ document, window, localStorage: storage, sessionStorage, SpeechSynthesisUtterance: Utterance, Date: class extends Date { static now() { return clock; } } });
   vm.runInContext(source('keyboarding-one-hand.js'), context);
   // Expose pure curriculum/prompt helpers only within this test context.
   vm.runInContext(source('keyboarding-preview.js').replace(/\}\)\(\);\s*$/, 'globalThis.testApi = {lessonFor, buildPrompt}; })();'), context);
@@ -223,6 +223,29 @@ test('legacy side-filtered progress cannot unlock new lessons and two-hand progr
   p.changeHand('both'); assert.equal(p.get('lessonSetting').value, '1');
   p.completeLesson('both', 1);
   assert.equal(p.get('resultAction').dataset.action, 'next');
+});
+
+test('recent stats pair speed with accuracy and keep free typing and hand paths separate', () => {
+ const sessions=Array.from({length:12},(_,i)=>({path:'en:both:',mode:'guided',lesson:i+1,wpm:i+5,accuracy:90,seconds:60,completedAt:1700000000000+i*1000}));
+ sessions.push({path:'en:both:',mode:'free',lesson:1,wpm:80,accuracy:null,seconds:20,completedAt:1700000020000});
+ sessions.push({path:'en:both:',mode:'words',lesson:2,wpm:null,accuracy:null,seconds:null});
+ sessions.push({path:'en:left:one-hand-v1:',mode:'guided',lesson:1,wpm:99,accuracy:100,seconds:60});
+ const original=JSON.stringify({completed:[],sessions,difficult:{}});
+ const p=page({saved:{[storageKey]:original}});p.menu('stats');
+ assert.equal(p.get('statsSpeed').textContent,'16 WPM');
+ assert.equal(p.get('statsFreeSpeed').textContent,'80 gross WPM');
+ assert.equal(p.get('statsAccuracy').textContent,'90%');
+ const rows=p.get('sessionHistory').children;
+ assert.equal(rows.length,10);assert.match(rows[0].textContent,/Untimed free typing.*80 gross WPM.*Accuracy not assessed.*20 seconds/);
+ assert.match(rows[1].textContent,/Lesson 12.*16 WPM.*90% accuracy.*60 seconds/);
+ assert.doesNotMatch(rows.map(e=>e.textContent).join(' '),/99 WPM/);
+ assert.equal(p.data.get(storageKey),original,'Viewing stats must not rewrite saved history');
+ p.changeHand('left');p.menu('stats');assert.equal(p.get('statsSpeed').textContent,'99 WPM');assert.equal(p.get('sessionHistory').children.length,1);
+ p.changeHand('right');p.menu('stats');assert.equal(p.get('sessionHistory').children.length,0);
+ assert.equal(p.get('statsSpeed').textContent,'No copy sessions');
+ assert.match(p.get('sessionHistoryNote').textContent,/No saved results/);
+ const missing=page({saved:{[storageKey]:JSON.stringify({sessions:[{path:'en:both:',mode:'words',lesson:1,wpm:null,accuracy:null,seconds:null}],completed:[]})}});
+ missing.menu('stats');assert.match(missing.get('sessionHistory').children[0].textContent,/Date unavailable.*Speed unavailable.*Accuracy unavailable.*Duration unavailable/);
 });
 
 test('Shift hints use Sticky Keys, modifiers are not errors, and slow accurate typing passes', () => {

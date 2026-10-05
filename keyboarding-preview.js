@@ -893,9 +893,32 @@
     document.getElementById("statsHeading").textContent = "My Stats: " + selectedText(handSetting);
     document.getElementById("statsLessons").textContent = completedLessons.size + " of " + lessonCount(handSetting.value);
     document.getElementById("statsSessions").textContent = String(sessions.length);
-    const accuracySessions = sessions.filter(item => item.accuracy !== null && Number.isFinite(Number(item.accuracy)));
+    const isFreeSession = item => item.mode === "free" || String(item.mode).startsWith("free-speed-");
+    const validMetric = (value, max = Infinity) => value !== null && value !== undefined && value !== "" && Number.isFinite(Number(value)) && Number(value) >= 0 && Number(value) <= max;
+    const copySessions = sessions.filter(item => !isFreeSession(item));
+    const accuracySessions = copySessions.filter(item => validMetric(item.accuracy, 100));
     document.getElementById("statsAccuracy").textContent = accuracySessions.length ? Math.max(...accuracySessions.map(item => Number(item.accuracy))) + "%" : "No copy sessions";
-    document.getElementById("statsSpeed").textContent = sessions.length ? Math.max(...sessions.map(item => Number(item.wpm) || 0)) + " WPM" : "No sessions";
+    const copySpeeds = copySessions.filter(item => validMetric(item.wpm));
+    const freeSpeeds = sessions.filter(item => isFreeSession(item) && validMetric(item.wpm));
+    document.getElementById("statsSpeed").textContent = copySpeeds.length ? Math.max(...copySpeeds.map(item => Number(item.wpm))) + " WPM" : "No copy sessions";
+    document.getElementById("statsFreeSpeed").textContent = freeSpeeds.length ? Math.max(...freeSpeeds.map(item => Number(item.wpm))) + " gross WPM" : "No free-typing sessions";
+    const history = document.getElementById("sessionHistory");
+    history.replaceChildren();
+    const modeLabels = {guided:"Guided lesson", words:"Word practice", sentences:"Sentence practice", "speed-60":"One-minute copy practice", "speed-180":"Three-minute copy practice", "speed-360":"Six-minute copy practice", "free-speed-60":"One-minute free typing", "free-speed-180":"Three-minute free typing", "free-speed-360":"Six-minute free typing", free:"Untimed free typing"};
+    sessions.slice().sort((a, b) => (Number(b.completedAt) || 0) - (Number(a.completedAt) || 0)).slice(0, 10).forEach(item => {
+      const row = document.createElement("li");
+      const date = new Date(item.completedAt);
+      const dated = validMetric(item.completedAt) && Number.isFinite(date.getTime());
+      const lesson = Number.isInteger(Number(item.lesson)) && Number(item.lesson) >= 1 && Number(item.lesson) <= lessonCount(handSetting.value) ? "Lesson " + item.lesson : "Lesson unavailable";
+      const speed = validMetric(item.wpm) ? item.wpm + (isFreeSession(item) ? " gross WPM" : " WPM") : "Speed unavailable";
+      const accuracy = isFreeSession(item) ? "Accuracy not assessed for free typing" : validMetric(item.accuracy, 100) ? item.accuracy + "% accuracy" : "Accuracy unavailable";
+      const duration = validMetric(item.seconds) ? Math.round(Number(item.seconds)) + " seconds practiced" : "Duration unavailable";
+      row.textContent = (dated ? date.toLocaleString() : "Date unavailable") + ". " + lesson + ". " + (modeLabels[item.mode] || "Practice") + ". " + speed + ". " + accuracy + ". " + duration + ".";
+      history.append(row);
+    });
+    document.getElementById("sessionHistoryNote").textContent = sessions.length
+      ? "Latest " + Math.min(10, sessions.length) + " saved results for this hand path, newest first. Compare the same lesson and practice mode. Free typing measures gross speed without checking accuracy. This browser retains up to 100 sessions across all paths."
+      : "No saved results for this hand path yet. Save progress must be on when you practice.";
     const minutes = Math.round(sessions.reduce((total, item) => total + (Number(item.seconds) || 0), 0) / 60);
     document.getElementById("statsTime").textContent = minutes + (minutes === 1 ? " minute" : " minutes");
     const mistakes = {};
