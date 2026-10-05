@@ -1264,7 +1264,7 @@
     if (session.durationSeconds) {
       timerId = window.setInterval(() => {
         if (!session || session.finished) return;
-        session.secondsLeft -= 1;
+        session.secondsLeft = Math.max(0, session.durationSeconds - Math.floor((Date.now() - session.startedAt) / 1000));
         progressText.textContent = session.secondsLeft + " seconds remaining";
         lessonProgress.value = session.durationSeconds - session.secondsLeft;
         if (session.secondsLeft <= 0) finishPractice();
@@ -1288,7 +1288,7 @@
     const accuracy = isFree ? null : (attempts ? Math.round((session.correct / attempts) * 100) : 0);
     const elapsedMilliseconds = session.promptGroups
       ? Math.max(session.typingMilliseconds, 1000)
-      : Math.max(Date.now() - session.startedAt, 1000);
+      : Math.max(Math.min(Date.now() - session.startedAt, session.durationSeconds ? session.durationSeconds * 1000 : Infinity), 1000);
     const minutes = Math.max(elapsedMilliseconds / 60000, 1 / 60);
     const wpm = Math.round((session.correct / 5) / minutes);
     session.finalAccuracy = accuracy;
@@ -1506,6 +1506,10 @@
       return;
     }
     if (document.getElementById("practicePanel").hidden || !session) return;
+    if (finishExpiredPractice()) {
+      event.preventDefault();
+      return;
+    }
     if (event.target !== freeTypeInput && event.target.closest?.("button,a,input,select,textarea,summary,[contenteditable]")) return;
     const isLargerPrint = event.ctrlKey && !event.altKey && !event.metaKey && (event.key === "+" || event.key === "=" || event.code === "NumpadAdd");
     const isSmallerPrint = event.ctrlKey && !event.altKey && !event.metaKey && (event.key === "-" || event.code === "NumpadSubtract");
@@ -1591,6 +1595,15 @@
   document.querySelectorAll('input[name="voice"]').forEach(input => input.addEventListener("change", () => setVoice(input.value === "site", false)));
   document.getElementById("statsBack").addEventListener("click", () => show("setupPanel"));
   finishFreeType.addEventListener("click", finishPractice);
+  function finishExpiredPractice() {
+    if (!session || !session.started || session.finished || !session.durationSeconds) return false;
+    if (Date.now() - session.startedAt < session.durationSeconds * 1000) return false;
+    finishPractice();
+    return true;
+  }
+  freeTypeInput.addEventListener("beforeinput", event => {
+    if (finishExpiredPractice()) event.preventDefault();
+  });
   freeTypeInput.addEventListener("input", () => {
     if (!session || !isFreeTypingMode(session.mode)) return;
     progressText.textContent = freeTypeInput.value.length + (freeTypeInput.value.length === 1 ? " character typed" : " characters typed");

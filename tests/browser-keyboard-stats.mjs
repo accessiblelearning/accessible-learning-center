@@ -37,5 +37,22 @@ try{
  await page.screenshot({path:join(dir,'keyboard-history-narrow.png'),fullPage:true});
  assert.equal(await page.evaluate(key=>localStorage.getItem(key),key),saved);
  await page.keyboard.press('Escape');assert.equal(await page.locator('#setupPanel').isVisible(),true);
+ await page.clock.install();
+ for(const mode of ['speed-60','speed-180','speed-360','free-speed-60','free-speed-180','free-speed-360']){
+  const free=mode.startsWith('free-'),seconds=Number(mode.split('-').at(-1));
+  await page.locator('[data-main-action="practice"]').click();
+  await page.locator('[data-practice-menu="'+(free?'freeTestMenuPanel':'copyTestMenuPanel')+'"]').click();
+  await page.locator('[data-practice-mode="'+mode+'"]').click();
+  await page.keyboard.press('f');
+  if(free)await page.locator('#freeTypeInput').fill('hello');
+  // fastForward fires each due interval at most once, as after a long stall.
+  await page.clock.fastForward(10000);
+  assert.match(await page.locator('#progressText').textContent(),new RegExp('^'+(seconds-10)+' seconds'));
+  await page.clock.fastForward((seconds+5)*1000);
+  assert.equal(await page.locator('#resultsPanel').isVisible(),true,mode);
+  if(free)assert.equal(await page.locator('#accuracyResult').textContent(),'5');
+  await page.keyboard.press('Escape');
+ }
+ console.log('All six timed modes finish after delayed interval callbacks at their elapsed-time deadlines.');
  assert.deepEqual(errors,[]);console.log('Fictional keyboard history: speed separation, paired results, native disclosure, narrow layout, Axe, unchanged storage and Escape passed. Not a real screen-reader or Safari test.');
 }finally{await browser?.close();await new Promise(r=>server.close(r));}

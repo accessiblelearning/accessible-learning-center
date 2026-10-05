@@ -33,6 +33,7 @@ function page({ saved = {}, blocked = false, typingDelay = 700, speechFault } = 
       for (const fn of this.listeners[type] || []) fn(event);
     }
     click() { if (!this.disabled) this.fire('click'); }
+    dispatchEvent(event) { this.fire(event.type, event); return true; }
     focus() { document.activeElement = this; this.fire('focus'); }
     append(...children) { this.children.push(...children); }
     appendChild(child) { this.append(child); }
@@ -69,7 +70,8 @@ function page({ saved = {}, blocked = false, typingDelay = 700, speechFault } = 
       '[data-setting]': settings, '[data-manual-hand]': manualLinks })[selector] || [] });
   const storage = { getItem(k) { if (blocked) throw Error('blocked'); return data.get(k) ?? null; },
     setItem(k, v) { if (blocked) throw Error('blocked'); data.set(k, v); } };
-  const window = { setTimeout(fn) { timers.push(fn); }, clearInterval() {}, setInterval() {}, requestAnimationFrame(fn) { fn(); } };
+  let interval;
+  const window = { setTimeout(fn) { timers.push(fn); }, clearInterval() { interval = null; }, setInterval(fn) { interval = fn; return 1; }, requestAnimationFrame(fn) { fn(); } };
   class Utterance { constructor(text) { this.text = text; } }
   if (speechFault) window.speechSynthesis = {
     getVoices() { if (speechFault === 'getVoices') throw Error('Speech unavailable'); return []; },
@@ -78,7 +80,7 @@ function page({ saved = {}, blocked = false, typingDelay = 700, speechFault } = 
     addEventListener() {}
   };
   const sessionStorage = { getItem() { if (blocked) throw Error('blocked'); return null; }, setItem() { if (blocked) throw Error('blocked'); } };
-  const context = vm.createContext({ document, window, localStorage: storage, sessionStorage, SpeechSynthesisUtterance: Utterance, Date: class extends Date { static now() { return clock; } } });
+  const context = vm.createContext({ document, window, localStorage: storage, sessionStorage, SpeechSynthesisUtterance: Utterance, Event: class { constructor(type) { this.type = type; } }, Date: class extends Date { static now() { return clock; } } });
   vm.runInContext(source('keyboarding-one-hand.js'), context);
   // Expose pure curriculum/prompt helpers only within this test context.
   vm.runInContext(source('keyboarding-preview.js').replace(/\}\)\(\);\s*$/, 'globalThis.testApi = {lessonFor, buildPrompt}; })();'), context);
@@ -86,6 +88,7 @@ function page({ saved = {}, blocked = false, typingDelay = 700, speechFault } = 
   function key(character) { clock += typingDelay; document.fire('keydown', { key: character }); document.fire('keyup', { key: character }); advance(); }
   const api = {
     get, data, document, helpers: context.testApi, oneHand: context.ALCOneHandCurriculum,
+    elapse(ms, tick = true) { clock += ms; if (tick) interval?.(); },
     changeHand(hand) { get('handSetting').value = hand; get('handSetting').fire('change'); },
     setting(name) { settings.find(e => e.dataset.setting === name).click(); },
     menu(name) { mainButtons.find(e => e.dataset.mainAction === name).click(); advance(); },
@@ -246,6 +249,24 @@ test('recent stats pair speed with accuracy and keep free typing and hand paths 
  assert.match(p.get('sessionHistoryNote').textContent,/No saved results/);
  const missing=page({saved:{[storageKey]:JSON.stringify({sessions:[{path:'en:both:',mode:'words',lesson:1,wpm:null,accuracy:null,seconds:null}],completed:[]})}});
  missing.menu('stats');assert.match(missing.get('sessionHistory').children[0].textContent,/Date unavailable.*Speed unavailable.*Accuracy unavailable.*Duration unavailable/);
+});
+
+test('timed practice uses elapsed time after delayed callbacks and rejects input after its deadline', () => {
+ for(const mode of ['speed-60','speed-180','speed-360','free-speed-60','free-speed-180','free-speed-360']){
+  const p=page();p.get('saveSetting').checked=true;p.get('saveSetting').fire('change');p.get('modeSetting').value=mode;p.start(0);p.key('f');
+  p.elapse(10000);assert.match(p.get('progressText').textContent,new RegExp('^'+(Number(mode.split('-').at(-1))-10)+' seconds remaining'));
+  p.elapse(Number(mode.split('-').at(-1))*1000);
+  assert.equal(p.get('resultsPanel').hidden,false);
+ }
+ for(const trigger of ['key','beforeinput']){
+  const p=page();p.get('modeSetting').value='free-speed-60';p.start(0);p.key('f');
+  p.get('freeTypeInput').value='hello';p.elapse(65000,false);
+  let prevented=false;
+  if(trigger==='key')p.document.fire('keydown',{key:'x',target:p.get('freeTypeInput'),preventDefault(){prevented=true;}});
+  else p.get('freeTypeInput').fire('beforeinput',{preventDefault(){prevented=true;}});
+  assert.equal(prevented,true);assert.equal(p.get('resultsPanel').hidden,false);
+  assert.equal(p.get('accuracyResult').textContent,'5');assert.equal(p.get('speedResult').textContent,'1');
+ }
 });
 
 test('Shift hints use Sticky Keys, modifiers are not errors, and slow accurate typing passes', () => {

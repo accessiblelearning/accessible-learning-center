@@ -37,6 +37,8 @@ The slideshow follow-up appends **PowerPoint mission 24** with five simulated st
 
 The keyboarding stats follow-up exposes the latest 10 existing saved sessions per hand path with date, mode, lesson, speed, accuracy and duration, and separates copy speed from gross free-typing speed. See [the stats checkpoint](qa-2026-10-05-keyboard-stats.md). **155 public tests pass** and a fictional-data Chromium check passes. This is browser-local reporting; private account trends, synchronization and import remain unfinished. Existing retention and opt-in behavior are unchanged.
 
+The timer follow-up fixes delayed browser callbacks extending timed keyboard practice. All six timed modes now use elapsed-time countdowns, cap scored duration and reject input after expiry. See [the timing checkpoint](qa-2026-10-05-timing.md). **156 public tests pass** and Chromium delayed-callback checks pass. Existing guided timing, lesson paths, saved data and private work remain unchanged.
+
 ## Needs targeted human/device feedback
 
 - JAWS/NVDA and Mac VoiceOver/Safari: spoken feedback, focus and real shortcut conflicts.
