@@ -196,7 +196,7 @@ test("Insert release, missing release, focus loss, and retry do not leave a modi
 });
 
 test("new topic routes wait for the mission catalog and reject invalid mission numbers", () => {
-  for (const [mission, valid] of [["8", true], ["12", true], ["19", true], ["20", true], ["21", true], ["22", true], ["23", true], ["24", false], ["", false], ["-1", false], ["1.5", false]]) {
+  for (const [mission, valid] of [["8", true], ["12", true], ["19", true], ["20", true], ["21", true], ["22", true], ["23", true], ["24", true], ["25", false], ["", false], ["-1", false], ["1.5", false]]) {
     const p = page();
     p.window.location.search = `?reader=jaws&mission=${mission}`;
     p.load("topic-mission-session.js");
@@ -953,6 +953,43 @@ test('Word save-or-close routes recover, repeat the actual state, and preserve o
   labels.forEach((label,i)=>assert.ok(p.get('missionMasteredList').children[i].textContent.startsWith(label+':')));
   assert.match(heard.at(-1),/report’s editing window.*Mission complete/);
  }
+});
+
+test('slideshow recovery accepts documented alternatives and confirms numeric jumps separately',()=>{
+ for(const restore of ['b','.'])for(const next of ['ArrowRight','n','Enter','PageDown','ArrowDown',' ']){
+  const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'24'},simulatedVoice:{checked:true}}),heard=[];
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);
+  p.storage.setItem('missionControlCompleted','[3,19,23]');p.load('troubleshooting-lab.js');p.get('startMission').click();
+  const keys=[restore,'Home',next,'5','Enter'];
+  const states=[/blanked/,/Slide 3/,/Slide 1/,/slide 5/,/number 5/];
+  for(let i=0;i<keys.length;i++){
+   p.key('missionControlStation','q');assert.equal(p.get('missionProgress').value,i);
+   assert.match(p.get('transcript').textContent,/That command did not complete this step/);
+   p.key('missionControlStation','Control');assert.match(heard.at(-1),states[i]);
+   p.key('missionControlStation','F1');assert.match(heard.at(-1),/Strategy hint/);
+   p.key('missionControlStation',keys[i]);
+   if(i<4){assert.equal(p.get('missionResults').hidden,true);assert.match(heard.at(-1),new RegExp('Step '+(i+2)+' of 5'));}
+  }
+  assert.equal(p.get('missionResults').hidden,false);
+  assert.equal(p.get('missionAttemptResult').textContent,'10');
+  assert.match(heard.at(-1),/slide 5, Questions.*Mission complete/);
+  assert.deepEqual(JSON.parse(p.storage.getItem('missionControlCompleted')),[3,19,23,24]);
+  assert.equal(p.document.activeElement,p.get('nextMission'));
+  p.get('retryMissionResult').click();assert.equal(p.get('missionProgress').value,0);
+  assert.match(p.get('missionProblem').textContent,/blanked/);
+ }
+ const p=page();p.load('mission-catalog.js');
+ assert.deepEqual(Array.from(p.window.MissionControlCatalog.find(t=>t.id==='microsoft-powerpoint').missionSets,e=>e.mission),['15','19','24']);
+});
+
+test('Word recovery says the text is restored when Undo is repeated and still accepts saving',()=>{
+ const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'3'},simulatedVoice:{checked:true}}),heard=[];
+ p.window.speechSynthesis.speak=u=>heard.push(u.text);p.load('troubleshooting-lab.js');p.get('startMission').click();
+ p.key('missionControlStation','s',{ctrlKey:true});assert.match(heard.at(-1),/text is still missing/);
+ p.key('missionControlStation','z',{ctrlKey:true});assert.equal(p.get('missionProgress').value,1);
+ p.key('missionControlStation','z',{ctrlKey:true});assert.match(heard.at(-1),/already restored.*Save the corrected document/);
+ p.key('missionControlStation','Control');assert.match(heard.at(-1),/Step 2 of 2.*Now save/);
+ p.key('missionControlStation','s',{ctrlKey:true});assert.equal(p.get('missionResults').hidden,false);
 });
 
 test('restarting a branched mission resets its route and held keys cannot finish the next step',()=>{

@@ -237,6 +237,7 @@
     if (topic.id === "microsoft-word") topic.missionSets.push({id:"word-save-close-choice",label:"Microsoft Word: Save your notes when leaving Word",mission:"23"});
     if (topic.id === "microsoft-excel") topic.missionSets.push({id:"excel-paste-values",label:"Microsoft Excel: Keep a fixed total instead of a formula",mission:"18"});
     if (topic.id === "microsoft-powerpoint") topic.missionSets.push({id:"powerpoint-uncover-title",label:"Microsoft PowerPoint: Uncover a title with the Selection pane",mission:"19"});
+    if (topic.id === "microsoft-powerpoint") topic.missionSets.push({id:"powerpoint-restore-show",label:"Microsoft PowerPoint: Recover a blanked slideshow and answer a question",mission:"24"});
   }
   for (const topic of window.MissionControlCatalog) {
     if (topic.id === "mac-voiceover") topic.commandSets = [{id:"mac-voiceover-basics", menuLabel:"Mac VoiceOver", label:"Mac VoiceOver: basic through advanced commands", category:"Mac VoiceOver basics"}];

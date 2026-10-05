@@ -33,6 +33,8 @@ The next batch reviews all **40 advanced VoiceOver tasks**, replaces their gener
 
 The JAWS follow-up improves all **11 advanced explanations** and adds current-step teaching to **8 layered commands**, preserving the complete 32-command course. See [the JAWS checkpoint](qa-2026-10-05-jaws.md). **152 public tests pass**; Chromium completes all 32 tasks with site voice on and off, including wrong-layer recovery and current-step repeat. No private sources, missions or typing paths changed. Actual JAWS/Safari testing remains unverified.
 
+The slideshow follow-up appends **PowerPoint mission 24** with five simulated steps, shortcut alternatives and explicit slide/focus changes. It also clarifies repeated-Undo feedback in Word mission 3. See [the slideshow checkpoint](qa-2026-10-05-slideshow.md). **154 public tests pass** and Chromium checks pass. Preserve IDs 0–24; append at 25 onward. The private account registry must eventually include mission 24 before imports. Private sources and typing paths remain unchanged.
+
 ## Needs targeted human/device feedback
 
 - JAWS/NVDA and Mac VoiceOver/Safari: spoken feedback, focus and real shortcut conflicts.

@@ -298,7 +298,7 @@ check(existsSync(resolve(root, "manuals-filter.js")), "Manual catalog filtering 
 const troubleshootingLab = readFileSync(resolve(root, "troubleshooting-lab.js"), "utf8");
 const missionData = {window:{}};
 runInNewContext(troubleshootingLab.split('  const perspective =')[0] + 'window.validatedMissions = missions;})();', missionData);
-check(missionData.window.validatedMissions.length >= 24, "Mission Control is missing an existing mission.");
+check(missionData.window.validatedMissions.length >= 25, "Mission Control is missing an existing mission.");
 for (const [index, mission] of missionData.window.validatedMissions.entries()) {
   check(mission.steps.length > 0, `Mission ${index} has no steps.`);
   function validateStep(step, position) {

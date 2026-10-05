@@ -36,6 +36,7 @@ try{
   await page.keyboard.press('Control');
   assert.match(await page.locator('#transcript').textContent(),/^Step 2 of 2.*save/);
   await page.keyboard.press('Control+z');
+  assert.match(await page.locator('#transcript').textContent(),/already restored.*Save the corrected document/);
   assert.match(await page.locator('#transcript').textContent(),/Step 2 of 2.*save/);
   await page.keyboard.press('F1');
   assert.match(await page.locator('#transcript').textContent(),/Control plus S/);
@@ -82,7 +83,7 @@ try{
    assert.match(await page.evaluate(()=>testSpeech.at(-1)),/Mission complete/);
    console.log('New mission '+id+': native keys, hint, recovery, completion and speech request passed.');
  }
- for(const [id,keys] of [[20,['g','F6','l','c','F6']],[21,['ArrowDown','ArrowRight','Space','ArrowUp','ArrowRight','Space']],[22,['c','w','r','Delete','a','s']]]) {
+ for(const [id,keys] of [[20,['g','F6','l','c','F6']],[21,['ArrowDown','ArrowRight','Space','ArrowUp','ArrowRight','Space']],[22,['c','w','r','Delete','a','s']],[24,['b','Home','ArrowRight','5','Enter']]]) {
   await page.goto(base+'/topic-mission-session.html?reader=jaws&mission='+id+'&voice=1&sounds=0');
   await page.keyboard.press('Space');
   for(let i=0;i<keys.length;i++) {
@@ -116,6 +117,17 @@ try{
   assert.match(await page.evaluate(()=>testSpeech.at(-1)),/Mission complete/);
   console.log('Mission '+id+': all state transitions, errors, repeat, hints, native Tab, narrow layout and completion passed.');
  }
+ await page.goto(base+'/topic-mission-session.html?reader=jaws&mission=24&voice=0&sounds=0');
+ await page.keyboard.press('Space');
+ for(const key of ['.','Home','Space','5'])await page.keyboard.press(key);
+ assert.equal(await page.locator('#missionResults').isVisible(),false);
+ await page.keyboard.press('Control');assert.match(await page.locator('#transcript').textContent(),/number 5.*Confirm/);
+ await page.keyboard.press('Enter');assert.equal(await page.locator('#missionResults').isVisible(),true);
+ assert.equal(await page.evaluate(()=>testSpeech.length),0);
+ await page.keyboard.press('Escape');await page.waitForURL('**/topic-missions.html');
+ await page.goto(base+'/topic-mission-session.html?reader=jaws&mission=24&voice=0&sounds=0');
+ await page.keyboard.press('Space');await page.keyboard.press('Escape');await page.waitForURL('**/topic-missions.html');
+ console.log('Slideshow period/Space alternatives, numeric confirmation, own-reader mode and Escape exit passed.');
  for(const voice of [0,1])for(const closeFirst of [false,true]) {
   await page.goto(base+'/topic-mission-session.html?reader=jaws&mission=23&voice='+voice+'&sounds=0');
   await page.keyboard.press('Space');

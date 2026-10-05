@@ -40,8 +40,8 @@
       category: "Microsoft applications", title: "The risky Word edit",
       problem: "A large block of text disappeared in Microsoft Word. Do not retype it. Recover the edit and save the corrected document.",
       steps: [
-        { command: "CTRL+Z", prompt: "Recover the missing text in Microsoft Word.", hint: "Press Control plus Z to undo the last edit.", success: "Undo. Selected text restored.", why: "Undo reversed the most recent destructive edit." },
-        { command: "CTRL+S", alternatives: [{command:"SHIFT+F12"}], prompt: "The text is restored. Now save the corrected document.", hint: "Press Control plus S to save the corrected document. Shift plus F12 also saves in Word. Here, S or F12 alone can rehearse either command.", success: "Document saved.", why: "You saved immediately after verifying the recovery." }
+        { command: "CTRL+Z", prompt: "Recover the missing text in Microsoft Word.", hint: "Press Control plus Z to undo the last edit.", success: "Undo. Selected text restored.", why: "Undo reversed the most recent destructive edit.", recovery: "The text is still missing. Undo the last edit before saving." },
+        { command: "CTRL+S", alternatives: [{command:"SHIFT+F12"}], prompt: "The text is restored. Now save the corrected document.", hint: "Press Control plus S to save the corrected document. Shift plus F12 also saves in Word. Here, S or F12 alone can rehearse either command.", success: "Document saved.", why: "You saved immediately after verifying the recovery.", recovery: "The text is already restored. You do not need another Undo. Save the corrected document to finish." }
       ],
       hint: "Use the standard command that reverses the most recent action."
     },
@@ -563,6 +563,20 @@
         why: "You saved before closing, so the notes were already protected. No real document or window changed.",
         recovery: "Meeting Notes is already saved, but its window is still open. Close it to return to the report."
       }
+    ]
+  });
+  // Append only: existing mission numbers are saved progress identifiers.
+  missions.push({
+    category: "Microsoft PowerPoint",
+    title: "Recover a blanked slideshow and answer a question",
+    problem: "PowerPoint for Windows simulation. Slide Show has focus on slide 3 of 5, but B accidentally blanked the audience view. Restore the view, revisit the opening slides, then go directly to slide 5, Questions. There are no animations or hidden slides. Practice changes only this simulation.",
+    source: "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-deliver-powerpoint-presentations",
+    steps: [
+      {command:"B", alternatives:[{command:"."}], prompt:"Slide Show is focused, but its view is blanked. Restore the current slide.", hint:"Press B or period to toggle the black screen off. These are Slide Show commands, not text formatting.", success:"Simulated slide 3, Practice, is visible again. Slide Show still has focus.", why:"Blanking had hidden the view; the slide was not deleted.", recovery:"This practice step still has a blanked view. Restore it with B or period before navigating."},
+      {command:"HOME", prompt:"Slide 3, Practice, is visible. Return directly to the first slide.", hint:"Press Home while Slide Show has focus.", success:"Simulated slide 1, Welcome. Focus remains in Slide Show.", why:"Home returns to the beginning without editing or rearranging slides.", recovery:"Slide 3 is still the practice target. Use Home to return directly to Welcome."},
+      {command:"ARROWRIGHT", alternatives:[{command:"N"},{command:"ENTER"},{command:"PAGEDOWN"},{command:"ARROWDOWN"},{command:"SPACE"}], prompt:"Slide 1, Welcome, is visible. Advance once to slide 2, Agenda.", hint:"Press Right Arrow. N, Enter, Page Down, Down Arrow or Space also advances. This deck has no animations.", success:"Simulated slide 2, Agenda. Focus remains in Slide Show.", why:"In a deck with animations, this command can advance an animation before changing slides.", recovery:"Welcome is still the practice target. Advance once to Agenda; do not jump to the last slide yet."},
+      {command:"5", prompt:"The audience asks about Questions on slide 5. Begin a direct jump by entering its slide number.", hint:"Press number-row 5. Confirm the number with Enter in the next step.", success:"Simulated slide-number entry: 5. Agenda is still visible until you confirm.", why:"Entering a slide number and confirming it are separate actions.", recovery:"Agenda is still visible, with no target number entered. Enter 5 first; do not advance one slide at a time."},
+      {command:"ENTER", prompt:"Slide number 5 is entered. Confirm the jump to Questions.", hint:"Press Enter to go to the entered slide number.", success:"Simulated slide 5, Questions, is visible. Slide Show remains active.", why:"You restored the view, reviewed the opening and reached the requested slide. No real presentation changed.", recovery:"The number 5 is waiting for confirmation. Press Enter to display Questions."}
     ]
   });
   window.MissionControlMissionCount = missions.length;
