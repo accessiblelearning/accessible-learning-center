@@ -183,7 +183,7 @@
       "I can type a full sentence.",
       "My hand can move and return."
     ],
-    "instruction": "Turn on Sticky Keys in your device keyboard accessibility settings before practising capitals. With Sticky Keys on, press and release Shift once, then press the letter. Use period without Shift. Avoid Caps Lock if your screen reader uses it as a modifier."
+    "instruction": "Before practising capitals, turn on Sticky Keys in your device’s accessibility keyboard settings: Settings, Accessibility, Keyboard on Windows 11; System Settings, Accessibility, Keyboard on a Mac. The website cannot turn it on for you. With Sticky Keys on, press and release Shift once, then press the letter. Use period without Shift. Avoid Caps Lock if your screen reader uses it as a modifier."
   },
   {
     "title": "Numbers in short messages",

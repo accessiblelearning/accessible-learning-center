@@ -331,6 +331,36 @@
     ]
   }
 ]);
+  // Append only: the numeric identifiers above are stored in existing progress.
+  missions.push({
+    category: "Microsoft Excel",
+    title: "Keep a fixed total instead of a formula",
+    problem: "Excel for Windows, English dialogs. B4 contains a formula totaling 60. An ordinary paste into C4 copied that formula, so C4 now calculates from the wrong column. C4 is selected. Undo that paste, copy B4 again, and use Paste Special to keep the value 60 in C4. Finish by saving. This is a simulation; the cells and Clipboard described here are fictional.",
+    source: "https://support.microsoft.com/en-us/accessibility/excel/keyboard-shortcuts-in-excel",
+    steps: [
+      {command:"CTRL+Z",prompt:"C4 is selected with the unwanted formula. Undo the last paste.",hint:"Press Control plus Z.",success:"The paste is undone. C4 is blank and still selected.",why:"Undo removes the recent paste while leaving the source total in B4.",recovery:"C4 still contains the unwanted formula. Undo the paste before copying again."},
+      {command:"ARROWLEFT",prompt:"C4 is blank. Move left to the source total in B4.",hint:"Press Left Arrow once.",success:"Worksheet focus: B4, value 60, formula =SUM(B1:B3).",why:"You selected the source cell without changing it.",recovery:"C4 is still selected. Move one cell left to B4."},
+      {command:"CTRL+C",prompt:"B4, total 60, is selected. Copy this source cell.",hint:"Press Control plus C.",success:"B4 copied. Worksheet focus remains on B4.",why:"Copy makes the source available for pasting; it does not move the selection.",recovery:"B4 is still selected. Copy it before moving to the destination."},
+      {command:"ARROWRIGHT",prompt:"B4 is copied. Move right to the blank destination C4.",hint:"Press Right Arrow once.",success:"Worksheet focus: C4, blank. B4 remains the copied source.",why:"You moved to the destination separately from copying.",recovery:"Focus remains on B4. Move right to C4 before pasting."},
+      {command:"CTRL+ALT+V",prompt:"C4 is selected. Open Paste Special. Here, press V alone to simulate Control plus Alt plus V.",hint:"The real command is Control plus Alt plus V. Press V alone here.",success:"Simulated focus: Paste Special dialog. All is selected; nothing has been pasted yet.",why:"This dialog lets you choose which part of a copied cell to keep.",recovery:"C4 is still blank. Open Paste Special to choose values instead of the formula."},
+      {command:"V",prompt:"Paste Special is open. Choose Values.",hint:"Press V inside this simulated English Paste Special dialog.",success:"Values selected. Focus remains in Paste Special; confirmation is still needed.",why:"Values keeps the result 60 rather than the formula that calculated it.",recovery:"Paste Special remains open. Choose Values with V; do not confirm All."},
+      {command:"ENTER",prompt:"Values is selected in Paste Special. Confirm the paste.",hint:"Press Enter.",success:"Dialog closed. Worksheet focus: C4, value 60, no formula.",why:"C4 now holds a fixed snapshot even if B4 changes later.",recovery:"Values is selected but has not been pasted. Confirm with Enter."},
+      {command:"CTRL+S",prompt:"C4 holds the fixed total 60. Save the workbook.",hint:"Press Control plus S.",success:"Workbook saved with 60 in C4.",why:"You recovered from the wrong paste, chose values and saved the result.",recovery:"The value is correct in C4 but the workbook is not saved yet."}
+    ]
+  }, {
+    category: "Microsoft PowerPoint",
+    title: "Uncover a title with the Selection pane",
+    problem: "PowerPoint for Windows. A decorative rectangle is covering the slide title. The title is immediately behind the rectangle. Open the Selection pane, focus its object list, select the title, bring it forward one position, then save. This simulation supplies a fixed object list and focus order; in PowerPoint, use F6 as often as needed to reach the pane.",
+    source: "https://support.microsoft.com/en-us/accessibility/powerpoint/use-keyboard-shortcuts-to-create-powerpoint-presentations",
+    steps: [
+      {command:"ALT+F10",prompt:"The title is covered. Open the Selection pane. Here, press and release Alt, then F10.",hint:"Normally hold Alt and press F10. Here, release Alt before F10.",success:"Selection pane opened. In this simulation, focus is still on the slide.",why:"Opening a pane and placing focus in its list are separate actions.",recovery:"The title remains covered and the Selection pane is closed. Open the pane first."},
+      {command:"F6",prompt:"The Selection pane is open. Move focus into its object list.",hint:"Press F6. This simulation uses one step; the number can vary in PowerPoint.",success:"Simulated focus: Selection pane, Cover rectangle, item 1 of 3. Title is next.",why:"The object list lets you reach an item hidden behind another object.",recovery:"Focus remains on the slide. Use F6 to reach the Selection pane."},
+      {command:"ARROWDOWN",prompt:"Cover rectangle is focused in the object list. Move down to Title.",hint:"Press Down Arrow once.",success:"Selection pane focus: Title, item 2 of 3. It is not selected yet.",why:"Moving list focus lets you inspect an object before selecting it.",recovery:"Cover rectangle remains focused. Move down to Title before selecting."},
+      {command:"SPACE",prompt:"Title is focused in the Selection pane. Select it.",hint:"Press Space to select the focused title object.",success:"Title selected. Focus stays in the Selection pane.",why:"The selected title can now be moved within the slide’s stacking order.",recovery:"Title has focus but is not selected. Select it with Space."},
+      {command:"CTRL+SHIFT+F",prompt:"Title is selected in the Selection pane. Bring it forward one position. Press F alone here.",hint:"Normally press Control plus Shift plus F in the Selection pane. Press F alone in this simulator.",success:"Title moved in front of Cover rectangle. The title is now visible; Selection pane focus stays on Title.",why:"This changes object stacking, not the words or font of the title.",recovery:"Title is still behind the rectangle. Use the Selection pane’s bring-forward command."},
+      {command:"CTRL+S",prompt:"The title is visible in front of the rectangle. Save the presentation.",hint:"Press Control plus S.",success:"Presentation saved with the title visible.",why:"You used the object list to select an obscured object and correct its stacking order.",recovery:"The title is visible, but the presentation is not saved yet."}
+    ]
+  });
   window.MissionControlMissionCount = missions.length;
 
   const perspective = document.getElementById("atPerspective");
@@ -644,7 +674,9 @@
     } else {
       tone(false);
       missionCommandsToReview.set(expected.command, expected);
-      const response = wrongResponse(command, expected.command);
+      const response = expected.recovery
+        ? "That command did not complete this step. " + expected.recovery
+        : wrongResponse(command, expected.command);
       item.textContent = displayedCommand(command) + ": " + response;
       log.append(item);
       announce(response + " " + currentStepPrompt() + " Press F1 for a hint.", "incorrect");

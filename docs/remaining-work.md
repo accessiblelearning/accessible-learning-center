@@ -4,6 +4,10 @@ Current privacy status: account implementation and previews have been moved out 
 
 Owner constraints: $0 additional spending; no new service provisioning or billing; public login off until explicit authorization. The current account/admin screens are fictional previews, not a live account system.
 
+## Curriculum follow-up — October 5, 2026
+
+Completed a targeted batch of 47 Excel/PowerPoint explanations, 11 complete Paste Special sequences, two deeper missions (IDs 18–19), private Braille word/recall hints and one-handed Shift guidance. See [the curriculum checkpoint](qa-2026-10-05-curriculum.md) for tests, exact scope and remaining gaps. Next independent work is broader advanced-command review, deeper Chrome/VoiceOver/display scenarios and further curriculum refinement. Physical comfort and real screen-reader audio still need short device checks.
+
 ## Can continue without waiting for full-site hands-on testing
 
 1. **Command Practice teaching.** Continue replacing generic advanced explanations with command-specific examples. Check application/OS context and official shortcut mappings. Review remaining repeated actions for intentional recall versus duplication. Keep the concise main prompt and optional explanation.

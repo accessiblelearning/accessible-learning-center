@@ -196,7 +196,7 @@ test("Insert release, missing release, focus loss, and retry do not leave a modi
 });
 
 test("new topic routes wait for the mission catalog and reject invalid mission numbers", () => {
-  for (const [mission, valid] of [["8", true], ["12", true], ["18", false], ["", false], ["-1", false], ["1.5", false]]) {
+  for (const [mission, valid] of [["8", true], ["12", true], ["19", true], ["20", false], ["", false], ["-1", false], ["1.5", false]]) {
     const p = page();
     p.window.location.search = `?reader=jaws&mission=${mission}`;
     p.load("topic-mission-session.js");
@@ -206,7 +206,7 @@ test("new topic routes wait for the mission catalog and reject invalid mission n
     if (valid) {
       assert.equal(p.get("missionSelect").value, mission);
       p.get("missionReadyStart").click();
-      assert.match(p.get("missionProblem").textContent, /Thunderbird|Learning Ally/);
+      assert.match(p.get("missionProblem").textContent, /Thunderbird|Learning Ally|PowerPoint/);
     }
   }
 });
@@ -748,4 +748,80 @@ test('all focused legacy routes complete with the production teaching layer',()=
     }
     assert.equal(p.get('practiceResults').hidden,false,category);
   }
+});
+
+test('Paste Special rehearses the dialog, option and confirmation with a current-step goal',()=>{
+  const category='Microsoft Excel and spreadsheets',p=page({commandCategory:{value:category},practiceStyle:{value:'guided'},sessionLength:{value:'all'},explanationLevel:{value:'detailed'}});
+  p.load('command-courses.js');p.load('command-teaching.js');
+  const options=p.window.CommandPracticeCourses[category].filter(e=>e[4].stepGoals);
+  assert.equal(options.length,11);
+  for(const entry of options){assert.equal(entry[0],entry[4].steps.join(' then '));assert.match(entry[2],/copy the source cells and select the destination/);}
+  const values=options.find(e=>e[4].steps[1]==='V');
+  p.window.CommandPracticeCourses[category]=[values];p.load('command-practice.js');p.get('startPractice').click();
+  assert.match(p.get('commandPrompt').children[1].textContent,/After copying cells, open Paste Special/);
+  for(const key of ['Control','Alt','V'])tapCourseKey(p,key);
+  assert.match(p.get('commandPrompt').children[1].textContent,/In Paste Special, choose values only/);
+  tapCourseKey(p,'F');assert.match(p.get('practiceStatus').textContent,/Not quite/);
+  assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+  tapCourseKey(p,'V');assert.match(p.get('commandPrompt').children[1].textContent,/Confirm to paste values only/);
+  assert.doesNotMatch(p.get('commandPrompt').children.map(e=>e.textContent).join(' '),/Normally|one key at a time/);
+  assert.equal(p.get('commandPrompt').children[2].textContent,'Step 3 of 3.');
+  tapCourseKey(p,'Enter');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2');p.advance();
+  assert.equal(p.get('practiceResults').hidden,false);
+});
+
+test('reviewed Excel and PowerPoint teaching preserves contextual duplicates and fixes keypad substitutions',()=>{
+  const p=page();p.load('command-courses.js');p.load('command-teaching.js');const c=p.window.CommandPracticeCourses;
+  const excel=c['Microsoft Excel and spreadsheets'],ppt=c.Presentations;
+  assert.equal(excel.filter(e=>e[0]==='Alt+M').length,1);
+  assert.equal(ppt.filter(e=>e[0]==='Control+Shift+Tab').length,1);
+  assert.equal(ppt.filter(e=>e[0]==='Alt+Shift+1').length,2,'Outline and Selection pane are distinct contexts');
+  assert.match(excel.find(e=>e[0]==='Control+8')[2],/worksheet outline/);
+  assert.doesNotMatch(excel.find(e=>e[0]==='Control+8')[2],/slide|heading/);
+  assert.equal(ppt.find(e=>e[1]==='In the Selection pane, expand a focused group.')[0],'Right Arrow');
+  assert.equal(ppt.find(e=>e[1]==='In the Selection pane, collapse a focused group.')[0],'Left Arrow');
+});
+
+test('deeper missions retain state on mistakes, repeat current focus, and preserve completion IDs',()=>{
+  for(const [id,keys,states] of [
+    [18,['z','ArrowLeft','c','ArrowRight','v','v','Enter','s'],[/C4 is selected/,/C4 is blank/,/B4, total 60/,/B4 is copied/,/C4 is selected/,/Paste Special is open/,/Values is selected/,/fixed total 60/]],
+    [19,['Alt','F10','F6','ArrowDown',' ','f','s'],[/title is covered/,/Selection pane is open/,/Cover rectangle is focused/,/Title is focused/,/Title is selected/,/title is visible/]]
+  ]) {
+    const p=page({atPerspective:{value:'jaws'},missionSelect:{value:String(id)},simulatedVoice:{checked:true}}),heard=[];
+    p.window.speechSynthesis.speak=u=>heard.push(u.text);
+    p.storage.setItem('missionControlCompleted','[3,13,17]');p.load('troubleshooting-lab.js');p.get('startMission').click();
+    let n=0;
+    for(const key of keys){
+      if(key==='Alt'){p.key('missionControlStation',key);continue;}
+      // Ctrl alone repeats; a wrong answer must neither move focus in the model nor advance the step.
+      p.key('missionControlStation','q');assert.equal(p.get('missionProgress').value,n);
+      assert.match(p.get('transcript').textContent,/That command did not complete this step/);
+      p.key('missionControlStation','Control');assert.match(p.get('transcript').textContent,states[n]);
+      p.key('missionControlStation','F1');assert.match(p.get('transcript').textContent,/Strategy hint/);
+      if(id===19&&n===0)p.key('missionControlStation','Alt');
+      p.key('missionControlStation',key);n++;
+      if(n<states.length){assert.match(p.get('missionProblem').textContent,states[n]);assert.match(heard.at(-1),states[n]);}
+    }
+    assert.equal(p.get('missionResults').hidden,false);
+    assert.equal(p.document.activeElement,p.get('nextMission'));
+    assert.deepEqual(JSON.parse(p.storage.getItem('missionControlCompleted')),[3,13,17,id]);
+    assert.equal(p.get('missionAttemptResult').textContent,String(states.length*2));
+  }
+});
+
+test('the reviewed Excel and PowerPoint courses complete with production sequences',()=>{
+ for(const category of ['Microsoft Excel and spreadsheets','Presentations']){
+  const p=page({commandCategory:{value:category},practiceStyle:{value:'guided'},sessionLength:{value:'all'},explanationLevel:{value:'detailed'}});
+  p.load('command-courses.js');p.load('command-teaching.js');p.load('command-practice.js');p.get('startPractice').click();
+  const items=p.window.CommandPracticeCourses[category];
+  assert.deepEqual([...new Set(items.map(e=>e[4].level))],['basic','intermediate','advanced']);
+  items.forEach((entry,index)=>{
+   for(const step of entry[4].steps){
+    if(entry[3]==='safe')for(const key of step.split('+'))tapCourseKey(p,key);
+    else buildStep(p,step);
+   }
+   assert.equal(p.get('practiceScore').textContent,`Correct: ${index+1} · Attempts: ${index+1}`,entry[0]);p.advance();
+  });
+  assert.equal(p.get('practiceResults').hidden,false,category);
+ }
 });

@@ -74,9 +74,97 @@
       if (notes[entry[0]]) entry[2] = notes[entry[0]];
     }
   }
+  // These lessons depend on the active pane or dialog. Keep that context in
+  // the short prompt too; the learner should not have to expand an explanation.
+  const excel = courses["Microsoft Excel and spreadsheets"];
+  const pasteOptions = {
+    A: ["all cell contents and formatting", "Use this when the destination should receive both the data and its appearance."],
+    T: ["formatting only", "Reuse a sample cell’s appearance while keeping the destination’s existing data."],
+    C: ["comments and notes only", "Carry a reviewer’s annotation to another cell without replacing that cell’s value."],
+    N: ["data validation only", "Reuse an input rule, such as an allowed list of choices, in another entry cell."],
+    H: ["all cell contents with source formatting", "Check the result when copying between differently styled ranges."],
+    X: ["everything except borders", "Keep the destination table’s border design while bringing in the copied content."],
+    W: ["column widths only", "Make another report’s columns the same width without replacing its values."],
+    F: ["formulas only", "Reuse a calculation in another range. Relative references can change at the destination; check the new formula."],
+    V: ["values only", "Keep a fixed snapshot of a calculated total. Later changes to the source formula will not update that snapshot."],
+    R: ["formulas and number formats", "Reuse a calculation and its currency or percentage display, without copying every visual style."],
+    U: ["values and number formats", "Keep a fixed result with its currency or percentage display, without keeping the source formula."]
+  };
+  for (const entry of excel) {
+    const option = pasteOptions[entry[0]];
+    if (!option || !/^Paste /.test(entry[1])) continue;
+    const key = entry[0], [what, example] = option;
+    entry[0] = "Control+Alt+V then " + key + " then Enter";
+    entry[1] = "Paste " + what + ".";
+    entry[2] = "In Excel for Windows with English dialog labels, first copy the source cells and select the destination. Open Paste Special, choose " + what + ", then confirm. The letter " + key + " selects an option inside that dialog; it is not a worksheet command. " + example;
+    entry[3] = "safe";
+    entry[4] = {...entry[4], steps:["Control+Alt+V", key, "Enter"], stepGoals:[
+      "After copying cells, open Paste Special at the destination.",
+      "In Paste Special, choose " + what + ".",
+      "Confirm to paste " + what + "."
+    ]};
+  }
+  const excelNotes = {
+    "Alt+H then H": "Open the fill-color choices for the selected cells. For example, mark an input range with a background color. Opening the palette alone does not choose a color; review a color and confirm it.",
+    "Alt+H then A then C": "Center the contents within the selected cells. This changes alignment, not the stored values, and does not merge cells. Try it on a short table heading.",
+    "Alt+H then B": "Open border choices for the selected cells. Choose a border style for a table boundary; opening this menu alone does not apply a particular border.",
+    "Alt+H then D then C": "Delete the worksheet column containing the selected cell. Other columns shift to fill the gap. Review the column header first; this removes a whole column, not just one cell’s contents.",
+    "Alt+M": "Move to the Formulas ribbon tab. From there, choose a function or inspect calculations. Opening the tab alone does not insert a formula or recalculate the sheet.",
+    "Alt+N": "Move to the Insert ribbon tab. Use it before choosing a chart or PivotTable for the selected data. You must choose a tool after opening the tab.",
+    "Alt+W": "Move to the View ribbon tab. Use its controls to change how the worksheet is displayed, such as zoom or frozen panes, while keeping the underlying cell values.",
+    "Control+'": "Bring the formula from the cell above into the current cell or formula bar. Read the copied references before confirming; use this when the formula above is a useful starting point.",
+    "Control+8": "Show or hide the controls for an existing worksheet outline: its grouping levels and expand or collapse symbols. This does not create a group. For example, reveal the controls before exploring grouped monthly rows.",
+    "Control+Shift+U": "Expand the formula bar to inspect a long formula, then collapse it when finished. This changes the available reading space, not the calculation.",
+    "Control+Alt+Shift+F9": "Recheck formula dependencies and perform a full calculation across open workbooks. Use this when checking whether totals are up to date; it does not repair an incorrect formula.",
+    "Control+Shift+A": "While editing a formula immediately after its function name, insert its argument placeholders. For example, after typing =SUM, use this as a guide to the values or range the function expects.",
+    "Alt+Equals": "Insert an AutoSum formula for a likely nearby range. Check the proposed cells before confirming: a blank row or a different table layout can make the suggested range unsuitable.",
+    "F4": "While editing a formula with a cell reference selected, cycle its relative and absolute forms. For example, lock a tax-rate reference so it stays fixed when the formula is copied. Outside this context, F4 can have another purpose."
+  };
+  for (const entry of excel) {
+    if (excelNotes[entry[0]]) entry[2] = excelNotes[entry[0]];
+    if (entry[0] === "Control+A" && /Function Arguments/.test(entry[1])) {
+      entry[1] = "In a formula after a function name, open Function Arguments.";
+      entry[2] = "Place the editing cursor immediately after a function name, such as =SUM. Open its argument dialog to review the inputs. With worksheet focus instead, Control plus A selects cells.";
+    }
+    if (entry[0] === "Control+End" && /formula bar/.test(entry[1])) entry[2] = "With the text cursor inside the formula bar, move to the end of the formula text. With worksheet focus, this shortcut moves to the last used cell instead. Check your focus before using it.";
+    if (entry[0] === "Control+Shift+End" && /formula bar/.test(entry[1])) entry[2] = "While editing in the formula bar, highlight from the cursor to the end of its text. Use this before replacing the end of a formula. With worksheet focus, it selects cells instead.";
+  }
+  const presentations = courses["Presentations"];
+  const presentationNotes = {
+    "Control+G": "With multiple objects selected on the slide, group them so they can be moved or resized together. For example, keep a diagram’s label and arrow together. This does not combine separate slides.",
+    "Control+Shift+G": "With a group selected on the slide, separate it into individual objects. Use this before adjusting one label without moving the rest of the diagram.",
+    "Control+Shift+J": "Regroup objects that were previously ungrouped. Select an object from that former group first; this restores that grouping rather than grouping unrelated objects.",
+    "Alt+Right Arrow": "With an object selected, rotate it clockwise by 15 degrees. Use small steps to adjust an arrow’s direction; this rotates the object rather than moving text focus.",
+    "Alt+Left Arrow": "With an object selected, rotate it counterclockwise by 15 degrees. Check the resulting direction before making another adjustment.",
+    "Alt+F10": "Open the Selection pane to inspect the slide’s objects by name. Use F6 as needed to reach the pane, then navigate its list. This is useful when overlapping objects are difficult to select on the slide.",
+    "Control+Space then C": "With focus in a task pane, open its pane menu and choose Close. This closes that pane rather than the presentation. In slide text, Control plus Space can instead clear character formatting.",
+    "Alt+H then L": "Open layout choices for the selected slide. Choose an arrangement that fits the content, such as a title and two content areas, then review where the placeholders are placed.",
+    "Alt+W then P then N": "Show or hide the Notes pane in Normal view. Use it to prepare speaker reminders that are separate from the slide’s visible text.",
+    "Alt+N then X": "Begin inserting a text box. You still need to place the box and enter its text. Use a text box for an extra label, and review its reading order afterward.",
+    "Alt+N then P then D": "Open the picture picker for a file on your device. Choose a suitable image, then review its size, placement and text alternative on the slide.",
+    "Control+Shift+C": "Copy the selected text or object’s formatting. Then select the destination before pasting that appearance; the copied style is separate from the object’s content.",
+    "Control+Shift+V": "Apply the formatting you previously copied to the selected text or object. For example, make two callout boxes consistent without replacing their different labels."
+  };
+  for (const entry of presentations) {
+    if (presentationNotes[entry[0]]) entry[2] = presentationNotes[entry[0]];
+    if (entry[1] === "Expand a focused group." || entry[1] === "Collapse a focused group.") {
+      const expand = entry[1].startsWith("Expand");
+      // The main-row + / - were incorrectly substituted for numeric-keypad keys.
+      // Microsoft also documents these arrow alternatives, usable on laptops.
+      entry[0] = expand ? "Right Arrow" : "Left Arrow";
+      entry[1] = "In the Selection pane, " + (expand ? "expand" : "collapse") + " a focused group.";
+      entry[2] = expand ? "With a collapsed group focused in the Selection pane, reveal its members with Right Arrow. This lets you inspect objects inside the group without ungrouping them." : "With an expanded group focused in the Selection pane, hide its members from the list with Left Arrow. The objects remain on the slide and stay grouped.";
+      entry[4] = {...entry[4], steps:[entry[0]]};
+    }
+    if (entry[0] === "Alt+Shift+1") entry[2] = /Outline/.test(entry[1])
+      ? "In Outline view, reduce the outline to slide-level headings so you can review the presentation’s structure. Slide content is not deleted. In the Selection pane, the same keys collapse object groups."
+      : "In the Selection pane’s object list, collapse all groups to simplify the list. This keeps the objects grouped and visible on the slide. In Outline view, these keys have a different purpose.";
+  }
   // Remove only repeated actions reviewed as identical, never context-dependent arrow commands.
   const sameAction = {
     "Microsoft Word and documents": new Set(["Control+B", "Control+I", "Control+U"]),
+    "Microsoft Excel and spreadsheets": new Set(["Alt+M"]),
+    "Presentations": new Set(["Control+Shift+Tab"]),
     "Mac VoiceOver basics": new Set(["VO+K", "VO+Q", "Shift+VO+Q", "VO+P", "VO+L", "VO+S", "VO+W", "VO+C"])
   };
   for (const [name, keys] of Object.entries(sameAction)) {

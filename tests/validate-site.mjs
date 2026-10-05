@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, extname, resolve } from "node:path";
+import { runInNewContext } from "node:vm";
 
 const root = process.cwd();
 const htmlFiles = readdirSync(root).filter((file) => extname(file) === ".html");
@@ -295,7 +296,15 @@ for (const file of independentManualFiles) {
 }
 check(existsSync(resolve(root, "manuals-filter.js")), "Manual catalog filtering behavior is missing.");
 const troubleshootingLab = readFileSync(resolve(root, "troubleshooting-lab.js"), "utf8");
-check((troubleshootingLab.match(/category: "/g) || []).length === 8, "Mission Control must include eight command-based missions.");
+const missionData = {window:{}};
+runInNewContext(troubleshootingLab.split('  const perspective =')[0] + 'window.validatedMissions = missions;})();', missionData);
+check(missionData.window.validatedMissions.length >= 20, "Mission Control is missing an existing mission.");
+for (const [index, mission] of missionData.window.validatedMissions.entries()) {
+  check(mission.steps.length > 0, `Mission ${index} has no steps.`);
+  for (const step of mission.steps) for (const field of ['command','prompt','hint','success','why']) {
+    check(typeof step[field] === 'string' && step[field].trim().length > 0, `Mission ${index} has a step without ${field}.`);
+  }
+}
 for (const perspective of ["JAWS", "NVDA", "Narrator"]) {
   check(troubleshootingLab.includes(perspective), "Mission Control is missing the " + perspective + " perspective.");
 }

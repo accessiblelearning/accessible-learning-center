@@ -618,6 +618,7 @@
 
   function commandExplanation() {
     if (!command) return "";
+    if (command[4]?.stepGoals?.[sequencePosition]) return command[4].stepGoals[sequencePosition];
     if (hasCourse()) {
       const shortGoals = {
         "Copy.": "This command copies highlighted text.",
@@ -679,6 +680,8 @@
   function courseInstruction() {
     const steps = commandSteps();
     if (usesReleasedKeys()) {
+      if (practiceStepKeys().length === 1) return "Press and release " + spokenKeyName(currentPracticeKey()) + "." +
+        (steps.length > 1 ? " Step " + (sequencePosition + 1) + " of " + steps.length + "." : "");
       return releasedKeyInstruction() + " " + normalStepInstruction() +
         (steps.length > 1 ? " Step " + (sequencePosition + 1) + " of " + steps.length + "." : "") +
         (releasedKeyPosition ? " Next: press and release " + spokenKeyName(currentPracticeKey()) + "." : "");
@@ -701,17 +704,18 @@
   }
 
   function renderCoursePrompt() {
+    const separatedChord = usesReleasedKeys() && practiceStepKeys().length > 1;
     const heading = document.createElement("h3");
     heading.textContent = usesReleasedKeys() ? "Press and release " + spokenKeyName(currentPracticeKey())
       : commandSteps().length > 1 ? command[1] : "Press " + spokenKeys(command[0]);
     const explanation = document.createElement("p");
-    explanation.textContent = commandExplanation() + (usesReleasedKeys() ? " " + normalStepInstruction()
+    explanation.textContent = commandExplanation() + (usesReleasedKeys() ? (separatedChord ? " " + normalStepInstruction() : "")
       : commandSteps().length > 1 ? " " + courseInstruction() : "") +
       (keyLocationHint() ? " " + keyLocationHint() : "");
     prompt.replaceChildren(heading, explanation);
-    if (usesReleasedKeys()) {
+    if (usesReleasedKeys() && (separatedChord || commandSteps().length > 1)) {
       const instruction = document.createElement("p");
-      instruction.textContent = (commandSteps().length > 1 ? "Step " + (sequencePosition + 1) + " of " + commandSteps().length + ". " : "") + releasedKeyInstruction();
+      instruction.textContent = (commandSteps().length > 1 ? "Step " + (sequencePosition + 1) + " of " + commandSteps().length + "." : "") + (separatedChord ? " " + releasedKeyInstruction() : "");
       prompt.append(instruction);
     }
   }

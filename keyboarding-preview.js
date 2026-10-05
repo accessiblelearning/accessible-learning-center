@@ -1030,10 +1030,14 @@
     return remainderMessage + "Next key: " + spokenKeyName(nextCharacter) + ". " + shiftInstruction(nextCharacter) + guidance.hand + ", " + guidance.finger + ".";
   }
 
-  function incorrectKeyInstruction(character) {
+  function incorrectKeyInstruction(character, typedKey) {
     const shortMessage = "Incorrect. Press " + spokenKeyName(character) + ". " + shiftInstruction(character);
     if (session && session.hand !== "both") {
       const guidance = keyFinger(character);
+      if (needsShift(character) && typedKey === guidance.key) {
+        return "You found the correct key. This target needs Shift. " + shiftInstruction(character) +
+          "If the unshifted character keeps appearing, check that Sticky Keys is turned on in your device’s keyboard accessibility settings. This website cannot turn it on for you.";
+      }
       return shortMessage + guidance.hand + ", " + guidance.finger + ". Refind the raised mark on F or J if needed.";
     }
     if (!session || session.mode !== "guided" || session.lesson.number > 15) return shortMessage;
@@ -1459,7 +1463,7 @@
       session.mistakesByKey[expected] = (session.mistakesByKey[expected] || 0) + 1;
       targetPrompt.classList.remove("correct");
       targetPrompt.classList.add("incorrect");
-      const correction = incorrectKeyInstruction(expected);
+      const correction = incorrectKeyInstruction(expected, typedKey);
       practiceStatus.textContent = correction;
       tone(190, 0.16);
       speak(correction);

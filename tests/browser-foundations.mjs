@@ -69,7 +69,7 @@ try{
  assert.ok((await page.locator('body').textContent()).includes('copy a name so you can paste it elsewhere'));
  console.log('Short command prompt retained; expanded teaching note loaded.');
 
- for (const [id,keys] of [[13,['Control','t','Control','d']],[14,['F2','Enter','Control+s']],[15,['Control+m','Control+z','Control+s']],[16,['m','ArrowRight','Space']],[17,['ArrowRight','ArrowLeft']]]) {
+ for (const [id,keys] of [[13,['Control','t','Control','d']],[14,['F2','Enter','Control+s']],[15,['Control+m','Control+z','Control+s']],[16,['m','ArrowRight','Space']],[17,['ArrowRight','ArrowLeft']],[18,['Control+z','ArrowLeft','Control+c','ArrowRight','v','v','Enter','Control+s']],[19,['Alt','F10','F6','ArrowDown','Space','f','Control+s']]]) {
    await page.goto(base+'/topic-mission-session.html?reader=jaws&mission='+id+'&voice=1&sounds=0');
    await page.keyboard.press('Space');
    await page.keyboard.press('q');
@@ -82,5 +82,29 @@ try{
    assert.match(await page.evaluate(()=>testSpeech.at(-1)),/Mission complete/);
    console.log('New mission '+id+': native keys, hint, recovery, completion and speech request passed.');
  }
+ await page.clock.install();
+ await page.goto(base+'/command-practice-session.html?category=Microsoft%20Excel%20and%20spreadsheets&style=guided&length=all&spoken=0&sounds=0');
+ await page.keyboard.press('Space');
+ const entries=await page.evaluate(()=>CommandPracticeCourses['Microsoft Excel and spreadsheets']);
+ const stop=entries.findIndex(e=>e[4].stepGoals),aliases={'Left Arrow':'ArrowLeft','Right Arrow':'ArrowRight','Up Arrow':'ArrowUp','Down Arrow':'ArrowDown','Space':'Space','Equals':'=','Semicolon':';','Grave':'`'};
+ for(const entry of entries.slice(0,stop)) {
+  for(const step of entry[4].steps) {
+   const keys=step.split('+').map(k=>aliases[k]||k);
+   if(entry[3]==='safe')for(const key of keys)await page.keyboard.press(key);
+   else await page.keyboard.press(keys.join('+'));
+  }
+  await page.clock.fastForward(2500);
+ }
+ assert.match(await page.locator('#commandPrompt').textContent(),/After copying cells, open Paste Special/);
+ for(const key of ['Control','Alt','v'])await page.keyboard.press(key);
+ assert.match(await page.locator('#commandPrompt').textContent(),/In Paste Special, choose all cell contents/);
+ await page.keyboard.press('a');
+ assert.match(await page.locator('#commandPrompt').textContent(),/Confirm to paste all cell contents/);
+ await page.keyboard.press('Enter');
+ assert.match(await page.locator('#practiceScore').textContent(),new RegExp('Correct: '+(stop+1)+' · Attempts: '+(stop+1)));
+ console.log('Native Excel Paste Special: protected sequence, current dialog goals, and confirmation passed.');
+ await page.setViewportSize({width:390,height:844});
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
+ await page.screenshot({path:b+'/excel-paste-special-narrow.png'});
  assert.deepEqual(errors,[]); console.log('No browser JavaScript errors.');
 }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

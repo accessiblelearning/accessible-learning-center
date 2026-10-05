@@ -303,3 +303,16 @@ test('waiting lessons preserve Tab and modified navigation without starting or s
     p.key('f');assert.match(p.get('progressText').textContent,/Part 1 of 3/);
   }
 });
+
+test('one-handed Shift mismatch identifies the correct base key without advancing or changing paths',()=>{
+  for(const hand of ['left','right']) {
+    const p=page();p.changeHand(hand);p.start(12);p.key('Enter');
+    p.key('Shift');p.key('s');
+    assert.match(p.get('practiceStatus').textContent,/You found the correct key.*needs Shift/);
+    assert.match(p.get('practiceStatus').textContent,new RegExp('use your '+hand+' hand'));
+    assert.match(p.get('practiceStatus').textContent,/website cannot turn it on/);
+    p.key('S');p.key('a');p.key('m');p.key(' ');
+    assert.equal(p.get('handSetting').value,hand);
+    assert.match(p.helpers.lessonFor(12,hand).introduction,/Windows 11.*Mac/);
+  }
+});

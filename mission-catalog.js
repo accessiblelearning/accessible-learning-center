@@ -231,6 +231,8 @@
   for (const topic of window.MissionControlCatalog) {
     const entry = addedMissions[topic.id];
     if (entry) topic.missionSets.push({id:entry[0],label:entry[1],mission:entry[2]});
+    if (topic.id === "microsoft-excel") topic.missionSets.push({id:"excel-paste-values",label:"Microsoft Excel: Keep a fixed total instead of a formula",mission:"18"});
+    if (topic.id === "microsoft-powerpoint") topic.missionSets.push({id:"powerpoint-uncover-title",label:"Microsoft PowerPoint: Uncover a title with the Selection pane",mission:"19"});
   }
   for (const topic of window.MissionControlCatalog) {
     if (topic.id === "mac-voiceover") topic.commandSets = [{id:"mac-voiceover-basics", menuLabel:"Mac VoiceOver", label:"Mac VoiceOver: basic through advanced commands", category:"Mac VoiceOver basics"}];
