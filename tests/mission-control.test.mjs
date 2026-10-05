@@ -1303,6 +1303,25 @@ test('advanced NVDA teaching distinguishes review markers, existing selection, a
  assert.match(note('Control+Insert+R')[2],/three times.*factory defaults/);
 });
 
+test('all NVDA teaching is specific and preserves 93 staged identities with explicit recall and cursor context',()=>{
+ const p=page();p.load('command-courses.js');
+ const identity=()=>p.window.CommandPracticeCourses['NVDA commands'].map(e=>[e[0],e[3],e[4].level,[...e[4].steps]]);
+ const before=identity();p.load('command-teaching.js');assert.deepEqual(identity(),before);
+ const entries=p.window.CommandPracticeCourses['NVDA commands'];assert.equal(entries.length,93);
+ assert.equal(new Set(entries.map(e=>e[2])).size,93);
+ for(const e of entries)assert.doesNotMatch(e[2],/Use this during|Use the command for|Check the current focus before|NVDA on Windows/);
+ const note=key=>entries.find(e=>e[0]===key);
+ assert.match(note('Escape')[2],/automatically.*locked focus mode/s);
+ assert.match(note('Alt+Down Arrow')[1],/Word or Outlook/);
+ assert.match(note('Insert+F')[1],/editing cursor/);assert.match(note('Shift+Insert+F')[1],/review cursor/);
+ assert.match(note('Control+Alt+Insert+Up Arrow')[2],/entire.*caret in place/);
+ assert.match(note('Insert+F5')[2],/does not reload.*unavailable in Word and Outlook/s);
+ assert.match(note('Control+Shift+Insert+F1')[2],/one press.*press again/s);
+ assert.match(note('Alt+Insert+R')[2],/permission.*no connection/s);
+ const find=entries.filter(e=>e[0]==='Control+Insert+F');assert.equal(find.length,2);assert.match(find[1][2],/intentional search recall/);
+ assert.match(p.window.CommandPracticeCourseNotes['NVDA commands'],/Desktop.*2026.2.*Laptop/);
+});
+
 test('advanced VoiceOver teaching keeps text and interface contexts distinct without losing course coverage',()=>{
  const p=page();p.load('command-courses.js');
  const raw=p.window.CommandPracticeCourses['Mac VoiceOver basics'];

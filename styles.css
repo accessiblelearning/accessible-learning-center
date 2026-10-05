@@ -3276,6 +3276,9 @@ html[data-contrast="high"] .mission-center-page.mission-session-page .command-fo
 /* Large text must reflow without pushing controls outside a narrow screen. */
 fieldset { min-inline-size: 0; }
 .mission-center-menu > *, .mission-center-option > * { min-inline-size: 0; }
+/* An explicit width keeps the prototype's tall scene/aspect ratio from
+   calculating a wider-than-screen box on narrow displays. */
+#main-content.shell > .game { width: 100%; min-width: 0; }
 
 /* Keep the complete certificate on one landscape sheet, independent of screen zoom. */
 @media print {

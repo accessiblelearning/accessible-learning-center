@@ -1,5 +1,13 @@
 # Remaining work after the foundation and reporting preview
 
+## Latest readiness status — October 5, 2026
+
+See [the readiness checkpoint](qa-2026-10-05-readiness.md) before using older counts below. All **93 NVDA teaching entries** are now reviewed (74 newly improved); **193 public tests** and the site validator pass. A complete **408-page** local 390-pixel initial-state scan found and fixed one adventure-prototype overflow; its rescan found no scoped Axe violations, horizontal overflow or uncaught errors. Three 50-lesson typing paths and mission IDs 0–24 remain unchanged.
+
+**Private release blocker:** Braille preview 25's deadline/callback fixes pass 73 private tests and browser checks, but updating its matching private archive failed. Keep live preview 24 until that source is safely persisted. Private dated WPM/accuracy imports and mission mapping pass 20 tests, but saving that updated private archive also failed; accounts remain private, inactive and unlaunched. Local candidate archives are retained outside the repo. Do not reconstruct missing private changes from public history.
+
+What still remains independent of the owner's testing: persist the blocked private candidates; broader Office/Docs teaching and sequencing review; the four previously identified Narrator explanations; optional deeper missions/long-term spaced review; and the substantial private provider, sync, recovery, connected-reporting and privacy/security work listed below. Account activation additionally requires explicit owner approval. A passing readiness sweep does not turn those unfinished features into completed work.
+
 Current privacy status: account implementation and previews have been moved out of the current public project. See `docs/account-preview-privacy.md`. The material below is historical planning; new account development must remain private until explicitly released.
 
 Owner constraints: $0 additional spending; no new service provisioning or billing; public login off until explicit authorization. The current account/admin screens are fictional previews, not a live account system.
