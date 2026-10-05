@@ -171,6 +171,7 @@
         records
           .filter(record =>
             record && record.course === data.course &&
+            (typeof record.lesson_number === "number" || typeof record.lesson_number === "string") &&
             ["completed", "submitted"].includes(record.status)
           )
           .map(record => Number(record.lesson_number))

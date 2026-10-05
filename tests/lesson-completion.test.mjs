@@ -23,6 +23,14 @@ test('lesson completion and undo save the intended course and learner',async()=>
  const p=await lesson();await p.button.listeners.click();assert.equal(p.posts[0].course,'Firefox');assert.equal(p.posts[0].student_id,'learner_one');assert.equal(p.posts[0].status,'completed');assert.equal(p.button.textContent,'Undo lesson completion');
  await p.button.listeners.click();assert.equal(p.posts[1].status,'in_progress');assert.equal(p.button.textContent,'Mark this lesson complete');
 });
+test('malformed lesson numbers cannot mark lesson one complete',async()=>{
+ for(const value of [true,[1],['1'],null,{},false,'']){
+  const p=await lesson({read:[{course:'Firefox',lesson_number:value,status:'completed'}]});
+  assert.equal(p.button.textContent,'Mark this lesson complete',JSON.stringify(value));assert.equal(p.posts.length,0);
+ }
+ const p=await lesson({read:[{course:'Firefox',lesson_number:'1',status:'submitted'}]});
+ assert.equal(p.button.textContent,'Undo lesson completion');
+});
 test('blocked storage and a changed identity do not send completion records',async()=>{
  const p=await lesson({blocked:true});assert.equal(p.button,undefined);assert.match(p.status.textContent,/blocking storage/);
  const q=await lesson();q.state.id='learner_two';await q.button.listeners.click();assert.equal(q.posts.length,0);assert.match(q.status.textContent,/Student ID changed/);

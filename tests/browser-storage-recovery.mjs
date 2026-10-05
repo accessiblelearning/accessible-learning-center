@@ -62,6 +62,23 @@ try{
  assert.equal(await quiz.locator('#certificateSetup').isVisible(),false);
  console.log('A late quiz-readiness response remains locked after an ID change.');
 
+ const malformedProgress=[true,[1],['1'],null,{},'',0,11,1.5].map(n=>({...record,lesson_number:n}));
+ const validProgress=Array.from({length:9},(_,i)=>({...record,lesson_number:String(i+2)}));
+ const malformed=await pageWithProgress(async()=>[...malformedProgress,...validProgress]);
+ await malformed.goto(base+'/firefox-quiz.html');
+ await malformed.waitForFunction(()=>document.querySelector('.quiz-readiness').textContent.includes('9 of 10'));
+ assert.equal(await malformed.locator('#courseQuiz button[type="submit"]').isDisabled(),true);
+ assert.equal(await malformed.locator('#certificateSetup').isVisible(),false);
+ await malformed.goto(base+'/lessons.html#firefox-lessons');
+ await malformed.waitForFunction(()=>document.querySelector('#firefox-lessons summary').textContent.includes('9 of 10'));
+ assert.match(await malformed.locator('#firefox-lessons .course-continue a').getAttribute('href'),/firefox-lesson-1\.html$/);
+ const malformedLessonResponse=malformed.waitForResponse(r=>new URL(r.url()).pathname==='/progress');
+ await malformed.goto(base+'/firefox-lesson-1.html');await (await malformedLessonResponse).finished();
+ await malformed.evaluate(()=>new Promise(r=>setTimeout(r,0)));
+ assert.equal(await malformed.getByRole('button',{name:'Mark this lesson complete',exact:true}).count(),1);
+ assert.equal(await malformed.getByRole('button',{name:'Undo lesson completion',exact:true}).count(),0);
+ console.log('Malformed lesson numbers cannot count as lesson one, skip it in Continue, or unlock the final quiz; valid numeric strings remain counted.');
+
  const settings=await pageWithProgress(async()=>[]);
  await settings.addInitScript(()=>{localStorage.setItem('missionControlPracticeSettings','null');localStorage.setItem('accessibleLearningPreferences','true');});
  await settings.setViewportSize({width:390,height:844});await settings.goto(base+'/mission-settings.html');

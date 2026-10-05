@@ -139,17 +139,23 @@
       sections.forEach(section => {
         const slug = section.dataset.slug;
         const courseName = courseData[slug]?.name;
-        const completed = validRecords.filter(record =>
-          record.course === courseName &&
-          ["completed", "submitted"].includes(record.status)
-        );
-        section.dataset.started = String(validRecords.some(record => record.course === courseName &&
-          ["in_progress", "completed", "submitted"].includes(record.status)));
         const details = section.querySelector("details");
         const summary = details.querySelector("summary");
         const lessonLinks = [...details.querySelectorAll('.course-lesson-list a')];
-        const completedNumbers = new Set(completed.map(record => Number(record.lesson_number))
-          .filter(number => Number.isInteger(number) && number >= 1 && number <= lessonLinks.length));
+        // Reject coercible booleans/arrays and nonexistent lessons before using
+        // a record for either completion counts or the Started courses filter.
+        const courseRecords = validRecords.filter(record =>
+          record.course === courseName &&
+          (typeof record.lesson_number === "number" || typeof record.lesson_number === "string") &&
+          Number.isInteger(Number(record.lesson_number)) &&
+          Number(record.lesson_number) >= 1 && Number(record.lesson_number) <= lessonLinks.length
+        );
+        const completed = courseRecords.filter(record =>
+          ["completed", "submitted"].includes(record.status)
+        );
+        section.dataset.started = String(courseRecords.some(record =>
+          ["in_progress", "completed", "submitted"].includes(record.status)));
+        const completedNumbers = new Set(completed.map(record => Number(record.lesson_number)));
         const nextIndex = lessonLinks.findIndex((link, index) => !completedNumbers.has(index + 1));
         summary.textContent = completedNumbers.size + " of " + lessonLinks.length + " lessons complete. Show course details for " +
           section.querySelector("h2").textContent.replace(/ lessons$/i, "");

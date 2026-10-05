@@ -116,6 +116,7 @@
         if (!response.ok || !Array.isArray(records)) return;
         const record = records.find(item =>
           item && item.course === course &&
+          (typeof item.lesson_number === "number" || typeof item.lesson_number === "string") &&
           Number(item.lesson_number) === lessonNumber &&
           ["completed", "submitted"].includes(item.status)
         );

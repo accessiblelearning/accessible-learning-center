@@ -34,6 +34,14 @@ test('new course progress counts unique lessons and links to the next unfinished
  const p=await catalog([1,1,2,99].map(n=>({course:'Firefox',lesson_number:n,status:'completed'})));
  const s=p.get('firefox-lessons');assert.match(s.querySelector('summary').textContent,/2 of 10/);assert.equal(s.querySelector('p').querySelector('a').href,'firefox-lesson-3.html');
 });
+test('invalid lesson numbers cannot count as completion or falsely mark a course started',async()=>{
+ const bad=[true,false,[1],['1'],null,{},'',0,11,1.5].map(n=>({course:'Firefox',lesson_number:n,status:'completed'}));
+ const p=await catalog(bad);assert.match(p.get('firefox-lessons').querySelector('summary').textContent,/0 of 10/);
+ p.get('startedCoursesOnly').checked=true;p.get('startedCoursesOnly').fire('change');assert.equal(p.get('firefox-lessons').hidden,true);
+ const q=await catalog([...bad,{course:'Firefox',lesson_number:'2',status:'completed'}]);
+ assert.match(q.get('firefox-lessons').querySelector('summary').textContent,/1 of 10/);
+ assert.equal(q.get('firefox-lessons').querySelector('p').querySelector('a').href,'firefox-lesson-1.html');
+});
 test('in-progress records remain visible in Started courses after undoing completion',async()=>{
  const p=await catalog([{course:'Bookshare',lesson_number:1,status:'in_progress'}]);p.get('startedCoursesOnly').checked=true;p.get('startedCoursesOnly').fire('change');
  assert.equal(p.get('bookshare-lessons').hidden,false);assert.equal(p.get('firefox-lessons').hidden,true);assert.match(p.get('bookshare-lessons').querySelector('summary').textContent,/0 of 10/);

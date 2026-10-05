@@ -44,11 +44,24 @@ async function fixture(slug, completed=10, faults={}) {
   const doc={getElementById:get,createElement:tag=>new Node(tag),createTextNode:text=>Object.assign(new Node(),{textContent:text}),body:new Node()};
   const window={print(){window.printed=true;},addEventListener(){}};
   const context={document:doc,window,localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>{if(faults.save)throw Error('Storage full');storage.set(k,v);},removeItem:k=>storage.delete(k)},
-    fetch:async()=>{if(faults.network)throw Error('Offline');return {ok:true,json:async()=>{if(faults.pending)await faults.pending;return Array.from({length:completed},(_,i)=>({course:data.course,lesson_number:i+1,status:'completed'}));}};},console};
+    fetch:async()=>{if(faults.network)throw Error('Offline');return {ok:true,json:async()=>{if(faults.pending)await faults.pending;return faults.records ?? Array.from({length:completed},(_,i)=>({course:data.course,lesson_number:i+1,status:'completed'}));}};},console};
   vm.runInNewContext(read('quiz.js'),context);await new Promise(r=>setImmediate(r));
   const answer=count=>data.questions.forEach((q,i)=>{for(const n of form.querySelectorAll(`input[name="question-${i}"]`))n.checked=Number(n.value)===(i<count?q.answer:(q.answer+1)%q.options.length);});
   return {get,form,grade,data,storage,window,answer,readiness:main.children.find(n=>n.className==='quiz-readiness')};
 }
+
+test('quiz readiness rejects malformed lesson numbers without losing valid numeric-string records',async()=>{
+ const record=n=>({course:'Firefox',lesson_number:n,status:'completed'});
+ const rest=Array.from({length:9},(_,i)=>record(String(i+2)));
+ for(const invalid of [true,false,[1],['1'],null,{},'',0,11,1.5]){
+  const p=await fixture('firefox',10,{records:[record(invalid),...rest]});
+  assert.equal(p.grade.disabled,true,JSON.stringify(invalid));
+  assert.match(p.readiness.children[0].textContent,/9 of 10/);
+  p.answer(20);p.form.fire('submit');assert.equal(p.get('certificateSetup').hidden,true);
+ }
+ const valid=await fixture('firefox',10,{records:[null,record('1'),...rest,record('1')]});
+ assert.equal(valid.grade.disabled,false);
+});
 
 test('a late readiness response cannot unlock a quiz after the Student ID changes',async()=>{
  let resolve;const pending=new Promise(r=>{resolve=r;});const p=await fixture('firefox',10,{pending});
