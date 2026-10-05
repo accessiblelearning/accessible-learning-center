@@ -31,6 +31,8 @@ The next batch reviews all **40 advanced VoiceOver tasks**, replaces their gener
 7. **Curriculum refinement.** Continue review of Braille teaching consistency, recall spacing, word/sentence difficulty and timing; retain introduced-symbol restrictions. Preserve the existing 48-lesson private package unless a reproduced defect or specific teaching improvement warrants an update. Preserve all 50 lessons in each typing path and refine cues from learner reports.
 8. **Ongoing QA.** Add regressions for reproduced issues in keyboard navigation, speech requests, layout, scoring, completion, progress and certificates. Review any new authentication changes separately for security. Automated passes are scoped evidence, not a guarantee of no bugs.
 
+The JAWS follow-up improves all **11 advanced explanations** and adds current-step teaching to **8 layered commands**, preserving the complete 32-command course. See [the JAWS checkpoint](qa-2026-10-05-jaws.md). **152 public tests pass**; Chromium completes all 32 tasks with site voice on and off, including wrong-layer recovery and current-step repeat. No private sources, missions or typing paths changed. Actual JAWS/Safari testing remains unverified.
+
 ## Needs targeted human/device feedback
 
 - JAWS/NVDA and Mac VoiceOver/Safari: spoken feedback, focus and real shortcut conflicts.

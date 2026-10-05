@@ -205,6 +205,30 @@
       if (note) [entry[1], entry[2]] = note;
     }
   }
+  const jawsAdvanced = {
+    "Insert+Space then J": "Search by purpose when you remember the task but not its keys. For example, search for speech history, then review the matching command before practicing it.",
+    "Insert+Space then H": "Recover an announcement you missed, such as a dialog message. Read back through recent speech; this is a history of announcements, not Undo for your document.",
+    "Insert+Space then X": "On a webpage, place the virtual cursor at the element you want to customize before opening the wizard. For example, skip a repetitive banner. Try the temporary change before saving a rule; a rule changes your JAWS reading experience, not the published website.",
+    "Insert+Space then O then D": "With the image-based PDF open in Adobe Reader, recognize its document text. For example, try a scanned handout that normal reading cannot access. Check names and numbers carefully: OCR can misread characters and does not repair the original PDF’s accessibility.",
+    "Insert+Space then O then W": "Recognize text in the active application window when ordinary reading cannot reach it. For example, inspect a picture of instructions. First select the intended window; this target is narrower than the entire screen.",
+    "Insert+Space then O then S": "Recognize visible screen text when you need a wider view than the active window. For example, inspect an image of a notice alongside another window. OCR reads image text; it does not turn pictured buttons into working controls.",
+    "Insert+3": "Let the application receive one following key that JAWS would normally handle. Use number-row 3. This is a one-command exception, not a way to turn JAWS off.",
+    "Control+Insert+V": "Check the active application’s version before following version-specific help. For example, identify the program involved in a bug report.",
+    "Shift+Insert+V": "Put the focused control’s content into a virtual view for closer reading. Focus the intended control first; this does not select every control in the window.",
+    "Insert+Space then D": "Choose whether other audio becomes quieter during JAWS speech. For example, make a spoken instruction easier to hear over a video; this does not change speech rate.",
+    "Insert+Space then F1": "Ask FSCompanion for help with a task such as reading a table. It provides AI-generated guidance, so check the suggested commands against your application and JAWS setup. This practice only rehearses the keys; it does not submit a question."
+  };
+  for (const entry of courses["JAWS commands"]) {
+    if (entry[4].level !== "advanced" || !jawsAdvanced[entry[0]]) continue;
+    entry[2] = jawsAdvanced[entry[0]];
+    if (entry[0].startsWith("Insert+Space then ")) {
+      entry[4].stepGoals = entry[4].steps.length === 3
+        ? ["Enter JAWS layered commands.", "Choose Convenient OCR.", entry[1]]
+        : ["Enter JAWS layered commands.", entry[1]];
+    }
+    if (entry[0] === "Insert+Space then X") entry[4].source = "https://support.freedomscientific.com/SurfsUp/16-FlexibleWeb.htm";
+    if (entry[0] === "Insert+Space then H") entry[4].source = "https://support.freedomscientific.com/teachers/lessons/5.5.1_SpeechHistory.htm";
+  }
   const zoomText = courses["ZoomText and Fusion Desktop magnification"];
   for (const entry of zoomText) {
     if (entry[0].startsWith("Caps Lock+Space then Y then ")) {

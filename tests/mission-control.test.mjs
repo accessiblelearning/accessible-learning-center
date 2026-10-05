@@ -891,7 +891,7 @@ test('email and magnification teaching keeps coverage and exposes necessary appl
 });
 
 test('reviewed mail, magnification and NVDA courses finish with native or separated keys and spoken stages',()=>{
- for(const name of ['Thunderbird email','ZoomText and Fusion Desktop magnification','NVDA commands']){
+ for(const name of ['Thunderbird email','ZoomText and Fusion Desktop magnification','NVDA commands','JAWS commands']){
   const p=page({commandCategory:{value:name},practiceStyle:{value:'guided'},sessionLength:{value:'all'},spokenInstructions:{checked:true}}),heard=[];
   p.window.speechSynthesis.speak=u=>heard.push(u.text);
   p.load('command-courses.js');p.load('command-teaching.js');p.load('command-practice.js');p.get('startPractice').click();
@@ -1063,6 +1063,44 @@ test('Mac separated-key practice offers a builder escape at Fn and preserves rep
  p.get('courseBuilderPanel').focus();buildStep(p,'VO+F8');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');p.advance();
  tapCourseKey(p,'Control');tapCourseKey(p,'Option');p.key('keyCapture',';',{code:'Semicolon'});
  assert.equal(p.get('practiceScore').textContent,'Correct: 2 · Attempts: 2');p.advance();assert.equal(p.get('practiceResults').hidden,false);
+});
+
+test('JAWS teaching preserves coverage and explains OCR scope and layered commands',()=>{
+ const p=page();p.load('command-courses.js');
+ const identity=()=>p.window.CommandPracticeCourses['JAWS commands'].map(e=>[e[0],e[3],e[4].level,[...e[4].steps]]);
+ const before=identity();p.load('command-teaching.js');assert.deepEqual(identity(),before);
+ const entries=p.window.CommandPracticeCourses['JAWS commands'];assert.equal(entries.length,32);
+ const advanced=entries.filter(e=>e[4].level==='advanced');assert.equal(advanced.length,11);
+ assert.equal(new Set(advanced.map(e=>e[2])).size,11);
+ const note=key=>entries.find(e=>e[0]===key);
+ assert.match(note('Insert+Space then X')[2],/virtual cursor.*temporary change/);
+ assert.match(note('Insert+Space then O then D')[2],/Adobe Reader.*misread/);
+ assert.match(note('Insert+Space then O then W')[2],/active application window/);
+ assert.match(note('Insert+Space then O then S')[2],/does not turn pictured buttons/);
+ assert.match(note('Insert+3')[2],/number-row 3/);
+ for(const entry of advanced.filter(e=>e[4].steps.length>1)){
+  assert.equal(entry[4].stepGoals.length,entry[4].steps.length);
+  assert.equal(entry[4].stepGoals.at(-1),entry[1]);
+ }
+});
+
+test('JAWS OCR repeats its current layer and recovers without early credit',()=>{
+ for(const finalKey of ['D','W','S']){
+  const name='JAWS commands',p=page({commandCategory:{value:name},practiceStyle:{value:'guided'},sessionLength:{value:'all'},spokenInstructions:{checked:true}}),heard=[];
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);
+  p.load('command-courses.js');p.load('command-teaching.js');
+  const entry=p.window.CommandPracticeCourses[name].find(e=>e[0]===`Insert+Space then O then ${finalKey}`);
+  p.window.CommandPracticeCourses[name]=[entry];p.load('command-practice.js');p.get('startPractice').click();
+  p.key('keyCapture','Control');assert.match(heard.at(-1),/Enter JAWS layered commands/);
+  tapCourseKey(p,'Insert');tapCourseKey(p,'Space');
+  p.key('keyCapture','Control');assert.match(heard.at(-1),/Choose Convenient OCR/);
+  tapCourseKey(p,'X');assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+  p.key('keyCapture','Control');assert.match(heard.at(-1),/Choose Convenient OCR/);
+  tapCourseKey(p,'O');p.key('keyCapture','Control');assert.ok(heard.at(-1).includes(entry[1]));
+  assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+  tapCourseKey(p,finalKey);assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2');
+  p.advance();assert.equal(p.get('commandResults').hidden,false);
+ }
 });
 
 test('ZoomText Say sequences repeat the current layer and recover without restarting or early credit',()=>{
