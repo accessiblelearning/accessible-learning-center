@@ -541,7 +541,7 @@ test('Narrator review preserves all 73 task identities and stages and teaches di
  const reviewed=JSON.parse(JSON.stringify(w.CommandPracticeCourses['Narrator commands']));
  assert.equal(reviewed.length,73);
  assert.deepEqual(reviewed.map(e=>[e[0],e[1],e[3],e[4].level,e[4].steps]),original.map(e=>[e[0],e[1],e[3],e[4].level,e[4].steps]));
- assert.equal(reviewed.filter((e,i)=>e[2]!==original[i][2]).length,31);
+ assert.equal(reviewed.filter((e,i)=>e[2]!==original[i][2]).length,69);
  const advanced=reviewed.filter(e=>e[4].level==='advanced');assert.equal(advanced.length,5);
  assert.equal(new Set(advanced.map(e=>e[2])).size,5);
  for(const entry of advanced)assert.doesNotMatch(entry[2],/In the real app, check the new mode/);
@@ -550,6 +550,17 @@ test('Narrator review preserves all 73 task identities and stages and teaches di
  assert.match(note('Insert+H'),/In Outlook/);assert.match(note('Insert+V'),/not the voice's volume or speed/);
  assert.match(note('Insert+5'),/numeric keypad.*not the number row/);
  assert.match(note('Control+Insert+5'),/Narrator plus K/);
+ // Keep the few descriptions that need device-level clarification explicit,
+ // instead of silently labeling their existing generic note as reviewed.
+ assert.deepEqual(reviewed.filter((e,i)=>e[2]===original[i][2]).map(e=>e[0]),
+  ['Control+Insert+Enter','Insert+0','Insert+A','Shift+Insert+A']);
+ assert.match(note('Insert+\\'),/backslash, not the forward slash/);
+ assert.match(note('Shift+Insert+Down Arrow'),/already highlighted.*Make the selection first/);
+ assert.match(note('Insert+R'),/current focus or cursor position/);
+ assert.match(note('Insert+Down Arrow'),/from its beginning/);
+ assert.match(note('Control+Insert+D'),/Online features may send.*rehearsal sends neither/);
+ for(const key of ['Alt+Insert+Up Arrow','Alt+Insert+Right Arrow','Alt+Insert+Left Arrow','Alt+Insert+Down Arrow'])
+  assert.match(note(key),/structural navigation/);
 });
 test('every expanded topic reaches all three levels and completes through the accessible builder',()=>{
  const aliases=new Set(['General editing','Mac VoiceOver navigation and web','Mac VoiceOver reading and settings']);

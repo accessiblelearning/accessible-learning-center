@@ -36,6 +36,22 @@ try{
   for(const [i,item] of items.entries()){
    assert.equal(await page.locator('#commandDetailedExplanation').textContent(),item[2]);
    assert.equal(await page.locator('#commandExplanationDetails').evaluate(e=>e.open),false);
+   assert.equal((await page.locator('#commandPrompt').textContent()).includes(item[2]),false);
+   if(voice)assert.equal(await page.evaluate(note=>testSpeech.at(-1).includes(note),item[2]),false);
+   if(voice&&['Control+Insert+D','Insert+R','Insert+F','Alt+Insert+Down Arrow'].includes(item[0])){
+    // Expanded teaching is keyboard-reachable, optional and confined to the
+    // current task. Leave it open so the next task must collapse it again.
+    await page.locator('#commandExplanationDetails summary').focus();await page.keyboard.press('Enter');
+    assert.equal(await page.locator('#commandDetailedExplanation').isVisible(),true);
+    await page.setViewportSize({width:390,height:844});
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
+    if(process.env.AXE_PATH){
+     if(!await page.evaluate(()=>Boolean(window.axe)))await page.addScriptTag({path:process.env.AXE_PATH});
+     assert.deepEqual(await page.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>v.id)),[]);
+    }
+    if(item[0]==='Control+Insert+D')await page.screenshot({path:join(dir,'narrator-reading-teaching-narrow.png'),fullPage:true});
+    await page.setViewportSize({width:1100,height:850});await page.locator('#keyCapture').focus();
+   }
    const keypad=Boolean(item[4].practiceSteps);
    if(keypad){
     assert.match(await page.locator('#commandPrompt').textContent(),/numeric keypad 5/);
@@ -80,7 +96,7 @@ try{
   for(const item of items.filter(item=>item[4].practiceSteps)){await build(steps(item)[0]);await advance(voice);}
   assert.equal(await page.locator('#commandCorrectResult').textContent(),'2');assert.equal(await page.locator('#commandAccuracyResult').textContent(),'100%');
   await page.keyboard.press('Escape');await page.waitForURL('**/command-practice.html');
-  console.log('Narrator rehearsal: all 73 tasks, numeric-keypad distinction, recovery/repeat, builder, missed-task retry, scoring, focus and completion; site voice='+voice);
+  console.log('Narrator rehearsal: all 73 tasks, optional teaching, numeric-keypad distinction, recovery/repeat, builder, missed-task retry, scoring, focus and completion; site voice='+voice);
  }
  assert.deepEqual(errors,[]);console.log('No JavaScript errors. Chromium and speech-request checks only; real Narrator/Safari untested.');
 }finally{await browser?.close();await new Promise(r=>server.close(r));}
