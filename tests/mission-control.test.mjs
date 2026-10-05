@@ -868,6 +868,65 @@ test('focused legacy courses have distinct outcomes while full topics retain con
   assert.match(c['Google Docs and applications'].find(e=>e[0]==='Control+\/')[2],/forward slash/);
 });
 
+test('Word dash practice rejects main-keyboard minus and distinguishes it from optional-hyphen input',()=>{
+  const p=page({commandCategory:{value:'Microsoft Word and documents'},spokenInstructions:{checked:true}}),heard=[];
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);
+  p.load('command-courses.js');p.load('command-teaching.js');
+  const selected=p.window.CommandPracticeCourses['Microsoft Word and documents'].filter(e=>/Insert an (em dash|en dash|optional hyphen)/.test(e[1]));
+  assert.equal(selected.length,3);p.window.CommandPracticeCourses['Microsoft Word and documents']=selected;
+  p.load('command-practice.js');p.get('startPractice').click();
+  buildStep(p,'Control+Alt+-');assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 1');
+  assert.match(heard[0],/numeric keypad minus/);
+  assert.ok(p.get('courseFinalKey').children.some(e=>e.value==='NumpadSubtract'&&e.textContent==='numeric keypad minus'));
+  p.get('keyCapture').focus();p.key('keyCapture','Control');p.key('keyCapture','Alt');
+  p.key('keyCapture','-',{code:'NumpadSubtract',location:3});
+  assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 2');p.advance();
+  p.key('keyCapture','Control');p.key('keyCapture','-',{code:'Minus'});
+  assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 3');
+  p.key('keyCapture','Control');p.key('keyCapture','-',{location:3});
+  assert.equal(p.get('practiceScore').textContent,'Correct: 2 · Attempts: 4');p.advance();
+  assert.match(heard.at(-1),/minus key beside 0/);
+  p.key('keyCapture','-',{ctrlKey:true,altKey:true,code:'NumpadSubtract',location:3});
+  assert.equal(p.get('practiceScore').textContent,'Correct: 2 · Attempts: 5');
+  p.key('keyCapture','-',{ctrlKey:true,altKey:true,code:'Minus'});
+  assert.equal(p.get('practiceScore').textContent,'Correct: 3 · Attempts: 6');p.advance();
+  assert.equal(p.get('commandResults').hidden,false);
+});
+
+test('Word keypad teaching retains task identities and ordinary zoom input still works',()=>{
+  const p=page({commandCategory:{value:'Microsoft Word and documents'}});p.load('command-courses.js');
+  const original=p.window.CommandPracticeCourses['Microsoft Word and documents'].filter(e=>/Insert an (em dash|en dash|optional hyphen)/.test(e[1]));
+  const identities=JSON.stringify(original.map(e=>[e[0],e[1],e[4].steps]));p.load('command-teaching.js');
+  const reviewed=p.window.CommandPracticeCourses['Microsoft Word and documents'].filter(e=>/Insert an (em dash|en dash|optional hyphen)/.test(e[1]));
+  assert.equal(JSON.stringify(reviewed.map(e=>[e[0],e[1],e[4].steps])),identities);
+  assert.ok(reviewed.slice(0,2).every(e=>e[3]==='safe'&&e[4].practiceSteps[0].endsWith('NumpadSubtract')));
+  p.window.CommandPracticeCourses['Microsoft Word and documents']=p.window.CommandPracticeCourses['Microsoft Word and documents'].filter(e=>e[1]==='Zoom out.');
+  p.load('command-practice.js');p.get('startPractice').click();
+  chord(p,'Control+-');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');
+});
+
+test('Word and focused editing ask each reviewed paragraph alignment once without losing shortcut coverage',()=>{
+  const p=page();p.load('command-courses.js');
+  const original=p.window.CommandPracticeCourses['Microsoft Word and documents'];
+  const coverage=new Set(original.map(e=>e[0]));
+  const first=new Map(['Control+E','Control+L','Control+R'].map(key=>[key,original.find(e=>e[0]===key)]));
+  p.load('command-teaching.js');const c=p.window.CommandPracticeCourses;
+  assert.deepEqual(new Set(c['Microsoft Word and documents'].map(e=>e[0])),coverage);
+  for(const name of ['Microsoft Word and documents','General editing']) {
+    for(const [key,entry] of first) {
+      const matches=c[name].filter(e=>e[0]===key);
+      assert.equal(matches.length,1,name+': '+key);
+      assert.equal(matches[0][1],entry[1],'Retain the first existing task identity');
+    }
+    assert.deepEqual([...new Set(c[name].map(e=>e[4].level))],['basic','intermediate','advanced']);
+  }
+  assert.equal(c['General editing'].length,17);
+  assert.equal(new Set(c['General editing'].map(e=>e[0])).size,17);
+  // Identical keys with genuinely different focus requirements remain separate.
+  assert.ok(c['Microsoft Excel and spreadsheets'].filter(e=>e[0]==='Control+End').length>=2);
+  assert.ok(c['Mac VoiceOver basics'].filter(e=>e[0]==='VO+Right Arrow').length>=2);
+});
+
 test('all focused legacy routes complete with the production teaching layer',()=>{
   for(const category of ['General editing','Mac VoiceOver reading and settings','Mac VoiceOver navigation and web']) {
     const p=page({commandCategory:{value:category},practiceStyle:{value:'guided'},sessionLength:{value:'all'},explanationLevel:{value:'detailed'},soundFeedback:{checked:false}});

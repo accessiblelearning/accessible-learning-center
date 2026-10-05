@@ -192,6 +192,21 @@
       entry[4].practiceSteps = [entry[0].replace(/5$/, "Numpad5")];
     }
   }
+  for (const entry of courses["Microsoft Word and documents"]) {
+    if (["Insert an em dash (—).", "Insert an en dash (–)."].includes(entry[1])) {
+      const em = entry[1] === "Insert an em dash (—).";
+      entry[3] = "safe";
+      entry[4].practiceSteps = [entry[0].replace(/-$/, "NumpadSubtract")];
+      entry[2] = (em
+        ? "At the text insertion point, insert an em dash to set off an aside in a sentence."
+        : "At the text insertion point, insert an en dash, such as between the endpoints of a range like 5–10.") +
+        " This Word shortcut uses the minus key on the numeric keypad, not the hyphen key beside 0. Use the builder if your keyboard has no numeric keypad; here the keys are rehearsed separately.";
+    }
+    if (entry[1] === "Insert an optional hyphen.") {
+      entry[4].mainKeyboardKey = "-";
+      entry[2] = "Choose a possible hyphenation point within a long word. The optional hyphen is shown if the word breaks there at the end of a line. Use the main keyboard's minus key beside 0 for this exercise; numeric keypad minus belongs to the separate dash shortcut.";
+    }
+  }
   // Keep application/focus requirements in the short task, with examples in
   // More explanation. Keys, ordering and stages remain stable for these courses.
   const contextualTeaching = {
@@ -426,7 +441,7 @@
   }
   // Remove only repeated actions reviewed as identical, never context-dependent arrow commands.
   const sameAction = {
-    "Microsoft Word and documents": new Set(["Control+B", "Control+I", "Control+U"]),
+    "Microsoft Word and documents": new Set(["Control+B", "Control+I", "Control+U", "Control+E", "Control+L", "Control+R"]),
     "Microsoft Excel and spreadsheets": new Set(["Alt+M"]),
     "Presentations": new Set(["Control+Shift+Tab"]),
     "Mac VoiceOver basics": new Set(["VO+K", "VO+Q", "Shift+VO+Q", "VO+P", "VO+L", "VO+S", "VO+W", "VO+C"])

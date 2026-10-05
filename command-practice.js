@@ -595,6 +595,7 @@
 
   function spokenKeyName(key) {
     if (/^numpad5$/i.test(key)) return "numeric keypad 5";
+    if (/^numpadsubtract$/i.test(key)) return "numeric keypad minus";
     const punctuation = {
       "/": "slash", "\\": "backslash", ".": "period", ",": "comma",
       ";": "semicolon", ":": "colon", "'": "apostrophe", '"': "quotation mark",
@@ -700,8 +701,10 @@
 
   function keyLocationHint() {
     const key = expectedStep().split("+").at(-1);
+    if (command[4]?.mainKeyboardKey === "-") return "Use the minus key beside 0, not numeric keypad minus.";
     return ({
       "Numpad5": "No numeric keypad? Use Build the command below.",
+      "NumpadSubtract": "No numeric keypad? Use Build the command below.",
       "[": "Left square bracket is just to the right of P.",
       "]": "Right square bracket is two keys to the right of P.",
       "Less Than": "Less than shares the comma key.",
@@ -845,6 +848,10 @@
     // distinct from number-row 5 only in tasks that explicitly need the keypad.
     if (hasCourse() && expectedStep().split("+").at(-1) === "Numpad5" &&
         (event.code === "Numpad5" || (event.location === 3 && ["5", "Clear"].includes(event.key)))) return "numpad5";
+    // Word's dash and optional-hyphen tasks deliberately distinguish these
+    // two minus keys. Other commands keep their existing key handling.
+    if (hasCourse() && (expectedStep().split("+").at(-1) === "NumpadSubtract" || command[4]?.mainKeyboardKey === "-") &&
+        (event.code === "NumpadSubtract" || (event.location === 3 && ["-", "Subtract"].includes(event.key)))) return "numpadsubtract";
     if (hasCourse() && event.code) {
       if (/^Key[A-Z]$/.test(event.code)) return event.code.slice(3).toLowerCase();
       if (/^Digit[0-9]$/.test(event.code)) return event.code.slice(5);
