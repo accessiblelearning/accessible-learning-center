@@ -47,6 +47,8 @@ The learner-progress follow-up corrects In progress labels, rejects malformed pr
 
 ## Needs targeted human/device feedback
 
+The session-progress follow-up prevents an old keyboard completion callback from finishing a new session after a quick restart, preserves newer Topic Mission completions saved by another open tab, and reports failed mission saves visibly and through speech requests. See [the session-progress checkpoint](qa-2026-10-05-session-progress.md). **183 public tests pass**, plus three-path keyboard restart and two-tab mission browser checks. All curricula, stable IDs and private work are unchanged. Browser-local history is still separate from future account synchronization.
+
 The lesson-record follow-up rejects malformed values that previously counted as lesson 1, could falsely mark a course started, and could unlock a final quiz alongside nine valid lessons. See [the lesson-record checkpoint](qa-2026-10-05-lesson-records.md). **179 public tests pass**, with fictional-response browser checks. Valid numeric-string records and existing saved history are preserved; no private, curriculum or backend changes.
 
 The Firefox follow-up reviews all **39 explanations**, aligns 17 inconsistent browser shortcuts with separated-key rehearsal, and fixes false credit when Shift is omitted from bookmark-library/Add-ons shortcuts. See [the Firefox checkpoint](qa-2026-10-05-firefox.md). **176 public tests pass**; Chromium completes all 39 tasks with site voice on/off, recovery, focus and narrow-layout checks. Command identities/stages, missions 0–24, typing paths and all private work are preserved. Actual Firefox/assistive-technology behavior remains a targeted device check, not a claimed test result.

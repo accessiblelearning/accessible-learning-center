@@ -1479,7 +1479,11 @@
         : "Character " + Math.min(session.position + 1, session.prompt.length) + " of " + session.prompt.length;
       if (session.position >= session.prompt.length) {
         session.accepting = false;
-        window.setTimeout(finishPractice, 220);
+        const completedSession = session;
+        window.setTimeout(() => {
+          // Escape followed by a quick restart must not finish the new session.
+          if (session === completedSession) finishPractice();
+        }, 220);
       } else if (completedGroup) {
         session.accepting = false;
         window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);

@@ -85,7 +85,7 @@ function page({ saved = {}, blocked = false, typingDelay = 700, speechFault } = 
   // Expose pure curriculum/prompt helpers only within this test context.
   vm.runInContext(source('keyboarding-preview.js').replace(/\}\)\(\);\s*$/, 'globalThis.testApi = {lessonFor, buildPrompt}; })();'), context);
   function advance() { while (timers.length) timers.shift()(); }
-  function key(character) { clock += typingDelay; document.fire('keydown', { key: character }); document.fire('keyup', { key: character }); advance(); }
+  function key(character, flush = true) { clock += typingDelay; document.fire('keydown', { key: character }); document.fire('keyup', { key: character }); if (flush) advance(); }
   const api = {
     get, data, document, helpers: context.testApi, oneHand: context.ALCOneHandCurriculum,
     elapse(ms, tick = true) { clock += ms; if (tick) interval?.(); },
@@ -266,6 +266,24 @@ test('damaged history entries cannot break stats or inflate lesson and score tot
  assert.match(p.get('earlierStats').textContent,/1 saved sessions; best speed 7 WPM/);
  assert.equal(p.data.get(storageKey),saved,'Reading damaged history must not overwrite source records');
  p.changeHand('left');p.menu('stats');assert.equal(p.get('statsLessons').textContent,'0 of 50');
+});
+
+test('a completed exercise cannot finish or save a newly opened keyboard session through its delayed callback', () => {
+ for(const hand of ['both','left','right']){
+  const p=page();p.get('previewCode').value='Keys';p.get('unlockForm').fire('submit');
+  p.changeHand(hand);p.get('saveSetting').checked=true;p.get('saveSetting').fire('change');p.start(0);
+  const text=p.helpers.lessonFor(0,hand).practiceGroups.join('');
+  for(const key of text.slice(0,-1))p.key(key);
+  p.key(text.at(-1),false);assert.equal(p.get('resultsPanel').hidden,true);
+  p.key('Escape',false);p.start(0);
+  assert.equal(p.get('practicePanel').hidden,false,hand+' remains ready');
+  assert.equal(p.get('resultsPanel').hidden,true,hand+' has no premature result');
+  assert.equal(p.data.has(storageKey),false,hand+' does not save a zero-character restart');
+  for(const key of text)p.key(key);
+  assert.equal(p.get('resultsPanel').hidden,false);
+  const results=JSON.parse(p.data.get(storageKey));assert.equal(results.sessions.length,1);
+  assert.equal(results.sessions[0].hand,hand);assert.equal(results.sessions[0].accuracy,100);
+ }
 });
 
 test('timed practice uses elapsed time after delayed callbacks and rejects input after its deadline', () => {

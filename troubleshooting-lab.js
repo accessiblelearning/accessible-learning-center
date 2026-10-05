@@ -651,7 +651,19 @@
   }
 
   function save() {
-    try { localStorage.setItem("missionControlCompleted", JSON.stringify([...completed])); } catch (error) {}
+    try {
+      // A second, already-open mission page may have saved since this page
+      // loaded. Retain those completions and this visit's unsaved results.
+      const raw = localStorage.getItem("missionControlCompleted");
+      let saved;
+      try { saved = JSON.parse(raw || "[]"); } catch (error) { saved = []; }
+      if (Array.isArray(saved)) {
+        saved.filter(index => Number.isInteger(index) && index >= 0 && index < missions.length)
+          .forEach(index => completed.add(index));
+      }
+      localStorage.setItem("missionControlCompleted", JSON.stringify([...completed]));
+      return true;
+    } catch (error) { return false; }
   }
 
   function speak(text) {
@@ -977,9 +989,18 @@
   function finishMission(finalStepFeedback) {
     active = false;
     completed.add(current);
-    save();
+    const saved = save();
+    const warning = saved ? "" : "This browser could not save your mission progress. Your result is available for this visit only.";
+    const saveStatus = document.getElementById("missionSaveStatus");
+    if (saveStatus) {
+      saveStatus.hidden = saved;
+      saveStatus.setAttribute("aria-live", simulatedVoice.checked ? "off" : "polite");
+      saveStatus.textContent = warning;
+      if (saved) nextButton.removeAttribute("aria-describedby");
+      else nextButton.setAttribute("aria-describedby", "missionSaveStatus");
+    }
     updateProgress();
-    announce(finalStepFeedback + " Mission complete. You solved " + missions[current].title + ".", "correct");
+    announce(finalStepFeedback + " Mission complete. You solved " + missions[current].title + "." + (warning ? " " + warning : ""), "correct");
     fillMissionResults();
     showMissionResults(true);
     nextButton.focus();

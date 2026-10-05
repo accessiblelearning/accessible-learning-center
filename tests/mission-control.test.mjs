@@ -751,6 +751,44 @@ test("a Shift press within a protected Alt chord does not count as an incorrect 
 });
 
 
+test('finishing a mission preserves another tab\'s newer completion records',()=>{
+ const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'3'}});
+ p.storage.setItem('missionControlCompleted','[0]');p.load('troubleshooting-lab.js');p.get('startMission').click();
+ // Another already-open tab finishes after this page loaded its snapshot.
+ p.storage.setItem('missionControlCompleted','[0,24]');
+ chord(p,'Control+Z','missionControlStation');chord(p,'Control+S','missionControlStation');
+ const saved=JSON.parse(p.storage.getItem('missionControlCompleted'));
+ assert.deepEqual([...saved].sort((a,b)=>a-b),[0,3,24]);
+ assert.equal(p.get('missionCompletedResult').textContent,'3 of 25');
+});
+
+test('mission save failure is visible and spoken without blocking completion, then retries preserve pending results',()=>{
+ const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'3'},simulatedVoice:{checked:true}}),spoken=[];
+ p.window.speechSynthesis.speak=u=>spoken.push(u.text);p.load('troubleshooting-lab.js');p.get('startMission').click();
+ const write=p.storage.setItem;p.storage.setItem=()=>{throw Error('Storage full');};
+ chord(p,'Control+Z','missionControlStation');chord(p,'Control+S','missionControlStation');
+ assert.equal(p.get('missionResults').hidden,false);assert.match(p.get('missionSaveStatus').textContent,/could not save/);
+  assert.match(spoken.at(-1),/could not save/);assert.equal(p.document.activeElement.id,'nextMission');
+ assert.equal(p.get('nextMission').getAttribute('aria-describedby'),'missionSaveStatus');
+ p.storage.setItem=write;p.get('nextMission').click();
+ chord(p,'Control+C','missionControlStation');chord(p,'Control+V','missionControlStation');
+ assert.deepEqual(JSON.parse(p.storage.getItem('missionControlCompleted')),[3,4]);
+ assert.equal(p.get('missionSaveStatus').hidden,true);
+ assert.equal(p.get('nextMission').getAttribute('aria-describedby'),null);
+});
+
+test('mission completion recovers from malformed stored lists and retains only valid mission IDs',()=>{
+ for(const initial of ['not JSON','null','{}','[0,0,24,25,-1,true,"3",null]']){
+  const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'3'}});
+  p.storage.setItem('missionControlCompleted',initial);p.load('troubleshooting-lab.js');p.get('startMission').click();
+  chord(p,'Control+Z','missionControlStation');chord(p,'Control+S','missionControlStation');
+  const saved=JSON.parse(p.storage.getItem('missionControlCompleted'));
+  assert.deepEqual([...saved].sort((a,b)=>a-b),initial.startsWith('[')?[0,3,24]:[3]);
+  assert.equal(p.get('missionSaveStatus').hidden,true);
+  assert.equal(p.get('nextMission').getAttribute('aria-describedby'),null);
+ }
+});
+
 test("new topic missions finish with safe inputs and preserve old numeric progress", () => {
   const solutions = [[13,["t","d"]],[14,["F2","Enter","s"]],[15,["m","z","s"]],[16,["m","ArrowRight"," "]],[17,["ArrowRight","ArrowLeft"]]];
   for (const [index,keys] of solutions) {
