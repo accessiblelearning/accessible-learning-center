@@ -396,6 +396,35 @@ test("toolbar and Settings voice stay synchronized; Left and Right change values
   assert.equal(p.get("readerValue").textContent, "JAWS");
 });
 
+test('Mission Settings recovers from malformed saved objects and preserves display preferences', () => {
+ for(const value of ['null','true','12','"text"','[]','{bad']){
+  const p=page();p.document.body.dataset={};const menu=p.get('missionSettingsMenu');
+  for(const key of ['speech','sounds','reader']){const item=p.get(key+'Setting');item.dataset.setting=key;menu.append(item);}
+  p.storage.setItem('missionControlPracticeSettings',value);p.storage.setItem('accessibleLearningPreferences',value);
+  p.load('mission-ui.js');p.load('mission-settings.js');p.window.fire('DOMContentLoaded');p.advance();
+  p.get('speechSetting').click();assert.equal(p.get('speechValue').textContent,'Use the Mission Control voice');
+  assert.equal(JSON.parse(p.storage.getItem('accessibleLearningPreferences')).trainingSpeech,'voice');
+  assert.equal(p.get('main.mission-center-shell').children[0].children[2].textContent,'Voice: Mission Control');
+  p.storage.setItem('accessibleLearningPreferences',JSON.stringify({trainingSpeech:'voice',textScale:160,highContrast:true}));
+  p.get('speechSetting').click();const saved=JSON.parse(p.storage.getItem('accessibleLearningPreferences'));
+  assert.equal(saved.textScale,160);assert.equal(saved.highContrast,true);assert.equal(saved.trainingSpeech,'own');
+ }
+});
+
+test('blocked settings storage reports the failure and keeps voice and keyboard controls usable for this visit', () => {
+ const p=page();p.document.body.dataset={};const menu=p.get('missionSettingsMenu'),spoken=[];
+ for(const key of ['speech','sounds','reader']){const item=p.get(key+'Setting');item.dataset.setting=key;menu.append(item);}
+ p.window.speechSynthesis.speak=u=>spoken.push(u.text);
+ p.storage.setItem=()=>{throw Error('Storage full');};
+ p.load('mission-ui.js');p.load('mission-settings.js');p.window.fire('DOMContentLoaded');p.advance();
+ p.get('speechSetting').click();
+ assert.match(p.get('missionSettingsStatus').textContent,/could not be saved/);
+ assert.equal(p.get('missionSettingsSaveWarning').hidden,false);assert.match(spoken.at(-1),/could not be saved/);
+ const voice=p.get('main.mission-center-shell').children[0].children[2];assert.equal(voice.textContent,'Voice: Mission Control');
+ p.get('readerSetting').focus();menu.fire('keydown',{key:'ArrowRight'});assert.equal(p.get('readerValue').textContent,'Narrator');
+ voice.click();assert.equal(p.get('speechValue').textContent,'Use my own screen reader');assert.equal(voice.textContent,'Voice: My screen reader');
+});
+
 test('Mission Control menus preserve modified screen-reader navigation keys', () => {
   for (const [file,id] of [['mission-center.js','missionCenterMenu'],['command-practice-setup.js','commandTopicsMenu'],['topic-missions-setup.js','topicMissionsMenu'],['mission-settings.js','missionSettingsMenu']]) {
     const p=page(),menu=p.get(id);

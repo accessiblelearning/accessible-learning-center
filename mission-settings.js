@@ -7,6 +7,7 @@
   const settingsKey = "missionControlPracticeSettings";
   const preferenceKey = "accessibleLearningPreferences";
   const status = document.getElementById("missionSettingsStatus");
+  const saveWarning = document.getElementById("missionSettingsSaveWarning");
   const settings = {
     speech: { options: [{ value: "own", label: "Use my own screen reader" }, ...(voiceSupported ? [{ value: "voice", label: "Use the Mission Control voice" }] : [])], valueElement: document.getElementById("speechValue"), index: 0 },
     sounds: { options: [{ value: "1", label: "On" }, { value: "0", label: "Off" }], valueElement: document.getElementById("soundValue"), index: 0 },
@@ -34,11 +35,17 @@
     }
   }
 
+  function readObject(key) {
+    try {
+      const value = JSON.parse(localStorage.getItem(key) || "{}");
+      if (value && typeof value === "object" && !Array.isArray(value)) return value;
+    } catch (error) {}
+    return {};
+  }
+
   function restore() {
-    let saved = {};
-    let preferences = {};
-    try { saved = JSON.parse(localStorage.getItem(settingsKey) || "{}"); } catch (error) {}
-    try { preferences = JSON.parse(localStorage.getItem(preferenceKey) || "{}"); } catch (error) {}
+    const saved = readObject(settingsKey);
+    const preferences = readObject(preferenceKey);
     saved.speech = preferences.trainingSpeech === "voice" && voiceSupported ? "voice" : "own";
     Object.keys(settings).forEach(key => {
       const index = settings[key].options.findIndex(option => option.value === saved[key]);
@@ -50,18 +57,22 @@
 
   function save() {
     const saved = {};
+    let persisted = true;
     Object.keys(settings).forEach(key => { if (key !== "speech") saved[key] = current(key).value; });
-    try { localStorage.setItem(settingsKey, JSON.stringify(saved)); } catch (error) {}
+    try { localStorage.setItem(settingsKey, JSON.stringify(saved)); } catch (error) { persisted = false; }
     try {
-      const preferences = JSON.parse(localStorage.getItem(preferenceKey) || "{}");
+      const preferences = readObject(preferenceKey);
       preferences.trainingSpeech = voiceEnabled() ? "voice" : "own";
       localStorage.setItem(preferenceKey, JSON.stringify(preferences));
-    } catch (error) {}
+    } catch (error) { persisted = false; }
     window.dispatchEvent(new CustomEvent("missionvoicechange", { detail: { enabled: voiceEnabled() } }));
+    if (saveWarning) saveWarning.hidden = persisted;
+    return persisted;
   }
 
-  function updateStatus() {
-    status.textContent = "Settings saved: " + items.map(item => current(item.dataset.setting).label).join(", ") + ".";
+  function updateStatus(persisted) {
+    const prefix = persisted === false ? "Settings could not be saved. These choices work for this visit only: " : persisted === true ? "Settings saved: " : "Current settings: ";
+    status.textContent = prefix + items.map(item => current(item.dataset.setting).label).join(", ") + ".";
     // Keep a live fallback even when site voice is selected. This prevents a
     // silent Settings page if the browser delays or blocks speech synthesis.
     status.setAttribute("aria-live", "polite");
@@ -89,10 +100,10 @@
       }
       data.index = (data.index + 1) % data.options.length;
       data.valueElement.textContent = current(key).label;
-      save();
-      updateStatus();
+      const persisted = save();
+      updateStatus(persisted);
       if (key === "speech" && !voiceEnabled()) stopVoice();
-      else speak(current(key).label + " selected and saved.");
+      else speak(current(key).label + (persisted ? " selected and saved." : " selected for this visit, but could not be saved. Check your browser's storage settings before leaving this page."));
     });
   });
 

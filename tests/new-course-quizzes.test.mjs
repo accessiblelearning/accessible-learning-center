@@ -44,11 +44,19 @@ async function fixture(slug, completed=10, faults={}) {
   const doc={getElementById:get,createElement:tag=>new Node(tag),createTextNode:text=>Object.assign(new Node(),{textContent:text}),body:new Node()};
   const window={print(){window.printed=true;},addEventListener(){}};
   const context={document:doc,window,localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>{if(faults.save)throw Error('Storage full');storage.set(k,v);},removeItem:k=>storage.delete(k)},
-    fetch:async()=>{if(faults.network)throw Error('Offline');return {ok:true,json:async()=>Array.from({length:completed},(_,i)=>({course:data.course,lesson_number:i+1,status:'completed'}))};},console};
+    fetch:async()=>{if(faults.network)throw Error('Offline');return {ok:true,json:async()=>{if(faults.pending)await faults.pending;return Array.from({length:completed},(_,i)=>({course:data.course,lesson_number:i+1,status:'completed'}));}};},console};
   vm.runInNewContext(read('quiz.js'),context);await new Promise(r=>setImmediate(r));
   const answer=count=>data.questions.forEach((q,i)=>{for(const n of form.querySelectorAll(`input[name="question-${i}"]`))n.checked=Number(n.value)===(i<count?q.answer:(q.answer+1)%q.options.length);});
-  return {get,form,grade,data,storage,window,answer};
+  return {get,form,grade,data,storage,window,answer,readiness:main.children.find(n=>n.className==='quiz-readiness')};
 }
+
+test('a late readiness response cannot unlock a quiz after the Student ID changes',async()=>{
+ let resolve;const pending=new Promise(r=>{resolve=r;});const p=await fixture('firefox',10,{pending});
+ assert.equal(p.grade.disabled,true);p.storage.set('accessibleLearningStudentId','another_learner');
+ resolve();await new Promise(r=>setImmediate(r));
+ assert.equal(p.grade.disabled,true);assert.match(p.readiness.children[0].textContent,/Student ID changed/);
+ assert.equal(p.get('certificateSetup').hidden,true);
+});
 
 test('storage failure reports the unsaved score while allowing an immediate certificate',async()=>{
  const p=await fixture('firefox',10,{save:true});p.answer(17);p.form.fire('submit');

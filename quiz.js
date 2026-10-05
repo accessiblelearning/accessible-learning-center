@@ -158,12 +158,19 @@
         PROGRESS_API + "/progress?student_id=" + encodeURIComponent(studentId)
       );
       const records = await response.json();
+      // The learner may have changed the ID in another tab while this loaded.
+      let currentId = "";
+      try { currentId = localStorage.getItem("accessibleLearningStudentId") || ""; } catch (error) {}
+      if (currentId !== studentId) {
+        readinessText.textContent = "Final quiz locked. The Student ID changed or could not be checked. Reload this quiz to verify the current learner's lessons.";
+        return;
+      }
       if (!response.ok || !Array.isArray(records)) throw new Error("Invalid progress response");
 
       const completedLessons = new Set(
         records
           .filter(record =>
-            record.course === data.course &&
+            record && record.course === data.course &&
             ["completed", "submitted"].includes(record.status)
           )
           .map(record => Number(record.lesson_number))

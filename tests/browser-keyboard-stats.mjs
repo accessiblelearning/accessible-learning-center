@@ -14,10 +14,12 @@ try{
  browser=await chromium.launch({executablePath:join(dir,'chromium'),args:[...runtime.args.filter(a=>!a.startsWith('--use-gl=')&&!a.startsWith('--use-angle=')),'--disable-gpu','--disable-software-rasterizer']});
  const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.route('**/*',r=>new URL(r.request().url()).origin===base?r.continue():r.abort());
- const key='alcKeyboardingProgressV1',saved=JSON.stringify({completed:[],sessions:[
+ const key='alcKeyboardingProgressV1',saved=JSON.stringify({completed:[null,{},'en:both:1','en:both:51'],sessions:[
+  null,[],true,'damaged',
   {path:'en:both:',mode:'guided',lesson:1,wpm:12,accuracy:92,seconds:65,completedAt:1700000000000},
   {path:'en:both:',mode:'free',lesson:1,wpm:40,accuracy:null,seconds:60,completedAt:1700000001000},
-  {path:'en:left:one-hand-v1:',mode:'words',lesson:2,wpm:8,accuracy:96,seconds:80,completedAt:1700000002000}
+  {path:'en:left:one-hand-v1:',mode:'words',lesson:2,wpm:8,accuracy:96,seconds:80,completedAt:1700000002000},
+  {path:'en:both:',mode:'words',lesson:true,wpm:true,accuracy:false,seconds:-100}
  ]});
  await page.addInitScript(({key,saved})=>{localStorage.setItem(key,saved);speechSynthesis.speak=()=>{};speechSynthesis.cancel=()=>{};},{key,saved});
  await page.goto(base+'/keyboarding-preview.html');
@@ -29,9 +31,12 @@ try{
  await page.locator('[data-main-action="stats"]').click();
  assert.equal(await page.locator('#statsSpeed').textContent(),'12 WPM');
  assert.equal(await page.locator('#statsFreeSpeed').textContent(),'40 gross WPM');
+ assert.equal(await page.locator('#statsLessons').textContent(),'1 of 50');
+ assert.equal(await page.locator('#statsTime').textContent(),'2 minutes');
  const summary=page.locator('summary').filter({hasText:'Recent practice results'});await summary.focus();await page.keyboard.press('Enter');
- assert.equal(await page.locator('#sessionHistory li').count(),2);
+ assert.equal(await page.locator('#sessionHistory li').count(),3);
  assert.match(await page.locator('#sessionHistory li').first().textContent(),/gross WPM.*Accuracy not assessed/);
+ assert.match(await page.locator('#sessionHistory li').last().textContent(),/Lesson unavailable.*Speed unavailable.*Accuracy unavailable.*Duration unavailable/);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
  if(process.env.AXE_PATH){await page.addScriptTag({path:process.env.AXE_PATH});assert.deepEqual(await page.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>v.id)),[]);}
  await page.screenshot({path:join(dir,'keyboard-history-narrow.png'),fullPage:true});

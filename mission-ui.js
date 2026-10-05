@@ -24,9 +24,14 @@
   main.prepend(toolbar, status);
 
   function readPreferences() {
-    try { return JSON.parse(localStorage.getItem(preferenceKey) || "{}") || {}; }
+    try {
+      const value = JSON.parse(localStorage.getItem(preferenceKey) || "{}");
+      if (value && typeof value === "object" && !Array.isArray(value)) return value;
+    }
     catch (error) { return {}; }
+    return {};
   }
+  let voiceChoice = readPreferences().trainingSpeech === "voice";
 
   function speechFailed() {
     const preferences = readPreferences();
@@ -41,7 +46,7 @@
   function enabled() {
     if (document.body.dataset.practiceSession === "true") return document.getElementById("spokenInstructions").checked;
     if (document.body.dataset.missionSession === "true") return document.getElementById("simulatedVoice").checked;
-    return readPreferences().trainingSpeech === "voice";
+    return voiceChoice;
   }
 
   function refreshVoice() {
@@ -85,6 +90,7 @@
   });
 
   window.addEventListener("missionvoicechange", event => {
+    voiceChoice = Boolean(event.detail.enabled && supported);
     for (const id of ["spokenInstructions", "simulatedVoice"]) {
       const input = document.getElementById(id);
       if (input) input.checked = event.detail.enabled && supported;

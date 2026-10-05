@@ -251,6 +251,23 @@ test('recent stats pair speed with accuracy and keep free typing and hand paths 
  missing.menu('stats');assert.match(missing.get('sessionHistory').children[0].textContent,/Date unavailable.*Speed unavailable.*Accuracy unavailable.*Duration unavailable/);
 });
 
+test('damaged history entries cannot break stats or inflate lesson and score totals', () => {
+ const saved=JSON.stringify({completed:[null,1,{},'en:both:1','en:both:1','en:both:0','en:both:51','en:both:no'],sessions:[
+  null,true,4,'invalid',[],
+  {path:'en:both:',mode:'guided',lesson:1,wpm:12,accuracy:90,seconds:60,completedAt:1700000000000,mistakesByKey:{f:'2'}},
+  {path:'en:both:',mode:{toString:null},lesson:true,wpm:true,accuracy:false,seconds:-100,completedAt:{toString:null},mistakesByKey:{f:-20,j:0,k:true}},
+  {wpm:7}
+ ],difficult:{}});
+ const p=page({saved:{[storageKey]:saved}});p.menu('stats');
+ assert.equal(p.get('statsLessons').textContent,'1 of 50');assert.equal(p.get('statsSessions').textContent,'2');
+ assert.equal(p.get('statsSpeed').textContent,'12 WPM');assert.equal(p.get('statsAccuracy').textContent,'90%');
+ assert.equal(p.get('statsTime').textContent,'1 minute');assert.equal(p.get('statsDifficult').textContent,'f');
+ assert.match(p.get('sessionHistory').children[1].textContent,/Date unavailable.*Lesson unavailable.*Speed unavailable.*Accuracy unavailable.*Duration unavailable/);
+ assert.match(p.get('earlierStats').textContent,/1 saved sessions; best speed 7 WPM/);
+ assert.equal(p.data.get(storageKey),saved,'Reading damaged history must not overwrite source records');
+ p.changeHand('left');p.menu('stats');assert.equal(p.get('statsLessons').textContent,'0 of 50');
+});
+
 test('timed practice uses elapsed time after delayed callbacks and rejects input after its deadline', () => {
  for(const mode of ['speed-60','speed-180','speed-360','free-speed-60','free-speed-180','free-speed-360']){
   const p=page();p.get('saveSetting').checked=true;p.get('saveSetting').fire('change');p.get('modeSetting').value=mode;p.start(0);p.key('f');

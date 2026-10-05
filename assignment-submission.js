@@ -76,6 +76,18 @@
     section.append(button, status);
 
     let isComplete = false;
+    let changeVersion = 0;
+
+    function currentStudent() {
+      try {
+        if (localStorage.getItem("accessibleLearningStudentId") === studentId) return true;
+        status.textContent = "The Student ID changed. Reload this lesson before saving completion for the current learner.";
+      } catch (error) {
+        status.textContent = "Your Student ID could not be checked. Allow site storage and reload before saving completion.";
+      }
+      button.disabled = true;
+      return false;
+    }
 
     function showCompletionState(complete, savedStatus, announce = true) {
       isComplete = complete;
@@ -93,14 +105,17 @@
     }
 
     async function checkCompletion() {
+      const checkedVersion = changeVersion;
       try {
         const response = await fetch(
           PROGRESS_API + "/progress?student_id=" + encodeURIComponent(studentId)
         );
         const records = await response.json();
+        // A slow initial read must not replace a save/undo made since it began.
+        if (checkedVersion !== changeVersion || !currentStudent()) return;
         if (!response.ok || !Array.isArray(records)) return;
         const record = records.find(item =>
-          item.course === course &&
+          item && item.course === course &&
           Number(item.lesson_number) === lessonNumber &&
           ["completed", "submitted"].includes(item.status)
         );
@@ -111,15 +126,8 @@
     }
 
     button.addEventListener("click", async () => {
-      try {
-        if (localStorage.getItem("accessibleLearningStudentId") !== studentId) {
-          status.textContent = "The Student ID changed. Reload this lesson before saving completion for the current learner.";
-          return;
-        }
-      } catch (error) {
-        status.textContent = "Your Student ID could not be checked. Allow site storage and reload before saving completion.";
-        return;
-      }
+      if (button.disabled || !currentStudent()) return;
+      changeVersion += 1;
       const newStatus = isComplete ? "in_progress" : "completed";
       button.disabled = true;
       status.textContent = isComplete
@@ -137,13 +145,15 @@
           })
         });
         const result = await response.json();
-        if (!response.ok || !result.success) {
-          status.textContent = result.error || "Lesson completion could not be saved. Please try again.";
+        if (!currentStudent()) return;
+        if (!response.ok || !result?.success) {
+          status.textContent = result?.error || "Lesson completion could not be saved. Please try again.";
           button.disabled = false;
           return;
         }
         showCompletionState(newStatus === "completed", newStatus);
       } catch (error) {
+        if (!currentStudent()) return;
         status.textContent = "There was a connection problem. Please try again.";
         button.disabled = false;
       }

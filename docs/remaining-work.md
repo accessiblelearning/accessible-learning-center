@@ -39,6 +39,8 @@ The keyboarding stats follow-up exposes the latest 10 existing saved sessions pe
 
 The timer follow-up fixes delayed browser callbacks extending timed keyboard practice. All six timed modes now use elapsed-time countdowns, cap scored duration and reject input after expiry. See [the timing checkpoint](qa-2026-10-05-timing.md). **156 public tests pass** and Chromium delayed-callback checks pass. Existing guided timing, lesson paths, saved data and private work remain unchanged.
 
+The progress-recovery follow-up fixes delayed lesson responses overwriting newer saves, quiz readiness after a Student ID switch, malformed saved Settings/Stats data, and misleading save-success feedback when storage is full. See [the progress recovery checkpoint](qa-2026-10-05-progress-recovery.md). **164 public tests pass**, with fictional-response Chromium checks and scoped Axe checks. No curriculum, mission IDs, private sources or account services changed. Continue with other reproducible preference/progress failures and remaining curriculum teaching; do not repeat the completed timing, stats, or recovery batches.
+
 ## Needs targeted human/device feedback
 
 - JAWS/NVDA and Mac VoiceOver/Safari: spoken feedback, focus and real shortcut conflicts.

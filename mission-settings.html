@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="styles.css?v=qa-20261001">
   <link rel="stylesheet" href="mission-ui.css?v=curriculum-night-20261005">
   <script src="accessibility.js?v=mission-sweep-2" defer></script>
-  <script src="mission-ui.js?v=overnight-qa-20261001" defer></script>
-  <script src="mission-settings.js?v=overnight-qa-20261001" defer></script>
+  <script src="mission-ui.js?v=storage-qa-20261005" defer></script>
+  <script src="mission-settings.js?v=storage-qa-20261005" defer></script>
 </head>
 <body class="mission-center-page" data-mission-back="troubleshooting-lab.html" data-mission-back-label="Back to Mission Control Center">
   <main id="main-content" class="mission-center-shell">
@@ -27,6 +27,7 @@
         <button class="mission-setting-toggle mission-center-option" type="button" data-setting="order" hidden><span class="mission-setting-label">Command practice order</span><strong id="orderValue" class="mission-setting-value">In manual order</strong><span class="mission-setting-hint">Press Enter to change</span></button>
       </div>
       <p id="missionSettingsStatus" class="visually-hidden" role="status" aria-live="polite"></p>
+      <p id="missionSettingsSaveWarning" hidden>Some settings could not be saved. These choices work on this page, but may reset when you leave. Check your browser's storage settings and try changing the setting again.</p>
       <p class="mission-center-help"><strong>Up or Down:</strong> move through settings. <strong>Enter or Left/Right:</strong> change. <strong>Escape:</strong> return to Mission Control Center.</p>
     </section>
   </main>

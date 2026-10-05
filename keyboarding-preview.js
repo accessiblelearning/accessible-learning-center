@@ -888,13 +888,15 @@
   function updateStats() {
     const progress = getProgress();
     const prefix = progressPrefix(handSetting.value);
-    const sessions = progress.sessions.filter(item => item.path === prefix);
-    const completedLessons = new Set(progress.completed.filter(item => item.startsWith(prefix)).map(item => item.slice(prefix.length)));
+    const isRecord = item => item !== null && typeof item === "object" && !Array.isArray(item);
+    const sessions = progress.sessions.filter(item => isRecord(item) && item.path === prefix);
+    const completedLessons = Array.from({ length: lessonCount(handSetting.value) }, (_, index) => index + 1)
+      .filter(number => progress.completed.includes(prefix + number));
     document.getElementById("statsHeading").textContent = "My Stats: " + selectedText(handSetting);
-    document.getElementById("statsLessons").textContent = completedLessons.size + " of " + lessonCount(handSetting.value);
+    document.getElementById("statsLessons").textContent = completedLessons.length + " of " + lessonCount(handSetting.value);
     document.getElementById("statsSessions").textContent = String(sessions.length);
-    const isFreeSession = item => item.mode === "free" || String(item.mode).startsWith("free-speed-");
-    const validMetric = (value, max = Infinity) => value !== null && value !== undefined && value !== "" && Number.isFinite(Number(value)) && Number(value) >= 0 && Number(value) <= max;
+    const isFreeSession = item => item.mode === "free" || (typeof item.mode === "string" && item.mode.startsWith("free-speed-"));
+    const validMetric = (value, max = Infinity) => (typeof value === "number" || (typeof value === "string" && value.trim() !== "")) && Number.isFinite(Number(value)) && Number(value) >= 0 && Number(value) <= max;
     const copySessions = sessions.filter(item => !isFreeSession(item));
     const accuracySessions = copySessions.filter(item => validMetric(item.accuracy, 100));
     document.getElementById("statsAccuracy").textContent = accuracySessions.length ? Math.max(...accuracySessions.map(item => Number(item.accuracy))) + "%" : "No copy sessions";
@@ -905,36 +907,40 @@
     const history = document.getElementById("sessionHistory");
     history.replaceChildren();
     const modeLabels = {guided:"Guided lesson", words:"Word practice", sentences:"Sentence practice", "speed-60":"One-minute copy practice", "speed-180":"Three-minute copy practice", "speed-360":"Six-minute copy practice", "free-speed-60":"One-minute free typing", "free-speed-180":"Three-minute free typing", "free-speed-360":"Six-minute free typing", free:"Untimed free typing"};
-    sessions.slice().sort((a, b) => (Number(b.completedAt) || 0) - (Number(a.completedAt) || 0)).slice(0, 10).forEach(item => {
+    const timestamp = item => validMetric(item.completedAt) && Number.isFinite(new Date(Number(item.completedAt)).getTime()) ? Number(item.completedAt) : 0;
+    sessions.slice().sort((a, b) => timestamp(b) - timestamp(a)).slice(0, 10).forEach(item => {
       const row = document.createElement("li");
-      const date = new Date(item.completedAt);
+      const date = new Date(validMetric(item.completedAt) ? Number(item.completedAt) : NaN);
       const dated = validMetric(item.completedAt) && Number.isFinite(date.getTime());
-      const lesson = Number.isInteger(Number(item.lesson)) && Number(item.lesson) >= 1 && Number(item.lesson) <= lessonCount(handSetting.value) ? "Lesson " + item.lesson : "Lesson unavailable";
+      const lesson = validMetric(item.lesson, lessonCount(handSetting.value)) && Number.isInteger(Number(item.lesson)) && Number(item.lesson) >= 1 ? "Lesson " + item.lesson : "Lesson unavailable";
       const speed = validMetric(item.wpm) ? item.wpm + (isFreeSession(item) ? " gross WPM" : " WPM") : "Speed unavailable";
       const accuracy = isFreeSession(item) ? "Accuracy not assessed for free typing" : validMetric(item.accuracy, 100) ? item.accuracy + "% accuracy" : "Accuracy unavailable";
       const duration = validMetric(item.seconds) ? Math.round(Number(item.seconds)) + " seconds practiced" : "Duration unavailable";
-      row.textContent = (dated ? date.toLocaleString() : "Date unavailable") + ". " + lesson + ". " + (modeLabels[item.mode] || "Practice") + ". " + speed + ". " + accuracy + ". " + duration + ".";
+      const modeLabel = typeof item.mode === "string" && Object.hasOwn(modeLabels, item.mode) ? modeLabels[item.mode] : "Practice";
+      row.textContent = (dated ? date.toLocaleString() : "Date unavailable") + ". " + lesson + ". " + modeLabel + ". " + speed + ". " + accuracy + ". " + duration + ".";
       history.append(row);
     });
     document.getElementById("sessionHistoryNote").textContent = sessions.length
       ? "Latest " + Math.min(10, sessions.length) + " saved results for this hand path, newest first. Compare the same lesson and practice mode. Free typing measures gross speed without checking accuracy. This browser retains up to 100 sessions across all paths."
       : "No saved results for this hand path yet. Save progress must be on when you practice.";
-    const minutes = Math.round(sessions.reduce((total, item) => total + (Number(item.seconds) || 0), 0) / 60);
+    const minutes = Math.round(sessions.reduce((total, item) => total + (validMetric(item.seconds) ? Number(item.seconds) : 0), 0) / 60);
     document.getElementById("statsTime").textContent = minutes + (minutes === 1 ? " minute" : " minutes");
-    const mistakes = {};
-    sessions.forEach(item => Object.entries(item.mistakesByKey || {}).forEach(([key, count]) => {
-      mistakes[key] = (mistakes[key] || 0) + count;
+    const mistakes = Object.create(null);
+    sessions.forEach(item => Object.entries(isRecord(item.mistakesByKey) ? item.mistakesByKey : {}).forEach(([key, count]) => {
+      if (key.length !== 1 || !validMetric(count) || !Number.isInteger(Number(count)) || Number(count) === 0) return;
+      mistakes[key] = (mistakes[key] || 0) + Number(count);
     }));
     const difficult = Object.keys(mistakes).sort((a, b) => mistakes[b] - mistakes[a]).slice(0, 5);
     document.getElementById("statsDifficult").textContent = difficult.length ? difficult.map(speakable).join(", ") : "None";
     document.getElementById("statsNote").textContent = sessions.length
       ? "These stats are for " + selectedText(handSetting).toLowerCase() + " and are saved only on this browser."
       : "Turn on Save progress in Settings to build your stats on this browser.";
-    const earlierSessions = progress.sessions.filter(item => !item.path);
+    const earlierSessions = progress.sessions.filter(item => isRecord(item) && !item.path);
+    const earlierSpeeds = earlierSessions.filter(item => validMetric(item.wpm)).map(item => Number(item.wpm));
     const earlierStats = document.getElementById("earlierStats");
     earlierStats.hidden = !earlierSessions.length;
     earlierStats.textContent = earlierSessions.length
-      ? "Earlier practice history: " + earlierSessions.length + " saved sessions; best speed " + Math.max(...earlierSessions.map(item => Number(item.wpm) || 0)) + " WPM. These sessions were saved before separate learning path statistics were available."
+      ? "Earlier practice history: " + earlierSessions.length + " saved sessions; " + (earlierSpeeds.length ? "best speed " + Math.max(...earlierSpeeds) + " WPM" : "speed unavailable") + ". These sessions were saved before separate learning path statistics were available."
       : "";
     renderCurriculum();
   }
