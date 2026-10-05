@@ -541,7 +541,7 @@ test('Narrator review preserves all 73 task identities and stages and teaches di
  const reviewed=JSON.parse(JSON.stringify(w.CommandPracticeCourses['Narrator commands']));
  assert.equal(reviewed.length,73);
  assert.deepEqual(reviewed.map(e=>[e[0],e[1],e[3],e[4].level,e[4].steps]),original.map(e=>[e[0],e[1],e[3],e[4].level,e[4].steps]));
- assert.equal(reviewed.filter((e,i)=>e[2]!==original[i][2]).length,21);
+ assert.equal(reviewed.filter((e,i)=>e[2]!==original[i][2]).length,31);
  const advanced=reviewed.filter(e=>e[4].level==='advanced');assert.equal(advanced.length,5);
  assert.equal(new Set(advanced.map(e=>e[2])).size,5);
  for(const entry of advanced)assert.doesNotMatch(entry[2],/In the real app, check the new mode/);

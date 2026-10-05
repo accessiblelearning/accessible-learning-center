@@ -47,6 +47,8 @@ The learner-progress follow-up corrects In progress labels, rejects malformed pr
 
 ## Needs targeted human/device feedback
 
+The Narrator navigation follow-up replaces **10 more** generic explanations with practical view, landmark, list and search guidance, including clear focus transitions and previous-match recovery. See [the navigation checkpoint](qa-2026-10-05-narrator-navigation.md). All 73 tasks and short prompts are preserved; 31 explanations are now reviewed and 42 remain. No shortcut, mission, typing-path or private-source change is included. Pages publication must still be verified independently of a successful commit and validation run.
+
 The Narrator follow-up corrects two numeric-keypad tasks that accepted number-row 5, improves **21** explanations including all five advanced tasks, and preserves all **73** task identities/stages. See [the Narrator keypad checkpoint](qa-2026-10-05-narrator-keypad.md). **186 public tests pass**, plus the full Narrator course in Chromium with site voice on/off and missed-task retry. Its other 52 teaching notes and uneven existing stage distribution remain a separate review. Prior keyboarding/mission fixes and all private work are unchanged.
 
 The session-progress follow-up prevents an old keyboard completion callback from finishing a new session after a quick restart, preserves newer Topic Mission completions saved by another open tab, and reports failed mission saves visibly and through speech requests. See [the session-progress checkpoint](qa-2026-10-05-session-progress.md). **183 public tests pass**, plus three-path keyboard restart and two-tab mission browser checks. All curricula, stable IDs and private work are unchanged. Browser-local history is still separate from future account synchronization.
