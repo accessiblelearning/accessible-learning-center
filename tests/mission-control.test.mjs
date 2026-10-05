@@ -196,7 +196,7 @@ test("Insert release, missing release, focus loss, and retry do not leave a modi
 });
 
 test("new topic routes wait for the mission catalog and reject invalid mission numbers", () => {
-  for (const [mission, valid] of [["8", true], ["12", true], ["19", true], ["20", true], ["21", true], ["22", true], ["23", false], ["", false], ["-1", false], ["1.5", false]]) {
+  for (const [mission, valid] of [["8", true], ["12", true], ["19", true], ["20", true], ["21", true], ["22", true], ["23", true], ["24", false], ["", false], ["-1", false], ["1.5", false]]) {
     const p = page();
     p.window.location.search = `?reader=jaws&mission=${mission}`;
     p.load("topic-mission-session.js");
@@ -206,7 +206,7 @@ test("new topic routes wait for the mission catalog and reject invalid mission n
     if (valid) {
       assert.equal(p.get("missionSelect").value, mission);
       p.get("missionReadyStart").click();
-      assert.match(p.get("missionProblem").textContent, /Thunderbird|Learning Ally|PowerPoint|Chrome|Mac lesson-player|Focus 40/);
+      assert.match(p.get("missionProblem").textContent, /Thunderbird|Learning Ally|PowerPoint|Chrome|Mac lesson-player|Focus 40|Meeting Notes/);
     }
   }
 });
@@ -890,8 +890,8 @@ test('email and magnification teaching keeps coverage and exposes necessary appl
  assert.match(p.window.CommandPracticeCourseNotes[names[1]],/Fusion uses JAWS/);
 });
 
-test('reviewed mail and magnification courses finish with native or separated keys and spoken stages',()=>{
- for(const name of ['Thunderbird email','ZoomText and Fusion Desktop magnification']){
+test('reviewed mail, magnification and NVDA courses finish with native or separated keys and spoken stages',()=>{
+ for(const name of ['Thunderbird email','ZoomText and Fusion Desktop magnification','NVDA commands']){
   const p=page({commandCategory:{value:name},practiceStyle:{value:'guided'},sessionLength:{value:'all'},spokenInstructions:{checked:true}}),heard=[];
   p.window.speechSynthesis.speak=u=>heard.push(u.text);
   p.load('command-courses.js');p.load('command-teaching.js');p.load('command-practice.js');p.get('startPractice').click();
@@ -910,6 +910,98 @@ test('reviewed mail and magnification courses finish with native or separated ke
   assert.match(heard.at(-1),new RegExp(`practiced ${entries.length} commands correctly`));
   assert.equal(p.document.activeElement,p.get('practiceMissed'));
  }
+});
+
+test('mission shortcut alternatives are state-specific and results name the actual shortcut',()=>{
+ for(const [key,options,label] of [['s',{ctrlKey:true},'CTRL+S'],['F12',{shiftKey:true},'SHIFT+F12'],['F12',{},'SHIFT+F12']]){
+  const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'3'}});
+  p.load('troubleshooting-lab.js');p.get('startMission').click();
+  p.key('missionControlStation','F12',{shiftKey:true});assert.equal(p.get('missionProgress').value,0,'Saving cannot replace Undo');
+  p.key('missionControlStation','z',{ctrlKey:true});p.key('missionControlStation',key,options);
+  assert.equal(p.get('missionResults').hidden,false);
+  assert.ok(p.get('missionMasteredList').children[1].textContent.startsWith(label+':'));
+ }
+ for(const [key,options,label] of [['l',{ctrlKey:true},'CTRL+L'],['d',{altKey:true},'ALT+D'],['F6',{},'F6'],['d',{},'ALT+D']]){
+  const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'20'}});
+  p.load('troubleshooting-lab.js');p.get('startMission').click();
+  p.key('missionControlStation','d',{altKey:true});assert.equal(p.get('missionProgress').value,0,'Address selection cannot replace finding the earlier match');
+  p.key('missionControlStation','g');p.key('missionControlStation','F6');
+  p.key('missionControlStation','d',{ctrlKey:true});assert.equal(p.get('missionProgress').value,2,'Control+D is not Alt+D');
+  p.key('missionControlStation',key,options);assert.equal(p.get('missionProgress').value,3);
+  p.key('missionControlStation','c');p.key('missionControlStation','F6');
+  assert.equal(p.get('missionResults').hidden,false);
+  assert.ok(p.get('missionMasteredList').children[2].textContent.startsWith(label+':'));
+ }
+});
+
+test('Word save-or-close routes recover, repeat the actual state, and preserve old mission progress',()=>{
+ for(const [first,next,state,labels] of [['s','F4',/saved and still open/,['CTRL+S','ALT+F4']],['F4','Enter',/Save Changes dialog: Save is focused/,['ALT+F4','ENTER']]]){
+  const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'23'},simulatedVoice:{checked:true}}),heard=[];
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);
+  p.storage.setItem('missionControlCompleted','[0,3,20,22]');p.load('troubleshooting-lab.js');p.get('startMission').click();
+  p.key('missionControlStation','Enter');assert.equal(p.get('missionProgress').value,0);
+  assert.match(p.get('transcript').textContent,/remain unsaved and open/);
+  p.key('missionControlStation',first);assert.equal(p.get('missionProgress').value,1);
+  assert.match(p.get('missionProblem').textContent,state);assert.match(heard.at(-1),state);
+  p.key('missionControlStation','Control');assert.match(heard.at(-1),state);assert.match(heard.at(-1),/^Step 2 of 2/);
+  p.key('missionControlStation','F1');assert.match(heard.at(-1),first==='s'?/Alt plus F4/:/focused Save button/);
+  p.key('missionControlStation','q');assert.equal(p.get('missionProgress').value,1);assert.match(p.get('transcript').textContent,state);
+  p.key('missionControlStation',next);
+  assert.equal(p.get('missionResults').hidden,false);assert.equal(p.document.activeElement,p.get('nextMission'));
+  assert.equal(p.get('missionAttemptResult').textContent,'4');assert.equal(p.get('missionReviewResult').textContent,'2');
+  assert.deepEqual(JSON.parse(p.storage.getItem('missionControlCompleted')),[0,3,20,22,23]);
+  labels.forEach((label,i)=>assert.ok(p.get('missionMasteredList').children[i].textContent.startsWith(label+':')));
+  assert.match(heard.at(-1),/report’s editing window.*Mission complete/);
+ }
+});
+
+test('restarting a branched mission resets its route and held keys cannot finish the next step',()=>{
+ const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'23'}});
+ p.load('troubleshooting-lab.js');p.get('startMission').click();
+ p.key('missionControlStation','Alt');p.key('missionControlStation','F4');
+ p.key('missionControlStation','Enter',{repeat:true});assert.equal(p.get('missionProgress').value,1);
+ p.key('missionControlStation','Enter');assert.equal(p.get('missionResults').hidden,false);
+ p.get('retryMissionResult').click();
+ assert.equal(p.get('missionProgress').value,0);assert.equal(p.get('missionResults').hidden,true);
+ // Use the production restart control too; either entry point must clear the branch.
+ p.get('restartMission').click();assert.equal(p.get('missionProgress').value,0);
+ p.key('missionControlStation','F12',{shiftKey:true});
+ assert.match(p.get('missionProblem').textContent,/saved and still open/);
+ p.key('missionControlStation','Enter');assert.equal(p.get('missionProgress').value,1);
+ p.key('missionControlStation','F4');assert.equal(p.get('missionResults').hidden,false);
+ assert.equal(p.get('missionAttemptResult').textContent,'3');
+ assert.match(p.get('missionMasteredList').children[0].textContent,/^SHIFT\+F12:/);
+ assert.match(p.get('missionMasteredList').children[1].textContent,/^ALT\+F4:/);
+});
+
+test('an armed screen-reader modifier does not erase extra Meta or Shift keys',()=>{
+ for(const modifier of ['metaKey','shiftKey']){
+  const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'0'}});
+  p.load('troubleshooting-lab.js');p.get('startMission').click();
+  p.key('missionControlStation','Insert');p.key('missionControlStation','t',{[modifier]:true});
+  assert.equal(p.get('missionProgress').value,0);
+  p.key('missionControlStation','Insert');p.key('missionControlStation','t');
+  assert.equal(p.get('missionProgress').value,1);
+ }
+});
+
+test('advanced NVDA teaching distinguishes review markers, existing selection, and saved configuration',()=>{
+ const p=page();p.load('command-courses.js');
+ const identity=()=>p.window.CommandPracticeCourses['NVDA commands'].map(e=>[e[0],e[3],e[4].level,[...e[4].steps]]);
+ const before=identity();p.load('command-teaching.js');assert.deepEqual(identity(),before);
+ const entries=p.window.CommandPracticeCourses['NVDA commands'];assert.equal(entries.length,93);
+ const advanced=entries.filter(e=>e[4].level==='advanced');assert.equal(advanced.length,19);
+ for(const entry of advanced)assert.doesNotMatch(entry[2],/Use this during|Use the command for|Check the current focus before/);
+ assert.equal(new Set(advanced.map(e=>e[2])).size,19);
+ const note=key=>entries.find(e=>e[0]===key);
+ assert.match(note('Insert+Page Up')[2],/Desktop layout.*Laptop layout/);
+ assert.match(note('Alt+Insert+Home')[2],/existing selection/);
+ assert.match(note('Shift+Insert+F9')[1],/Return/);
+ assert.match(note('Insert+F9')[2],/neither selects nor copies/);
+ assert.match(note('Insert+F10')[2],/first.*selects.*second press copies/s);
+ assert.match(note('Control+Insert+C')[2],/rather than the document/);
+ assert.match(note('Control+Insert+R')[1],/one press/);
+ assert.match(note('Control+Insert+R')[2],/three times.*factory defaults/);
 });
 
 test('ZoomText Say sequences repeat the current layer and recover without restarting or early credit',()=>{

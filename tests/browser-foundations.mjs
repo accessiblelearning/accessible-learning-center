@@ -116,11 +116,68 @@ try{
   assert.match(await page.evaluate(()=>testSpeech.at(-1)),/Mission complete/);
   console.log('Mission '+id+': all state transitions, errors, repeat, hints, native Tab, narrow layout and completion passed.');
  }
+ for(const voice of [0,1])for(const closeFirst of [false,true]) {
+  await page.goto(base+'/topic-mission-session.html?reader=jaws&mission=23&voice='+voice+'&sounds=0');
+  await page.keyboard.press('Space');
+  await page.keyboard.press('Enter');
+  assert.equal(await page.locator('#missionProgress').getAttribute('value'),'0');
+  if(closeFirst) {await page.keyboard.press('Alt');await page.keyboard.press('F4');}
+  else await page.keyboard.press('Control+s');
+  const state=closeFirst?/Save Changes dialog: Save is focused/:/saved and still open/;
+  assert.match(await page.locator('#missionProblem').textContent(),state);
+  await page.keyboard.press('Control');
+  assert.match(await page.locator('#transcript').textContent(),state);
+  if(voice)assert.match(await page.evaluate(()=>testSpeech.at(-1)),state);
+  await page.keyboard.press('F1');
+  assert.match(await page.locator('#transcript').textContent(),closeFirst?/focused Save button/:/Alt plus F4/);
+  await page.keyboard.press('q');
+  assert.equal(await page.locator('#missionProgress').getAttribute('value'),'1');
+  assert.match(await page.locator('#transcript').textContent(),state);
+  await page.keyboard.press('Tab');
+  assert.notEqual(await page.evaluate(()=>document.activeElement.id),'missionControlStation');
+  await page.locator('#missionControlStation').focus();
+  if(voice && closeFirst) {
+   await page.setViewportSize({width:390,height:844});
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
+   if(process.env.AXE_PATH) {
+    await page.addScriptTag({path:process.env.AXE_PATH});
+    const violations=await page.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)})));
+    assert.deepEqual(violations,[],'Word branch accessibility scan');
+   }
+   await page.screenshot({path:b+'/word-close-dialog-narrow.png',fullPage:true});
+   await page.setViewportSize({width:1100,height:850});
+  }
+  await page.keyboard.press(closeFirst?'Enter':'F4');
+  assert.equal(await page.locator('#missionResults').isVisible(),true);
+  assert.equal(await page.locator('#missionAttemptResult').textContent(),'4');
+  assert.equal(await page.evaluate(()=>document.activeElement.id),'nextMission');
+  assert.deepEqual(await page.locator('#missionMasteredList li').evaluateAll(nodes=>nodes.map(n=>n.textContent.split(':')[0])),closeFirst?['ALT+F4','ENTER']:['CTRL+S','ALT+F4']);
+  await page.locator('.mission-result-details > summary').focus();
+  await page.keyboard.press('Enter');
+  await page.locator('#retryMissionResult').click();
+  await page.keyboard.press('Shift+F12');
+  assert.match(await page.locator('#missionProblem').textContent(),/saved and still open/);
+  await page.keyboard.press('F4');
+  assert.equal(await page.locator('#missionResults').isVisible(),true);
+  assert.equal(await page.locator('#missionAttemptResult').textContent(),'2');
+  console.log('Word choice mission: '+(closeFirst?'close then save':'save then close')+', voice='+voice+', recovery/repeat/retry/results passed.');
+ }
+ for(const addressKey of ['Control+l','Alt+d','F6']) {
+  await page.goto(base+'/topic-mission-session.html?reader=jaws&mission=20&voice=0&sounds=0');
+  await page.keyboard.press('Space');
+  for(const key of ['g','F6',addressKey,'c','F6'])await page.keyboard.press(key);
+  assert.equal(await page.locator('#missionResults').isVisible(),true,addressKey);
+  assert.equal(await page.locator('#missionAttemptResult').textContent(),'5');
+ }
+ await page.goto(base+'/topic-mission-session.html?reader=jaws&mission=3&voice=0&sounds=0');
+ await page.keyboard.press('Space');await page.keyboard.press('Control+z');await page.keyboard.press('Shift+F12');
+ assert.equal(await page.locator('#missionResults').isVisible(),true);
+ console.log('Native Chrome address alternatives and Word Shift+F12 save passed.');
  await page.clock.install();
  await page.goto(base+'/command-practice-session.html?category=Microsoft%20Excel%20and%20spreadsheets&style=guided&length=all&spoken=0&sounds=0');
  await page.keyboard.press('Space');
  const entries=await page.evaluate(()=>CommandPracticeCourses['Microsoft Excel and spreadsheets']);
- const stop=entries.findIndex(e=>e[4].stepGoals),aliases={'Left Arrow':'ArrowLeft','Right Arrow':'ArrowRight','Up Arrow':'ArrowUp','Down Arrow':'ArrowDown','Space':'Space','Equals':'=','Semicolon':';','Grave':'`'};
+ const stop=entries.findIndex(e=>e[4].stepGoals),aliases={'Left Arrow':'ArrowLeft','Right Arrow':'ArrowRight','Up Arrow':'ArrowUp','Down Arrow':'ArrowDown','Page Up':'PageUp','Page Down':'PageDown','Space':'Space','Equals':'=','Semicolon':';','Grave':'`'};
  for(const entry of entries.slice(0,stop)) {
   for(const step of entry[4].steps) {
    const keys=step.split('+').map(k=>aliases[k]||k);
@@ -140,7 +197,7 @@ try{
  await page.setViewportSize({width:390,height:844});
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
  await page.screenshot({path:b+'/excel-paste-special-narrow.png'});
- for(const [name,detailKey] of [['Thunderbird email','Control+Shift+O'],['ZoomText and Fusion Desktop magnification','Caps Lock+Space then Y then W']]) {
+ for(const [name,detailKey] of [['Thunderbird email','Control+Shift+O'],['ZoomText and Fusion Desktop magnification','Caps Lock+Space then Y then W'],['NVDA commands','Insert+F10']]) {
   await page.setViewportSize({width:1100,height:850});
   await page.goto(base+'/command-practice-session.html?category='+encodeURIComponent(name)+'&style=guided&length=all&spoken=1&sounds=0');
   await page.keyboard.press('Space');
@@ -159,7 +216,7 @@ try{
      const violations=await page.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)})));
      assert.deepEqual(violations,[],name+' expanded explanation');
     }
-    await page.screenshot({path:b+'/'+(name.startsWith('Thunderbird')?'email':'magnification')+'-teaching-narrow.png',fullPage:true});
+    await page.screenshot({path:b+'/'+(name.startsWith('Thunderbird')?'email':name.startsWith('NVDA')?'nvda':'magnification')+'-teaching-narrow.png',fullPage:true});
     await page.locator('#commandExplanationDetails summary').click();
     await page.setViewportSize({width:1100,height:850});
     await page.locator('#keyCapture').focus();

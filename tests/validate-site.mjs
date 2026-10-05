@@ -298,12 +298,24 @@ check(existsSync(resolve(root, "manuals-filter.js")), "Manual catalog filtering 
 const troubleshootingLab = readFileSync(resolve(root, "troubleshooting-lab.js"), "utf8");
 const missionData = {window:{}};
 runInNewContext(troubleshootingLab.split('  const perspective =')[0] + 'window.validatedMissions = missions;})();', missionData);
-check(missionData.window.validatedMissions.length >= 20, "Mission Control is missing an existing mission.");
+check(missionData.window.validatedMissions.length >= 24, "Mission Control is missing an existing mission.");
 for (const [index, mission] of missionData.window.validatedMissions.entries()) {
   check(mission.steps.length > 0, `Mission ${index} has no steps.`);
-  for (const step of mission.steps) for (const field of ['command','prompt','hint','success','why']) {
-    check(typeof step[field] === 'string' && step[field].trim().length > 0, `Mission ${index} has a step without ${field}.`);
+  function validateStep(step, position) {
+    for (const field of ['command','prompt','hint','success','why']) {
+      check(typeof step[field] === 'string' && step[field].trim().length > 0, `Mission ${index} has a step without ${field}.`);
+    }
+    const choices=[step,...(step.alternatives || [])];
+    check(new Set(choices.map(choice=>choice.command)).size===choices.length, `Mission ${index} repeats an alternative command.`);
+    for (const choice of choices) {
+      check(typeof choice.command==='string' && choice.command.trim().length>0, `Mission ${index} has an unnamed alternative.`);
+      if (choice.nextStep) {
+        check(position+1<mission.steps.length, `Mission ${index} has a branch beyond its final step.`);
+        validateStep(choice.nextStep,position+1);
+      }
+    }
   }
+  mission.steps.forEach(validateStep);
 }
 for (const perspective of ["JAWS", "NVDA", "Narrator"]) {
   check(troubleshootingLab.includes(perspective), "Mission Control is missing the " + perspective + " perspective.");

@@ -41,7 +41,7 @@
       problem: "A large block of text disappeared in Microsoft Word. Do not retype it. Recover the edit and save the corrected document.",
       steps: [
         { command: "CTRL+Z", prompt: "Recover the missing text in Microsoft Word.", hint: "Press Control plus Z to undo the last edit.", success: "Undo. Selected text restored.", why: "Undo reversed the most recent destructive edit." },
-        { command: "CTRL+S", prompt: "The text is restored. Now save the corrected document.", hint: "Press Control plus S to save the corrected document.", success: "Document saved.", why: "You saved immediately after verifying the recovery." }
+        { command: "CTRL+S", alternatives: [{command:"SHIFT+F12"}], prompt: "The text is restored. Now save the corrected document.", hint: "Press Control plus S to save the corrected document. Shift plus F12 also saves in Word. Here, S or F12 alone can rehearse either command.", success: "Document saved.", why: "You saved immediately after verifying the recovery." }
       ],
       hint: "Use the standard command that reverses the most recent action."
     },
@@ -387,8 +387,9 @@
       },
       {
         "command": "CTRL+L",
-        "prompt": "The article has focus. Select its address bar to copy the source address. Press L alone here.",
-        "hint": "Normally Control plus L. Press L alone here.",
+        "alternatives": [{"command":"ALT+D"}, {"command":"F6"}],
+        "prompt": "The article has focus. Select its address bar to copy the source address. Press L, D or F6 alone here.",
+        "hint": "Chrome accepts Control plus L, Alt plus D or F6 from this page context. Here, press L, D or F6 alone.",
         "success": "Address bar focused; the complete page address is selected.",
         "why": "Selecting the address prepares the source link for copying.",
         "recovery": "Article content still has focus. Select the address bar first."
@@ -527,6 +528,43 @@
     ]
   }
 ]);
+  missions.push({
+    category: "Microsoft applications",
+    title: "Save your notes when leaving Word",
+    problem: "Word for Windows simulation. Meeting Notes.docx is an existing local file with unsaved edits and AutoSave off. A separate report window is behind it. Protect the notes and return to the report. You may save first or close and answer the save dialog. Here, S rehearses saving and F4 rehearses closing; no real window or file changes.",
+    source: "https://support.microsoft.com/en-us/office/collab-files/save-back-up-and-recover-a-file-in-microsoft-office",
+    steps: [
+      {
+        command: "CTRL+S",
+        prompt: "Meeting Notes has unsaved edits. Save first, or close and respond to the save dialog. Press S or F4 alone here.",
+        hint: "Control plus S saves first; Alt plus F4 requests closing. Either route can protect the notes. Use S or F4 alone here.",
+        success: "Meeting Notes.docx saved. Focus remains in its editing window.",
+        why: "Saving first means the notes are protected before closing.",
+        recovery: "The notes remain unsaved and open. Choose saving first or closing and responding to the save dialog.",
+        alternatives: [{command: "SHIFT+F12"}, {
+          command: "ALT+F4",
+          success: "Simulated Save Changes dialog: Save button focused. Meeting Notes has not closed and its edits are not saved yet.",
+          why: "Closing an unsaved document can require a decision. Read the dialog before continuing.",
+          nextStep: {
+            command: "ENTER",
+            prompt: "Save Changes dialog: Save is focused. Activate Save to keep the edits and finish closing Meeting Notes.",
+            hint: "Press Enter on the focused Save button. In this fixed simulation, Save is already focused; verify the button in a real dialog.",
+            success: "Meeting Notes.docx saved and closed. Simulated focus returns to the report’s editing window.",
+            why: "You kept the changes by responding to the close dialog. This is another valid route to the same goal.",
+            recovery: "The Save Changes dialog is still open, with Save focused. The notes are not saved or closed yet; activate Save."
+          }
+        }]
+      },
+      {
+        command: "ALT+F4",
+        prompt: "Meeting Notes is saved and still open. Close its window to return to the report. Press F4 alone here.",
+        hint: "The real window-close command is Alt plus F4. Press F4 alone in this simulator.",
+        success: "Saved Meeting Notes window closed. Simulated focus returns to the report’s editing window.",
+        why: "You saved before closing, so the notes were already protected. No real document or window changed.",
+        recovery: "Meeting Notes is already saved, but its window is still open. Close it to return to the report."
+      }
+    ]
+  });
   window.MissionControlMissionCount = missions.length;
 
   const perspective = document.getElementById("atPerspective");
@@ -563,6 +601,10 @@
   let completed = new Set();
   let missionAttempts = 0;
   let missionCommandsToReview = new Map();
+  let activeSteps = null;
+  let solvedSteps = [];
+  const missionSteps = () => activeSteps || missions[current].steps;
+  const stepOptions = item => [item, ...(item.alternatives || [])];
   let audioContext = null;
   const soundFeedbackEnabled = new URLSearchParams(window.location.search).get("sounds") !== "0";
 
@@ -647,7 +689,7 @@
   }
 
   function updateProgress() {
-    const total = missions[current].steps.length;
+    const total = missionSteps().length;
     progress.max = total;
     progress.value = step;
     progress.textContent = step + " of " + total + " steps completed";
@@ -716,7 +758,7 @@
   }, true);
   missionControl.addEventListener("keydown", event => {
     if (!active) return;
-    const expectedCommand = missions[current].steps[step].command;
+    const expectedCommand = missionSteps()[step].command;
     if (event.key === "Tab" && !event.ctrlKey && !event.altKey && !event.metaKey) {
       const tabCommand = !event.shiftKey &&
         (expectedCommand === "FOCUS" || (expectedCommand === "ALT+TAB" && altModifierArmed));
@@ -736,7 +778,7 @@
       altModifierArmed = false;
       controlModifierArmed = false;
       lastCommand.textContent = "F1: hint provided";
-      announce("Strategy hint: " + missions[current].steps[step].hint);
+      announce("Strategy hint: " + missionSteps()[step].hint);
       return;
     }
     if (event.key === "Alt" && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
@@ -783,7 +825,7 @@
       return;
     }
     let command = normalizedKey(event);
-    if (modifierHeld && !event.ctrlKey && !event.altKey) {
+    if (modifierHeld && !event.ctrlKey && !event.altKey && !event.metaKey && !event.shiftKey) {
       const key = event.key.toUpperCase() === " " ? "SPACE" : event.key.toUpperCase();
       command = expectedCommand.startsWith("CAPSLOCK+") ? "CAPSLOCK+" + key : key === "T" ? "TITLE" : key === "TAB" ? "FOCUS" : key === "Z" || key === "SPACE" ? "MODE" : "SCREENREADER+" + key;
     } else if (altModifierArmed && !event.altKey && !event.ctrlKey && !event.metaKey) {
@@ -801,28 +843,31 @@
       command === finalKeyFor(expectedCommand)) {
       command = expectedCommand;
     }
-    const inputKey = missions[current].steps[step].inputKey;
-    if (inputKey && command === inputKey) command = expectedCommand;
     if (!command || command.endsWith("+")) return;
-    if (!command.includes("+") && command === finalKeyFor(expectedCommand)) command = expectedCommand;
+    const options = stepOptions(missionSteps()[step]);
+    // Exact shortcuts take priority. A plain protected key may stand for a
+    // shortcut only when it identifies one allowed action in this state.
+    if (!options.some(option => option.command === command) && !command.includes("+")) {
+      const matches = options.filter(option => option.inputKey === command || finalKeyFor(option.command) === command);
+      if (matches.length === 1) command = matches[0].command;
+    }
     event.preventDefault();
     processCommand(command);
   });
   missionControl.addEventListener("keyup", event => {
     if (!active || event.key !== "Control" || !controlModifierArmed) return;
     event.preventDefault();
-    if (protectedControlCommands.has(missions[current].steps[step].command)) return;
+    if (protectedControlCommands.has(missionSteps()[step].command)) return;
     controlModifierArmed = false;
     lastCommand.textContent = "Control: repeated current step";
     announce(currentStepPrompt());
   });
 
   function currentStepPrompt() {
-    return "Step " + (step + 1) + " of " + missions[current].steps.length + ". " + missions[current].steps[step].prompt;
+    return "Step " + (step + 1) + " of " + missionSteps().length + ". " + missionSteps()[step].prompt;
   }
 
   function processCommand(command) {
-    const mission = missions[current];
     try {
       sessionStorage.setItem("missionControlSettings", JSON.stringify({
         speech: simulatedVoice.checked ? "voice" : "own",
@@ -830,20 +875,26 @@
         mission: String(current)
       }));
     } catch (error) {}
-    const expected = mission.steps[step];
+    const expected = missionSteps()[step];
+    const choice = stepOptions(expected).find(option => option.command === command);
     missionAttempts += 1;
     lastCommand.textContent = displayedCommand(command);
     const item = document.createElement("li");
-    if (command === expected.command) {
+    if (choice) {
+      const result = {...expected, ...choice};
       tone(true);
-      item.textContent = displayedCommand(command) + ": " + expected.success;
+      item.textContent = displayedCommand(command) + ": " + result.success;
       log.append(item);
+      solvedSteps.push(result);
+      // Branches replace the following task for this attempt only. The
+      // catalog and prior/later attempts retain their original route.
+      if (result.nextStep) activeSteps[step + 1] = result.nextStep;
       step += 1;
       updateProgress();
-      if (step === mission.steps.length) finishMission(expected.success + " " + expected.why);
+      if (step === missionSteps().length) finishMission(result.success + " " + result.why);
       else {
-        problem.textContent = missions[current].steps[step].prompt;
-        announce(expected.success + " " + expected.why + " " + currentStepPrompt(), "correct");
+        problem.textContent = missionSteps()[step].prompt;
+        announce(result.success + " " + result.why + " " + currentStepPrompt(), "correct");
       }
     } else {
       tone(false);
@@ -874,7 +925,7 @@
     if (missionCompletedResult) missionCompletedResult.textContent = completed.size + " of " + missions.length;
     if (missionReviewResult) missionReviewResult.textContent = String(missionCommandsToReview.size);
     missionMasteredList.replaceChildren();
-    mission.steps.forEach(item => {
+    solvedSteps.forEach(item => {
       const listItem = document.createElement("li");
       listItem.textContent = displayedCommand(item.command) + ": " + item.why;
       missionMasteredList.append(listItem);
@@ -882,9 +933,9 @@
     missionReviewList.replaceChildren();
     if (missionCommandsToReview.size) {
       const list = document.createElement("ul");
-      missionCommandsToReview.forEach((item, command) => {
+      missionCommandsToReview.forEach(item => {
         const listItem = document.createElement("li");
-        listItem.textContent = displayedCommand(command) + ": " + item.why;
+        listItem.textContent = stepOptions(item).map(option => displayedCommand(option.command)).join(" or ") + ": " + item.prompt;
         list.append(listItem);
       });
       missionReviewList.append(list);
@@ -927,6 +978,8 @@
     missionAttempts = 0;
     missionCommandsToReview = new Map();
     const mission = missions[current];
+    activeSteps = [...mission.steps];
+    solvedSteps = [];
     category.textContent = mission.title;
     title.textContent = mission.title;
     problem.textContent = mission.problem;
