@@ -1,5 +1,7 @@
 # Optional learner account pilot
 
+Current privacy status: account implementation and previews have been moved out of the current public project. See `docs/account-preview-privacy.md`. The material below is historical planning; new account development must remain private until explicitly released.
+
 Prepared October 2, 2026; updated October 5 with an inactive implementation. This is not a deployed account system. Working target: a limited November pilot, with a broader December release subject to the checks below.
 
 ## October 5 implementation checkpoint

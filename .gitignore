@@ -1,0 +1,8 @@
+# Unfinished account work belongs outside this public checkout.
+/private-account-development/
+/accounts/
+/account-preview*
+/admin-preview*
+/account-progress-metrics.js
+/*Private-Accounts*.zip
+/private-artifacts/

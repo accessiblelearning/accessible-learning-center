@@ -1,5 +1,7 @@
 # Remaining work after the foundation and reporting preview
 
+Current privacy status: account implementation and previews have been moved out of the current public project. See `docs/account-preview-privacy.md`. The material below is historical planning; new account development must remain private until explicitly released.
+
 Owner constraints: $0 additional spending; no new service provisioning or billing; public login off until explicit authorization. The current account/admin screens are fictional previews, not a live account system.
 
 ## Can continue without waiting for full-site hands-on testing

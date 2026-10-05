@@ -1,5 +1,7 @@
 # No-cost identity research — October 5, 2026
 
+Current privacy status: account implementation and previews have been moved out of the current public project. See `docs/account-preview-privacy.md`. The material below is historical planning; new account development must remain private until explicitly released.
+
 Budget: **$0 additional spending**. No services were provisioned. Public login and recovery remain off. Research is not approval to activate a free tier or a trial.
 
 | Option | Relevant published limits | Decision for now |

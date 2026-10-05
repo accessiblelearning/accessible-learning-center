@@ -12,7 +12,6 @@ const {chromium:playwright}=require('playwright-core');
 const chromiumModule=require('@sparticuz/chromium');
 const chromium=chromiumModule.default || chromiumModule;
 const root=fileURLToPath(new URL('../',import.meta.url));
-const axePath=process.env.AXE_PATH || join(b,'axe/axe.min.js');
 await writeFile(b+'/chromium',brotliDecompressSync(await readFile(b+'/node_modules/@sparticuz/chromium/bin/chromium.br')));
 await chmod(b+'/chromium',0o755);
 const mime={'.js':'text/javascript','.css':'text/css','.html':'text/html'};
@@ -82,55 +81,6 @@ try{
    assert.equal(await page.evaluate(()=>document.activeElement.id),'nextMission');
    assert.match(await page.evaluate(()=>testSpeech.at(-1)),/Mission complete/);
    console.log('New mission '+id+': native keys, hint, recovery, completion and speech request passed.');
- }
- for (const name of ['account-preview.html','admin-preview.html']) {
-   await page.goto(base+'/'+name);
-   assert.match(await page.locator('.preview-banner').textContent(),/Login is OFF/);
-   if(name==='account-preview.html') assert.equal(await page.locator('#email').isDisabled(),true);
-   if(name==='admin-preview.html') {
-     await page.getByRole('button',{name:'Review Alex Sample'}).focus();await page.keyboard.press('Enter');
-     assert.match(await page.locator('#sample-trend').textContent(),/21 WPM, accuracy 98%/);
-     assert.match(await page.locator('#sample-metrics').textContent(),/Best speed22 WPM/);
-     assert.equal(await page.locator('#sample-history-rows tr').count(),4);
-     await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement.id),'sample-path');
-     await page.keyboard.press('ArrowDown');
-     assert.match(await page.locator('#sample-trend').textContent(),/Left hand only.*10 WPM, accuracy 94%/);
-     assert.equal(await page.locator('#sample-history-rows tr').count(),3);
-     await page.keyboard.press('ArrowDown');
-     assert.match(await page.locator('#sample-trend').textContent(),/One session recorded/);
-     await page.locator('#sample-search').focus();await page.keyboard.type('Jordan');
-     assert.match(await page.locator('#sample-count').textContent(),/1 fictional/);
-     await page.keyboard.press('Tab');await page.keyboard.press('Enter');
-     assert.match(await page.locator('#sample-heading').textContent(),/Jordan/);
-     assert.equal(await page.evaluate(()=>document.activeElement.id),'sample-heading');
-     assert.match(await page.locator('#sample-trend').textContent(),/Both hands.*14 WPM, accuracy 96%/);
-     await page.keyboard.press('Tab');await page.keyboard.press('ArrowDown');
-     assert.match(await page.locator('#sample-trend').textContent(),/no sample sessions recorded/);
-     assert.equal(await page.locator('#sample-history-region').isVisible(),false);
-     await page.keyboard.press('ArrowDown');
-     assert.match(await page.locator('#sample-trend').textContent(),/Right hand only.*12 WPM, accuracy 96%/);
-     await page.keyboard.press('Tab');await page.keyboard.press('Tab');
-     assert.equal(await page.evaluate(()=>document.activeElement.id),'sample-reason');
-     await page.keyboard.type('Fictional account review');await page.keyboard.press('Tab');await page.keyboard.press('Enter');
-     assert.match(await page.locator('#sample-action-result').textContent(),/No real account/);
-     assert.match(await page.locator('#sample-audit').textContent(),/Fictional account review/);
-   }
-   await page.addScriptTag({path:axePath});
-   const violations=await page.evaluate(async()=> (await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})));
-   assert.deepEqual(violations,[],name+' accessibility');
-   for(const theme of ['dark','high']) {
-     await page.evaluate(theme=>{document.documentElement.dataset.theme=theme==='dark'?'dark':'light';document.documentElement.dataset.contrast=theme==='high'?'high':'normal';},theme);
-     await page.waitForTimeout(300);
-     const contrast=await page.evaluate(async()=> (await axe.run(document,{runOnly:{type:'rule',values:['color-contrast']}})).violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})));
-     assert.deepEqual(contrast,[],name+' '+theme+' contrast');
-   }
-   await page.evaluate(()=>{document.documentElement.dataset.theme='light';document.documentElement.dataset.contrast='normal';});
-
-   await page.setViewportSize({width:390,height:844});
-   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,name+' narrow overflow');
-   await page.screenshot({path:b+'/'+name+'.png',fullPage:true});
-   await page.setViewportSize({width:1100,height:850});
-   console.log(name+': keyboard preview, automated accessibility and narrow layout passed.');
  }
  assert.deepEqual(errors,[]); console.log('No browser JavaScript errors.');
 }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

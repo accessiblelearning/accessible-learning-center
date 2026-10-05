@@ -1,5 +1,3 @@
-import { handleAccounts } from './accounts/account-api.mjs';
-
 const analyticsOrigins = new Set([
   "https://accessiblelearning.github.io",
   "https://accessiblelearningcenter.org",
@@ -78,8 +76,6 @@ export default {
     };
 
     const url = new URL(request.url);
-    const accountResponse = await handleAccounts(request, env);
-    if (accountResponse) return accountResponse;
 
     if (request.method === "OPTIONS" && url.pathname.startsWith("/analytics/")) {
       const origin = request.headers.get("Origin");
