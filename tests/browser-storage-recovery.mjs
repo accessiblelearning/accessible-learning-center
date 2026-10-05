@@ -127,5 +127,29 @@ try{
   }
  }
  console.log('All three menus speak arrow-key choices with storage blocked, stop when voice is off, and carry the current voice choice into practice.');
+
+ const progress=await pageWithProgress(async()=>[null,false,{},record,{...record,lesson_number:2,status:'in_progress'}]);
+ const quizSource=JSON.stringify({Firefox:{score:150}});
+ await progress.addInitScript(value=>localStorage.setItem('accessibleLearningQuizResults:fictional_test_one',value),quizSource);
+ await progress.setViewportSize({width:390,height:844});await progress.goto(base+'/student-progress.html');
+ await progress.waitForFunction(()=>document.querySelector('#progressMessage').textContent.includes('Progress loaded'));
+ assert.equal(await progress.locator('.course-progress').count(),30);
+ const firefox=progress.locator('.course-progress').filter({has:progress.locator('#firefox-progress-heading')});
+ await firefox.locator('summary').click();
+ assert.equal(await firefox.locator('li').nth(1).locator('span').textContent(),'In progress');
+ assert.match(await firefox.locator('details > p').textContent(),/Saved quiz result unavailable/);
+ assert.equal(await progress.locator('#continueLearning a').getAttribute('href'),'firefox-lesson-2.html');
+ assert.equal(await progress.evaluate(()=>localStorage.getItem('accessibleLearningQuizResults:fictional_test_one')),quizSource);
+ await progress.locator('#startedCoursesOnly').check();assert.equal(await progress.locator('#progressFilterStatus').textContent(),'1 course shown.');
+ assert.equal(await progress.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
+ if(process.env.AXE_PATH){await progress.addScriptTag({path:process.env.AXE_PATH});assert.deepEqual(await progress.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>v.id)),[]);}
+ const historyRead=deferred(),historyStarted=deferred();
+ const oldProgress=await pageWithProgress(async()=>{historyStarted.resolve();return historyRead.promise;});
+ await oldProgress.goto(base+'/student-progress.html');await historyStarted.promise;
+ await oldProgress.evaluate(()=>localStorage.setItem('accessibleLearningStudentId','fictional_test_two'));historyRead.resolve([record]);
+ await oldProgress.waitForFunction(()=>document.querySelector('#progressMessage').textContent.includes('Student ID changed'));
+ assert.equal(await oldProgress.locator('.course-progress').count(),0);assert.equal(await oldProgress.locator('#continueSection').isVisible(),false);
+ assert.doesNotMatch(await oldProgress.locator('#studentName').textContent(),/fictional_test_one/);
+ console.log('Learner progress: partial lesson status, mixed records, invalid quiz result, unchanged source history, next lesson, filters, narrow layout, Axe and late-ID guard passed.');
  assert.deepEqual(errors,[]);
 }finally{await browser?.close();await new Promise(r=>server.close(r));}

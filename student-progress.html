@@ -553,7 +553,7 @@
           : "lesson-status";
         status.textContent = isComplete
           ? (record.status === "submitted" ? "Completed by assignment submission" : "Completed")
-          : "Not started";
+          : (record?.status === "in_progress" ? "In progress" : "Not started");
 
         item.append(link, status);
         list.appendChild(item);
@@ -577,20 +577,24 @@
       quizLink.textContent = "Final quiz and certificate";
       // Earlier course completions keep the passing standard in effect when earned.
       const passingScore = quizResult?.passPercent ?? 80;
-      if (quizResult && Number(quizResult.score) >= Number(passingScore)) {
-        const date = new Date(quizResult.completedAt);
+      const validQuiz = quizResult && typeof quizResult === "object" && !Array.isArray(quizResult) &&
+        validNumber(quizResult.score) && Number(quizResult.score) >= 0 && Number(quizResult.score) <= 100 &&
+        validNumber(passingScore) && Number(passingScore) > 0 && Number(passingScore) <= 100;
+      if (validQuiz && Number(quizResult.score) >= Number(passingScore)) {
+        const date = new Date(["string", "number"].includes(typeof quizResult.completedAt) ? quizResult.completedAt : NaN);
         quizParagraph.append(
           document.createTextNode("Final quiz passed: " + quizResult.score + " percent" + (Number.isNaN(date.getTime()) ? ". " : " on " + date.toLocaleDateString() + ". ")),
           quizLink
         );
       } else {
-        quizParagraph.append(document.createTextNode("Final quiz not passed yet. "), quizLink);
+        const quizMessage = quizResult !== undefined && !validQuiz ? "Saved quiz result unavailable. " : "Final quiz not passed yet. ";
+        quizParagraph.append(document.createTextNode(quizMessage), quizLink);
       }
 
       details.append(detailsSummary, list, quizParagraph);
       section.dataset.searchText = (course.displayName || course.name).toLowerCase();
       section.dataset.topics = courseTopics[course.slug] || "other";
-      section.dataset.started = String(completedCount > 0 || Boolean(quizResult) ||
+      section.dataset.started = String(completedCount > 0 || Boolean(validQuiz) ||
         records.some(record => record.course === course.name && record.status === "in_progress"));
       section.append(heading, summary, meter, details);
       return { section, completedCount, firstIncomplete };
@@ -623,24 +627,46 @@
       courseProgressSections.querySelectorAll("details").forEach(details => { details.open = false; });
     });
 
+    function validNumber(value) {
+      return (typeof value === "number" || (typeof value === "string" && value.trim() !== "")) && Number.isFinite(Number(value));
+    }
+
+    function currentStudent() {
+      let currentId = "";
+      try { currentId = localStorage.getItem("accessibleLearningStudentId") || ""; } catch (error) {}
+      if (currentId === studentId) return true;
+      studentName.textContent = "";
+      courseProgressSections.replaceChildren();
+      continueSection.hidden = true;
+      continueLearning.replaceChildren();
+      progressMessage.textContent = "The Student ID changed or could not be checked. Reload this page to view the current learner's progress.";
+      return false;
+    }
+
     async function loadProgress() {
       try {
         const response = await fetch(
           API_URL + "/progress?student_id=" + encodeURIComponent(studentId)
         );
         const data = await response.json();
+        if (!currentStudent()) return;
 
         if (!response.ok || !Array.isArray(data)) {
           progressMessage.textContent = "Your progress could not be loaded.";
           return;
         }
 
+        const records = data.filter(record => record && typeof record === "object" &&
+          typeof record.course === "string" && validNumber(record.lesson_number) &&
+          Number.isInteger(Number(record.lesson_number)) && Number(record.lesson_number) >= 1 && Number(record.lesson_number) <= 10 &&
+          ["in_progress", "completed", "submitted"].includes(record.status));
+
         courseProgressSections.replaceChildren();
         let completedCourses = 0;
         const courseResults = [];
 
         for (const course of courses) {
-          const result = createCourseSection(course, data);
+          const result = createCourseSection(course, records);
           courseProgressSections.appendChild(result.section);
           courseResults.push(result);
           if (result.completedCount === course.titles.length) {
@@ -648,7 +674,7 @@
           }
         }
 
-        const completedRecords = data
+        const completedRecords = records
           .filter(record => ["completed", "submitted"].includes(record.status))
           .sort((first, second) => String(second.updated_at || "").localeCompare(String(first.updated_at || "")));
         const recentCourseIndex = completedRecords.length
@@ -681,6 +707,7 @@
             : "Progress loaded for all available courses.";
         filterProgress();
       } catch (error) {
+        if (!currentStudent()) return;
         progressMessage.textContent =
           "There was a connection problem while loading progress.";
       }

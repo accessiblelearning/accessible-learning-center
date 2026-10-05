@@ -43,6 +43,8 @@ The progress-recovery follow-up fixes delayed lesson responses overwriting newer
 
 The menu-recovery follow-up keeps courses browsable during failed/invalid progress loading, excludes a late response after a Student ID change, and makes all three Mission Control menus honor voice toggles with unwritable storage. See [the menu recovery checkpoint](qa-2026-10-05-menu-recovery.md). **168 public tests pass** plus fictional-response Chromium checks. Curriculum, stable IDs, all typing paths and private sources are unchanged. The remaining curriculum and device-verification work above is still open.
 
+The learner-progress follow-up corrects In progress labels, rejects malformed progress rows and invalid local quiz scores, and excludes stale results after a Student ID change. See [the learner progress checkpoint](qa-2026-10-05-learner-progress.md). **173 public tests pass** plus fictional-data Chromium/layout/Axe checks. The three afternoon reliability batches add 17 tests over the earlier 156-test baseline. No private, account, curriculum or progress-identifier changes. Continue with another independently reproduced issue or the remaining curriculum review; these completed flows do not need repeated broad testing.
+
 ## Needs targeted human/device feedback
 
 - JAWS/NVDA and Mac VoiceOver/Safari: spoken feedback, focus and real shortcut conflicts.
