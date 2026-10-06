@@ -153,6 +153,7 @@
     brand.className = "site-brand site-brand--nav";
     brand.href = "index.html";
     brand.setAttribute("aria-label", "Accessible Learning Center home");
+    brand.setAttribute("title", "Accessible Learning Center home");
     brand.innerHTML = `
       <picture class="site-brand__picture">
         <img class="site-brand__logo" src="40CCC79A-8534-4301-90E6-9AC1665CE7FF.png" alt="">
