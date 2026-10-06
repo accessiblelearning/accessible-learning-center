@@ -1,5 +1,9 @@
 # Remaining work after the foundation and reporting preview
 
+## Invitation-only menu link — October 6, 2026
+
+The owner confirmed successful sign-out/sign-in on the separate tester pilot and authorized a **Login here** link at the right of the website menu. See [the navigation checkpoint](qa-2026-10-06-login-navigation.md). The invitation/testing description accompanies the link; anonymous lessons, private Braille access and all course progress remain unchanged. Public registration is not enabled. The full saved-progress/admin foundation is still private and inactive, and its source must stay outside this repository. Earlier statements below that no login pilot exists are historical; they are not the current state of the separately operated pilot. The private pilot's prepared accessibility and single-invitation-list update still requires separate Worker deployment; Pages publication does not install it.
+
 ## Latest readiness status — October 5, 2026
 
 See [the readiness checkpoint](qa-2026-10-05-readiness.md) before using older counts below. All **93 NVDA teaching entries** are now reviewed (74 newly improved); **193 public tests** and the site validator pass. A complete **408-page** local 390-pixel initial-state scan found and fixed one adventure-prototype overflow; its rescan found no scoped Axe violations, horizontal overflow or uncaught errors. Three 50-lesson typing paths and mission IDs 0–24 remain unchanged.

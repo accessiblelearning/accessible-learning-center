@@ -217,6 +217,10 @@ main:focus-visible {
   background: #ffffff;
 }
 
+.site-nav .site-nav__login {
+  margin-inline-start: auto;
+}
+
 body > header,
 body > main,
 body > footer {
@@ -823,6 +827,11 @@ html[data-reduce-motion="true"] *::after {
   .site-nav a {
     justify-content: center;
     text-align: center;
+  }
+
+  .site-nav .site-nav__login {
+    grid-column: 2;
+    margin-inline-start: 0;
   }
 }
 

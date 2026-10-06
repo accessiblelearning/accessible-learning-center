@@ -6,7 +6,7 @@ The owner requested prelaunch privacy on October 4, 2026 (Indianapolis time). Th
 
 - Do not add account/admin previews, account source, migrations, fixtures, screenshots or private archives to this public repository or its Pages build. Noindex, a hidden URL or an omitted navigation link is not access protection.
 - Continue account work only in a private working folder outside this checkout. The preserved archive is named `Accessible-Learning-Center-Private-Accounts.zip` in the owner's private files. Resolve that existing file and update the same identity; never substitute an older public snapshot for newer private work.
-- The archive includes the current reporting preview, inactive backend foundation, tests, setup instructions and a Worker integration patch. Keep login OFF. No provider or account backend has been activated/deployed, and no production migration has run.
+- The archive includes the reporting preview, inactive backend foundation, tests, setup instructions and a Worker integration patch. The full progress/admin foundation remains inactive; no production migration is authorized. On October 6 the owner confirmed a separately deployed invitation-only login pilot and authorized a public **Login here** menu link to it. This limited pilot does not authorize open registration, a paywall, account-data integration or publication of private source.
 - Additional spending must remain $0. Do not provision new services, activate billing, trials or paid plans, or send real account/recovery messages without explicit owner authorization. A November target is not release permission.
 - Publication of account functionality requires explicit owner approval and actual access controls where appropriate. Browser flags do not grant administrator access.
 

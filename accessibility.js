@@ -160,6 +160,8 @@
         <a href="quizzes.html">Quizzes</a>
         <a href="resources.html">Help &amp; search</a>
         <a href="troubleshooting-lab.html">Mission Control Sim</a>
+        <a class="site-nav__login" href="https://accessible-learning-pilot.aaccessabilitylearningcenter.workers.dev/" aria-describedby="login-testing-notice" title="Invitation only. Testing is in progress.">Login here</a>
+        <span id="login-testing-notice" class="visually-hidden">Invitation only. Testing is in progress.</span>
       </div>
     `;
 
