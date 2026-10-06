@@ -3307,3 +3307,43 @@ fieldset { min-inline-size: 0; }
   body.print-certificate #certificateCourse { font-size: 22pt; }
   body.print-certificate .certificate__details { display: flex; margin-block: 10pt; gap: 8pt 24pt; }
 }
+
+
+/* Accessible Learning Center responsive brand system */
+.site-brand {
+  display: block;
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+.site-brand--nav {
+  padding: .65rem 1rem .25rem;
+  background: var(--blue-950);
+  text-decoration: none;
+}
+.site-brand__picture { display: block; }
+.site-brand__logo {
+  display: block;
+  width: min(100%, 34rem);
+  height: auto;
+  object-fit: contain;
+}
+.site-brand--nav .site-brand__logo { max-height: 5.5rem; }
+.site-brand--hero { margin-bottom: 1rem; }
+.site-brand--hero .site-brand__logo { width: min(100%, 48rem); margin-inline: auto; }
+
+/* Theme-aware logo selection. Standard uses full color. Dark uses white lettering.
+   High contrast uses monochrome artwork chosen for the active background. */
+html[data-theme="dark"] .site-brand__logo {
+  content: url("B556D468-8900-4059-BBE1-E2984692207A.png");
+}
+html[data-contrast="high"]:not([data-theme="dark"]) .site-brand__logo {
+  content: url("F6F4614E-5041-4788-9AE6-1F57EEDACFCD.png");
+}
+html[data-theme="dark"][data-contrast="high"] .site-brand__logo {
+  content: url("CDD4432A-5F05-4617-969A-9A06CFF2EF50.png");
+}
+@media (prefers-contrast: more) {
+  html:not([data-theme="dark"]) .site-brand__logo {
+    content: url("F6F4614E-5041-4788-9AE6-1F57EEDACFCD.png");
+  }
+}
