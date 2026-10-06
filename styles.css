@@ -3343,7 +3343,7 @@ fieldset { min-inline-size: 0; }
 /* Theme-aware logo selection. Standard uses full color. Dark uses white lettering.
    High contrast uses monochrome artwork chosen for the active background. */
 html[data-theme="dark"] .site-brand__logo {
-  content: url("B556D468-8900-4059-BBE1-E2984692207A.png");
+  content: url("CDD4432A-5F05-4617-969A-9A06CFF2EF50.png");
 }
 html[data-contrast="high"]:not([data-theme="dark"]) .site-brand__logo {
   content: url("F6F4614E-5041-4788-9AE6-1F57EEDACFCD.png");
