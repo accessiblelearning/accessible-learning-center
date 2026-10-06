@@ -149,6 +149,16 @@
       </div>
     `;
 
+    const brand = document.createElement("a");
+    brand.className = "site-brand site-brand--nav";
+    brand.href = "index.html";
+    brand.setAttribute("aria-label", "Accessible Learning Center home");
+    brand.innerHTML = `
+      <picture class="site-brand__picture">
+        <img class="site-brand__logo" src="30636A11-7B68-4986-9AB6-C50CC97F0D09.png" alt="">
+      </picture>
+    `;
+
     const nav = document.createElement("nav");
     nav.className = "site-nav";
     nav.setAttribute("aria-label", "Primary navigation");
@@ -180,7 +190,7 @@
     });
 
     // Keep the skip link first so it is the first keyboard stop on every page.
-    document.body.prepend(skipLink, panel, nav);
+    document.body.prepend(skipLink, panel, brand, nav);
 
     const status = panel.querySelector(".accessibility-status");
     const darkButton = panel.querySelector('[data-action="dark"]');
