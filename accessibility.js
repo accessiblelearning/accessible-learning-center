@@ -155,7 +155,7 @@
     brand.setAttribute("aria-label", "Accessible Learning Center home");
     brand.innerHTML = `
       <picture class="site-brand__picture">
-        <img class="site-brand__logo" src="30636A11-7B68-4986-9AB6-C50CC97F0D09.png" alt="">
+        <img class="site-brand__logo" src="8DD40945-C7BA-4226-8508-F09913D572EF.png" alt="">
       </picture>
     `;
 
