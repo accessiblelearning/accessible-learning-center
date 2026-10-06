@@ -3366,3 +3366,18 @@ html[data-theme="dark"][data-contrast="high"] .site-brand__logo {
   .site-brand--nav { background: Canvas; border-block: 1px solid CanvasText; }
   .site-brand__logo { forced-color-adjust: none; }
 }
+
+
+/* Brand QA: responsive sizing, keyboard focus, and forced-colors support. */
+.site-brand--nav { box-sizing: border-box; padding: .55rem 1rem .2rem; }
+.site-brand--nav:focus-visible { outline: 4px solid var(--focus); outline-offset: -4px; }
+.site-brand--nav .site-brand__logo { width: min(100%, 26rem); max-height: 4.75rem; margin-inline: auto; }
+@media (max-width: 42rem) {
+  .site-brand--nav { padding-inline: .75rem; }
+  .site-brand--nav .site-brand__logo { width: min(100%, 22rem); max-height: 4.25rem; }
+  .site-brand--hero .site-brand__logo { width: 100%; }
+}
+@media (forced-colors: active) {
+  .site-brand--nav { background: Canvas; border-block: 1px solid CanvasText; }
+  .site-brand__logo { forced-color-adjust: none; }
+}
