@@ -3545,3 +3545,22 @@ html:root[data-theme="dark"][data-contrast="high"] .site-brand--nav .site-brand_
   filter: invert(1) grayscale(1) contrast(1.15) !important;
   opacity: 1 !important;
 }
+
+
+/* Approved dark-mode logo: black lettering/artwork with white outline (no inversion). */
+html:root[data-theme="dark"] .site-brand--nav .site-brand__logo,
+html:root[data-theme="dark"][data-contrast="high"] .site-brand--nav .site-brand__logo {
+  content: url("IMG_0042.png") !important;
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  width: min(100%, 31rem) !important;
+  max-height: 6rem !important;
+}
+@media (max-width: 42rem) {
+  html:root[data-theme="dark"] .site-brand--nav .site-brand__logo,
+  html:root[data-theme="dark"][data-contrast="high"] .site-brand--nav .site-brand__logo {
+    width: min(96%, 28rem) !important;
+    max-height: 5.5rem !important;
+  }
+}
