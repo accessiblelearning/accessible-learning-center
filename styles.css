@@ -3450,3 +3450,32 @@ html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-bran
 html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-nav {
   background-color: var(--blue-950) !important;
 }
+
+
+/* Unified standard-mode masthead: no white gap between accessibility bar, logo, and nav. */
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body {
+  background-color: var(--blue-950);
+}
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .accessibility-panel,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-brand--nav {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  background: var(--blue-950) !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-brand--nav {
+  padding-top: .7rem !important;
+  padding-bottom: .45rem !important;
+}
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-nav {
+  margin: 0 !important;
+  border-top: 0 !important;
+}
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > main,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > header,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > footer {
+  background-clip: padding-box;
+}
