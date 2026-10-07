@@ -3491,3 +3491,17 @@ html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-nav 
   border: 0 !important;
   box-shadow: none !important;
 }
+
+
+/* Continuous masthead gradient: one shared coordinate system prevents visible seams. */
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .accessibility-panel,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-brand--nav,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-nav {
+  background-image: linear-gradient(90deg, var(--blue-900), var(--blue-700)) !important;
+  background-size: 100vw 100% !important;
+  background-position: left top !important;
+  background-repeat: no-repeat !important;
+}
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-brand--nav {
+  padding-block: 1rem .75rem !important;
+}
