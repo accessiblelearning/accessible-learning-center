@@ -3416,3 +3416,15 @@ html:root[data-theme="dark"][data-contrast="high"] .site-brand__logo {
   mix-blend-mode: normal !important;
   background: transparent !important;
 }
+
+
+/* Seamless top brand stack: accessibility bar, logo, and nav share one blue field. */
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) .accessibility-panel,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) .site-brand--nav {
+  background: var(--blue-950) !important;
+  border-block: 0 !important;
+  box-shadow: none !important;
+}
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) .site-brand--nav {
+  margin-top: 0 !important;
+}
