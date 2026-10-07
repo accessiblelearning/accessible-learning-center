@@ -3428,3 +3428,25 @@ html:root:not([data-theme="dark"]):not([data-contrast="high"]) .site-brand--nav 
 html:root:not([data-theme="dark"]):not([data-contrast="high"]) .site-brand--nav {
   margin-top: 0 !important;
 }
+
+
+/* Remove any remaining gap/band between accessibility controls and brand/navigation. */
+.accessibility-panel,
+.site-brand,
+.site-brand--nav,
+.site-nav {
+  margin-block: 0 !important;
+}
+.accessibility-panel + .site-brand,
+.site-brand + .site-nav {
+  margin-top: 0 !important;
+}
+body > .site-brand--nav {
+  width: 100% !important;
+  max-width: none !important;
+}
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .accessibility-panel,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-brand--nav,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-nav {
+  background-color: var(--blue-950) !important;
+}
