@@ -3564,3 +3564,11 @@ html:root[data-theme="dark"][data-contrast="high"] .site-brand--nav .site-brand_
     max-height: 5.5rem !important;
   }
 }
+
+
+/* Restore previously approved dark-mode logo size; keep black artwork/white outline. */
+html:root[data-theme="dark"] .site-brand--nav .site-brand__logo,
+html:root[data-theme="dark"][data-contrast="high"] .site-brand--nav .site-brand__logo {
+  width: min(100%, 22rem) !important;
+  max-height: 4.25rem !important;
+}
