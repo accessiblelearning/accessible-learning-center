@@ -3381,3 +3381,18 @@ html[data-theme="dark"][data-contrast="high"] .site-brand__logo {
   .site-brand--nav { background: Canvas; border-block: 1px solid CanvasText; }
   .site-brand__logo { forced-color-adjust: none; }
 }
+
+
+/* Dark-mode brand surface: the logo must sit directly on black. */
+html:root[data-theme="dark"] .site-brand,
+html:root[data-theme="dark"] .site-brand--nav,
+html:root[data-theme="dark"] .site-brand__picture {
+  background: #000000 !important;
+  background-image: none !important;
+}
+html:root[data-theme="dark"] .site-brand__logo {
+  display: block;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
