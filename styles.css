@@ -3405,3 +3405,14 @@ html:root[data-theme="dark"][data-contrast="high"] .site-brand__logo {
   filter: none !important;
   mix-blend-mode: normal !important;
 }
+
+/* Final dark-logo treatment: the monochrome asset is black artwork with white edging.
+   Invert it in dark mode so the primary artwork is white on the black site surface. */
+html:root[data-theme="dark"] .site-brand__logo,
+html:root[data-theme="dark"][data-contrast="high"] .site-brand__logo {
+  content: url("IMG_0042.png") !important;
+  filter: invert(1) grayscale(1) contrast(1.15) !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  background: transparent !important;
+}
