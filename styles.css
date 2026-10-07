@@ -3343,13 +3343,13 @@ fieldset { min-inline-size: 0; }
 /* Theme-aware logo selection. Standard uses full color. Dark uses white lettering.
    High contrast uses monochrome artwork chosen for the active background. */
 html[data-theme="dark"] .site-brand__logo {
-  content: url("IMG_0042.png");
+  content: url("36E10062-BE45-418B-B11B-3BE11FAA89E7.png");
 }
 html[data-contrast="high"]:not([data-theme="dark"]) .site-brand__logo {
   content: url("F6F4614E-5041-4788-9AE6-1F57EEDACFCD.png");
 }
 html[data-theme="dark"][data-contrast="high"] .site-brand__logo {
-  content: url("CDD4432A-5F05-4617-969A-9A06CFF2EF50.png");
+  content: url("36E10062-BE45-418B-B11B-3BE11FAA89E7.png");
 }
 @media (prefers-contrast: more) {
   html:not([data-theme="dark"]) .site-brand__logo {
