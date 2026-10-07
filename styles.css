@@ -3534,3 +3534,14 @@ html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-bran
     max-height: 6rem;
   }
 }
+
+
+/* Preserve the approved dark-mode logo appearance from Oct 6. */
+html:root[data-theme="dark"] .site-brand--nav .site-brand__logo,
+html:root[data-theme="dark"][data-contrast="high"] .site-brand--nav .site-brand__logo {
+  width: min(100%, 22rem) !important;
+  max-height: 4.25rem !important;
+  content: url("IMG_0042.png") !important;
+  filter: invert(1) grayscale(1) contrast(1.15) !important;
+  opacity: 1 !important;
+}
