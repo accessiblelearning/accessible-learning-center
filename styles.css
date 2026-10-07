@@ -3505,3 +3505,16 @@ html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-nav 
 html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-brand--nav {
   padding-block: 1rem .75rem !important;
 }
+
+
+/* Slightly larger primary masthead logo for better visual balance. */
+.site-brand--nav .site-brand__logo {
+  width: min(100%, 31rem);
+  max-height: 5.75rem;
+}
+@media (max-width: 42rem) {
+  .site-brand--nav .site-brand__logo {
+    width: min(100%, 27rem);
+    max-height: 5.25rem;
+  }
+}
