@@ -3479,3 +3479,15 @@ html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > header,
 html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > footer {
   background-clip: padding-box;
 }
+
+
+/* Standard masthead refinement: use the navigation gradient across toolbar + logo
+   so the three areas read as one continuous branded surface. */
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .accessibility-panel,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-brand--nav,
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) body > .site-nav {
+  background: linear-gradient(90deg, var(--blue-900), var(--blue-700)) !important;
+  background-color: var(--blue-900) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
