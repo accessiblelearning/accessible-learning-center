@@ -3419,8 +3419,7 @@ html:root[data-theme="dark"][data-contrast="high"] .site-brand__logo {
 
 
 /* Seamless top brand stack: accessibility bar, logo, and nav share one blue field. */
-html:root:not([data-theme="dark"]):not([data-contrast="high"]) .accessibility-panel,
-html:root:not([data-theme="dark"]):not([data-contrast="high"]) .site-brand--nav {
+html:root:not([data-theme="dark"]):not([data-contrast="high"]) .accessibility-panel {
   background: var(--blue-950) !important;
   border-block: 0 !important;
   box-shadow: none !important;
@@ -3571,4 +3570,40 @@ html:root[data-theme="dark"] .site-brand--nav .site-brand__logo,
 html:root[data-theme="dark"][data-contrast="high"] .site-brand--nav .site-brand__logo {
   width: min(100%, 22rem) !important;
   max-height: 4.25rem !important;
+}
+
+/* Match the signed-in course logo and keep it beside navigation or course controls. */
+.accessibility-panel .accessibility-menu { margin-block: 0; }
+.site-nav__inner { align-items: center; padding-block: .25rem; }
+html:root .site-brand.site-brand--nav {
+  display: block;
+  flex: 0 1 14rem;
+  width: 14rem;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0;
+  box-shadow: none;
+  background: transparent !important;
+}
+html:root .site-brand--nav .site-brand__picture { background: transparent !important; }
+html:root[data-theme="dark"][data-contrast="high"] .site-brand--nav .site-brand__logo,
+html:root .site-brand.site-brand--nav .site-brand__logo {
+  width: 100% !important;
+  height: 5rem;
+  max-height: 5rem !important;
+  object-position: left center;
+  margin: 0;
+}
+html:root .mission-toolbar .site-brand--nav,
+html:root .kb-toolbar .site-brand--nav { margin-right: auto !important; }
+@media (max-width: 48rem) {
+  html:root .site-brand.site-brand--nav { flex-basis: 10rem; width: 10rem; }
+  html:root[data-theme="dark"][data-contrast="high"] .site-brand--nav .site-brand__logo,
+  html:root .site-brand.site-brand--nav .site-brand__logo { height: 3.5rem; max-height: 3.5rem !important; }
+}
+@media (max-width: 28rem) {
+  .site-nav__inner > .site-brand--nav { grid-column: 1 / -1; }
 }

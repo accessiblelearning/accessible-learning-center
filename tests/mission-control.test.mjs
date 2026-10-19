@@ -55,6 +55,7 @@ function page(initial = {}, audio) {
   const storage = { getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value) };
   const context = vm.createContext({ window, document, location, navigator: {}, URLSearchParams,
     localStorage: storage, sessionStorage: storage, speechSynthesis: speech, SpeechSynthesisUtterance: Utterance,
+    MutationObserver: class { observe() {} disconnect() {} },
     CustomEvent: class { constructor(type, options) { Object.assign(this, { type }, options); } } });
   return { get, document, window, storage,
     load(file) { vm.runInContext(source(file), context, { filename: file }); },

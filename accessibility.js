@@ -190,8 +190,21 @@
       }
     });
 
+    // Keep the logo beside navigation or learning controls, without a banner row.
+    const courseToolbar = document.querySelector(".mission-toolbar, #previewToolbar");
+    const placeBrand = () => {
+      const destination = courseToolbar && !courseToolbar.hidden
+        ? courseToolbar
+        : nav.querySelector(".site-nav__inner");
+      destination.prepend(brand);
+    };
+    placeBrand();
+    if (courseToolbar) {
+      new MutationObserver(placeBrand).observe(courseToolbar, { attributes: true, attributeFilter: ["hidden"] });
+    }
+
     // Keep the skip link first so it is the first keyboard stop on every page.
-    document.body.prepend(skipLink, panel, brand, nav);
+    document.body.prepend(skipLink, panel, nav);
 
     const status = panel.querySelector(".accessibility-status");
     const darkButton = panel.querySelector('[data-action="dark"]');
