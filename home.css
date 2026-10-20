@@ -1,6 +1,13 @@
 /* Compact combined homepage; colors follow the shared accessibility theme. */
 .combined-home .home-intro { display: block; max-width: 70rem; margin-inline: auto; }
 .combined-home .home-intro p { max-width: 65ch; }
+.combined-home .home-tester-waitlist { margin-block: 0 2rem; padding: clamp(1rem, 3vw, 1.5rem); border: 2px solid currentColor; border-radius: .75rem; overflow-wrap: anywhere; }
+.combined-home .home-tester-waitlist h2 { margin-top: 0; }
+.combined-home .home-tester-waitlist p { max-width: 70ch; }
+.combined-home .home-waitlist-button { display: inline-block; max-width: 100%; padding: .8rem 1.2rem; border: 2px solid currentColor; border-radius: .5rem; font-weight: 700; text-underline-offset: .2em; }
+.combined-home .home-waitlist-button:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+.combined-home .home-waitlist-returning { margin-bottom: 0; }
+.combined-home > footer { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1rem; }
 .combined-home .home-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); list-style: none; padding: 0; gap: 1rem; }
 .combined-home .home-paths li { margin: 0; padding: 1rem; min-width: 0; }
 .combined-home .home-paths h3 { margin: 0 0 .4rem; }
