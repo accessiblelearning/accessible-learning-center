@@ -18,15 +18,27 @@
   }
 
   function readVoicePreference() {
+    const defaultVoice = document.body.dataset.defaultTrainingSpeech === "voice";
     try {
       const preferences = JSON.parse(localStorage.getItem(preferenceKey) || "{}");
-      return preferences.trainingSpeech === "voice";
-    } catch (error) { return false; }
+      if (["voice", "own"].includes(preferences?.trainingSpeech)) return preferences.trainingSpeech === "voice";
+      // Remember the initial choice so display controls and a return visit do
+      // not silently switch the topic narrator back off.
+      if (defaultVoice) localStorage.setItem(preferenceKey, JSON.stringify({ ...preferences, trainingSpeech: "voice" }));
+    } catch (error) { /* The menu remains usable without storage. */ }
+    return defaultVoice;
   }
   let useSiteVoice = voiceSupported && readVoicePreference();
   function siteVoiceEnabled() { return useSiteVoice; }
   window.addEventListener("missionvoicechange", event => {
     useSiteVoice = Boolean(event.detail.enabled && voiceSupported);
+    // The toolbar is outside the arrow-key menu. Return to the selected topic
+    // after enabling voice so Down Arrow works immediately and reads its label.
+    if (useSiteVoice) window.setTimeout(() => {
+      if (document.activeElement?.id === "missionVoiceToggle") {
+        (choices.find(item => item.tabIndex === 0) || choices[0])?.focus();
+      }
+    }, 0);
   });
 
   function stopVoice() {
@@ -37,6 +49,7 @@
     if (!siteVoiceEnabled() || !voiceSupported) return;
     stopVoice();
     try {
+      window.speechSynthesis.resume?.();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 0.95;
       speechSynthesis.speak(utterance);
@@ -87,16 +100,18 @@
     window.location.href = "command-practice-session.html?" + params.toString();
   }
 
+  function announceChoice(item) {
+    setActive(item);
+    try { sessionStorage.setItem(focusKey, item.dataset.choice); } catch (error) {}
+    if (description) description.textContent = item.dataset.description;
+    const announcement = item.dataset.description + ". Press Enter to start.";
+    status.textContent = announcement;
+    if (!openingAnnouncement) speak(announcement);
+  }
+
   choices.forEach((item, index) => {
     item.tabIndex = index === 0 ? 0 : -1;
-    item.addEventListener("focus", () => {
-      setActive(item);
-      try { sessionStorage.setItem(focusKey, item.dataset.choice); } catch (error) {}
-      if (description) description.textContent = item.dataset.description;
-      const announcement = item.dataset.description + ". Press Enter to start.";
-      status.textContent = announcement;
-      if (!openingAnnouncement) speak(announcement);
-    });
+    item.addEventListener("focus", () => announceChoice(item));
     item.addEventListener("click", event => {
       event.preventDefault();
       startTopic(item);
@@ -104,7 +119,7 @@
   });
 
   menu.addEventListener("keydown", event => {
-    if (event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
+    if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
     if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
     const activeIndex = Math.max(0, choices.indexOf(document.activeElement));
@@ -113,7 +128,9 @@
     if (event.key === "ArrowUp") nextIndex = (activeIndex - 1 + choices.length) % choices.length;
     if (event.key === "Home") nextIndex = 0;
     if (event.key === "End") nextIndex = choices.length - 1;
-    choices[nextIndex].focus();
+    const next = choices[nextIndex];
+    if (next === document.activeElement) announceChoice(next);
+    else next.focus();
   });
 
   document.addEventListener("keydown", event => {

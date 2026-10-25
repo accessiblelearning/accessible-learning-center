@@ -442,6 +442,34 @@ test('all Mission Control menus honor the voice toggle without relying on writab
  }
 });
 
+test('Command Practice defaults to spoken topics and preserves an explicit own-reader choice', () => {
+ for (const saved of [null, 'own', 'voice']) {
+  const p=page(),heard=[];p.document.body.dataset={defaultTrainingSpeech:'voice'};
+  if(saved)p.storage.setItem('accessibleLearningPreferences',JSON.stringify({trainingSpeech:saved}));
+  p.window.speechSynthesis.speak=u=>heard.push(u.text);
+  p.load('mission-catalog.js');p.load('mission-ui.js');p.load('command-practice-setup.js');
+  p.window.fire('DOMContentLoaded');p.advance();heard.length=0;
+  const menu=p.get('commandTopicsMenu');menu.fire('keydown',{key:'ArrowDown'});
+  assert.equal(heard.length,saved==='own'?0:1);
+  if(saved!=='own')assert.equal(heard[0],p.document.activeElement.dataset.description+'. Press Enter to start.');
+  const voice=p.get('main.mission-center-shell').children[0].children[2];
+  assert.equal(voice.getAttribute('aria-pressed'),String(saved!=='own'));
+  assert.equal(JSON.parse(p.storage.getItem('accessibleLearningPreferences')).trainingSpeech,saved||'voice');
+ }
+});
+
+test('enabling Command Practice voice returns to topics and Home repeats the current topic', () => {
+ const p=page(),heard=[];p.document.body.dataset={defaultTrainingSpeech:'voice'};
+ p.storage.setItem('accessibleLearningPreferences',JSON.stringify({trainingSpeech:'own'}));
+ p.get('keyCapture').hidden=true;
+ p.window.speechSynthesis.speak=u=>heard.push(u.text);
+ p.load('mission-catalog.js');p.load('mission-ui.js');p.load('command-practice-setup.js');p.window.fire('DOMContentLoaded');p.advance();
+ const menu=p.get('commandTopicsMenu'),voice=p.get('main.mission-center-shell').children[0].children[2];
+ voice.focus();voice.click();p.advance();assert.equal(p.document.activeElement,menu.children[0]);
+ heard.length=0;menu.fire('keydown',{key:'Home'});
+ assert.deepEqual(heard,[menu.children[0].dataset.description+'. Press Enter to start.']);
+});
+
 test('Mission Control menus preserve modified screen-reader navigation keys', () => {
   for (const [file,id] of [['mission-center.js','missionCenterMenu'],['command-practice-setup.js','commandTopicsMenu'],['topic-missions-setup.js','topicMissionsMenu'],['mission-settings.js','missionSettingsMenu']]) {
     const p=page(),menu=p.get(id);

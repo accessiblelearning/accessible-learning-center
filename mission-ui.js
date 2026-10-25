@@ -31,7 +31,8 @@
     catch (error) { return {}; }
     return {};
   }
-  let voiceChoice = readPreferences().trainingSpeech === "voice";
+  const savedSpeech = readPreferences().trainingSpeech;
+  let voiceChoice = savedSpeech === "voice" || (savedSpeech !== "own" && document.body.dataset.defaultTrainingSpeech === "voice");
 
   function speechFailed() {
     const preferences = readPreferences();

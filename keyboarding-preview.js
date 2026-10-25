@@ -205,6 +205,22 @@
     selectedVoiceURI = "";
     voiceRatePercent = 50;
   }
+  let speakTypedKeys = false;
+  let pendingTypedSpeech = 0;
+  let speechGeneration = 0;
+  try {
+    speakTypedKeys = localStorage.getItem("alcKeyboardingSpeakTypedKeys") === "on";
+  } catch (error) { /* The setting still works for this visit. */ }
+
+  function typedCharacterMessage(character) {
+    return speakTypedKeys && useSiteVoice ? (character === "\n" ? "new line" : spokenKeyName(character)) + ". " : "";
+  }
+
+  function echoTypedText(text) {
+    if (!speakTypedKeys || !useSiteVoice || !text) return;
+    speak(Array.from(text, typedCharacterMessage).join(""), null, true);
+  }
+
   let rememberProgress = false;
   let audioContext = null;
   let session = null;
@@ -297,21 +313,33 @@
   }
 
   function stopVoice() {
+    // Invalidate callbacks before cancelling, including queued key echoes.
+    speechGeneration += 1;
+    pendingTypedSpeech = 0;
     try { window.speechSynthesis?.cancel(); } catch (error) { /* Speech must not block practice. */ }
   }
 
-  function speak(message, onComplete) {
+  function speak(message, onComplete, queueTypedSpeech = false) {
     let finished = false;
+    let generation = speechGeneration;
+    let queued = false;
     const complete = () => {
       if (finished) return;
       finished = true;
+      if (generation !== speechGeneration) return;
+      if (queued) pendingTypedSpeech -= 1;
       if (onComplete) onComplete();
     };
     if (!useSiteVoice || !("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
       complete();
       return;
     }
-    stopVoice();
+    // Keep successive typed characters in order. Ordinary controls, Escape,
+    // voice-off and a new session still interrupt the queue immediately.
+    if (!queueTypedSpeech || !pendingTypedSpeech) stopVoice();
+    generation = speechGeneration;
+    queued = queueTypedSpeech;
+    if (queued) pendingTypedSpeech += 1;
     try {
       const utterance = new SpeechSynthesisUtterance(message);
       const selectedVoice = getSiteVoices().find(voice =>
@@ -672,7 +700,7 @@
     return speakableSequence(group);
   }
 
-  function announceCurrentPromptGroup() {
+  function announceCurrentPromptGroup(typedEcho = "") {
     const group = currentPromptGroup();
     if (!group || !session) return;
     session.accepting = true;
@@ -686,7 +714,7 @@
       : "Type " + spokenPromptGroup(group) + ".") + " " + shiftGuidance;
     practiceStatus.textContent = message;
     targetPrompt.setAttribute("aria-label", message);
-    speak(message);
+    speak(typedEcho + message, null, Boolean(typedEcho));
   }
 
   function closePromptGroupTimer() {
@@ -718,6 +746,8 @@
       else link.removeAttribute("aria-current");
     });
     document.getElementById("menuVoiceValue").textContent = useSiteVoice ? "Site voice" : "My screen reader";
+    document.getElementById("menuSpeakTypedKeysValue").textContent = speakTypedKeys ? "On" : "Off";
+    document.querySelector('[data-setting="speak-typed-keys"]').setAttribute("aria-pressed", String(speakTypedKeys));
     document.getElementById("menuVoiceChoiceValue").textContent = selectedVoiceName();
     document.getElementById("menuVoiceRateValue").textContent = voiceRatePercent + "%";
     document.getElementById("menuSoundValue").textContent = document.getElementById("soundSetting").checked ? "On" : "Off";
@@ -878,11 +908,17 @@
       save.checked = !save.checked;
       rememberProgress = save.checked;
     }
+    if (setting === "speak-typed-keys") {
+      speakTypedKeys = !speakTypedKeys;
+      stopVoice();
+      try { localStorage.setItem("alcKeyboardingSpeakTypedKeys", speakTypedKeys ? "on" : "off"); }
+      catch (error) { /* Optional browser storage. */ }
+    }
     if (setting === "voice") setVoice(!useSiteVoice, false);
     if (setting === "hand") changeLearningPath();
     else updateSetupMenu();
     if (setting === "size") applyTextSize();
-    speak(button.textContent.trim());
+    speak(setting === "speak-typed-keys" ? "Speak each key I type. " + (speakTypedKeys ? "On." : "Off.") : button.textContent.trim());
   }
 
   function updateStats() {
@@ -1399,7 +1435,13 @@
       event.preventDefault();
       availableControls[nextIndex].focus();
     });
-    controls.forEach(control => control.addEventListener("focus", () => speak(control.getAttribute("aria-label") || control.textContent.trim())));
+    controls.forEach(control => control.addEventListener("focus", () => {
+      const label = control.dataset.setting === "speak-typed-keys" ? "Speak each key I type. " + (speakTypedKeys ? "On" : "Off")
+        : control.getAttribute("aria-label") || control.textContent.trim();
+      const help = control.dataset.setting === "speak-typed-keys"
+        ? document.getElementById("speakTypedKeysHelp").textContent.trim() : "";
+      speak(label + (help ? ". " + help : ""));
+    }));
   });
 
   setupMenu.querySelectorAll("[data-main-action]").forEach(button => button.addEventListener("click", () => {
@@ -1440,6 +1482,7 @@
   });
 
   function processPracticeCharacter(typedKey, capsLockOn) {
+    const typedEcho = typedCharacterMessage(typedKey);
     const expected = session.prompt[session.position];
     const capsLockMismatch = Boolean(capsLockOn) && /^[a-z]$/.test(expected || "") &&
       typedKey === expected.toUpperCase();
@@ -1449,7 +1492,7 @@
       const warning = "Caps Lock is on. Press Caps Lock to turn it off. Caps Lock is located directly to the left of the A key. Then press " + expected.toUpperCase() + ".";
       practiceStatus.textContent = warning;
       tone(190, 0.12);
-      speak(warning);
+      speak(typedEcho + warning, null, Boolean(typedEcho));
       window.setTimeout(() => targetPrompt.classList.remove("incorrect"), 300);
       return;
     }
@@ -1458,7 +1501,7 @@
       if (!session.startedAt) session.startedAt = session.segmentStartedAt;
     }
     if (typedKey === expected) {
-      stopVoice();
+      if (!typedEcho) stopVoice();
       session.correct += 1;
       session.position += 1;
       const completedGroup = session.promptGroups && session.position >= currentPromptGroupStart() + currentPromptGroup().length;
@@ -1478,6 +1521,7 @@
         ? "Part " + Math.min(session.groupIndex + 1, session.promptGroups.length) + " of " + session.promptGroups.length
         : "Character " + Math.min(session.position + 1, session.prompt.length) + " of " + session.prompt.length;
       if (session.position >= session.prompt.length) {
+        if (typedEcho) speak(typedEcho, null, true);
         session.accepting = false;
         const completedSession = session;
         window.setTimeout(() => {
@@ -1487,8 +1531,9 @@
       } else if (completedGroup) {
         session.accepting = false;
         window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
-        announceCurrentPromptGroup();
+        announceCurrentPromptGroup(typedEcho);
       } else {
+        if (typedEcho) speak(typedEcho, null, true);
         window.setTimeout(() => targetPrompt.classList.remove("correct"), 120);
       }
     } else {
@@ -1499,7 +1544,7 @@
       const correction = incorrectKeyInstruction(expected, typedKey);
       practiceStatus.textContent = correction;
       tone(190, 0.16);
-      speak(correction);
+      speak(typedEcho + correction, null, Boolean(typedEcho));
       window.setTimeout(() => targetPrompt.classList.remove("incorrect"), 220);
     }
 
@@ -1548,6 +1593,7 @@
       if (session && freeTyping && startingKey.length === 1) {
         freeTypeInput.value = startingKey;
         freeTypeInput.dispatchEvent(new Event("input", { bubbles: true }));
+        echoTypedText(startingKey);
       } else if (session && session.accepting && startingKey.length === 1) {
         const expected = session.prompt[session.position];
         if (startingKey === expected || (capsLockOn && /^[a-z]$/.test(expected || "") &&
@@ -1598,7 +1644,7 @@
     startPractice();
   });
   document.getElementById("resultAction").addEventListener("focus", event => {
-    speak(event.currentTarget.getAttribute("aria-label") || event.currentTarget.textContent.trim());
+    speak(event.currentTarget.getAttribute("aria-label") || event.currentTarget.textContent.trim(), null, pendingTypedSpeech > 0);
   });
   websiteControlsToggle.addEventListener("click", () => setWebsiteControlsMinimized(!document.body.classList.contains("kb-controls-minimized")));
   voiceToggle.addEventListener("click", () => setVoice(!useSiteVoice, true));
@@ -1614,8 +1660,12 @@
   freeTypeInput.addEventListener("beforeinput", event => {
     if (finishExpiredPractice()) event.preventDefault();
   });
-  freeTypeInput.addEventListener("input", () => {
-    if (!session || !isFreeTypingMode(session.mode)) return;
+  freeTypeInput.addEventListener("input", event => {
+    if (!session || !session.started || session.finished || !isFreeTypingMode(session.mode)) return;
+    // Announce committed typing, not pasted text, deletions or shortcuts.
+    if (!event.isComposing && ["insertText", "insertFromComposition", "insertLineBreak"].includes(event.inputType)) {
+      echoTypedText(event.inputType === "insertLineBreak" ? "\n" : event.data);
+    }
     progressText.textContent = freeTypeInput.value.length + (freeTypeInput.value.length === 1 ? " character typed" : " characters typed");
   });
   buildVisualKeyboard();

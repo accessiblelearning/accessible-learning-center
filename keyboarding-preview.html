@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="styles.css?v=qa-20261001">
   <script src="accessibility.js?v=accessibility-20260920" defer></script>
   <script src="keyboarding-one-hand.js?v=curriculum-20261005" defer></script>
-  <script src="keyboarding-preview.js?v=session-qa-20261005" defer></script>
+  <script src="keyboarding-preview.js?v=typed-voice-20261025" defer></script>
   <style>
     :root { --kb-scale: 1; }
     body:has(.kb-shell) { margin: 0; background: #06142d; color: #fff; }
@@ -756,6 +756,8 @@
           <button class="kb-step-adjust" id="voiceRateMinus" type="button" data-adjust="voice-rate" data-direction="-1" aria-label="Decrease speaking rate">−</button>
           <button class="kb-step-adjust" id="voiceRatePlus" type="button" data-adjust="voice-rate" data-direction="1" aria-label="Increase speaking rate">+</button>
         </div>
+        <button class="kb-menu-option" type="button" data-setting="speak-typed-keys" aria-pressed="false" aria-describedby="speakTypedKeysHelp"><span class="kb-menu-label">Speak each key I type</span><span class="kb-menu-value" id="menuSpeakTypedKeysValue">Off</span></button>
+        <p class="kb-visually-hidden" id="speakTypedKeysHelp">With Site voice on, hear each letter, number, space, and punctuation mark you type, including mistakes. Works in every hand mode, lessons, copy practice, and free typing. Turn it off at any time.</p>
         <button class="kb-menu-option" type="button" data-setting="size"><span class="kb-menu-label">Print size</span><span class="kb-menu-value" id="menuSizeValue"></span></button>
         <button class="kb-menu-option" type="button" data-setting="dark"><span class="kb-menu-label">Keyboarding dark mode</span><span class="kb-menu-value" id="menuDarkValue">Off</span></button>
         <button class="kb-menu-option" type="button" data-setting="sound"><span class="kb-menu-label">Feedback sounds</span><span class="kb-menu-value" id="menuSoundValue">On</span></button>
