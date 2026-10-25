@@ -57,7 +57,7 @@
       link.dataset.mission = set.mission;
       if (set.reader) link.dataset.reader = set.reader;
       const name = document.createElement("strong");
-      name.textContent = set.menuLabel || set.label.split(":")[0];
+      name.textContent = set.menuLabel || set.label;
       link.dataset.choice = set.id;
       link.dataset.description = set.label;
       const source = document.createElement("span");

@@ -408,8 +408,10 @@
   const commandSteps = () => practiceStepsFor(command);
   const expectedStep = () => commandSteps()[sequencePosition];
   const usesReleasedKeys = () => hasCourse() && command[3] === "safe";
+  const acceptsPasteSpecialChord = () => usesReleasedKeys() && normalizeExpected(expectedStep()) === "control+alt+v";
   let releasedKeyPosition = 0;
   let releasePendingKey = "";
+  let heldChordPending = "";
   let releaseBlocked = false;
   const heldPracticeKeys = new Set();
   let order = [];
@@ -579,6 +581,7 @@
     protectedModifierArmed = "";
     releasedKeyPosition = 0;
     releasePendingKey = "";
+    heldChordPending = "";
     releaseBlocked = false;
     heldPracticeKeys.clear();
     if (active && !awaitingAdvance && usesReleasedKeys()) renderCoursePrompt();
@@ -677,6 +680,7 @@
   }
 
   function releasedKeyInstruction() {
+    if (acceptsPasteSpecialChord()) return "Use Control plus Alt plus V together, then release all keys. You can also press and release Control, then Alt, then V one key at a time.";
     return "Here, press and release one key at a time: " + practiceStepKeys().map(spokenKeyName).join(", then ") + "." + fnInputHelp();
   }
 
@@ -690,7 +694,7 @@
     if (usesReleasedKeys()) {
       if (practiceStepKeys().length === 1) return "Press and release " + spokenKeyName(currentPracticeKey()) + "." +
         (steps.length > 1 ? " Step " + (sequencePosition + 1) + " of " + steps.length + "." : "");
-      return releasedKeyInstruction() + " " + normalStepInstruction() +
+      return releasedKeyInstruction() + (acceptsPasteSpecialChord() ? "" : " " + normalStepInstruction()) +
         (steps.length > 1 ? " Step " + (sequencePosition + 1) + " of " + steps.length + "." : "") +
         (releasedKeyPosition ? " Next: press and release " + spokenKeyName(currentPracticeKey()) + "." : "");
     }
@@ -717,7 +721,8 @@
   function renderCoursePrompt() {
     const separatedChord = usesReleasedKeys() && practiceStepKeys().length > 1;
     const heading = document.createElement("h3");
-    heading.textContent = usesReleasedKeys() ? "Press and release " + spokenKeyName(currentPracticeKey())
+    heading.textContent = acceptsPasteSpecialChord() && !releasedKeyPosition ? "Press Control plus Alt plus V"
+      : usesReleasedKeys() ? "Press and release " + spokenKeyName(currentPracticeKey())
       : commandSteps().length > 1 ? command[1] : "Press " + spokenKeys(command[0]);
     const explanation = document.createElement("p");
     explanation.textContent = commandExplanation() + (usesReleasedKeys() ? (separatedChord ? " " + normalStepInstruction() : "")
@@ -1042,7 +1047,7 @@
     }
     if (window.CommandPracticeCourses?.[category.value]) {
       capture.setAttribute("aria-describedby", "captureInstructions");
-      document.getElementById("captureInstructions").textContent = "Press the requested keys here, or use Build the command. For protected commands, press and release each named key separately. The prompt explains how the real shortcut is held. Build the command is an optional alternative if a key is not detected. Enter sequence steps in order. Correct commands advance automatically. Control alone repeats unless Control is the next practice key. Tab moves to the page controls when it is not the requested command. Escape returns to Command Practice unless Escape is the requested key.";
+      document.getElementById("captureInstructions").textContent = "Press the requested keys here, or use Build the command. For protected commands, the prompt explains whether to use the held shortcut or press and release the keys separately. Build the command is an optional alternative if a key is not detected. Enter sequence steps in order. Correct commands advance automatically. Control alone repeats unless Control is the next practice key. Tab moves to the page controls when it is not the requested command. Escape returns to Command Practice unless Escape is the requested key.";
       const resultLabel=document.getElementById("commandMasteredHeading");
       if (resultLabel) resultLabel.textContent="Commands practiced";
     }
@@ -1146,6 +1151,25 @@
 
   function releasedKeyDown(event) {
     const key = keyName(event);
+    if (event.repeat || heldPracticeKeys.has(key)) return true;
+    if (heldChordPending) {
+      heldPracticeKeys.add(key);
+      return true;
+    }
+    if (acceptsPasteSpecialChord() && normalizeExpected(signature(event)) === "control+alt+v") {
+      // Excel's Paste Special sequences also accept the actual held shortcut.
+      // Wait for every key to be released before accepting the next dialog key.
+      heldPracticeKeys.add(key);
+      heldChordPending = "control+alt+v";
+      controlTapPending = false;
+      releasedKeyPosition = 0;
+      releasePendingKey = "";
+      releaseBlocked = false;
+      detected.textContent = "Control plus Alt plus V";
+      status.textContent = "Release Control, Alt, and V to continue.";
+      speak(status.textContent);
+      return true;
+    }
     if (key === "control" && !heldPracticeKeys.size &&
         !releaseBlocked && practiceKeyName(currentPracticeKey()) !== "control") {
       controlTapPending = true;
@@ -1153,7 +1177,6 @@
       return true;
     }
     controlTapPending = false;
-    if (event.repeat || heldPracticeKeys.has(key)) return true;
     const otherModifierHeld = (event.ctrlKey && key !== "control") || (event.altKey && key !== "alt") ||
       (event.shiftKey && key !== "shift") || (event.metaKey && key !== "windows");
     const overlap = heldPracticeKeys.size > 0 || otherModifierHeld;
@@ -1163,7 +1186,10 @@
       releasePendingKey = "";
       releaseBlocked = true;
       renderCoursePrompt();
-      status.textContent = "Release all keys. In this practice, press and release one key at a time.";
+      const pasteModifiers = acceptsPasteSpecialChord() && !event.shiftKey && !event.metaKey &&
+        [...heldPracticeKeys].every(held => held === "control" || held === "alt");
+      status.textContent = pasteModifiers ? "Hold Control and Alt, then press V."
+        : "Release all keys. In this practice, press and release one key at a time.";
       speak(status.textContent);
       return true;
     }
@@ -1175,10 +1201,18 @@
 
   function releasedKeyUp(event) {
     const key = keyName(event);
-    if (!heldPracticeKeys.has(key) && !releaseBlocked) return false;
+    if (!heldPracticeKeys.has(key) && !releaseBlocked && !heldChordPending) return false;
     event.preventDefault();
     event.stopPropagation();
     heldPracticeKeys.delete(key);
+    if (heldChordPending) {
+      if (!heldPracticeKeys.size && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
+        const completedChord = heldChordPending;
+        heldChordPending = "";
+        recordAttempt(completedChord);
+      }
+      return true;
+    }
     if (releaseBlocked) {
       if (!heldPracticeKeys.size && !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
         releaseBlocked = false;

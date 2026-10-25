@@ -748,6 +748,9 @@
     if (event.altKey) parts.push("ALT");
     if (event.shiftKey) parts.push("SHIFT");
     let key = event.key.toUpperCase();
+    // Option can produce a symbol on a Mac even though the learner pressed V.
+    // Recognize the physical key for this Windows shortcut in the simulation.
+    if (event.ctrlKey && event.altKey && event.code === "KeyV") key = "V";
     if (key === " ") key = "SPACE";
     if (key === "ESC") key = "ESCAPE";
     if (!["CONTROL", "ALT", "SHIFT", "META"].includes(key)) parts.push(key);

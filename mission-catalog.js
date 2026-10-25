@@ -243,4 +243,14 @@
     if (topic.id === "mac-voiceover") topic.commandSets = [{id:"mac-voiceover-basics", menuLabel:"Mac VoiceOver", label:"Mac VoiceOver: basic through advanced commands", category:"Mac VoiceOver basics"}];
     if (topic.id === "microsoft-word") topic.commandSets = [{id:"word-documents", menuLabel:"Microsoft Word", label:"Microsoft Word: editing, navigation, formatting and advanced ribbon commands", category:"Microsoft Word and documents"}];
   }
+  // Related exercises progress from introductory tasks to applying those
+  // skills in a fuller scenario. Preserve IDs and independently openable parts.
+  const multiPartTopics = new Set(["braille-displays", "google-chrome", "mac-voiceover", "microsoft-excel", "microsoft-powerpoint", "microsoft-word"]);
+  for (const topic of window.MissionControlCatalog) {
+    if (!multiPartTopics.has(topic.id)) continue;
+    topic.missionSets.forEach((set, index) => {
+      const task = set.label.slice(set.label.indexOf(":") + 1).trim();
+      set.label = topic.label + " — Part " + (index + 1) + " of " + topic.missionSets.length + ": " + task;
+    });
+  }
 })();

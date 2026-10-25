@@ -1061,6 +1061,94 @@ test('Paste Special rehearses the dialog, option and confirmation with a current
   assert.equal(p.get('practiceResults').hidden,false);
 });
 
+function heldPasteChord(p, {altFirst=false, symbol=false, extraShift=false, blur=false}={}) {
+ const capture=p.get('keyCapture');
+ const first=altFirst?'Alt':'Control',second=altFirst?'Control':'Alt';
+ capture.fire('keydown',{key:first,ctrlKey:!altFirst,altKey:altFirst});
+ capture.fire('keydown',{key:second,ctrlKey:true,altKey:true});
+ const keys={key:symbol?'√':'v',code:'KeyV',ctrlKey:true,altKey:true,shiftKey:extraShift};
+ capture.fire('keydown',keys);capture.fire('keydown',{...keys,repeat:true});
+ if(blur)capture.fire('blur');
+ capture.fire('keyup',keys);
+ capture.fire('keyup',{key:second,ctrlKey:!altFirst,altKey:altFirst,shiftKey:extraShift});
+ capture.fire('keyup',{key:first,shiftKey:extraShift});
+ if(extraShift)capture.fire('keyup',{key:'Shift'});
+}
+
+test('all eleven Excel Paste Special sequences accept held Control+Alt+V without skipping dialog steps',()=>{
+ const catalog=page();catalog.load('command-courses.js');catalog.load('command-teaching.js');
+ const category='Microsoft Excel and spreadsheets';
+ const entries=catalog.window.CommandPracticeCourses[category].filter(e=>e[4].stepGoals);
+ assert.equal(entries.length,11);
+ for(const entry of entries)for(const altFirst of [false,true]){
+  const p=page({commandCategory:{value:category},soundFeedback:{checked:false}});
+  p.window.CommandPracticeCourses={[category]:[entry]};p.load('command-practice.js');p.get('startPractice').click();
+  assert.match(p.get('commandPrompt').children[0].textContent,/Control plus Alt plus V/);
+  assert.match(p.get('commandPrompt').children[2].textContent,/together.*one key at a time/);
+  heldPasteChord(p,{altFirst,symbol:altFirst});
+  assert.match(p.get('courseStep').textContent,/Step 2 of 3/);
+  assert.equal(p.get('practiceScore').textContent,'Correct: 0 · Attempts: 0');
+  tapCourseKey(p,entry[4].steps[1]);assert.match(p.get('courseStep').textContent,/Step 3 of 3/);
+  tapCourseKey(p,'Enter');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');
+ }
+});
+
+test('held Paste Special waits for release, rejects extra modifiers and resets on focus loss',()=>{
+ const category='Microsoft Excel and spreadsheets',p=page({commandCategory:{value:category}});
+ p.load('command-courses.js');p.load('command-teaching.js');
+ p.window.CommandPracticeCourses[category]=[p.window.CommandPracticeCourses[category].find(e=>e[4].stepGoals&&e[4].steps[1]==='V')];
+ p.load('command-practice.js');p.get('startPractice').click();
+ heldPasteChord(p,{extraShift:true});assert.match(p.get('courseStep').textContent,/Step 1 of 3/);
+ heldPasteChord(p,{blur:true});assert.match(p.get('courseStep').textContent,/Step 1 of 3/);
+ const capture=p.get('keyCapture');
+ capture.fire('keydown',{key:'Control',ctrlKey:true});capture.fire('keydown',{key:'Alt',ctrlKey:true,altKey:true});
+ capture.fire('keydown',{key:'v',code:'KeyV',ctrlKey:true,altKey:true});
+ capture.fire('keyup',{key:'v',code:'KeyV',ctrlKey:true,altKey:true});
+ assert.match(p.get('courseStep').textContent,/Step 1 of 3/,'do not select the dialog option while modifiers remain held');
+ capture.fire('keyup',{key:'Alt',ctrlKey:true});assert.match(p.get('courseStep').textContent,/Step 1 of 3/);
+ capture.fire('keyup',{key:'Control'});assert.match(p.get('courseStep').textContent,/Step 2 of 3/);
+ tapCourseKey(p,'V');tapCourseKey(p,'Enter');assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 1');
+});
+
+test('standalone Control+Alt+V tasks still accept the physical chord including an Option-produced symbol',()=>{
+ for(const category of ['Google Docs and applications','Microsoft Word and documents','Microsoft Excel and spreadsheets']) {
+  const p=page({commandCategory:{value:category}});p.load('command-courses.js');p.load('command-teaching.js');
+  p.window.CommandPracticeCourses[category]=[p.window.CommandPracticeCourses[category].find(e=>e[0]==='Control+Alt+V')];
+  p.load('command-practice.js');p.get('startPractice').click();heldPasteChord(p,{symbol:true});
+  assert.equal(p.get('practiceScore').textContent,'Correct: 1 · Attempts: 1',category);
+ }
+});
+
+test('Excel topic mission accepts Control+Alt+V with a Mac Option symbol and retains the plain V alternative',()=>{
+ for(const symbol of [false,true]) {
+  const p=page({atPerspective:{value:'jaws'},missionSelect:{value:'18'},simulatedVoice:{checked:false}});
+  p.load('troubleshooting-lab.js');p.get('startMission').click();
+  for(const key of ['z','ArrowLeft','c','ArrowRight'])p.key('missionControlStation',key);
+  assert.equal(p.get('missionProgress').value,4);
+  if(symbol)p.key('missionControlStation','√',{code:'KeyV',ctrlKey:true,altKey:true,shiftKey:true});
+  assert.equal(p.get('missionProgress').value,4,'extra Shift must not open the dialog');
+  p.key('missionControlStation',symbol?'√':'v',symbol?{code:'KeyV',ctrlKey:true,altKey:true}:{});
+  assert.equal(p.get('missionProgress').value,5);
+  for(const key of ['v','Enter','s'])p.key('missionControlStation',key);
+  assert.equal(p.get('missionProgress').value,8);
+ }
+});
+
+test('Topic Missions shows unique full titles and numbered related parts without changing saved mission IDs',()=>{
+ const p=page();p.load('mission-catalog.js');p.load('topic-missions-setup.js');
+ const labels=p.get('topicMissionsMenu').children.map(item=>item.children[0].textContent);
+ assert.equal(labels.length,27);assert.equal(new Set(labels).size,27);
+ const expected={'braille-displays':['17','22'],'google-chrome':['13','20'],'mac-voiceover':['16','21'],'microsoft-excel':['14','18'],'microsoft-powerpoint':['15','19','24'],'microsoft-word':['3','23']};
+ for(const [id,missions] of Object.entries(expected)){
+  const entries=p.window.MissionControlCatalog.find(t=>t.id===id).missionSets;
+  assert.deepEqual(Array.from(entries,e=>e.mission),missions);
+  entries.forEach((entry,i)=>{assert.ok(labels.includes(entry.label));assert.ok(entry.label.includes('Part '+(i+1)+' of '+entries.length+': '));});
+ }
+ const readers=p.window.MissionControlCatalog.find(t=>t.id==='screen-readers').missionSets;
+ assert.deepEqual(Array.from(readers,e=>e.reader),['jaws','narrator','nvda']);
+ assert.ok(readers.every(e=>e.mission==='0'&&!e.label.includes('Part')),'reader variants are alternatives, not successive parts');
+});
+
 test('reviewed Excel and PowerPoint teaching preserves contextual duplicates and fixes keypad substitutions',()=>{
   const p=page();p.load('command-courses.js');p.load('command-teaching.js');const c=p.window.CommandPracticeCourses;
   const excel=c['Microsoft Excel and spreadsheets'],ppt=c.Presentations;
