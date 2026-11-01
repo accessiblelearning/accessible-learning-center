@@ -184,6 +184,19 @@
       reviewNote.innerHTML = "<strong>Last accessibility and structure review:</strong> September 2, 2026. Software interfaces can change; confirm differences using the official references in this manual.";
       document.querySelector("body > header")?.append(reviewNote);
     }
+    // Disable the production login link on non-production preview hosts.
+    // Other endpoints still require an independent isolation audit.
+    if (!analyticsHosts.has(location.hostname)) {
+      const loginLink = nav.querySelector(".site-nav__login");
+      if (loginLink) {
+        loginLink.removeAttribute("href");
+        loginLink.setAttribute("aria-disabled", "true");
+        loginLink.setAttribute("tabindex", "-1");
+        loginLink.textContent = "Login unavailable in preview";
+        loginLink.setAttribute("title", "Production sign-in is disabled in development previews.");
+      }
+    }
+
     nav.querySelectorAll("a").forEach((link) => {
       if (link.getAttribute("href") === currentPage) {
         link.setAttribute("aria-current", "page");
