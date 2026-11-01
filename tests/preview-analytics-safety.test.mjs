@@ -24,3 +24,10 @@ test("Replit and localhost are not explicitly allowlisted for analytics", () => 
   assert.ok(match, "Cannot locate production analytics host list");
   assert.doesNotMatch(match[1], /replit|localhost|127\.0\.0\.1/i);
 });
+
+test("production login link is disabled on preview hosts", () => {
+  assert.match(source, /if \(!analyticsHosts\.has\(location\.hostname\)\)/);
+  assert.match(source, /loginLink\.removeAttribute\("href"\)/);
+  assert.match(source, /loginLink\.setAttribute\("aria-disabled", "true"\)/);
+  assert.match(source, /Login unavailable in preview/);
+});
